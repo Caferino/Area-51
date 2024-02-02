@@ -1,0 +1,26 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=5 format=3 uid="uid://678ifm643xpr"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_604gh"]
+animation = &"3D Head Animator Graal Style/idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6eg6p"]
+animation = &"3D Head Animator Graal Style/idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vaxyu"]
+animation = &"3D Head Animator Graal Style/idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2qb2k"]
+animation = &"3D Head Animator Graal Style/idle_down"
+
+[resource]
+blend_point_0/node = SubResource("AnimationNodeAnimation_604gh")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_6eg6p")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_vaxyu")
+blend_point_2/pos = Vector2(0, -1.1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_2qb2k")
+blend_point_3/pos = Vector2(0, 1.1)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1

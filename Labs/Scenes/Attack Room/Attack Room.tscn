@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq6nj3buvscyg"]
+
+[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/theo.tscn" id="1_kb4kr"]
+
+[node name="AttackRoom" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48.12, 26.96)
+
+[node name="Theo" parent="." instance=ExtResource("1_kb4kr")]
+position = Vector2(852, 476)

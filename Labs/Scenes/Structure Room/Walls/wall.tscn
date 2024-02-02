@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://circ2b26dkf5t"]
+
+[ext_resource type="Shader" path="res://Labs/Shaders/WallShader.gdshader" id="1_y0ba4"]
+[ext_resource type="Texture2D" uid="uid://tqwssjwgnxx1" path="res://Labs/Assets/X. Resources/Structures/Walls/wall_1.jpg" id="2_71h2s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gigcw"]
+shader = ExtResource("1_y0ba4")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7t7p1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6c1s"]
+size = Vector2(510.345, 124.242)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j2b77"]
+polygon = PackedVector2Array(255.173, 168.966, 255.173, 255.172, -255.172, 255.172, -255.172, 168.966)
+
+[node name="Wall1" type="Sprite2D"]
+material = SubResource("ShaderMaterial_gigcw")
+scale = Vector2(0.29, 0.29)
+texture = ExtResource("2_71h2s")
+offset = Vector2(0, -182.759)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -182.759)
+physics_material_override = SubResource("PhysicsMaterial_7t7p1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-8.50908e-05, 193.052)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_s6c1s")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, -182)
+scale = Vector2(1.00336, 1.00034)
+occluder = SubResource("OccluderPolygon2D_j2b77")

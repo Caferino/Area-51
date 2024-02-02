@@ -1,0 +1,37 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=9 format=3 uid="uid://cj58i4ttmp7p7"]
+
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bnljv47lcakia" path="res://Labs/Scenes/HD 2D Room/Body_Idle.tres" id="1_a33qq"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://3b85e1b5yix2" path="res://Labs/Scenes/HD 2D Room/Body_Walk.tres" id="2_r6bwb"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_81xic"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nfkq3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y0y4b"]
+states/Idle/node = ExtResource("1_a33qq")
+states/Idle/position = Vector2(385.333, 82)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_nfkq3")]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fj43s"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ahnk6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h7h40"]
+states/Walk/node = ExtResource("2_r6bwb")
+states/Walk/position = Vector2(434.667, 68.6667)
+transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_ahnk6")]
+
+[resource]
+graph_offset = Vector2(-121.916, 352.35)
+nodes/Blend/node = SubResource("AnimationNodeBlend2_81xic")
+nodes/Blend/position = Vector2(266.667, 506.667)
+nodes/IdleState/node = SubResource("AnimationNodeStateMachine_y0y4b")
+nodes/IdleState/position = Vector2(53.3333, 613.333)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fj43s")
+nodes/TimeScale/position = Vector2(480, 480)
+nodes/WalkState/node = SubResource("AnimationNodeStateMachine_h7h40")
+nodes/WalkState/position = Vector2(53.3333, 453.333)
+nodes/output/position = Vector2(739.394, 484.848)
+node_connections = [&"Blend", 0, &"WalkState", &"Blend", 1, &"IdleState", &"TimeScale", 0, &"Blend", &"output", 0, &"TimeScale"]
