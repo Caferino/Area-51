@@ -15,15 +15,24 @@ run/main_scene="res://Labs/Scenes/HD 2D Room/HD 2D Room.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Labs/Scenes/(OD) Mineclone Room/Global.gd"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://Labs/Assets/X. Other/Cursor/dot.svg"
 
-[editor_plugins]
+[editor]
 
-enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")
+naming/scene_name_casing=1
+
+[filesystem]
+
+import/fbx/enabled=false
 
 [input]
 
@@ -70,9 +79,25 @@ sprint={
 
 [layer_names]
 
+3d_render/layer_1="Terrain"
+3d_render/layer_2="Walls"
+3d_render/layer_3="Doors"
+3d_render/layer_4="Environment"
+3d_render/layer_5="Bodies"
+3d_render/layer_6="Heads"
+3d_render/layer_7="Hats"
 2d_physics/layer_1="world"
+3d_physics/layer_1="Terrain"
 2d_physics/layer_2="hitboxes"
+3d_physics/layer_2="Walls"
+3d_physics/layer_3="Doors"
+3d_physics/layer_4="Environment"
+3d_physics/layer_5="Bodies"
+3d_physics/layer_6="Heads"
+3d_physics/layer_7="Hats"
+3d_physics/layer_8="Projectiles"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method.mobile="gl_compatibility"

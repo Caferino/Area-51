@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://snpi1kdbklkt"]
+
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_6m4bu"]
+[ext_resource type="Resource" path="res://Labs/Scenes/Terrain Room/forest_terrain/data.hterrain" id="2_3d8ba"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_mpfy7"]
+[ext_resource type="Texture2D" uid="uid://duh33xb4v826n" path="res://Labs/Scenes/Terrain Room/Forest_slot0_albedo_bump.png" id="4_p7tel"]
+[ext_resource type="Texture2D" uid="uid://b1q07bc5183y4" path="res://Labs/Scenes/Terrain Room/Forest_slot0_normal_roughness.png" id="5_gc4ky"]
+
+[sub_resource type="Resource" id="Resource_n1veg"]
+script = ExtResource("3_mpfy7")
+mode = 0
+textures = [[ExtResource("4_p7tel")], [ExtResource("5_gc4ky")]]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d1hnm"]
+
+[node name="Terrain" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.568088, -0.822968, 0, 0.822968, 0.568088, 0, 38.412, -66.0572)
+light_energy = 6.838
+
+[node name="HTerrain" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, -128)
+script = ExtResource("1_6m4bu")
+map_scale = Vector3(0.5, 0.5, 0.5)
+_terrain_data = ExtResource("2_3d8ba")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_n1veg")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Vector4(0, 0, 0, 0)
+shader_params/u_specular = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64877, -2.60738)
+mesh = SubResource("BoxMesh_d1hnm")

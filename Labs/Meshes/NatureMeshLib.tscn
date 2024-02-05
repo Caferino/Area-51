@@ -1,9 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://cp8cnm3of4cah"]
+[gd_scene load_steps=30 format=3 uid="uid://cp8cnm3of4cah"]
 
 [ext_resource type="Texture2D" uid="uid://iya3bfawg7ux" path="res://Labs/Assets/10. Tiles/Nature/Floors/StoneTiles1.png" id="1_expy6"]
 [ext_resource type="Texture2D" uid="uid://t4u2gtimnjfm" path="res://Labs/Assets/10. Tiles/Nature/Floors/Grass1.png" id="2_i76fj"]
 [ext_resource type="Texture2D" uid="uid://cauxf3m1v2h7x" path="res://Labs/Assets/10. Tiles/Nature/Floors/Wall1.png" id="3_fv4a3"]
 [ext_resource type="Texture2D" uid="uid://cqda0wmru3y8j" path="res://Labs/Assets/10. Tiles/Nature/Floors/Wall2.png" id="4_6xbrb"]
+[ext_resource type="Texture2D" uid="uid://cat62d7n8cltv" path="res://Labs/Assets/10. Tiles/Nature/Floors/grass-64.png" id="5_6bmc2"]
+[ext_resource type="Texture2D" uid="uid://dtw8dhrn8twx6" path="res://Labs/Assets/10. Tiles/Nature/Floors/wall-64.png" id="6_pewdq"]
+[ext_resource type="Texture2D" uid="uid://crp76nfi8v1wo" path="res://Labs/Assets/10. Tiles/Nature/Floors/flowers-64.png" id="7_b3fth"]
+[ext_resource type="Texture2D" uid="uid://cuadofffig5ju" path="res://Labs/Assets/10. Tiles/Nature/Floors/grass64-2.png" id="8_bqjwb"]
+[ext_resource type="Texture2D" uid="uid://1xfyyud2xtx1" path="res://Labs/Assets/10. Tiles/Nature/Floors/Grass0.png" id="9_2cgdv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibrtn"]
 albedo_texture = ExtResource("1_expy6")
@@ -39,9 +44,52 @@ texture_filter = 0
 [sub_resource type="BoxMesh" id="BoxMesh_8oh5x"]
 material = SubResource("StandardMaterial3D_ygwi1")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtj30"]
+albedo_texture = ExtResource("5_6bmc2")
+uv1_scale = Vector3(3, 2, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_vv51a"]
+material = SubResource("StandardMaterial3D_vtj30")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j31fu"]
+albedo_texture = ExtResource("6_pewdq")
+uv1_scale = Vector3(3, 2, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1uoml"]
+material = SubResource("StandardMaterial3D_j31fu")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_diorw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0wel"]
+albedo_texture = ExtResource("7_b3fth")
+uv1_scale = Vector3(3, 2, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_rlm0b"]
+material = SubResource("StandardMaterial3D_a0wel")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3e4c"]
+albedo_texture = ExtResource("8_bqjwb")
+uv1_scale = Vector3(3, 2, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ra4rt"]
+material = SubResource("StandardMaterial3D_m3e4c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xa6x5"]
+albedo_texture = ExtResource("9_2cgdv")
+uv1_scale = Vector3(3, 2, 1)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_hnmbt"]
+material = SubResource("StandardMaterial3D_xa6x5")
+
 [node name="MeshLib" type="Node3D"]
 
 [node name="GrassStoneA" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_pu5uj")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="GrassStoneA"]
@@ -50,6 +98,7 @@ mesh = SubResource("BoxMesh_pu5uj")
 shape = SubResource("BoxShape3D_brpuq")
 
 [node name="GrassA" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_m68dr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="GrassA"]
@@ -58,6 +107,8 @@ mesh = SubResource("BoxMesh_m68dr")
 shape = SubResource("BoxShape3D_brpuq")
 
 [node name="WallA" type="MeshInstance3D" parent="."]
+visible = false
+layers = 2
 mesh = SubResource("BoxMesh_1rtck")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WallA"]
@@ -66,9 +117,56 @@ mesh = SubResource("BoxMesh_1rtck")
 shape = SubResource("BoxShape3D_brpuq")
 
 [node name="WallB" type="MeshInstance3D" parent="."]
+visible = false
+layers = 2
 mesh = SubResource("BoxMesh_8oh5x")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WallB"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallB/StaticBody3D"]
+shape = SubResource("BoxShape3D_brpuq")
+
+[node name="Grass64" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_vv51a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass64"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass64/StaticBody3D"]
+shape = SubResource("BoxShape3D_brpuq")
+
+[node name="Wall64" type="MeshInstance3D" parent="."]
+visible = false
+layers = 2
+mesh = SubResource("BoxMesh_1uoml")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall64"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall64/StaticBody3D"]
+shape = SubResource("BoxShape3D_diorw")
+
+[node name="Flowers64" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_rlm0b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Flowers64"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Flowers64/StaticBody3D"]
+shape = SubResource("BoxShape3D_brpuq")
+
+[node name="Grass64-2" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_ra4rt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass64-2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass64-2/StaticBody3D"]
+shape = SubResource("BoxShape3D_brpuq")
+
+[node name="Grass0" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hnmbt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass0/StaticBody3D"]
 shape = SubResource("BoxShape3D_brpuq")

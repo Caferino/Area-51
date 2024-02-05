@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dqbfmxf6c834a"]
+
+[node name="Chunk" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

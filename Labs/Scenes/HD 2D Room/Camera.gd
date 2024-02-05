@@ -6,7 +6,7 @@ var moving = false
 @onready var target = $Shoulder
 @onready var original = $"Original Position"
 
-func _process(delta):
+func _process(_delta):
 	if moving:
 		var tween = create_tween()
 		tween.tween_property(self, "position", target.position, 1).set_ease(Tween.EASE_IN_OUT)
