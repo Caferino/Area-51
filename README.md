@@ -13,3 +13,13 @@ git lfs install
 ```
 
 After installing Git LFS, the large files in this repository will be automatically handled. No additional configuration is needed.
+
+
+
+## Test Goals
+
+The goal of this project is to practice common game development processes. For this, Godot 4.2.1 is being used. Random topics are chosen based on personal interests.
+
+
+**E000:** *2D in 3D*
+![1707110573485](image/README/1707110573485.png)
