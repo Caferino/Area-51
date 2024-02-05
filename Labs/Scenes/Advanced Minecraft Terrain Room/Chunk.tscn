@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://dqbfmxf6c834a"]
+[gd_scene load_steps=2 format=3 uid="uid://dqbfmxf6c834a"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Advanced Minecraft Terrain Room/Chunk.cs" id="1_d80au"]
 
 [node name="Chunk" type="StaticBody3D"]
+script = ExtResource("1_d80au")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
