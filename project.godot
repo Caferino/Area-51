@@ -26,6 +26,10 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://Labs/Assets/X. Other/Cursor/dot.svg"
 
+[dotnet]
+
+project/assembly_name="Area 51"
+
 [editor]
 
 naming/scene_name_casing=1
