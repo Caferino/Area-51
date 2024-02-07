@@ -1,0 +1,46 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwvns8dtv4ptb"]
+
+[ext_resource type="PackedScene" uid="uid://dqbfmxf6c834a" path="res://Labs/Scenes/Advanced Minecraft Terrain Room/Chunk.tscn" id="1_epbu0"]
+[ext_resource type="Script" path="res://Labs/Scenes/Advanced Minecraft Terrain Room/BlockManager.cs" id="1_ogwmt"]
+[ext_resource type="Script" path="res://Labs/Scenes/Advanced Minecraft Terrain Room/Block.cs" id="2_4xhuu"]
+[ext_resource type="Texture2D" uid="uid://f71tlf17s7ej" path="res://Labs/Assets/12. Textures/stone.png" id="3_88xma"]
+[ext_resource type="Texture2D" uid="uid://crr688grtk5tr" path="res://Labs/Assets/12. Textures/dirt.png" id="4_1t325"]
+[ext_resource type="Texture2D" uid="uid://dynugfva2wlfr" path="res://Labs/Assets/12. Textures/grass_side.png" id="5_ghy7w"]
+[ext_resource type="Texture2D" uid="uid://crie084drlc3l" path="res://Labs/Assets/12. Textures/grass.png" id="5_gqcmh"]
+
+[sub_resource type="Resource" id="Resource_srvqe"]
+script = ExtResource("2_4xhuu")
+
+[sub_resource type="Resource" id="Resource_bwr7c"]
+script = ExtResource("2_4xhuu")
+Texture = ExtResource("3_88xma")
+
+[sub_resource type="Resource" id="Resource_cyalu"]
+script = ExtResource("2_4xhuu")
+Texture = ExtResource("4_1t325")
+
+[sub_resource type="Resource" id="Resource_notk3"]
+script = ExtResource("2_4xhuu")
+Texture = ExtResource("5_ghy7w")
+TopTexture = ExtResource("5_gqcmh")
+BottomTexture = ExtResource("4_1t325")
+
+[node name="Level" type="Node3D"]
+
+[node name="BlockManager" type="Node" parent="."]
+script = ExtResource("1_ogwmt")
+Air = SubResource("Resource_srvqe")
+Stone = SubResource("Resource_bwr7c")
+Dirt = SubResource("Resource_cyalu")
+Grass = SubResource("Resource_notk3")
+
+[node name="Chunk" parent="." instance=ExtResource("1_epbu0")]
+
+[node name="Chunk2" parent="." instance=ExtResource("1_epbu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="Chunk3" parent="." instance=ExtResource("1_epbu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="Chunk4" parent="." instance=ExtResource("1_epbu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16)

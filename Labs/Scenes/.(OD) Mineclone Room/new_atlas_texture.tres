@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dlob4h1cjlyd3"]
+
+[ext_resource type="Texture2D" path="res://Labs/Scenes/(OD) Mineclone Room/atlastexture.dds" id="1_lhpvb"]
+
+[resource]
+atlas = ExtResource("1_lhpvb")

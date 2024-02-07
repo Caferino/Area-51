@@ -11,13 +11,10 @@ config_version=5
 [application]
 
 config/name="Area 51"
-run/main_scene="res://Labs/Scenes/HD 2D Room/HD 2D Room.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/tags=PackedStringArray("testing")
+run/main_scene="res://Labs/Scenes/Advanced Minecraft Terrain Room/Level.tscn"
+config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[autoload]
-
-Global="*res://Labs/Scenes/(OD) Mineclone Room/Global.gd"
 
 [display]
 
