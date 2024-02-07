@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg8leipbrqscg"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/(OD) Mineclone Room/Chunk.gd" id="1_b8qqg"]
+
+[node name="Chunk" type="StaticBody3D"]
+script = ExtResource("1_b8qqg")

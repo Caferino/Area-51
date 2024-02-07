@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c0e5yoeh63mx8"]
+
+[ext_resource type="Texture2D" path="res://Labs/Scenes/(OD) Mineclone Room/atlastexture.dds" id="1_rt8ik"]
+
+[resource]
+albedo_texture = ExtResource("1_rt8ik")
+texture_filter = 0

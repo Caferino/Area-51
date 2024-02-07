@@ -1,0 +1,255 @@
+[gd_scene load_steps=35 format=3 uid="uid://b7xdx3uory7er"]
+
+[ext_resource type="Script" path="res://Labs/Entities/Character-Theo/MC Old Theo.gd" id="1_0404j"]
+[ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png" id="2_mukmr"]
+[ext_resource type="AnimationLibrary" uid="uid://pvc36rms284f" path="res://animations/3D Body Animator Graal Style.res" id="3_n4wem"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bnljv47lcakia" path="res://Labs/Scenes/HD 2D Room/Body_Idle.tres" id="4_o0aa6"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://3b85e1b5yix2" path="res://Labs/Scenes/HD 2D Room/Body_Walk.tres" id="5_g3xns"]
+[ext_resource type="Texture2D" uid="uid://cwxs7qvtm4ej7" path="res://Labs/Assets/X. Resources/Protagonist/theo.png" id="6_684wk"]
+[ext_resource type="AnimationLibrary" uid="uid://b1no1qc51xdoj" path="res://animations/3D Head Animator Graal Style.res" id="7_va8sl"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://678ifm643xpr" path="res://Labs/Scenes/HD 2D Room/Head_Idle.tres" id="8_1mboa"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://dhkcj48llhvqh" path="res://Labs/Scenes/HD 2D Room/Head_Walk.tres" id="9_v0xjy"]
+[ext_resource type="Script" path="res://Labs/Scenes/HD 2D Room/Camera.gd" id="10_chr7u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0x724"]
+size = Vector3(0.32, 0.28, 0.1)
+
+[sub_resource type="Animation" id="Animation_b50fc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ygryh"]
+_data = {
+"RESET": SubResource("Animation_b50fc")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ksla0"]
+animation = &"3D Body Animator Graal Style/run_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s7p1r"]
+animation = &"3D Body Animator Graal Style/run_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2b0rj"]
+animation = &"3D Body Animator Graal Style/run_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bc5hg"]
+animation = &"3D Body Animator Graal Style/run_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mpsor"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ksla0")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_s7p1r")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_2b0rj")
+blend_point_2/pos = Vector2(-0.9, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_bc5hg")
+blend_point_3/pos = Vector2(0.9, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cnw46"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5cntq"]
+states/End/position = Vector2(821.334, 99.0123)
+states/Idle/node = ExtResource("4_o0aa6")
+states/Idle/position = Vector2(366.667, 50)
+states/Run/node = SubResource("AnimationNodeBlendSpace2D_mpsor")
+states/Run/position = Vector2(702.667, 50.4444)
+states/Walk/node = ExtResource("5_g3xns")
+states/Walk/position = Vector2(534.667, 50.7407)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_cnw46")]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_cgssa"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_h6wgc"]
+graph_offset = Vector2(-221, 63)
+nodes/Movement/node = SubResource("AnimationNodeStateMachine_5cntq")
+nodes/Movement/position = Vector2(-106.667, 133.333)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_cgssa")
+nodes/TimeScale/position = Vector2(106.667, 133.333)
+nodes/output/position = Vector2(293.333, 160)
+node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5bssv"]
+radius = 0.15
+
+[sub_resource type="Animation" id="Animation_f0kic"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 32, 27, 30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y6jib"]
+_data = {
+"RESET": SubResource("Animation_f0kic")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_txmxd"]
+animation = &"3D Head Animator Graal Style/run_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4sc3f"]
+animation = &"3D Head Animator Graal Style/run_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xgogc"]
+animation = &"3D Head Animator Graal Style/run_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kiow0"]
+animation = &"3D Head Animator Graal Style/run_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_o2dg3"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_txmxd")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_4sc3f")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_xgogc")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_kiow0")
+blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ccy7"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1ojtj"]
+states/End/position = Vector2(729.333, 100.741)
+states/Idle/node = ExtResource("8_1mboa")
+states/Idle/position = Vector2(326.667, 48.6667)
+states/Run/node = SubResource("AnimationNodeBlendSpace2D_o2dg3")
+states/Run/position = Vector2(613.333, 48.6667)
+states/Start/position = Vector2(200, 99.5555)
+states/Walk/node = ExtResource("9_v0xjy")
+states/Walk/position = Vector2(473.333, 48.6667)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2ccy7")]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_s7505"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qw0it"]
+graph_offset = Vector2(-103, 86)
+nodes/Movement/node = SubResource("AnimationNodeStateMachine_1ojtj")
+nodes/Movement/position = Vector2(80, 133.333)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_s7505")
+nodes/TimeScale/position = Vector2(320, 106.667)
+nodes/output/position = Vector2(506.667, 133.333)
+node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
+
+[node name="Old Theo" type="CharacterBody3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.165, 0)
+collision_layer = 16
+collision_mask = 3999
+script = ExtResource("1_0404j")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+shape = SubResource("BoxShape3D_0x724")
+
+[node name="Body" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.001)
+layers = 16
+cast_shadow = 2
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("2_mukmr")
+hframes = 4
+vframes = 21
+frame = 35
+
+[node name="BodyAnimatorTree" type="AnimationTree" parent="Body"]
+unique_name_in_owner = true
+root_node = NodePath("%BodyAnimatorTree/..")
+libraries = {
+"": SubResource("AnimationLibrary_ygryh"),
+"3D Body Animator Graal Style": ExtResource("3_n4wem")
+}
+tree_root = SubResource("AnimationNodeBlendTree_h6wgc")
+anim_player = NodePath("../BodyAnimator")
+parameters/Movement/Idle/blend_position = Vector2(0, 0)
+parameters/Movement/Run/blend_position = Vector2(0, 0)
+parameters/Movement/Walk/blend_position = Vector2(0, 0)
+parameters/TimeScale/scale = 1.0
+
+[node name="BodyAnimator" type="AnimationPlayer" parent="Body"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ygryh"),
+"3D Body Animator Graal Style": ExtResource("3_n4wem")
+}
+
+[node name="Head" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157383, 0)
+layers = 32
+cast_shadow = 2
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("6_684wk")
+region_enabled = true
+region_rect = Rect2(0, 32, 27, 30)
+
+[node name="HeadRig" type="RigidBody3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00497232, 0)
+collision_layer = 32
+collision_mask = 4015
+input_ray_pickable = false
+axis_lock_linear_y = true
+axis_lock_angular_y = true
+
+[node name="HeadCollision" type="CollisionShape3D" parent="Head/HeadRig"]
+shape = SubResource("SphereShape3D_5bssv")
+
+[node name="HeadAnimatorTree" type="AnimationTree" parent="Head"]
+unique_name_in_owner = true
+root_node = NodePath("%HeadAnimatorTree/..")
+libraries = {
+"": SubResource("AnimationLibrary_y6jib"),
+"3D Head Animator Graal Style": ExtResource("7_va8sl")
+}
+tree_root = SubResource("AnimationNodeBlendTree_qw0it")
+anim_player = NodePath("../HeadAnimator")
+parameters/Movement/Idle/blend_position = Vector2(0.00425804, 0.617266)
+parameters/Movement/Run/blend_position = Vector2(0.396, 0.253237)
+parameters/Movement/Walk/blend_position = Vector2(0, 0)
+parameters/TimeScale/scale = 1.0
+
+[node name="HeadAnimator" type="AnimationPlayer" parent="Head"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_y6jib"),
+"3D Head Animator Graal Style": ExtResource("7_va8sl")
+}
+
+[node name="Camera Base" type="Node3D" parent="Head"]
+unique_name_in_owner = true
+
+[node name="Camera" type="Camera3D" parent="Head/Camera Base"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0.5, 1)
+script = ExtResource("10_chr7u")
+
+[node name="Original Position" type="Marker3D" parent="Head/Camera Base/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
+
+[node name="Shoulder" type="Marker3D" parent="Head/Camera Base/Camera"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 0.275, 0.3, 0.315)
