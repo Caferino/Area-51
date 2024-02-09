@@ -18,17 +18,25 @@ After installing Git LFS, the large files in this repository will be automatical
 
 The goal of this project is to practice common game development processes for curiosity. For this, Godot 4.2.1 is being used. Random topics are chosen based on personal interests. Everything shall be considered an endless work in progress with no coherence or expectations. References to the used tutorials / guides / documentations will be ommitted for now; the point is to make this a quick and enjoyable exploration with backups behind.
 
----
-
-**E000:** *2D in 3D*
-
-![E000](.image/README/E000.gif "2D in 3D")
+# Experiments
 
 ---
 
-E001: Minecraft Terrain Generator
+**E001:** *2D in 3D*
 
-[TBA]
+![E001](.image/README/E001.gif "2D in 3D")
+
+---
+
+**E002:** Minecraft Terrain Generator
+
+![E002](.image/README/E002-1.gif "Minecraft Terrain Generator")   ![E002](.image/README/E002-2.gif "Minecraft Terrain Generator")
+
+---
+
+**E003:** 2D Lighting Room
+
+![E003](.image/README/E003.gif "2D Lighting Room")
 
 ---
 

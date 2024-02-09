@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bklqbq2ikyjx8"]
+[gd_scene load_steps=10 format=3 uid="uid://bklqbq2ikyjx8"]
 
-[ext_resource type="Texture2D" uid="uid://6eedt1aksxn3" path="res://Labs/Assets/7. Shields/wings_shield_1.png" id="1_y4npn"]
-[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/theo.tscn" id="2_a8a6e"]
+[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="2_a8a6e"]
 [ext_resource type="PackedScene" uid="uid://circ2b26dkf5t" path="res://Labs/Scenes/Structure Room/Walls/wall.tscn" id="2_cmr2a"]
 [ext_resource type="Texture2D" uid="uid://dq6larkgn5vkm" path="res://Labs/Assets/X. Resources/LFX/light_1.webp" id="3_0hgbp"]
 [ext_resource type="Texture2D" uid="uid://5bs4m3qt5s4o" path="res://Labs/Assets/X. Resources/LFX/red_light.jpg" id="3_afc86"]
@@ -88,12 +87,6 @@ color = Color(0.00784314, 0.0823529, 0.113725, 0.941176)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.443137, 0.196078, 0.403922, 1)
-
-[node name="WingsShield1" type="Sprite2D" parent="."]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(963, 302)
-texture = ExtResource("1_y4npn")
 
 [node name="Theo" parent="." instance=ExtResource("2_a8a6e")]
 z_index = 1

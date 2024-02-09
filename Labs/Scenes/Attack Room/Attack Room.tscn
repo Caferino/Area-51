@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dq6nj3buvscyg"]
 
-[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/theo.tscn" id="1_kb4kr"]
+[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="1_kb4kr"]
 
 [node name="AttackRoom" type="Node2D"]
 

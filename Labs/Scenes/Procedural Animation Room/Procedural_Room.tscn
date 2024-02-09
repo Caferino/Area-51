@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://wkng0hxt3qw1"]
 
-[ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://Labs/Scenes/Procedural Animation Room/sky_box/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_0s6pw"]
+[ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://Labs/Assets/13. Sky/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_0s6pw"]
 [ext_resource type="PackedScene" uid="uid://70fc848db16v" path="res://Labs/Scenes/Procedural Animation Room/spider_bot/spider_bot_model.tscn" id="1_58n3m"]
 [ext_resource type="Material" uid="uid://dqy7k5m5efmw2" path="res://Labs/Scenes/Procedural Animation Room/materials/obstacle.tres" id="2_mx858"]
 [ext_resource type="Material" uid="uid://h0omavrnsek5" path="res://Labs/Scenes/Procedural Animation Room/materials/floor.tres" id="3_pcggj"]
