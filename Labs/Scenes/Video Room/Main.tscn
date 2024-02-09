@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cto40ma6r4vp8"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Video Room/VideoStreamPlayer.gd" id="1_oj1ro"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_hbdaw"]
+file = "res://Labs/Assets/14. Videos/video.ogv"
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -184.0
+offset_right = 240.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = SubResource("VideoStreamTheora_hbdaw")
+autoplay = true
+expand = true
+script = ExtResource("1_oj1ro")
+
+[node name="Pause" type="Button" parent="."]
+offset_left = -149.0
+offset_top = 365.0
+offset_right = -94.0
+offset_bottom = 396.0
+scale = Vector2(5.0967, 5.0967)
+text = "Pause"
+
+[node name="Loop" type="Button" parent="."]
+offset_left = 664.0
+offset_top = 327.0
+offset_right = 711.0
+offset_bottom = 358.0
+scale = Vector2(5.76, 5.76)
+text = "Loop"
+
+[connection signal="button_down" from="Pause" to="VideoStreamPlayer" method="_on_pause_button_down"]
+[connection signal="button_down" from="Loop" to="VideoStreamPlayer" method="_on_loop_button_down"]

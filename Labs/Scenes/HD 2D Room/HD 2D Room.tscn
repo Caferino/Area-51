@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://beqdyksuqgm3t"]
 
 [ext_resource type="MeshLibrary" uid="uid://gdli0nnr2cs2" path="res://Labs/Meshes/nature_world.meshlib" id="1_dtuqh"]
-[ext_resource type="PackedScene" uid="uid://chfcm0t20vso2" path="res://Labs/Entities/Character-Theo/Old Theo.tscn" id="1_u7t6y"]
+[ext_resource type="PackedScene" uid="uid://chfcm0t20vso2" path="res://Labs/Entities/Character-Theo/3DTheo.tscn" id="1_u7t6y"]
 
 [node name="World" type="Node3D"]
 

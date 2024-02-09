@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://dfr5vgcanpvl6"]
 
-[ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://Labs/Scenes/Procedural Animation Room/sky_box/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_e04fp"]
+[ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://Labs/Assets/13. Sky/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_e04fp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0uyrx"]
 panorama = ExtResource("1_e04fp")

@@ -1,12 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwvns8dtv4ptb"]
+[gd_scene load_steps=18 format=3 uid="uid://dwvns8dtv4ptb"]
 
 [ext_resource type="PackedScene" uid="uid://dqbfmxf6c834a" path="res://Labs/Scenes/Advanced Minecraft Terrain Room/Chunk.tscn" id="1_epbu0"]
 [ext_resource type="Script" path="res://Labs/Scenes/Advanced Minecraft Terrain Room/BlockManager.cs" id="1_ogwmt"]
 [ext_resource type="Script" path="res://Labs/Scenes/Advanced Minecraft Terrain Room/Block.cs" id="2_4xhuu"]
+[ext_resource type="Script" path="res://Labs/Scenes/Advanced Minecraft Terrain Room/ChunkManager.cs" id="2_dsnf5"]
 [ext_resource type="Texture2D" uid="uid://f71tlf17s7ej" path="res://Labs/Assets/12. Textures/stone.png" id="3_88xma"]
 [ext_resource type="Texture2D" uid="uid://crr688grtk5tr" path="res://Labs/Assets/12. Textures/dirt.png" id="4_1t325"]
 [ext_resource type="Texture2D" uid="uid://dynugfva2wlfr" path="res://Labs/Assets/12. Textures/grass_side.png" id="5_ghy7w"]
 [ext_resource type="Texture2D" uid="uid://crie084drlc3l" path="res://Labs/Assets/12. Textures/grass.png" id="5_gqcmh"]
+[ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://Labs/Assets/13. Sky/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="9_igmnk"]
+[ext_resource type="PackedScene" uid="uid://b7xdx3uory7er" path="res://Labs/Entities/Character-Theo/MCTheo.tscn" id="10_5f2dk"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_d043d"]
+panorama = ExtResource("9_igmnk")
+
+[sub_resource type="Sky" id="Sky_x1gpx"]
+sky_material = SubResource("PanoramaSkyMaterial_d043d")
+
+[sub_resource type="Environment" id="Environment_rve45"]
+background_mode = 2
+sky = SubResource("Sky_x1gpx")
 
 [sub_resource type="Resource" id="Resource_srvqe"]
 script = ExtResource("2_4xhuu")
@@ -27,6 +40,9 @@ BottomTexture = ExtResource("4_1t325")
 
 [node name="Level" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rve45")
+
 [node name="BlockManager" type="Node" parent="."]
 script = ExtResource("1_ogwmt")
 Air = SubResource("Resource_srvqe")
@@ -34,13 +50,25 @@ Stone = SubResource("Resource_bwr7c")
 Dirt = SubResource("Resource_cyalu")
 Grass = SubResource("Resource_notk3")
 
+[node name="ChunkManager" type="Node" parent="."]
+script = ExtResource("2_dsnf5")
+ChunkScene = ExtResource("1_epbu0")
+
 [node name="Chunk" parent="." instance=ExtResource("1_epbu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -32)
 
 [node name="Chunk2" parent="." instance=ExtResource("1_epbu0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -32)
 
 [node name="Chunk3" parent="." instance=ExtResource("1_epbu0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
 
 [node name="Chunk4" parent="." instance=ExtResource("1_epbu0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -32)
+
+[node name="Theo" parent="." instance=ExtResource("10_5f2dk")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 25, 41.165, 26)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.612372, 0.353553, 0, 0.5, 0.866025, -0.707107, -0.612372, 0.353553, 24, 34, 21)
+shadow_enabled = true

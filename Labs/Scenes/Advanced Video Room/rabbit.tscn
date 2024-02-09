@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://hm0fic734g4w"]
+
+[ext_resource type="Texture2D" uid="uid://dq6larkgn5vkm" path="res://Labs/Assets/X. Resources/LFX/light_1.webp" id="1_4j8pn"]
+[ext_resource type="PackedScene" uid="uid://circ2b26dkf5t" path="res://Labs/Scenes/Structure Room/Walls/wall.tscn" id="2_e8sx7"]
+[ext_resource type="Texture2D" uid="uid://5bs4m3qt5s4o" path="res://Labs/Assets/X. Resources/LFX/red_light.jpg" id="3_1p5q1"]
+[ext_resource type="Texture2D" uid="uid://dnrxoxmk36nt3" path="res://Labs/Assets/X. Resources/LFX/light_1.jpg" id="4_01t8m"]
+[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="6_epfi3"]
+[ext_resource type="Script" path="res://Labs/Scenes/Lighting Room/MouseLight.gd" id="7_74uxt"]
+[ext_resource type="Shader" path="res://Labs/Shaders/MultiplyShader.gdshader" id="8_amehu"]
+[ext_resource type="Texture2D" uid="uid://br65wfo2ovn4h" path="res://Labs/Assets/X. Resources/Structures/Walls/wall_2.jpg" id="9_1chlj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1n6rs"]
+shader = ExtResource("8_amehu")
+
+[node name="Rabbit" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Walls" type="Node2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Wall1" parent="Walls" instance=ExtResource("2_e8sx7")]
+position = Vector2(475, 524)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("2_e8sx7")]
+position = Vector2(864, 767)
+
+[node name="Wall2" parent="Walls" instance=ExtResource("2_e8sx7")]
+position = Vector2(687, 397)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("2_e8sx7")]
+position = Vector2(1055, 244)
+rotation = -1.57079
+
+[node name="red light" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(674, 494)
+energy = 7.38
+texture = ExtResource("3_1p5q1")
+
+[node name="blue light" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(711, 569)
+color = Color(0.890196, 0, 0.560784, 1)
+energy = 15.17
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("4_01t8m")
+texture_scale = 1.64
+
+[node name="blue light2" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(674, 494)
+color = Color(0.941176, 0.0235294, 0, 1)
+energy = 16.0
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("4_01t8m")
+texture_scale = 2.28
+
+[node name="white light" type="PointLight2D" parent="."]
+position = Vector2(788, 462)
+energy = 5.34
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("4_01t8m")
+texture_scale = 2.28
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.00784314, 0.0823529, 0.113725, 0.941176)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.443137, 0.196078, 0.403922, 1)
+
+[node name="Theo" parent="." instance=ExtResource("6_epfi3")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(957, 497)
+
+[node name="MousePointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(957, 493)
+energy = 6.33
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("1_4j8pn")
+script = ExtResource("7_74uxt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_1n6rs")
+offset_right = 5060.0
+offset_bottom = 2837.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_1chlj")
+stretch_mode = 1

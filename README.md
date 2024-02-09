@@ -20,15 +20,21 @@ The goal of this project is to practice common game development processes for cu
 
 ---
 
-**E000:** *2D in 3D*
+**E001:** *2D in 3D*
 
-![E000](.image/README/E000.gif "2D in 3D")
+![E001](.image/README/E001.gif "2D in 3D")
 
 ---
 
-E001: Minecraft Terrain Generator
+E002: Minecraft Terrain Generator
 
-[TBA]
+![E002](.image/README/E002-1.gif "Minecraft Terrain Generator")   ![E002](.image/README/E002-2.gif "Minecraft Terrain Generator")
+
+---
+
+E003: 2D Lighting Room
+
+![E003](.image/README/E003.gif "2D Lighting Room")
 
 ---
 
