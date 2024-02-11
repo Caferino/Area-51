@@ -40,6 +40,12 @@ The goal of this project is to practice common game development processes for cu
 
 ---
 
+**E004:** Cinema Room
+
+![E004](.image/README/E004.gif "Cinema Room")
+
+---
+
 E###: Rimworld / Sims Personalities
 
 [TBA]
