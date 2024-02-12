@@ -22,7 +22,7 @@ The goal of this project is to practice common game development processes for cu
 
 ---
 
-**E001:** *2D in 3D*
+**E001:** 2D in 3D
 
 ![E001](.image/README/E001.gif "2D in 3D")
 
@@ -43,6 +43,12 @@ The goal of this project is to practice common game development processes for cu
 **E004:** Cinema Room
 
 ![E004](.image/README/E004.gif "Cinema Room")
+
+---
+
+**E005:** Farming Room
+
+![E005](.image/README/E005.gif "Farming Room")
 
 ---
 

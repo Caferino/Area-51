@@ -1,0 +1,349 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfpadlolh0l5u"]
+
+[ext_resource type="Texture2D" uid="uid://sp7b20pygith" path="res://Labs/Scenes/Farming Room/grass tile.png" id="1_a1en2"]
+[ext_resource type="Texture2D" uid="uid://qkeks4n2cljn" path="res://Labs/Scenes/Farming Room/Farm House.png" id="3_kw05p"]
+[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="4_2yc50"]
+[ext_resource type="Script" path="res://Labs/Scenes/Farming Room/Crops Manager.gd" id="4_ofs6q"]
+[ext_resource type="PackedScene" uid="uid://bmrctgfhetcgl" path="res://Labs/Scenes/Farming Room/Plant.tscn" id="6_uvaha"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mnddv"]
+resource_name = "grass"
+texture = ExtResource("1_a1en2")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8fhyo"]
+sources/0 = SubResource("TileSetAtlasSource_mnddv")
+
+[node name="Farm" type="Node2D"]
+
+[node name="Ground" type="Node" parent="."]
+
+[node name="Grass" type="TextureRect" parent="Ground"]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_a1en2")
+stretch_mode = 1
+
+[node name="Plants" type="TileMap" parent="Ground"]
+tile_set = SubResource("TileSet_8fhyo")
+format = 2
+
+[node name="FarmHouse" type="Sprite2D" parent="."]
+position = Vector2(971, 539)
+texture = ExtResource("3_kw05p")
+
+[node name="Theo" parent="." instance=ExtResource("4_2yc50")]
+position = Vector2(982, 448)
+
+[node name="Trees" type="Node" parent="."]
+
+[node name="Plants" type="Node" parent="."]
+
+[node name="Crops" type="Node" parent="."]
+
+[node name="Crops Manager" type="Node" parent="Crops"]
+script = ExtResource("4_ofs6q")
+
+[node name="Corns" type="Node" parent="Crops"]
+
+[node name="VRow1" type="Node2D" parent="Crops/Corns"]
+
+[node name="Plant" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 342)
+
+[node name="Plant2" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 351)
+
+[node name="Plant3" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 360)
+
+[node name="Plant4" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 369)
+
+[node name="Plant5" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 378)
+
+[node name="Plant6" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 387)
+
+[node name="Plant7" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 396)
+
+[node name="Plant8" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 405)
+
+[node name="Plant9" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 414)
+
+[node name="Plant10" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 423)
+
+[node name="Plant11" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 432)
+
+[node name="Plant12" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 441)
+
+[node name="Plant13" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 450)
+
+[node name="Plant14" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 459)
+
+[node name="Plant15" parent="Crops/Corns/VRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 468)
+
+[node name="VRow2" type="Node2D" parent="Crops/Corns"]
+position = Vector2(13, 0)
+
+[node name="Plant" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 342)
+
+[node name="Plant2" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 351)
+
+[node name="Plant3" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 360)
+
+[node name="Plant4" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 369)
+
+[node name="Plant5" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 378)
+
+[node name="Plant6" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 387)
+
+[node name="Plant7" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 396)
+
+[node name="Plant8" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 405)
+
+[node name="Plant9" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 414)
+
+[node name="Plant10" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 423)
+
+[node name="Plant11" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 432)
+
+[node name="Plant12" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 441)
+
+[node name="Plant13" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 450)
+
+[node name="Plant14" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 459)
+
+[node name="Plant15" parent="Crops/Corns/VRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 468)
+
+[node name="VRow3" type="Node2D" parent="Crops/Corns"]
+position = Vector2(39, 0)
+
+[node name="Plant" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 342)
+
+[node name="Plant2" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 351)
+
+[node name="Plant3" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 360)
+
+[node name="Plant4" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 369)
+
+[node name="Plant5" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 378)
+
+[node name="Plant6" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 387)
+
+[node name="Plant7" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 396)
+
+[node name="Plant8" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 405)
+
+[node name="Plant9" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 414)
+
+[node name="Plant10" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 423)
+
+[node name="Plant11" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 432)
+
+[node name="Plant12" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 441)
+
+[node name="Plant13" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 450)
+
+[node name="Plant14" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 459)
+
+[node name="Plant15" parent="Crops/Corns/VRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 468)
+
+[node name="VRow4" type="Node2D" parent="Crops/Corns"]
+position = Vector2(72, 0)
+
+[node name="Plant" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 342)
+
+[node name="Plant2" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 351)
+
+[node name="Plant3" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 360)
+
+[node name="Plant4" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 369)
+
+[node name="Plant5" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 378)
+
+[node name="Plant6" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 387)
+
+[node name="Plant7" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 396)
+
+[node name="Plant8" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 405)
+
+[node name="Plant9" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 414)
+
+[node name="Plant10" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 423)
+
+[node name="Plant11" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 432)
+
+[node name="Plant12" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 441)
+
+[node name="Plant13" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 450)
+
+[node name="Plant14" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 459)
+
+[node name="Plant15" parent="Crops/Corns/VRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 468)
+
+[node name="VRow5" type="Node2D" parent="Crops/Corns"]
+position = Vector2(111, 0)
+
+[node name="Plant" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 342)
+
+[node name="Plant2" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 351)
+
+[node name="Plant3" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 360)
+
+[node name="Plant4" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 369)
+
+[node name="Plant5" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 378)
+
+[node name="Plant6" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 387)
+
+[node name="Plant7" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 396)
+
+[node name="Plant8" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 405)
+
+[node name="Plant9" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 414)
+
+[node name="Plant10" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 423)
+
+[node name="Plant11" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 432)
+
+[node name="Plant12" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 441)
+
+[node name="Plant13" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 450)
+
+[node name="Plant14" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 459)
+
+[node name="Plant15" parent="Crops/Corns/VRow5" instance=ExtResource("6_uvaha")]
+position = Vector2(751, 468)
+
+[node name="HRow1" type="Node2D" parent="Crops/Corns"]
+
+[node name="Plant1" parent="Crops/Corns/HRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(883, 367)
+
+[node name="Plant2" parent="Crops/Corns/HRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(894, 367)
+
+[node name="Plant3" parent="Crops/Corns/HRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(905, 367)
+
+[node name="Plant4" parent="Crops/Corns/HRow1" instance=ExtResource("6_uvaha")]
+position = Vector2(916, 367)
+
+[node name="HRow2" type="Node2D" parent="Crops/Corns"]
+position = Vector2(0, 14)
+
+[node name="Plant1" parent="Crops/Corns/HRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(883, 367)
+
+[node name="Plant2" parent="Crops/Corns/HRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(894, 367)
+
+[node name="Plant3" parent="Crops/Corns/HRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(905, 367)
+
+[node name="Plant4" parent="Crops/Corns/HRow2" instance=ExtResource("6_uvaha")]
+position = Vector2(916, 367)
+
+[node name="HRow3" type="Node2D" parent="Crops/Corns"]
+position = Vector2(0, 52)
+
+[node name="Plant1" parent="Crops/Corns/HRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(883, 367)
+
+[node name="Plant2" parent="Crops/Corns/HRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(894, 367)
+
+[node name="Plant3" parent="Crops/Corns/HRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(905, 367)
+
+[node name="Plant4" parent="Crops/Corns/HRow3" instance=ExtResource("6_uvaha")]
+position = Vector2(916, 367)
+
+[node name="HRow4" type="Node2D" parent="Crops/Corns"]
+position = Vector2(0, 78)
+
+[node name="Plant1" parent="Crops/Corns/HRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(883, 367)
+
+[node name="Plant2" parent="Crops/Corns/HRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(894, 367)
+
+[node name="Plant3" parent="Crops/Corns/HRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(905, 367)
+
+[node name="Plant4" parent="Crops/Corns/HRow4" instance=ExtResource("6_uvaha")]
+position = Vector2(916, 367)

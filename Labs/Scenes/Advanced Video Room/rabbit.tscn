@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://hm0fic734g4w"]
 
 [ext_resource type="Texture2D" uid="uid://dq6larkgn5vkm" path="res://Labs/Assets/X. Resources/LFX/light_1.webp" id="1_4j8pn"]
-[ext_resource type="PackedScene" uid="uid://0lmt67qnmsgg" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="6_epfi3"]
+[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="6_epfi3"]
 [ext_resource type="Script" path="res://Labs/Scenes/Lighting Room/MouseLight.gd" id="7_74uxt"]
 [ext_resource type="VideoStream" path="res://Labs/Assets/14. Videos/video.ogv" id="7_k5on7"]
 [ext_resource type="Texture2D" uid="uid://d0b4cus2hqvmc" path="res://Labs/Scenes/Advanced Video Room/cinema_tileset_test.png" id="8_3jdxc"]
