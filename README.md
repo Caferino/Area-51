@@ -6,7 +6,7 @@ This project uses Git LFS (Large File Storage) to handle large files. Before clo
 
 ### Installing Git LFS
 
-You can download Git LFS from [here](https://git-lfs.github.com/), or by executing the following command in your machine:
+You can download Git LFS from [here](https://git-lfs.github.com/), or by executing the following command in a terminal:
 
 ```
 git lfs install
