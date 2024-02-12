@@ -28,7 +28,7 @@ The goal of this project is to practice common game development processes for cu
 
 ---
 
-**E002:** Minecraft Terrain Generator
+**E002:** Obligatory Minecraft Terrain Generator
 
 ![E002](.image/README/E002-1.gif "Minecraft Terrain Generator")   ![E002](.image/README/E002-2.gif "Minecraft Terrain Generator")
 
