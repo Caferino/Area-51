@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://6dqjcksjsker"]
+[gd_scene load_steps=62 format=3 uid="uid://6dqjcksjsker"]
 
 [ext_resource type="Script" path="res://Labs/Entities/Character-Theo/2DTheo.gd" id="1_qx0q0"]
 [ext_resource type="PackedScene" uid="uid://b2f4lgl6edfw3" path="res://Labs/Scenes/Attack Room/sword.tscn" id="2_j3guq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="4_5vn8v"]
 [ext_resource type="Texture2D" uid="uid://cwxs7qvtm4ej7" path="res://Labs/Assets/X. Resources/Protagonist/theo.png" id="5_qk6rc"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="6_ef0qg"]
+[ext_resource type="Script" path="res://Labs/Entities/Character-Theo/Camera Base.gd" id="7_v32uf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gm0aq"]
 radius = 5.0
@@ -896,6 +897,9 @@ _data = {
 "UP": SubResource("Animation_ovv8h")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km41g"]
+size = Vector2(376, 212)
+
 [node name="Theo" type="Sprite2D"]
 texture_filter = 1
 
@@ -1040,5 +1044,23 @@ libraries = {
 
 [node name="Lantern" type="Sprite2D" parent="Character"]
 
-[node name="Camera" type="Camera2D" parent="Character"]
+[node name="Camera Base" type="Node2D" parent="Character"]
+script = ExtResource("7_v32uf")
+
+[node name="Origin" type="Marker2D" parent="Character/Camera Base"]
+
+[node name="Screen Drag Area" type="Area2D" parent="Character/Camera Base"]
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/Camera Base/Screen Drag Area"]
+light_mask = 524288
+visibility_layer = 524288
+shape = SubResource("RectangleShape2D_km41g")
+
+[node name="Screen Dragger" type="Marker2D" parent="Character/Camera Base"]
+light_mask = 524288
+visibility_layer = 524288
+
+[node name="Camera" type="Camera2D" parent="Character/Camera Base"]
 zoom = Vector2(4.5, 4.5)
