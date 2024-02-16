@@ -1,33 +1,111 @@
-extends CharacterBody2D
+class_name Theo extends CharacterBody2D
 
 signal health_depleted
+#signal plant_collision
+
 const DAMAGE_RATE = 5.0
 var health = 100.0
+const MAX_SPEED = 3
+const MAX_SPRINT_SPEED = 30
+const SPRINT_ACCEL = 18
+const ACCEL = 2
+const DEACCEL = 6
+
+var input_movement_vector = Vector2()
+var is_sprinting = false
+var dir = Vector2()
+
+var body_animatorTree
+var head_animatorTree
+var anim_state = "Move"
+var hat
+
 
 func _ready():
-	%BodyAnimatorTree.get("parameters/playback").travel("Idle")
-	%HeadAnimatorTree.get("parameters/playback").travel("Idle")
-	%BodyAnimatorTree.set("parameters/Idle/blend_position", Vector2(0, 1))
-	%HeadAnimatorTree.set("parameters/Idle/blend_position", Vector2(0, 1))
+	setup_vars()
+	setup_initial_anims()
+
+
+func setup_vars():
+	body_animatorTree = %BodyAnimatorTree
+	head_animatorTree = %HeadAnimatorTree
+
+
+func setup_initial_anims():
+	body_animatorTree.get("parameters/Movement/playback").travel("Idle")
+	head_animatorTree.get("parameters/Movement/playback").travel("Idle")
+	body_animatorTree.set("parameters/Movement/Idle/blend_position", Vector2(0, 1))
+	head_animatorTree.set("parameters/Movement/Idle/blend_position", Vector2(0, 1))
+
 
 func _physics_process(_delta):
-	var direction = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	velocity = direction * 500
+	handle_input()
+	handle_movement()
+	handle_animation()
+
+
+func handle_input():
+	dir = Vector2()
+
+	if Input.is_action_pressed("move_forward"): dir.y -= 1
+	if Input.is_action_pressed("move_back"):    dir.y += 1
+	if Input.is_action_pressed("move_right"):   dir.x += 1
+	if Input.is_action_pressed("move_left"):    dir.x -= 1
 	
-	if velocity == Vector2.ZERO:
-		%BodyAnimatorTree.get("parameters/playback").travel("Idle")
-		%HeadAnimatorTree.get("parameters/playback").travel("Idle")
-		pass
+	dir = dir.normalized()
+	
+	if Input.is_action_pressed("sprint"):
+		is_sprinting = true
 	else:
-		%HeadAnimatorTree.get("parameters/playback").travel("Walk")
-		%HeadAnimatorTree.set("parameters/Idle/blend_position", direction)
-		%HeadAnimatorTree.set("parameters/Walk/blend_position", direction)
+		is_sprinting = false
+
+
+func handle_movement():
+	var target = dir
+	if is_sprinting:
+		target *= MAX_SPRINT_SPEED
+	else:
+		target *= MAX_SPEED
+	
+	var accel
+	var hvel = Vector2()
+	if dir.dot(hvel) > 0:
+		if is_sprinting:
+			accel = SPRINT_ACCEL
+		else:
+			accel = ACCEL
+	else:
+		accel = DEACCEL
+	
+	hvel = hvel.lerp(target, accel)
+	velocity = hvel
+	move_and_slide()
+
+
+func handle_animation():
+	var direction = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	#anim_speed = clamp(anim_speed, 0.5, 1.0)
+	if direction == Vector2.ZERO:
+		body_animatorTree.get("parameters/Movement/playback").travel("Idle")
+		head_animatorTree.get("parameters/Movement/playback").travel("Idle")
+	else:
+		head_animatorTree.get("parameters/Movement/playback").travel(anim_state)
+		head_animatorTree.set("parameters/Movement/Idle/blend_position", direction)
+		head_animatorTree.set("parameters/Movement/" + anim_state + "/blend_position", direction)
 		
-		%BodyAnimatorTree.get("parameters/playback").travel("Walk")
-		%BodyAnimatorTree.set("parameters/Idle/blend_position", direction)
-		%BodyAnimatorTree.set("parameters/Walk/blend_position", direction)
-		move_and_slide()
-	#
+		body_animatorTree.get("parameters/Movement/playback").travel(anim_state)
+		body_animatorTree.set("parameters/Movement/Idle/blend_position", direction)
+		body_animatorTree.set("parameters/Movement/" + anim_state + "/blend_position", direction)
+
+
+	
+	
+	
+	
+	
+	
+	
+	# ! Do not delete yet
 	#if Input.is_action_pressed("ATTACK"): 
 		#sword.play(sword_state)
 	#else:
@@ -55,3 +133,37 @@ func _physics_process(_delta):
 		# %ProgressBar.value = health
 		# if health <= 0.0:
 			# health_depleted.emit()
+
+
+#func _on_feet_area_entered(area):
+	#if area.get_parent().is_in_group("Plants"):
+		#if area.global_position.x > get_global_position().x:
+			#area.get_parent().tilt(0.1)
+		#else:
+			#area.get_parent().tilt(-0.1)
+		## area.get_parent().shake()
+
+
+#func _on_feet_area_exited(area):
+	#if area.get_parent().is_in_group("Plants"):
+		#area.get_parent().tilt_back()
+
+
+func _on_left_foot_area_entered(area):
+	if area.get_parent().is_in_group("Plants"):
+		area.get_parent().tilt(-0.1)
+
+
+func _on_left_foot_area_exited(area):
+	if area.get_parent().is_in_group("Plants"):
+		area.get_parent().tilt_back()
+
+
+func _on_right_foot_area_entered(area):
+	if area.get_parent().is_in_group("Plants"):
+		area.get_parent().tilt(0.1)
+
+
+func _on_right_foot_area_exited(area):
+	if area.get_parent().is_in_group("Plants"):
+		area.get_parent().tilt_back()

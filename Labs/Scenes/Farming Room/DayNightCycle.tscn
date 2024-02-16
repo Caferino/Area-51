@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b14q5yhfbenc1"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Farming Room/DayNightCycle.gd" id="1_jg6ty"]
+
+[node name="DayNightCycle" type="Timer"]
+script = ExtResource("1_jg6ty")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

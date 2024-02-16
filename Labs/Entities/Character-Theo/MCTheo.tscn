@@ -194,7 +194,7 @@ tree_root = SubResource("AnimationNodeBlendTree_h6wgc")
 anim_player = NodePath("../BodyAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0, 0)
 parameters/Movement/Run/blend_position = Vector2(0, 0)
-parameters/Movement/Walk/blend_position = Vector2(0, 0)
+parameters/Movement/Walk/blend_position = Vector2(-0.202857, 0.237445)
 parameters/TimeScale/scale = 1.0
 
 [node name="BodyAnimator" type="AnimationPlayer" parent="Body"]
