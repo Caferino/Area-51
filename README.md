@@ -52,6 +52,14 @@ The goal of this project is to practice common game development processes for cu
 
 ---
 
+**E006:** Human-Held Camera Effect + RNG Batch Growth for Plants + Plant bending
+
+![E006](.image/README/E006.gif "Farming Room")
+
+10,000 reactive plants!
+
+---
+
 E###: Rimworld / Sims Personalities
 
 [TBA]

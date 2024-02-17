@@ -615,7 +615,6 @@ position = Vector2(0, -15)
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="Character/Head"]
 z_index = 1
-position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2qvm0")
 animation = &"left"
 frame_progress = 0.378913
