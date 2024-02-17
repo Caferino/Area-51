@@ -44,11 +44,6 @@ func grow(rand_growth):
 func tilt(strength):
 	rot_center = strength
 	shake()
-		#var tween = create_tween()
-		#tween.stop()
-		#tween.tween_property(self, "rotation_degrees", 0, 0.2).set_trans(Tween.TRANS_LINEAR)
-		#tween.tween_property(self, "rotation", strength, 0.2).set_trans(Tween.TRANS_LINEAR)
-		#tween.play()
 
 
 func tilt_back():

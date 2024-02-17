@@ -42,7 +42,8 @@ unique_name_in_owner = true
 y_sort_enabled = true
 
 [node name="Theo" parent="Surface" instance=ExtResource("3_30k8h")]
-position = Vector2(765, 417)
+unique_name_in_owner = true
+position = Vector2(1000, 456)
 
 [node name="FarmHouse" type="Sprite2D" parent="Surface"]
 z_index = -1

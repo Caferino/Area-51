@@ -6,7 +6,7 @@ signal health_depleted
 const DAMAGE_RATE = 5.0
 var health = 100.0
 const MAX_SPEED = 3
-const MAX_SPRINT_SPEED = 30
+const MAX_SPRINT_SPEED = 15
 const SPRINT_ACCEL = 18
 const ACCEL = 2
 const DEACCEL = 6
@@ -16,9 +16,12 @@ var is_sprinting = false
 var dir = Vector2()
 
 var body_animatorTree
+var body_state_machine
 var head_animatorTree
+var head_state_machine
+var hat_animatorTree
+var hat_state_machine
 var anim_state = "Move"
-var hat
 
 
 func _ready():
@@ -29,13 +32,20 @@ func _ready():
 func setup_vars():
 	body_animatorTree = %BodyAnimatorTree
 	head_animatorTree = %HeadAnimatorTree
+	hat_animatorTree = %HatAnimatorTree
 
 
 func setup_initial_anims():
-	body_animatorTree.get("parameters/Movement/playback").travel("Idle")
-	head_animatorTree.get("parameters/Movement/playback").travel("Idle")
-	body_animatorTree.set("parameters/Movement/Idle/blend_position", Vector2(0, 1))
-	head_animatorTree.set("parameters/Movement/Idle/blend_position", Vector2(0, 1))
+	body_state_machine = body_animatorTree["parameters/Movement/playback"]
+	head_state_machine = head_animatorTree["parameters/Movement/playback"]
+	hat_state_machine  = hat_animatorTree["parameters/Movement/playback"]
+	
+	body_state_machine.travel("Idle")
+	head_state_machine.travel("Idle")
+	hat_state_machine.travel("Idle")
+	body_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
+	head_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
+	hat_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
 
 
 func _physics_process(_delta):
@@ -86,16 +96,21 @@ func handle_animation():
 	var direction = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	#anim_speed = clamp(anim_speed, 0.5, 1.0)
 	if direction == Vector2.ZERO:
-		body_animatorTree.get("parameters/Movement/playback").travel("Idle")
-		head_animatorTree.get("parameters/Movement/playback").travel("Idle")
+		body_state_machine.travel("Idle")
+		head_state_machine.travel("Idle")
+		hat_state_machine.travel("Idle")
 	else:
-		head_animatorTree.get("parameters/Movement/playback").travel(anim_state)
-		head_animatorTree.set("parameters/Movement/Idle/blend_position", direction)
-		head_animatorTree.set("parameters/Movement/" + anim_state + "/blend_position", direction)
+		body_state_machine.travel(anim_state)
+		body_animatorTree["parameters/Movement/Idle/blend_position"] = direction
+		body_animatorTree["parameters/Movement/" + anim_state + "/blend_position"] = direction
 		
-		body_animatorTree.get("parameters/Movement/playback").travel(anim_state)
-		body_animatorTree.set("parameters/Movement/Idle/blend_position", direction)
-		body_animatorTree.set("parameters/Movement/" + anim_state + "/blend_position", direction)
+		head_state_machine.travel(anim_state)
+		head_animatorTree["parameters/Movement/Idle/blend_position"] = direction
+		head_animatorTree["parameters/Movement/" + anim_state + "/blend_position"] = direction
+		
+		hat_state_machine.travel(anim_state)
+		hat_animatorTree["parameters/Movement/Idle/blend_position"] = direction
+		hat_animatorTree["parameters/Movement/" + anim_state + "/blend_position"] = direction
 
 
 	

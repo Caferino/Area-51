@@ -8,4 +8,4 @@ func _ready():
 
 func _on_timeout():
 	#start(randf_range(1, 3))
-	start(20)
+	start(randi_range(2, 4))
