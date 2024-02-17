@@ -30,7 +30,7 @@ The goal of this project is to practice common game development processes for cu
 
 **E002:** Obligatory Minecraft Terrain Generator
 
-![E002](.image/README/E002-1.gif "Minecraft Terrain Generator")   ![E002](.image/README/E002-2.gif "Minecraft Terrain Generator")
+![E002](.image/README/E002-1.gif "Minecraft Terrain Generator")    ![E002](.image/README/E002-2.gif "Minecraft Terrain Generator")
 
 ---
 
@@ -54,7 +54,9 @@ The goal of this project is to practice common game development processes for cu
 
 **E006:** Human-Held Camera Effect + RNG Batch Growth for Plants + Plant bending
 
-![E006](.image/README/E006.gif "Farming Room")
+![E006-2](.image/README/E006-2.gif "Humand-Held Camera Effect")    ![E006-3](.image/README/E006-3.gif "Plant Bending")
+
+  ![E006-1](.image/README/E006-1.gif "Farming Room")
 
 10,000 reactive plants!
 
