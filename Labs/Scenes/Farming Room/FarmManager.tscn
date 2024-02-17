@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfhupj26o7g0w"]
+
+[ext_resource type="PackedScene" uid="uid://dyu16u72a1lk2" path="res://Labs/Scenes/Farming Room/Field.tscn" id="1_030wl"]
+[ext_resource type="Script" path="res://Labs/Scenes/Farming Room/Farm Manager.gd" id="1_hi81i"]
+
+[node name="FarmManager" type="Node2D"]
+script = ExtResource("1_hi81i")
+
+[node name="Field" parent="." instance=ExtResource("1_030wl")]

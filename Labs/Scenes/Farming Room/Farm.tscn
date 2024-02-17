@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://3j16886ofjov"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Farming Room/Farm.gd" id="1_g6bbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0kjf"]
+size = Vector2(20, 135)
+
+[node name="Farm" type="Node2D"]
+script = ExtResource("1_g6bbf")
+
+[node name="Field" type="Area2D" parent="."]
+
+[node name="Area" type="CollisionShape2D" parent="Field"]
+shape = SubResource("RectangleShape2D_e0kjf")

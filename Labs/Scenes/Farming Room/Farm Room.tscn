@@ -1,0 +1,326 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfpadlolh0l5u"]
+
+[ext_resource type="Texture2D" uid="uid://sp7b20pygith" path="res://Labs/Scenes/Farming Room/grass tile.png" id="1_aynmh"]
+[ext_resource type="Texture2D" uid="uid://qkeks4n2cljn" path="res://Labs/Scenes/Farming Room/Farm House.png" id="2_fbyl4"]
+[ext_resource type="PackedScene" uid="uid://dfhupj26o7g0w" path="res://Labs/Scenes/Farming Room/FarmManager.tscn" id="2_u31nd"]
+[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="3_30k8h"]
+[ext_resource type="PackedScene" uid="uid://bmrctgfhetcgl" path="res://Labs/Scenes/Farming Room/Plant.tscn" id="5_lr3xl"]
+[ext_resource type="PackedScene" uid="uid://b14q5yhfbenc1" path="res://Labs/Scenes/Farming Room/DayNightCycle.tscn" id="7_vog8i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mnddv"]
+resource_name = "grass"
+texture = ExtResource("1_aynmh")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8fhyo"]
+sources/0 = SubResource("TileSetAtlasSource_mnddv")
+
+[node name="World" type="Node2D"]
+
+[node name="DayNightCycle" parent="." instance=ExtResource("7_vog8i")]
+
+[node name="FarmManager" parent="." instance=ExtResource("2_u31nd")]
+
+[node name="Ground" type="Node" parent="."]
+
+[node name="Grass" type="TextureRect" parent="Ground"]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aynmh")
+stretch_mode = 1
+
+[node name="Plants" type="TileMap" parent="Ground"]
+tile_set = SubResource("TileSet_8fhyo")
+format = 2
+
+[node name="Surface" type="Node2D" parent="." groups=["Plants"]]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Theo" parent="Surface" instance=ExtResource("3_30k8h")]
+unique_name_in_owner = true
+position = Vector2(1000, 456)
+
+[node name="FarmHouse" type="Sprite2D" parent="Surface"]
+z_index = -1
+position = Vector2(971, 539)
+texture = ExtResource("2_fbyl4")
+
+[node name="Plant" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 342)
+
+[node name="Plant2" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 351)
+
+[node name="Plant3" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 360)
+
+[node name="Plant4" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 369)
+
+[node name="Plant5" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 378)
+
+[node name="Plant6" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 387)
+
+[node name="Plant7" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 396)
+
+[node name="Plant8" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 405)
+
+[node name="Plant9" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 414)
+
+[node name="Plant10" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 423)
+
+[node name="Plant11" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 432)
+
+[node name="Plant12" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 441)
+
+[node name="Plant13" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 450)
+
+[node name="Plant14" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 459)
+
+[node name="Plant15" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(751, 468)
+
+[node name="Plant16" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 342)
+
+[node name="Plant17" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 351)
+
+[node name="Plant18" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 360)
+
+[node name="Plant19" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 369)
+
+[node name="Plant20" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 378)
+
+[node name="Plant21" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 387)
+
+[node name="Plant22" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 396)
+
+[node name="Plant23" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 405)
+
+[node name="Plant24" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 414)
+
+[node name="Plant25" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 423)
+
+[node name="Plant26" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 432)
+
+[node name="Plant27" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 441)
+
+[node name="Plant28" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 450)
+
+[node name="Plant29" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 459)
+
+[node name="Plant30" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(764, 468)
+
+[node name="Plant31" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 342)
+
+[node name="Plant32" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 351)
+
+[node name="Plant33" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 360)
+
+[node name="Plant34" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 369)
+
+[node name="Plant35" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 378)
+
+[node name="Plant36" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 387)
+
+[node name="Plant37" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 396)
+
+[node name="Plant38" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 405)
+
+[node name="Plant39" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 414)
+
+[node name="Plant40" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 423)
+
+[node name="Plant41" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 432)
+
+[node name="Plant42" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 441)
+
+[node name="Plant43" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 450)
+
+[node name="Plant44" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 459)
+
+[node name="Plant45" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(790, 468)
+
+[node name="Plant46" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 342)
+
+[node name="Plant47" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 351)
+
+[node name="Plant48" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 360)
+
+[node name="Plant49" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 369)
+
+[node name="Plant50" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 378)
+
+[node name="Plant51" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 387)
+
+[node name="Plant52" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 396)
+
+[node name="Plant53" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 405)
+
+[node name="Plant54" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 414)
+
+[node name="Plant55" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 423)
+
+[node name="Plant56" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 432)
+
+[node name="Plant57" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 441)
+
+[node name="Plant58" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 450)
+
+[node name="Plant59" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 459)
+
+[node name="Plant60" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(823, 468)
+
+[node name="Plant61" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 342)
+
+[node name="Plant62" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 351)
+
+[node name="Plant63" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 360)
+
+[node name="Plant64" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 369)
+
+[node name="Plant65" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 378)
+
+[node name="Plant66" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 387)
+
+[node name="Plant67" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 396)
+
+[node name="Plant68" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 405)
+
+[node name="Plant69" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 414)
+
+[node name="Plant70" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 423)
+
+[node name="Plant71" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 432)
+
+[node name="Plant72" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 441)
+
+[node name="Plant73" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 450)
+
+[node name="Plant74" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 459)
+
+[node name="Plant75" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(862, 468)
+
+[node name="Plant1" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(883, 367)
+
+[node name="Plant76" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(894, 367)
+
+[node name="Plant77" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(905, 367)
+
+[node name="Plant78" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(916, 367)
+
+[node name="Plant79" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(883, 381)
+
+[node name="Plant80" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(894, 381)
+
+[node name="Plant81" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(905, 381)
+
+[node name="Plant82" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(916, 381)
+
+[node name="Plant83" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(883, 419)
+
+[node name="Plant84" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(894, 419)
+
+[node name="Plant85" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(905, 419)
+
+[node name="Plant86" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(916, 419)
+
+[node name="Plant87" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(883, 445)
+
+[node name="Plant88" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(894, 445)
+
+[node name="Plant89" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(905, 445)
+
+[node name="Plant90" parent="Surface" instance=ExtResource("5_lr3xl")]
+position = Vector2(916, 445)
+
+[connection signal="timeout" from="DayNightCycle" to="FarmManager" method="_on_day_night_cycle_timeout"]
