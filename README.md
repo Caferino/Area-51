@@ -20,6 +20,8 @@ The goal of this project is to practice common game development processes for cu
 
 # Experiments
 
+<center>
+
 ---
 
 **E001:** 2D in 3D
@@ -68,28 +70,36 @@ E007: Melee Attacking + Particles
 
 ---
 
-E###: Rimworld / Sims Personalities
+E008: Basic Pathfinding
+
+![E008](.image/README/E008.gif "Particles")
+
+---
+
+E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
 
 [TBA]
 
 ---
 
-E###: Rimworld / Sims Jobs Controller
+E###: Rimworld / Sims Personalities / Sims Autonomy / Multiplayer or Online features
 
 [TBA]
 
 ---
 
-E###: Advanced - Procedural, Dungeons, Building, Enemies, Pathfinding, AI, UIs, Dialogues, Quests, General Gameplay ...
+E###: Plugins / Procedural / Dungeons / Building / Enemies / Pathfinding / Advanced AI / UIs / Dialogues / Quests / General Gameplay ...
 
 [TBA]
 
 ---
 
-E###: Endgame - Shaders, ML, Binary/Priority Trees, Simulations, Particles, VFX, Procedural or Adaptive Animation / Behavior ...
+E###: Shaders / ML / Binary, Priority Trees / Simulations / Particles / VFX / 2D, 3D Procedural or Adaptive Animation / Behavior / Develop a Decent Mod for a Big Game ...
 
 [TBA]
 
 ---
 
-E###: Master - Create own engine
+E###: Create own tools / Create own plugins or addons / Create own engine
+
+[TBA]

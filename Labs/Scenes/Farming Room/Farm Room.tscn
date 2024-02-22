@@ -1,11 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfpadlolh0l5u"]
+[gd_scene load_steps=11 format=3 uid="uid://cfpadlolh0l5u"]
 
 [ext_resource type="Texture2D" uid="uid://sp7b20pygith" path="res://Labs/Scenes/Farming Room/grass tile.png" id="1_aynmh"]
 [ext_resource type="Texture2D" uid="uid://qkeks4n2cljn" path="res://Labs/Scenes/Farming Room/Farm House.png" id="2_fbyl4"]
 [ext_resource type="PackedScene" uid="uid://dfhupj26o7g0w" path="res://Labs/Scenes/Farming Room/FarmManager.tscn" id="2_u31nd"]
-[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="3_30k8h"]
+[ext_resource type="PackedScene" uid="uid://ywdwc8rryrt" path="res://Labs/Entities/Character-Theo/Theo.tscn" id="4_7eitx"]
+[ext_resource type="PackedScene" uid="uid://mrd6gxhdcf0o" path="res://Labs/Assets/X. Resources/Animals/Lucas.tscn" id="5_j4sov"]
 [ext_resource type="PackedScene" uid="uid://bmrctgfhetcgl" path="res://Labs/Scenes/Farming Room/Plant.tscn" id="5_lr3xl"]
 [ext_resource type="PackedScene" uid="uid://b14q5yhfbenc1" path="res://Labs/Scenes/Farming Room/DayNightCycle.tscn" id="7_vog8i"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_le3qp"]
+vertices = PackedVector2Array(1744, 945, 167, 957, 189, 154, 1744, 83)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(180, 145, 157, 968, 1754, 955, 1754, 73)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mnddv"]
 resource_name = "grass"
@@ -21,13 +28,16 @@ sources/0 = SubResource("TileSetAtlasSource_mnddv")
 
 [node name="FarmManager" parent="." instance=ExtResource("2_u31nd")]
 
-[node name="Ground" type="Node" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_le3qp")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Ground"]
+[node name="Ground" type="Node" parent="NavigationRegion2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="NavigationRegion2D/Ground"]
 layer = -1
 follow_viewport_enabled = true
 
-[node name="Grass" type="TextureRect" parent="Ground/CanvasLayer"]
+[node name="Grass" type="TextureRect" parent="NavigationRegion2D/Ground/CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,7 +46,7 @@ grow_vertical = 2
 texture = ExtResource("1_aynmh")
 stretch_mode = 1
 
-[node name="Plants" type="TileMap" parent="Ground"]
+[node name="Plants" type="TileMap" parent="NavigationRegion2D/Ground"]
 tile_set = SubResource("TileSet_8fhyo")
 format = 2
 
@@ -44,9 +54,13 @@ format = 2
 unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="Theo" parent="Surface" instance=ExtResource("3_30k8h")]
-unique_name_in_owner = true
-position = Vector2(1000, 456)
+[node name="Theo" parent="Surface" instance=ExtResource("4_7eitx")]
+position = Vector2(1012, 478)
+
+[node name="Lucas" parent="Surface" node_paths=PackedStringArray("target_character") instance=ExtResource("5_j4sov")]
+position = Vector2(1162, 533)
+movement_speed = 80.0
+target_character = NodePath("../Theo")
 
 [node name="FarmHouse" type="Sprite2D" parent="Surface"]
 z_index = -1
