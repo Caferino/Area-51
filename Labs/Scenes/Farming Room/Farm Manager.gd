@@ -20,6 +20,7 @@ var farm_fields = []
 
 
 func _ready():
+	# TODO - Would multithreading fill_fields() work?
 	load_crop_textures()
 	load_fields(get_node("."))  # Current node
 	fill_fields()  # TODO - Make this dynamic in the future

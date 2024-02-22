@@ -60,6 +60,7 @@ func hold_camera():
 	tween.tween_property(camera, "position", Vector2(random_x, random_y), 6).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD).set_delay(randf_range(0.001, 0.2))
 	tween.play()
 
+
 func breath():
 	if breathing_in:
 		random_x = randf_range(min_x, max_x)

@@ -62,6 +62,12 @@ The goal of this project is to practice common game development processes for cu
 
 ---
 
+E007: Melee Attacking + Particles
+
+![E007-1](.image/README/E007-1.gif "Melee Attacking")    ![E007-2](.image/README/E007-2.gif "Particles")
+
+---
+
 E###: Rimworld / Sims Personalities
 
 [TBA]
