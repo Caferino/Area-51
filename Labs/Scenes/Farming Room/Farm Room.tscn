@@ -23,8 +23,11 @@ sources/0 = SubResource("TileSetAtlasSource_mnddv")
 
 [node name="Ground" type="Node" parent="."]
 
-[node name="Grass" type="TextureRect" parent="Ground"]
-z_index = -10
+[node name="CanvasLayer" type="CanvasLayer" parent="Ground"]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="Grass" type="TextureRect" parent="Ground/CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -2,23 +2,29 @@ extends Node2D
 
 class_name Plant
 
-@onready var sprite = get_node("Sprite")
+@onready var sprite = $Sprite
+@onready var leaves = $Leaves
 var water_level = 0
 var growth_stages = 5
 var current_stage = 0
 var texture = null
-var margin_x = 5  # TODO Per crop, make dynamic
-var margin_y = 8  # TODO Per crop, make dynamic
-var Hframes = 6   # TODO Per crop, make dynamic
+var margin_x = 5  # TODO - Per crop, make dynamic
+var margin_y = 8  # TODO - Per crop, make dynamic
+var Hframes = 6   # TODO - Per crop, make dynamic
 var Vframes = 1
 var rng_group
 var rot_center = 0
 
 
+# TODO - Each plant having a long script like this doesn't feel right. DRY.
+# Maybe manage everything here through a manager / interface or whatever?
+# This script should only hold the variables above and func ready, no more, imo
+
 func _ready():
 	add_to_group("Plants", true)  # TODO - Dynamic name per field
 	rng_group = randi_range(1, 5)  # TODO - Make it a variable so no weird shit happens someday
-	# get_parent().get_node("Theo").get_node("Character").connect("plant_collision", shake)
+	current_stage = rng_group
+	sprite.frame = current_stage
 
 
 func create_plant(wl, gs, cs, t, Hf, Vf):  # TODO Is this safe? Could players spawn their own?
@@ -30,6 +36,8 @@ func create_plant(wl, gs, cs, t, Hf, Vf):  # TODO Is this safe? Could players sp
 	Vframes = Vf
 
 
+# TODO - Patterns are obvious... But what if this function received two RNs?
+# ! Or use perlin noise and a seed / % chance that changes once with RNG
 func grow(rand_growth):
 	if rand_growth == rng_group:
 		current_stage += 1
@@ -41,26 +49,44 @@ func grow(rand_growth):
 		shake()
 
 
-func tilt(strength):
-	rot_center = strength
-	shake()
+func tilt(direction, strength = 0.2, action = null):
+	rot_center = direction
+	if action != null:
+		if action == "shake" : shake(strength)
+		elif action == "tilt_back" : tilt_back(strength)
 
 
-func tilt_back():
+func tilt_back(strength = 0.2):
 	rot_center = 0
 	if current_stage > 1:
 		var tween = create_tween()
 		tween.stop()
-		tween.tween_property(self, "rotation", rot_center, 0.2).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "rotation", rot_center, strength).set_trans(Tween.TRANS_LINEAR)
 		tween.play()
 
 
-func shake():
+func shake(strength = 0.2):
 	if current_stage > 1:
 		var tween = create_tween()
 		tween.stop()
-		tween.tween_property(self, "rotation", rot_center, 0.2).set_trans(Tween.TRANS_LINEAR)
-		tween.tween_property(self, "rotation", rot_center + 0.1, 0.2).set_trans(Tween.TRANS_LINEAR)
-		tween.tween_property(self, "rotation", rot_center - 0.1, 0.4).set_trans(Tween.TRANS_LINEAR)
-		tween.tween_property(self, "rotation", rot_center, 0.2).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "rotation", rot_center, strength).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "rotation", rot_center + 0.1, strength).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "rotation", rot_center - 0.1, strength * 2).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "rotation", rot_center, strength).set_trans(Tween.TRANS_LINEAR)
 		tween.play()
+
+
+func drop_leaves():
+	if current_stage > 1:
+		match current_stage:
+			2:
+				leaves.amount = 2
+			3:
+				leaves.amount = 3
+			4:
+				leaves.amount = 6
+			5:
+				leaves.amount = 8
+		
+		leaves.emitting = true
+		leaves.restart()

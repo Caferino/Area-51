@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/borderless=true
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://Labs/Assets/X. Other/Cursor/dot.svg"
 
@@ -34,6 +33,7 @@ naming/scene_name_casing=1
 
 [filesystem]
 
+import/blender/enabled=false
 import/fbx/enabled=false
 
 [input]
@@ -129,7 +129,13 @@ zoom_out={
 3d_physics/layer_7="Hats"
 3d_physics/layer_8="Projectiles"
 
+[physics]
+
+2d/run_on_separate_thread=true
+3d/run_on_separate_thread=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method.mobile="gl_compatibility"
+driver/run_on_separate_thread=false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://6dqjcksjsker"]
+[gd_scene load_steps=92 format=3 uid="uid://6dqjcksjsker"]
 
 [ext_resource type="Script" path="res://Labs/Entities/Character-Theo/2DTheo.gd" id="1_qx0q0"]
 [ext_resource type="PackedScene" uid="uid://b2f4lgl6edfw3" path="res://Labs/Scenes/Attack Room/sword.tscn" id="2_j3guq"]
@@ -73,15 +73,43 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rpqw1"]
+animation = &"2D Human Body Movement/move_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aieno"]
+animation = &"2D Human Body Movement/move_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_daxlx"]
+animation = &"2D Human Body Movement/move_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uwwtq"]
+animation = &"2D Human Body Movement/move_down"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_l07d8"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_rpqw1")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_aieno")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_daxlx")
+blend_point_2/pos = Vector2(0, -1.1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_uwwtq")
+blend_point_3/pos = Vector2(0, 1.1)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e5sbt"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3f5lu"]
-states/End/position = Vector2(709, 100)
+states/End/position = Vector2(979, 100)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_jxkt4")
 states/Idle/position = Vector2(372, 52)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_em6hf")
 states/Move/position = Vector2(540, 52)
+states/Run/node = SubResource("AnimationNodeBlendSpace2D_l07d8")
+states/Run/position = Vector2(746, 52)
+states/Start/position = Vector2(201, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e5sbt")]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_suc2h"]
@@ -151,22 +179,10 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("9_hipuv")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ksuht"]
-atlas = ExtResource("9_hipuv")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_agf41"]
-atlas = ExtResource("9_hipuv")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2gpxa"]
-atlas = ExtResource("9_hipuv")
-region = Rect2(96, 0, 32, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_2qvm0"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 50.0,
 "texture": SubResource("AtlasTexture_p0efv")
 }, {
 "duration": 0.5,
@@ -219,15 +235,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_14g41")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ksuht")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_agf41")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2gpxa")
 }],
 "loop": true,
 "name": &"up",
@@ -284,15 +291,43 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ne38"]
+animation = &"2D Human Head Movement/run_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5c0se"]
+animation = &"2D Human Head Movement/run_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ajwv5"]
+animation = &"2D Human Head Movement/run_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ldnn0"]
+animation = &"2D Human Head Movement/run_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jpujk"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_1ne38")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_5c0se")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ajwv5")
+blend_point_2/pos = Vector2(0, 1.1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ldnn0")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5npjq"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1axe4"]
-states/End/position = Vector2(718, 100)
+resource_local_to_scene = true
+states/End/position = Vector2(789, 100)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_7dk03")
 states/Idle/position = Vector2(315, 43)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_ahgop")
-states/Move/position = Vector2(584, 43)
+states/Move/position = Vector2(450, 43)
+states/Run/node = SubResource("AnimationNodeBlendSpace2D_jpujk")
+states/Run/position = Vector2(607, 43)
 states/Start/position = Vector2(147, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5npjq")]
 graph_offset = Vector2(52, -63)
@@ -433,106 +468,6 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwl8b"]
 
-[sub_resource type="Animation" id="Animation_shtn2"]
-resource_name = "DOWN"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(10, 9)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.523598]
-}
-
-[sub_resource type="Animation" id="Animation_1nmpd"]
-resource_name = "LEFT"
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_r4gku"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(14, 9)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.523598]
-}
-
-[sub_resource type="Animation" id="Animation_be10v"]
-resource_name = "RIGHT"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(10, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.523598]
-}
-
-[sub_resource type="Animation" id="Animation_ovv8h"]
-resource_name = "UP"
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cg7o5"]
-_data = {
-"DOWN": SubResource("Animation_shtn2"),
-"LEFT": SubResource("Animation_1nmpd"),
-"RESET": SubResource("Animation_r4gku"),
-"RIGHT": SubResource("Animation_be10v"),
-"UP": SubResource("Animation_ovv8h")
-}
-
 [node name="Theo" type="Sprite2D"]
 z_index = 1
 y_sort_enabled = true
@@ -542,66 +477,72 @@ texture_filter = 1
 y_sort_enabled = true
 script = ExtResource("1_qx0q0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
+[node name="CollisionShape" type="CollisionShape2D" parent="Character"]
 shape = SubResource("CircleShape2D_f7oi0")
 disabled = true
 
-[node name="Feet" type="Node2D" parent="Character"]
+[node name="FeetOrigin" type="Marker2D" parent="Character"]
 
-[node name="LeftFoot" type="Area2D" parent="Character/Feet"]
+[node name="Feet" type="Node2D" parent="Character/FeetOrigin"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/Feet/LeftFoot"]
+[node name="LeftFoot" type="Area2D" parent="Character/FeetOrigin/Feet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/FeetOrigin/Feet/LeftFoot"]
 position = Vector2(-7, 13)
 shape = SubResource("RectangleShape2D_dy6gb")
 
-[node name="RightFoot" type="Area2D" parent="Character/Feet"]
+[node name="RightFoot" type="Area2D" parent="Character/FeetOrigin/Feet"]
 
-[node name="CollisionShape" type="CollisionShape2D" parent="Character/Feet/RightFoot"]
+[node name="CollisionShape" type="CollisionShape2D" parent="Character/FeetOrigin/Feet/RightFoot"]
 position = Vector2(7, 13)
 shape = SubResource("RectangleShape2D_p0f5y")
 debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 
-[node name="Sword" parent="Character" instance=ExtResource("2_j3guq")]
-z_index = 1
-position = Vector2(10, 9)
-rotation = -1.0472
-
-[node name="Body" type="Node2D" parent="Character"]
+[node name="SwordOrigin" type="Marker2D" parent="Character"]
 y_sort_enabled = true
 
-[node name="BodySprite" type="Sprite2D" parent="Character/Body"]
+[node name="Sword" parent="Character/SwordOrigin" instance=ExtResource("2_j3guq")]
+rotation = -3.14159
+
+[node name="BodyOrigin" type="Marker2D" parent="Character"]
+y_sort_enabled = true
+
+[node name="Body" type="Node2D" parent="Character/BodyOrigin"]
+y_sort_enabled = true
+
+[node name="BodySprite" type="Sprite2D" parent="Character/BodyOrigin/Body"]
+y_sort_enabled = true
 position = Vector2(0, 9)
 texture = ExtResource("3_88w1f")
 offset = Vector2(0, -9)
 hframes = 4
 vframes = 21
-frame = 1
+frame = 34
 
-[node name="BodyAnimatorTree" type="AnimationTree" parent="Character/Body/BodySprite"]
-unique_name_in_owner = true
-root_node = NodePath("%BodyAnimatorTree/..")
+[node name="BodyAnimatorTree" type="AnimationTree" parent="Character/BodyOrigin/Body/BodySprite"]
 libraries = {
 "2D Human Body Movement": ExtResource("4_p2b55")
 }
 tree_root = SubResource("AnimationNodeBlendTree_odx2k")
 anim_player = NodePath("../BodyAnimator")
-parameters/Movement/Idle/blend_position = Vector2(-0.759861, 0.0640212)
-parameters/Movement/Move/blend_position = Vector2(-0.151515, 0.460317)
+parameters/Movement/Idle/blend_position = Vector2(-0.00101006, 0.704233)
+parameters/Movement/Move/blend_position = Vector2(0.019192, -0.669312)
+parameters/Movement/Run/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
-[node name="BodyAnimator" type="AnimationPlayer" parent="Character/Body/BodySprite"]
+[node name="BodyAnimator" type="AnimationPlayer" parent="Character/BodyOrigin/Body/BodySprite"]
 libraries = {
 "2D Human Body Movement": ExtResource("4_p2b55")
 }
-speed_scale = 0.963
+speed_scale = 1.5
 
-[node name="Area" type="Area2D" parent="Character/Body/BodySprite"]
+[node name="Area" type="Area2D" parent="Character/BodyOrigin/Body/BodySprite"]
 position = Vector2(0, -9)
 
-[node name="CollisionShape" type="CollisionShape2D" parent="Character/Body/BodySprite/Area"]
+[node name="CollisionShape" type="CollisionShape2D" parent="Character/BodyOrigin/Body/BodySprite/Area"]
 shape = SubResource("RectangleShape2D_comda")
 
-[node name="BodyShadow" type="Sprite2D" parent="Character/Body/BodySprite"]
+[node name="BodyShadow" type="Sprite2D" parent="Character/BodyOrigin/Body/BodySprite"]
 modulate = Color(0, 0, 0, 0.0980392)
 z_index = -1
 texture_filter = 2
@@ -610,54 +551,56 @@ position = Vector2(0, 2)
 scale = Vector2(0.380952, 0.307692)
 texture = ExtResource("4_5vn8v")
 
-[node name="Head" type="Node2D" parent="Character"]
-position = Vector2(0, -15)
+[node name="HeadOrigin" type="Marker2D" parent="Character"]
+position = Vector2(0, -16)
 
-[node name="HeadSprite" type="AnimatedSprite2D" parent="Character/Head"]
-z_index = 1
+[node name="Head" type="Node2D" parent="Character/HeadOrigin"]
+z_index = 2
+y_sort_enabled = true
+
+[node name="HeadSprite" type="AnimatedSprite2D" parent="Character/HeadOrigin/Head"]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_2qvm0")
-animation = &"left"
-frame_progress = 0.378913
+animation = &"down"
 
-[node name="HeadAnimatorTree" type="AnimationTree" parent="Character/Head/HeadSprite"]
-unique_name_in_owner = true
-root_node = NodePath("%HeadAnimatorTree/..")
+[node name="HeadAnimatorTree" type="AnimationTree" parent="Character/HeadOrigin/Head/HeadSprite"]
 libraries = {
 "2D Human Head Movement": ExtResource("10_6idrh")
 }
 tree_root = SubResource("AnimationNodeBlendTree_k8aew")
 anim_player = NodePath("../HeadAnimator")
-parameters/Movement/Idle/blend_position = Vector2(0, 0)
-parameters/Movement/Move/blend_position = Vector2(0, 0)
+parameters/Movement/Idle/blend_position = Vector2(-0.0158401, 0.506349)
+parameters/Movement/Move/blend_position = Vector2(-0.23056, 0.0407407)
+parameters/Movement/Run/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
-[node name="HeadAnimator" type="AnimationPlayer" parent="Character/Head/HeadSprite"]
+[node name="HeadAnimator" type="AnimationPlayer" parent="Character/HeadOrigin/Head/HeadSprite"]
 libraries = {
 "2D Human Head Movement": ExtResource("10_6idrh")
 }
 
-[node name="Area" type="Area2D" parent="Character/Head/HeadSprite"]
+[node name="Area" type="Area2D" parent="Character/HeadOrigin/Head/HeadSprite"]
 position = Vector2(0, 0.419434)
 
-[node name="CollisionShape" type="CollisionShape2D" parent="Character/Head/HeadSprite/Area"]
+[node name="CollisionShape" type="CollisionShape2D" parent="Character/HeadOrigin/Head/HeadSprite/Area"]
 position = Vector2(0, 2.5)
 shape = SubResource("CircleShape2D_qdtn6")
 debug_color = Color(0.658824, 0.513726, 0, 0.419608)
 
-[node name="Hat" type="Node2D" parent="Character/Head/HeadSprite"]
+[node name="Hat" type="Node2D" parent="Character/HeadOrigin/Head/HeadSprite"]
+y_sort_enabled = true
 position = Vector2(0, -9)
 
-[node name="HatObject" type="Area2D" parent="Character/Head/HeadSprite/Hat"]
+[node name="HatObject" type="Area2D" parent="Character/HeadOrigin/Head/HeadSprite/Hat"]
 
-[node name="HatSprite" type="AnimatedSprite2D" parent="Character/Head/HeadSprite/Hat/HatObject"]
+[node name="HatSprite" type="AnimatedSprite2D" parent="Character/HeadOrigin/Head/HeadSprite/Hat/HatObject"]
 z_index = 2
+y_sort_enabled = true
 position = Vector2(-4, 0)
 sprite_frames = SubResource("SpriteFrames_aj8lf")
 animation = &"left"
 
-[node name="HatAnimatorTree" type="AnimationTree" parent="Character/Head/HeadSprite/Hat/HatObject/HatSprite"]
-unique_name_in_owner = true
-root_node = NodePath("%HatAnimatorTree/..")
+[node name="HatAnimatorTree" type="AnimationTree" parent="Character/HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
 libraries = {
 "": ExtResource("12_p46em")
 }
@@ -667,12 +610,12 @@ parameters/Movement/Idle/blend_position = Vector2(0, 0)
 parameters/Movement/Move/blend_position = Vector2(-0.369574, 0.159912)
 parameters/TimeScale/scale = 1.0
 
-[node name="HatAnimator" type="AnimationPlayer" parent="Character/Head/HeadSprite/Hat/HatObject/HatSprite"]
+[node name="HatAnimator" type="AnimationPlayer" parent="Character/HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
 libraries = {
 "": ExtResource("12_p46em")
 }
 
-[node name="HatShadow" type="Sprite2D" parent="Character/Head/HeadSprite/Hat/HatObject/HatSprite"]
+[node name="HatShadow" type="Sprite2D" parent="Character/HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
 z_index = -1
 texture_filter = 2
@@ -680,12 +623,12 @@ position = Vector2(0, 35.14)
 scale = Vector2(0.452381, 0.384615)
 texture = ExtResource("4_5vn8v")
 
-[node name="CollisionShape" type="CollisionShape2D" parent="Character/Head/HeadSprite/Hat/HatObject"]
+[node name="CollisionShape" type="CollisionShape2D" parent="Character/HeadOrigin/Head/HeadSprite/Hat/HatObject"]
 position = Vector2(0, 6)
 scale = Vector2(0.400001, 0.400001)
 shape = SubResource("CircleShape2D_rwl8b")
 
-[node name="HeadShadow" type="Sprite2D" parent="Character/Head/HeadSprite"]
+[node name="HeadShadow" type="Sprite2D" parent="Character/HeadOrigin/Head/HeadSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
 z_index = -1
 texture_filter = 2
@@ -693,21 +636,19 @@ position = Vector2(0, 29)
 scale = Vector2(0.285714, 0.331417)
 texture = ExtResource("4_5vn8v")
 
-[node name="SwordMarker" type="Marker2D" parent="Character"]
+[node name="LanternOrigin" type="Marker2D" parent="Character"]
+
+[node name="Lantern" type="Sprite2D" parent="Character/LanternOrigin"]
 visible = false
-position = Vector2(14, 9)
-rotation = 0.523598
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character/SwordMarker"]
-libraries = {
-"": SubResource("AnimationLibrary_cg7o5")
-}
+[node name="CameraOrigin" type="Marker2D" parent="Character"]
 
-[node name="Lantern" type="Sprite2D" parent="Character"]
+[node name="Camera Base" parent="Character/CameraOrigin" instance=ExtResource("7_gt685")]
 
-[node name="Camera Base" parent="Character" instance=ExtResource("7_gt685")]
-
-[connection signal="area_entered" from="Character/Feet/LeftFoot" to="Character" method="_on_left_foot_area_entered"]
-[connection signal="area_exited" from="Character/Feet/LeftFoot" to="Character" method="_on_left_foot_area_exited"]
-[connection signal="area_entered" from="Character/Feet/RightFoot" to="Character" method="_on_right_foot_area_entered"]
-[connection signal="area_exited" from="Character/Feet/RightFoot" to="Character" method="_on_right_foot_area_exited"]
+[connection signal="area_entered" from="Character/FeetOrigin/Feet/LeftFoot" to="Character" method="_on_left_foot_area_entered"]
+[connection signal="area_exited" from="Character/FeetOrigin/Feet/LeftFoot" to="Character" method="_on_left_foot_area_exited"]
+[connection signal="area_entered" from="Character/FeetOrigin/Feet/RightFoot" to="Character" method="_on_right_foot_area_entered"]
+[connection signal="area_exited" from="Character/FeetOrigin/Feet/RightFoot" to="Character" method="_on_right_foot_area_exited"]
+[connection signal="attacked" from="Character/SwordOrigin/Sword" to="Character" method="_on_sword_attacked"]
+[connection signal="animation_finished" from="Character/BodyOrigin/Body/BodySprite/BodyAnimator" to="Character" method="_on_body_animator_animation_finished"]
+[connection signal="animation_started" from="Character/BodyOrigin/Body/BodySprite/BodyAnimator" to="Character" method="_on_body_animator_animation_started"]

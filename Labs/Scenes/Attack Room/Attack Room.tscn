@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq6nj3buvscyg"]
+[gd_scene load_steps=3 format=3 uid="uid://dq6nj3buvscyg"]
 
 [ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="1_kb4kr"]
+[ext_resource type="PackedScene" uid="uid://ki1y0lcqcpwq" path="res://Labs/Scenes/Attack Room/Bat.tscn" id="2_6xmcn"]
 
 [node name="AttackRoom" type="Node2D"]
 
@@ -14,3 +15,6 @@ scale = Vector2(48.12, 26.96)
 
 [node name="Theo" parent="." instance=ExtResource("1_kb4kr")]
 position = Vector2(852, 476)
+
+[node name="Bat" parent="." instance=ExtResource("2_6xmcn")]
+position = Vector2(760, 478)
