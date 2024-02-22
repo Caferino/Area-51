@@ -82,24 +82,31 @@ E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory 
 
 ---
 
-E###: Rimworld / Sims Personalities / Sims Autonomy / Multiplayer or Online features
+E###: Rimworld / Sims Personalities / Sims Autonomy / Multiplayer or Online Features / Stamina & Breathing Synced Running Animation / Attack Fixes, Remake
 
 [TBA]
 
 ---
 
-E###: Plugins / Procedural / Dungeons / Building / Enemies / Pathfinding / Advanced AI / UIs / Dialogues / Quests / General Gameplay ...
+E###: Advanced AI / Pathfinding / UIs / Plugins / Procedural / Dungeons / Building / Enemies / Dialogues / Quests / General Gameplay / General Fixes
 
 [TBA]
 
 ---
 
-E###: Shaders / ML / Binary, Priority Trees / Simulations / Particles / VFX / 2D, 3D Procedural or Adaptive Animation / Behavior / Develop a Decent Mod for a Big Game ...
+E###: Advanced Shaders / ML / Binary, Priority Trees / Simulations / VFX / 2D, 3D Procedural or Adaptive Animation / Behavior / Develop a Decent Mod for a Big Game
 
 [TBA]
 
 ---
 
-E###: Create own tools / Create own plugins or addons / Create own engine
+E###: Create own tools / Create own plugins and addons / Create own engine
 
 [TBA]
+
+
+---
+
+Resources:
+
+Milo's journey and books: [https://github.com/miloyip/game-programmer](https://github.com/miloyip/game-programmer "A Study Path for Game Programmer")
