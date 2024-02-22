@@ -100,7 +100,7 @@ E###: Advanced Shaders / ML / Binary, Priority Trees / Simulations / VFX / 2D, 3
 
 ---
 
-E###: Create own tools / Create own plugins or addons / Create own engine
+E###: Create own tools / Create own plugins and addons / Create own engine
 
 [TBA]
 
