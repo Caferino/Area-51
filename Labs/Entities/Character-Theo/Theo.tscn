@@ -1,7 +1,7 @@
-[gd_scene load_steps=92 format=3 uid="uid://ywdwc8rryrt"]
+[gd_scene load_steps=87 format=3 uid="uid://ywdwc8rryrt"]
 
 [ext_resource type="Script" path="res://Labs/Entities/Character-Theo/2DTheo.gd" id="1_p2swg"]
-[ext_resource type="PackedScene" uid="uid://b2f4lgl6edfw3" path="res://Labs/Scenes/Attack Room/sword.tscn" id="2_kwonf"]
+[ext_resource type="PackedScene" uid="uid://cqypn2n1j0p6t" path="res://Labs/Scenes/Attack Room/weapon.tscn" id="2_ua78c"]
 [ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png" id="3_6lhpy"]
 [ext_resource type="AnimationLibrary" uid="uid://cgqxac80b6euh" path="res://animations/2D Updated/2D Human Body Movement.res" id="4_q1kkm"]
 [ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="5_20vns"]
@@ -14,8 +14,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://c7qhbii8g763v" path="res://animations/2D Updated/2D Hat Movement.res" id="12_a0yk6"]
 [ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="13_icx8m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f7oi0"]
-radius = 0.01
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt55q"]
+size = Vector2(28, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy6gb"]
 size = Vector2(12.5, 2)
@@ -24,16 +24,16 @@ size = Vector2(12.5, 2)
 size = Vector2(12.5, 2)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_01jdg"]
-animation = &"2D Human Body Movement/idle_down"
+animation = &"idle_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xc61q"]
-animation = &"2D Human Body Movement/idle_up"
+animation = &"idle_up"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_llxid"]
-animation = &"2D Human Body Movement/idle_left"
+animation = &"idle_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_35vuc"]
-animation = &"2D Human Body Movement/idle_right"
+animation = &"idle_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_jxkt4"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_01jdg")
@@ -49,16 +49,16 @@ max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dx075"]
-animation = &"2D Human Body Movement/move_down"
+animation = &"move_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hrb5r"]
-animation = &"2D Human Body Movement/move_up"
+animation = &"move_up"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6vckf"]
-animation = &"2D Human Body Movement/move_left"
+animation = &"move_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5k64x"]
-animation = &"2D Human Body Movement/move_right"
+animation = &"move_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_em6hf"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_dx075")
@@ -73,42 +73,15 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rpqw1"]
-animation = &"2D Human Body Movement/move_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aieno"]
-animation = &"2D Human Body Movement/move_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_daxlx"]
-animation = &"2D Human Body Movement/move_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uwwtq"]
-animation = &"2D Human Body Movement/move_down"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_l07d8"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_rpqw1")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_aieno")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_daxlx")
-blend_point_2/pos = Vector2(0, -1.1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_uwwtq")
-blend_point_3/pos = Vector2(0, 1.1)
-min_space = Vector2(-1.1, -1.1)
-max_space = Vector2(1.1, 1.1)
-blend_mode = 1
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e5sbt"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3f5lu"]
-states/End/position = Vector2(979, 100)
+states/End/position = Vector2(679, 100)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_jxkt4")
 states/Idle/position = Vector2(372, 52)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_em6hf")
 states/Move/position = Vector2(540, 52)
-states/Run/node = SubResource("AnimationNodeBlendSpace2D_l07d8")
-states/Run/position = Vector2(746, 52)
 states/Start/position = Vector2(201, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e5sbt")]
 
@@ -122,10 +95,10 @@ nodes/TimeScale/position = Vector2(440, 80)
 nodes/output/position = Vector2(660, 100)
 node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kl47q"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_comda"]
 size = Vector2(28, 17)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kl47q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0efv"]
 atlas = ExtResource("6_4pcna")
@@ -471,34 +444,39 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 [node name="Character" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+collision_layer = 4096
+collision_mask = 4294959103
 script = ExtResource("1_p2swg")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_f7oi0")
-disabled = true
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_mt55q")
 
 [node name="FeetOrigin" type="Marker2D" parent="."]
 
 [node name="Feet" type="Node2D" parent="FeetOrigin"]
 
 [node name="LeftFoot" type="Area2D" parent="FeetOrigin/Feet"]
+collision_layer = 4096
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FeetOrigin/Feet/LeftFoot"]
+[node name="CollisionShape" type="CollisionShape2D" parent="FeetOrigin/Feet/LeftFoot"]
 position = Vector2(-7, 13)
 shape = SubResource("RectangleShape2D_dy6gb")
 
 [node name="RightFoot" type="Area2D" parent="FeetOrigin/Feet"]
+collision_layer = 4096
+collision_mask = 3
 
 [node name="CollisionShape" type="CollisionShape2D" parent="FeetOrigin/Feet/RightFoot"]
 position = Vector2(7, 13)
 shape = SubResource("RectangleShape2D_p0f5y")
 debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 
-[node name="SwordOrigin" type="Marker2D" parent="."]
+[node name="WeaponOrigin" type="Marker2D" parent="."]
 y_sort_enabled = true
 
-[node name="Sword" parent="SwordOrigin" instance=ExtResource("2_kwonf")]
-rotation = -3.14159
+[node name="Weapon" parent="WeaponOrigin" instance=ExtResource("2_ua78c")]
 
 [node name="BodyOrigin" type="Marker2D" parent="."]
 y_sort_enabled = true
@@ -517,26 +495,18 @@ frame = 2
 
 [node name="BodyAnimatorTree" type="AnimationTree" parent="BodyOrigin/Body/BodySprite"]
 libraries = {
-"2D Human Body Movement": ExtResource("4_q1kkm")
+"": ExtResource("4_q1kkm")
 }
 tree_root = SubResource("AnimationNodeBlendTree_odx2k")
 anim_player = NodePath("../BodyAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.00101006, 0.704233)
 parameters/Movement/Move/blend_position = Vector2(0.019192, -0.669312)
-parameters/Movement/Run/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
 [node name="BodyAnimator" type="AnimationPlayer" parent="BodyOrigin/Body/BodySprite"]
 libraries = {
-"2D Human Body Movement": ExtResource("4_q1kkm")
+"": ExtResource("4_q1kkm")
 }
-speed_scale = 1.5
-
-[node name="Area" type="Area2D" parent="BodyOrigin/Body/BodySprite"]
-position = Vector2(0, -9)
-
-[node name="CollisionShape" type="CollisionShape2D" parent="BodyOrigin/Body/BodySprite/Area"]
-shape = SubResource("RectangleShape2D_comda")
 
 [node name="BodyShadow" type="Sprite2D" parent="BodyOrigin/Body/BodySprite"]
 modulate = Color(0, 0, 0, 0.0980392)
@@ -547,11 +517,18 @@ position = Vector2(0, 2)
 scale = Vector2(0.380952, 0.307692)
 texture = ExtResource("5_20vns")
 
+[node name="BodyArea" type="Area2D" parent="BodyOrigin/Body"]
+collision_layer = 4096
+collision_mask = 8195
+
+[node name="CollisionShape" type="CollisionShape2D" parent="BodyOrigin/Body/BodyArea"]
+shape = SubResource("RectangleShape2D_comda")
+
 [node name="HeadOrigin" type="Marker2D" parent="."]
 position = Vector2(0, -16)
 
 [node name="Head" type="Node2D" parent="HeadOrigin"]
-z_index = 2
+z_index = 1
 y_sort_enabled = true
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="HeadOrigin/Head"]
@@ -578,6 +555,8 @@ libraries = {
 
 [node name="Area" type="Area2D" parent="HeadOrigin/Head/HeadSprite"]
 position = Vector2(0, 0.419434)
+collision_layer = 4096
+collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="HeadOrigin/Head/HeadSprite/Area"]
 position = Vector2(0, 2.5)
@@ -646,6 +625,7 @@ visible = false
 [connection signal="area_exited" from="FeetOrigin/Feet/LeftFoot" to="." method="_on_left_foot_area_exited"]
 [connection signal="area_entered" from="FeetOrigin/Feet/RightFoot" to="." method="_on_right_foot_area_entered"]
 [connection signal="area_exited" from="FeetOrigin/Feet/RightFoot" to="." method="_on_right_foot_area_exited"]
-[connection signal="attacked" from="SwordOrigin/Sword" to="." method="_on_sword_attacked"]
+[connection signal="attacked" from="WeaponOrigin/Weapon" to="." method="_on_weapon_attacked"]
 [connection signal="animation_finished" from="BodyOrigin/Body/BodySprite/BodyAnimator" to="." method="_on_body_animator_animation_finished"]
 [connection signal="animation_started" from="BodyOrigin/Body/BodySprite/BodyAnimator" to="." method="_on_body_animator_animation_started"]
+[connection signal="body_entered" from="BodyOrigin/Body/BodyArea" to="." method="_on_body_area_body_entered"]

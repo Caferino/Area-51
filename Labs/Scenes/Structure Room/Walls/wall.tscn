@@ -26,7 +26,6 @@ physics_material_override = SubResource("PhysicsMaterial_7t7p1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-8.50908e-05, 193.052)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_s6c1s")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]

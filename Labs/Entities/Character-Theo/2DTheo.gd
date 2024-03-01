@@ -5,9 +5,9 @@ signal health_depleted
 
 const DAMAGE_RATE = 5.0
 var health = 100.0
-const MAX_SPEED = 3
-const MAX_SPRINT_SPEED = 15
-const SPRINT_ACCEL = 18
+const MAX_SPEED = 10
+const MAX_SPRINT_SPEED = 20
+const SPRINT_ACCEL = 15
 const ACCEL = 2
 const DEACCEL = 6
 
@@ -25,10 +25,10 @@ var anim_state = "Move"
 
 var head_sprite
 
-var sword
+var weapon_origin
 var body_animator
 var isAttacking = false
-var left_swing = true
+var on_left_hand = true   # left handed weapon carry
 
 
 func _ready():
@@ -43,7 +43,7 @@ func setup_vars():
 	
 	body_animator = $BodyOrigin/Body/BodySprite/BodyAnimator
 	head_sprite = $HeadOrigin/Head/HeadSprite
-	sword = $SwordOrigin
+	weapon_origin = $WeaponOrigin
 
 
 func setup_initial_anims():
@@ -59,7 +59,8 @@ func setup_initial_anims():
 	body_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
 	head_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
 	hat_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
-	sword.rotation_degrees = -90
+	
+	weapon_origin.rotation_degrees = -90
 
 
 func _physics_process(_delta):
@@ -116,14 +117,16 @@ func handle_animation():
 		body_state_machine.travel("Idle")
 		head_state_machine.travel("Idle")
 	else:
-		rotate_sword(direction)
+		rotate_weapon(direction)
 		
 		if anim_state == "Run":
 			body_state_machine.travel("Move")
+			body_animatorTree["parameters/TimeScale/scale"] = MAX_SPRINT_SPEED * 0.05 + 0.5
 			body_animatorTree["parameters/Movement/Idle/blend_position"] = direction
 			body_animatorTree["parameters/Movement/Move/blend_position"] = direction
 		else:
 			body_state_machine.travel(anim_state)
+			body_animatorTree["parameters/TimeScale/scale"] = MAX_SPEED * 0.05 + 0.5
 			body_animatorTree["parameters/Movement/Idle/blend_position"] = direction
 			body_animatorTree["parameters/Movement/" + anim_state + "/blend_position"] = direction
 		
@@ -134,20 +137,21 @@ func handle_animation():
 		hat_animatorTree["parameters/Movement/Idle/blend_position"] = direction
 
 
-func rotate_sword(direction):
+func rotate_weapon(direction):
+	on_left_hand = true
 	if direction.y > 0:
-		sword.rotation_degrees = -90
-		sword.position = Vector2(0, 10)
+		weapon_origin.rotation_degrees = -90
+		weapon_origin.position = Vector2(0, 10)
 	elif direction.y < 0:
-		sword.rotation_degrees = 90
-		sword.position = Vector2(0, -10)
+		weapon_origin.rotation_degrees = 90
+		weapon_origin.position = Vector2(0, -10)
 	
 	if direction.x > 0:
-		sword.rotation_degrees = 180
-		sword.position = Vector2(10, 0)
+		weapon_origin.rotation_degrees = 180
+		weapon_origin.position = Vector2(10, 0)
 	elif direction.x < 0:
-		sword.rotation_degrees = 0
-		sword.position = Vector2(-10, 0)
+		weapon_origin.rotation_degrees = 0
+		weapon_origin.position = Vector2(-10, 0)
 
 
 func _on_left_foot_area_entered(area):
@@ -170,22 +174,55 @@ func _on_right_foot_area_exited(area):
 		area.get_parent().tilt_back()
 
 
-func _on_sword_attacked():
-	isAttacking = true
-	var direction = sword.position
-	if direction.x < 0:
-		body_animator.play("2D Human Body Movement/attack_left")
+func _on_weapon_attacked(weapon):
+	if !isAttacking:
+		isAttacking = true
+		body_state_machine.travel("Idle")
+		head_state_machine.travel("Idle")
+		
+		weapon.draw()
+		var direction = weapon_origin.position
+		play_attack_animation(direction, weapon)
+
+
+func play_attack_animation(direction, weapon):
+	body_animator.speed_scale = weapon.weapon_speed
+	weapon.update_speed(weapon.weapon_speed)
+	if direction.x < 0:  # These depend on how were the AnimationPlayers setup
+		if on_left_hand:
+			body_animator.play("attack_left")
+			weapon.animator.play("attack_right")
+		else:
+			body_animator.play_backwards("attack_left")
+			weapon.animator.play_backwards("attack_right")
 	elif direction.x > 0:
-		body_animator.play("2D Human Body Movement/attack_right")
+		if on_left_hand:
+			body_animator.play_backwards("attack_right")
+			weapon.animator.play_backwards("attack_left")
+		else:
+			body_animator.play("attack_right")
+			weapon.animator.play("attack_left")
 	elif direction.y < 0:
-		body_animator.play("2D Human Body Movement/attack_up")
+		if on_left_hand:
+			body_animator.play("attack_up")
+			weapon.animator.play_backwards("attack_left")
+		else:
+			body_animator.play_backwards("attack_up")
+			weapon.animator.play("attack_left")
 	elif direction.y >= 0:
-		body_animator.play("2D Human Body Movement/attack_down")
-	await get_tree().create_timer(body_animator.current_animation_length).timeout
-	# body_state_machine.travel("Idle")  # TODO - Fix the last frame, this didn't
+		if on_left_hand:
+			body_animator.play("attack_down")
+			weapon.animator.play_backwards("attack_left")
+		else:
+			body_animator.play_backwards("attack_down")
+			weapon.animator.play("attack_left")
+	
+	on_left_hand = !on_left_hand
+
+
+func _on_body_animator_animation_finished(_anim_name):
+	weapon_origin.get_node("Weapon").sheathe()
 	isAttacking = false
-
-
 
 
 	# var overlapping_mobs = %HurtBox.get_overlapping_bodies()
@@ -195,7 +232,7 @@ func _on_sword_attacked():
 		# if health <= 0.0:
 			# health_depleted.emit()
 
-	
 
-
-
+func _on_body_area_body_entered(body):
+	if body.is_in_group("Enemies"):
+		print("Ouch!!!")

@@ -1,10 +1,19 @@
 class_name Bat extends RigidBody2D
 
-@onready var sprite = get_node("BatSprite")
-@onready var effects_animator = $BatSprite/EffectsAnimator
+@onready var sprite = $BatSprite
+@onready var effects_animator = $EffectsAnimator
+var context_map = [      # TODO - Put these in a component for any NPC to use
+	Vector2(0, -1),      #   ↑
+	Vector2(1, -1),      #   ↗
+	Vector2(1, 0),       #   →
+	Vector2(1, 1),       #   ↘
+	Vector2(0, 1),       #   ↓
+	Vector2(-1, 1),      #   ↙
+	Vector2(-1, 0),      #   ←
+	Vector2(-1, -1)      #   ↖
+]
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	gravity_scale = 0
 	add_to_group("Enemies")
