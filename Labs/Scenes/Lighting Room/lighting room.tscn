@@ -89,8 +89,6 @@ color = Color(0.00784314, 0.0823529, 0.113725, 0.941176)
 color = Color(0.443137, 0.196078, 0.403922, 1)
 
 [node name="Theo" parent="." instance=ExtResource("2_a8a6e")]
-z_index = 1
-y_sort_enabled = true
 position = Vector2(957, 497)
 
 [node name="MousePointLight2D" type="PointLight2D" parent="."]

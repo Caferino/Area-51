@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://tr0m4o6ekavs"]
+
+[ext_resource type="Texture2D" uid="uid://gj58o56so044" path="res://Labs/Scenes/Farming Room/FenceHorizontal.png" id="1_18dcs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvqk1"]
+size = Vector2(112, 8.75)
+
+[node name="FenceHorizontal" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
+
+[node name="FenceSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 7)
+texture = ExtResource("1_18dcs")
+offset = Vector2(0, -7)
+
+[node name="FenceBody" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="FenceCollisionShape" type="CollisionShape2D" parent="FenceBody"]
+position = Vector2(0, 11.375)
+shape = SubResource("RectangleShape2D_kvqk1")

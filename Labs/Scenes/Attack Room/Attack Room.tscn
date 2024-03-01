@@ -1,9 +1,161 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq6nj3buvscyg"]
+[gd_scene load_steps=7 format=3 uid="uid://dq6nj3buvscyg"]
 
-[ext_resource type="PackedScene" uid="uid://6dqjcksjsker" path="res://Labs/Entities/Character-Theo/2DTheo.tscn" id="1_kb4kr"]
-[ext_resource type="PackedScene" uid="uid://ki1y0lcqcpwq" path="res://Labs/Scenes/Attack Room/Bat.tscn" id="2_6xmcn"]
+[ext_resource type="Script" path="res://Labs/Scenes/Attack Room/Attack Room.gd" id="1_ljmdg"]
+[ext_resource type="PackedScene" uid="uid://ywdwc8rryrt" path="res://Labs/Entities/Character-Theo/Theo.tscn" id="2_bj40b"]
+[ext_resource type="PackedScene" uid="uid://ui6le12cycb8" path="res://Labs/Scenes/Farming Room/FenceVertical.tscn" id="3_ndsrj"]
+[ext_resource type="PackedScene" uid="uid://tr0m4o6ekavs" path="res://Labs/Scenes/Farming Room/FenceHorizontal.tscn" id="4_2ge51"]
+[ext_resource type="PackedScene" uid="uid://6e48hltp552g" path="res://Labs/Scenes/Attack Room/CaveBat.tscn" id="5_ag3o8"]
+
+[sub_resource type="Curve2D" id="Curve2D_enm6u"]
+_data = {
+"points": PackedVector2Array(-66.4308, 16.8179, 66.4308, -16.8179, 513, 254, 0, 0, 0, 0, 735, 267, 0, 0, 0, 0, 1096, 250, -40.0452, -48.0542, 40.0452, 48.0542, 1229, 280, 0, 0, 0, 0, 1222, 487, 0, 0, 0, 0, 1154, 577, 0, 0, 0, 0, 1046, 593, 26.6968, -1.33484, -26.6968, 1.33484, 864, 613, 0, 0, 0, 0, 603, 605, 0, 0, 0, 0, 436, 600, -31.9541, 49.6129, 31.9541, -49.6129, 348, 482, -13.4543, 25.2269, 13.4543, -25.2269, 332, 414, 0, 0, 0, 0, 514, 254, 0, 0, 0, 0, 513, 254)
+}
+point_count = 14
 
 [node name="AttackRoom" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ljmdg")
+
+[node name="Fences" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Outter" type="Node2D" parent="Fences"]
+y_sort_enabled = true
+
+[node name="Sides" type="Node2D" parent="Fences/Outter"]
+y_sort_enabled = true
+
+[node name="Left" type="Node2D" parent="Fences/Outter/Sides"]
+y_sort_enabled = true
+
+[node name="FenceVertical3" parent="Fences/Outter/Sides/Left" instance=ExtResource("3_ndsrj")]
+position = Vector2(225, 605)
+
+[node name="FenceVertical4" parent="Fences/Outter/Sides/Left" instance=ExtResource("3_ndsrj")]
+position = Vector2(225, 509)
+
+[node name="FenceVertical5" parent="Fences/Outter/Sides/Left" instance=ExtResource("3_ndsrj")]
+position = Vector2(225, 413)
+
+[node name="FenceVertical6" parent="Fences/Outter/Sides/Left" instance=ExtResource("3_ndsrj")]
+position = Vector2(225, 317)
+
+[node name="FenceVertical7" parent="Fences/Outter/Sides/Left" instance=ExtResource("3_ndsrj")]
+position = Vector2(225, 221)
+
+[node name="Right" type="Node2D" parent="Fences/Outter/Sides"]
+y_sort_enabled = true
+
+[node name="FenceVertical8" parent="Fences/Outter/Sides/Right" instance=ExtResource("3_ndsrj")]
+position = Vector2(1297, 605)
+
+[node name="FenceVertical9" parent="Fences/Outter/Sides/Right" instance=ExtResource("3_ndsrj")]
+position = Vector2(1297, 509)
+
+[node name="FenceVertical10" parent="Fences/Outter/Sides/Right" instance=ExtResource("3_ndsrj")]
+position = Vector2(1297, 413)
+
+[node name="FenceVertical11" parent="Fences/Outter/Sides/Right" instance=ExtResource("3_ndsrj")]
+position = Vector2(1297, 317)
+
+[node name="FenceVertical12" parent="Fences/Outter/Sides/Right" instance=ExtResource("3_ndsrj")]
+position = Vector2(1297, 221)
+
+[node name="Top" type="Node2D" parent="Fences/Outter/Sides"]
+y_sort_enabled = true
+
+[node name="FenceHorizontal3" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(273, 173)
+
+[node name="FenceHorizontal4" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(369, 173)
+
+[node name="FenceHorizontal5" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(465, 173)
+
+[node name="FenceHorizontal6" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(561, 173)
+
+[node name="FenceHorizontal7" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(657, 173)
+
+[node name="FenceHorizontal8" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(753, 173)
+
+[node name="FenceHorizontal9" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(849, 173)
+
+[node name="FenceHorizontal10" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(945, 173)
+
+[node name="FenceHorizontal11" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(1041, 173)
+
+[node name="FenceHorizontal12" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(1137, 173)
+
+[node name="FenceHorizontal13" parent="Fences/Outter/Sides/Top" instance=ExtResource("4_2ge51")]
+position = Vector2(1233, 173)
+
+[node name="Bottom" type="Node2D" parent="Fences/Outter/Sides"]
+y_sort_enabled = true
+
+[node name="FenceHorizontal14" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(273, 653)
+
+[node name="FenceHorizontal15" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(369, 653)
+
+[node name="FenceHorizontal16" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(465, 653)
+
+[node name="FenceHorizontal17" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(561, 653)
+
+[node name="FenceHorizontal18" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(657, 653)
+
+[node name="FenceHorizontal19" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(753, 653)
+
+[node name="FenceHorizontal20" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(849, 653)
+
+[node name="FenceHorizontal21" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(945, 653)
+
+[node name="FenceHorizontal22" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(1041, 653)
+
+[node name="FenceHorizontal23" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(1137, 653)
+
+[node name="FenceHorizontal24" parent="Fences/Outter/Sides/Bottom" instance=ExtResource("4_2ge51")]
+position = Vector2(1233, 653)
+
+[node name="Inner" type="Node2D" parent="Fences"]
+y_sort_enabled = true
+
+[node name="FenceVertical" parent="Fences/Inner" instance=ExtResource("3_ndsrj")]
+position = Vector2(762, 476)
+
+[node name="FenceVertical2" parent="Fences/Inner" instance=ExtResource("3_ndsrj")]
+position = Vector2(502, 478)
+
+[node name="FenceVertical3" parent="Fences/Inner" instance=ExtResource("3_ndsrj")]
+position = Vector2(1116, 498)
+
+[node name="FenceHorizontal" parent="Fences/Inner" instance=ExtResource("4_2ge51")]
+position = Vector2(714, 524)
+
+[node name="FenceHorizontal2" parent="Fences/Inner" instance=ExtResource("4_2ge51")]
+position = Vector2(810, 428)
+
+[node name="FenceHorizontal3" parent="Fences/Inner" instance=ExtResource("4_2ge51")]
+position = Vector2(1164, 546)
+
+[node name="Theo" parent="." instance=ExtResource("2_bj40b")]
+position = Vector2(576, 331)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
@@ -13,8 +165,22 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(48.12, 26.96)
 
-[node name="Theo" parent="." instance=ExtResource("1_kb4kr")]
-position = Vector2(852, 476)
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-13, -3)
+curve = SubResource("Curve2D_enm6u")
 
-[node name="Bat" parent="." instance=ExtResource("2_6xmcn")]
-position = Vector2(760, 478)
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(513, 254)
+rotation = -0.247955
+
+[node name="CaveBat" parent="." instance=ExtResource("5_ag3o8")]
+position = Vector2(620, 442)
+
+[node name="CaveBat2" parent="." instance=ExtResource("5_ag3o8")]
+position = Vector2(429, 398)
+
+[node name="CaveBat3" parent="." instance=ExtResource("5_ag3o8")]
+position = Vector2(738, 343)
+
+[node name="CaveBat4" parent="." instance=ExtResource("5_ag3o8")]
+position = Vector2(821, 494)

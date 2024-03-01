@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://ki1y0lcqcpwq"]
+[gd_scene load_steps=11 format=3 uid="uid://ki1y0lcqcpwq"]
 
-[ext_resource type="Texture2D" uid="uid://dtv2m38cx778c" path="res://Labs/Scenes/Attack Room/bat_sprites.png" id="1_0634n"]
 [ext_resource type="Script" path="res://Labs/Scenes/Attack Room/Bat.gd" id="1_ehka5"]
 [ext_resource type="Shader" uid="uid://dwupimh85cuua" path="res://Labs/Scenes/Attack Room/hit_flash.tres" id="1_sxo6t"]
-[ext_resource type="AnimationLibrary" uid="uid://bxxseolssol2e" path="res://animations/Enemies/enemies.res" id="4_56guk"]
+[ext_resource type="SpriteFrames" uid="uid://chu623tm2sfh0" path="res://animations/Enemies/Bat.tres" id="3_2mlvl"]
+[ext_resource type="AnimationLibrary" uid="uid://cnrbjdq41n4gl" path="res://animations/VFX/effects.res" id="4_r7ak5"]
+[ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/ContextMap.tscn" id="5_utlfu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g6dw4"]
 
@@ -12,173 +13,6 @@ resource_local_to_scene = true
 shader = ExtResource("1_sxo6t")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(0.917647, 0, 0, 0.490196)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nc2mm"]
-atlas = ExtResource("1_0634n")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fogrk"]
-atlas = ExtResource("1_0634n")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oc1ym"]
-atlas = ExtResource("1_0634n")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hh681"]
-atlas = ExtResource("1_0634n")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r7pmr"]
-atlas = ExtResource("1_0634n")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w0dr2"]
-atlas = ExtResource("1_0634n")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxmii"]
-atlas = ExtResource("1_0634n")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t6l73"]
-atlas = ExtResource("1_0634n")
-region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mjeic"]
-atlas = ExtResource("1_0634n")
-region = Rect2(64, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_laef8"]
-atlas = ExtResource("1_0634n")
-region = Rect2(96, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dw4lc"]
-atlas = ExtResource("1_0634n")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s68y6"]
-atlas = ExtResource("1_0634n")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f5cya"]
-atlas = ExtResource("1_0634n")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2g04g"]
-atlas = ExtResource("1_0634n")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jk5lj"]
-atlas = ExtResource("1_0634n")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_prbgq"]
-atlas = ExtResource("1_0634n")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_t15pp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nc2mm")
-}],
-"loop": true,
-"name": &"dead_down",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fogrk")
-}],
-"loop": true,
-"name": &"dead_left",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oc1ym")
-}],
-"loop": true,
-"name": &"dead_right",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hh681")
-}],
-"loop": true,
-"name": &"dead_up",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_r7pmr")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_w0dr2")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_kxmii")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_w0dr2")
-}],
-"loop": true,
-"name": &"fly_down",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_t6l73")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_mjeic")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_laef8")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_mjeic")
-}],
-"loop": true,
-"name": &"fly_left",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_dw4lc")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_s68y6")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_f5cya")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_s68y6")
-}],
-"loop": true,
-"name": &"fly_right",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_2g04g")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_jk5lj")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_prbgq")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_jk5lj")
-}],
-"loop": true,
-"name": &"fly_up",
-"speed": 1.0
-}]
 
 [sub_resource type="Animation" id="Animation_e45cw"]
 length = 0.001
@@ -211,17 +45,22 @@ shape = SubResource("CircleShape2D_g6dw4")
 
 [node name="BatSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_yuj24")
-sprite_frames = SubResource("SpriteFrames_t15pp")
+sprite_frames = ExtResource("3_2mlvl")
 animation = &"fly_up"
 frame_progress = 0.807745
 
-[node name="EffectsAnimator" type="AnimationPlayer" parent="BatSprite"]
+[node name="EffectsAnimator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../BatSprite")
 libraries = {
 "": SubResource("AnimationLibrary_t611g"),
-"effects": ExtResource("4_56guk")
+"effects": ExtResource("4_r7ak5")
 }
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_77rda")
+
+[node name="ContextMap" parent="." instance=ExtResource("5_utlfu")]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

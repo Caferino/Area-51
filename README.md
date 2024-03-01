@@ -72,7 +72,15 @@ The goal of this project is to practice common game development processes for cu
 
 **E008:** Basic Pathfinding
 
-![E008](.image/README/E008.gif "Particles")
+![E008](.image/README/E008.gif "Basic Pathfinding")
+
+---
+
+**E009:** Basic Context-Map and Steering AI
+
+![E009-1](.image/README/E009-1.gif "Context-Map and Steering AI") ![E009-2](.image/README/E009-2.gif "Context-Map and Steering AI")
+
+I'm Batman now
 
 ---
 
@@ -103,7 +111,6 @@ E###: Advanced Shaders / ML / Binary, Priority Trees / Simulations / VFX / 2D, 3
 E###: Create own tools / Create own plugins and addons / Create own engine
 
 [TBA]
-
 
 ---
 
