@@ -81,7 +81,7 @@ func set_danger():
 	var space_state = get_world_2d().direct_space_state
 	for i in num_rays:
 		var query = PhysicsRayQueryParameters2D.create(position, 
-			position + ray_directions[i].rotated(rotation) * look_ahead, 12353)
+			position + ray_directions[i].rotated(rotation) * look_ahead, 12289)
 		var result = space_state.intersect_ray(query)
 		danger[i] = 1.0 if result else 0.0
 

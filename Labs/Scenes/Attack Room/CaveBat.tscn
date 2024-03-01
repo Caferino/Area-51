@@ -167,6 +167,8 @@ libraries = {
 }
 
 [node name="ContextMap" parent="." instance=ExtResource("6_6awp5")]
+light_mask = 8257
+visibility_layer = 8257
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
