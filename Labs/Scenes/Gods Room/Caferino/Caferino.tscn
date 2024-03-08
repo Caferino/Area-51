@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dbk7sg5fqqhnt"]
+
+[node name="Caferino" type="CharacterBody2D"]
+visible = false

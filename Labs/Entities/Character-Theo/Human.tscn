@@ -1,18 +1,17 @@
-[gd_scene load_steps=87 format=3 uid="uid://ywdwc8rryrt"]
+[gd_scene load_steps=86 format=3 uid="uid://bpbqkks0plgi"]
 
-[ext_resource type="Script" path="res://Labs/Entities/Character-Theo/2DTheo.gd" id="1_p2swg"]
-[ext_resource type="PackedScene" uid="uid://cqypn2n1j0p6t" path="res://Labs/Scenes/Attack Room/weapon.tscn" id="2_ua78c"]
-[ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png" id="3_6lhpy"]
-[ext_resource type="AnimationLibrary" uid="uid://cgqxac80b6euh" path="res://animations/2D Updated/2D Human Body Movement.res" id="4_q1kkm"]
-[ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="5_20vns"]
-[ext_resource type="Texture2D" uid="uid://d2cvvynbgoxt3" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_down.png" id="6_4pcna"]
-[ext_resource type="Texture2D" uid="uid://bi2qchnv62n1q" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_left.png" id="7_korct"]
-[ext_resource type="Texture2D" uid="uid://w0a5cd2g4qdn" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_right.png" id="8_esddc"]
-[ext_resource type="Texture2D" uid="uid://bc6p8e8hm1mus" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_up.png" id="9_dvbv0"]
-[ext_resource type="AnimationLibrary" uid="uid://e1l506hb0dsw" path="res://animations/2D Updated/2D Human Head Movement.res" id="10_otho6"]
-[ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="11_nyi4c"]
-[ext_resource type="AnimationLibrary" uid="uid://c7qhbii8g763v" path="res://animations/2D Updated/2D Hat Movement.res" id="12_a0yk6"]
-[ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="13_icx8m"]
+[ext_resource type="PackedScene" uid="uid://cqypn2n1j0p6t" path="res://Labs/Scenes/Attack Room/weapon.tscn" id="2_ywj5n"]
+[ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png" id="3_wylio"]
+[ext_resource type="AnimationLibrary" uid="uid://cgqxac80b6euh" path="res://animations/2D Updated/2D Human Body Movement.res" id="4_je47j"]
+[ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="5_succy"]
+[ext_resource type="Texture2D" uid="uid://d2cvvynbgoxt3" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_down.png" id="6_n58g4"]
+[ext_resource type="Texture2D" uid="uid://bi2qchnv62n1q" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_left.png" id="7_w7n5v"]
+[ext_resource type="Texture2D" uid="uid://w0a5cd2g4qdn" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_right.png" id="8_xkamb"]
+[ext_resource type="Texture2D" uid="uid://bc6p8e8hm1mus" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_up.png" id="9_5213b"]
+[ext_resource type="AnimationLibrary" uid="uid://e1l506hb0dsw" path="res://animations/2D Updated/2D Human Head Movement.res" id="10_qkjmc"]
+[ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="11_30xyc"]
+[ext_resource type="AnimationLibrary" uid="uid://c7qhbii8g763v" path="res://animations/2D Updated/2D Hat Movement.res" id="12_pwhlb"]
+[ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="13_be1rb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt55q"]
 size = Vector2(28, 7)
@@ -101,55 +100,55 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 size = Vector2(28, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0efv"]
-atlas = ExtResource("6_4pcna")
+atlas = ExtResource("6_n58g4")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqi6l"]
-atlas = ExtResource("6_4pcna")
+atlas = ExtResource("6_n58g4")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sm0rw"]
-atlas = ExtResource("6_4pcna")
+atlas = ExtResource("6_n58g4")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yabnf"]
-atlas = ExtResource("6_4pcna")
+atlas = ExtResource("6_n58g4")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knng1"]
-atlas = ExtResource("7_korct")
+atlas = ExtResource("7_w7n5v")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ppgrm"]
-atlas = ExtResource("7_korct")
+atlas = ExtResource("7_w7n5v")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_an054"]
-atlas = ExtResource("7_korct")
+atlas = ExtResource("7_w7n5v")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ofww"]
-atlas = ExtResource("7_korct")
+atlas = ExtResource("7_w7n5v")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynomm"]
-atlas = ExtResource("8_esddc")
+atlas = ExtResource("8_xkamb")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yin0p"]
-atlas = ExtResource("8_esddc")
+atlas = ExtResource("8_xkamb")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcrxi"]
-atlas = ExtResource("8_esddc")
+atlas = ExtResource("8_xkamb")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w56mx"]
-atlas = ExtResource("8_esddc")
+atlas = ExtResource("8_xkamb")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14g41"]
-atlas = ExtResource("9_dvbv0")
+atlas = ExtResource("9_5213b")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2qvm0"]
@@ -319,19 +318,19 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 radius = 11.0003
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nuvri"]
-atlas = ExtResource("11_nyi4c")
+atlas = ExtResource("11_30xyc")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fsv1d"]
-atlas = ExtResource("11_nyi4c")
+atlas = ExtResource("11_30xyc")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xc8wd"]
-atlas = ExtResource("11_nyi4c")
+atlas = ExtResource("11_30xyc")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xl7lj"]
-atlas = ExtResource("11_nyi4c")
+atlas = ExtResource("11_30xyc")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aj8lf"]
@@ -441,12 +440,11 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwl8b"]
 
-[node name="Theo" type="CharacterBody2D"]
+[node name="Human" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4096
 collision_mask = 4294959103
-script = ExtResource("1_p2swg")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.5)
@@ -476,7 +474,7 @@ debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 [node name="WeaponOrigin" type="Marker2D" parent="."]
 y_sort_enabled = true
 
-[node name="Weapon" parent="WeaponOrigin" instance=ExtResource("2_ua78c")]
+[node name="Weapon" parent="WeaponOrigin" instance=ExtResource("2_ywj5n")]
 
 [node name="BodyOrigin" type="Marker2D" parent="."]
 y_sort_enabled = true
@@ -487,7 +485,7 @@ y_sort_enabled = true
 [node name="BodySprite" type="Sprite2D" parent="BodyOrigin/Body"]
 y_sort_enabled = true
 position = Vector2(0, 9)
-texture = ExtResource("3_6lhpy")
+texture = ExtResource("3_wylio")
 offset = Vector2(0, -9)
 hframes = 4
 vframes = 21
@@ -495,7 +493,7 @@ frame = 2
 
 [node name="BodyAnimatorTree" type="AnimationTree" parent="BodyOrigin/Body/BodySprite"]
 libraries = {
-"": ExtResource("4_q1kkm")
+"": ExtResource("4_je47j")
 }
 tree_root = SubResource("AnimationNodeBlendTree_odx2k")
 anim_player = NodePath("../BodyAnimator")
@@ -505,7 +503,7 @@ parameters/TimeScale/scale = 1.0
 
 [node name="BodyAnimator" type="AnimationPlayer" parent="BodyOrigin/Body/BodySprite"]
 libraries = {
-"": ExtResource("4_q1kkm")
+"": ExtResource("4_je47j")
 }
 
 [node name="BodyShadow" type="Sprite2D" parent="BodyOrigin/Body/BodySprite"]
@@ -515,7 +513,7 @@ texture_filter = 2
 material = SubResource("CanvasItemMaterial_kl47q")
 position = Vector2(0, 2)
 scale = Vector2(0.380952, 0.307692)
-texture = ExtResource("5_20vns")
+texture = ExtResource("5_succy")
 
 [node name="BodyArea" type="Area2D" parent="BodyOrigin/Body"]
 collision_layer = 4096
@@ -539,7 +537,7 @@ animation = &"down"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="HeadOrigin/Head/HeadSprite"]
 libraries = {
-"2D Human Head Movement": ExtResource("10_otho6")
+"2D Human Head Movement": ExtResource("10_qkjmc")
 }
 tree_root = SubResource("AnimationNodeBlendTree_k8aew")
 anim_player = NodePath("../HeadAnimator")
@@ -550,7 +548,7 @@ parameters/TimeScale/scale = 1.0
 
 [node name="HeadAnimator" type="AnimationPlayer" parent="HeadOrigin/Head/HeadSprite"]
 libraries = {
-"2D Human Head Movement": ExtResource("10_otho6")
+"2D Human Head Movement": ExtResource("10_qkjmc")
 }
 
 [node name="Area" type="Area2D" parent="HeadOrigin/Head/HeadSprite"]
@@ -578,7 +576,7 @@ animation = &"left"
 
 [node name="HatAnimatorTree" type="AnimationTree" parent="HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
 libraries = {
-"": ExtResource("12_a0yk6")
+"": ExtResource("12_pwhlb")
 }
 tree_root = SubResource("AnimationNodeBlendTree_wggd8")
 anim_player = NodePath("../HatAnimator")
@@ -588,7 +586,7 @@ parameters/TimeScale/scale = 1.0
 
 [node name="HatAnimator" type="AnimationPlayer" parent="HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
 libraries = {
-"": ExtResource("12_a0yk6")
+"": ExtResource("12_pwhlb")
 }
 
 [node name="HatShadow" type="Sprite2D" parent="HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
@@ -597,7 +595,7 @@ z_index = -1
 texture_filter = 2
 position = Vector2(0, 35.14)
 scale = Vector2(0.452381, 0.384615)
-texture = ExtResource("5_20vns")
+texture = ExtResource("5_succy")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="HeadOrigin/Head/HeadSprite/Hat/HatObject"]
 position = Vector2(0, 6)
@@ -610,7 +608,7 @@ z_index = -1
 texture_filter = 2
 position = Vector2(0, 29)
 scale = Vector2(0.285714, 0.331417)
-texture = ExtResource("5_20vns")
+texture = ExtResource("5_succy")
 
 [node name="LanternOrigin" type="Marker2D" parent="."]
 
@@ -619,7 +617,7 @@ visible = false
 
 [node name="CameraOrigin" type="Marker2D" parent="."]
 
-[node name="Camera Base" parent="CameraOrigin" instance=ExtResource("13_icx8m")]
+[node name="Camera Base" parent="CameraOrigin" instance=ExtResource("13_be1rb")]
 
 [connection signal="area_entered" from="FeetOrigin/Feet/LeftFoot" to="." method="_on_left_foot_area_entered"]
 [connection signal="area_exited" from="FeetOrigin/Feet/LeftFoot" to="." method="_on_left_foot_area_exited"]

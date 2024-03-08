@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bjobvrmp2q17j"]
+
+[node name="Bizck" type="CharacterBody2D"]
+visible = false
