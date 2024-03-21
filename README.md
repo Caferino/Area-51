@@ -90,7 +90,7 @@ I'm Batman now
 
 Got busy all month editing and publishing my newest book: "Alcarodian Tales, Evergreen", Spanish edition. The Kindle and English editions will come out soon too, free for 5 days every 3 months in Amazon, might get busy again. Could only work on a few things meanwhile, like tweaking Lucas' pathfinding, but it needs more work, he flickers badly when touching the edge of his navigation area. There are plenty of fixes, but I am deciding which one could be best, the most "realistic" one. Same for the project's structure, I know it'd be exageratted for a 2D game like this, but I want to learn what it would be like to manage such a project, those that aim to simulate real life as close as possible.
 
-For the menu, I plan to learn how to animate it either in the engine or outside, whatever is best, and try to adapt it with a fictional company intro and this song I liked: https://uppbeat.io/track/all-good-folks/quantum-fire see how it goes.
+For the menu, I plan to learn how to animate it either in the engine or outside, whatever is best, and try to adapt it with a fictional company intro and this song I liked and kind of captures the game I'd love to make: https://uppbeat.io/track/all-good-folks/quantum-fire see how it goes.
 
 ---
 
