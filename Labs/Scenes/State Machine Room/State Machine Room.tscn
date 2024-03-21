@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs17f5axytqyj"]
+
+[ext_resource type="PackedScene" uid="uid://ywdwc8rryrt" path="res://Labs/Entities/Character-Theo/Theo.tscn" id="1_8c2up"]
+[ext_resource type="PackedScene" uid="uid://mrd6gxhdcf0o" path="res://Labs/Assets/X. Resources/Animals/Lucas.tscn" id="2_tq651"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3wdwv"]
+vertices = PackedVector2Array(1951, 1087, -25, 1087, -19, -20, 1927, -49)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-35, 1097, 1961, 1097, 1937, -60, -29, -30)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="StateMachineRoom" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Theo" parent="." instance=ExtResource("1_8c2up")]
+position = Vector2(595, 244)
+
+[node name="Lucas" parent="." node_paths=PackedStringArray("target_character") instance=ExtResource("2_tq651")]
+position = Vector2(744, 279)
+target_character = NodePath("../Theo")
+
+[node name="NavigationRegion" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_3wdwv")

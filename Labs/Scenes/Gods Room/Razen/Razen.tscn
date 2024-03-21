@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bdpjl73xcbjdj"]
+
+[node name="Razen" type="CharacterBody2D"]
+visible = false

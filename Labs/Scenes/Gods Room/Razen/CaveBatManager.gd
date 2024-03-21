@@ -1,4 +1,12 @@
-class_name CaveBat extends CharacterBody2D
+extends Node2D
+
+# class_name CaveBat extends CharacterBody2D
+# TODO - Gotta convert everything to "third person", that means
+# receive CharacterBody2D as parameters, to receive the CaveBat
+
+
+# TODO - All variables should be on Razen, right? As a masive JSON
+# How to make him lighter in the future? Do not think too far ahead too
 
 # DEFAULTS - AVERAGES OF WHAT IS REALISTIC FOR THIS ENTITY'S SIMULATION
 # ALL THESE LOC COULD BE IN A MONSTER MANAGER FILE ALONE, EXTENDS COMPONENTS
