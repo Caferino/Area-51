@@ -441,7 +441,7 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwl8b"]
 
-[node name="Theo" type="CharacterBody2D"]
+[node name="Theo" type="CharacterBody2D" groups=["Player", "Protagonist"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4096
@@ -533,7 +533,6 @@ y_sort_enabled = true
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="HeadOrigin/Head"]
 y_sort_enabled = true
-position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2qvm0")
 animation = &"down"
 

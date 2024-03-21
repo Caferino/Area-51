@@ -84,6 +84,14 @@ I'm Batman now
 
 ---
 
+**E010:** Smarter Lucas + Main Menu Mockup + Project Structure
+
+![E010](.image/README/E010-1.gif "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](.image/README/E010-2.gif "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-3.png "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-4.png "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](.image/README/E010-5.png "Smarter Lucas + Main Menu Mockup + Project Structure")
+
+Got busy all month editing and publishing my newest book: "Alcarodian Tales, Evergreen", Spanish edition. The Kindle and English editions will come out soon too, free for 5 days every 3 months, might get busy again. Could only work on a few things meanwhile, tweaking Lucas' pathfinding, it needs more work, he flickers badly when touching the edge of his navigation area. There are plenty of fixes, but I am deciding which method could be best, the most "realistic" one. Same for the project's structure, I know it's exageratted for a 2D game like this, but I want to learn what it would be like to manage such a project, those that aim to simulate real life as close as possible.
+
+---
+
 E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
 
 [TBA]

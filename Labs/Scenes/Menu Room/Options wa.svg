@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1845.8346"
+   height="287.9169"
+   viewBox="0 0 1845.8346 287.9169"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="Options wa.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.1767767"
+     inkscape:cx="1080.4592"
+     inkscape:cy="531.7443"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="1920"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="587.71118,-878.80501"
+       orientation="0,-1"
+       id="guide52592" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter47526"
+       inkscape:label="filter0">
+      <feBlend
+         mode="normal"
+         id="feBlend47528"
+         in2="SourceGraphic" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-1008.2277,-936.04157)">
+    <text
+       xml:space="preserve"
+       style="font-size:426.667px;line-height:1.25;font-family:sans-serif;letter-spacing:30px;word-spacing:0px"
+       x="1942.395"
+       y="1219.3751"
+       id="text13720"><tspan
+         sodipodi:role="line"
+         x="1957.395"
+         y="1219.3751"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:426.667px;font-family:'MOG rhythm';-inkscape-font-specification:'MOG rhythm';text-align:center;text-anchor:middle"
+         id="tspan37471">OPTIONS</tspan></text>
+    <path
+       style="fill:#000000"
+       id="path51434"
+       d="" />
+    <path
+       style="fill:#000000;stroke-width:2.11801"
+       d=""
+       id="path51748" />
+  </g>
+</svg>
