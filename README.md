@@ -2,6 +2,8 @@
 
 ## Using Git LFS
 
+***Skippable: Currently it's only needed for a single 4K skybox image that's over 40MB, but might need it for heavier assets later.***
+
 This project uses Git LFS (Large File Storage) to handle large files. Before cloning or working with the repository, make sure you have Git LFS installed on your machine.
 
 ### Installing Git LFS
