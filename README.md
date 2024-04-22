@@ -90,7 +90,7 @@ I'm Batman now
 
 ![E010](.image/README/E010-1.gif "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](.image/README/E010-2.gif "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-3.png "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-4.png "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](.image/README/E010-5.png "Smarter Lucas + Main Menu Mockup + Project Structure")
 
-Got busy all month editing and publishing my newest book: "Alcarodian Tales, Evergreen", Spanish edition. The Kindle and English editions will come out soon too, free for 5 days every 3 months in Amazon, might get busy again. Could only work on a few things meanwhile, like tweaking Lucas' pathfinding, but it needs more work, he flickers badly when touching the edge of his navigation area. There are plenty of fixes, but I am deciding which one could be best, the most "realistic" one. Same for the project's structure, I know it'd be exageratted for a 2D game like this, but I want to learn what it would be like to manage such a project, those that aim to simulate real life as close as possible. Also, I made an idle spritesheet of the pug, there were none online, in case anyone wants it. Both the png and GIMP's xcf are at ***Labs/Assets/X. Resources/Animals/lucas idle sheet final***
+Got busy all month editing and publishing my newest book: "Tales of Alcarodia, Evergreen", Spanish edition. The Kindle and English editions will come out soon too, free for 5 days every 3 months in Amazon, might get busy again. Could only work on a few things meanwhile, like tweaking Lucas' pathfinding, but it needs more work, he flickers badly when touching the edge of his navigation area. There are plenty of fixes, but I am deciding which one could be best, the most "realistic" one. Same for the project's structure, I know it'd be exageratted for a 2D game like this, but I want to learn what it would be like to manage such a project, those that aim to simulate real life as close as possible. Also, I made an idle spritesheet of the pug, there were none online, in case anyone wants it. Both the png and GIMP's xcf are at ***Labs/Assets/X. Resources/Animals/lucas idle sheet final***
 
 For the menu, I plan to learn how to animate it either in the engine or outside, with a big broken planet and clock behind the title and a massive sword tearing them apart in pieces, raining black leaves or particles slowly in the background; for now it's as bare-naked as it can get. I wanna try to time it well after a slow fictional company intro and the starting high notes of this song I liked, which kind of captures the ambience I'd love to make: https://uppbeat.io/track/all-good-folks/quantum-fire see how it goes.
 
@@ -101,6 +101,12 @@ For the menu, I plan to learn how to animate it either in the engine or outside,
 ![E011-1](.image/README/E011-1.png "TileSets and TileMaps") ![E011-2](.image/README/E011-2.png "TileSets and TileMaps")![E011-3](.image/README/E011-3.png "TileSets and TileMaps")![E011-4](.image/README/E011-4.png "TileSets and TileMaps")![E011-5](.image/README/E011-5.png "TileSets and TileMaps")
 
 This was easily the most insane "experiment" (torture) of them all. I can see now why they say art asset generation takes the longest. Even with already-existing assets from a game I have high regards to, Graal Online Classic, it took me almost the entire month to complete just enough for one level or tilemap. Organized and separated hundreds of assets with cool 2D pixel art (from all 4 games, Classic - Medieval Fantasy, Era - Grand Theft Auto on the phone, OlWest - Old West, Zone - Futuristic) that I'd obviously never publish unless I hired 2D artists to redraw them all, but that I plan to use to learn for now nonetheless. If it ever came down to it, it'd be poetic to do what they did with Zelda a Link to the Past; I'd be creating my own Graal, but with blackjack and hookers.
+
+At least did all this while working on the book on the side, which made it enjoyable. Check them out if you like high fantasy!
+"Tales of Alcarodia, Evergreen" - https://www.amazon.com/dp/B0CW1LX5W1
+"Cuentos Alcarodianos, Evergreen" - https://www.amazon.com.mx/dp/B0CZ3X8BHX
+
+I always put the digital versions (eBooks) for free 5 days every 3 months~
 
 ---
 
