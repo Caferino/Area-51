@@ -96,6 +96,20 @@ For the menu, I plan to learn how to animate it either in the engine or outside,
 
 ---
 
+**E011:** TileSets and TileMaps
+
+![E011-1](.image/README/E011-1.png "TileSets and TileMaps") ![E011-2](.image/README/E011-2.png "TileSets and TileMaps")![E011-3](.image/README/E011-3.png "TileSets and TileMaps")![E011-4](.image/README/E011-4.png "TileSets and TileMaps")![E011-5](.image/README/E011-5.png "TileSets and TileMaps")
+
+This was easily the most insane "experiment" (torture) of them all. I can see now why they say art asset generation takes the longest. Even with already-existing assets from a game I have high regards to, Graal Online Classic, it took me almost the entire month to complete just enough for one level or tilemap. Organized and separated hundreds of assets with cool 2D pixel art (from all 4 games, Classic - Medieval Fantasy, Era - Grand Theft Auto on the phone, OlWest - Old West, Zone - Futuristic) that I'd obviously never publish unless I hired 2D artists to redraw them all, but that I plan to use to learn for now nonetheless. If it ever came down to it, it'd be poetic to do what they did with Zelda a Link to the Past; I'd be creating my own Graal, but with blackjack and hookers.
+
+---
+
+**E012:** Collectables
+
+![E012](.image/README/E012.gif "Collectables") 
+
+---
+
 E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
 
 [TBA]

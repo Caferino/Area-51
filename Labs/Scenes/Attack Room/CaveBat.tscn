@@ -15,38 +15,6 @@ shader = ExtResource("2_von14")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(0.917647, 0, 0, 0.490196)
 
-[sub_resource type="Animation" id="Animation_2dgkm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CaveBatSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"fly_down"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CaveBatSprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnx1m"]
-_data = {
-"RESET": SubResource("Animation_2dgkm")
-}
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ko8u4"]
 animation = &"cave_bat/dead_down"
 
@@ -119,6 +87,38 @@ nodes/TimeScale/position = Vector2(400, 100)
 nodes/output/position = Vector2(640, 140)
 node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 
+[sub_resource type="Animation" id="Animation_2dgkm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CaveBatSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly_down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CaveBatSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnx1m"]
+_data = {
+"RESET": SubResource("Animation_2dgkm")
+}
+
 [sub_resource type="Animation" id="Animation_weqj6"]
 length = 0.001
 
@@ -144,10 +144,6 @@ sprite_frames = ExtResource("2_h7mxl")
 animation = &"fly_down"
 
 [node name="CaveBatAnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_wnx1m"),
-"cave_bat": ExtResource("4_otg0b")
-}
 tree_root = SubResource("AnimationNodeBlendTree_cbxkp")
 anim_player = NodePath("../CaveBatAnimator")
 parameters/Movement/Dead/blend_position = Vector2(0, 0)

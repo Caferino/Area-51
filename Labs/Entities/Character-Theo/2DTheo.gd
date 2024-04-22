@@ -236,3 +236,8 @@ func _on_body_animator_animation_finished(_anim_name):
 func _on_body_area_body_entered(body):
 	if body.is_in_group("Enemies"):
 		print("Ouch!!!")
+
+
+func _on_body_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Resources"):
+		area.pick_up_item()

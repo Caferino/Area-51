@@ -9,10 +9,10 @@ var moving = true
 func randomize_wander():
 	moving = false
 	move_speed = 0
-	await get_tree().create_timer(randf_range(1, 4)).timeout
+	await get_tree().create_timer(randf_range(2, 5)).timeout
 	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	wander_time = randf_range(1, 5)
-	move_speed = 50.0
+	wander_time = randf_range(3, 6)
+	move_speed = 25.0
 	moving = true
 
 
@@ -35,7 +35,7 @@ func State_Process(delta: float):
 	
 	var direction = player.global_position - enemy.global_position
 	
-	print(direction.length())
+	# print(direction.length())
 	
 	if direction.length() < 200 and player.global_position != get_parent().target_last_position or direction.length() > get_parent().distance_tolerance and player.global_position == get_parent().target_last_position:
 		print("ayy")
