@@ -161,8 +161,9 @@ position = Vector2(576, 331)
 layer = -3
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_top = 1.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 41.0
 scale = Vector2(48.12, 26.96)
 
 [node name="Path2D" type="Path2D" parent="."]

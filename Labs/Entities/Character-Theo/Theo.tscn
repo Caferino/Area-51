@@ -494,9 +494,6 @@ vframes = 21
 frame = 2
 
 [node name="BodyAnimatorTree" type="AnimationTree" parent="BodyOrigin/Body/BodySprite"]
-libraries = {
-"": ExtResource("4_q1kkm")
-}
 tree_root = SubResource("AnimationNodeBlendTree_odx2k")
 anim_player = NodePath("../BodyAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.00101006, 0.704233)
@@ -519,7 +516,7 @@ texture = ExtResource("5_20vns")
 
 [node name="BodyArea" type="Area2D" parent="BodyOrigin/Body"]
 collision_layer = 4096
-collision_mask = 8195
+collision_mask = 9219
 
 [node name="CollisionShape" type="CollisionShape2D" parent="BodyOrigin/Body/BodyArea"]
 shape = SubResource("RectangleShape2D_comda")
@@ -537,9 +534,6 @@ sprite_frames = SubResource("SpriteFrames_2qvm0")
 animation = &"down"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="HeadOrigin/Head/HeadSprite"]
-libraries = {
-"2D Human Head Movement": ExtResource("10_otho6")
-}
 tree_root = SubResource("AnimationNodeBlendTree_k8aew")
 anim_player = NodePath("../HeadAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.0158401, 0.506349)
@@ -576,9 +570,6 @@ sprite_frames = SubResource("SpriteFrames_aj8lf")
 animation = &"left"
 
 [node name="HatAnimatorTree" type="AnimationTree" parent="HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
-libraries = {
-"": ExtResource("12_a0yk6")
-}
 tree_root = SubResource("AnimationNodeBlendTree_wggd8")
 anim_player = NodePath("../HatAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0, 0)
@@ -627,4 +618,5 @@ visible = false
 [connection signal="attacked" from="WeaponOrigin/Weapon" to="." method="_on_weapon_attacked"]
 [connection signal="animation_finished" from="BodyOrigin/Body/BodySprite/BodyAnimator" to="." method="_on_body_animator_animation_finished"]
 [connection signal="animation_started" from="BodyOrigin/Body/BodySprite/BodyAnimator" to="." method="_on_body_animator_animation_started"]
+[connection signal="area_entered" from="BodyOrigin/Body/BodyArea" to="." method="_on_body_area_area_entered"]
 [connection signal="body_entered" from="BodyOrigin/Body/BodyArea" to="." method="_on_body_area_body_entered"]
