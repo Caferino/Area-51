@@ -1,0 +1,175 @@
+[gd_scene load_steps=10 format=3 uid="uid://db5cvq7f7gj18"]
+
+[ext_resource type="Texture2D" uid="uid://3dl4w3c683n6" path="res://Inventory System/Inventory Sprites/main panel.png" id="1_rj3is"]
+[ext_resource type="Texture2D" uid="uid://bqnkqhyk3il6o" path="res://Inventory System/Inventory Sprites/title.png" id="2_07vva"]
+[ext_resource type="Script" path="res://Inventory System/ui/Settings.gd" id="2_gokh0"]
+[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://fonts/Arcadepix Plus.ttf" id="3_k4nin"]
+[ext_resource type="Texture2D" uid="uid://d2whws2un78j" path="res://Inventory System/Inventory Sprites/x_normal.png" id="4_i7fhe"]
+[ext_resource type="Texture2D" uid="uid://y38b807urlvt" path="res://Inventory System/Inventory Sprites/x_pressed.png" id="5_7jok1"]
+[ext_resource type="Texture2D" uid="uid://hl6um8cioqvr" path="res://Inventory System/Inventory Sprites/x_hover.png" id="6_8whtn"]
+[ext_resource type="Texture2D" uid="uid://37kqo58b1ql" path="res://Inventory System/Inventory Sprites/x_disabled.png" id="7_xnii4"]
+[ext_resource type="Texture2D" uid="uid://dp5yi4fl5gcom" path="res://Inventory System/Inventory Sprites/inner_panel.png" id="8_omwoq"]
+
+[node name="Settings" type="NinePatchRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -93.0
+offset_right = 119.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+texture = ExtResource("1_rj3is")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource("2_gokh0")
+scale_slider_path = NodePath("SettingsList/Scale/ScaleSlider")
+fullscreen_check_path = NodePath("SettingsList/Fullscreen/FullscreenCheckBox")
+safe_zone = null
+
+[node name="Title" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = -17.0
+offset_right = 58.0
+offset_bottom = 7.0
+grow_horizontal = 2
+mouse_filter = 1
+texture = ExtResource("2_07vva")
+patch_margin_left = 8
+patch_margin_top = 6
+patch_margin_right = 8
+patch_margin_bottom = 2
+
+[node name="LabelTitle" type="Label" parent="Title"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.37126, 0.298453, 1)
+theme_override_fonts/font = ExtResource("3_k4nin")
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -9.0
+offset_bottom = 9.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_i7fhe")
+texture_pressed = ExtResource("5_7jok1")
+texture_hover = ExtResource("6_8whtn")
+texture_disabled = ExtResource("7_xnii4")
+
+[node name="SettingsList" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 229.0
+offset_bottom = 64.0
+theme_override_constants/separation = 3
+
+[node name="Scale" type="NinePatchRect" parent="SettingsList"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+texture = ExtResource("8_omwoq")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="LabelScale" type="Label" parent="SettingsList/Scale"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_right = 72.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.360574, 0.194375, 7.21961e-08, 1)
+theme_override_fonts/font = ExtResource("3_k4nin")
+theme_override_font_sizes/font_size = 16
+text = "- Scale -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScaleSlider" type="HSlider" parent="SettingsList/Scale"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -2.5
+offset_right = -20.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+min_value = 0.5
+max_value = 3.0
+step = 0.1
+value = 1.0
+
+[node name="Fullscreen" type="NinePatchRect" parent="SettingsList"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+texture = ExtResource("8_omwoq")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="LabelFullscreen" type="Label" parent="SettingsList/Fullscreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_right = 72.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.360574, 0.194375, 7.21961e-08, 1)
+theme_override_fonts/font = ExtResource("3_k4nin")
+theme_override_font_sizes/font_size = 16
+text = "- Fullscreen -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="SettingsList/Fullscreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -3.5
+offset_right = 12.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="gui_input" from="SettingsList/Scale/ScaleSlider" to="." method="_on_scale_slider_gui_input"]
+[connection signal="toggled" from="SettingsList/Fullscreen/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]

@@ -26,9 +26,13 @@ var anim_state = "Move"
 var head_sprite
 
 var weapon_origin
+var interaction_area_origin
+var interaction_area
 var body_animator
 var isAttacking = false
 var on_left_hand = true   # left handed weapon carry
+
+@export var inv: Inv
 
 
 func _ready():
@@ -44,6 +48,8 @@ func setup_vars():
 	body_animator = $BodyOrigin/Body/BodySprite/BodyAnimator
 	head_sprite = $HeadOrigin/Head/HeadSprite
 	weapon_origin = $WeaponOrigin
+	interaction_area_origin = $InteractionAreaOrigin
+	interaction_area = $InteractionAreaOrigin/InteractionArea
 
 
 func setup_initial_anims():
@@ -86,6 +92,12 @@ func handle_input():
 	else:
 		is_sprinting = false
 		anim_state = "Move"
+	
+	if Input.is_action_just_pressed("interact"):
+		if interaction_area.get_overlapping_bodies():
+			interact()
+		if interaction_area.get_overlapping_areas():
+			pass
 
 
 func handle_movement():
@@ -141,16 +153,20 @@ func rotate_weapon(direction):
 	on_left_hand = true
 	if direction.y > 0:
 		weapon_origin.rotation_degrees = -90
+		interaction_area_origin.rotation_degrees = -90
 		weapon_origin.position = Vector2(0, 10)
 	elif direction.y < 0:
 		weapon_origin.rotation_degrees = 90
+		interaction_area_origin.rotation_degrees = 90
 		weapon_origin.position = Vector2(0, -10)
 	
 	if direction.x > 0:
 		weapon_origin.rotation_degrees = 180
+		interaction_area_origin.rotation_degrees = 180
 		weapon_origin.position = Vector2(10, 0)
 	elif direction.x < 0:
 		weapon_origin.rotation_degrees = 0
+		interaction_area_origin.rotation_degrees = 0
 		weapon_origin.position = Vector2(-10, 0)
 
 
@@ -232,6 +248,14 @@ func _on_body_animator_animation_finished(_anim_name):
 		# if health <= 0.0:
 			# health_depleted.emit()
 
+func collect(item):   # DEPRECATED
+	inv.insert(item)
+
+
+func interact():
+	var bodies = interaction_area.get_overlapping_bodies()
+	bodies[0].get_parent().interact("hatchet")
+
 
 func _on_body_area_body_entered(body):
 	if body.is_in_group("Enemies"):
@@ -239,5 +263,7 @@ func _on_body_area_body_entered(body):
 
 
 func _on_body_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Resources"):
-		area.pick_up_item()
+	if area.is_in_group("Collectable"):
+		area.pick_up()
+	elif area.is_in_group("Interactive"):
+		pass

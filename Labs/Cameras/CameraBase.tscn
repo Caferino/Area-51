@@ -14,6 +14,7 @@ script = ExtResource("1_4w6cm")
 visible = false
 collision_layer = 524288
 collision_mask = 524288
+monitoring = false
 
 [node name="Area" type="CollisionShape2D" parent="View Distance"]
 visible = false

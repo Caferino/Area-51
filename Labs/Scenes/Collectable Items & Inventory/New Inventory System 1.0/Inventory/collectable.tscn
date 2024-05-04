@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccrxttes5b64y"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.gd" id="1_3l4gx"]
+[ext_resource type="AnimationLibrary" uid="uid://hdrqb6em6t46" path="res://animations/Collectables/pickables.res" id="1_rwiww"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38f6o"]
+radius = 7.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p2x74"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Collectable" type="Area2D" groups=["Collectable"]]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 1024
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_3l4gx")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9.53674e-08)
+shape = SubResource("CircleShape2D_38f6o")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_p2x74")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"pickables": ExtResource("1_rwiww")
+}

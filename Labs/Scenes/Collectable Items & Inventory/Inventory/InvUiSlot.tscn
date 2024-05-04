@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://by10tklkmqhv0"]
+
+[ext_resource type="Texture2D" uid="uid://lw5e7gnreti" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory-slot.png" id="1_1s61e"]
+[ext_resource type="Script" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/InvUISlot.gd" id="1_ilqs7"]
+
+[node name="InvUISlot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = -1
+anchor_right = 0.008
+anchor_bottom = 0.015
+offset_right = 0.639999
+offset_bottom = -0.200001
+pivot_offset = Vector2(8, 8)
+script = ExtResource("1_ilqs7")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_1s61e")
+centered = false
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(7, 7)
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Panel/CenterContainer"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+
+[node name="ItemDisplay" type="TextureRect" parent="Panel/CenterContainer/AspectRatioContainer"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 24.0
+offset_bottom = 28.0
+scale = Vector2(0.5, 0.5)
+text = "99"
+horizontal_alignment = 2
