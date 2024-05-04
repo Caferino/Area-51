@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://cvyvpp5jnr8jo"]
 
-[ext_resource type="Texture2D" uid="uid://3dl4w3c683n6" path="res://Inventory System/Inventory Sprites/main panel.png" id="1_pdm5o"]
+[ext_resource type="Texture2D" uid="uid://3dl4w3c683n6" path="res://Inventory System/resources/sprites/main panel.png" id="1_pdm5o"]
 [ext_resource type="Script" path="res://Inventory System/InventoryContainer.gd" id="2_fhv6m"]
-[ext_resource type="Texture2D" uid="uid://bqnkqhyk3il6o" path="res://Inventory System/Inventory Sprites/title.png" id="2_jlbqh"]
-[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://fonts/Arcadepix Plus.ttf" id="3_px0yl"]
-[ext_resource type="Texture2D" uid="uid://d2whws2un78j" path="res://Inventory System/Inventory Sprites/x_normal.png" id="4_7ytbj"]
-[ext_resource type="Texture2D" uid="uid://y38b807urlvt" path="res://Inventory System/Inventory Sprites/x_pressed.png" id="5_sg0d1"]
-[ext_resource type="Texture2D" uid="uid://hl6um8cioqvr" path="res://Inventory System/Inventory Sprites/x_hover.png" id="6_3valh"]
-[ext_resource type="Texture2D" uid="uid://37kqo58b1ql" path="res://Inventory System/Inventory Sprites/x_disabled.png" id="7_hhur5"]
+[ext_resource type="Texture2D" uid="uid://bqnkqhyk3il6o" path="res://Inventory System/resources/sprites/title.png" id="2_jlbqh"]
+[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://Inventory System/resources/font/Arcadepix Plus.ttf" id="3_px0yl"]
+[ext_resource type="Texture2D" uid="uid://d2whws2un78j" path="res://Inventory System/resources/sprites/x_normal.png" id="4_7ytbj"]
+[ext_resource type="Texture2D" uid="uid://y38b807urlvt" path="res://Inventory System/resources/sprites/x_pressed.png" id="5_sg0d1"]
+[ext_resource type="Texture2D" uid="uid://hl6um8cioqvr" path="res://Inventory System/resources/sprites/x_hover.png" id="6_3valh"]
+[ext_resource type="Texture2D" uid="uid://37kqo58b1ql" path="res://Inventory System/resources/sprites/x_disabled.png" id="7_hhur5"]
 
 [node name="InventoryContainer" type="NinePatchRect"]
 anchors_preset = 8

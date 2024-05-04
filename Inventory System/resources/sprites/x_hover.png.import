@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y38b807urlvt"
-path="res://.godot/imported/x_pressed.png-137a140618101b748ce70dbf65603975.ctex"
+uid="uid://hl6um8cioqvr"
+path="res://.godot/imported/x_hover.png-aef91c46b004594f10c3cebefea51891.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Inventory System/Inventory Sprites/x_pressed.png"
-dest_files=["res://.godot/imported/x_pressed.png-137a140618101b748ce70dbf65603975.ctex"]
+source_file="res://Inventory System/resources/sprites/x_hover.png"
+dest_files=["res://.godot/imported/x_hover.png-aef91c46b004594f10c3cebefea51891.ctex"]
 
 [params]
 

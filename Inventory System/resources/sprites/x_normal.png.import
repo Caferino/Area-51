@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3dl4w3c683n6"
-path="res://.godot/imported/main panel.png-a839cc5f2071e03d80c99435de3a2891.ctex"
+uid="uid://d2whws2un78j"
+path="res://.godot/imported/x_normal.png-3e90dda20f6c7d18a3561211ac60d783.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Inventory System/Inventory Sprites/main panel.png"
-dest_files=["res://.godot/imported/main panel.png-a839cc5f2071e03d80c99435de3a2891.ctex"]
+source_file="res://Inventory System/resources/sprites/x_normal.png"
+dest_files=["res://.godot/imported/x_normal.png-3e90dda20f6c7d18a3561211ac60d783.ctex"]
 
 [params]
 

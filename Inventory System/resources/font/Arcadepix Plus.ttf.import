@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bv3fdyepfa0wv"
-path="res://.godot/imported/Arcadepix Plus.ttf-d962102496588aba618d922b06c6f49e.fontdata"
+path="res://.godot/imported/Arcadepix Plus.ttf-9d8a8871e7780bc465fd1c5c5f6fd6fd.fontdata"
 
 [deps]
 
-source_file="res://fonts/Arcadepix Plus.ttf"
-dest_files=["res://.godot/imported/Arcadepix Plus.ttf-d962102496588aba618d922b06c6f49e.fontdata"]
+source_file="res://Inventory System/resources/font/Arcadepix Plus.ttf"
+dest_files=["res://.godot/imported/Arcadepix Plus.ttf-9d8a8871e7780bc465fd1c5c5f6fd6fd.fontdata"]
 
 [params]
 
