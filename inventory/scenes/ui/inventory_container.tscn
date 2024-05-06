@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvyvpp5jnr8jo"]
+
+[ext_resource type="Texture2D" uid="uid://3dl4w3c683n6" path="res://inventory/resources/sprites/main panel.png" id="1_pdm5o"]
+[ext_resource type="Script" path="res://inventory/scripts/ui/inventory_container.gd" id="2_fhv6m"]
+[ext_resource type="Texture2D" uid="uid://bqnkqhyk3il6o" path="res://inventory/resources/sprites/title.png" id="2_jlbqh"]
+[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="3_px0yl"]
+[ext_resource type="Texture2D" uid="uid://d2whws2un78j" path="res://inventory/resources/sprites/x_normal.png" id="4_7ytbj"]
+[ext_resource type="Texture2D" uid="uid://y38b807urlvt" path="res://inventory/resources/sprites/x_pressed.png" id="5_sg0d1"]
+[ext_resource type="Texture2D" uid="uid://hl6um8cioqvr" path="res://inventory/resources/sprites/x_hover.png" id="6_3valh"]
+[ext_resource type="Texture2D" uid="uid://37kqo58b1ql" path="res://inventory/resources/sprites/x_disabled.png" id="7_hhur5"]
+
+[node name="InventoryContainer" type="NinePatchRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -93.0
+offset_right = 119.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+texture = ExtResource("1_pdm5o")
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource("2_fhv6m")
+inventory_container_path = NodePath("InventoryContainer")
+
+[node name="Title" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = -17.0
+offset_right = 58.0
+offset_bottom = 7.0
+grow_horizontal = 2
+mouse_filter = 1
+texture = ExtResource("2_jlbqh")
+patch_margin_left = 8
+patch_margin_top = 6
+patch_margin_right = 8
+patch_margin_bottom = 2
+
+[node name="LabelTitle" type="Label" parent="Title"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.37126, 0.298453, 1)
+theme_override_fonts/font = ExtResource("3_px0yl")
+theme_override_font_sizes/font_size = 20
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -9.0
+offset_bottom = 9.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_7ytbj")
+texture_pressed = ExtResource("5_sg0d1")
+texture_hover = ExtResource("6_3valh")
+texture_disabled = ExtResource("7_hhur5")
+
+[node name="InventoryContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 229.0
+offset_bottom = 64.0
+theme_override_constants/separation = 3
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
