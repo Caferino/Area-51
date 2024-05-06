@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcsocpcvg68lf"]
+
+[ext_resource type="Script" path="res://Inventory System/managers/inventory_manager.gd" id="1_046vg"]
+[ext_resource type="Script" path="res://Inventory System/scripts/ui/ui_container.gd" id="2_12q7v"]
+[ext_resource type="PackedScene" uid="uid://db5cvq7f7gj18" path="res://Inventory System/scenes/ui/settings.tscn" id="3_ap5vd"]
+[ext_resource type="PackedScene" uid="uid://cvyvpp5jnr8jo" path="res://Inventory System/scenes/ui/inventory_container.tscn" id="4_qnrrg"]
+[ext_resource type="PackedScene" uid="uid://dm2f07hwwkwh7" path="res://Inventory System/scenes/ui/inventory_player.tscn" id="5_ctu06"]
+[ext_resource type="PackedScene" uid="uid://big8lhxuxcdw6" path="res://Inventory System/scenes/ui/item_info.tscn" id="6_ax1v6"]
+[ext_resource type="Script" path="res://Inventory System/scripts/interactables/interactable_chest.gd" id="7_jyvx4"]
+[ext_resource type="Script" path="res://Inventory System/scripts/interactables/random_chest.gd" id="8_1ibxn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxa3h"]
+
+[node name="main" type="Node2D"]
+
+[node name="Game" type="Node" parent="."]
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="InventoryManager" type="Node" parent="Managers"]
+script = ExtResource("1_046vg")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ui_container" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_12q7v")
+
+[node name="Windows" type="Control" parent="UI/ui_container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Settings" parent="UI/ui_container/Windows" instance=ExtResource("3_ap5vd")]
+layout_mode = 1
+offset_left = 448.0
+offset_top = -332.0
+offset_right = 686.0
+offset_bottom = -221.0
+
+[node name="InventoryContainer" parent="UI/ui_container/Windows" instance=ExtResource("4_qnrrg")]
+layout_mode = 1
+offset_left = -71.0
+offset_top = -171.0
+offset_right = 167.0
+offset_bottom = -98.0
+
+[node name="PlayerInventory" parent="UI/ui_container/Windows" instance=ExtResource("5_ctu06")]
+layout_mode = 1
+offset_left = -728.0
+offset_top = -163.0
+offset_right = -490.0
+offset_bottom = -90.0
+player_data = null
+
+[node name="ItemInHand" type="Control" parent="UI/ui_container"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="ItemInfo" parent="UI/ui_container" instance=ExtResource("6_ax1v6")]
+visible = false
+layout_mode = 1
+offset_left = 1010.0
+offset_top = 512.0
+offset_right = -765.0
+offset_bottom = -523.0
+
+[node name="Buttons" type="Control" parent="UI/ui_container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Chest" type="Button" parent="UI/ui_container/Buttons"]
+layout_mode = 0
+offset_left = 754.0
+offset_top = 570.0
+offset_right = 806.0
+offset_bottom = 601.0
+text = "Chest"
+script = ExtResource("7_jyvx4")
+
+[node name="Chest2" type="Button" parent="UI/ui_container/Buttons"]
+layout_mode = 0
+offset_left = 1277.0
+offset_top = 569.0
+offset_right = 1398.0
+offset_bottom = 600.0
+text = "Random Chest"
+script = ExtResource("8_1ibxn")
+num_of_items = 10
+
+[node name="SettingsButton" type="Button" parent="UI/ui_container/Buttons"]
+layout_mode = 0
+offset_left = 1770.0
+offset_top = 64.0
+offset_right = 1840.0
+offset_bottom = 95.0
+text = "Settings"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mxa3h")
+
+[connection signal="pressed" from="UI/ui_container/Buttons/Chest" to="UI/ui_container/Buttons/Chest" method="_on_pressed"]
+[connection signal="pressed" from="UI/ui_container/Buttons/Chest2" to="UI/ui_container/Buttons/Chest2" method="_on_pressed"]
+[connection signal="pressed" from="UI/ui_container/Buttons/SettingsButton" to="UI/ui_container" method="_on_settings_button_pressed"]

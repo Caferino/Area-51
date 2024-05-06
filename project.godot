@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Area 51"
 config/tags=PackedStringArray("testing")
-run/main_scene="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/Inventory System/scenes/Main.tscn"
+run/main_scene="res://Inventory System/scenes/main.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,8 +22,11 @@ BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 ItemManager="*res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/ItemManager.tscn"
 Randomizer="*res://Labs/Scenes/Collectable Items & Inventory/Randomizer.gd"
-SignalManager="*res://Inventory System/managers/SignalManager.gd"
-SettingsManager="*res://Inventory System/managers/SettingsManager.gd"
+SignalManager="*res://Inventory System/managers/signal_manager.gd"
+SettingsManager="*res://Inventory System/managers/settings_manager.gd"
+InventoryManager="*res://Inventory System/managers/inventory_manager.gd"
+AlcarodianResourceManager="*res://Inventory System/managers/resource_manager.gd"
+SaveManager="*res://Inventory System/managers/save_manager.gd"
 
 [display]
 

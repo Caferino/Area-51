@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2so1s8v0ntqo"]
+
+[ext_resource type="Texture2D" uid="uid://c8sdf4op4sqtf" path="res://Inventory System/resources/sprites/item_slot.png" id="1_sp11k"]
+[ext_resource type="Script" path="res://Inventory System/scripts/resources/inventory_slot.gd" id="2_4ygjb"]
+
+[node name="InventorySlot" type="TextureRect"]
+texture = ExtResource("1_sp11k")
+script = ExtResource("2_4ygjb")
+item_container_path = NodePath("ItemContainer/AspectRatioContainer")
+
+[node name="ItemContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ItemContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+mouse_filter = 2

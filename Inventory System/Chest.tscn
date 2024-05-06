@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2adqjkt3dla1"]
-
-[ext_resource type="Texture2D" uid="uid://depwvg2smi4av" path="res://Labs/Scenes/Collectable Items & Inventory/Chest.png" id="1_v1orr"]
-
-[node name="TextureRect" type="TextureRect"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_v1orr")
