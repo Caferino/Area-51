@@ -1,4 +1,4 @@
-class_name AlcarodianResourceManager extends Node
+class_name AlcarodianResourcesManager extends Node
 
 const STAT_PATH   = "res://inventory/data/json/stats.json"
 const RECIPE_PATH = "res://inventory/data/json/recipes.json"

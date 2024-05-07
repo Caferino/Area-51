@@ -15,39 +15,3 @@ func _ready():
 	equipment_panel.inventory = player_data.equipment
 	inventory_left_panel.inventory = player_data.inventory_left
 	inventory_right_panel.inventory = player_data.inventory_right
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

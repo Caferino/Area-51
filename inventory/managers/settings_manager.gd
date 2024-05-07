@@ -6,7 +6,7 @@ var settings_data: SettingsData
 
 
 func _ready():
-	settings_data = preload("res://managers/resources/settings_data.tres")
+	settings_data = preload("res://inventory/data/resources/settings_data.tres")
 	ui_scale = settings_data.ui_scale
 	fullscreen = settings_data.fullscreen
 	settings_data.changed.connect(_on_data_changed)

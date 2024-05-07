@@ -14,7 +14,7 @@ func _ready():
 	add_inventory(player_data.inventory_left)
 	add_inventory(player_data.inventory_right)
 	
-	#%ItemVoid.gui_input.connect(_on_void_gui_input)  # TODO tscn
+	%item_void.gui_input.connect(_on_void_gui_input)
 	SignalManager.upgrade_item.connect(_on_upgrade_item)
 
 
@@ -170,14 +170,14 @@ func _on_gui_input_slot(event: InputEvent, slot_node: InventorySlotNode):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			var had_empty_hand = %item_in_hand.item == null
 			
-			%item_in_hand.item and had_empty_hand:
+			if %item_in_hand.item and had_empty_hand:
 				item_offset = event_position - slot_node.global_position
 			
-			get_hand_position(event_position)
+			set_hand_position(event_position)
 		
 		elif event.button_index == MOUSE_BUTTON_RIGHT and slot.item:
 			%item_action_menu.display(slot_node)
-		elif event.button_index == MOUSE_BUTTONG_RIGHT and slot.item and slot.item.components.has("usable"):
+		elif event.button_index == MOUSE_BUTTON_RIGHT and slot.item and slot.item.components.has("usable"):
 			slot.item.components.usable.use()
 	
 	if slot.item:

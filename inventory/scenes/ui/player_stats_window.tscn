@@ -1,0 +1,139 @@
+[gd_scene load_steps=5 format=3 uid="uid://blvn2a1umjmgr"]
+
+[ext_resource type="PackedScene" uid="uid://bkpya3rtq1548" path="res://inventory/scenes/ui/ui_window.tscn" id="1"]
+[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="2"]
+[ext_resource type="Script" path="res://inventory/scripts/ui/player_stats_window.gd" id="3"]
+[ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="4"]
+
+[node name="player_stats" instance=ExtResource("1")]
+offset_left = -63.0
+offset_top = -42.0
+offset_right = 63.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(63, 42)
+script = ExtResource("3")
+player_data = ExtResource("4")
+
+[node name="lbl_title" parent="title" index="1"]
+text = "Player's Stats"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="str" type="HBoxContainer" parent="VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/str" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "- Strength -"
+vertical_alignment = 1
+
+[node name="lbl_str" type="Label" parent="VBoxContainer/str" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="dex" type="HBoxContainer" parent="VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/dex" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "- Dexterity -"
+vertical_alignment = 1
+
+[node name="lbl_dex" type="Label" parent="VBoxContainer/dex" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="int" type="HBoxContainer" parent="VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/int" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "- Inteligence -"
+vertical_alignment = 1
+
+[node name="lbl_int" type="Label" parent="VBoxContainer/int" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="vit" type="HBoxContainer" parent="VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/vit" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "- Vitality -"
+vertical_alignment = 1
+
+[node name="lbl_vit" type="Label" parent="VBoxContainer/vit" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="msp" type="HBoxContainer" parent="VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/msp" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "- Move Speed -"
+vertical_alignment = 1
+
+[node name="lbl_move_speed" type="Label" parent="VBoxContainer/msp" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1

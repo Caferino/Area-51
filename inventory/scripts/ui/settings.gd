@@ -1,6 +1,6 @@
 extends UIWindow
 
-@export var settings_data : Settings_Data
+@export var settings_data : SettingsData
 
 func _ready():
 	super()

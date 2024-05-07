@@ -1,162 +1,133 @@
-[gd_scene load_steps=10 format=3 uid="uid://db5cvq7f7gj18"]
+[gd_scene load_steps=6 format=3 uid="uid://b8wmxtfw71wp"]
 
-[ext_resource type="Texture2D" uid="uid://3dl4w3c683n6" path="res://inventory/resources/sprites/main panel.png" id="1_rj3is"]
-[ext_resource type="Texture2D" uid="uid://bqnkqhyk3il6o" path="res://inventory/resources/sprites/title.png" id="2_07vva"]
-[ext_resource type="Script" path="res://inventory/scripts/ui/settings.gd" id="2_gokh0"]
-[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="3_k4nin"]
-[ext_resource type="Texture2D" uid="uid://d2whws2un78j" path="res://inventory/resources/sprites/x_normal.png" id="4_i7fhe"]
-[ext_resource type="Texture2D" uid="uid://y38b807urlvt" path="res://inventory/resources/sprites/x_pressed.png" id="5_7jok1"]
-[ext_resource type="Texture2D" uid="uid://hl6um8cioqvr" path="res://inventory/resources/sprites/x_hover.png" id="6_8whtn"]
-[ext_resource type="Texture2D" uid="uid://37kqo58b1ql" path="res://inventory/resources/sprites/x_disabled.png" id="7_xnii4"]
-[ext_resource type="Texture2D" uid="uid://dp5yi4fl5gcom" path="res://inventory/resources/sprites/inner_panel.png" id="8_omwoq"]
+[ext_resource type="Texture2D" uid="uid://dp5yi4fl5gcom" path="res://inventory/resources/sprites/inner_panel.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://bkpya3rtq1548" path="res://inventory/scenes/ui/ui_window.tscn" id="2"]
+[ext_resource type="Resource" uid="uid://bbnv8sil4hdvn" path="res://inventory/data/resources/settings_data.tres" id="3"]
+[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="8"]
+[ext_resource type="Script" path="res://inventory/scripts/ui/settings.gd" id="9"]
 
-[node name="Settings" type="NinePatchRect"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -119.0
-offset_top = -93.0
-offset_right = 119.0
-offset_bottom = 18.0
+[node name="settings" instance=ExtResource("2")]
+offset_left = -91.0
+offset_top = -46.0
+offset_right = 91.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-texture = ExtResource("1_rj3is")
-patch_margin_left = 9
-patch_margin_top = 9
-patch_margin_right = 9
-patch_margin_bottom = 9
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-script = ExtResource("2_gokh0")
-scale_slider_path = NodePath("SettingsList/Scale/ScaleSlider")
-fullscreen_check_path = NodePath("SettingsList/Fullscreen/FullscreenCheckBox")
-safe_zone = null
+pivot_offset = Vector2(91, 46)
+script = ExtResource("9")
+settings_data = ExtResource("3")
 
-[node name="Title" type="NinePatchRect" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -58.0
-offset_top = -17.0
-offset_right = 58.0
-offset_bottom = 7.0
-grow_horizontal = 2
-mouse_filter = 1
-texture = ExtResource("2_07vva")
-patch_margin_left = 8
-patch_margin_top = 6
-patch_margin_right = 8
-patch_margin_bottom = 2
-
-[node name="LabelTitle" type="Label" parent="Title"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 2.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0.37126, 0.298453, 1)
-theme_override_fonts/font = ExtResource("3_k4nin")
-theme_override_font_sizes/font_size = 20
+[node name="lbl_title" parent="title" index="1"]
 text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="CloseButton" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -9.0
-offset_bottom = 9.0
-grow_horizontal = 0
-texture_normal = ExtResource("4_i7fhe")
-texture_pressed = ExtResource("5_7jok1")
-texture_hover = ExtResource("6_8whtn")
-texture_disabled = ExtResource("7_xnii4")
-
-[node name="SettingsList" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 9.0
-offset_right = 229.0
-offset_bottom = 64.0
-theme_override_constants/separation = 3
-
-[node name="Scale" type="NinePatchRect" parent="SettingsList"]
-custom_minimum_size = Vector2(0, 45)
+[node name="setting list" type="VBoxContainer" parent="." index="1"]
 layout_mode = 2
-texture = ExtResource("8_omwoq")
+theme_override_constants/separation = 2
+
+[node name="scale" type="NinePatchRect" parent="setting list" index="0"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+texture = ExtResource("1")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="LabelScale" type="Label" parent="SettingsList/Scale"]
+[node name="current_scale" type="Label" parent="setting list/scale" index="0"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -72.0
-offset_right = 72.0
-offset_bottom = 23.0
+offset_left = -59.0
+offset_top = 4.0
+offset_right = 59.0
+offset_bottom = 19.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.360574, 0.194375, 7.21961e-08, 1)
-theme_override_fonts/font = ExtResource("3_k4nin")
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 10
 text = "- Scale -"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScaleSlider" type="HSlider" parent="SettingsList/Scale"]
+[node name="min" type="Label" parent="setting list/scale" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 42.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 10
+text = "Min: #"
+vertical_alignment = 1
+
+[node name="max" type="Label" parent="setting list/scale" index="2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 10
+text = "Max: #"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="scale_slider" type="HSlider" parent="setting list/scale" index="3"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 20.0
-offset_top = -2.5
-offset_right = -20.0
-offset_bottom = 13.5
+offset_left = 7.0
+offset_top = -2.0
+offset_right = -6.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 min_value = 0.5
-max_value = 3.0
+max_value = 3.5
 step = 0.1
 value = 1.0
 
-[node name="Fullscreen" type="NinePatchRect" parent="SettingsList"]
-custom_minimum_size = Vector2(0, 45)
+[node name="fullscreen" type="NinePatchRect" parent="setting list" index="1"]
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-texture = ExtResource("8_omwoq")
+texture = ExtResource("1")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="LabelFullscreen" type="Label" parent="SettingsList/Fullscreen"]
+[node name="Label" type="Label" parent="setting list/fullscreen" index="0"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -72.0
-offset_right = 72.0
-offset_bottom = 23.0
+offset_left = -59.0
+offset_top = 4.0
+offset_right = 59.0
+offset_bottom = 16.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.360574, 0.194375, 7.21961e-08, 1)
-theme_override_fonts/font = ExtResource("3_k4nin")
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 10
 text = "- Fullscreen -"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FullscreenCheckBox" type="CheckBox" parent="SettingsList/Fullscreen"]
+[node name="fullscreen_check" type="CheckBox" parent="setting list/fullscreen" index="1"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -164,12 +135,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -12.0
-offset_top = -3.5
+offset_top = -6.14029
 offset_right = 12.0
-offset_bottom = 20.5
+offset_bottom = 17.8597
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="gui_input" from="SettingsList/Scale/ScaleSlider" to="." method="_on_scale_slider_gui_input"]
-[connection signal="toggled" from="SettingsList/Fullscreen/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="gui_input" from="setting list/scale/scale_slider" to="." method="_on_scale_slider_gui_input"]
+[connection signal="toggled" from="setting list/fullscreen/fullscreen_check" to="." method="_on_CheckBox_toggled"]

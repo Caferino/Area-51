@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://hsshraxpx3xi"]
+
+[ext_resource type="Texture2D" uid="uid://c8sdf4op4sqtf" path="res://inventory/resources/sprites/item_slot.png" id="1"]
+[ext_resource type="Script" path="res://inventory/scripts/inventory/inventory_slot_node.gd" id="2"]
+
+[node name="inventory_slot" type="TextureRect"]
+texture_filter = 1
+offset_right = 20.0
+offset_bottom = 20.0
+mouse_filter = 0
+texture = ExtResource("1")
+script = ExtResource("2")
+
+[node name="item_container" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[connection signal="visibility_changed" from="item_container" to="." method="_on_item_container_visibility_changed"]
