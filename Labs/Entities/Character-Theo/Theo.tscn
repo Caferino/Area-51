@@ -1,7 +1,7 @@
 [gd_scene load_steps=89 format=3 uid="uid://ywdwc8rryrt"]
 
 [ext_resource type="Script" path="res://Labs/Entities/Character-Theo/2DTheo.gd" id="1_p2swg"]
-[ext_resource type="Resource" uid="uid://dyt3h4nv7k7kt" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/playerinv.tres" id="2_ix3i8"]
+[ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="2_ovm8y"]
 [ext_resource type="PackedScene" uid="uid://cqypn2n1j0p6t" path="res://Labs/Scenes/Attack Room/weapon.tscn" id="2_ua78c"]
 [ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png" id="3_6lhpy"]
 [ext_resource type="AnimationLibrary" uid="uid://cgqxac80b6euh" path="res://animations/2D Updated/2D Human Body Movement.res" id="4_q1kkm"]
@@ -451,7 +451,7 @@ y_sort_enabled = true
 collision_layer = 4096
 collision_mask = 4294959103
 script = ExtResource("1_p2swg")
-inv = ExtResource("2_ix3i8")
+player_data = ExtResource("2_ovm8y")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.5)
@@ -534,6 +534,7 @@ y_sort_enabled = true
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="HeadOrigin/Head"]
 y_sort_enabled = true
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2qvm0")
 animation = &"down"
 

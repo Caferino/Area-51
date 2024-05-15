@@ -19,7 +19,7 @@ func _ready():
 
 
 func _input(event: InputEvent):
-	if event is InputEventMouseMotion and %ItemInHand.item:
+	if event is InputEventMouseMotion and %item_in_hand.item:
 		%item_in_hand.position = %item_in_hand.get_global_mouse_position() - item_offset
 
 
@@ -161,7 +161,7 @@ func _on_mouse_exited_slot():
 ## Left-Click = Pick-up / Place Items
 ## Right-Click = Open Action Menu
 func _on_gui_input_slot(event: InputEvent, slot_node: InventorySlotNode):
-	var event_position = %item_in_hand.get_goblal_mouse_position()
+	var event_position = %item_in_hand.get_global_mouse_position()
 	var slot = slot_node.slot
 	if slot.item and slot.item.quantity > 1 and %item_in_hand.item == null and event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and Input.is_key_pressed(KEY_SHIFT):

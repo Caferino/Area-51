@@ -29,5 +29,5 @@ func _on_inventory_opened(inventory: Inventory):
 	show()
 
 
-func _on_inventory_closed(inventory: Inventory):
+func _on_inventory_closed(_inventory: Inventory):
 	close()

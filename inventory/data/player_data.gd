@@ -18,8 +18,7 @@ var inventory_right: Inventory
 var hotbar: Hotbar
 
 
-# TODO - Equipment and Hotbar
-# Initialise the player's inventories
+## Initialise the player's inventories
 func _init():
 	equipment = Equipment.new().duplicate()
 	equipment.name = "Equipment"
@@ -36,6 +35,7 @@ func _init():
 	hotbar.size = 5
 
 
+## Set the data from a Dictionary
 func set_data(data):
 	global_position = data.global_position
 	inventories = data.inventories
@@ -43,6 +43,7 @@ func set_data(data):
 	changed_data()
 
 
+## Pack the data in a Dictionary
 func get_data():
 	inventories.equipment = equipment.get_data()
 	inventories.inventory_left = inventory_left.get_data()

@@ -1,5 +1,7 @@
 class_name Theo extends CharacterBody2D
 
+@export var player_data : PlayerData
+
 signal health_depleted
 #signal plant_collision
 
@@ -32,12 +34,21 @@ var body_animator
 var isAttacking = false
 var on_left_hand = true   # left handed weapon carry
 
-@export var inv: Inv
-
 
 func _ready():
+	#connect_signals()
 	setup_vars()
 	setup_initial_anims()
+	
+	SignalManager.item_dropped.connect( _on_item_dropped )
+	player_data.changed.connect( _on_data_changed )
+	_on_data_changed()
+
+
+#func connect_signals():
+	#SignalManager.item_dropped.connect(_on_item_dropped)
+	#player_data.changed.connect(_on_data_changed)
+	#_on_data_changed()
 
 
 func setup_vars():
@@ -248,14 +259,21 @@ func _on_body_animator_animation_finished(_anim_name):
 		# if health <= 0.0:
 			# health_depleted.emit()
 
-func collect(item):   # DEPRECATED
-	inv.insert(item)
+#func collect(item):   # DEPRECATED
+	#inv.insert(item)
 
 
+# TODO - Change interaction_area to a raycast, I forgot why I chose a rectangle, there's a why
+## Executes the interactable's "interact(item)" function
+## "Press 'F' so Theo interacts with..."
 func interact():
 	var bodies = interaction_area.get_overlapping_bodies()
-	bodies[0].get_parent().interact("hatchet")
+	bodies[0].get_parent().interact("hatchet")  # TODO - Enums/Dictionary of interactable_with...
 
+# TODO - What if every interactable has a interact_with(item)? Best extension option so far
+# Wouldn't break what I have plus it does sound more correct and modular
+# A JSON where the interactable has a "interacts_with" = [ENUMS] it can react to
+# In GTA V, how do they know what kind of bullet or item turns gasoline on fire f.e.?
 
 func _on_body_area_body_entered(body):
 	if body.is_in_group("Enemies"):
@@ -267,3 +285,14 @@ func _on_body_area_area_entered(area: Area2D) -> void:
 		area.pick_up()
 	elif area.is_in_group("Interactive"):
 		pass
+
+
+func _on_item_dropped( item ):
+	var floor_item = AlcarodianResourceManager.tscn.floor_item.instantiate()
+	floor_item.item = item
+	get_parent().add_child( floor_item )
+	floor_item.position = position
+
+
+func _on_data_changed():
+	global_position = player_data.global_position

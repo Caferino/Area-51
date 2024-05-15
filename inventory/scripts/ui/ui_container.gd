@@ -3,12 +3,12 @@ extends Control
 
 func _input(event):
 	if event.is_action_pressed("inventory"):
-		%PlayerInventory.visible = not %PlayerInventory.visible
+		%inventory_player.visible = not %inventory_player.visible
 
 
-func _on_settings_button_pressed() -> void:
-	%Settings.visible = !%Settings.visible
-	%Settings.move_to_front()
+func _on_settings_pressed() -> void:
+	%settings.visible = !%settings.visible
+	%settings.move_to_front()
 
 
 func _on_quit_pressed():

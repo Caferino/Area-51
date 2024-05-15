@@ -1,10 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://ccbeafxootyvt"]
+[gd_scene load_steps=28 format=3 uid="uid://ccbeafxootyvt"]
 
 [ext_resource type="PackedScene" uid="uid://ywdwc8rryrt" path="res://Labs/Entities/Character-Theo/Theo.tscn" id="1_jgb6g"]
 [ext_resource type="Texture2D" uid="uid://dka86wo2tsoug" path="res://Labs/Scenes/The Hut/Plants and Paths.png" id="2_3qdho"]
 [ext_resource type="Texture2D" uid="uid://chmsiqs8w2akd" path="res://Labs/Scenes/The Hut/Trees.png" id="2_t75h0"]
 [ext_resource type="PackedScene" uid="uid://mrd6gxhdcf0o" path="res://Labs/Assets/X. Resources/Animals/Lucas.tscn" id="2_w6cke"]
-[ext_resource type="PackedScene" uid="uid://bmr77x00d4g68" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Tree.tscn" id="5_7kytf"]
+[ext_resource type="Script" path="res://inventory/scripts/ui/ui_container.gd" id="5_83uno"]
+[ext_resource type="PackedScene" uid="uid://b8wmxtfw71wp" path="res://inventory/scenes/ui/settings.tscn" id="6_qajyd"]
+[ext_resource type="PackedScene" uid="uid://cjly7inr5q30p" path="res://inventory/scenes/ui/inventory_container.tscn" id="7_8t5op"]
+[ext_resource type="PackedScene" uid="uid://8ets62ydl7e" path="res://inventory/scenes/ui/inventory_player.tscn" id="8_8hmhx"]
+[ext_resource type="PackedScene" uid="uid://byniytvl8d7xg" path="res://inventory/scenes/ui/crafting_list.tscn" id="9_l86la"]
+[ext_resource type="PackedScene" uid="uid://blvn2a1umjmgr" path="res://inventory/scenes/ui/player_stats_window.tscn" id="10_43u4y"]
+[ext_resource type="PackedScene" uid="uid://bln54lekmrmlp" path="res://inventory/scenes/inventory/hotbar_node.tscn" id="11_v3o83"]
+[ext_resource type="PackedScene" uid="uid://cid27tvka83s" path="res://inventory/scenes/interactables/random_chest.tscn" id="12_ajw3v"]
+[ext_resource type="PackedScene" uid="uid://iixw61r8utqk" path="res://inventory/scenes/interactables/treasure_chest.tscn" id="13_272f7"]
+[ext_resource type="PackedScene" uid="uid://c5uh6bhur8igq" path="res://inventory/scenes/interactables/interactable_chest.tscn" id="14_3mw5w"]
+[ext_resource type="Script" path="res://inventory/scripts/resources/inventory.gd" id="14_c1tuy"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ukhc2"]
 tile_data = PackedInt32Array(131072, 1114112, 2, 196608, 1114112, 3, 262144, 1114112, 4, 327680, 1114112, 5, 393216, 1114112, 6, 458752, 1114112, 7, 524288, 1114112, 8, 131073, 1179648, 2, 196609, 1179648, 3, 262145, 1179648, 4, 327681, 1179648, 5, 393217, 1179648, 6, 458753, 1179648, 7, 524289, 1179648, 8, 589825, 1179648, 9, 655361, 1179648, 10, 65538, 1245184, 1, 131074, 1245184, 2, 196610, 1245184, 3, 262146, 1245184, 4, 327682, 1245184, 5, 393218, 1245184, 6, 458754, 1245184, 7, 524290, 1245184, 8, 589826, 1245184, 9, 655362, 1245184, 10, 65539, 1310720, 1, 131075, 1310720, 2, 196611, 1310720, 3, 262147, 1310720, 4, 327683, 1310720, 5, 393219, 1310720, 6, 458755, 1310720, 7, 524291, 1310720, 8, 589827, 1310720, 9, 655363, 1310720, 10, 4, 1376256, 0, 65540, 1376256, 1, 131076, 1376256, 2, 196612, 1376256, 3, 262148, 1376256, 4, 327684, 1376256, 5, 393220, 1376256, 6, 458756, 1376256, 7, 524292, 1376256, 8, 589828, 1376256, 9, 655364, 1376256, 10, 5, 1441792, 0, 65541, 1441792, 1, 131077, 1441792, 2, 196613, 1441792, 3, 262149, 1441792, 4, 327685, 1441792, 5, 393221, 1441792, 6, 458757, 1441792, 7, 524293, 1441792, 8, 589829, 1441792, 9, 655365, 1441792, 10, 65542, 1507328, 1, 131078, 1507328, 2, 196614, 1507328, 3, 262150, 1507328, 4, 327686, 1507328, 5, 393222, 1507328, 6, 458758, 1507328, 7, 524294, 1507328, 8, 589830, 1507328, 9, 655366, 1507328, 10, 65543, 1572864, 1, 131079, 1572864, 2, 196615, 1572864, 3, 262151, 1572864, 4, 327687, 1572864, 5, 393223, 1572864, 6, 458759, 1572864, 7, 524295, 1572864, 8, 589831, 1572864, 9, 655367, 1572864, 10, 131080, 1638400, 2, 196616, 1638400, 3, 262152, 1638400, 4, 327688, 1638400, 5, 393224, 1638400, 6, 458760, 1638400, 7, 524296, 1638400, 8, 589832, 1638400, 9, 655368, 1638400, 10, 131081, 1703936, 2, 196617, 1703936, 3, 262153, 1703936, 4, 327689, 1703936, 5, 393225, 1703936, 6, 458761, 1703936, 7, 524297, 1703936, 8)
@@ -1666,6 +1676,21 @@ pattern_3 = SubResource("TileMapPattern_j3ghk")
 pattern_4 = SubResource("TileMapPattern_sgodl")
 pattern_5 = SubResource("TileMapPattern_323d2")
 
+[sub_resource type="Resource" id="Resource_tnnm5"]
+script = ExtResource("14_c1tuy")
+name = "caca1"
+size = 1
+
+[sub_resource type="Resource" id="Resource_0t30v"]
+script = ExtResource("14_c1tuy")
+name = "Chest"
+size = 3
+
+[sub_resource type="Resource" id="Resource_guigg"]
+script = ExtResource("14_c1tuy")
+name = "caca"
+size = 2
+
 [node name="TheHut" type="Node2D"]
 y_sort_enabled = true
 
@@ -1694,8 +1719,137 @@ position = Vector2(1049, 202)
 
 [node name="Trees" type="Node" parent="."]
 
-[node name="Tree" parent="Trees" instance=ExtResource("5_7kytf")]
-position = Vector2(711, 231)
+[node name="ui" type="CanvasLayer" parent="."]
 
-[node name="Tree2" parent="Trees" instance=ExtResource("5_7kytf")]
-position = Vector2(751, 417)
+[node name="ui_container" type="Control" parent="ui"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_83uno")
+
+[node name="windows" type="Control" parent="ui/ui_container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="settings" parent="ui/ui_container/windows" instance=ExtResource("6_qajyd")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="inventory_container" parent="ui/ui_container/windows" instance=ExtResource("7_8t5op")]
+visible = false
+layout_mode = 1
+offset_top = -28.5
+offset_bottom = 28.5
+
+[node name="inventory_player" parent="ui/ui_container/windows" instance=ExtResource("8_8hmhx")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 309.0
+offset_right = 288.0
+offset_bottom = 369.0
+
+[node name="crafting_list" parent="ui/ui_container/windows" instance=ExtResource("9_l86la")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 144.0
+offset_bottom = 60.0
+
+[node name="player_stats" parent="ui/ui_container/windows" instance=ExtResource("10_43u4y")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 153.0
+offset_top = 132.0
+offset_right = 279.0
+offset_bottom = 216.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="hotbar" parent="ui/ui_container" instance=ExtResource("11_v3o83")]
+layout_mode = 1
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(63, 32)
+
+[node name="buttons" type="Control" parent="ui/ui_container"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="settings" type="Button" parent="ui/ui_container/buttons"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Settings"
+
+[node name="quit" type="Button" parent="ui/ui_container/buttons"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = 102.0
+offset_bottom = 133.0
+text = "Quit"
+
+[node name="save" type="Button" parent="ui/ui_container/buttons"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = 34.0
+offset_bottom = 65.0
+text = "Save"
+
+[node name="load" type="Button" parent="ui/ui_container/buttons"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = 68.0
+offset_bottom = 99.0
+text = "Load"
+
+[node name="chest" parent="." instance=ExtResource("12_ajw3v")]
+position = Vector2(727, 215)
+num_of_items = 1
+loot_table = Array[String](["tshirt"])
+inventory = SubResource("Resource_tnnm5")
+
+[node name="treasure_chest" parent="." instance=ExtResource("13_272f7")]
+position = Vector2(738, 361)
+loot_table = Array[String](["gold_coin", "rock", "chestplate"])
+inventory = SubResource("Resource_0t30v")
+
+[node name="chest2" parent="." instance=ExtResource("14_3mw5w")]
+position = Vector2(680, 432)
+loot_table = Array[String](["rock", "rock"])
+inventory = SubResource("Resource_guigg")
+
+[connection signal="pressed" from="ui/ui_container/buttons/settings" to="ui/ui_container" method="_on_settings_pressed"]
+[connection signal="pressed" from="ui/ui_container/buttons/quit" to="ui/ui_container" method="_on_quit_pressed"]
+[connection signal="pressed" from="ui/ui_container/buttons/save" to="ui/ui_container" method="_on_save_pressed"]
+[connection signal="pressed" from="ui/ui_container/buttons/load" to="ui/ui_container" method="_on_load_pressed"]

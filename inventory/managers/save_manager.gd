@@ -7,7 +7,7 @@ var game_data: GameData
 
 
 func _ready():
-	#game_data = preload("res://Inventory System/data/resources/game_data.tres")
+	game_data = preload("res://inventory/data/resources/game_data.tres")
 	load_game()
 
 

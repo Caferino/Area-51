@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Area 51"
 config/tags=PackedStringArray("testing")
-run/main_scene="res://inventory/scenes/main.tscn"
+run/main_scene="res://Labs/Scenes/The Hut/The Hut.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,10 +24,10 @@ ItemManager="*res://Labs/Scenes/Collectable Items & Inventory/New Inventory Syst
 Randomizer="*res://Labs/Scenes/Collectable Items & Inventory/Randomizer.gd"
 SignalManager="*res://inventory/managers/signal_manager.gd"
 SettingsManager="*res://inventory/managers/settings_manager.gd"
-InventoryManager="*res://inventory/managers/inventory_manager.gd"
 SaveManager="*res://inventory/managers/save_manager.gd"
 AlcarodianResourceManager="*res://inventory/managers/alcarodian_resource_manager.gd"
 CooldownManager="*res://inventory/managers/cooldown_manager.gd"
+InventoryManager="*res://inventory/scenes/inventory/inventory_manager.tscn"
 
 [display]
 

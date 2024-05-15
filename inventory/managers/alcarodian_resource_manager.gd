@@ -37,16 +37,16 @@ var colors = {
 }
 
 var tscn = {
-	#"splitter"            : preload("res://inventory/scenes/ui/splitter.tscn"),
-	#"hotbar_slot_node"    : preload("res://inventory/scenes/inventory/hotbar_slot_node.tscn"),
-	#"floor_item"          : preload("res://inventory/scenes/interactables/floor_item.tscn"),
-	#"cooldown"            : preload("res://inventory/scenes/ui/cooldown.tscn"),
-	#"crafting_option"     : preload("res://inventory/scenes/ui/crafting_option.tscn"),
-	#"item_quantity"       : preload("res://inventory/scenes/ui/item_quantity.tscn"),
-	#"inventory_slot_node" : preload("res://inventory/scenes/inventory/inventory_slot_node.tscn"),
-	#"inventory_node"      : preload("res://inventory/scenes/inventory/inventory_node.tscn"),
-	#"item_node"           : preload("res://inventory/scenes/inventory/item_node.tscn"),
-	#"equipment_node"      : preload("res://inventory/scenes/inventory/equipment_node.tscn")
+	"splitter"            : preload("res://inventory/scenes/ui/splitter.tscn"),
+	"hotbar_slot_node"    : preload("res://inventory/scenes/inventory/hotbar_slot_node.tscn"),
+	"floor_item"          : preload("res://inventory/scenes/interactables/floor_item.tscn"),
+	"cooldown"            : preload("res://inventory/scenes/ui/cooldown.tscn"),
+	"crafting_option"     : preload("res://inventory/scenes/ui/crafting_option.tscn"),
+	"item_quantity"       : preload("res://inventory/scenes/ui/item_quantity.tscn"),
+	"inventory_slot_node" : preload("res://inventory/scenes/inventory/inventory_slot_node.tscn"),
+	"inventory_node"      : preload("res://inventory/scenes/inventory/inventory_node.tscn"),
+	"item_node"           : preload("res://inventory/scenes/inventory/item_node.tscn"),
+	"equipment_node"      : preload("res://inventory/scenes/inventory/equipment_node.tscn")
 }
 
 @onready var placeholders = {

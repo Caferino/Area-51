@@ -112,7 +112,27 @@ I always put the digital versions (eBooks) for free 5 days every 3 months~
 
 **E012:** Collectables
 
-![E012](.image/README/E012.gif "Collectables") 
+![E012](.image/README/E012.gif "Collectables")
+
+---
+
+**E013:** Modular Inventory System
+
+![E013-1](.image/README/E013-1.gif "Modular Inventory System")    ![E013-2](.image/README/E013-2.png "Modular Inventory System")
+
+Followed YouTuber Calame321's Modular Inventory System tutorial (https://youtu.be/dMYv6InQgno?si=YqIiAl5yCIHZYhw0), which was mind-blowing. It might appear as a tutorial focused on just the UI and inventory, but it actually teaches you how to pretty much build an entire game, with only the music, enemies, animations and plot missing, that's it. In just 10 hours, I felt I learnt what schools and job experiences teach you in hundreds. Throughout two weeks I followed him, writing and listening at my own pace, absorbing as much as I could to understand the system, not just copy and paste it. So far, I feel I grasped a good amount, half of it, which is allowing me to easily connect it in the project I have. I'd just need to expand it with a new interactable system. I am thinking of adding an "interact()" and "interact_with(item)" functions to every interactable object or NPC in the game, saved in a JSON as an array of ENUMS "interacts_with" or something similar. With this, I think I could easily create modular and editable interactions with almost absolutely anything, maybe, I'll find out.
+
+---
+
+**E014:** Save & Load
+
+![E014](.image/README/E014.gif "Save &amp; Load")
+
+---
+
+**E015:** Crafting, Shop, Item Stats, Cooldowns & Random Loot
+
+![E015-1](.image/README/E015-1.gif "Crafting, Shop, Item Stats &amp; Random Loot")    ![E015-2](.image/README/E015-2.gif "Crafting, Shop, Item Stats &amp; Random Loot")
 
 ---
 
