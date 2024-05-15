@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://2bwbcwt1igkw"]
+
+[ext_resource type="Script" path="res://inventory/managers/inventory_manager.gd" id="1_v6peu"]
+[ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="2_n4bfu"]
+[ext_resource type="Script" path="res://inventory/managers/item_in_hand.gd" id="3_y1nnf"]
+[ext_resource type="PackedScene" uid="uid://dw6ojjjo0xb20" path="res://inventory/scenes/ui/item_info.tscn" id="4_pt4yg"]
+[ext_resource type="PackedScene" uid="uid://ducqtpe60fduc" path="res://inventory/scenes/ui/item_action_menu.tscn" id="5_w4d88"]
+
+[node name="inventory_manager" type="CanvasLayer"]
+script = ExtResource("1_v6peu")
+player_data = ExtResource("2_n4bfu")
+
+[node name="item_in_hand" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("3_y1nnf")
+
+[node name="item_info" parent="." instance=ExtResource("4_pt4yg")]
+unique_name_in_owner = true
+visible = false
+offset_left = 551.5
+offset_top = 324.5
+offset_right = 634.5
+offset_bottom = 351.5
+
+[node name="item_action_menu" parent="." instance=ExtResource("5_w4d88")]
+unique_name_in_owner = true
+
+[node name="behind" type="CanvasLayer" parent="."]
+
+[node name="item_void" type="Control" parent="behind"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

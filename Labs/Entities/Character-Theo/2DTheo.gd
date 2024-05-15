@@ -1,5 +1,7 @@
 class_name Theo extends CharacterBody2D
 
+@export var player_data : PlayerData
+
 signal health_depleted
 #signal plant_collision
 
@@ -26,14 +28,27 @@ var anim_state = "Move"
 var head_sprite
 
 var weapon_origin
+var interaction_area_origin
+var interaction_area
 var body_animator
 var isAttacking = false
 var on_left_hand = true   # left handed weapon carry
 
 
 func _ready():
+	#connect_signals()
 	setup_vars()
 	setup_initial_anims()
+	
+	SignalManager.item_dropped.connect( _on_item_dropped )
+	player_data.changed.connect( _on_data_changed )
+	_on_data_changed()
+
+
+#func connect_signals():
+	#SignalManager.item_dropped.connect(_on_item_dropped)
+	#player_data.changed.connect(_on_data_changed)
+	#_on_data_changed()
 
 
 func setup_vars():
@@ -44,6 +59,8 @@ func setup_vars():
 	body_animator = $BodyOrigin/Body/BodySprite/BodyAnimator
 	head_sprite = $HeadOrigin/Head/HeadSprite
 	weapon_origin = $WeaponOrigin
+	interaction_area_origin = $InteractionAreaOrigin
+	interaction_area = $InteractionAreaOrigin/InteractionArea
 
 
 func setup_initial_anims():
@@ -86,6 +103,12 @@ func handle_input():
 	else:
 		is_sprinting = false
 		anim_state = "Move"
+	
+	if Input.is_action_just_pressed("interact"):
+		if interaction_area.get_overlapping_bodies():
+			interact()
+		if interaction_area.get_overlapping_areas():
+			pass
 
 
 func handle_movement():
@@ -141,16 +164,20 @@ func rotate_weapon(direction):
 	on_left_hand = true
 	if direction.y > 0:
 		weapon_origin.rotation_degrees = -90
+		interaction_area_origin.rotation_degrees = -90
 		weapon_origin.position = Vector2(0, 10)
 	elif direction.y < 0:
 		weapon_origin.rotation_degrees = 90
+		interaction_area_origin.rotation_degrees = 90
 		weapon_origin.position = Vector2(0, -10)
 	
 	if direction.x > 0:
 		weapon_origin.rotation_degrees = 180
+		interaction_area_origin.rotation_degrees = 180
 		weapon_origin.position = Vector2(10, 0)
 	elif direction.x < 0:
 		weapon_origin.rotation_degrees = 0
+		interaction_area_origin.rotation_degrees = 0
 		weapon_origin.position = Vector2(-10, 0)
 
 
@@ -232,6 +259,21 @@ func _on_body_animator_animation_finished(_anim_name):
 		# if health <= 0.0:
 			# health_depleted.emit()
 
+#func collect(item):   # DEPRECATED
+	#inv.insert(item)
+
+
+# TODO - Change interaction_area to a raycast, I forgot why I chose a rectangle, there's a why
+## Executes the interactable's "interact(item)" function
+## "Press 'F' so Theo interacts with..."
+func interact():
+	var bodies = interaction_area.get_overlapping_bodies()
+	bodies[0].get_parent().interact("hatchet")  # TODO - Enums/Dictionary of interactable_with...
+
+# TODO - What if every interactable has a interact_with(item)? Best extension option so far
+# Wouldn't break what I have plus it does sound more correct and modular
+# A JSON where the interactable has a "interacts_with" = [ENUMS] it can react to
+# In GTA V, how do they know what kind of bullet or item turns gasoline on fire f.e.?
 
 func _on_body_area_body_entered(body):
 	if body.is_in_group("Enemies"):
@@ -239,5 +281,18 @@ func _on_body_area_body_entered(body):
 
 
 func _on_body_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Resources"):
-		area.pick_up_item()
+	if area.is_in_group("Collectable"):
+		area.pick_up()
+	elif area.is_in_group("Interactive"):
+		pass
+
+
+func _on_item_dropped( item ):
+	var floor_item = AlcarodianResourceManager.tscn.floor_item.instantiate()
+	floor_item.item = item
+	get_parent().add_child( floor_item )
+	floor_item.position = position
+
+
+func _on_data_changed():
+	global_position = player_data.global_position

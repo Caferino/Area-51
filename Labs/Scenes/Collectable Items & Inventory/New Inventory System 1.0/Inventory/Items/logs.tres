@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://brdj1w4ybn1ym"]
+
+[ext_resource type="Script" path="res://inventory/scripts/resources/item/item.gd" id="1_tltck"]
+[ext_resource type="Texture2D" uid="uid://d3mcc0wbx32at" path="res://Labs/Scenes/Collectable Items & Inventory/Logs.png" id="2_g7yvs"]
+
+[resource]
+script = ExtResource("1_tltck")
+name = "Logs"
+texture = ExtResource("2_g7yvs")

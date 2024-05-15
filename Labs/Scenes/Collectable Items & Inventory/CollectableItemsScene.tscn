@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://nsemwd76op77"]
+
+[ext_resource type="PackedScene" uid="uid://ywdwc8rryrt" path="res://Labs/Entities/Character-Theo/Theo.tscn" id="1_qf6fk"]
+[ext_resource type="PackedScene" uid="uid://bmr77x00d4g68" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Tree.tscn" id="2_fg7xa"]
+
+[node name="CollectableItemsScene" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Theo" parent="." instance=ExtResource("1_qf6fk")]
+position = Vector2(226, 131)
+
+[node name="Tree" parent="." instance=ExtResource("2_fg7xa")]
+position = Vector2(307, 129)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CanvasModulate"]
+offset_right = 1927.0
+offset_bottom = 1103.0

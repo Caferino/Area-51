@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cid27tvka83s"]
+
+[ext_resource type="Script" path="res://inventory/scripts/interactables/random_chest.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://c5uh6bhur8igq" path="res://inventory/scenes/interactables/interactable_chest.tscn" id="2"]
+
+[node name="chest" instance=ExtResource("2")]
+script = ExtResource("1")
+num_of_items = 0

@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmr77x00d4g68"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Tree.gd" id="1_kbko6"]
+[ext_resource type="PackedScene" uid="uid://d14w35unh21j0" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/HealthComponent.tscn" id="1_ktrd2"]
+[ext_resource type="Texture2D" uid="uid://lme0j6u8o1qn" path="res://Labs/Scenes/Collectable Items & Inventory/Tree.png" id="2_rvrjp"]
+[ext_resource type="PackedScene" uid="uid://cb0gxldgrnbao" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/HitboxComponent.tscn" id="3_4o4lw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3p8dr"]
+radius = 27.0
+height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xhe3r"]
+radius = 52.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilh1a"]
+atlas = ExtResource("2_rvrjp")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw1a4"]
+atlas = ExtResource("2_rvrjp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cewo7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilh1a")
+}],
+"loop": false,
+"name": &"stump",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw1a4")
+}],
+"loop": false,
+"name": &"tree",
+"speed": 0.0
+}]
+
+[node name="Tree" type="Node2D" node_paths=PackedStringArray("health_component")]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_kbko6")
+health_component = NodePath("HealthComponent")
+
+[node name="StaticBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="StaticBody"]
+position = Vector2(0, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3p8dr")
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_ktrd2")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Interactive"] instance=ExtResource("3_4o4lw")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_xhe3r")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_cewo7")
+animation = &"stump"
+offset = Vector2(0, 11)
+
+[node name="GrowthTimer" type="Timer" parent="."]
+wait_time = 3.5
+one_shot = true
+
+[connection signal="timeout" from="GrowthTimer" to="." method="_on_growth_timer_timeout"]

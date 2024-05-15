@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://byniytvl8d7xg"]
+
+[ext_resource type="PackedScene" uid="uid://bkpya3rtq1548" path="res://inventory/scenes/ui/ui_window.tscn" id="1"]
+[ext_resource type="Script" path="res://inventory/scripts/ui/crafting_list.gd" id="2"]
+
+[node name="crafting_list" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="lbl_title" parent="title" index="1"]
+text = "Crafting"
+
+[node name="recipe_list" type="VBoxContainer" parent="." index="1"]
+unique_name_in_owner = true
+layout_mode = 2

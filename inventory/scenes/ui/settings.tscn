@@ -1,0 +1,145 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8wmxtfw71wp"]
+
+[ext_resource type="Texture2D" uid="uid://dp5yi4fl5gcom" path="res://inventory/resources/sprites/inner_panel.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://bkpya3rtq1548" path="res://inventory/scenes/ui/ui_window.tscn" id="2"]
+[ext_resource type="Resource" uid="uid://bbnv8sil4hdvn" path="res://inventory/data/resources/settings_data.tres" id="3"]
+[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="8"]
+[ext_resource type="Script" path="res://inventory/scripts/ui/settings.gd" id="9"]
+
+[node name="settings" instance=ExtResource("2")]
+offset_left = -91.0
+offset_top = -46.0
+offset_right = 91.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(91, 46)
+script = ExtResource("9")
+settings_data = ExtResource("3")
+
+[node name="lbl_title" parent="title" index="1"]
+text = "Settings"
+
+[node name="setting list" type="VBoxContainer" parent="." index="1"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="scale" type="NinePatchRect" parent="setting list" index="0"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+texture = ExtResource("1")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="current_scale" type="Label" parent="setting list/scale" index="0"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_top = 4.0
+offset_right = 59.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 10
+text = "- Scale -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="min" type="Label" parent="setting list/scale" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 42.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 10
+text = "Min: #"
+vertical_alignment = 1
+
+[node name="max" type="Label" parent="setting list/scale" index="2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 10
+text = "Max: #"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="scale_slider" type="HSlider" parent="setting list/scale" index="3"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -2.0
+offset_right = -6.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+min_value = 0.5
+max_value = 3.5
+step = 0.1
+value = 1.0
+
+[node name="fullscreen" type="NinePatchRect" parent="setting list" index="1"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+texture = ExtResource("1")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="setting list/fullscreen" index="0"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_top = 4.0
+offset_right = 59.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.423529, 0.247059, 0.121569, 1)
+theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 10
+text = "- Fullscreen -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="fullscreen_check" type="CheckBox" parent="setting list/fullscreen" index="1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -6.14029
+offset_right = 12.0
+offset_bottom = 17.8597
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="setting list/scale/scale_slider" to="." method="_on_scale_slider_gui_input"]
+[connection signal="toggled" from="setting list/fullscreen/fullscreen_check" to="." method="_on_CheckBox_toggled"]

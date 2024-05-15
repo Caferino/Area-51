@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkpya3rtq1548"]
+
+[ext_resource type="Script" path="res://inventory/scripts/ui/ui_window.gd" id="1_ek6hp"]
+[ext_resource type="Texture2D" uid="uid://3dl4w3c683n6" path="res://inventory/resources/sprites/main panel.png" id="1_w6bjx"]
+[ext_resource type="Texture2D" uid="uid://bqnkqhyk3il6o" path="res://inventory/resources/sprites/title.png" id="2_pnexn"]
+[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="3_ly82d"]
+
+[sub_resource type="StyleBoxTexture" id="2"]
+texture = ExtResource("1_w6bjx")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="window" type="PanelContainer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -29.0
+offset_right = 72.0
+offset_bottom = 31.0
+pivot_offset = Vector2(72, 30)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("2")
+script = ExtResource("1_ek6hp")
+
+[node name="title" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="close" type="TextureButton" parent="title"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = -9.0
+offset_right = 9.0
+grow_horizontal = 0
+
+[node name="lbl_title" type="Label" parent="title"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+offset_top = -16.0
+offset_bottom = -5.0
+grow_vertical = 0
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.301961, 0.34902, 0.4, 1)
+theme_override_fonts/font = ExtResource("3_ly82d")
+theme_override_font_sizes/font_size = 12
+text = "Window's Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="title" type="NinePatchRect" parent="title/lbl_title"]
+show_behind_parent = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 2.0
+mouse_filter = 1
+texture = ExtResource("2_pnexn")
+patch_margin_left = 8
+patch_margin_top = 6
+patch_margin_right = 8
+patch_margin_bottom = 2
+
+[connection signal="pressed" from="title/close" to="." method="_on_close_pressed"]

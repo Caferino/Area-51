@@ -9,7 +9,7 @@ func Enter():
 	move_speed = 100.0
 
 
-func State_Process(delta: float):
+func State_Process(_delta):
 	var direction = player.global_position - enemy.global_position
 	
 	if direction.length() > distance_to_keep and player.global_position != get_parent().target_last_position or direction.length() > get_parent().distance_tolerance:

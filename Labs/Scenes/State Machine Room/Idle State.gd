@@ -29,7 +29,7 @@ func Update(delta: float):
 		randomize_wander()
 
 
-func State_Process(delta: float):
+func State_Process(_delta):
 	if enemy:
 		enemy.velocity = move_direction * move_speed
 	

@@ -1,0 +1,7 @@
+[gd_resource type="FontFile" load_steps=2 format=3]
+
+[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="1"]
+
+[resource]
+size = 14
+font_data = ExtResource( 1 )

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtcct27fqa46t"]
+
+[ext_resource type="Texture2D" uid="uid://vhcxkh3115g7" path="res://inventory/resources/sprites/bar.png" id="1"]
+
+[node name="splitter" type="TextureRect"]
+offset_top = 10.0
+offset_right = 151.0
+offset_bottom = 12.0
+texture = ExtResource("1")
+stretch_mode = 3

@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw6ojjjo0xb20"]
+
+[ext_resource type="Texture2D" uid="uid://dp5yi4fl5gcom" path="res://inventory/resources/sprites/inner_panel.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bqnkqhyk3il6o" path="res://inventory/resources/sprites/title.png" id="2"]
+[ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="3"]
+[ext_resource type="Script" path="res://inventory/scripts/ui/item_info.gd" id="4"]
+
+[sub_resource type="StyleBoxTexture" id="2"]
+texture = ExtResource("1")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 18, 18)
+
+[node name="item_info" type="PanelContainer"]
+texture_filter = 1
+offset_right = 58.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource("2")
+script = ExtResource("4")
+
+[node name="title" type="Control" parent="."]
+layout_mode = 2
+
+[node name="item_name" type="Label" parent="title"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = -18.0
+offset_right = -2.0
+offset_bottom = -9.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.301961, 0.34902, 0.4, 1)
+theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 12
+text = "name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="title" type="NinePatchRect" parent="title/item_name"]
+show_behind_parent = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -6.0
+offset_right = 9.0
+offset_bottom = 2.0
+texture = ExtResource("2")
+patch_margin_left = 8
+patch_margin_top = 6
+patch_margin_right = 8
+patch_margin_bottom = 2
+
+[node name="line_container" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0

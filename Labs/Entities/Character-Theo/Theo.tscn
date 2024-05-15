@@ -1,6 +1,7 @@
-[gd_scene load_steps=87 format=3 uid="uid://ywdwc8rryrt"]
+[gd_scene load_steps=89 format=3 uid="uid://ywdwc8rryrt"]
 
 [ext_resource type="Script" path="res://Labs/Entities/Character-Theo/2DTheo.gd" id="1_p2swg"]
+[ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="2_ovm8y"]
 [ext_resource type="PackedScene" uid="uid://cqypn2n1j0p6t" path="res://Labs/Scenes/Attack Room/weapon.tscn" id="2_ua78c"]
 [ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png" id="3_6lhpy"]
 [ext_resource type="AnimationLibrary" uid="uid://cgqxac80b6euh" path="res://animations/2D Updated/2D Human Body Movement.res" id="4_q1kkm"]
@@ -98,7 +99,7 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kl47q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_comda"]
-size = Vector2(28, 17)
+size = Vector2(26, 22.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0efv"]
 atlas = ExtResource("6_4pcna")
@@ -441,12 +442,16 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwl8b"]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_y6ill"]
+b = Vector2(-30, 0)
+
 [node name="Theo" type="CharacterBody2D" groups=["Player", "Protagonist"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4096
 collision_mask = 4294959103
 script = ExtResource("1_p2swg")
+player_data = ExtResource("2_ovm8y")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.5)
@@ -486,9 +491,7 @@ y_sort_enabled = true
 
 [node name="BodySprite" type="Sprite2D" parent="BodyOrigin/Body"]
 y_sort_enabled = true
-position = Vector2(0, 9)
 texture = ExtResource("3_6lhpy")
-offset = Vector2(0, -9)
 hframes = 4
 vframes = 21
 frame = 2
@@ -510,7 +513,7 @@ modulate = Color(0, 0, 0, 0.0980392)
 z_index = -1
 texture_filter = 2
 material = SubResource("CanvasItemMaterial_kl47q")
-position = Vector2(0, 2)
+position = Vector2(0, 12)
 scale = Vector2(0.380952, 0.307692)
 texture = ExtResource("5_20vns")
 
@@ -519,6 +522,7 @@ collision_layer = 4096
 collision_mask = 9219
 
 [node name="CollisionShape" type="CollisionShape2D" parent="BodyOrigin/Body/BodyArea"]
+position = Vector2(0, 2.75)
 shape = SubResource("RectangleShape2D_comda")
 
 [node name="HeadOrigin" type="Marker2D" parent="."]
@@ -530,6 +534,7 @@ y_sort_enabled = true
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="HeadOrigin/Head"]
 y_sort_enabled = true
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2qvm0")
 animation = &"down"
 
@@ -550,6 +555,7 @@ libraries = {
 position = Vector2(0, 0.419434)
 collision_layer = 4096
 collision_mask = 0
+monitoring = false
 
 [node name="CollisionShape" type="CollisionShape2D" parent="HeadOrigin/Head/HeadSprite/Area"]
 position = Vector2(0, 2.5)
@@ -561,6 +567,9 @@ y_sort_enabled = true
 position = Vector2(0, -9)
 
 [node name="HatObject" type="Area2D" parent="HeadOrigin/Head/HeadSprite/Hat"]
+collision_layer = 4096
+collision_mask = 0
+monitoring = false
 
 [node name="HatSprite" type="AnimatedSprite2D" parent="HeadOrigin/Head/HeadSprite/Hat/HatObject"]
 z_index = 2
@@ -610,6 +619,16 @@ visible = false
 [node name="CameraOrigin" type="Marker2D" parent="."]
 
 [node name="Camera Base" parent="CameraOrigin" instance=ExtResource("13_icx8m")]
+
+[node name="InteractionAreaOrigin" type="Marker2D" parent="."]
+rotation = -1.5708
+
+[node name="InteractionArea" type="Area2D" parent="InteractionAreaOrigin"]
+position = Vector2(0, 27)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="InteractionAreaOrigin/InteractionArea"]
+position = Vector2(0, -27)
+shape = SubResource("SegmentShape2D_y6ill")
 
 [connection signal="area_entered" from="FeetOrigin/Feet/LeftFoot" to="." method="_on_left_foot_area_entered"]
 [connection signal="area_exited" from="FeetOrigin/Feet/LeftFoot" to="." method="_on_left_foot_area_exited"]
