@@ -1,6 +1,6 @@
 extends Node
 
-@export var health_component : HealthComponent
+@export var health_component : HealthComponentOld
 
 func receive_damage(amount):
 	if health_component:

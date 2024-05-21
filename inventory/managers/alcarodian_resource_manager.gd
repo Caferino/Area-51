@@ -3,6 +3,8 @@ class_name AlcarodianResourcesManager extends Node
 const STAT_PATH   = "res://inventory/data/json/stats.json"
 const RECIPE_PATH = "res://inventory/data/json/recipes.json"
 
+# TODO - ! Using preload fills the memory if too many? Should load() be used instead? Aka "Lazy Loading"
+
 var sprites = {
 	"gold"                 : preload("res://Labs/Scenes/Collectable Items & Inventory/Gold.png"),
 	"logs"                 : preload("res://Labs/Scenes/Collectable Items & Inventory/Logs.png"),

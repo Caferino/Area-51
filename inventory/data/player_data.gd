@@ -11,7 +11,6 @@ var base_stats = {
 	GameEnums.STAT.MOVE_SPEED: 150
 }
 
-
 var equipment: Equipment
 var inventory_left: Inventory
 var inventory_right: Inventory

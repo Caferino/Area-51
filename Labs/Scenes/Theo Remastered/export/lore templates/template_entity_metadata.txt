@@ -1,0 +1,15 @@
+# ! DELETE THIS REMINDER - SET SKIPPED FIELDS AS "NULL", ORDER MATTERS !
+[NAME]
+[TYPE (Monster/Animal/Humanoid/Other)]
+[GENDER]
+[WEIGHT (kg,lb => 70,154)]
+[HEIGHT (m,ft => 1.70,5'4'')]
+[AGE (Just the number)]
+[TUNES (Blue,Yellow,Red,Black,Green,White,Purple...)]
+[EYES COLOR]
+
+# WIP - IGNORE #
+[PERSONALITY (Moody, Cheery, Blue)]
+[RELATIONSHIPS (Name - Relation)]
+[PARENTS]
+[...]

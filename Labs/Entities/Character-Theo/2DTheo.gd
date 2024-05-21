@@ -2,6 +2,11 @@ class_name Theo extends CharacterBody2D
 
 @export var player_data : PlayerData
 
+var interfaces = [
+	#GameEnums.INTERFACE.DAMAGEABLE,
+	#GameEnums.INTERFACE.FLAMMABLE
+]
+
 signal health_depleted
 #signal plant_collision
 
@@ -36,19 +41,16 @@ var on_left_hand = true   # left handed weapon carry
 
 
 func _ready():
-	#connect_signals()
+	InterfaceManager.validate(self)
+	connect_signals()
 	setup_vars()
 	setup_initial_anims()
-	
-	SignalManager.item_dropped.connect( _on_item_dropped )
-	player_data.changed.connect( _on_data_changed )
+
+
+func connect_signals():
+	SignalManager.item_dropped.connect(_on_item_dropped)
+	player_data.changed.connect(_on_data_changed)
 	_on_data_changed()
-
-
-#func connect_signals():
-	#SignalManager.item_dropped.connect(_on_item_dropped)
-	#player_data.changed.connect(_on_data_changed)
-	#_on_data_changed()
 
 
 func setup_vars():
@@ -113,22 +115,29 @@ func handle_input():
 
 func handle_movement():
 	var target = dir
+	print("dir: ", dir)
 	if is_sprinting:
 		target *= MAX_SPRINT_SPEED
 	else:
 		target *= MAX_SPEED
+	print("target: ", target)
 	
 	var accel
 	var hvel = Vector2()
-	if dir.dot(hvel) > 0:
+	print("DOT RESULT = ", dir.dot(hvel))
+	if dir.dot(Vector2(1,1)) > 0:
 		if is_sprinting:
 			accel = SPRINT_ACCEL
+			print("is sprinting accel: ", accel)
 		else:
 			accel = ACCEL
+			print("not sprinting accel: ", accel)
 	else:
 		accel = DEACCEL
+		print("under 0 accel: ", accel)
 	
 	hvel = hvel.lerp(target, accel)
+	print("hvel: ", hvel)
 	velocity = hvel
 	move_and_slide()
 

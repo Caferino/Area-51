@@ -28,6 +28,7 @@ SaveManager="*res://inventory/managers/save_manager.gd"
 AlcarodianResourceManager="*res://inventory/managers/alcarodian_resource_manager.gd"
 CooldownManager="*res://inventory/managers/cooldown_manager.gd"
 InventoryManager="*res://inventory/scenes/inventory/inventory_manager.tscn"
+InterfaceManager="*res://inventory/managers/interface_manager.gd"
 
 [display]
 

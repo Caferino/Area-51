@@ -1,0 +1,7 @@
+# ! DELETE THIS REMINDER - SET SKIPPED FIELDS AS "NULL", ORDER MATTERS !
+[DATE]
+[LOCATION]
+[TITLE]
+[TYPE (Book/Scroll/Page/Other)]
+[GENRES (Fantasy/Militar/Romance)]
+[KEYWORDS (SEPARATED BY Commas,Like,This)]

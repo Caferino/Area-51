@@ -29,6 +29,17 @@ enum STAT {
 	DEFENCE,
 	BONUS_EXPERIENCE,
 	MOVE_SPEED
+}  # TODO - Might deprecate, it's too general. Modularize
+
+enum STAMINA_STATS {
+	CAPACITY,
+	SPRINT_RATE,
+	REGEN_RATE,
+	MAX_WALK_SPEED,
+	WALK_ACCEL,
+	MAX_SPRINT_SPEED,
+	SPRINT_ACCEL,
+	DEACCEL
 }
 
 enum RARITY {
@@ -41,4 +52,9 @@ enum RARITY {
 enum AFFIX_TYPE {
 	PREFIX,
 	SUFFIX
+}
+
+enum INTERFACE {
+	DAMAGEABLE,
+	FLAMMABLE
 }
