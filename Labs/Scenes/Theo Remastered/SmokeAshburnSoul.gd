@@ -25,8 +25,8 @@ var stamina_stats = {
 ## Body fills this, so it's dynamic. Missing or extra limbs...
 ## ! Problem is, there is really no LeftLeg and RightLeg. Not yet, not for this 2D game
 var pose = {
-	"Head"      : ["parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)],
-	"Torso"     : ["parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)],
+	"Head"      : [Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)],
+	"Torso"     : [Vector2(0, 0), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)],
 	#"LeftLeg"  : ["parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)],
 	#"RightLeg" : ["parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)]
 }

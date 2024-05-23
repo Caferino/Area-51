@@ -24,10 +24,7 @@ func _ready():
 
 func spawn():
 	for limb in body.limbs:
-		# TODO ! Don't like the idea of searching twice and a lot of times. Could enums help here?
 		if limb in body.limbs and limb in soul.pose:
-			if body.limbs[limb].get_child(1) is AnimatedSprite2D:
-				movement.wake_up(body.limbs[limb].get_child(1))
 			movement.move_limb(body.limbs[limb], soul.pose[limb])
 
 

@@ -110,7 +110,7 @@ func handle_movement():
 	#move_and_slide()
 
 
-func handle_animation(body):
+func handle_animation(_body):
 	pass
 	#var direction = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	#anim_speed = clamp(anim_speed, 0.5, 1.0)
@@ -138,26 +138,13 @@ func handle_animation(body):
 		#hat_animatorTree["parameters/Movement/Idle/blend_position"] = direction
 
 
-func wake_up(limb):
-	limb.play("default")
-
-
 func move_limb(limb, pose):
-	limb.get_child(2)[pose[0]].travel("Move")
-	limb.get_child(2)["parameters/Movement/Move/blend_position"] = pose[3]
+	limb.position = pose[0]
+	limb.get_child(1)[pose[1]].travel(pose[2]) # animatorTree["parameters/Movement/playback"].travel("")
+	limb.get_child(1)[pose[3]] = pose[4]       # animatorTree["parameters/Movement/''/blend_position"] = Vector2()
 	
-	print(limb.get_child(2)[pose[2]])
-	print(pose)
-	## TODO ! DO NOT DELETE THIS, USE IT TO DOCUMENT THIS ABOMINATION
-	#body_state_machine = body_animatorTree["parameters/Movement/playback"]
-	#head_state_machine = head_animatorTree["parameters/Movement/playback"]
+	
+	## TODO ! DO NOT DELETE THIS YET
 	#hat_state_machine  = hat_animatorTree["parameters/Movement/playback"]
-	#
-	#head_sprite.play("down")
-	#
-	#body_state_machine.travel("Idle")
-	#head_state_machine.travel("Idle")
 	#hat_state_machine.travel("Idle")
-	#body_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
-	#head_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
 	#hat_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)

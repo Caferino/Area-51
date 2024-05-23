@@ -2,7 +2,7 @@ class_name AttackComponent extends Node
 
 var on_left_hand = true   # left handed weapon carry
 
-func rotate_weapon(direction):
+func rotate_weapon(_direction):
 	pass
 	#on_left_hand = true
 	#if direction.y > 0:
