@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c76t7hm5vr72p"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/lore_component.gd" id="1_yw3xh"]
+
+[node name="LoreComponent" type="Node"]
+script = ExtResource("1_yw3xh")

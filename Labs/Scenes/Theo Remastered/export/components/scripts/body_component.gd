@@ -1,4 +1,4 @@
-class_name BodyComponent extends Node
+class_name BodyComponent extends Node2D
 
 # This is where shit is gonna get crazy.
 # Imagine this BodyComponent starts empty, and you add certain
@@ -9,7 +9,16 @@ class_name BodyComponent extends Node
 # same type and create weird interesting shit, but how? What'd be the advantages
 # and cons?
 
+signal limb_interact(limb, object)
+
+var limbs = {}
+
+
+func _ready() -> void:
+	connect_limbs()
+
+
 # TODO - Iterate over children to connect limbs
 func connect_limbs():
 	for limb in get_children():
-		print(limb)
+		limbs[limb.name] = limb

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://caf454b10aqpv"]
+
+[node name="Hat" type="Marker2D"]
+
+[node name="Area" type="Area2D" parent="."]
+monitoring = false
+
+[node name="HatCollisionShape" type="CollisionShape2D" parent="Area"]
+
+[node name="HatAnimatedSprite" type="AnimatedSprite2D" parent="Area"]

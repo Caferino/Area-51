@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lprf3rgs43hq"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/humanoid_movement_component.gd" id="1_tgqhr"]
+
+[node name="HumanoidMovementComponent" type="Node"]
+script = ExtResource("1_tgqhr")

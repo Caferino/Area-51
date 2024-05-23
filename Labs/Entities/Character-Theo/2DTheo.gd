@@ -22,6 +22,7 @@ var input_movement_vector = Vector2()
 var is_sprinting = false
 var dir = Vector2()
 
+var body_animator
 var body_animatorTree
 var body_state_machine
 var head_animatorTree
@@ -29,13 +30,11 @@ var head_state_machine
 var hat_animatorTree
 var hat_state_machine
 var anim_state = "Move"
-
 var head_sprite
-
 var weapon_origin
+
 var interaction_area_origin
 var interaction_area
-var body_animator
 var isAttacking = false
 var on_left_hand = true   # left handed weapon carry
 

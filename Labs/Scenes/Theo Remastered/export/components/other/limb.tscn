@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwbb6s0qusgsp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_808wd"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dpjav"]
+
+[node name="Limb" type="Marker2D"]
+
+[node name="LimbArea" type="Area2D" parent="."]
+
+[node name="LimbCollisionShape" type="CollisionShape2D" parent="LimbArea"]
+
+[node name="LimbAnimatedSprite" type="AnimatedSprite2D" parent="LimbArea"]
+sprite_frames = SubResource("SpriteFrames_808wd")
+
+[node name="LimbAnimatorTree" type="AnimationTree" parent="LimbArea"]
+tree_root = SubResource("AnimationNodeBlendTree_dpjav")
+anim_player = NodePath("../LimbAnimator")
+
+[node name="LimbAnimator" type="AnimationPlayer" parent="LimbArea"]
