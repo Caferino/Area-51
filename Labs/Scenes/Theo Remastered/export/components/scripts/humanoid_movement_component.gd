@@ -58,29 +58,8 @@ func get_deacceleration():            return stats[GameEnums.STAMINA_STATS.DEACC
 func set_deacceleration(amount):      stats[GameEnums.STAMINA_STATS.DEACCEL] = amount
 
 
-
-## TODO - What if these two setup_vars and setup_initial_anims go in BodyComponent?
-## TODO - Might become DEPRECATED soon, check weapon_origin and interaction are done
-func setup_vars():
-	pass
-	#body_animatorTree = $BodyOrigin/Body/BodySprite/BodyAnimatorTree
-	#head_animatorTree = $HeadOrigin/Head/HeadSprite/HeadAnimatorTree
-	#hat_animatorTree = $HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite/HatAnimatorTree
-	#
-	#body_animator = $BodyOrigin/Body/BodySprite/BodyAnimator
-	#head_sprite = $HeadOrigin/Head/HeadSprite
-	#weapon_origin = $WeaponOrigin
-	#interaction_area_origin = $InteractionAreaOrigin
-	#interaction_area = $InteractionAreaOrigin/InteractionArea
-
-
-func setup_initial_anims():
-	pass
-	#weapon_origin.rotation_degrees = -90
-
-
 func handle_movement():
-	## TODO - Remaster this shit, it's so wrong.
+	## TODO - Remaster this
 	pass
 	#var target = dir
 	#print("dir: ", dir)
@@ -112,6 +91,7 @@ func handle_movement():
 
 func handle_animation(_body):
 	pass
+	## TODO - Remaster this
 	#var direction = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	#anim_speed = clamp(anim_speed, 0.5, 1.0)
 	#if direction == Vector2.ZERO:
@@ -145,6 +125,8 @@ func move_limb(limb, pose):
 	
 	
 	## TODO ! DO NOT DELETE THIS YET
+	#weapon_origin.rotation_degrees = -90
+	#also had %interaction_area and %weapon_origin stuff in initial_vars...
 	#hat_state_machine  = hat_animatorTree["parameters/Movement/playback"]
 	#hat_state_machine.travel("Idle")
 	#hat_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)

@@ -24,9 +24,15 @@ var stamina_stats = {
 ## TODO - Someday turn these into ENUMS Caferino, Bizck and Raz hold
 ## Body fills this, so it's dynamic. Missing or extra limbs...
 ## ! Problem is, there is really no LeftLeg and RightLeg. Not yet, not for this 2D game
+## Position, State_Machine key, State_Machine travel node, Animator_Tree key, Animator_Tree blend_position
 var pose = {
 	"Head"      : [Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)],
 	"Torso"     : [Vector2(0, 0), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)],
 	#"LeftLeg"  : ["parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)],
 	#"RightLeg" : ["parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)]
+}
+
+## Position, State_Machine key, State_Machine travel node, Animator_Tree key, Animator_Tree blend_position
+var accessories = {
+	"Hat"       : [Vector2(0, -9), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1)]
 }
