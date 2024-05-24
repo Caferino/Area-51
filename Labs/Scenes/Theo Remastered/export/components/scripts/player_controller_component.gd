@@ -1,6 +1,7 @@
 class_name PlayerControllerComponent extends Node
 
-signal player_interact()
+signal player_interacted()
+signal player_moved()
 
 var dir          = Vector2()
 var anim_state   = "Move"
@@ -9,19 +10,19 @@ var is_sprinting = false
 
 
 ## Handles inputs
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if !is_attacking:
-		check_inputs()
+		check_movement()
 		check_interact()
 
 
-func check_inputs():
+func check_movement():
 	dir = Vector2()
 	
-	if Input.is_action_pressed("move_forward"): dir.y -= 1
-	if Input.is_action_pressed("move_back"):    dir.y += 1
-	if Input.is_action_pressed("move_right"):   dir.x += 1
-	if Input.is_action_pressed("move_left"):    dir.x -= 1
+	if Input.is_action_pressed("move_forward") : dir.y -= 1
+	if Input.is_action_pressed("move_back")    : dir.y += 1
+	if Input.is_action_pressed("move_right")   : dir.x += 1
+	if Input.is_action_pressed("move_left")    : dir.x -= 1
 	
 	dir = dir.normalized()
 	
@@ -31,6 +32,8 @@ func check_inputs():
 	else:
 		is_sprinting = false
 		anim_state   = "Move"
+	
+	emit_signal("player_moved")
 
 
 func check_interact():
@@ -40,3 +43,4 @@ func check_interact():
 			#interact()
 		#if interaction_area.get_overlapping_areas():
 			#pass
+	#emit_signal("player_interacted")

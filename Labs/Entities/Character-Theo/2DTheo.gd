@@ -114,29 +114,22 @@ func handle_input():
 
 func handle_movement():
 	var target = dir
-	print("dir: ", dir)
 	if is_sprinting:
 		target *= MAX_SPRINT_SPEED
 	else:
 		target *= MAX_SPEED
-	print("target: ", target)
 	
 	var accel
 	var hvel = Vector2()
-	print("DOT RESULT = ", dir.dot(hvel))
-	if dir.dot(Vector2(1,1)) > 0:
+	if dir.dot(hvel) > 0:
 		if is_sprinting:
 			accel = SPRINT_ACCEL
-			print("is sprinting accel: ", accel)
 		else:
 			accel = ACCEL
-			print("not sprinting accel: ", accel)
 	else:
 		accel = DEACCEL
-		print("under 0 accel: ", accel)
 	
 	hvel = hvel.lerp(target, accel)
-	print("hvel: ", hvel)
 	velocity = hvel
 	move_and_slide()
 

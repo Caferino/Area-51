@@ -1,9 +1,9 @@
 [gd_scene load_steps=28 format=3 uid="uid://ccbeafxootyvt"]
 
-[ext_resource type="PackedScene" uid="uid://ywdwc8rryrt" path="res://Labs/Entities/Character-Theo/Theo.tscn" id="1_jgb6g"]
 [ext_resource type="Texture2D" uid="uid://dka86wo2tsoug" path="res://Labs/Scenes/The Hut/Plants and Paths.png" id="2_3qdho"]
 [ext_resource type="Texture2D" uid="uid://chmsiqs8w2akd" path="res://Labs/Scenes/The Hut/Trees.png" id="2_t75h0"]
 [ext_resource type="PackedScene" uid="uid://mrd6gxhdcf0o" path="res://Labs/Assets/X. Resources/Animals/Lucas.tscn" id="2_w6cke"]
+[ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="3_der8g"]
 [ext_resource type="Script" path="res://inventory/scripts/ui/ui_container.gd" id="5_83uno"]
 [ext_resource type="PackedScene" uid="uid://b8wmxtfw71wp" path="res://inventory/scenes/ui/settings.tscn" id="6_qajyd"]
 [ext_resource type="PackedScene" uid="uid://cjly7inr5q30p" path="res://inventory/scenes/ui/inventory_container.tscn" id="7_8t5op"]
@@ -1711,8 +1711,8 @@ layer_4/tile_data = PackedInt32Array(-655293, 1769472, 2, -589757, 1769472, 3, -
 layer_5/name = "Decorations"
 layer_5/tile_data = PackedInt32Array()
 
-[node name="Theo" parent="." instance=ExtResource("1_jgb6g")]
-position = Vector2(555, 322)
+[node name="Smoke Ashburn" parent="." instance=ExtResource("3_der8g")]
+position = Vector2(504, 338)
 
 [node name="Lucas" parent="." instance=ExtResource("2_w6cke")]
 position = Vector2(1049, 202)

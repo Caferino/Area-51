@@ -1,15 +1,7 @@
 class_name HumanoidMovementComponent extends Node
 
-var body_animator   ## TODO - Might DEPRECATED all these, BodyComponent has them
-var body_animatorTree
-var body_state_machine
-var head_animatorTree
-var head_state_machine
-var hat_animatorTree
-var hat_state_machine
-var anim_state = "Move"
-var head_sprite
-var weapon_origin
+
+var last_direction = Vector2(0, 1)
 
 var stats = {
 	GameEnums.STAMINA_STATS.CAPACITY         : 100,  # %
@@ -58,75 +50,85 @@ func get_deacceleration():            return stats[GameEnums.STAMINA_STATS.DEACC
 func set_deacceleration(amount):      stats[GameEnums.STAMINA_STATS.DEACCEL] = amount
 
 
-func handle_movement():
+func handle_movement(entity):
 	## TODO - Remaster this
-	pass
-	#var target = dir
-	#print("dir: ", dir)
-	#if is_sprinting:
-		#target *= MAX_SPRINT_SPEED
-	#else:
-		#target *= MAX_SPEED
+	var target = entity.controller.dir
+	#print("dir: ", entity.controller.dir)
+	if entity.controller.is_sprinting:
+		target *= stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
+	else:
+		target *= stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
 	#print("target: ", target)
-	#
-	#var accel
-	#var hvel = Vector2()
-	#print("DOT RESULT = ", dir.dot(hvel))
-	#if dir.dot(Vector2(1,1)) > 0:
-		#if is_sprinting:
-			#accel = SPRINT_ACCEL
+	
+	var accel
+	var hvel = Vector2()
+	#print("DOT RESULT = ", entity.controller.dir.dot(hvel))
+	if entity.controller.dir.dot(hvel) > 0:
+		if entity.controller.is_sprinting:
+			accel = stats[GameEnums.STAMINA_STATS.SPRINT_ACCEL]
 			#print("is sprinting accel: ", accel)
-		#else:
-			#accel = ACCEL
+		else:
+			accel = stats[GameEnums.STAMINA_STATS.WALK_ACCEL]
 			#print("not sprinting accel: ", accel)
-	#else:
-		#accel = DEACCEL
+	else:
+		accel = stats[GameEnums.STAMINA_STATS.DEACCEL]
 		#print("under 0 accel: ", accel)
-	#
-	#hvel = hvel.lerp(target, accel)
+	
+	hvel = hvel.lerp(target, accel)
 	#print("hvel: ", hvel)
-	#velocity = hvel
-	#move_and_slide()
+	entity.velocity = hvel
+	handle_animation(entity)
 
 
-func handle_animation(_body):
-	pass
-	## TODO - Remaster this
-	#var direction = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	#anim_speed = clamp(anim_speed, 0.5, 1.0)
-	#if direction == Vector2.ZERO:
-		#body_state_machine.travel("Idle")
-		#head_state_machine.travel("Idle")
-	#else:
-		#rotate_weapon(direction)
-		#
-		#if anim_state == "Run":
-			#body_state_machine.travel("Move")
-			#body_animatorTree["parameters/TimeScale/scale"] = MAX_SPRINT_SPEED * 0.05 + 0.5
-			#body_animatorTree["parameters/Movement/Idle/blend_position"] = direction
-			#body_animatorTree["parameters/Movement/Move/blend_position"] = direction
-		#else:
-			#body_state_machine.travel(anim_state)
-			#body_animatorTree["parameters/TimeScale/scale"] = MAX_SPEED * 0.05 + 0.5
-			#body_animatorTree["parameters/Movement/Idle/blend_position"] = direction
-			#body_animatorTree["parameters/Movement/" + anim_state + "/blend_position"] = direction
-		#
-		#head_state_machine.travel(anim_state)
-		#head_animatorTree["parameters/Movement/Idle/blend_position"] = direction
-		#head_animatorTree["parameters/Movement/" + anim_state + "/blend_position"] = direction
-		#
-		#hat_animatorTree["parameters/Movement/Idle/blend_position"] = direction
+func handle_animation(entity):
+	print("Animating!")
+	print("dir = ", entity.controller.dir)
+	
+	var current_state = entity.controller.anim_state
+	var speed_scale   = 1.0
+	var direction     = entity.controller.dir
+	if direction == Vector2.ZERO:
+		current_state = "Idle"
+	else:
+		# TODO ! rotate_weapon(direction)
+		last_direction = direction
+		if current_state == "Run":
+			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] * 0.05 + 0.5
+		else:
+			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] * 0.05 + 0.5
+	
+	# TODO ! This obviously sucks a lot and should be more dynamic and fast
+	## UPDATE THE SOUL AND CALL SPAWN INSTEAD
+	for limb in entity.soul.pose:
+		# ref[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
+		entity.soul.pose[limb][2] = current_state
+		entity.soul.pose[limb][3] = "parameters/Movement/" + current_state + "/blend_position"
+		entity.soul.pose[limb][4] = last_direction
+		entity.soul.pose[limb][6] = speed_scale
+		# TODO - This is a difficult bug. I need to blend 2D animations to make Run state work OR'
+		# get RID of all Run state in everything, only have Move and its speed. Can change blend mode to discrete?
+		if limb == "Torso" and current_state != "Idle": 
+			entity.soul.pose[limb][2] = "Move"
+			entity.soul.pose[limb][3] = "parameters/Movement/Move/blend_position"
+		elif limb == "Head":
+			entity.soul.pose[limb][6] = 1.0
+	
+	entity.move_body()
+	
+	## TODO ! Update Accesories positions
+	#hat_animatorTree["parameters/Movement/Idle/blend_position"] = direction
 
 
 func move_limb(limb, pose):
-	limb.position = pose[0]
+	limb.position = pose[0]                    # Marked2D.position = Vector2()
 	limb.get_child(1)[pose[1]].travel(pose[2]) # animatorTree["parameters/Movement/playback"].travel("")
 	limb.get_child(1)[pose[3]] = pose[4]       # animatorTree["parameters/Movement/''/blend_position"] = Vector2()
-	
-	
-	## TODO ! DO NOT DELETE THIS YET
-	#weapon_origin.rotation_degrees = -90
-	#also had %interaction_area and %weapon_origin stuff in initial_vars...
-	#hat_state_machine  = hat_animatorTree["parameters/Movement/playback"]
-	#hat_state_machine.travel("Idle")
-	#hat_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
+	limb.get_child(1)[pose[5]] = pose[6]       # animatorTree["parameters/TimeScale/scale"] = speed_scale
+
+
+## TODO ! DO NOT DELETE THIS YET
+#weapon_origin.rotation_degrees = -90
+#also had %interaction_area and %weapon_origin stuff in initial_vars...
+#hat_state_machine  = hat_animatorTree["parameters/Movement/playback"]
+#hat_state_machine.travel("Idle")
+#hat_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)

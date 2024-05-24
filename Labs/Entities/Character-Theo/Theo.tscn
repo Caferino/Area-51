@@ -574,7 +574,7 @@ monitoring = false
 z_index = 2
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_aj8lf")
-animation = &"down"
+animation = &"up"
 
 [node name="HatAnimatorTree" type="AnimationTree" parent="HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
 tree_root = SubResource("AnimationNodeBlendTree_wggd8")
