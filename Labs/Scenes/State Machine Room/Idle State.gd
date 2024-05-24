@@ -38,5 +38,4 @@ func State_Process(_delta):
 	# print(direction.length())
 	
 	if direction.length() < 200 and player.global_position != get_parent().target_last_position or direction.length() > get_parent().distance_tolerance and player.global_position == get_parent().target_last_position:
-		print("ayy")
 		Transitioned.emit(self, "Follow")

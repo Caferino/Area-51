@@ -1,0 +1,8 @@
+Smoke Ashburn
+Human,Humanoid
+Male
+70,154
+1.70,5'4''
+25
+Red
+Green

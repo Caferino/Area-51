@@ -2,6 +2,11 @@ class_name Theo extends CharacterBody2D
 
 @export var player_data : PlayerData
 
+var interfaces = [
+	#GameEnums.INTERFACE.DAMAGEABLE,
+	#GameEnums.INTERFACE.FLAMMABLE
+]
+
 signal health_depleted
 #signal plant_collision
 
@@ -17,6 +22,7 @@ var input_movement_vector = Vector2()
 var is_sprinting = false
 var dir = Vector2()
 
+var body_animator
 var body_animatorTree
 var body_state_machine
 var head_animatorTree
@@ -24,31 +30,26 @@ var head_state_machine
 var hat_animatorTree
 var hat_state_machine
 var anim_state = "Move"
-
 var head_sprite
-
 var weapon_origin
+
 var interaction_area_origin
 var interaction_area
-var body_animator
 var isAttacking = false
 var on_left_hand = true   # left handed weapon carry
 
 
 func _ready():
-	#connect_signals()
+	InterfaceManager.validate(self)
+	connect_signals()
 	setup_vars()
 	setup_initial_anims()
-	
-	SignalManager.item_dropped.connect( _on_item_dropped )
-	player_data.changed.connect( _on_data_changed )
+
+
+func connect_signals():
+	SignalManager.item_dropped.connect(_on_item_dropped)
+	player_data.changed.connect(_on_data_changed)
 	_on_data_changed()
-
-
-#func connect_signals():
-	#SignalManager.item_dropped.connect(_on_item_dropped)
-	#player_data.changed.connect(_on_data_changed)
-	#_on_data_changed()
 
 
 func setup_vars():
