@@ -1,5 +1,2 @@
 extends AnimatedSprite2D
-
-
-func _ready() -> void:
-	play()
+func _ready() -> void: play()
