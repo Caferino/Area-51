@@ -13,7 +13,6 @@ extends CharacterBody2D
 @export var controller  : PlayerControllerComponent
 @export var body        : BodyComponent
 @export var weapon      : WeaponComponent
-#@export var accessories : AccessoriesComponent  # TODO ! What if Body uses this to save the find()
 
 
 func _ready():
@@ -21,7 +20,6 @@ func _ready():
 
 
 func spawn():
-	muscles.initiate(soul.stamina_stats)
 	body.limb_interact.connect(on_limb_interact)
 	controller.player_moved.connect(on_player_moved)
 
@@ -38,10 +36,8 @@ func move_limb(limb):
 
 
 func move_accessories(limb):
-	var accessories = body.limbs[limb].get_child(0).accessories
-	if accessories:
-		for accessory in accessories.get_children():
-			muscles.move_limb(accessory, soul.accessories[accessory.name])
+	for accessory in body.limbs[limb].accessories.get_children():
+		muscles.move_limb(accessory, soul.accessories[accessory.name])
 
 
 ## It works, it's just that you need to wait a second because the children load first

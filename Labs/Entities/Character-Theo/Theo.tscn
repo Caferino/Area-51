@@ -4,13 +4,13 @@
 [ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="2_ovm8y"]
 [ext_resource type="PackedScene" uid="uid://cqypn2n1j0p6t" path="res://Labs/Scenes/Attack Room/weapon.tscn" id="2_ua78c"]
 [ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png" id="3_6lhpy"]
-[ext_resource type="AnimationLibrary" uid="uid://cgqxac80b6euh" path="res://animations/2D Updated/2D Human Body Movement.res" id="4_q1kkm"]
 [ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="5_20vns"]
+[ext_resource type="AnimationLibrary" uid="uid://diupfaaatv8xc" path="res://animations/2D Updated/2D Human Body Movement Remastered.res" id="5_asn2l"]
 [ext_resource type="Texture2D" uid="uid://d2cvvynbgoxt3" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_down.png" id="6_4pcna"]
 [ext_resource type="Texture2D" uid="uid://bi2qchnv62n1q" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_left.png" id="7_korct"]
 [ext_resource type="Texture2D" uid="uid://w0a5cd2g4qdn" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_right.png" id="8_esddc"]
 [ext_resource type="Texture2D" uid="uid://bc6p8e8hm1mus" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_up.png" id="9_dvbv0"]
-[ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="11_ibjsg"]
+[ext_resource type="AnimationLibrary" uid="uid://e1l506hb0dsw" path="res://animations/2D Updated/2D Human Head Movement.res" id="11_buux0"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="11_nyi4c"]
 [ext_resource type="AnimationLibrary" uid="uid://bdyf8ugjxxxjl" path="res://animations/2D Updated/2D Hat Movement Remastered.res" id="13_gcrlj"]
 [ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="13_icx8m"]
@@ -505,7 +505,7 @@ parameters/TimeScale/scale = 1.0
 
 [node name="BodyAnimator" type="AnimationPlayer" parent="BodyOrigin/Body/BodySprite"]
 libraries = {
-"": ExtResource("4_q1kkm")
+"": ExtResource("5_asn2l")
 }
 
 [node name="BodyShadow" type="Sprite2D" parent="BodyOrigin/Body/BodySprite"]
@@ -534,6 +534,7 @@ y_sort_enabled = true
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="HeadOrigin/Head"]
 y_sort_enabled = true
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2qvm0")
 animation = &"down"
 
@@ -547,7 +548,7 @@ parameters/TimeScale/scale = 1.0
 
 [node name="HeadAnimator" type="AnimationPlayer" parent="HeadOrigin/Head/HeadSprite"]
 libraries = {
-"2D Human Head Movement": ExtResource("11_ibjsg")
+"2D Human Head Movement": ExtResource("11_buux0")
 }
 
 [node name="Area" type="Area2D" parent="HeadOrigin/Head/HeadSprite"]
@@ -574,7 +575,7 @@ monitoring = false
 z_index = 2
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_aj8lf")
-animation = &"up"
+animation = &"left"
 
 [node name="HatAnimatorTree" type="AnimationTree" parent="HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
 tree_root = SubResource("AnimationNodeBlendTree_wggd8")

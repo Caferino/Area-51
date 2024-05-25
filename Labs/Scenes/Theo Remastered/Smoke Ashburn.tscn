@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=110 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -8,16 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://bhknrcawdvqvk" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/attack_component.tscn" id="6_dybqt"]
 [ext_resource type="PackedScene" uid="uid://baq33xt06du5y" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/player_controller_component.tscn" id="6_t0pop"]
 [ext_resource type="PackedScene" uid="uid://bcuy0jppjef6f" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/body_component.tscn" id="8_5ixyk"]
-[ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png" id="9_vd2bk"]
 [ext_resource type="PackedScene" uid="uid://cn3ip2h36rhru" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/weapon_component.tscn" id="9_wbynx"]
+[ext_resource type="Texture2D" uid="uid://bjpghtdgac6ed" path="res://Labs/Scenes/Theo Remastered/export/anatomy/black_cat_body.png" id="10_2d6tk"]
 [ext_resource type="PackedScene" uid="uid://byvgnjjoahfqa" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/accessories_component.tscn" id="10_6yihg"]
-[ext_resource type="AnimationLibrary" uid="uid://cgqxac80b6euh" path="res://animations/2D Updated/2D Human Body Movement.res" id="10_yvdxw"]
 [ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="11_6fk20"]
-[ext_resource type="Texture2D" uid="uid://d2cvvynbgoxt3" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_down.png" id="12_tx64v"]
+[ext_resource type="AnimationLibrary" uid="uid://diupfaaatv8xc" path="res://animations/2D Updated/2D Human Body Movement Remastered.res" id="12_pdib2"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="12_xfj4o"]
-[ext_resource type="Texture2D" uid="uid://bi2qchnv62n1q" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_left.png" id="13_03p3j"]
-[ext_resource type="Texture2D" uid="uid://w0a5cd2g4qdn" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_right.png" id="14_lnmle"]
-[ext_resource type="Texture2D" uid="uid://bc6p8e8hm1mus" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_up.png" id="15_q7vay"]
+[ext_resource type="Texture2D" uid="uid://mphv3ma21huh" path="res://Labs/Scenes/Theo Remastered/export/anatomy/black_cat_head.png" id="13_beobx"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/auto_play_animatedsprite.gd" id="16_3nyy4"]
 [ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="16_m3k4p"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="17_io7h4"]
@@ -105,26 +102,22 @@ max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e5sbt"]
-switch_mode = 1
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_35agi"]
-switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_003a7"]
 reset = false
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bs2sq"]
 reset = false
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ws2w"]
-switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hj3xp"]
-switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_38pyb"]
-switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3f5lu"]
 states/End/position = Vector2(926, 100)
@@ -141,7 +134,7 @@ graph_offset = Vector2(-55, -14)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_suc2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a0x5n"]
-graph_offset = Vector2(-68.8052, 398.8)
+graph_offset = Vector2(-102.805, 415)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_3f5lu")
 nodes/Movement/position = Vector2(240, 420)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_suc2h")
@@ -152,72 +145,72 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 [sub_resource type="CircleShape2D" id="CircleShape2D_gedt6"]
 radius = 11.0003
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0efv"]
-atlas = ExtResource("12_tx64v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3l81"]
+atlas = ExtResource("13_beobx")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqi6l"]
-atlas = ExtResource("12_tx64v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sreu"]
+atlas = ExtResource("13_beobx")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sm0rw"]
-atlas = ExtResource("12_tx64v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_aro2c"]
+atlas = ExtResource("13_beobx")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yabnf"]
-atlas = ExtResource("12_tx64v")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksvw4"]
+atlas = ExtResource("13_beobx")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_knng1"]
-atlas = ExtResource("13_03p3j")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e44dq"]
+atlas = ExtResource("13_beobx")
+region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ppgrm"]
-atlas = ExtResource("13_03p3j")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_76gem"]
+atlas = ExtResource("13_beobx")
+region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_an054"]
-atlas = ExtResource("13_03p3j")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_idmml"]
+atlas = ExtResource("13_beobx")
+region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ofww"]
-atlas = ExtResource("13_03p3j")
-region = Rect2(96, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnvwo"]
+atlas = ExtResource("13_beobx")
+region = Rect2(96, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ynomm"]
-atlas = ExtResource("14_lnmle")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qxtl"]
+atlas = ExtResource("13_beobx")
+region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yin0p"]
-atlas = ExtResource("14_lnmle")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lfdk"]
+atlas = ExtResource("13_beobx")
+region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fcrxi"]
-atlas = ExtResource("14_lnmle")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_keuo4"]
+atlas = ExtResource("13_beobx")
+region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w56mx"]
-atlas = ExtResource("14_lnmle")
-region = Rect2(96, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgnej"]
+atlas = ExtResource("13_beobx")
+region = Rect2(96, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_14g41"]
-atlas = ExtResource("15_q7vay")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncsvu"]
+atlas = ExtResource("13_beobx")
+region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xcbgx"]
 animations = [{
 "frames": [{
 "duration": 50.0,
-"texture": SubResource("AtlasTexture_p0efv")
+"texture": SubResource("AtlasTexture_y3l81")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_gqi6l")
+"texture": SubResource("AtlasTexture_0sreu")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_sm0rw")
+"texture": SubResource("AtlasTexture_aro2c")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_yabnf")
+"texture": SubResource("AtlasTexture_ksvw4")
 }],
 "loop": true,
 "name": &"down",
@@ -225,16 +218,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 50.0,
-"texture": SubResource("AtlasTexture_knng1")
+"texture": SubResource("AtlasTexture_e44dq")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_ppgrm")
+"texture": SubResource("AtlasTexture_76gem")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_an054")
+"texture": SubResource("AtlasTexture_idmml")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_2ofww")
+"texture": SubResource("AtlasTexture_qnvwo")
 }],
 "loop": true,
 "name": &"left",
@@ -242,16 +235,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 50.0,
-"texture": SubResource("AtlasTexture_ynomm")
+"texture": SubResource("AtlasTexture_5qxtl")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_yin0p")
+"texture": SubResource("AtlasTexture_6lfdk")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_fcrxi")
+"texture": SubResource("AtlasTexture_keuo4")
 }, {
 "duration": 0.5,
-"texture": SubResource("AtlasTexture_w56mx")
+"texture": SubResource("AtlasTexture_xgnej")
 }],
 "loop": true,
 "name": &"right",
@@ -259,11 +252,11 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_14g41")
+"texture": SubResource("AtlasTexture_ncsvu")
 }],
-"loop": true,
+"loop": false,
 "name": &"up",
-"speed": 5.0
+"speed": 0.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u50h0"]
@@ -369,6 +362,31 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i3eaa"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6hkjk"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_feqhm"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rg4ol"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_nr4ve"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_i3eaa")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_6hkjk")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_feqhm")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_rg4ol")
+blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2e1kg"]
 advance_mode = 2
 
@@ -377,6 +395,8 @@ states/Idle/node = SubResource("AnimationNodeBlendSpace2D_17say")
 states/Idle/position = Vector2(360, 34)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_scvvg")
 states/Move/position = Vector2(586, 34)
+states/Run/node = SubResource("AnimationNodeBlendSpace2D_nr4ve")
+states/Run/position = Vector2(790, 34)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2e1kg")]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xonh7"]
@@ -534,12 +554,13 @@ weapon = NodePath("WeaponComponent")
 
 [node name="BodyComponent" parent="." instance=ExtResource("8_5ixyk")]
 
-[node name="Torso" type="Marker2D" parent="BodyComponent"]
+[node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
+script = ExtResource("12_xfj4o")
+accessories = NodePath("TorsoArea/AccessoriesComponent")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
 collision_layer = 4096
 collision_mask = 9219
-script = ExtResource("12_xfj4o")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]
 position = Vector2(0, 2.75)
@@ -547,12 +568,12 @@ shape = SubResource("RectangleShape2D_m58ku")
 
 [node name="TorsoSprite" type="Sprite2D" parent="BodyComponent/Torso/TorsoArea"]
 y_sort_enabled = true
-texture = ExtResource("9_vd2bk")
+texture = ExtResource("10_2d6tk")
 hframes = 4
 vframes = 21
 frame = 2
 
-[node name="BodyShadow" type="Sprite2D" parent="BodyComponent/Torso/TorsoArea"]
+[node name="BodyShadow" type="Sprite2D" parent="BodyComponent/Torso/TorsoArea/TorsoSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
 z_index = -1
 texture_filter = 2
@@ -560,6 +581,9 @@ material = SubResource("CanvasItemMaterial_xvogj")
 position = Vector2(0, 12)
 scale = Vector2(0.380952, 0.307692)
 texture = ExtResource("11_6fk20")
+
+[node name="AccessoriesComponent" parent="BodyComponent/Torso/TorsoArea" instance=ExtResource("10_6yihg")]
+position = Vector2(0, -1)
 
 [node name="TorsoAnimatorTree" type="AnimationTree" parent="BodyComponent/Torso"]
 root_node = NodePath("../TorsoArea/TorsoSprite")
@@ -573,19 +597,20 @@ parameters/TimeScale/scale = 1.0
 [node name="TorsoAnimator" type="AnimationPlayer" parent="BodyComponent/Torso"]
 root_node = NodePath("../TorsoArea/TorsoSprite")
 libraries = {
-"": ExtResource("10_yvdxw")
+"": ExtResource("12_pdib2")
 }
+speed_scale = 2.0
 
-[node name="Head" type="Marker2D" parent="BodyComponent"]
+[node name="Head" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
 position = Vector2(0, -1)
+script = ExtResource("12_xfj4o")
+accessories = NodePath("HeadArea/AccessoriesComponent")
 
-[node name="HeadArea" type="Area2D" parent="BodyComponent/Head" node_paths=PackedStringArray("accessories")]
+[node name="HeadArea" type="Area2D" parent="BodyComponent/Head"]
 position = Vector2(0, -1)
 collision_layer = 4096
 collision_mask = 0
 monitoring = false
-script = ExtResource("12_xfj4o")
-accessories = NodePath("AccessoriesComponent")
 
 [node name="HeadCollisionShape" type="CollisionShape2D" parent="BodyComponent/Head/HeadArea"]
 position = Vector2(0, 2.5)
@@ -598,7 +623,7 @@ sprite_frames = SubResource("SpriteFrames_xcbgx")
 animation = &"left"
 script = ExtResource("16_3nyy4")
 
-[node name="HeadShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea"]
+[node name="HeadShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/HeadAnimatedSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
 z_index = -1
 texture_filter = 2
@@ -607,6 +632,7 @@ scale = Vector2(0.285714, 0.331417)
 texture = ExtResource("11_6fk20")
 
 [node name="AccessoriesComponent" parent="BodyComponent/Head/HeadArea" instance=ExtResource("10_6yihg")]
+position = Vector2(0, -1)
 
 [node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent"]
 
@@ -622,11 +648,12 @@ shape = SubResource("CircleShape2D_u50h0")
 
 [node name="HatAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea"]
 y_sort_enabled = true
+position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
-animation = &"up"
+animation = &"right"
 script = ExtResource("16_3nyy4")
 
-[node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea"]
+[node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
 z_index = -1
 texture_filter = 2
@@ -637,8 +664,9 @@ texture = ExtResource("11_6fk20")
 [node name="HatAnimatorTree" type="AnimationTree" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
 tree_root = SubResource("AnimationNodeBlendTree_fih4q")
 anim_player = NodePath("../HatAnimator")
-parameters/Movement/Idle/blend_position = Vector2(0, -0.935242)
-parameters/Movement/Move/blend_position = Vector2(-0.369574, 0.159912)
+parameters/Movement/Idle/blend_position = Vector2(0.649696, -0.0560786)
+parameters/Movement/Move/blend_position = Vector2(0.159323, 0.125098)
+parameters/Movement/Run/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
 [node name="HatAnimator" type="AnimationPlayer" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
@@ -661,15 +689,19 @@ libraries = {
 "2D Human Head Movement": ExtResource("16_m3k4p")
 }
 
-[node name="LeftLeg" type="Marker2D" parent="BodyComponent"]
+[node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
+script = ExtResource("12_xfj4o")
+accessories = NodePath("LeftLegArea/AccessoriesComponent")
 
 [node name="LeftLegArea" type="Area2D" parent="BodyComponent/LeftLeg"]
-script = ExtResource("12_xfj4o")
 
 [node name="LeftLegCollisionShape" type="CollisionShape2D" parent="BodyComponent/LeftLeg/LeftLegArea"]
 
 [node name="LeftLegAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/LeftLeg/LeftLegArea"]
 sprite_frames = SubResource("SpriteFrames_808wd")
+
+[node name="AccessoriesComponent" parent="BodyComponent/LeftLeg/LeftLegArea" instance=ExtResource("10_6yihg")]
+position = Vector2(0, -1)
 
 [node name="LeftLegAnimatorTree" type="AnimationTree" parent="BodyComponent/LeftLeg"]
 root_node = NodePath("../LeftLegArea")
@@ -679,15 +711,19 @@ anim_player = NodePath("../LeftLegAnimator")
 [node name="LeftLegAnimator" type="AnimationPlayer" parent="BodyComponent/LeftLeg"]
 root_node = NodePath("../LeftLegArea")
 
-[node name="RightLeg" type="Marker2D" parent="BodyComponent"]
+[node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
+script = ExtResource("12_xfj4o")
+accessories = NodePath("RightLegArea/AccessoriesComponent")
 
 [node name="RightLegArea" type="Area2D" parent="BodyComponent/RightLeg"]
-script = ExtResource("12_xfj4o")
 
 [node name="RightLegCollisionShape" type="CollisionShape2D" parent="BodyComponent/RightLeg/RightLegArea"]
 
 [node name="RightLegAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/RightLeg/RightLegArea"]
 sprite_frames = SubResource("SpriteFrames_808wd")
+
+[node name="AccessoriesComponent" parent="BodyComponent/RightLeg/RightLegArea" instance=ExtResource("10_6yihg")]
+position = Vector2(0, -1)
 
 [node name="RightLegAnimatorTree" type="AnimationTree" parent="BodyComponent/RightLeg"]
 root_node = NodePath("../RightLegArea")

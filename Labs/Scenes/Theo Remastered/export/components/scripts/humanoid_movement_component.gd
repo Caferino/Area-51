@@ -93,34 +93,31 @@ func handle_animation(entity):
 		# TODO ! rotate_weapon(direction)
 		last_direction = direction
 		if current_state == "Run":
-			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] * 0.05 + 0.5
+			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] * 0.1 + 0.25
+			print(speed_scale)
 		else:
-			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] * 0.05 + 0.5
+			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] * 0.1 + 1
+			print(speed_scale)
 	
-	# TODO ! This obviously sucks a lot and should be more dynamic and fast
-	## UPDATE THE SOUL AND CALL SPAWN INSTEAD
+	# TODO ! This could be faster
 	for limb in entity.soul.pose:
-		# ref[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
+		#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0] (check entity's soul)
 		entity.soul.pose[limb][2] = current_state
 		entity.soul.pose[limb][3] = "parameters/Movement/" + current_state + "/blend_position"
 		entity.soul.pose[limb][4] = last_direction
 		entity.soul.pose[limb][6] = speed_scale
-		# TODO - This is a difficult bug. I need to blend 2D animations to make Run state work OR'
-		# get RID of all Run state in everything, only have Move and its speed. Can change blend mode to discrete?
-		if limb == "Torso" and current_state != "Idle": 
-			entity.soul.pose[limb][2] = "Move"
-			entity.soul.pose[limb][3] = "parameters/Movement/Move/blend_position"
-		elif limb == "Head":
-			entity.soul.pose[limb][6] = 1.0
+	
+	for accessory in entity.soul.accessories:
+		entity.soul.accessories[accessory][2] = current_state
+		entity.soul.accessories[accessory][3] = "parameters/Movement/" + current_state + "/blend_position"
+		entity.soul.accessories[accessory][4] = last_direction
+		entity.soul.accessories[accessory][6] = speed_scale
 	
 	entity.move_body()
-	
-	## TODO ! Update Accesories positions
-	#hat_animatorTree["parameters/Movement/Idle/blend_position"] = direction
 
 
 func move_limb(limb, pose):
-	limb.position = pose[0]                    # Marked2D.position = Vector2()
+	limb.position = pose[0]                    # Marker2D.position = Vector2()
 	limb.get_child(1)[pose[1]].travel(pose[2]) # animatorTree["parameters/Movement/playback"].travel("")
 	limb.get_child(1)[pose[3]] = pose[4]       # animatorTree["parameters/Movement/''/blend_position"] = Vector2()
 	limb.get_child(1)[pose[5]] = pose[6]       # animatorTree["parameters/TimeScale/scale"] = speed_scale
