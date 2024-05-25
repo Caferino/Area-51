@@ -1,18 +1,31 @@
 extends CharacterBody2D
 
-## This system works like a real brain. The limbs await collisions and inputs
-## which they send here, the brain, to process and make a decision, the output,
-## the action to be executed. Every entity has a set of defined components and 
-## variables it needs to be what it is.
+## Smoke Ashburn ##
 
 @export var lore        : LoreComponent
-@export var soul        : SoulComponent
 @export var health      : HealthComponent
-@export var attack      : AttackComponent
+@export var weapon      : AttackComponent
 @export var muscles     : HumanoidMovementComponent
 @export var controller  : PlayerControllerComponent
 @export var body        : BodyComponent
-@export var weapon      : WeaponComponent
+
+var base_stats = {
+	GameEnums.STAT.STRENGTH     : 5,
+	GameEnums.STAT.DEXTERITY    : 5,
+	GameEnums.STAT.VITALITY     : 5,
+	GameEnums.STAT.INTELLIGENCE : 5
+}
+
+# [Origin Position, Rotation, State_Machine key, State_Machine travel node, Animator_Tree key, Animator_Tree blend_position, Animator_Tree speed, speed_scale]
+var body_pose = {
+	"Head"      : [Vector2(0, -13), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0],
+	"Torso"     : [Vector2(0, 0), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 2.0]
+}
+
+var body_accessories = {
+	"Hat"       : [Vector2(0, -9), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0],
+	"Weapon"    : [Vector2(0, 0), -90, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
+}
 
 
 func _ready():
@@ -26,18 +39,8 @@ func spawn():
 
 func move_body():
 	for limb in body.limbs:
-		move_limb(limb)
-		move_accessories(limb)
-
-
-func move_limb(limb):
-	if limb in body.limbs and limb in soul.pose:
-		muscles.move_limb(body.limbs[limb], soul.pose[limb])
-
-
-func move_accessories(limb):
-	for accessory in body.limbs[limb].accessories.get_children():
-		muscles.move_limb(accessory, soul.accessories[accessory.name])
+		muscles.move_limb(self, limb)
+		muscles.move_accessories(self, limb)
 
 
 ## It works, it's just that you need to wait a second because the children load first
@@ -46,10 +49,7 @@ func on_limb_interact(test, tes):
 
 
 func on_player_moved():
-	print("----------------------------")
-	print("Moving!")
 	muscles.handle_movement(self)
-	print("----------------------------")
 
 
 func _physics_process(_delta):

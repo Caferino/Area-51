@@ -81,47 +81,75 @@ func handle_movement(entity):
 
 
 func handle_animation(entity):
-	print("Animating!")
-	print("dir = ", entity.controller.dir)
-	
 	var current_state = entity.controller.anim_state
 	var speed_scale   = 1.0
 	var direction     = entity.controller.dir
 	if direction == Vector2.ZERO:
 		current_state = "Idle"
 	else:
-		# TODO ! rotate_weapon(direction)
 		last_direction = direction
 		if current_state == "Run":
 			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] * 0.1 + 0.25
-			print(speed_scale)
 		else:
 			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] * 0.1 + 1
-			print(speed_scale)
 	
-	# TODO ! This could be faster
-	for limb in entity.soul.pose:
+	# TODO ! This can probably be faster, maybe not
+	for limb in entity.body_pose:
 		#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0] (check entity's soul)
-		entity.soul.pose[limb][2] = current_state
-		entity.soul.pose[limb][3] = "parameters/Movement/" + current_state + "/blend_position"
-		entity.soul.pose[limb][4] = last_direction
-		entity.soul.pose[limb][6] = speed_scale
+		entity.body_pose[limb][3] = current_state
+		entity.body_pose[limb][4] = "parameters/Movement/" + current_state + "/blend_position"
+		entity.body_pose[limb][5] = last_direction
+		entity.body_pose[limb][7] = speed_scale
 	
-	for accessory in entity.soul.accessories:
-		entity.soul.accessories[accessory][2] = current_state
-		entity.soul.accessories[accessory][3] = "parameters/Movement/" + current_state + "/blend_position"
-		entity.soul.accessories[accessory][4] = last_direction
-		entity.soul.accessories[accessory][6] = speed_scale
+	for accessory in entity.body_accessories:
+		if accessory == "Weapon": rotate(entity, accessory, direction)
+		entity.body_accessories[accessory][3] = current_state
+		entity.body_accessories[accessory][4] = "parameters/Movement/" + current_state + "/blend_position"
+		entity.body_accessories[accessory][5] = last_direction
+		entity.body_accessories[accessory][7] = speed_scale
 	
 	entity.move_body()
 
 
-func move_limb(limb, pose):
-	limb.position = pose[0]                    # Marker2D.position = Vector2()
-	limb.get_child(1)[pose[1]].travel(pose[2]) # animatorTree["parameters/Movement/playback"].travel("")
-	limb.get_child(1)[pose[3]] = pose[4]       # animatorTree["parameters/Movement/''/blend_position"] = Vector2()
-	limb.get_child(1)[pose[5]] = pose[6]       # animatorTree["parameters/TimeScale/scale"] = speed_scale
+func move_limb(entity, limb):
+	if limb in entity.body.limbs and limb in entity.body_pose:
+		move(entity.body.limbs[limb], entity.body_pose[limb])
 
+
+func move_accessories(entity, limb):
+	for accessory in entity.body.limbs[limb].accessories.get_children():
+		move(accessory, entity.body_accessories[accessory.name])
+
+
+func move(part, pose):
+	part.position = pose[0]                    # Marker2D.position = Vector2()
+	part.rotation = pose[1]                    # Marker2D.rotation = degrees
+	if part is Limb:
+		part.get_child(1)[pose[2]].travel(pose[3]) # animatorTree["parameters/Movement/playback"].travel("")
+		part.get_child(1)[pose[4]] = pose[5]       # animatorTree["parameters/Movement/''/blend_position"] = Vector2()
+		part.get_child(1)[pose[6]] = pose[7]       # animatorTree["parameters/TimeScale/scale"] = speed_scale
+
+
+func rotate(entity, accessory, direction):
+	entity.weapon.on_left_hand = true
+	if direction.y > 0:
+		entity.body_accessories[accessory][0] = Vector2(0, 10)
+		entity.body_accessories[accessory][1] = -90
+		## TODO interaction_area_origin.rotation_degrees = -90
+	elif direction.y < 0:
+		entity.body_accessories[accessory][0] = Vector2(0, -10)
+		entity.body_accessories[accessory][1] = 90
+		## TODO interaction_area_origin.rotation_degrees = 90
+	
+	if direction.x > 0:
+		entity.body_accessories[accessory][0] = Vector2(10, 0)
+		entity.body_accessories[accessory][1] = 180
+		## TODO interaction_area_origin.rotation_degrees = 180
+	elif direction.x < 0:
+		entity.body_accessories[accessory][0] = Vector2(-10, 0)
+		entity.body_accessories[accessory][1] = 0
+		## TODO interaction_area_origin.rotation_degrees = 0
+	
 
 ## TODO ! DO NOT DELETE THIS YET
 #weapon_origin.rotation_degrees = -90

@@ -1,20 +1,20 @@
-[gd_scene load_steps=110 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=111 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
-[ext_resource type="PackedScene" uid="uid://dnvgi3bb45n7c" path="res://Labs/Scenes/Theo Remastered/SmokeAshburnSoul.tscn" id="3_w7ndf"]
 [ext_resource type="PackedScene" uid="uid://giwbm1t1m8mo" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/health_component.tscn" id="4_fi2wd"]
 [ext_resource type="PackedScene" uid="uid://lprf3rgs43hq" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/humanoid_movement_component.tscn" id="5_ql8g5"]
 [ext_resource type="PackedScene" uid="uid://bhknrcawdvqvk" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/attack_component.tscn" id="6_dybqt"]
 [ext_resource type="PackedScene" uid="uid://baq33xt06du5y" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/player_controller_component.tscn" id="6_t0pop"]
 [ext_resource type="PackedScene" uid="uid://bcuy0jppjef6f" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/body_component.tscn" id="8_5ixyk"]
-[ext_resource type="PackedScene" uid="uid://cn3ip2h36rhru" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/weapon_component.tscn" id="9_wbynx"]
 [ext_resource type="Texture2D" uid="uid://bjpghtdgac6ed" path="res://Labs/Scenes/Theo Remastered/export/anatomy/black_cat_body.png" id="10_2d6tk"]
 [ext_resource type="PackedScene" uid="uid://byvgnjjoahfqa" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/accessories_component.tscn" id="10_6yihg"]
 [ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="11_6fk20"]
 [ext_resource type="AnimationLibrary" uid="uid://diupfaaatv8xc" path="res://animations/2D Updated/2D Human Body Movement Remastered.res" id="12_pdib2"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="12_xfj4o"]
 [ext_resource type="Texture2D" uid="uid://mphv3ma21huh" path="res://Labs/Scenes/Theo Remastered/export/anatomy/black_cat_head.png" id="13_beobx"]
+[ext_resource type="Texture2D" uid="uid://cpsi8aqw3mfvm" path="res://Labs/Assets/6. Weapons/god_sword_1.png" id="13_bfiot"]
+[ext_resource type="AnimationLibrary" uid="uid://hw1v7gj1ldku" path="res://animations/2D Updated/2D Sword Movement Remastered.res" id="14_1vfag"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/auto_play_animatedsprite.gd" id="16_3nyy4"]
 [ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="16_m3k4p"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="17_io7h4"]
@@ -25,6 +25,10 @@
 size = Vector2(26, 22.5)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvogj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7lfi"]
+radius = 5.71105
+height = 21.4896
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0qkj6"]
 animation = &"idle_down"
@@ -523,26 +527,22 @@ animations = [{
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_gao0l"]
 b = Vector2(-30, 0)
 
-[node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "soul", "health", "attack", "muscles", "controller", "body", "weapon") groups=["Player", "Protagonist"]]
+[node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "weapon", "muscles", "controller", "body") groups=["Player", "Protagonist"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4096
 collision_mask = 4294959103
 script = ExtResource("1_c7twf")
 lore = NodePath("LoreComponent")
-soul = NodePath("SmokeAshburnSoul")
 health = NodePath("HealthComponent")
-attack = NodePath("AttackComponent")
+weapon = NodePath("AttackComponent")
 muscles = NodePath("HumanoidMovementComponent")
 controller = NodePath("PlayerControllerComponent")
 body = NodePath("BodyComponent")
-weapon = NodePath("WeaponComponent")
 
 [node name="LoreComponent" parent="." instance=ExtResource("2_joc08")]
 
 [node name="Background" type="Node" parent="LoreComponent"]
-
-[node name="SmokeAshburnSoul" parent="." instance=ExtResource("3_w7ndf")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_fi2wd")]
 
@@ -554,9 +554,10 @@ weapon = NodePath("WeaponComponent")
 
 [node name="BodyComponent" parent="." instance=ExtResource("8_5ixyk")]
 
-[node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
+[node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree")]
 script = ExtResource("12_xfj4o")
 accessories = NodePath("TorsoArea/AccessoriesComponent")
+animatorTree = NodePath("TorsoAnimatorTree")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
 collision_layer = 4096
@@ -585,6 +586,34 @@ texture = ExtResource("11_6fk20")
 [node name="AccessoriesComponent" parent="BodyComponent/Torso/TorsoArea" instance=ExtResource("10_6yihg")]
 position = Vector2(0, -1)
 
+[node name="Weapon" type="Marker2D" parent="BodyComponent/Torso/TorsoArea/AccessoriesComponent" groups=["Weapon"]]
+y_sort_enabled = true
+
+[node name="WeaponArea" type="Area2D" parent="BodyComponent/Torso/TorsoArea/AccessoriesComponent/Weapon"]
+position = Vector2(-1.78575e-05, -3)
+collision_layer = 2
+collision_mask = 8195
+
+[node name="CollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea/AccessoriesComponent/Weapon/WeaponArea"]
+position = Vector2(-1.00004, -15)
+rotation = -0.311607
+shape = SubResource("CapsuleShape2D_n7lfi")
+
+[node name="WeaponSprite" type="Sprite2D" parent="BodyComponent/Torso/TorsoArea/AccessoriesComponent/Weapon/WeaponArea"]
+y_sort_enabled = true
+position = Vector2(1.38263, -12)
+rotation = 3.14159
+texture = ExtResource("13_bfiot")
+offset = Vector2(1.38266, 0)
+region_enabled = true
+region_rect = Rect2(0, 36, 14, 24)
+
+[node name="WeaponAnimator" type="AnimationPlayer" parent="BodyComponent/Torso/TorsoArea/AccessoriesComponent/Weapon"]
+root_node = NodePath("../WeaponArea/WeaponSprite")
+libraries = {
+"": ExtResource("14_1vfag")
+}
+
 [node name="TorsoAnimatorTree" type="AnimationTree" parent="BodyComponent/Torso"]
 root_node = NodePath("../TorsoArea/TorsoSprite")
 tree_root = SubResource("AnimationNodeBlendTree_a0x5n")
@@ -601,13 +630,13 @@ libraries = {
 }
 speed_scale = 2.0
 
-[node name="Head" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
+[node name="Head" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree")]
 position = Vector2(0, -1)
 script = ExtResource("12_xfj4o")
 accessories = NodePath("HeadArea/AccessoriesComponent")
+animatorTree = NodePath("HeadAnimatorTree")
 
 [node name="HeadArea" type="Area2D" parent="BodyComponent/Head"]
-position = Vector2(0, -1)
 collision_layer = 4096
 collision_mask = 0
 monitoring = false
@@ -634,7 +663,9 @@ texture = ExtResource("11_6fk20")
 [node name="AccessoriesComponent" parent="BodyComponent/Head/HeadArea" instance=ExtResource("10_6yihg")]
 position = Vector2(0, -1)
 
-[node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent"]
+[node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent" node_paths=PackedStringArray("animatorTree")]
+script = ExtResource("12_xfj4o")
+animatorTree = NodePath("HatAnimatorTree")
 
 [node name="HatArea" type="Area2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
 collision_layer = 4096
@@ -689,9 +720,10 @@ libraries = {
 "2D Human Head Movement": ExtResource("16_m3k4p")
 }
 
-[node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
+[node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree")]
 script = ExtResource("12_xfj4o")
 accessories = NodePath("LeftLegArea/AccessoriesComponent")
+animatorTree = NodePath("LeftLegAnimatorTree")
 
 [node name="LeftLegArea" type="Area2D" parent="BodyComponent/LeftLeg"]
 
@@ -711,9 +743,10 @@ anim_player = NodePath("../LeftLegAnimator")
 [node name="LeftLegAnimator" type="AnimationPlayer" parent="BodyComponent/LeftLeg"]
 root_node = NodePath("../LeftLegArea")
 
-[node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
+[node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree")]
 script = ExtResource("12_xfj4o")
 accessories = NodePath("RightLegArea/AccessoriesComponent")
+animatorTree = NodePath("RightLegAnimatorTree")
 
 [node name="RightLegArea" type="Area2D" parent="BodyComponent/RightLeg"]
 
@@ -732,8 +765,6 @@ anim_player = NodePath("../RightLegAnimator")
 
 [node name="RightLegAnimator" type="AnimationPlayer" parent="BodyComponent/RightLeg"]
 root_node = NodePath("../RightLegArea")
-
-[node name="WeaponComponent" parent="." instance=ExtResource("9_wbynx")]
 
 [node name="CameraOrigin" type="Marker2D" parent="."]
 visible = false
