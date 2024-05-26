@@ -31,6 +31,12 @@ enum STAT {
 	MOVE_SPEED
 }  # TODO - Might deprecate, it's too general. Modularize
 
+enum ATTACK_STATS {
+	WEAPON_SPEED,
+	WEAPON_DAMAGE,
+	KNOCKBACK_POWER
+}
+
 enum STAMINA_STATS {
 	CAPACITY,
 	SPRINT_RATE,

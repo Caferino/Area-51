@@ -16,9 +16,9 @@ script = ExtResource("1_w7m45")
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-1.38265, 15)
+position = Vector2(-1.35, 15)
 texture = ExtResource("2_5ypcx")
-offset = Vector2(1.38266, 0)
+flip_h = true
 region_enabled = true
 region_rect = Rect2(0, 36, 14, 24)
 

@@ -309,6 +309,7 @@ graph_offset = Vector2(52, -63)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_u3wnr"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_k8aew"]
+graph_offset = Vector2(-133.666, -47.8144)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_1axe4")
 nodes/Movement/position = Vector2(180, 60)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_u3wnr")
@@ -534,7 +535,6 @@ y_sort_enabled = true
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="HeadOrigin/Head"]
 y_sort_enabled = true
-position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2qvm0")
 animation = &"down"
 

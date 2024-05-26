@@ -1,0 +1,1 @@
+class_name EquipmentComponent extends Node2D

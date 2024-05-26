@@ -2,18 +2,25 @@ class_name PlayerControllerComponent extends Node
 
 signal player_interacted()
 signal player_moved()
+signal attacked
 
-var dir          = Vector2()
-var anim_state   = "Move"
-var is_attacking = false
-var is_sprinting = false
+var dir                 = Vector2()
+var anim_state          = "Move"
+var is_attacking        = false
+var is_sprinting        = false
+var weapon_on_left_hand = true   # left handed weapon carry
 
 
 ## Handles inputs
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !is_attacking:
 		check_movement()
 		check_interact()
+
+
+func _input(_event):
+	if Input.is_action_just_pressed("attack"):
+		attacked.emit()
 
 
 func check_movement():

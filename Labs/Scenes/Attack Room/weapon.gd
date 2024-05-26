@@ -1,6 +1,6 @@
-class_name Weapon extends Node2D
+class_name WeaponOld extends Node2D
 
-signal attacked
+signal attacked(weapon)
 
 # Imagine this came from a dagger's data in a JSON file...
 var weapon_speed    = 2      # speed_scale = [-4, 4] in Godot

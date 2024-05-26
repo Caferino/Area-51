@@ -4,7 +4,6 @@ extends CharacterBody2D
 
 @export var lore        : LoreComponent
 @export var health      : HealthComponent
-@export var weapon      : AttackComponent
 @export var muscles     : HumanoidMovementComponent
 @export var controller  : PlayerControllerComponent
 @export var body        : BodyComponent
@@ -44,7 +43,9 @@ func _ready():
 
 
 func spawn():
+	body.limbs["Torso"].attack_finished.connect(_on_attack_finished)
 	body.limb_interact.connect(_on_limb_interact)
+	controller.attacked.connect(_on_attack)
 	controller.player_moved.connect(_on_player_moved)
 
 
@@ -57,5 +58,13 @@ func _on_player_moved():
 	muscles.handle_movement(self)
 
 
-func _physics_process(_delta):
-	move_and_slide()
+func _on_attack():
+	if !controller.is_attacking:
+		controller.is_attacking = true
+		muscles.stop(self)
+		muscles.attack(body.gear["MeleeWeapon"], body.limbs["Torso"].animator)
+
+
+func _on_attack_finished():
+	body.gear["MeleeWeapon"].sheathe()
+	controller.is_attacking = false

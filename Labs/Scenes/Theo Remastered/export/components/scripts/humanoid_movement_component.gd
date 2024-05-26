@@ -1,6 +1,7 @@
 class_name HumanoidMovementComponent extends Node
 
 var last_direction = Vector2(0, 1)
+var weapon_on_left_hand = true
 
 
 func handle_movement(entity):
@@ -30,6 +31,7 @@ func handle_movement(entity):
 	hvel = hvel.lerp(target, accel)
 	#print("hvel: ", hvel)
 	entity.velocity = hvel
+	entity.move_and_slide()
 	handle_animation(entity)
 
 
@@ -41,6 +43,7 @@ func handle_animation(entity):
 		current_state = "Idle"
 	else:
 		last_direction = direction
+		weapon_on_left_hand = true  # TODO ! Validate
 		if current_state == "Run":
 			speed_scale = entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] * 0.1 + 0.25
 		else:
@@ -55,7 +58,7 @@ func handle_animation(entity):
 		entity.body_pose[limb][7] = speed_scale
 	
 	for accessory in entity.body_accessories:
-		if accessory == "Weapon": rotate(entity, accessory, direction)
+		# if accessory == "Weapon": rotate(entity, accessory, direction) # DEPRECATED
 		entity.body_accessories[accessory][3] = current_state
 		entity.body_accessories[accessory][4] = "parameters/Movement/" + current_state + "/blend_position"
 		entity.body_accessories[accessory][5] = last_direction
@@ -89,26 +92,65 @@ func move(part, pose):
 		part.get_child(1)[pose[6]] = pose[7]       # animatorTree["parameters/TimeScale/scale"] = speed_scale
 
 
-func rotate(entity, accessory, direction):
-	entity.weapon.on_left_hand = true
-	if direction.y > 0:
-		entity.body_accessories[accessory][0] = Vector2(0, 10)
-		entity.body_accessories[accessory][1] = -90
-		## TODO interaction_area_origin.rotation_degrees = -90
-	elif direction.y < 0:
-		entity.body_accessories[accessory][0] = Vector2(0, -10)
-		entity.body_accessories[accessory][1] = 90
-		## TODO interaction_area_origin.rotation_degrees = 90
+func stop(entity):
+	entity.body.limbs["Torso"].animatorTree["parameters/Movement/playback"].travel("Idle")
+	entity.body.limbs["Torso"].animatorTree["parameters/Movement/Idle/blend_position"] = last_direction
 	
-	if direction.x > 0:
-		entity.body_accessories[accessory][0] = Vector2(10, 0)
-		entity.body_accessories[accessory][1] = 180
-		## TODO interaction_area_origin.rotation_degrees = 180
-	elif direction.x < 0:
-		entity.body_accessories[accessory][0] = Vector2(-10, 0)
-		entity.body_accessories[accessory][1] = 0
-		## TODO interaction_area_origin.rotation_degrees = 0
+	entity.body.limbs["Head"].animatorTree["parameters/Movement/playback"].travel("Idle")
+	entity.body.limbs["Head"].animatorTree["parameters/Movement/Idle/blend_position"] = last_direction
+	#for limb in entity.body_pose:
+		##pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0] (check entity's soul)
+		#entity.body_pose[limb][3] = "Idle"
+		#entity.body_pose[limb][4] = "parameters/Movement/Idle/blend_position"
+		#entity.body_pose[limb][5] = last_direction
+		#entity.body_pose[limb][7] = 2.0
+		#move_limb(entity, limb)
+
+
+func attack(weapon, torso_animator):
+	if last_direction.y > 0:    # DOWN
+		weapon.position = Vector2(0, 10)
+		weapon.rotation = 90
+		weapon.draw()
+		if weapon_on_left_hand:
+			torso_animator.play("attack_down")
+			weapon.animator.play_backwards("attack_left")
+		else:
+			torso_animator.play_backwards("attack_down")
+			weapon.animator.play("attack_left")
+	elif last_direction.y < 0:  # Up
+		weapon.position = Vector2(0, -10)
+		weapon.rotation = -90
+		weapon.draw()
+		if weapon_on_left_hand:
+			torso_animator.play("attack_up")
+			weapon.animator.play_backwards("attack_left")
+		else:
+			torso_animator.play_backwards("attack_up")
+			weapon.animator.play("attack_left")
 	
+	if last_direction.x > 0:    # RIGHT
+		weapon.position = Vector2(10, 0)
+		weapon.rotation = 0
+		weapon.draw()
+		if weapon_on_left_hand:
+			torso_animator.play_backwards("attack_right")
+			weapon.animator.play_backwards("attack_left")
+		else:
+			torso_animator.play("attack_right")
+			weapon.animator.play("attack_left")
+	elif last_direction.x < 0:  # LEFT
+		weapon.position = Vector2(-10, 0)
+		weapon.rotation = 180
+		weapon.draw()
+		if weapon_on_left_hand:
+			torso_animator.play("attack_left")
+			weapon.animator.play("attack_right")
+		else:
+			torso_animator.play_backwards("attack_left")
+			weapon.animator.play_backwards("attack_right")
+	
+	weapon_on_left_hand = !weapon_on_left_hand
 
 ## TODO ! DO NOT DELETE THIS YET
 #weapon_origin.rotation_degrees = -90
