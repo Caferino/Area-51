@@ -124,7 +124,7 @@ func choose_direction():
 func move(delta):
 	var desired_velocity = chosen_dir.rotated(rotation) * max_speed
 	dir_velocity = dir_velocity.lerp(desired_velocity, steer_force)
-	rotation = dir_velocity.angle() * delta
+	rotation = dir_velocity.angle() * delta # try rotation_degrees
 	handle_animation()
 	move_and_collide(dir_velocity * delta)
 

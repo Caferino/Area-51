@@ -1,6 +1,133 @@
-[gd_scene load_steps=2 format=3 uid="uid://baq33xt06du5y"]
+[gd_scene load_steps=14 format=3 uid="uid://baq33xt06du5y"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/player_controller_component.gd" id="1_y6i1j"]
 
-[node name="PlayerControllerComponent" type="Node"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0i0l6"]
+a = Vector2(0, 25)
+b = Vector2(0, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fsdhc"]
+animation = &"down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rvstb"]
+animation = &"up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yy7hd"]
+animation = &"right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_70ays"]
+animation = &"left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0v6jo"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_fsdhc")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_rvstb")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_yy7hd")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_70ays")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6mfbc"]
+graph_offset = Vector2(-368.965, 39.5222)
+nodes/Movement/node = SubResource("AnimationNodeBlendSpace2D_0v6jo")
+nodes/Movement/position = Vector2(40, 120)
+node_connections = [&"output", 0, &"Movement"]
+
+[sub_resource type="Animation" id="Animation_hamru"]
+resource_name = "up"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_8edrr"]
+resource_name = "down"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_18p51"]
+resource_name = "right"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_6qd0c"]
+resource_name = "left"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7x51"]
+_data = {
+"down": SubResource("Animation_8edrr"),
+"left": SubResource("Animation_6qd0c"),
+"right": SubResource("Animation_18p51"),
+"up": SubResource("Animation_hamru")
+}
+
+[node name="PlayerControllerComponent" type="Node" node_paths=PackedStringArray("interactor", "interactor_area", "interactor_animator")]
 script = ExtResource("1_y6i1j")
+interactor = NodePath("InteractorOrigin")
+interactor_area = NodePath("InteractorOrigin/InteractorArea")
+interactor_animator = NodePath("InteractorOrigin/InteractorTree")
+
+[node name="InteractorOrigin" type="Marker2D" parent="."]
+
+[node name="InteractorArea" type="Area2D" parent="InteractorOrigin"]
+
+[node name="InteractorCollisionShape" type="CollisionShape2D" parent="InteractorOrigin/InteractorArea"]
+shape = SubResource("SegmentShape2D_0i0l6")
+
+[node name="InteractorTree" type="AnimationTree" parent="InteractorOrigin"]
+tree_root = SubResource("AnimationNodeBlendTree_6mfbc")
+anim_player = NodePath("../InteractorAnimator")
+parameters/Movement/blend_position = Vector2(0.051, 1)
+
+[node name="InteractorAnimator" type="AnimationPlayer" parent="InteractorOrigin"]
+libraries = {
+"": SubResource("AnimationLibrary_k7x51")
+}

@@ -15,6 +15,11 @@ enum EQUIPMENT_TYPE {
 	OFFHAND
 }
 
+enum WEAPON_TYPE {
+	SLASH,
+	BLUNT
+}
+
 enum STAT {
 	VITALITY,
 	STRENGTH,

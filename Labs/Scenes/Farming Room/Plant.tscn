@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmrctgfhetcgl"]
+[gd_scene load_steps=6 format=3 uid="uid://bmrctgfhetcgl"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Farming Room/Plant.gd" id="1_v6pmr"]
 [ext_resource type="PackedScene" uid="uid://dckwm6m65a435" path="res://Labs/Scenes/Farming Room/Leaves.tscn" id="2_dcjf1"]
 [ext_resource type="Texture2D" uid="uid://cvh5qps1fyla1" path="res://Labs/Scenes/Farming Room/corn.png" id="2_dr2j5"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/plant_interactable.gd" id="4_7aam4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dk8q"]
 size = Vector2(0.05, 0.05)
 
-[node name="Plant" type="Node2D"]
+[node name="Plant" type="Marker2D"]
 y_sort_enabled = true
 script = ExtResource("1_v6pmr")
 
@@ -17,10 +18,12 @@ script = ExtResource("1_v6pmr")
 texture = ExtResource("2_dr2j5")
 hframes = 6
 
-[node name="Area" type="Area2D" parent="."]
+[node name="Area" type="Area2D" parent="." node_paths=PackedStringArray("parent") groups=["Plants"]]
 collision_layer = 2
 collision_mask = 0
 monitoring = false
+script = ExtResource("4_7aam4")
+parent = NodePath("..")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Area"]
 position = Vector2(0, 4)

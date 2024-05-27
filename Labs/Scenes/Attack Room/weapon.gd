@@ -53,12 +53,16 @@ func update_speed(new_speed):
 
 func draw():
 	sprite.visible = true
-	collision_shape.disabled = false
+	call_deferred("disable_collision")
 
 
 func sheathe():
 	sprite.visible = false
-	collision_shape.disabled = true
+	call_deferred("enable_collision")
+
+
+func disable_collision() : collision_shape.disabled = false
+func enable_collision()  : collision_shape.disabled = true
 
 
 func _on_hit_box_body_entered(body):

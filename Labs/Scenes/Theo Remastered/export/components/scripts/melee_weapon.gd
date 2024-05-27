@@ -1,21 +1,12 @@
-class_name Melee_Weapon extends Weapon
+class_name MeleeWeapon extends Weapon
 
-@export var animator        : AnimationPlayer
-@export var sprite          : Sprite2D
-@export var collision_shape : CollisionShape2D
-
+signal attack_finished()
 
 func _ready():
 	sprite.visible = false
-	collision_shape.disabled = true
+	area.monitoring = false
 	animator.speed_scale = attack_stats[GameEnums.ATTACK_STATS.WEAPON_SPEED]
 
 
-func draw():
-	sprite.visible = true
-	collision_shape.disabled = false
-
-
-func sheathe():
-	sprite.visible = false
-	collision_shape.disabled = true
+func _on_melee_weapon_animator_animation_finished(_anim_name):
+	attack_finished.emit()

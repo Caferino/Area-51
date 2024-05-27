@@ -1,6 +1,4 @@
-extends Node2D
-
-class_name Plant
+class_name Plant extends Node2D
 
 @onready var sprite = $Sprite
 @onready var leaves = $Leaves
@@ -49,9 +47,9 @@ func grow(rand_growth):
 		shake()
 
 
-func tilt(direction, strength = 0.2, action = null):
+func tilt(direction = 0, strength = 0.2, action = null):
 	rot_center = direction
-	if action != null:
+	if action:
 		if action == "shake" : shake(strength)
 		elif action == "tilt_back" : tilt_back(strength)
 
@@ -90,3 +88,19 @@ func drop_leaves():
 		
 		leaves.emitting = true
 		leaves.restart()
+
+
+func take_damage(weapon_type):
+	var strength = 0.025
+	# TODO - Any way to stop the growth's shake while getting cut at the same time?
+	shake(strength)
+	if weapon_type == GameEnums.WEAPON_TYPE.SLASH:
+		drop_leaves()
+		await get_tree().create_timer(strength * 5).timeout
+		current_stage = 1
+		sprite.frame = 1
+		z_index = 0
+
+
+func interact(direction = 0, strength = 0.2, action = null):
+	tilt(direction, strength, action)

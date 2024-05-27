@@ -43,28 +43,39 @@ func _ready():
 
 
 func spawn():
-	body.limbs["Torso"].attack_finished.connect(_on_attack_finished)
+	body.gear["MeleeWeapon"].attack_finished.connect(_on_attack_finished)
 	body.limb_interact.connect(_on_limb_interact)
 	controller.attacked.connect(_on_attack)
 	controller.player_moved.connect(_on_player_moved)
+	controller.player_interacted.connect(_on_player_interacted)
 
 
 ## It works, it's just that you need to wait a second because the children load first
-func _on_limb_interact(test, tes):
-	print("A limb just interacted", test, tes)
+func _on_limb_interact(entered, limb, area):
+	if area.is_in_group("Plants"):
+		if entered and limb == "left_leg"    : area.interact(-0.1, 0.2, "shake")
+		elif limb == "left_leg"              : area.interact( 0.0, 0.2, "tilt_back")
+		elif entered and limb == "right_leg" : area.interact( 0.1, 0.2, "shake")
+		else                                 : area.interact( 0.0, 0.2, "tilt_back")
 
 
 func _on_player_moved():
 	muscles.handle_movement(self)
+	controller.rotate_interactor(position, muscles.last_direction)
 
 
 func _on_attack():
 	if !controller.is_attacking:
 		controller.is_attacking = true
 		muscles.stop(self)
-		muscles.attack(body.gear["MeleeWeapon"], body.limbs["Torso"].animator)
+		muscles.attack(body.gear["MeleeWeapon"], body.limbs["Torso"].animator, body.limbs["Head"].animator)
 
 
 func _on_attack_finished():
-	body.gear["MeleeWeapon"].sheathe()
 	controller.is_attacking = false
+
+
+func _on_player_interacted():
+	var interactables = controller.interactor_area.get_overlapping_bodies()
+	if interactables:
+		print("There is something interactable in front of me")
