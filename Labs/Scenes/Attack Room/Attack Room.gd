@@ -14,5 +14,5 @@ func get_path_direction(pos):
 
 # Chase the Player
 func get_player_path_direction(pos):
-	return pos.direction_to(get_node("Theo").position)
+	return pos.direction_to(get_node("Smoke Ashburn").position)
 

@@ -8,12 +8,9 @@
 radius = 5.0
 height = 25.0
 
-[node name="Sword" type="Marker2D" node_paths=PackedStringArray("animator", "sprite", "area") groups=["Weapon"]]
+[node name="Sword" type="Marker2D" groups=["Weapon"]]
 y_sort_enabled = true
 script = ExtResource("1_3ayy2")
-animator = NodePath("SwordAnimator")
-sprite = NodePath("SwordArea/SwordSprite")
-area = NodePath("SwordArea")
 
 [node name="SwordArea" type="Area2D" parent="."]
 y_sort_enabled = true
@@ -43,4 +40,5 @@ libraries = {
 }
 
 [connection signal="area_entered" from="SwordArea" to="." method="_on_sword_area_area_entered"]
+[connection signal="body_entered" from="SwordArea" to="." method="_on_sword_area_body_entered"]
 [connection signal="animation_finished" from="SwordAnimator" to="." method="_on_melee_weapon_animator_animation_finished"]

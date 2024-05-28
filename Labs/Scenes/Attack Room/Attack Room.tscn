@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dq6nj3buvscyg"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Attack Room/Attack Room.gd" id="1_ljmdg"]
-[ext_resource type="PackedScene" uid="uid://ywdwc8rryrt" path="res://Labs/Entities/Character-Theo/Theo.tscn" id="2_bj40b"]
 [ext_resource type="PackedScene" uid="uid://ui6le12cycb8" path="res://Labs/Scenes/Farming Room/FenceVertical.tscn" id="3_ndsrj"]
 [ext_resource type="PackedScene" uid="uid://tr0m4o6ekavs" path="res://Labs/Scenes/Farming Room/FenceHorizontal.tscn" id="4_2ge51"]
+[ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="4_wn4dw"]
 [ext_resource type="PackedScene" uid="uid://6e48hltp552g" path="res://Labs/Scenes/Attack Room/CaveBat.tscn" id="5_ag3o8"]
 
 [sub_resource type="Curve2D" id="Curve2D_enm6u"]
@@ -154,8 +154,8 @@ position = Vector2(810, 428)
 [node name="FenceHorizontal3" parent="Fences/Inner" instance=ExtResource("4_2ge51")]
 position = Vector2(1164, 546)
 
-[node name="Theo" parent="." instance=ExtResource("2_bj40b")]
-position = Vector2(576, 331)
+[node name="Smoke Ashburn" parent="." instance=ExtResource("4_wn4dw")]
+position = Vector2(620.667, 343.444)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3

@@ -12,12 +12,8 @@ var dir                 = Vector2()
 var anim_state          = "Move"
 var is_attacking        = false
 var is_sprinting        = false
-var weapon_on_left_hand = true   # left handed weapon carry
 
 
-## I think _input does the job better, by not calculating unecessary frames
-## Will leave this to remember the original, in case bugs arise
-## Handles inputs @deprecated DEPRECATED
 func _physics_process(_delta: float) -> void:
 	if !is_attacking:
 		check_movement()
@@ -27,8 +23,8 @@ func _input(_event):
 	if !is_attacking:
 		if Input.is_action_just_pressed("attack"):
 			attacked.emit()
-		if Input.is_action_just_pressed("interact"):
-			emit_signal("player_interacted")
+		elif Input.is_action_just_pressed("interact"):
+			player_interacted.emit()
 
 
 func check_movement():

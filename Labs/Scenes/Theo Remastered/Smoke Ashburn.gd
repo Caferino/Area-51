@@ -76,6 +76,8 @@ func _on_attack_finished():
 
 
 func _on_player_interacted():
-	var interactables = controller.interactor_area.get_overlapping_bodies()
-	if interactables:
-		print("There is something interactable in front of me")
+	var interactables = controller.interactor_area.get_overlapping_areas()
+	for interactable in interactables:
+		if interactable.is_in_group("Interactive"):
+			if interactable.is_in_group("Tree"):
+				interactable.interact("hatchet")

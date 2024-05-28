@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=110 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/sword.tscn" id="18_vljcp"]
 [ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="19_r1ol5"]
 [ext_resource type="AnimationLibrary" uid="uid://bdyf8ugjxxxjl" path="res://animations/2D Updated/2D Hat Movement Remastered.res" id="20_sui4d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fv7u5"]
+size = Vector2(28, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gedt6"]
 radius = 11.0003
@@ -530,9 +533,9 @@ animations = [{
 b = Vector2(-30, 0)
 
 [node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body") groups=["Player", "Protagonist"]]
-z_index = 2
+z_index = 1
 y_sort_enabled = true
-collision_layer = 4096
+collision_layer = 4097
 collision_mask = 4294959103
 script = ExtResource("1_c7twf")
 lore = NodePath("LoreComponent")
@@ -540,6 +543,10 @@ health = NodePath("HealthComponent")
 muscles = NodePath("HumanoidMovementComponent")
 controller = NodePath("PlayerControllerComponent")
 body = NodePath("BodyComponent")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_fv7u5")
 
 [node name="LoreComponent" parent="." instance=ExtResource("2_joc08")]
 
@@ -657,7 +664,7 @@ animator = NodePath("TorsoAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
 y_sort_enabled = true
-collision_layer = 4096
+collision_layer = 4097
 collision_mask = 9219
 
 [node name="CollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]
