@@ -1,29 +1,31 @@
-extends Node2D
+class_name Camera extends Node2D
+## The alcarodian camera.
+## @experimental
 
-@onready var origin = $Origin
-@onready var camera = $Camera
-@onready var drag_area = $"View Distance/Area"
-var drag_speed = 0.5
-var zoom_speed = Vector2(1, 1)
-var drag_bounds = Rect2(-1000, -1000, 2000, 2000)
+@onready var origin    = $Origin                   ## The camera's origin.
+@onready var camera    = $Camera                   ## The [Camera2D] object.
+@onready var drag_area = $"View Distance/Area"     ## The [Area2D] to move in.
+var drag_speed = 0.5                               ## The speed for the view-dragging.
+var prev_mouse_position                            ## Previous mouse location.
+var zoom_speed = Vector2(1, 1)                     ## Zoom in/out speed.
+var drag_bounds = Rect2(-1000, -1000, 2000, 2000)  ## Bounds for the view-dragging.
 
 # For the camera's breathing effect
-var min_x = -3
-var max_x = 3
-var min_y = -3
-var max_y = 3
-var breathing_in = false
-var random_x = randf_range(min_x, max_x)
-var random_y = randf_range(0, max_y)
-@onready var tween = create_tween()
+@onready var tween = create_tween()                ## 
+var min_x          = -3                            ## 
+var max_x          =  3                            ## 
+var min_y          = -3                            ## 
+var max_y          =  3                            ## 
+var breathing_in   = false                         ## 
+var random_x       = randf_range(min_x, max_x)     ## 
+var random_y       = randf_range(0, max_y)         ## 
 
-
-var prev_mouse_position
 
 func _ready():
 	prev_mouse_position = origin.global_position
 	tween.connect("finished", breath)
 	hold_camera()
+
 
 func _input(_event):
 	if Input.is_action_pressed("zoom_in"):
@@ -55,12 +57,15 @@ func _input(_event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
+## Simulates a handheld effect by using tweens.
 func hold_camera():
 	tween.stop()
 	tween.tween_property(camera, "position", Vector2(random_x, random_y), 6).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD).set_delay(randf_range(0.001, 0.2))
 	tween.play()
 
 
+## Complimentary method for the handheld effect.
+## Bounces the camera up and down within a space and a short pause.
 func breath():
 	if breathing_in:
 		random_x = randf_range(min_x, max_x)

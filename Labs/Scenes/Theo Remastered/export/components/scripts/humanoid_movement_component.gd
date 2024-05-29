@@ -1,9 +1,17 @@
 class_name HumanoidMovementComponent extends Node
+## The entity's [color=salmon]muscles.
 
-var last_direction = Vector2(0, 1)
-var weapon_on_left_hand = true
+var last_direction = Vector2(0, 1)  ## Entity's last faced direction.
+var weapon_on_left_hand = true      ## Boolean for the weapon's position.
 
 
+## Handles the [param entity]'s movement.
+## [br][br]
+## Checks the direction of the Player/AI's input first, then uses the entity's 
+## stamina_stats to calculate the [member CharacterBody2D.velocity] and the 
+## [member AnimationPlayer.speed_scale].
+## [br][br]
+## This is where [method CharacterBody2D.move_and_slide] resides.
 func handle_movement(entity):
 	var accel = 0.12  ## Lower for "walking on ice" effect, it'd need DEACCEL, done below
 	var target = entity.controller.dir
@@ -20,6 +28,24 @@ func handle_movement(entity):
 	handle_animation(entity)
 
 
+## Handles the [param entity]'s animation.
+## [br][br]
+## Checks whether the entity has gone idle or is walking/running. It uses the
+## following formula to calculate the [member AnimationPlayer.speed_scale]:
+## [codeblock]
+## if current_state == "Run":
+##     speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] - 60) / 60 + 1.8
+## else:
+##     speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] - 60) / 60 + 1.8
+## [/codeblock]
+## The default speed_scale value of 1.0 felt too slow for the entity's movement.
+## A value between 1.8 - 2.0 provides a more snappy and arcade feel.
+## The subtraction and division by 60 adjust the entity's speed to an appropriate
+## range for the [member AnimationPlayer.speed_scale].
+## Example: If the character's move speed is 60px/s, its speed_scale is equal to 1.8.
+## [br]
+## It updates the [member Human.body_pose] of the entity and then calls
+## [method move_body] to execute the assigned values on the actual animation nodes.
 func handle_animation(entity):
 	var current_state = entity.controller.anim_state
 	var speed_scale   = 1.0
@@ -50,22 +76,37 @@ func handle_animation(entity):
 	move_body(entity)
 
 
+## Moves the [param entity]'s body.
+## [br][br]
+## A body is made up of limbs ([Limb]) and their corresponding accessories ([AccessoriesComponent]).
+## This method iterates over each limb to execute [method move_limb] and [method move_accessories].
 func move_body(entity):
 	for limb in entity.body.limbs:
 		move_limb(entity, limb)
 		move_accessories(entity, limb)
 
 
+## Moves an [param entity]'s limb.
+## [br][br]
+## This method first checks whether the limb exists or not in the entity's body first,
+## then calls [method move].
 func move_limb(entity, limb):
 	if limb in entity.body.limbs and limb in entity.body_pose:
 		move(entity.body.limbs[limb], entity.body_pose[limb])
 
 
+## Moves the [param entity]'s limb accessories.
+## [br][br]
+## Iterates over the specified limb's accessories and executes [method move]
+## on each accessory using its corresponding data from [member Human.body_accessories].
 func move_accessories(entity, limb):
 	for accessory in entity.body.limbs[limb].accessories.get_children():
 		move(accessory, entity.body_accessories[accessory.name])
 
 
+## Moves a [Limb] or [Accessory].
+## [br][br]
+## For now, it is designed to deal with [member Human.body_pose] and [member Human.body_accessories].
 func move(part, pose):
 	part.position = pose[0]                        # Marker2D.position = Vector2()
 	part.rotation_degrees = pose[1]                # Marker2D.rotation = degrees
@@ -75,6 +116,7 @@ func move(part, pose):
 		part.get_child(1)[pose[6]] = pose[7]       # animatorTree["parameters/TimeScale/scale"] = speed_scale
 
 
+## Stops the [param entity]'s movement.
 func stop(entity):
 	entity.velocity = Vector2(0,0)
 	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
@@ -86,6 +128,7 @@ func stop(entity):
 		move_limb(entity, limb)
 
 
+## Rotates the weapon and animates the attack.
 func attack(weapon: Weapon, torso_animator: AnimationPlayer, head_animator: AnimationPlayer):
 	if last_direction.y < 0:                                 ## UP
 		weapon.position = Vector2(0, -10)

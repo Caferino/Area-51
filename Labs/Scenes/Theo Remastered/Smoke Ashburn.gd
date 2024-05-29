@@ -2,6 +2,9 @@ extends Human
 
 ## Smoke Ashburn ##
 
+## The Hero of the Realm ##
+
+## Prepares Smoke's stats and body
 func _ready():
 	base_stats[GameEnums.STAT.STRENGTH]     = 5
 	base_stats[GameEnums.STAT.DEXTERITY]    = 5
