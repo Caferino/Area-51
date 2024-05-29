@@ -136,6 +136,14 @@ Followed YouTuber Calame321's Modular Inventory System tutorial (https://youtu.b
 
 ---
 
+**E016: Movement System Refactor and Documentation**
+
+![E016-1](.image/README/E016-1.gif "Movement System Refactor and Documentation")    ![E016-2](.image/README/E016-2.png "Movement System Refactor and Documentation")
+
+DDD...
+
+---
+
 E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
 
 [TBA]
