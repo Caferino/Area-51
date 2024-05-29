@@ -1,6 +1,6 @@
 class_name PlayerControllerComponent extends Node
 
-signal player_interacted()
+signal player_interact()
 signal player_moved()
 signal attacked
 
@@ -24,7 +24,7 @@ func _input(_event):
 		if Input.is_action_just_pressed("attack"):
 			attacked.emit()
 		elif Input.is_action_just_pressed("interact"):
-			player_interacted.emit()
+			player_interact.emit()
 
 
 func check_movement():

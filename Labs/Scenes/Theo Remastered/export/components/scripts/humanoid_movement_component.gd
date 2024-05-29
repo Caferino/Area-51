@@ -5,32 +5,17 @@ var weapon_on_left_hand = true
 
 
 func handle_movement(entity):
-	## TODO - Remaster this
+	var accel = 0.12  ## Lower for "walking on ice" effect, it'd need DEACCEL, done below
 	var target = entity.controller.dir
-	#print("dir: ", entity.controller.dir)
-	if entity.controller.is_sprinting:
-		target *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
-	else:
-		target *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
-	#print("target: ", target)
-	
-	var accel
-	var hvel = Vector2()
-	#print("DOT RESULT = ", entity.controller.dir.dot(hvel))
-	if entity.controller.dir.dot(hvel) > 0:
+	if entity.controller.dir.dot(entity.controller.dir) > 0:
 		if entity.controller.is_sprinting:
-			accel = entity.stamina_stats[GameEnums.STAMINA_STATS.SPRINT_ACCEL]
-			#print("is sprinting accel: ", accel)
+			target *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
 		else:
-			accel = entity.stamina_stats[GameEnums.STAMINA_STATS.WALK_ACCEL]
-			#print("not sprinting accel: ", accel)
+			target *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
 	else:
-		accel = entity.stamina_stats[GameEnums.STAMINA_STATS.DEACCEL]
-		#print("under 0 accel: ", accel)
+		accel = 0.33  ## Reduce for DEACCEL effect
 	
-	hvel = hvel.lerp(target, accel)
-	#print("hvel: ", hvel)
-	entity.velocity = hvel
+	entity.velocity = entity.velocity.lerp(target, accel)
 	entity.move_and_slide()
 	handle_animation(entity)
 
@@ -44,11 +29,11 @@ func handle_animation(entity):
 	else:
 		last_direction = direction
 		if current_state == "Run":
-			speed_scale = entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] * 0.1 + 0.25
+			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] - 60) / 60 + 1.8
 		else:
-			speed_scale = entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] * 0.1 + 1
+			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] - 60) / 60 + 1.8
 	
-	# TODO ! This can probably be faster, maybe not
+	# TODO ! Try to make this system faster, reduce CPU overhead
 	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0] (check entity's soul)
 	for limb in entity.body_pose:
 		entity.body_pose[limb][3] = current_state
@@ -91,6 +76,7 @@ func move(part, pose):
 
 
 func stop(entity):
+	entity.velocity = Vector2(0,0)
 	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
 	for limb in entity.body_pose:
 		entity.body_pose[limb][3] = "Idle"
@@ -100,8 +86,19 @@ func stop(entity):
 		move_limb(entity, limb)
 
 
-func attack(weapon : Weapon, torso_animator : AnimationPlayer, head_animator : AnimationPlayer):
-	if last_direction.y > 0:    # DOWN
+func attack(weapon: Weapon, torso_animator: AnimationPlayer, head_animator: AnimationPlayer):
+	if last_direction.y < 0:                                 ## UP
+		weapon.position = Vector2(0, -10)
+		weapon.rotation_degrees = -90
+		if weapon_on_left_hand:
+			torso_animator.play("attack_up")
+			head_animator.play("attack_up")
+			weapon.get_child(1).play("attack_right")
+		else:
+			torso_animator.play_backwards("attack_up")
+			head_animator.play_backwards("attack_up")
+			weapon.get_child(1).play("attack_left")
+	elif last_direction.y > 0:                               ## DOWN
 		weapon.position = Vector2(0, 5)
 		weapon.rotation_degrees = 90
 		if weapon_on_left_hand:
@@ -112,30 +109,8 @@ func attack(weapon : Weapon, torso_animator : AnimationPlayer, head_animator : A
 			torso_animator.play_backwards("attack_down")
 			head_animator.play("attack_down")
 			weapon.get_child(1).play("attack_left")
-	elif last_direction.y < 0:  # UP
-		weapon.position = Vector2(0, -10)
-		weapon.rotation_degrees = -90
-		if weapon_on_left_hand:
-			torso_animator.play("attack_up")
-			head_animator.play_backwards("attack_up")
-			weapon.get_child(1).play("attack_right")
-		else:
-			torso_animator.play_backwards("attack_up")
-			head_animator.play("attack_up")
-			weapon.get_child(1).play("attack_left")
 	
-	if last_direction.x > 0:    # RIGHT
-		weapon.position = Vector2(5, 0)
-		weapon.rotation_degrees = 0
-		if weapon_on_left_hand:
-			torso_animator.play_backwards("attack_right")
-			head_animator.play_backwards("attack_right")
-			weapon.get_child(1).play("attack_right")
-		else:
-			torso_animator.play("attack_right")
-			head_animator.play("attack_right")
-			weapon.get_child(1).play("attack_left")
-	elif last_direction.x < 0:  # LEFT
+	if last_direction.x < 0:                                 ## LEFT
 		weapon.position = Vector2(-5, 0)
 		weapon.rotation_degrees = 180
 		if weapon_on_left_hand:
@@ -145,6 +120,17 @@ func attack(weapon : Weapon, torso_animator : AnimationPlayer, head_animator : A
 		else:
 			torso_animator.play_backwards("attack_left")
 			head_animator.play("attack_left")
+			weapon.get_child(1).play("attack_left")
+	elif last_direction.x > 0:                               ## RIGHT
+		weapon.position = Vector2(5, 0)
+		weapon.rotation_degrees = 0
+		if weapon_on_left_hand:
+			torso_animator.play_backwards("attack_right")
+			head_animator.play_backwards("attack_right")
+			weapon.get_child(1).play("attack_right")
+		else:
+			torso_animator.play("attack_right")
+			head_animator.play("attack_right")
 			weapon.get_child(1).play("attack_left")
 	
 	weapon_on_left_hand = !weapon_on_left_hand

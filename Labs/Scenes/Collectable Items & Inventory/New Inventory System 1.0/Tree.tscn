@@ -46,7 +46,7 @@ script = ExtResource("1_kbko6")
 health_component = NodePath("HealthComponent")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Interactive", "Tree"] instance=ExtResource("3_4o4lw")]
-collision_layer = 0
+collision_layer = 4097
 collision_mask = 0
 monitoring = false
 health_component = NodePath("../HealthComponent")

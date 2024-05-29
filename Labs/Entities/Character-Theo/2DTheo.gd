@@ -131,6 +131,7 @@ func handle_movement():
 	
 	hvel = hvel.lerp(target, accel)
 	velocity = hvel
+	print(hvel)
 	move_and_slide()
 
 
