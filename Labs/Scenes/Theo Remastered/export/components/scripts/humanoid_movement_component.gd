@@ -1,8 +1,8 @@
 class_name HumanoidMovementComponent extends Node
 ## The entity's [color=salmon]muscles.
 
-var last_direction = Vector2(0, 1)  ## Entity's last faced direction.
-var weapon_on_left_hand = true      ## Boolean for the weapon's position.
+var last_direction      : Vector2 = Vector2(0, 1)  ## Entity's last faced direction.
+var weapon_on_left_hand : bool    = true           ## Boolean for the weapon's position.
 
 
 ## Handles the [param entity]'s movement.
@@ -12,7 +12,8 @@ var weapon_on_left_hand = true      ## Boolean for the weapon's position.
 ## [member AnimationPlayer.speed_scale].
 ## [br][br]
 ## This is where [method CharacterBody2D.move_and_slide] resides.
-func handle_movement(entity):
+func handle_movement(entity: Human):
+	print(entity is Human)
 	var accel = 0.12  ## Lower for "walking on ice" effect, it'd need DEACCEL, done below
 	var target = entity.controller.dir
 	if entity.controller.dir.dot(entity.controller.dir) > 0:
@@ -46,7 +47,7 @@ func handle_movement(entity):
 ## [br]
 ## It updates the [member Human.body_pose] of the entity and then calls
 ## [method move_body] to execute the assigned values on the actual animation nodes.
-func handle_animation(entity):
+func handle_animation(entity: Human):
 	var current_state = entity.controller.anim_state
 	var speed_scale   = 1.0
 	var direction     = entity.controller.dir
@@ -80,7 +81,7 @@ func handle_animation(entity):
 ## [br][br]
 ## A body is made up of limbs ([Limb]) and their corresponding accessories ([AccessoriesComponent]).
 ## This method iterates over each limb to execute [method move_limb] and [method move_accessories].
-func move_body(entity):
+func move_body(entity: Human):
 	for limb in entity.body.limbs:
 		move_limb(entity, limb)
 		move_accessories(entity, limb)
@@ -90,24 +91,24 @@ func move_body(entity):
 ## [br][br]
 ## This method first checks whether the limb exists or not in the entity's body first,
 ## then calls [method move].
-func move_limb(entity, limb):
-	if limb in entity.body.limbs and limb in entity.body_pose:
-		move(entity.body.limbs[limb], entity.body_pose[limb])
+func move_limb(entity: Human, limb_name: String):
+	if limb_name in entity.body.limbs and limb_name in entity.body_pose:
+		move(entity.body.limbs[limb_name], entity.body_pose[limb_name])
 
 
 ## Moves the [param entity]'s limb accessories.
 ## [br][br]
 ## Iterates over the specified limb's accessories and executes [method move]
 ## on each accessory using its corresponding data from [member Human.body_accessories].
-func move_accessories(entity, limb):
-	for accessory in entity.body.limbs[limb].accessories.get_children():
+func move_accessories(entity: Human, limb_name: String):
+	for accessory in entity.body.limbs[limb_name].accessories.get_children():
 		move(accessory, entity.body_accessories[accessory.name])
 
 
-## Moves a [Limb] or [Accessory].
+## Moves a [Limb].
 ## [br][br]
 ## For now, it is designed to deal with [member Human.body_pose] and [member Human.body_accessories].
-func move(part, pose):
+func move(part: Limb, pose: Array):
 	part.position = pose[0]                        # Marker2D.position = Vector2()
 	part.rotation_degrees = pose[1]                # Marker2D.rotation = degrees
 	if part is Limb:
@@ -117,7 +118,7 @@ func move(part, pose):
 
 
 ## Stops the [param entity]'s movement.
-func stop(entity):
+func stop(entity: Human):
 	entity.velocity = Vector2(0,0)
 	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
 	for limb in entity.body_pose:
@@ -146,7 +147,7 @@ func attack(weapon: Weapon, torso_animator: AnimationPlayer, head_animator: Anim
 		weapon.rotation_degrees = 90
 		if weapon_on_left_hand:
 			torso_animator.play("attack_down")
-			head_animator.play_backwards("attack_down")
+			head_animator.play("attack_down")
 			weapon.get_child(1).play("attack_right")
 		else:
 			torso_animator.play_backwards("attack_down")
