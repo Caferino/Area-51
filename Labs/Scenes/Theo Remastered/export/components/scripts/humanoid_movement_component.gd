@@ -1,134 +1,179 @@
 class_name HumanoidMovementComponent extends Node
+## The entity's [color=salmon]muscles.
+
+var last_direction      : Vector2 = Vector2(0, 1)  ## Entity's last faced direction.
+var weapon_on_left_hand : bool    = true           ## Boolean for the weapon's position.
 
 
-var last_direction = Vector2(0, 1)
-
-var stats = {
-	GameEnums.STAMINA_STATS.CAPACITY         : 100,  # %
-	GameEnums.STAMINA_STATS.SPRINT_RATE      :   2,  # -units/s
-	GameEnums.STAMINA_STATS.REGEN_RATE       :   3,  # +units/s  # TODO - Small pause b4 recharging
-	GameEnums.STAMINA_STATS.MAX_WALK_SPEED   :  10,
-	GameEnums.STAMINA_STATS.WALK_ACCEL       :   2,
-	GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED :  20,
-	GameEnums.STAMINA_STATS.SPRINT_ACCEL     :  15,
-	GameEnums.STAMINA_STATS.DEACCEL          :   6,
-}
-
-
-func initiate(n : Dictionary):
-	stats[GameEnums.STAMINA_STATS.CAPACITY]         = n[GameEnums.STAMINA_STATS.CAPACITY]
-	stats[GameEnums.STAMINA_STATS.SPRINT_RATE]      = n[GameEnums.STAMINA_STATS.SPRINT_RATE]
-	stats[GameEnums.STAMINA_STATS.REGEN_RATE]       = n[GameEnums.STAMINA_STATS.REGEN_RATE]
-	stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]   = n[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
-	stats[GameEnums.STAMINA_STATS.WALK_ACCEL]       = n[GameEnums.STAMINA_STATS.WALK_ACCEL]
-	stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] = n[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
-	stats[GameEnums.STAMINA_STATS.SPRINT_ACCEL]     = n[GameEnums.STAMINA_STATS.SPRINT_ACCEL]
-	stats[GameEnums.STAMINA_STATS.DEACCEL]          = n[GameEnums.STAMINA_STATS.DEACCEL]
-
-func get_capacity():                  return stats[GameEnums.STAMINA_STATS.CAPACITY]
-func set_capacity(amount):            stats[GameEnums.STAMINA_STATS.CAPACITY] = amount
-
-func get_sprint_rate():               return stats[GameEnums.STAMINA_STATS.SPRINT_RATE]
-func set_sprint_rate(amount):         stats[GameEnums.STAMINA_STATS.SPRINT_RATE] = amount
-
-func get_regen_rate():                return stats[GameEnums.STAMINA_STATS.REGEN_RATE]
-func set_regen_rate(amount):          stats[GameEnums.STAMINA_STATS.REGEN_RATE] = amount
-
-func get_max_walk_speed():            return stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
-func set_max_walk_speed(amount):      stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] = amount
-
-func get_walk_accel():                return stats[GameEnums.STAMINA_STATS.WALK_ACCEL]
-func set_walk_accel(amount):          stats[GameEnums.STAMINA_STATS.WALK_ACCEL] = amount
-
-func get_max_sprint_speed():          return stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
-func set_max_sprint_speed(amount):    stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] = amount
-
-func get_sprint_acceleration():       return stats[GameEnums.STAMINA_STATS.SPRINT_ACCEL]
-func set_sprint_acceleration(amount): stats[GameEnums.STAMINA_STATS.SPRINT_ACCEL] = amount
-
-func get_deacceleration():            return stats[GameEnums.STAMINA_STATS.DEACCEL]
-func set_deacceleration(amount):      stats[GameEnums.STAMINA_STATS.DEACCEL] = amount
-
-
-func handle_movement(entity):
-	## TODO - Remaster this
+## Handles the [param entity]'s movement.
+## [br][br]
+## Checks the direction of the Player/AI's input first, then uses the entity's 
+## stamina_stats to calculate the [member CharacterBody2D.velocity] and the 
+## [member AnimationPlayer.speed_scale].
+## [br][br]
+## This is where [method CharacterBody2D.move_and_slide] resides.
+func handle_movement(entity: Human):
+	var accel = 0.12  ## Lower for "walking on ice" effect, it'd need DEACCEL, done below
 	var target = entity.controller.dir
-	#print("dir: ", entity.controller.dir)
-	if entity.controller.is_sprinting:
-		target *= stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
-	else:
-		target *= stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
-	#print("target: ", target)
-	
-	var accel
-	var hvel = Vector2()
-	#print("DOT RESULT = ", entity.controller.dir.dot(hvel))
-	if entity.controller.dir.dot(hvel) > 0:
+	if entity.controller.dir.dot(entity.controller.dir) > 0:
 		if entity.controller.is_sprinting:
-			accel = stats[GameEnums.STAMINA_STATS.SPRINT_ACCEL]
-			#print("is sprinting accel: ", accel)
+			target *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
 		else:
-			accel = stats[GameEnums.STAMINA_STATS.WALK_ACCEL]
-			#print("not sprinting accel: ", accel)
+			target *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
 	else:
-		accel = stats[GameEnums.STAMINA_STATS.DEACCEL]
-		#print("under 0 accel: ", accel)
+		accel = 0.33  ## Reduce for DEACCEL effect
 	
-	hvel = hvel.lerp(target, accel)
-	#print("hvel: ", hvel)
-	entity.velocity = hvel
+	entity.velocity = entity.velocity.lerp(target, accel)
+	entity.move_and_slide()
 	handle_animation(entity)
 
 
-func handle_animation(entity):
-	print("Animating!")
-	print("dir = ", entity.controller.dir)
-	
+## Handles the [param entity]'s animation.
+## [br][br]
+## Checks whether the entity has gone idle or is walking/running. It uses the
+## following formula to calculate the [member AnimationPlayer.speed_scale]:
+## [codeblock]
+## if current_state == "Run":
+##     speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] - 60) / 60 + 1.8
+## else:
+##     speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] - 60) / 60 + 1.8
+## [/codeblock]
+## The default speed_scale value of 1.0 felt too slow for the entity's movement.
+## A value between 1.8 - 2.0 provides a more snappy and arcade feel.
+## The subtraction and division by 60 adjust the entity's speed to an appropriate
+## range for the [member AnimationPlayer.speed_scale].
+## Example: If the character's move speed is 60px/s, its speed_scale is equal to 1.8.
+## [br]
+## It updates the [member Human.body_pose] of the entity and then calls
+## [method move_body] to execute the assigned values on the actual animation nodes.
+func handle_animation(entity: Human):
 	var current_state = entity.controller.anim_state
 	var speed_scale   = 1.0
 	var direction     = entity.controller.dir
 	if direction == Vector2.ZERO:
 		current_state = "Idle"
 	else:
-		# TODO ! rotate_weapon(direction)
 		last_direction = direction
 		if current_state == "Run":
-			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] * 0.05 + 0.5
+			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] - 60) / 60 + 1.8
 		else:
-			speed_scale = stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] * 0.05 + 0.5
+			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] - 60) / 60 + 1.8
 	
-	# TODO ! This obviously sucks a lot and should be more dynamic and fast
-	## UPDATE THE SOUL AND CALL SPAWN INSTEAD
-	for limb in entity.soul.pose:
-		# ref[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
-		entity.soul.pose[limb][2] = current_state
-		entity.soul.pose[limb][3] = "parameters/Movement/" + current_state + "/blend_position"
-		entity.soul.pose[limb][4] = last_direction
-		entity.soul.pose[limb][6] = speed_scale
-		# TODO - This is a difficult bug. I need to blend 2D animations to make Run state work OR'
-		# get RID of all Run state in everything, only have Move and its speed. Can change blend mode to discrete?
-		if limb == "Torso" and current_state != "Idle": 
-			entity.soul.pose[limb][2] = "Move"
-			entity.soul.pose[limb][3] = "parameters/Movement/Move/blend_position"
-		elif limb == "Head":
-			entity.soul.pose[limb][6] = 1.0
+	# TODO ! Try to make this system faster, reduce CPU overhead
+	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0] (check entity's soul)
+	for limb in entity.body_pose:
+		entity.body_pose[limb][3] = current_state
+		entity.body_pose[limb][4] = "parameters/Movement/" + current_state + "/blend_position"
+		entity.body_pose[limb][5] = last_direction
+		entity.body_pose[limb][7] = speed_scale
 	
-	entity.move_body()
+	for accessory in entity.body_accessories:
+		entity.body_accessories[accessory][3] = current_state
+		entity.body_accessories[accessory][4] = "parameters/Movement/" + current_state + "/blend_position"
+		entity.body_accessories[accessory][5] = last_direction
+		entity.body_accessories[accessory][7] = speed_scale
 	
-	## TODO ! Update Accesories positions
-	#hat_animatorTree["parameters/Movement/Idle/blend_position"] = direction
+	move_body(entity)
 
 
-func move_limb(limb, pose):
-	limb.position = pose[0]                    # Marked2D.position = Vector2()
-	limb.get_child(1)[pose[1]].travel(pose[2]) # animatorTree["parameters/Movement/playback"].travel("")
-	limb.get_child(1)[pose[3]] = pose[4]       # animatorTree["parameters/Movement/''/blend_position"] = Vector2()
-	limb.get_child(1)[pose[5]] = pose[6]       # animatorTree["parameters/TimeScale/scale"] = speed_scale
+## Moves the [param entity]'s body.
+## [br][br]
+## A body is made up of limbs ([Limb]) and their corresponding accessories ([AccessoriesComponent]).
+## This method iterates over each limb to execute [method move_limb] and [method move_accessories].
+func move_body(entity: Human):
+	for limb in entity.body.limbs:
+		move_limb(entity, limb)
+		move_accessories(entity, limb)
 
 
-## TODO ! DO NOT DELETE THIS YET
-#weapon_origin.rotation_degrees = -90
-#also had %interaction_area and %weapon_origin stuff in initial_vars...
-#hat_state_machine  = hat_animatorTree["parameters/Movement/playback"]
-#hat_state_machine.travel("Idle")
-#hat_animatorTree["parameters/Movement/Idle/blend_position"] = Vector2(0, 1)
+## Moves an [param entity]'s limb.
+## [br][br]
+## This method first checks whether the limb exists or not in the entity's body first,
+## then calls [method move].
+func move_limb(entity: Human, limb_name: String):
+	if limb_name in entity.body.limbs and limb_name in entity.body_pose:
+		move(entity.body.limbs[limb_name], entity.body_pose[limb_name])
+
+
+## Moves the [param entity]'s limb accessories.
+## [br][br]
+## Iterates over the specified limb's accessories and executes [method move]
+## on each accessory using its corresponding data from [member Human.body_accessories].
+func move_accessories(entity: Human, limb_name: String):
+	for accessory in entity.body.limbs[limb_name].accessories.get_children():
+		move(accessory, entity.body_accessories[accessory.name])
+
+
+## Moves a [Limb].
+## [br][br]
+## For now, it is designed to deal with [member Human.body_pose] and [member Human.body_accessories].
+func move(part: Limb, pose: Array):
+	part.position = pose[0]                        # Marker2D.position = Vector2()
+	part.rotation_degrees = pose[1]                # Marker2D.rotation = degrees
+	if part is Limb:
+		part.get_child(1)[pose[2]].travel(pose[3]) # animatorTree["parameters/Movement/playback"].travel("")
+		part.get_child(1)[pose[4]] = pose[5]       # animatorTree["parameters/Movement/''/blend_position"] = Vector2()
+		part.get_child(1)[pose[6]] = pose[7]       # animatorTree["parameters/TimeScale/scale"] = speed_scale
+
+
+## Stops the [param entity]'s movement.
+func stop(entity: Human):
+	entity.velocity = Vector2(0,0)
+	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
+	for limb in entity.body_pose:
+		entity.body_pose[limb][3] = "Idle"
+		entity.body_pose[limb][4] = "parameters/Movement/Idle/blend_position"
+		entity.body_pose[limb][5] = last_direction
+		entity.body_pose[limb][7] = entity.body.gear["MeleeWeapon"].attack_stats[GameEnums.ATTACK_STATS.WEAPON_SPEED]
+		move_limb(entity, limb)
+
+
+## Rotates the weapon and animates the attack.
+func attack(weapon: Weapon, torso_animator: AnimationPlayer, head_animator: AnimationPlayer):
+	if last_direction.y < 0:                                 ## UP
+		weapon.position = Vector2(0, -10)
+		weapon.rotation_degrees = -90
+		if weapon_on_left_hand:
+			torso_animator.play("attack_up")
+			head_animator.play("attack_up")
+			weapon.get_child(1).play("attack_right")
+		else:
+			torso_animator.play_backwards("attack_up")
+			head_animator.play_backwards("attack_up")
+			weapon.get_child(1).play("attack_left")
+	elif last_direction.y > 0:                               ## DOWN
+		weapon.position = Vector2(0, 5)
+		weapon.rotation_degrees = 90
+		if weapon_on_left_hand:
+			torso_animator.play("attack_down")
+			head_animator.play("attack_down")
+			weapon.get_child(1).play("attack_right")
+		else:
+			torso_animator.play_backwards("attack_down")
+			head_animator.play("attack_down")
+			weapon.get_child(1).play("attack_left")
+	
+	if last_direction.x < 0:                                 ## LEFT
+		weapon.position = Vector2(-5, 0)
+		weapon.rotation_degrees = 180
+		if weapon_on_left_hand:
+			torso_animator.play("attack_left")
+			head_animator.play_backwards("attack_left")
+			weapon.get_child(1).play("attack_right")
+		else:
+			torso_animator.play_backwards("attack_left")
+			head_animator.play("attack_left")
+			weapon.get_child(1).play("attack_left")
+	elif last_direction.x > 0:                               ## RIGHT
+		weapon.position = Vector2(5, 0)
+		weapon.rotation_degrees = 0
+		if weapon_on_left_hand:
+			torso_animator.play_backwards("attack_right")
+			head_animator.play_backwards("attack_right")
+			weapon.get_child(1).play("attack_right")
+		else:
+			torso_animator.play("attack_right")
+			head_animator.play("attack_right")
+			weapon.get_child(1).play("attack_left")
+	
+	weapon_on_left_hand = !weapon_on_left_hand

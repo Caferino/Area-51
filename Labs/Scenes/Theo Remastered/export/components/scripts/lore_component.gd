@@ -1,4 +1,5 @@
 class_name LoreComponent extends Node
+## The entity's [color=ivory]lore.
 
 ## This can probably hold the dialogues and descriptions
 ## Probably does not need to extend anything, who knows

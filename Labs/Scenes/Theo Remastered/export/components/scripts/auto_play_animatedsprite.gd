@@ -1,5 +1,5 @@
 extends AnimatedSprite2D
 
-
-func _ready() -> void:
-	play()
+## Autoplays the AnimatedSprite2D by running AnimatedSprite2D.play.
+## Couldn't find a better way.
+func _ready() -> void: play()

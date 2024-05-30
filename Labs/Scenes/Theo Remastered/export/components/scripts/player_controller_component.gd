@@ -1,21 +1,38 @@
 class_name PlayerControllerComponent extends Node
+## The entity's [color=gold]player controller.
 
-signal player_interacted()
-signal player_moved()
+signal player_move()      ## Emitted whenever the player gives movement input: ([kbd]'W' 'A' 'S' 'D'[/kbd]).
+signal player_attack()    ## Emitted whenever the player gives attack input ([kbd]Left-Click[/kbd]).
+signal player_interact()  ## Emitted whenever the player gives interact input ([kbd]'F'[/kbd]).
 
-var dir          = Vector2()
-var anim_state   = "Move"
-var is_attacking = false
-var is_sprinting = false
+@export var interactor          : Marker2D       ## The interactor's origin point (for rotation).
+@export var interactor_area     : Area2D         ## The interactor's monitoring area.
+@export var interactor_animator : AnimationTree  ## The interactor's animator (for rotation).
+
+var dir              : Vector2  = Vector2()  ## Current direction.
+var anim_state       : String   = "Move"     ## Current animation state.
+var is_attacking     : bool     = false      ## Is the entity currently attacking?
+var is_sprinting     : bool     = false      ## Is the entity currently sprinting?
 
 
-## Handles inputs
-func _process(_delta: float) -> void:
+## Checks whether the player is giving movement input every physics frame.
+func _physics_process(_delta: float) -> void:
 	if !is_attacking:
 		check_movement()
-		check_interact()
 
 
+## Runs whenever there is an [InputEvent] to check whether it's an attack or interaction.
+func _input(event: InputEvent):
+	if !is_attacking:
+		if event.is_action("attack"):
+			player_attack.emit()
+		elif event.is_action("interact"):
+			player_interact.emit()
+
+
+## Reads the player's given movement input.
+## [br][br]
+## In 2D, the y-axis is facing down. This means (0,-1) is up, and (0, 1) is down.
 func check_movement():
 	dir = Vector2()
 	
@@ -33,14 +50,10 @@ func check_movement():
 		is_sprinting = false
 		anim_state   = "Move"
 	
-	emit_signal("player_moved")
+	player_move.emit()
 
 
-func check_interact():
-	pass
-	#if Input.is_action_just_pressed("interact"):
-		#if interaction_area.get_overlapping_bodies():
-			#interact()
-		#if interaction_area.get_overlapping_areas():
-			#pass
-	#emit_signal("player_interacted")
+## Rotates the interactor's [member Marker2D.rotation].
+func rotate_interactor(position: Vector2, direction: Vector2):
+	interactor.position = position
+	interactor_animator["parameters/Movement/blend_position"] = direction

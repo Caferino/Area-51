@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://m3reepb10i8i"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="1_dfdqi"]
+[ext_resource type="PackedScene" uid="uid://byvgnjjoahfqa" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/accessories_component.tscn" id="2_xlf68"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_808wd"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dpjav"]
+
+[node name="Limb" type="Marker2D" node_paths=PackedStringArray("accessories", "animatorTree", "animator")]
+script = ExtResource("1_dfdqi")
+accessories = NodePath("LimbArea/AccessoriesComponent")
+animatorTree = NodePath("LimbAnimatorTree")
+animator = NodePath("LimbAnimator")
+
+[node name="LimbArea" type="Area2D" parent="."]
+
+[node name="LimbCollisionShape" type="CollisionShape2D" parent="LimbArea"]
+
+[node name="LimbAnimatedSprite" type="AnimatedSprite2D" parent="LimbArea"]
+sprite_frames = SubResource("SpriteFrames_808wd")
+
+[node name="AccessoriesComponent" parent="LimbArea" instance=ExtResource("2_xlf68")]
+
+[node name="LimbAnimatorTree" type="AnimationTree" parent="."]
+root_node = NodePath("../LimbArea")
+tree_root = SubResource("AnimationNodeBlendTree_dpjav")
+anim_player = NodePath("../LimbAnimator")
+
+[node name="LimbAnimator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../LimbArea")

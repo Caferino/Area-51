@@ -131,6 +131,7 @@ func handle_movement():
 	
 	hvel = hvel.lerp(target, accel)
 	velocity = hvel
+	print(hvel)
 	move_and_slide()
 
 
@@ -165,21 +166,21 @@ func rotate_weapon(direction):
 	on_left_hand = true
 	if direction.y > 0:
 		weapon_origin.rotation_degrees = -90
-		interaction_area_origin.rotation_degrees = -90
 		weapon_origin.position = Vector2(0, 10)
+		interaction_area_origin.rotation_degrees = -90
 	elif direction.y < 0:
 		weapon_origin.rotation_degrees = 90
-		interaction_area_origin.rotation_degrees = 90
 		weapon_origin.position = Vector2(0, -10)
+		interaction_area_origin.rotation_degrees = 90
 	
 	if direction.x > 0:
 		weapon_origin.rotation_degrees = 180
-		interaction_area_origin.rotation_degrees = 180
 		weapon_origin.position = Vector2(10, 0)
+		interaction_area_origin.rotation_degrees = 180
 	elif direction.x < 0:
 		weapon_origin.rotation_degrees = 0
-		interaction_area_origin.rotation_degrees = 0
 		weapon_origin.position = Vector2(-10, 0)
+		interaction_area_origin.rotation_degrees = 0
 
 
 func _on_left_foot_area_entered(area):

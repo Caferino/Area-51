@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnvgi3bb45n7c"]
-
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/SmokeAshburnSoul.gd" id="1_3tp3v"]
-
-[node name="SmokeAshburnSoul" type="Node"]
-script = ExtResource("1_3tp3v")

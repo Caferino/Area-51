@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwntge3lvgff8"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/sword.gd" id="1_3ayy2"]
+[ext_resource type="Texture2D" uid="uid://cpsi8aqw3mfvm" path="res://Labs/Assets/6. Weapons/god_sword_1.png" id="2_b1r06"]
+[ext_resource type="AnimationLibrary" uid="uid://hw1v7gj1ldku" path="res://animations/2D Updated/2D Sword Movement Remastered.res" id="3_qb8gj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7lfi"]
+radius = 5.0
+height = 25.0
+
+[node name="Sword" type="Marker2D" groups=["Weapon"]]
+y_sort_enabled = true
+script = ExtResource("1_3ayy2")
+
+[node name="SwordArea" type="Area2D" parent="."]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 8195
+monitoring = false
+monitorable = false
+
+[node name="SwordCollisionShape" type="CollisionShape2D" parent="SwordArea"]
+position = Vector2(-1, -15)
+rotation = -0.311607
+shape = SubResource("CapsuleShape2D_n7lfi")
+
+[node name="SwordSprite" type="Sprite2D" parent="SwordArea"]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, -15)
+rotation = 3.14159
+texture = ExtResource("2_b1r06")
+region_enabled = true
+region_rect = Rect2(1, 12, 11, 22)
+
+[node name="SwordAnimator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../SwordArea/SwordSprite")
+libraries = {
+"": ExtResource("3_qb8gj")
+}
+
+[connection signal="area_entered" from="SwordArea" to="." method="_on_sword_area_area_entered"]
+[connection signal="body_entered" from="SwordArea" to="." method="_on_sword_area_body_entered"]
+[connection signal="animation_finished" from="SwordAnimator" to="." method="_on_melee_weapon_animator_animation_finished"]

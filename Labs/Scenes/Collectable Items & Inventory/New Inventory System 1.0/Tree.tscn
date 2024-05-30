@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://lme0j6u8o1qn" path="res://Labs/Scenes/Collectable Items & Inventory/Tree.png" id="2_rvrjp"]
 [ext_resource type="PackedScene" uid="uid://cb0gxldgrnbao" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/HitboxComponent.tscn" id="3_4o4lw"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xhe3r"]
+radius = 52.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3p8dr"]
 radius = 27.0
 height = 62.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xhe3r"]
-radius = 52.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilh1a"]
 atlas = ExtResource("2_rvrjp")
@@ -39,13 +39,24 @@ animations = [{
 "speed": 0.0
 }]
 
-[node name="Tree" type="Node2D" node_paths=PackedStringArray("health_component")]
+[node name="Tree" type="Marker2D" node_paths=PackedStringArray("health_component")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_kbko6")
 health_component = NodePath("HealthComponent")
 
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Interactive", "Tree"] instance=ExtResource("3_4o4lw")]
+collision_layer = 4097
+collision_mask = 0
+monitoring = false
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_xhe3r")
+
 [node name="StaticBody" type="StaticBody2D" parent="."]
+collision_layer = 4097
+collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="StaticBody"]
 position = Vector2(0, 8)
@@ -53,12 +64,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3p8dr")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_ktrd2")]
-
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Interactive"] instance=ExtResource("3_4o4lw")]
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("CircleShape2D_xhe3r")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true

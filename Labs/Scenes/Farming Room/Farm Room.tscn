@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://sp7b20pygith" path="res://Labs/Scenes/Farming Room/grass tile.png" id="1_aynmh"]
 [ext_resource type="Texture2D" uid="uid://qkeks4n2cljn" path="res://Labs/Scenes/Farming Room/Farm House.png" id="2_fbyl4"]
 [ext_resource type="PackedScene" uid="uid://dfhupj26o7g0w" path="res://Labs/Scenes/Farming Room/FarmManager.tscn" id="2_u31nd"]
-[ext_resource type="PackedScene" uid="uid://ywdwc8rryrt" path="res://Labs/Entities/Character-Theo/Theo.tscn" id="4_7eitx"]
 [ext_resource type="PackedScene" uid="uid://chim0ijmmeh0a" path="res://Labs/Scenes/Farming Room/Fence.tscn" id="4_ui5f6"]
 [ext_resource type="PackedScene" uid="uid://ui6le12cycb8" path="res://Labs/Scenes/Farming Room/FenceVertical.tscn" id="5_i7e6s"]
 [ext_resource type="PackedScene" uid="uid://mrd6gxhdcf0o" path="res://Labs/Assets/X. Resources/Animals/Lucas.tscn" id="5_j4sov"]
 [ext_resource type="PackedScene" uid="uid://bmrctgfhetcgl" path="res://Labs/Scenes/Farming Room/Plant.tscn" id="5_lr3xl"]
 [ext_resource type="PackedScene" uid="uid://tr0m4o6ekavs" path="res://Labs/Scenes/Farming Room/FenceHorizontal.tscn" id="6_6sksl"]
+[ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="7_qaouk"]
 [ext_resource type="PackedScene" uid="uid://b14q5yhfbenc1" path="res://Labs/Scenes/Farming Room/DayNightCycle.tscn" id="7_vog8i"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_le3qp"]
@@ -72,13 +72,13 @@ position = Vector2(1163, 567)
 [node name="FenceHorizontal2" parent="Surface" instance=ExtResource("6_6sksl")]
 position = Vector2(1163, 471)
 
-[node name="Theo" parent="Surface" instance=ExtResource("4_7eitx")]
-position = Vector2(1012, 478)
+[node name="Smoke Ashburn" parent="Surface" instance=ExtResource("7_qaouk")]
+z_index = 1
+position = Vector2(1014, 520)
 
-[node name="Lucas" parent="Surface" node_paths=PackedStringArray("target_character") instance=ExtResource("5_j4sov")]
+[node name="Lucas" parent="Surface" instance=ExtResource("5_j4sov")]
 position = Vector2(1162, 533)
 movement_speed = 80.0
-target_character = NodePath("../Theo")
 
 [node name="FarmHouse" type="Sprite2D" parent="Surface"]
 z_index = -1

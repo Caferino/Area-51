@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ccbeafxootyvt"]
+[gd_scene load_steps=29 format=3 uid="uid://ccbeafxootyvt"]
 
 [ext_resource type="Texture2D" uid="uid://dka86wo2tsoug" path="res://Labs/Scenes/The Hut/Plants and Paths.png" id="2_3qdho"]
 [ext_resource type="Texture2D" uid="uid://chmsiqs8w2akd" path="res://Labs/Scenes/The Hut/Trees.png" id="2_t75h0"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://iixw61r8utqk" path="res://inventory/scenes/interactables/treasure_chest.tscn" id="13_272f7"]
 [ext_resource type="PackedScene" uid="uid://c5uh6bhur8igq" path="res://inventory/scenes/interactables/interactable_chest.tscn" id="14_3mw5w"]
 [ext_resource type="Script" path="res://inventory/scripts/resources/inventory.gd" id="14_c1tuy"]
+[ext_resource type="PackedScene" uid="uid://bmr77x00d4g68" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Tree.tscn" id="16_utayo"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ukhc2"]
 tile_data = PackedInt32Array(131072, 1114112, 2, 196608, 1114112, 3, 262144, 1114112, 4, 327680, 1114112, 5, 393216, 1114112, 6, 458752, 1114112, 7, 524288, 1114112, 8, 131073, 1179648, 2, 196609, 1179648, 3, 262145, 1179648, 4, 327681, 1179648, 5, 393217, 1179648, 6, 458753, 1179648, 7, 524289, 1179648, 8, 589825, 1179648, 9, 655361, 1179648, 10, 65538, 1245184, 1, 131074, 1245184, 2, 196610, 1245184, 3, 262146, 1245184, 4, 327682, 1245184, 5, 393218, 1245184, 6, 458754, 1245184, 7, 524290, 1245184, 8, 589826, 1245184, 9, 655362, 1245184, 10, 65539, 1310720, 1, 131075, 1310720, 2, 196611, 1310720, 3, 262147, 1310720, 4, 327683, 1310720, 5, 393219, 1310720, 6, 458755, 1310720, 7, 524291, 1310720, 8, 589827, 1310720, 9, 655363, 1310720, 10, 4, 1376256, 0, 65540, 1376256, 1, 131076, 1376256, 2, 196612, 1376256, 3, 262148, 1376256, 4, 327684, 1376256, 5, 393220, 1376256, 6, 458756, 1376256, 7, 524292, 1376256, 8, 589828, 1376256, 9, 655364, 1376256, 10, 5, 1441792, 0, 65541, 1441792, 1, 131077, 1441792, 2, 196613, 1441792, 3, 262149, 1441792, 4, 327685, 1441792, 5, 393221, 1441792, 6, 458757, 1441792, 7, 524293, 1441792, 8, 589829, 1441792, 9, 655365, 1441792, 10, 65542, 1507328, 1, 131078, 1507328, 2, 196614, 1507328, 3, 262150, 1507328, 4, 327686, 1507328, 5, 393222, 1507328, 6, 458758, 1507328, 7, 524294, 1507328, 8, 589830, 1507328, 9, 655366, 1507328, 10, 65543, 1572864, 1, 131079, 1572864, 2, 196615, 1572864, 3, 262151, 1572864, 4, 327687, 1572864, 5, 393223, 1572864, 6, 458759, 1572864, 7, 524295, 1572864, 8, 589831, 1572864, 9, 655367, 1572864, 10, 131080, 1638400, 2, 196616, 1638400, 3, 262152, 1638400, 4, 327688, 1638400, 5, 393224, 1638400, 6, 458760, 1638400, 7, 524296, 1638400, 8, 589832, 1638400, 9, 655368, 1638400, 10, 131081, 1703936, 2, 196617, 1703936, 3, 262153, 1703936, 4, 327689, 1703936, 5, 393225, 1703936, 6, 458761, 1703936, 7, 524297, 1703936, 8)
@@ -1848,6 +1849,12 @@ inventory = SubResource("Resource_0t30v")
 position = Vector2(680, 432)
 loot_table = Array[String](["rock", "rock"])
 inventory = SubResource("Resource_guigg")
+
+[node name="Tree" parent="." instance=ExtResource("16_utayo")]
+position = Vector2(370, 363)
+
+[node name="Tree2" parent="." instance=ExtResource("16_utayo")]
+position = Vector2(418, 222)
 
 [connection signal="pressed" from="ui/ui_container/buttons/settings" to="ui/ui_container" method="_on_settings_pressed"]
 [connection signal="pressed" from="ui/ui_container/buttons/quit" to="ui/ui_container" method="_on_quit_pressed"]

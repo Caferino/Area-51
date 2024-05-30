@@ -1,6 +1,6 @@
-class_name Weapon extends Node2D
+class_name WeaponOld extends Node2D
 
-signal attacked
+signal attacked(weapon)
 
 # Imagine this came from a dagger's data in a JSON file...
 var weapon_speed    = 2      # speed_scale = [-4, 4] in Godot
@@ -53,12 +53,16 @@ func update_speed(new_speed):
 
 func draw():
 	sprite.visible = true
-	collision_shape.disabled = false
+	call_deferred("disable_collision")
 
 
 func sheathe():
 	sprite.visible = false
-	collision_shape.disabled = true
+	call_deferred("enable_collision")
+
+
+func disable_collision() : collision_shape.disabled = false
+func enable_collision()  : collision_shape.disabled = true
 
 
 func _on_hit_box_body_entered(body):

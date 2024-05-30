@@ -251,13 +251,13 @@ func get_type_name(item):
 	#return my_items[id].instantiate()
 #
 #
-#func drop_item(item, position, loot_radius, scene):
-	#if ItemManager.has_resource(item):
-		#item = ItemManager.get_resource(item)
-		#var collectable = ItemManager.get_resource("collectable").instantiate()
-		#
-		#collectable.setup(item)
-		#collectable.global_position = position
-		#scene.add_child(collectable)
-		#
-		#collectable.drop(loot_radius)
+func drop_item(item, position, loot_radius, scene):
+	if ItemManager.has_resource(item):
+		item = ItemManager.get_resource(item)
+		var collectable = ItemManager.get_resource("collectable").instantiate()
+		
+		collectable.setup(item)
+		collectable.global_position = position
+		scene.add_child(collectable)
+		
+		collectable.drop(loot_radius)

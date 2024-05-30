@@ -127,7 +127,7 @@ _data = {
 "RESET": SubResource("Animation_weqj6")
 }
 
-[node name="CaveBat" type="CharacterBody2D"]
+[node name="CaveBat" type="CharacterBody2D" groups=["Enemies"]]
 z_index = 3
 y_sort_enabled = true
 collision_layer = 8192
