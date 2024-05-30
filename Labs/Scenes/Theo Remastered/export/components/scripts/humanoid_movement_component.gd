@@ -13,7 +13,6 @@ var weapon_on_left_hand : bool    = true           ## Boolean for the weapon's p
 ## [br][br]
 ## This is where [method CharacterBody2D.move_and_slide] resides.
 func handle_movement(entity: Human):
-	print(entity is Human)
 	var accel = 0.12  ## Lower for "walking on ice" effect, it'd need DEACCEL, done below
 	var target = entity.controller.dir
 	if entity.controller.dir.dot(entity.controller.dir) > 0:

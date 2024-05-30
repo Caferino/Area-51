@@ -1,10 +1,10 @@
 class_name BodyComponent extends Node
 ## The entity's [color=blue]body
 
-signal limb_interact(entered : bool, area : Area2D)  ## Emits whenever a limb interacts with something.
+signal limb_interact(entered: bool, limb_name: String, area: Area2D)  ## Emits whenever a limb interacts with something.
 
-var limbs = {}  ## The entity's body limbs of type [Limb].
-var gear = {}   ## The entity's usable equipment, like swords and tools, etc.
+var limbs : Dictionary = {}  ## The entity's body limbs of type [Limb].
+var gear  : Dictionary = {}   ## The entity's usable equipment, like swords and tools, etc.
 
 
 ## Prepares the entity's body by connecting limbs running [method connect_limbs].

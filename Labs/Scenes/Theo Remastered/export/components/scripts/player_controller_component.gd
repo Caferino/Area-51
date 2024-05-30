@@ -9,10 +9,10 @@ signal player_interact()  ## Emitted whenever the player gives interact input ([
 @export var interactor_area     : Area2D         ## The interactor's monitoring area.
 @export var interactor_animator : AnimationTree  ## The interactor's animator (for rotation).
 
-var dir                 = Vector2()  ## Current direction.
-var anim_state          = "Move"     ## Current animation state.
-var is_attacking        = false      ## Is the entity currently attacking?
-var is_sprinting        = false      ## Is the entity currently sprinting?
+var dir              : Vector2  = Vector2()  ## Current direction.
+var anim_state       : String   = "Move"     ## Current animation state.
+var is_attacking     : bool     = false      ## Is the entity currently attacking?
+var is_sprinting     : bool     = false      ## Is the entity currently sprinting?
 
 
 ## Checks whether the player is giving movement input every physics frame.
@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 
 
 ## Runs whenever there is an [InputEvent] to check whether it's an attack or interaction.
-func _input(event):
+func _input(event: InputEvent):
 	if !is_attacking:
 		if event.is_action("attack"):
 			player_attack.emit()
@@ -54,6 +54,6 @@ func check_movement():
 
 
 ## Rotates the interactor's [member Marker2D.rotation].
-func rotate_interactor(position, direction):
+func rotate_interactor(position: Vector2, direction: Vector2):
 	interactor.position = position
 	interactor_animator["parameters/Movement/blend_position"] = direction

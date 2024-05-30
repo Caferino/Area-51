@@ -18,5 +18,5 @@ func _ready():
 
 
 ## Runs after the weapon's attack animation ends.
-func _on_melee_weapon_animator_animation_finished(_anim_name):
+func _on_melee_weapon_animator_animation_finished(_anim_name: StringName):
 	attack_finished.emit()

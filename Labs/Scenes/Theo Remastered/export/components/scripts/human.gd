@@ -8,7 +8,7 @@ class_name Human extends CharacterBody2D
 @export var body        : BodyComponent              ## The entity's [color=blue]body
 
 ## The entity's base stats.
-var base_stats = {
+var base_stats: Dictionary = {
 	GameEnums.STAT.STRENGTH     : 5,
 	GameEnums.STAT.DEXTERITY    : 5,
 	GameEnums.STAT.VITALITY     : 5,
@@ -16,7 +16,7 @@ var base_stats = {
 }
 
 ## The entity's stamina stats.
-var stamina_stats = {
+var stamina_stats: Dictionary = {
 	GameEnums.STAMINA_STATS.CAPACITY         : 100,  # %
 	GameEnums.STAMINA_STATS.SPRINT_RATE      :   2,  # -units/s
 	GameEnums.STAMINA_STATS.REGEN_RATE       :   3,  # +units/s  # TODO - Small pause b4 recharging
@@ -40,7 +40,7 @@ var stamina_stats = {
 ##     [6] "animation_tree_time_scale_path": "parameters/TimeScale/scale",  # Example string
 ##     [7] "animation_tree_time_scale_speed_scale": 2.0,  # Example float
 ## }
-var body_pose = {
+var body_pose: Dictionary = {
 	"Head"      : [Vector2(0, -13), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0],
 	"Torso"     : [Vector2(0, 0), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 2.0]
 }  # TODO - Make it dynamic. Empty at first, or with a default structure for every human being
@@ -59,7 +59,7 @@ var body_pose = {
 ##     [6] "animation_tree_time_scale_path": "parameters/TimeScale/scale",  # Example string
 ##     [7] "animation_tree_time_scale_speed_scale": 2.0,  # Example float
 ## }
-var body_accessories = {
+var body_accessories: Dictionary = {
 	"Hat"       : [Vector2(0, -9), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0],
 	"Weapon"    : [Vector2(0, 0), -90, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
 }
