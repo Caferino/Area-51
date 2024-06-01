@@ -5,7 +5,7 @@ signal player_move()      ## Emitted whenever the player gives movement input ([
 signal player_attack()    ## Emitted whenever the player gives attack input ([kbd]Left-Click[/kbd]).
 signal player_interact()  ## Emitted whenever the player gives interact input ([kbd]'F'[/kbd]).
 
-@export var camera              : Camera2D       ## The player's camera.
+@export var camera_base         : CameraBase     ## The player's camera base.
 @export var interactor_area     : Area2D         ## The interactor's monitoring area.
 @export var interactor_animator : AnimationTree  ## The interactor's animator (for rotation).
 # WIP @export var looting_area        : Area2D         ## The player's looting pick-up range.

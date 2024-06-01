@@ -91,7 +91,7 @@ func _physics_process(_delta: float) -> void:
 
 ## Runs whenever the entity is moving.
 func _on_entity_move():
-	if controller.camera.dragging : controller.camera.stop_dragging()
+	if controller.camera_base.dragging_cam : controller.camera_base.stop_dragging()
 
 
 ## Runs whenever the entity stops moving.

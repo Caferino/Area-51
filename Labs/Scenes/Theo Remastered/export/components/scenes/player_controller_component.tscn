@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://baq33xt06du5y"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/player_controller_component.gd" id="1_y6i1j"]
-[ext_resource type="PackedScene" uid="uid://d0jb1na5h745p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/camera.tscn" id="2_r63rp"]
+[ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="2_7bdkx"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0i0l6"]
 a = Vector2(0, 25)
@@ -113,16 +113,14 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa4hy"]
 radius = 20.0
 
-[node name="PlayerControllerComponent" type="Node2D" node_paths=PackedStringArray("camera", "interactor_area", "interactor_animator")]
+[node name="PlayerControllerComponent" type="Node2D" node_paths=PackedStringArray("camera_base", "interactor_area", "interactor_animator")]
 script = ExtResource("1_y6i1j")
-camera = NodePath("Camera Base/Camera")
+camera_base = NodePath("Camera Base")
 interactor_area = NodePath("InteractorArea")
 interactor_animator = NodePath("InteractorArea/InteractorTree")
 
-[node name="Camera Base" type="Marker2D" parent="."]
-
-[node name="Camera" parent="Camera Base" node_paths=PackedStringArray("controller") instance=ExtResource("2_r63rp")]
-controller = NodePath("../..")
+[node name="Camera Base" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("2_7bdkx")]
+controller = NodePath("..")
 
 [node name="InteractorArea" type="Area2D" parent="."]
 rotation = 1.5708

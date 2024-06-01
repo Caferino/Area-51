@@ -6,6 +6,7 @@ class_name Camera extends Node2D
 # It is bad practice to reuse tweens
 @onready var tween      : Tween    = create_tween()             ## Animates the camera's movement.
 const zoom_speed        : Vector2  = Vector2(1, 1)              ## Zoom in/out speed.
+const drag_dist         : float    =  500.0                     ## The camera's dragging distance allowed.
 var dragging            : bool     = false                      ## Is the camera currently being dragged?
 # For the camera's breathing effect
 const min_x             : float    =  -3.0                      ## Minimum x coordinate it will touch.
@@ -37,27 +38,78 @@ func _input(_event: InputEvent):
 ## Moves the camera to the given held mouse position.
 ## TODO - Be able to drag around within a limited view distance.
 func start_dragging():
-	if controller.is_moving == false:
-		if Input.get_mouse_mode() != Input.MOUSE_MODE_CONFINED_HIDDEN:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	#if !dragging:
+	if !get_parent().get_parent().is_moving:
+		print("dragging!")
+		dragging = true
 		
-		if !dragging:
-			dragging = true
-			
-			print("Parent's position = ", get_parent().position)
-			print("Mouse's global position = ", get_global_mouse_position())
-			print("Squared direction = ", get_parent().position.direction_to(get_global_mouse_position()))
-			tween.kill()
+		## TODO - Maybe, instead of hiding it, switch the cursor with an eye icon
+		## It kinda feels better being able to see the cursor
+		#if Input.get_mouse_mode() != Input.MOUSE_MODE_CONFINED_HIDDEN:
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+		
+		tween.kill()
+		var direction = get_parent().global_position.direction_to(get_global_mouse_position())
+		
+		## TODO - Can the movement feel slower and smoother? My cursor speed is too fast
+		## TODO - In the future, test this feature with different screen sizes. That might hurt.
+		if get_parent().global_position.distance_to(get_global_mouse_position()) <= drag_dist:
 			tween = create_tween()
 			tween.connect("finished", breath)
-			tween.tween_property(self, "global_position", get_global_mouse_position(), 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+			tween.tween_property(self, "position", get_parent().to_local(get_global_mouse_position()), 0.05).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 			tween.play()
+		else:
+			position = clamp(direction * drag_dist, Vector2(-drag_dist, -drag_dist), Vector2(drag_dist, drag_dist))
+			
+			
+		#position = clamp(direction * drag_dist, Vector2(-50, -50), Vector2(50, 50))
+		#position = clamp(get_global_mouse_position() - get_parent().global_position, Vector2(-50, -50), Vector2(50, 50))0
+		#tween.kill()
+		#tween = create_tween()
+		##tween.connect("finished", breath)
+		#tween.tween_property(self, "position", clamp(get_parent().to_local(get_global_mouse_position()), Vector2(-150, -150), Vector2(150, 150)), 0)#.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+		#tween.play()
+		
+		## ! DEBUGGER
+		print("----------------------------------------")
+		print("From Parent's position = ", get_parent().position)
+		print("To Mouse's global position = ", get_global_mouse_position())
+		print("Direction = ", direction)
+		print("Direction * Speed = ", direction * drag_dist)
+		print("Distance = ", get_parent().global_position.distance_to(get_global_mouse_position()))
+		print("Angle = ", get_parent().position.angle_to(get_global_mouse_position()))
+		print("Difference = ", get_global_mouse_position() - get_parent().global_position)
+		print("Made local = ", get_parent().to_local(get_global_mouse_position()))
+		print("Final position = ", clamp(direction * drag_dist, Vector2(-50, -50), Vector2(50, 50)))
+		print("Final position = ", position)
+		print("----------------------------------------")
+		
+		#tween.kill()
+		#tween = create_tween()
+		#tween.connect("finished", breath)
+		#tween.tween_property(self, "global_position", get_global_mouse_position(), 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+		#tween.play()
+	
+	
+	## Old but good, dont delete
+	#if controller.is_moving == false:
+		#if Input.get_mouse_mode() != Input.MOUSE_MODE_CONFINED_HIDDEN:
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+		#
+		#if !dragging:
+			#dragging = true
+			#
+			#tween.kill()
+			#tween = create_tween()
+			#tween.connect("finished", breath)
+			#tween.tween_property(self, "global_position", get_global_mouse_position(), 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+			#tween.play()
 
 
 ## Stops the camera dragging, returning it to its origin point instantly.
 func stop_dragging():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	global_position = get_parent().global_position
+	position = get_parent().position
 	dragging = false
 	hold_camera()
 

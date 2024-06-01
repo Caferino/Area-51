@@ -617,7 +617,7 @@ script = ExtResource("16_3nyy4")
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
-z_index = -1
+z_index = -3
 texture_filter = 2
 position = Vector2(-4, 35.14)
 scale = Vector2(0.452381, 0.384615)
