@@ -9,10 +9,11 @@ const zoom_speed        : Vector2  = Vector2(1, 1)              ## Zoom in/out s
 const drag_dist         : float    =  500.0                     ## The camera's dragging distance allowed.
 var dragging_cam        : bool     = false                      ## Is the camera currently being dragged?
 # For the camera's breathing effect
-const min_x             : float    =  -3.0                      ## Minimum x coordinate it will touch.
-const max_x             : float    =   3.0                      ## Maximum x coordinate it will touch.
-const min_y             : float    =  -3.0                      ## Minimum y coordinate it will touch.
-const max_y             : float    =   3.0                      ## Maximum y coordinate it will touch.
+var min_x               : float    =  -3.0                      ## Minimum x coordinate it will touch.
+var max_x               : float    =   3.0                      ## Maximum x coordinate it will touch.
+var min_y               : float    =  -3.0                      ## Minimum y coordinate it will touch.
+var max_y               : float    =   3.0                      ## Maximum y coordinate it will touch.
+var hold_speed          : float    =   6.0
 var breathing_in        : bool     = false                      ## Saves the current "breathing" state.
 var random_x            : float    = randf_range(min_x, max_x)  ## Random x coordinate for the bounce.
 var random_y            : float    = randf_range(0, max_y)      ## Random y coordinate for the bounce.
@@ -38,12 +39,10 @@ func _input(_event: InputEvent):
 ## Begins to follow the mouse inside a certain distance ([member CameraBase.drag_dist]).
 func start_dragging():
 	if !controller.is_moving:
-		dragging_cam = true
+		if !dragging_cam:
+			Input.set_custom_mouse_cursor(load("res://Labs/Assets/X. Other/Cursor/dragging.svg"))
 		
-		## TODO - Maybe, instead of hiding it, switch the cursor with an eye cursor.
-		## Inside the else below, turn it into a "distance too far" cursor.
-		if Input.get_mouse_mode() != Input.MOUSE_MODE_CONFINED_HIDDEN:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+		dragging_cam = true
 		
 		tween.kill()
 		
@@ -59,7 +58,7 @@ func start_dragging():
 
 ## Stops the camera dragging, returning it to its controller's global position instantly.
 func stop_dragging():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.set_custom_mouse_cursor(load("res://Labs/Assets/X. Other/Cursor/dot.svg"))
 	global_position = controller.global_position
 	dragging_cam = false
 	hold_camera()
@@ -70,7 +69,7 @@ func hold_camera():
 	tween.kill()
 	tween = create_tween()
 	tween.connect("finished", breath)
-	tween.tween_property(camera, "position", Vector2(random_x, random_y), 6).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD).set_delay(randf_range(0.001, 0.2))
+	tween.tween_property(camera, "position", Vector2(random_x, random_y), hold_speed).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD).set_delay(randf_range(0.001, 0.2))
 	tween.play()
 
 
@@ -83,3 +82,22 @@ func breath():
 	else            : random_y = randf_range(0, max_y)
 	breathing_in = !breathing_in
 	hold_camera()
+
+
+## Increases or reduces the breathing effect's min and max values to control the shaking.
+func modify_breath(nmin_x: float, nmax_x: float, nmin_y: float, nmax_y: float, nhold_speed: float):
+	min_x      =  nmin_x
+	max_x      =  nmax_x
+	min_y      =  nmin_y
+	max_y      =  nmax_y
+	hold_speed =  nhold_speed
+	breath()
+
+
+## Resets the breathing effect's min and max back to normal.
+func reset_breath():
+	min_x      = -3.0
+	max_x      =  3.0
+	min_y      = -3.0
+	max_y      =  3.0
+	hold_speed =  6.0

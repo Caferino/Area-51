@@ -1,7 +1,8 @@
 class_name PlayerControllerComponent extends Node2D
 ## The entity's [color=gold]player controller.
 
-signal player_move()      ## Emitted whenever the player gives movement input ([kbd]'W' 'A' 'S' 'D'[/kbd])
+signal player_move()      ## Emitted whenever the player gives movement input ([kbd]'W' 'A' 'S' 'D'[/kbd]).
+signal player_sprint()    ## Emitted whenever the player gives sprinting input ([kbd]'Shift'[/kbd]).
 signal player_attack()    ## Emitted whenever the player gives attack input ([kbd]Left-Click[/kbd]).
 signal player_interact()  ## Emitted whenever the player gives interact input ([kbd]'F'[/kbd]).
 
@@ -51,9 +52,11 @@ func check_movement():
 		dir = dir.normalized()
 		
 		if Input.is_action_pressed("sprint"):
+			if !is_sprinting: player_sprint.emit()
 			is_sprinting = true
 			anim_state   = "Run"
 		else:
+			if is_sprinting: player_move.emit()
 			is_sprinting = false
 			anim_state   = "Move"
 	else:

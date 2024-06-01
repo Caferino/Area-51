@@ -128,7 +128,6 @@ func move(part: Limb, pose: Array):
 ## Stops the [param entity]'s movement.
 func stop(entity: Human, stop_velocity: bool):
 	if stop_velocity: entity.velocity = Vector2(0,0)
-	print("Entity's velocity = ", entity.velocity)
 	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
 	for limb in entity.body_pose:
 		entity.body_pose[limb][3] = "Idle"

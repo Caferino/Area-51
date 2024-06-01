@@ -77,6 +77,7 @@ func spawn():
 	body.limb_interact.connect(_on_limb_interact)
 	muscles.stopped_moving.connect(_on_entity_stop)
 	controller.player_move.connect(_on_entity_move)
+	controller.player_sprint.connect(_on_entity_sprint)
 	controller.player_attack.connect(_on_entity_attack)
 	controller.player_interact.connect(_on_entity_interact)
 	muscles.handle_animation(self)
@@ -89,14 +90,23 @@ func _physics_process(_delta: float) -> void:
 		controller.rotate_interactor(muscles.last_direction)
 
 
-## Runs whenever the entity is moving.
+## Runs whenever the entity starts moving.
 func _on_entity_move():
+	print("Moving!")
 	if controller.camera_base.dragging_cam : controller.camera_base.stop_dragging()
+	controller.camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 0.2)
+
+
+## Runs whenever the entity starts running.
+func _on_entity_sprint():
+	print("Sprinting!")
+	controller.camera_base.modify_breath(-2.0, 2.0, -7.0, 7.0, 0.15)
 
 
 ## Runs whenever the entity stops moving.
 func _on_entity_stop():
 	controller.stop()
+	controller.camera_base.reset_breath()
 
 
 ## Runs whenever the entity attacks.
@@ -105,11 +115,13 @@ func _on_entity_attack():
 		controller.is_attacking = true
 		muscles.stop(self, true)
 		muscles.attack(body.gear["MeleeWeapon"], body.limbs["Torso"].animator, body.limbs["Head"].animator)
+		controller.camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
 
 
 ## Runs after the entity's most recent attack ends.
 func _on_attack_finished():
 	controller.is_attacking = false
+	controller.camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
 
 
 ## Runs whenever a body limb interacts with something.
