@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://baq33xt06du5y"]
+[gd_scene load_steps=16 format=3 uid="uid://baq33xt06du5y"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/player_controller_component.gd" id="1_y6i1j"]
+[ext_resource type="PackedScene" uid="uid://d0jb1na5h745p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/camera.tscn" id="2_r63rp"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0i0l6"]
 a = Vector2(0, 25)
@@ -32,7 +33,7 @@ max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6mfbc"]
-graph_offset = Vector2(-368.965, 39.5222)
+graph_offset = Vector2(-116, 44)
 nodes/Movement/node = SubResource("AnimationNodeBlendSpace2D_0v6jo")
 nodes/Movement/position = Vector2(40, 120)
 node_connections = [&"output", 0, &"Movement"]
@@ -109,25 +110,41 @@ _data = {
 "up": SubResource("Animation_hamru")
 }
 
-[node name="PlayerControllerComponent" type="Node" node_paths=PackedStringArray("interactor", "interactor_area", "interactor_animator")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_sa4hy"]
+radius = 20.0
+
+[node name="PlayerControllerComponent" type="Node2D" node_paths=PackedStringArray("camera", "interactor_area", "interactor_animator")]
 script = ExtResource("1_y6i1j")
-interactor = NodePath("InteractorOrigin")
-interactor_area = NodePath("InteractorOrigin/InteractorArea")
-interactor_animator = NodePath("InteractorOrigin/InteractorTree")
+camera = NodePath("Camera Base/Camera")
+interactor_area = NodePath("InteractorArea")
+interactor_animator = NodePath("InteractorArea/InteractorTree")
 
-[node name="InteractorOrigin" type="Marker2D" parent="."]
+[node name="Camera Base" type="Marker2D" parent="."]
 
-[node name="InteractorArea" type="Area2D" parent="InteractorOrigin"]
+[node name="Camera" parent="Camera Base" node_paths=PackedStringArray("controller") instance=ExtResource("2_r63rp")]
+controller = NodePath("../..")
 
-[node name="InteractorCollisionShape" type="CollisionShape2D" parent="InteractorOrigin/InteractorArea"]
+[node name="InteractorArea" type="Area2D" parent="."]
+rotation = 1.5708
+collision_layer = 0
+monitorable = false
+
+[node name="InteractorCollisionShape" type="CollisionShape2D" parent="InteractorArea"]
 shape = SubResource("SegmentShape2D_0i0l6")
 
-[node name="InteractorTree" type="AnimationTree" parent="InteractorOrigin"]
+[node name="InteractorTree" type="AnimationTree" parent="InteractorArea"]
 tree_root = SubResource("AnimationNodeBlendTree_6mfbc")
 anim_player = NodePath("../InteractorAnimator")
-parameters/Movement/blend_position = Vector2(0.051, 1)
+parameters/Movement/blend_position = Vector2(-0.281217, -0.157143)
 
-[node name="InteractorAnimator" type="AnimationPlayer" parent="InteractorOrigin"]
+[node name="InteractorAnimator" type="AnimationPlayer" parent="InteractorArea"]
 libraries = {
 "": SubResource("AnimationLibrary_k7x51")
 }
+
+[node name="LootingArea" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="LootingAreaCollisionShape" type="CollisionShape2D" parent="LootingArea"]
+shape = SubResource("CircleShape2D_sa4hy")

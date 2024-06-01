@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=108 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -17,7 +17,6 @@
 [ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="16_m3k4p"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="17_io7h4"]
 [ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/sword.tscn" id="18_vljcp"]
-[ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="19_r1ol5"]
 [ext_resource type="AnimationLibrary" uid="uid://bdyf8ugjxxxjl" path="res://animations/2D Updated/2D Hat Movement Remastered.res" id="20_sui4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fv7u5"]
@@ -529,9 +528,6 @@ animations = [{
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_suhwq"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_gao0l"]
-b = Vector2(-30, 0)
-
 [node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body") groups=["Player", "Protagonist"]]
 z_index = 1
 y_sort_enabled = true
@@ -664,8 +660,9 @@ animator = NodePath("TorsoAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
 y_sort_enabled = true
-collision_layer = 4097
-collision_mask = 9219
+collision_layer = 4096
+collision_mask = 0
+monitoring = false
 
 [node name="CollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]
 position = Vector2(0, 2.75)
@@ -766,22 +763,6 @@ root_node = NodePath("")
 y_sort_enabled = true
 
 [node name="MeleeWeapon" parent="BodyComponent/EquipmentComponent" instance=ExtResource("18_vljcp")]
-
-[node name="CameraOrigin" type="Marker2D" parent="."]
-visible = false
-
-[node name="Camera Base" parent="CameraOrigin" instance=ExtResource("19_r1ol5")]
-
-[node name="InteractionAreaOrigin" type="Marker2D" parent="."]
-visible = false
-rotation = -1.5708
-
-[node name="InteractionArea" type="Area2D" parent="InteractionAreaOrigin"]
-position = Vector2(0, 27)
-
-[node name="CollisionShape" type="CollisionShape2D" parent="InteractionAreaOrigin/InteractionArea"]
-position = Vector2(0, -27)
-shape = SubResource("SegmentShape2D_gao0l")
 
 [connection signal="animation_finished" from="BodyComponent/Torso/TorsoAnimator" to="BodyComponent/Torso" method="_on_torso_animator_animation_finished"]
 [connection signal="area_entered" from="BodyComponent/LeftLeg/LeftLegArea" to="BodyComponent" method="_on_left_leg_area_area_entered"]
