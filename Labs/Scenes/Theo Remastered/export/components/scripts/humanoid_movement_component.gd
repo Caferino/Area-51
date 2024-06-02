@@ -1,8 +1,11 @@
 class_name HumanoidMovementComponent extends Node
 ## The entity's [color=salmon]muscles.
 
+signal stopped_moving()  ## Emits whenever the entity stops moving.
+
 var last_direction      : Vector2 = Vector2(0, 1)  ## Entity's last faced direction.
 var weapon_on_left_hand : bool    = true           ## Boolean for the weapon's position.
+var is_moving           : bool    = false          ## Is the player currently moving?
 
 
 ## Handles the [param entity]'s movement.
@@ -12,20 +15,26 @@ var weapon_on_left_hand : bool    = true           ## Boolean for the weapon's p
 ## [member AnimationPlayer.speed_scale].
 ## [br][br]
 ## This is where [method CharacterBody2D.move_and_slide] resides.
-func handle_movement(entity: Human):
+func handle_movement(entity: Human, direction: Vector2, is_sprinting: bool):
 	var accel = 0.12  ## Lower for "walking on ice" effect, it'd need DEACCEL, done below
-	var target = entity.controller.dir
-	if entity.controller.dir.dot(entity.controller.dir) > 0:
-		if entity.controller.is_sprinting:
-			target *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
+	if direction != Vector2.ZERO:
+		if is_sprinting:
+			direction *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
 		else:
-			target *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
+			direction *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
 	else:
 		accel = 0.33  ## Reduce for DEACCEL effect
 	
-	entity.velocity = entity.velocity.lerp(target, accel)
+	entity.velocity = entity.velocity.lerp(direction, accel)
 	entity.move_and_slide()
-	handle_animation(entity)
+	
+	# This block prevents the entire animation process from running every physics frame unnecessarily
+	if entity.velocity.is_zero_approx() and entity.velocity != Vector2.ZERO:
+		entity.velocity = Vector2.ZERO
+		stopped_moving.emit()
+		handle_animation(entity)
+	elif entity.velocity != Vector2.ZERO: 
+		handle_animation(entity)
 
 
 ## Handles the [param entity]'s animation.
@@ -117,8 +126,8 @@ func move(part: Limb, pose: Array):
 
 
 ## Stops the [param entity]'s movement.
-func stop(entity: Human):
-	entity.velocity = Vector2(0,0)
+func stop(entity: Human, stop_velocity: bool):
+	if stop_velocity: entity.velocity = Vector2(0,0)
 	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
 	for limb in entity.body_pose:
 		entity.body_pose[limb][3] = "Idle"

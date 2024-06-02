@@ -69,34 +69,57 @@ var body_accessories: Dictionary = {
 ## [br]
 ## [br] [signal MeleeWeapon.attack_finished]
 ## [br] [signal BodyComponent.limb_interact]
+## [br] [signal HumanoidMovementComponent.stopped_moving]
 ## [br] [signal PlayerControllerComponent.attacked]
-## [br] [signal PlayerControllerComponent.player_moved]
 ## [br] [signal PlayerControllerComponent.player_interact]
 func spawn():
 	body.gear["MeleeWeapon"].attack_finished.connect(_on_attack_finished)
 	body.limb_interact.connect(_on_limb_interact)
-	controller.player_move.connect(_on_player_move)
-	controller.player_attack.connect(_on_player_attack)
-	controller.player_interact.connect(_on_player_interact)
+	muscles.stopped_moving.connect(_on_entity_stop)
+	controller.player_move.connect(_on_entity_move)
+	controller.player_sprint.connect(_on_entity_sprint)
+	controller.player_attack.connect(_on_entity_attack)
+	controller.player_interact.connect(_on_entity_interact)
+	muscles.handle_animation(self)
 
 
-## Runs whenever the entity moves.
-func _on_player_move():
-	muscles.handle_movement(self)
-	controller.rotate_interactor(position, muscles.last_direction)
+## Handles the entity's movement every physics frame
+func _physics_process(_delta: float) -> void:
+	if !controller.is_attacking:
+		muscles.handle_movement(self, controller.dir, controller.is_sprinting)
+		controller.rotate_interactor(muscles.last_direction)
+
+
+## Runs whenever the entity starts moving.
+func _on_entity_move():
+	if controller.camera_base.dragging_cam : controller.camera_base.stop_dragging()
+	controller.camera_base.modify_breath(-2.0, 2.0, -3.0, 3.0, 0.4)
+
+
+## Runs whenever the entity starts running.
+func _on_entity_sprint():
+	controller.camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
+
+
+## Runs whenever the entity stops moving.
+func _on_entity_stop():
+	controller.stop()
+	controller.camera_base.reset_breath()
 
 
 ## Runs whenever the entity attacks.
-func _on_player_attack():
+func _on_entity_attack():
 	if !controller.is_attacking:
 		controller.is_attacking = true
-		muscles.stop(self)
+		muscles.stop(self, true)
 		muscles.attack(body.gear["MeleeWeapon"], body.limbs["Torso"].animator, body.limbs["Head"].animator)
+		controller.camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
 
 
 ## Runs after the entity's most recent attack ends.
 func _on_attack_finished():
 	controller.is_attacking = false
+	controller.camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
 
 
 ## Runs whenever a body limb interacts with something.
@@ -109,7 +132,7 @@ func _on_limb_interact(entered: bool, limb_name: String, area: Area2D):
 
 
 ## Runs whenever the player (if controlled by one), interacts with something.
-func _on_player_interact():
+func _on_entity_interact():
 	var interactables = controller.interactor_area.get_overlapping_areas()
 	for interactable in interactables:
 		if interactable.is_in_group("Interactive"):

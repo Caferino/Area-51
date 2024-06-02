@@ -1,26 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://db05pqjyruu3i"]
+[gd_scene load_steps=2 format=3 uid="uid://db05pqjyruu3i"]
 
-[ext_resource type="Script" path="res://Labs/Entities/Character-Theo/Camera Base.gd" id="1_4w6cm"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/Camera Base.gd" id="1_l0eny"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_km41g"]
-size = Vector2(1000, 1000)
-
-[node name="Camera Base" type="Node2D"]
-script = ExtResource("1_4w6cm")
-
-[node name="Origin" type="Marker2D" parent="."]
-
-[node name="View Distance" type="Area2D" parent="."]
-visible = false
-collision_layer = 524288
-collision_mask = 524288
-monitoring = false
-
-[node name="Area" type="CollisionShape2D" parent="View Distance"]
-visible = false
-light_mask = 524288
-visibility_layer = 524288
-shape = SubResource("RectangleShape2D_km41g")
+[node name="Camera Base" type="Marker2D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_l0eny")
+camera = NodePath("Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(4.5, 4.5)
+position_smoothing_enabled = true
