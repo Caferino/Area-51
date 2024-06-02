@@ -6,14 +6,14 @@ class_name CameraBase extends Node2D
 @export  var camera     : Camera2D                              ## The attached [Camera2D].
 
 const zoom_speed        : Vector2  = Vector2(1, 1)              ## Zoom in/out speed.
-const drag_dist         : float    =  500.0                     ## The camera's dragging distance allowed.
+const drag_dist         : float    = 500.0                      ## The camera's dragging distance allowed.
 var dragging_cam        : bool     = false                      ## Is the camera currently being dragged?
 # For the camera's breathing effect
 var min_x               : float    =  -3.0                      ## Minimum x coordinate it will touch.
 var max_x               : float    =   3.0                      ## Maximum x coordinate it will touch.
 var min_y               : float    =  -3.0                      ## Minimum y coordinate it will touch.
 var max_y               : float    =   3.0                      ## Maximum y coordinate it will touch.
-var hold_speed          : float    =   6.0
+var hold_speed          : float    =   6.0                      ## Speed for the [PropertyTweener].
 var breathing_in        : bool     = false                      ## Saves the current "breathing" state.
 var random_x            : float    = randf_range(min_x, max_x)  ## Random x coordinate for the bounce.
 var random_y            : float    = randf_range(0, max_y)      ## Random y coordinate for the bounce.

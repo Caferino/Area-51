@@ -150,6 +150,14 @@ Also played with Godot's documentation tools to document everything done in this
 
 ---
 
+**E017: Camera Refactor**
+
+![E017](.image/README/E017.gif "Camera Refactor")
+
+The camera has been refactored to be more efficent and easy to use. It now shakes more depending on whether the player is idle, walking, running or attacking. Might add the option to disable it. The camera dragging was rebuilt from scratch to be smoother and bug-free. It can freely move around a circular area around the player, and when there is movement, it returns back.
+
+---
+
 E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
 
 [TBA]

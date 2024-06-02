@@ -92,15 +92,13 @@ func _physics_process(_delta: float) -> void:
 
 ## Runs whenever the entity starts moving.
 func _on_entity_move():
-	print("Moving!")
 	if controller.camera_base.dragging_cam : controller.camera_base.stop_dragging()
-	controller.camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 0.2)
+	controller.camera_base.modify_breath(-2.0, 2.0, -3.0, 3.0, 0.4)
 
 
 ## Runs whenever the entity starts running.
 func _on_entity_sprint():
-	print("Sprinting!")
-	controller.camera_base.modify_breath(-2.0, 2.0, -7.0, 7.0, 0.15)
+	controller.camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
 
 
 ## Runs whenever the entity stops moving.
