@@ -158,6 +158,14 @@ The camera has been refactored to be more efficent and easy to use. It now shake
 
 ---
 
+**E018: Caferino, Bizck & Raz**
+
+![E018-1](.image/README/E018-1.png "Caferino, Bizck &amp; Raz")![E018-2](.image/README/E018-2.png "Caferino, Bizck &amp; Raz")
+
+Created three new Autoload scripts that are inspired on the three gods of the world of Alcarodia. Caferino is responsible for all the creatures we consider humanoids and high-fantasy (orcs, gnomes, goblins, fairies, elves...). Bizck is responsible for anima and flora-like creatures (any animal we know including fantasy ones like a pegasus, a unicorn or a kitsune, also plants like ents). Raz is responsible for all the monsters and the unknown, those one has in the deepest corners of their mind. The scripts serve as intermediaries between the creatures' instances and the game. For now, they can simply be called to spawn an entity which the spawner places in a random spot around it (WIP). I see them like databases themselves, kind of. Migth need to see if preloading too many entities lags the game or increases the initial loading screen, something like that, not sure yet.
+
+---
+
 E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
 
 [TBA]

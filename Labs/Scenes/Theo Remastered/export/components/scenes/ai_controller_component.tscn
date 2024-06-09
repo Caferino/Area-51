@@ -1,0 +1,154 @@
+[gd_scene load_steps=18 format=3 uid="uid://dvgwih7dvsts"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/ai_controller_component.gd" id="1_sdvpu"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_2611o"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="3_srh6t"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Chase.gd" id="5_ge4y4"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="6_qiklh"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Actions/wander.gd" id="8_76gke"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_va1q1"]
+animation = &"down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_goqx5"]
+animation = &"up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1hwcx"]
+animation = &"right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cvviv"]
+animation = &"left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0v6jo"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_va1q1")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_goqx5")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_1hwcx")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_cvviv")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vrs17"]
+graph_offset = Vector2(-258.667, 40)
+nodes/Movement/node = SubResource("AnimationNodeBlendSpace2D_0v6jo")
+nodes/Movement/position = Vector2(40, 120)
+node_connections = [&"output", 0, &"Movement"]
+
+[sub_resource type="Animation" id="Animation_8edrr"]
+resource_name = "down"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_6qd0c"]
+resource_name = "left"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_18p51"]
+resource_name = "right"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_hamru"]
+resource_name = "up"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7x51"]
+_data = {
+"down": SubResource("Animation_8edrr"),
+"left": SubResource("Animation_6qd0c"),
+"right": SubResource("Animation_18p51"),
+"up": SubResource("Animation_hamru")
+}
+
+[node name="AIControllerComponent" type="Node2D" node_paths=PackedStringArray("interactor_area", "interactor_animator")]
+script = ExtResource("1_sdvpu")
+interactor_area = NodePath("VisionArea")
+interactor_animator = NodePath("VisionArea/InteractorTree")
+
+[node name="VisionArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
+polygon = PackedVector2Array(0, -75, -50, -50, -150, 150, 150, 150, 50, -50)
+disabled = true
+
+[node name="InteractorTree" type="AnimationTree" parent="VisionArea"]
+tree_root = SubResource("AnimationNodeBlendTree_vrs17")
+anim_player = NodePath("../InteractorAnimator")
+parameters/Movement/blend_position = Vector2(-0.00277781, 0.917986)
+
+[node name="InteractorAnimator" type="AnimationPlayer" parent="VisionArea"]
+libraries = {
+"": SubResource("AnimationLibrary_k7x51")
+}
+
+[node name="HumanAIBehaviorTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("2_2611o")
+actor_node_path = NodePath("..")
+blackboard = NodePath("@Node@18952")
+actor = NodePath("..")
+
+[node name="SelectorComposite" type="Node" parent="HumanAIBehaviorTree"]
+script = ExtResource("3_srh6t")
+
+[node name="Chase" type="Node" parent="HumanAIBehaviorTree/SelectorComposite"]
+script = ExtResource("5_ge4y4")
+
+[node name="UntilFailDecorator" type="Node" parent="HumanAIBehaviorTree/SelectorComposite"]
+script = ExtResource("6_qiklh")
+
+[node name="Wander" type="Node" parent="HumanAIBehaviorTree/SelectorComposite/UntilFailDecorator"]
+script = ExtResource("8_76gke")
+
+[connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]
+[connection signal="body_exited" from="VisionArea" to="." method="_on_vision_area_body_exited"]

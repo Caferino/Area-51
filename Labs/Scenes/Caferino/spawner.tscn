@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://omqabjcbky1r"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Caferino/spawner.gd" id="1_jil74"]
+[ext_resource type="Texture2D" uid="uid://dndk1f6kupf3l" path="res://Labs/Scenes/Caferino/Untitled.png" id="1_unn05"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5afi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_unn05")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Spawner" type="Marker2D"]
+y_sort_enabled = true
+script = ExtResource("1_jil74")
+
+[node name="SpawnerAnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_i5afi")

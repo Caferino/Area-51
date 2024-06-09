@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi2qchnv62n1q"
-path="res://.godot/imported/theo_blink_left.png-ed50d18b39ca822515ef8a8f670e7413.ctex"
+uid="uid://b54b2wp4ovb4s"
+path="res://.godot/imported/body0.png-903234ee66a807df4105d6724c534f6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_left.png"
-dest_files=["res://.godot/imported/theo_blink_left.png-ed50d18b39ca822515ef8a8f670e7413.ctex"]
+source_file="res://Labs/Scenes/Caferino/Human/Bodies/body0.png"
+dest_files=["res://.godot/imported/body0.png-903234ee66a807df4105d6724c534f6c.ctex"]
 
 [params]
 

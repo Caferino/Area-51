@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://shw5o43j7ckt"
-path="res://.godot/imported/theo_body_curated.png-dec006d47481dc30da04ba3471eb92fa.ctex"
+uid="uid://bc6p8e8hm1mus"
+path="res://.godot/imported/theo_blink_up.png-1319fdfde81c25afd0f02feb67b73cdd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png"
-dest_files=["res://.godot/imported/theo_body_curated.png-dec006d47481dc30da04ba3471eb92fa.ctex"]
+source_file="res://Labs/Scenes/Caferino/Human/Heads/Male/Theo/theo_blink_up.png"
+dest_files=["res://.godot/imported/theo_blink_up.png-1319fdfde81c25afd0f02feb67b73cdd.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

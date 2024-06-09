@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w0a5cd2g4qdn"
-path="res://.godot/imported/theo_blink_right.png-d57b806fad56219de9262893897ba191.ctex"
+uid="uid://mphv3ma21huh"
+path="res://.godot/imported/black_cat_head.png-fd64d9e3ec685648a095428ddb2b1faa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_right.png"
-dest_files=["res://.godot/imported/theo_blink_right.png-d57b806fad56219de9262893897ba191.ctex"]
+source_file="res://Labs/Scenes/Caferino/Rakshasa/black_cat_head.png"
+dest_files=["res://.godot/imported/black_cat_head.png-fd64d9e3ec685648a095428ddb2b1faa.ctex"]
 
 [params]
 

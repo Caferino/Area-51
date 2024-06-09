@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjpghtdgac6ed"
-path="res://.godot/imported/black_cat_body.png-1fd7e8b28b2730c4bbea080c755523da.ctex"
+path="res://.godot/imported/black_cat_body.png-86ee6e7a95add8aee126eeb0a4e89a31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Labs/Scenes/Theo Remastered/export/anatomy/black_cat_body.png"
-dest_files=["res://.godot/imported/black_cat_body.png-1fd7e8b28b2730c4bbea080c755523da.ctex"]
+source_file="res://Labs/Scenes/Caferino/Rakshasa/black_cat_body.png"
+dest_files=["res://.godot/imported/black_cat_body.png-86ee6e7a95add8aee126eeb0a4e89a31.ctex"]
 
 [params]
 

@@ -29,5 +29,5 @@ func State_Process(_delta):
 
 
 func _on_timer_timeout() -> void:
-	print("wtf")
+	# print("wtf")
 	Transitioned.emit(self, "Idle")

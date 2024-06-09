@@ -1,5 +1,5 @@
 class_name BodyComponent extends Node
-## The entity's [color=blue]body
+## The entity's [color=blue]body.
 
 signal limb_interact(entered: bool, limb_name: String, area: Area2D)  ## Emits whenever a limb interacts with something.
 
