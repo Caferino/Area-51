@@ -1,15 +1,12 @@
-[gd_scene load_steps=89 format=3 uid="uid://ywdwc8rryrt"]
+[gd_scene load_steps=72 format=3 uid="uid://ywdwc8rryrt"]
 
 [ext_resource type="Script" path="res://Labs/Entities/Character-Theo/2DTheo.gd" id="1_p2swg"]
 [ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="2_ovm8y"]
 [ext_resource type="PackedScene" uid="uid://cqypn2n1j0p6t" path="res://Labs/Scenes/Attack Room/weapon.tscn" id="2_ua78c"]
-[ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Assets/X. Resources/Protagonist/theo_body_curated.png" id="3_6lhpy"]
+[ext_resource type="Texture2D" uid="uid://c4ryy5u8ilnrd" path="res://Labs/Scenes/Caferino/Human/Bodies/Male/Theo/theo_body.tres" id="4_vh2ey"]
 [ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="5_20vns"]
 [ext_resource type="AnimationLibrary" uid="uid://cgqxac80b6euh" path="res://animations/2D Updated/2D Human Body Movement.res" id="5_dnecm"]
-[ext_resource type="Texture2D" uid="uid://d2cvvynbgoxt3" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_down.png" id="6_4pcna"]
-[ext_resource type="Texture2D" uid="uid://bi2qchnv62n1q" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_left.png" id="7_korct"]
-[ext_resource type="Texture2D" uid="uid://w0a5cd2g4qdn" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_right.png" id="8_esddc"]
-[ext_resource type="Texture2D" uid="uid://bc6p8e8hm1mus" path="res://Labs/Assets/X. Resources/Protagonist/Theo Head/Blink/theo_blink_up.png" id="9_dvbv0"]
+[ext_resource type="SpriteFrames" uid="uid://btrqhkqhl57g1" path="res://Labs/Scenes/Caferino/Human/Heads/Male/Theo/theo_head.tres" id="7_nag4j"]
 [ext_resource type="AnimationLibrary" uid="uid://e1l506hb0dsw" path="res://animations/2D Updated/2D Human Head Movement.res" id="11_buux0"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="11_nyi4c"]
 [ext_resource type="AnimationLibrary" uid="uid://bdyf8ugjxxxjl" path="res://animations/2D Updated/2D Hat Movement Remastered.res" id="13_gcrlj"]
@@ -100,120 +97,6 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_comda"]
 size = Vector2(26, 22.5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p0efv"]
-atlas = ExtResource("6_4pcna")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqi6l"]
-atlas = ExtResource("6_4pcna")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sm0rw"]
-atlas = ExtResource("6_4pcna")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yabnf"]
-atlas = ExtResource("6_4pcna")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_knng1"]
-atlas = ExtResource("7_korct")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ppgrm"]
-atlas = ExtResource("7_korct")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_an054"]
-atlas = ExtResource("7_korct")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ofww"]
-atlas = ExtResource("7_korct")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ynomm"]
-atlas = ExtResource("8_esddc")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yin0p"]
-atlas = ExtResource("8_esddc")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fcrxi"]
-atlas = ExtResource("8_esddc")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w56mx"]
-atlas = ExtResource("8_esddc")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_14g41"]
-atlas = ExtResource("9_dvbv0")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2qvm0"]
-animations = [{
-"frames": [{
-"duration": 50.0,
-"texture": SubResource("AtlasTexture_p0efv")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_gqi6l")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_sm0rw")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_yabnf")
-}],
-"loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 50.0,
-"texture": SubResource("AtlasTexture_knng1")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_ppgrm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_an054")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_2ofww")
-}],
-"loop": true,
-"name": &"left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 50.0,
-"texture": SubResource("AtlasTexture_ynomm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_yin0p")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_fcrxi")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_w56mx")
-}],
-"loop": true,
-"name": &"right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_14g41")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bcgys"]
 animation = &"2D Human Head Movement/idle_down"
@@ -492,7 +375,7 @@ y_sort_enabled = true
 
 [node name="BodySprite" type="Sprite2D" parent="BodyOrigin/Body"]
 y_sort_enabled = true
-texture = ExtResource("3_6lhpy")
+texture = ExtResource("4_vh2ey")
 hframes = 4
 vframes = 21
 frame = 2
@@ -535,8 +418,7 @@ y_sort_enabled = true
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="HeadOrigin/Head"]
 y_sort_enabled = true
-position = Vector2(0, -1)
-sprite_frames = SubResource("SpriteFrames_2qvm0")
+sprite_frames = ExtResource("7_nag4j")
 animation = &"down"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="HeadOrigin/Head/HeadSprite"]

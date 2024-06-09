@@ -1,11 +1,11 @@
-class_name AlcarodianResourcesManager extends Node
+extends Node
 
-const STAT_PATH   = "res://inventory/data/json/stats.json"
-const RECIPE_PATH = "res://inventory/data/json/recipes.json"
+const STAT_PATH   : String = "res://inventory/data/json/stats.json"
+const RECIPE_PATH : String = "res://inventory/data/json/recipes.json"
 
 # TODO - ! Using preload fills the memory if too many? Should load() be used instead? Aka "Lazy Loading"
 
-var sprites = {
+var sprites: Dictionary = {
 	"gold"                 : preload("res://Labs/Scenes/Collectable Items & Inventory/Gold.png"),
 	"logs"                 : preload("res://Labs/Scenes/Collectable Items & Inventory/Logs.png"),
 	"gem"                  : preload("res://Labs/Scenes/Collectable Items & Inventory/Gem.png"),
@@ -27,18 +27,18 @@ var sprites = {
 	"rock"                 : preload("res://inventory/resources/sprites/items/rock.png")
 }
 
-var fonts = {
+var fonts: Dictionary = {
 	"Arcadepix" : preload("res://inventory/resources/font/Arcadepix Plus.ttf")
 }
 
-var colors = {
+var colors: Dictionary = {
 	GameEnums.RARITY.NORMAL : Color("CCCCCC"),
 	GameEnums.RARITY.MAGIC  : Color("4D8EFF"),
 	GameEnums.RARITY.RARE   : Color("FFCC00"),
 	GameEnums.RARITY.UNIQUE : Color("FF00FF")
 }
 
-var tscn = {
+var tscn: Dictionary = {
 	"splitter"            : preload("res://inventory/scenes/ui/splitter.tscn"),
 	"hotbar_slot_node"    : preload("res://inventory/scenes/inventory/hotbar_slot_node.tscn"),
 	"floor_item"          : preload("res://inventory/scenes/interactables/floor_item.tscn"),
@@ -51,15 +51,15 @@ var tscn = {
 	"equipment_node"      : preload("res://inventory/scenes/inventory/equipment_node.tscn")
 }
 
-@onready var placeholders = {
+var placeholders: Dictionary = {
 	GameEnums.EQUIPMENT_TYPE.HEAD      : preload("res://inventory/resources/sprites/placeholder_head.png"),
 	GameEnums.EQUIPMENT_TYPE.CHEST     : preload("res://inventory/resources/sprites/placeholder_chest.png"),
 	GameEnums.EQUIPMENT_TYPE.MAIN_HAND : preload("res://inventory/resources/sprites/placeholder_main_hand.png"),
 	GameEnums.EQUIPMENT_TYPE.OFFHAND   : preload("res://inventory/resources/sprites/placeholder_offhand.png")
 }
 
-## Move this to Bizck maybe, Bizck as a autoloaded manager with stats and sprites
-@onready var animals = {
+## TODO ! Move this to Bizck maybe, Bizck as a autoloaded manager with stats and sprites
+var animals: Dictionary = {
 	"CaveBat" = {
 		GameEnums.AI_STATS.DEFAULT_MAX_SPEED      : 250,
 		GameEnums.AI_STATS.DEFAULT_LOOK_AHEAD     :  50,
@@ -69,8 +69,8 @@ var tscn = {
 	}
 }
 
-var stat_info    = {}
-var recipes_info = {}
+var stat_info    : Dictionary = {}
+var recipes_info : Dictionary = {}
 
 
 func _ready():

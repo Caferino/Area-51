@@ -4,5 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://c5uh6bhur8igq" path="res://inventory/scenes/interactables/interactable_chest.tscn" id="2"]
 
 [node name="chest" instance=ExtResource("2")]
+z_index = 2
+y_sort_enabled = true
 script = ExtResource("1")
 num_of_items = 0
+
+[node name="Sprite2D" parent="." index="0"]
+y_sort_enabled = true

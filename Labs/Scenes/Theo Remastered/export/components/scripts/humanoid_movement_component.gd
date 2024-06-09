@@ -5,7 +5,6 @@ signal stopped_moving()  ## Emits whenever the entity stops moving.
 
 var last_direction      : Vector2 = Vector2(0, 1)  ## Entity's last faced direction.
 var weapon_on_left_hand : bool    = true           ## Boolean for the weapon's position.
-var is_moving           : bool    = false          ## Is the player currently moving?
 
 
 ## Handles the [param entity]'s movement.

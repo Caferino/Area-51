@@ -1,5 +1,5 @@
 class_name Limb extends Node
-## A body's limb.
+## A body's [color=orange]limb.
 
 @export var accessories  : AccessoriesComponent  ## The limb's [AccessoriesComponent].
 @export var animatorTree : AnimationTree         ## The limb's [AnimationTree].

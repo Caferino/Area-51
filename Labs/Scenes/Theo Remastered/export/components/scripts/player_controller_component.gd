@@ -1,4 +1,4 @@
-class_name PlayerControllerComponent extends Node2D
+class_name PlayerControllerComponent extends EntityController
 ## The entity's [color=gold]player controller.
 
 signal player_move()      ## Emitted whenever the player gives movement input ([kbd]'W' 'A' 'S' 'D'[/kbd]).
@@ -68,7 +68,27 @@ func rotate_interactor(direction: Vector2):
 	interactor_animator["parameters/Movement/blend_position"] = direction
 
 
-## Stops the camera shake.
-func stop():
-	print("Stopping camera shake")
-	# TODO Could just increase/return back to normal the random stats
+func on_move():
+	if camera_base.dragging_cam : camera_base.stop_dragging()
+	camera_base.modify_breath(-2.0, 2.0, -3.0, 3.0, 0.4)
+
+
+func on_stop():
+	camera_base.reset_breath()
+
+
+func on_attack():
+	is_attacking = true
+	camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
+
+
+func on_attack_finished():
+	is_attacking = false
+	camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+
+
+func on_sprint():
+	camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
+
+
+

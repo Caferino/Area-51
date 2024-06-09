@@ -1,9 +1,9 @@
 class_name Companion extends CharacterBody2D
 
 @onready var sprite = $Sprite
-@export var movement_speed: float = 50.0
-@export var target_character: CharacterBody2D
-@onready var navigation_agent: NavigationAgent2D = $NavigationAgent
+@export var movement_speed    : float = 50.0
+@export var target_character  : CharacterBody2D
+@onready var navigation_agent : NavigationAgent2D = $NavigationAgent
 
 
 func _ready():

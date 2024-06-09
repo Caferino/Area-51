@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mphv3ma21huh"
-path="res://.godot/imported/black_cat_head.png-5ec19c930b83e08bde35278b6fdfb1c2.ctex"
+uid="uid://dmaotbkj6umde"
+path="res://.godot/imported/theo_head_spritesheet.png-8b581af822588e018cedcb1b0a657122.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Labs/Scenes/Theo Remastered/export/anatomy/black_cat_head.png"
-dest_files=["res://.godot/imported/black_cat_head.png-5ec19c930b83e08bde35278b6fdfb1c2.ctex"]
+source_file="res://Labs/Scenes/Caferino/Human/Heads/Male/Theo/theo_head_spritesheet.png"
+dest_files=["res://.godot/imported/theo_head_spritesheet.png-8b581af822588e018cedcb1b0a657122.ctex"]
 
 [params]
 

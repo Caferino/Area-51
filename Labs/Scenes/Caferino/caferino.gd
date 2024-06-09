@@ -1,0 +1,14 @@
+extends Alcarodia
+## The [color=brown]Brown God.
+
+## TODO - Caferino's DB is in the other project. Bring it here, now.
+const ENTITIES_PATH: String = "res://Labs/Scenes/Caferino/"
+
+var entities: Dictionary = {
+	"Human" : preload("res://Labs/Scenes/Caferino/Human/human.tscn")
+}
+
+
+func spawn(entity_name: String, race_name: String = "default") -> Entity:
+	var entity = entities[entity_name].instantiate()
+	return entity

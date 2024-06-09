@@ -29,6 +29,9 @@ AlcarodianResourceManager="*res://inventory/managers/alcarodian_resource_manager
 CooldownManager="*res://inventory/managers/cooldown_manager.gd"
 InventoryManager="*res://inventory/scenes/inventory/inventory_manager.tscn"
 InterfaceManager="*res://inventory/managers/interface_manager.gd"
+Caferino="*res://Labs/Scenes/Caferino/caferino.gd"
+Bizck="*res://Labs/Scenes/Caferino/bizck.gd"
+Raz="*res://Labs/Scenes/Caferino/raz.gd"
 
 [display]
 

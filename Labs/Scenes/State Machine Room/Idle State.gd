@@ -9,7 +9,7 @@ var moving = true
 func randomize_wander():
 	moving = false
 	move_speed = 0
-	await get_tree().create_timer(randf_range(2, 5)).timeout
+	await get_tree().create_timer(randf_range(2, 5)).timeout 
 	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	wander_time = randf_range(3, 6)
 	move_speed = 25.0
