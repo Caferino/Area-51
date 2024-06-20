@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjmiyktgb6ct1"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/flying_mammal_movement_component.gd" id="1_ymf5h"]
+
+[node name="FlyingMammalMovementComponent" type="Node"]
+script = ExtResource("1_ymf5h")

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_d3wfr"]
 [ext_resource type="PackedScene" uid="uid://giwbm1t1m8mo" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/health_component.tscn" id="3_312nv"]
 [ext_resource type="PackedScene" uid="uid://lprf3rgs43hq" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/humanoid_movement_component.tscn" id="4_m45k1"]
-[ext_resource type="PackedScene" uid="uid://dvgwih7dvsts" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/ai_controller_component.tscn" id="5_usvmv"]
+[ext_resource type="PackedScene" uid="uid://dvgwih7dvsts" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/humanoid_ai_controller_component.tscn" id="5_hwn1h"]
 [ext_resource type="PackedScene" uid="uid://bcuy0jppjef6f" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/body_component.tscn" id="6_n3equ"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="7_ep3u8"]
 [ext_resource type="SpriteFrames" uid="uid://btrqhkqhl57g1" path="res://Labs/Scenes/Caferino/Human/Heads/Male/Theo/theo_head.tres" id="8_hhjxs"]
@@ -422,7 +422,7 @@ script = ExtResource("1_5wlde")
 lore = NodePath("LoreComponent")
 health = NodePath("HealthComponent")
 muscles = NodePath("HumanoidMovementComponent")
-controller = NodePath("AIControllerComponent")
+controller = NodePath("HumanoidAIControllerComponent")
 body = NodePath("BodyComponent")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
@@ -437,17 +437,18 @@ shape = SubResource("RectangleShape2D_0syfx")
 
 [node name="HumanoidMovementComponent" parent="." instance=ExtResource("4_m45k1")]
 
-[node name="AIControllerComponent" parent="." instance=ExtResource("5_usvmv")]
+[node name="HumanoidAIControllerComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("5_hwn1h")]
+entity = NodePath("..")
 
 [node name="BodyComponent" parent="." instance=ExtResource("6_n3equ")]
 y_sort_enabled = true
 
-[node name="Head" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree", "animator")]
+[node name="Head" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("7_ep3u8")
 accessories = NodePath("HeadArea/AccessoriesComponent")
-animatorTree = NodePath("HeadAnimatorTree")
+animator_tree = NodePath("HeadAnimatorTree")
 animator = NodePath("HeadAnimator")
 
 [node name="HeadArea" type="Area2D" parent="BodyComponent/Head"]
@@ -477,11 +478,12 @@ texture = ExtResource("10_57p1j")
 
 [node name="AccessoriesComponent" parent="BodyComponent/Head/HeadArea" instance=ExtResource("11_7b0wa")]
 
-[node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent" node_paths=PackedStringArray("animatorTree")]
+[node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent" node_paths=PackedStringArray("animator_tree", "animator")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("7_ep3u8")
-animatorTree = NodePath("HatAnimatorTree")
+animator_tree = NodePath("HatAnimatorTree")
+animator = NodePath("HatAnimator")
 
 [node name="HatArea" type="Area2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
 visible = false
@@ -537,11 +539,11 @@ libraries = {
 "": ExtResource("14_njryd")
 }
 
-[node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree", "animator")]
+[node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 y_sort_enabled = true
 script = ExtResource("7_ep3u8")
 accessories = NodePath("TorsoArea/AccessoriesComponent")
-animatorTree = NodePath("TorsoAnimatorTree")
+animator_tree = NodePath("TorsoAnimatorTree")
 animator = NodePath("TorsoAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
@@ -590,10 +592,10 @@ libraries = {
 }
 speed_scale = 2.0
 
-[node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree", "animator")]
+[node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 script = ExtResource("7_ep3u8")
 accessories = NodePath("LeftLegArea/AccessoriesComponent")
-animatorTree = NodePath("LeftLegAnimatorTree")
+animator_tree = NodePath("LeftLegAnimatorTree")
 animator = NodePath("LeftLegAnimator")
 
 [node name="LeftLegArea" type="Area2D" parent="BodyComponent/LeftLeg"]
@@ -617,10 +619,10 @@ anim_player = NodePath("../LeftLegAnimator")
 [node name="LeftLegAnimator" type="AnimationPlayer" parent="BodyComponent/LeftLeg"]
 root_node = NodePath("")
 
-[node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree", "animator")]
+[node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 script = ExtResource("7_ep3u8")
 accessories = NodePath("RightLegArea/AccessoriesComponent")
-animatorTree = NodePath("RightLegAnimatorTree")
+animator_tree = NodePath("RightLegAnimatorTree")
 animator = NodePath("RightLegAnimator")
 
 [node name="RightLegArea" type="Area2D" parent="BodyComponent/RightLeg"]

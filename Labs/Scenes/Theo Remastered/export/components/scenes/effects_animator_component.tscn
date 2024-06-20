@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2cxvneo8rfc"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/effects_animator_component.gd" id="1_rmbrx"]
+
+[node name="EffectsAnimatorComponent" type="Node"]
+script = ExtResource("1_rmbrx")

@@ -1,21 +1,10 @@
 class_name PlayerControllerComponent extends EntityController
 ## The entity's [color=gold]player controller.
 
-signal player_move()      ## Emitted whenever the player gives movement input ([kbd]'W' 'A' 'S' 'D'[/kbd]).
-signal player_sprint()    ## Emitted whenever the player gives sprinting input ([kbd]'Shift'[/kbd]).
-signal player_attack()    ## Emitted whenever the player gives attack input ([kbd]Left-Click[/kbd]).
-signal player_interact()  ## Emitted whenever the player gives interact input ([kbd]'F'[/kbd]).
-
 @export var camera_base         : CameraBase     ## The player's camera base.
 @export var interactor_area     : Area2D         ## The interactor's monitoring area.
 @export var interactor_animator : AnimationTree  ## The interactor's animator (for rotation).
-# WIP @export var looting_area        : Area2D         ## The player's looting pick-up range.
-
-var dir              : Vector2  = Vector2()  ## Current direction.
-var anim_state       : String   = "Move"     ## Current animation state.
-var is_attacking     : bool     = false      ## Is the entity currently attacking?
-var is_sprinting     : bool     = false      ## Is the entity currently sprinting?
-var is_moving        : bool     = false      ## Is the entity currently moving?
+# TODO @export var looting_area  : Area2D         ## The player's looting pick-up range.
 
 
 ## Checks whether the player is giving movement input every physics frame.
@@ -28,9 +17,9 @@ func _physics_process(_delta: float) -> void:
 func _input(_event: InputEvent):
 	if !is_attacking:
 		if Input.is_action_just_pressed("attack"):
-			player_attack.emit()
+			entity_attack.emit()
 		elif Input.is_action_just_pressed("interact"):
-			player_interact.emit()
+			entity_interact.emit()
 
 
 ## Reads the player's given movement input.
@@ -47,16 +36,16 @@ func check_movement():
 	if dir != Vector2.ZERO:
 		if !is_moving: 
 			is_moving = true
-			player_move.emit()
+			entity_move.emit()
 		
 		dir = dir.normalized()
 		
 		if Input.is_action_pressed("sprint"):
-			if !is_sprinting: player_sprint.emit()
+			if !is_sprinting: entity_sprint.emit()
 			is_sprinting = true
 			anim_state   = "Run"
 		else:
-			if is_sprinting: player_move.emit()
+			if is_sprinting: entity_move.emit()
 			is_sprinting = false
 			anim_state   = "Move"
 	else:

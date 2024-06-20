@@ -58,17 +58,6 @@ var placeholders: Dictionary = {
 	GameEnums.EQUIPMENT_TYPE.OFFHAND   : preload("res://inventory/resources/sprites/placeholder_offhand.png")
 }
 
-## TODO ! Move this to Bizck maybe, Bizck as a autoloaded manager with stats and sprites
-var animals: Dictionary = {
-	"CaveBat" = {
-		GameEnums.AI_STATS.DEFAULT_MAX_SPEED      : 250,
-		GameEnums.AI_STATS.DEFAULT_LOOK_AHEAD     :  50,
-		GameEnums.AI_STATS.DEFAULT_ADDED_INTEREST : 5.0,
-		GameEnums.AI_STATS.DEFAULT_NUM_RAYS       :   8, # TODO - Maybe this should never change at all for most entities (1)
-		GameEnums.AI_STATS.DEFAULT_BACKOFF_SPEED  : 0.2
-	}
-}
-
 var stat_info    : Dictionary = {}
 var recipes_info : Dictionary = {}
 

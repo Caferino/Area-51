@@ -1,6 +1,10 @@
 extends ActionLeaf
 
 func tick(actor, _blackboard):
+	# The DelayDecorator fixes a janky movement error when switching from
+	# "Entity Too Close" to "Chasing!" a lot too quickly.
+	# It also simulates the short "surprise" moment of shock a person has before acting.
+	## get_parent().wait_time = 0   ## WARNING Enable this if you add a new "return SUCCESS"
 	var current_target_distance = 0.00
 	if actor.current_target:
 		current_target_distance = actor.global_position.distance_to(actor.current_target.global_position)
@@ -24,7 +28,7 @@ func tick(actor, _blackboard):
 		actor.is_sprinting = false
 		## TODO - Rotate him here somehow without moving. No method for that yet
 		actor.dir = Vector2.ZERO
-		return RUNNING
+		return SUCCESS
 	else:
 		print("He got away!!")
 		actor.is_sprinting = false

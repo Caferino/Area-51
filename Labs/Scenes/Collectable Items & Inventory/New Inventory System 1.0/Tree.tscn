@@ -55,7 +55,7 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("CircleShape2D_xhe3r")
 
 [node name="StaticBody" type="StaticBody2D" parent="."]
-collision_layer = 4097
+collision_layer = 33
 collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape2D" parent="StaticBody"]
@@ -69,7 +69,7 @@ shape = SubResource("CapsuleShape2D_3p8dr")
 y_sort_enabled = true
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_cewo7")
-animation = &"stump"
+animation = &"tree"
 offset = Vector2(0, 11)
 
 [node name="GrowthTimer" type="Timer" parent="."]

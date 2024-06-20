@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var path = $Path2D
+@onready var path        = $Path2D
 @onready var path_follow = $Path2D/PathFollow2D
-var debug = false
+var debug                = false
 
 
 # Follow the Path
@@ -15,4 +15,3 @@ func get_path_direction(pos):
 # Chase the Player
 func get_player_path_direction(pos):
 	return pos.direction_to(get_node("Smoke Ashburn").position)
-

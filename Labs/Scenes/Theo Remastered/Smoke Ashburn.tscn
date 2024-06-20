@@ -558,12 +558,12 @@ shape = SubResource("RectangleShape2D_fv7u5")
 [node name="BodyComponent" parent="." instance=ExtResource("8_5ixyk")]
 y_sort_enabled = true
 
-[node name="Head" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree", "animator")]
+[node name="Head" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("12_xfj4o")
 accessories = NodePath("HeadArea/AccessoriesComponent")
-animatorTree = NodePath("HeadAnimatorTree")
+animator_tree = NodePath("HeadAnimatorTree")
 animator = NodePath("HeadAnimator")
 
 [node name="HeadArea" type="Area2D" parent="BodyComponent/Head"]
@@ -593,10 +593,11 @@ texture = ExtResource("11_6fk20")
 
 [node name="AccessoriesComponent" parent="BodyComponent/Head/HeadArea" instance=ExtResource("10_6yihg")]
 
-[node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent" node_paths=PackedStringArray("animatorTree")]
+[node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent" node_paths=PackedStringArray("animator_tree", "animator")]
 y_sort_enabled = true
 script = ExtResource("12_xfj4o")
-animatorTree = NodePath("HatAnimatorTree")
+animator_tree = NodePath("HatAnimatorTree")
+animator = NodePath("HatAnimator")
 
 [node name="HatArea" type="Area2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
 collision_layer = 4096
@@ -612,7 +613,7 @@ shape = SubResource("CircleShape2D_u50h0")
 y_sort_enabled = true
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
-animation = &"right"
+animation = &"down"
 script = ExtResource("16_3nyy4")
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
@@ -651,11 +652,11 @@ libraries = {
 "": ExtResource("16_m3k4p")
 }
 
-[node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree", "animator")]
+[node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 y_sort_enabled = true
 script = ExtResource("12_xfj4o")
 accessories = NodePath("TorsoArea/AccessoriesComponent")
-animatorTree = NodePath("TorsoAnimatorTree")
+animator_tree = NodePath("TorsoAnimatorTree")
 animator = NodePath("TorsoAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
@@ -704,10 +705,10 @@ libraries = {
 }
 speed_scale = 2.0
 
-[node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree", "animator")]
+[node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 script = ExtResource("12_xfj4o")
 accessories = NodePath("LeftLegArea/AccessoriesComponent")
-animatorTree = NodePath("LeftLegAnimatorTree")
+animator_tree = NodePath("LeftLegAnimatorTree")
 animator = NodePath("LeftLegAnimator")
 
 [node name="LeftLegArea" type="Area2D" parent="BodyComponent/LeftLeg"]
@@ -731,10 +732,10 @@ anim_player = NodePath("../LeftLegAnimator")
 [node name="LeftLegAnimator" type="AnimationPlayer" parent="BodyComponent/LeftLeg"]
 root_node = NodePath("")
 
-[node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animatorTree", "animator")]
+[node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 script = ExtResource("12_xfj4o")
 accessories = NodePath("RightLegArea/AccessoriesComponent")
-animatorTree = NodePath("RightLegAnimatorTree")
+animator_tree = NodePath("RightLegAnimatorTree")
 animator = NodePath("RightLegAnimator")
 
 [node name="RightLegArea" type="Area2D" parent="BodyComponent/RightLeg"]

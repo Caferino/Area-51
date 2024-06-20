@@ -1,27 +1,38 @@
-[gd_scene format=3 uid="uid://kdbyl8joho61"]
+[gd_scene load_steps=2 format=3 uid="uid://kdbyl8joho61"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/context_map.gd" id="1_5iujm"]
 
 [node name="ContextMap" type="Node2D"]
+script = ExtResource("1_5iujm")
 
 [node name="0" type="RayCast2D" parent="."]
 target_position = Vector2(0, -35)
+collision_mask = 100665824
 
 [node name="1" type="RayCast2D" parent="."]
 target_position = Vector2(17.5, -17.5)
+collision_mask = 100665824
 
 [node name="2" type="RayCast2D" parent="."]
 target_position = Vector2(35, 0)
+collision_mask = 100665824
 
 [node name="3" type="RayCast2D" parent="."]
 target_position = Vector2(17.5, 17.5)
+collision_mask = 100665824
 
 [node name="4" type="RayCast2D" parent="."]
 target_position = Vector2(0, 35)
+collision_mask = 100665824
 
 [node name="5" type="RayCast2D" parent="."]
 target_position = Vector2(-17.5, 17.5)
+collision_mask = 100665824
 
 [node name="6" type="RayCast2D" parent="."]
 target_position = Vector2(-35, 0)
+collision_mask = 100665824
 
 [node name="7" type="RayCast2D" parent="."]
 target_position = Vector2(-17.5, -17.5)
+collision_mask = 100665824
