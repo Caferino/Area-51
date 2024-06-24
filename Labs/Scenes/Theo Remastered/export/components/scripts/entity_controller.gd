@@ -7,7 +7,7 @@ signal entity_attack()    ## Emitted whenever the entity gives attack input ([kb
 signal entity_interact()  ## Emitted whenever the entity gives interact input ([kbd]'F'[/kbd]).
 
 var dir              : Vector2  = Vector2()  ## Current direction.
-var anim_state       : String   = "Move"     ## Current animation state.
+var anim_state       : String   = "Idle"     ## Current animation state.
 var is_attacking     : bool     = false      ## Is the entity currently attacking?
 var is_sprinting     : bool     = false      ## Is the entity currently sprinting?
 var is_moving        : bool     = false      ## Is the entity currently moving?

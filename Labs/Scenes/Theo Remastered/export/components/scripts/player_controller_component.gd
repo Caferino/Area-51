@@ -49,6 +49,7 @@ func check_movement():
 			is_sprinting = false
 			anim_state   = "Move"
 	else:
+		anim_state = "Idle"
 		is_moving = false
 
 

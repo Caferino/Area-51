@@ -21,8 +21,10 @@ class_name BatAIControllerComponent extends AIEntityController
 ## When should it recharge, when decrease?
 
 
+## WARNING - bat.gd moves with physics_process(). I remember choosing this, but maybe it's wrong
 func _process(delta: float):
 	_handle_energy(delta)
+	_get_direction()
 
 
 func _handle_energy(delta: float):
@@ -41,6 +43,10 @@ func _handle_energy(delta: float):
 				entity.heart.energy += 4.0
 
 
+func _get_direction():
+	dir = context_map.chosen_dir
+
+
 func _get_energy():
 	return entity.heart.energy
 
@@ -50,26 +56,6 @@ func _get_health():
 
 
 # ===== ===== ===== UTILITY AI SYSTEM ===== ===== ===== #
-func _on_idle():
-	print("Idle!")
-
-
-func _on_wander():
-	print("Wandering!")
-
-
-func _on_chase():
-	print("Chasing!")
-
-
-func _on_attack():
-	print("Attacking!")
-
-
-func _on_flee():
-	print("Fleeing!")
-
-
 func _on_bat_utility_ai_agent_top_score_action_changed(top_action_id: Variant) -> void:
 	print("Top Score Changed to: ", top_action_id)
 	
@@ -86,17 +72,33 @@ func _on_bat_utility_ai_agent_top_score_action_changed(top_action_id: Variant) -
 			_on_flee()
 
 
+func _on_idle():
+	is_idle = true
+	$MovementTimer.start(2)
+	_on_wander()
+	print("Idle!")
+
+
+func _on_wander():
+	#is_moving = true
+	print(entity.name, " is wandering!", context_map.chosen_dir)
+
+
+func _on_chase():
+	print("Chasing!")
+
+
+func _on_attack():
+	print("Attacking!")
+
+
+func _on_flee():
+	print("Fleeing!")
+
+
 func _on_movement_timer_timeout():
-	if randi_range(1, 10) < 3:
-		#hostile = true
-		#current_max_speed = 350
-		#look_ahead = 15
-		print(name, " is Attacking!")
-		await get_tree().create_timer(0.5).timeout
-		#look_ahead = 60
-		#current_max_speed = 250
-		#hostile = false
-	$MovementTimer.start(1)
+	pass
+	#$MovementTimer.start(1)
 
 
 # ============ OLD ================== #

@@ -27,8 +27,9 @@ func spawn():
 	controller.entity_sprint.connect(_on_entity_sprint)
 	controller.entity_attack.connect(_on_entity_attack)
 	controller.entity_interact.connect(_on_entity_interact)
+	
+	muscles.handle_animation(self, controller.dir, controller.is_sprinting)
 	print(name, " is waking up")  # DEBUG
-	muscles.handle_animation(self)
 
 
 ## Handles the entity's movement every physics frame.

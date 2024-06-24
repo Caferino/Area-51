@@ -1,6 +1,10 @@
 class_name EntityMovement extends Node
 ## The entity's [color=salmon]muscles.
 
+## TASK - Check if every entity inheriting this script has a copy of all this
+## on each that adds overhead, in case I could move all this into a God and
+## have it load just once and for all entities to call it. Centralized method.
+
 signal stopped_moving()  ## Emits whenever the entity stops moving.
 
 var last_direction      : Vector2 = Vector2(0, 1)  ## Entity's last faced direction.
@@ -13,6 +17,7 @@ var last_direction      : Vector2 = Vector2(0, 1)  ## Entity's last faced direct
 ## [member AnimationPlayer.speed_scale].
 ## [br][br]
 ## This is where [method CharacterBody2D.move_and_slide] resides.
+## The direction must be normalized.
 func handle_movement(entity: Entity, direction: Vector2, is_sprinting: bool):
 	var accel = 0.12  ## Lower for "walking on ice" effect, it'd need DEACCEL, done below
 	if direction != Vector2.ZERO:
@@ -31,9 +36,9 @@ func handle_movement(entity: Entity, direction: Vector2, is_sprinting: bool):
 	if entity.velocity.is_zero_approx() and entity.velocity != Vector2.ZERO:
 		entity.velocity = Vector2.ZERO
 		stopped_moving.emit()
-		handle_animation(entity)
+		handle_animation(entity, direction, is_sprinting)
 	elif entity.velocity != Vector2.ZERO: 
-		handle_animation(entity)
+		handle_animation(entity, direction, is_sprinting)
 
 
 ## Handles the [param entity]'s animation.
@@ -54,15 +59,12 @@ func handle_movement(entity: Entity, direction: Vector2, is_sprinting: bool):
 ## [br]
 ## It updates the [member Human.body_pose] of the entity and then calls
 ## [method move_body] to execute the assigned values on the actual animation nodes.
-func handle_animation(entity: Entity):
+func handle_animation(entity: Entity, direction: Vector2, is_sprinting: bool):
 	var current_state = entity.controller.anim_state
 	var speed_scale   = 1.0
-	var direction     = entity.controller.dir
-	if direction == Vector2.ZERO:
-		current_state = "Idle"
-	else:
+	if direction != Vector2.ZERO:
 		last_direction = direction
-		if current_state == "Run":
+		if is_sprinting:
 			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] - 60) / 60 + 1.8
 		else:
 			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] - 60) / 60 + 1.8
@@ -112,7 +114,7 @@ func move_accessories(entity: Entity, limb_name: String):
 		move(accessory, entity.body_accessories[accessory.name])
 
 
-## Moves a [Limb].
+## Moves a [Limb] or [Accessory].
 ## [br][br]
 ## For now, it is designed to deal with [member Human.body_pose] and [member Human.body_accessories].
 func move(part: Limb, pose: Array):

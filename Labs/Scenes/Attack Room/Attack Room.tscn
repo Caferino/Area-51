@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ui6le12cycb8" path="res://Labs/Scenes/Farming Room/FenceVertical.tscn" id="3_ndsrj"]
 [ext_resource type="PackedScene" uid="uid://tr0m4o6ekavs" path="res://Labs/Scenes/Farming Room/FenceHorizontal.tscn" id="4_2ge51"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="4_wn4dw"]
-[ext_resource type="PackedScene" uid="uid://6e48hltp552g" path="res://Labs/Scenes/Attack Room/CaveBat.tscn" id="5_ag3o8"]
+[ext_resource type="PackedScene" uid="uid://6e48hltp552g" path="res://Labs/Scenes/Attack Room/cave_bat.tscn" id="5_ag3o8"]
 
 [sub_resource type="Curve2D" id="Curve2D_enm6u"]
 _data = {
@@ -175,10 +175,10 @@ position = Vector2(513, 254)
 rotation = -0.247955
 
 [node name="CaveBat" parent="." instance=ExtResource("5_ag3o8")]
-position = Vector2(620, 442)
+position = Vector2(528, 510)
 
 [node name="CaveBat2" parent="." instance=ExtResource("5_ag3o8")]
-position = Vector2(429, 398)
+position = Vector2(439, 207)
 
 [node name="CaveBat3" parent="." instance=ExtResource("5_ag3o8")]
 position = Vector2(738, 343)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://6e48hltp552g"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Attack Room/CaveBat.gd" id="1_ole8l"]
+[ext_resource type="Script" path="res://Labs/Scenes/Attack Room/cave_bat.gd" id="1_ole8l"]
 [ext_resource type="SpriteFrames" uid="uid://chu623tm2sfh0" path="res://animations/Enemies/Bat.tres" id="2_h7mxl"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/lore_component.gd" id="2_prdxt"]
 [ext_resource type="Shader" uid="uid://dwupimh85cuua" path="res://Labs/Scenes/Attack Room/hit_flash.tres" id="2_von14"]
@@ -91,10 +91,10 @@ advance_mode = 2
 states/Dead/node = SubResource("AnimationNodeBlendSpace2D_13s7g")
 states/Dead/position = Vector2(664, 134)
 states/End/position = Vector2(899, 245)
-states/Fly/node = SubResource("AnimationNodeBlendSpace2D_mnpbb")
-states/Fly/position = Vector2(361.667, 134)
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_mnpbb")
+states/Idle/position = Vector2(361.667, 134)
 states/Start/position = Vector2(157, 245)
-transitions = ["Start", "Fly", SubResource("AnimationNodeStateMachineTransition_tfjy5")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tfjy5")]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_nayth"]
 
@@ -142,7 +142,8 @@ _data = {
 z_index = 1
 y_sort_enabled = true
 collision_layer = 8192
-collision_mask = 8257
+collision_mask = 65
+motion_mode = 1
 script = ExtResource("1_ole8l")
 lore = NodePath("LoreComponent")
 heart = NodePath("HealthComponent")
@@ -191,7 +192,7 @@ animator_tree = NodePath("CaveBatAnimationTree")
 animator = NodePath("CaveBatAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
-position = Vector2(0, -4.7127)
+position = Vector2(0, -2.72281)
 
 [node name="TorsoCollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]
 shape = SubResource("CircleShape2D_tuv1p")
@@ -209,7 +210,7 @@ root_node = NodePath("../../..")
 tree_root = SubResource("AnimationNodeBlendTree_cbxkp")
 anim_player = NodePath("../CaveBatAnimator")
 parameters/Movement/Dead/blend_position = Vector2(0, 0)
-parameters/Movement/Fly/blend_position = Vector2(-0.00423622, 0.838849)
+parameters/Movement/Idle/blend_position = Vector2(-0.00423622, 0.838849)
 parameters/TimeScale/scale = 1.0
 
 [node name="CaveBatAnimator" type="AnimationPlayer" parent="BodyComponent/Torso"]

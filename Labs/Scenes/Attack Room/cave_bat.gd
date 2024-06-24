@@ -1,25 +1,9 @@
-class_name CaveBat extends Entity
+class_name CaveBat extends Bat
 ## A [color=magenta]Cave Bat[/color], by [color=green]Bizck.
-
-@export var lore        : LoreComponent                  ## The entity's [color=ivory]lore.
-@export var heart       : HealthComponent                ## The entity's [color=red]heart.
-@export var muscles     : FlyingMammalMovementComponent  ## The entity's [color=salmon]muscles.
-@export var timer       : TimerComponent                 ## The entity's [color=white]timers.
-@export var effects     : EffectsAnimatorComponent       ## The entity's [color=cornflower]effects.
-@export var controller  : EntityController               ## The entity's [color=gray]controller.
-@export var body        : BodyComponent                  ## The entity's [color=blue]body.
-
-var interest           = []
-var danger             = []
-## Should these go on AIEntityController?
-#var current_max_speed  = Bizck.animals["CaveBat"][GameEnums.AI_STATS.DEFAULT_MAX_SPEED]
-#var look_ahead         = Bizck.animals["CaveBat"][GameEnums.AI_STATS.DEFAULT_LOOK_AHEAD]
-#var added_interest     = Bizck.animals["CaveBat"][GameEnums.AI_STATS.DEFAULT_ADDED_INTEREST]
-var total_rays         = Bizck.animals["CaveBat"][GameEnums.AI_STATS.DEFAULT_NUM_RAYS]
-
 
 ## Spawns the entity.
 func _ready():
+	## TASK - Make CaveBat's stats unique from Bat. Did this quick for testing.
 	base_stats[GameEnums.STAT.STRENGTH]     = 5
 	base_stats[GameEnums.STAT.DEXTERITY]    = 5
 	base_stats[GameEnums.STAT.VITALITY]     = 5
@@ -33,29 +17,13 @@ func _ready():
 	stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] = 120
 	stamina_stats[GameEnums.STAMINA_STATS.SPRINT_ACCEL]     =   2
 	
-	body_pose["Torso"] = [Vector2(0, 0), 0, "parameters/Movement/playback", "Fly", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
+	body_pose["Torso"] = [Vector2(0, 0), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
+	
 	spawn()
 
 
-func spawn():
-	var pose = body_pose["Torso"]
-	body.limbs["Torso"].animator_tree[pose[2]].travel(pose[3])
-	
-	interest.resize(total_rays)
-	danger.resize(total_rays)
 
 
-#func _physics_process(delta):
-	#if !stunned:
-		#set_interest()
-		#set_danger()
-		#choose_direction()
-	#
-	#move(delta)
-
-
-## TODO ! Might deprecate timercomponent for this dude. All this could be an AI?
-## What about my Big Tree, use an AI or FSM?
 
 
 
@@ -85,9 +53,31 @@ func spawn():
 ## > child(5): ContextMap Node2D
 ## > child(6): Timer
 #
-#
-#
+#func _ready():
+	#add_to_group("Enemies")
+	#get_child(1).play("fly_right")
+	#get_child(6).start()
+	#
+	#interest.resize(AlcarodianResourceManager.animals["CaveBat"][GameEnums.AI_STATS.DEFAULT_NUM_RAYS])
+	#danger.resize(AlcarodianResourceManager.animals["CaveBat"][GameEnums.AI_STATS.DEFAULT_NUM_RAYS])
+	#ray_directions.resize(AlcarodianResourceManager.animals["CaveBat"][GameEnums.AI_STATS.DEFAULT_NUM_RAYS])
+	
+	#for i in AlcarodianResourceManager.animals["CaveBat"][GameEnums.AI_STATS.DEFAULT_NUM_RAYS]:
+		#var angle = i * 2 * PI / AlcarodianResourceManager.animals["CaveBat"][GameEnums.AI_STATS.DEFAULT_NUM_RAYS]
+		#ray_directions[i] = Vector2.RIGHT.rotated(angle)
+
+
+#func _physics_process(delta):
+	#if !stunned:
+		#set_interest()
+		#set_danger()
+		#choose_direction()
+	#
+	#move(delta)
+
+
 #func set_interest():
+	## TODO Useless if, can be set in ready()
 	#if owner and owner.has_method("get_player_path_direction"):
 		#var path_direction = owner.get_player_path_direction(position)
 		##for i in total_rays:
@@ -109,6 +99,7 @@ func spawn():
 	##for i in total_rays:
 		##var query = PhysicsRayQueryParameters2D.create(position, 
 			##position + ray_directions[i].rotated(rotation) * look_ahead, exclude_layers)
+		## TODO Why not skip result if it's already a boolean?
 		##var result = space_state.intersect_ray(query)
 		##danger[i] = 1.0 if result else 0.0
 #

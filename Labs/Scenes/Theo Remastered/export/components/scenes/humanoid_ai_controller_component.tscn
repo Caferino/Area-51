@@ -131,10 +131,10 @@ metadata/_snap_count = 5
 _data = [Vector2(0.00310559, 0.00377357), 0.0, 0.0, 0, 0, Vector2(0.5, 0.501887), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="HumanoidAIControllerComponent" type="Node2D" node_paths=PackedStringArray("context_map", "interactor_animator_tree")]
+[node name="HumanoidAIControllerComponent" type="Node2D" node_paths=PackedStringArray("interactor_animator_tree", "context_map")]
 script = ExtResource("1_kinwj")
-context_map = NodePath("ContextMap")
 interactor_animator_tree = NodePath("VisionArea/InteractorTree")
+context_map = NodePath("ContextMap")
 
 [node name="ContextMap" parent="." instance=ExtResource("2_qpkxs")]
 
@@ -157,7 +157,7 @@ libraries = {
 [node name="HumanAIBehaviorTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_qdxfj")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@17588")
+blackboard = NodePath("@Node@17590")
 actor = NodePath("..")
 
 [node name="SelectorComposite" type="Node" parent="HumanAIBehaviorTree"]
