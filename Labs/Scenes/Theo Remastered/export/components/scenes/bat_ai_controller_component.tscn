@@ -4,20 +4,23 @@
 [ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/ContextMap.tscn" id="2_eih87"]
 [ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="3_5p0vp"]
 [ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="4_25ky4"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration.gd" id="5_13hhv"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="6_nya6u"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="7_ar8e3"]
 [ext_resource type="PackedScene" uid="uid://d0dhe2lv3x4u3" path="res://Labs/Scenes/Utility AI Example/ai/utility_debug.tscn" id="8_1sivf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q3wgb"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tclh"]
 radius = 100.0
 
-[sub_resource type="Curve" id="Curve_5cx5f"]
-_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0]
-point_count = 1
+[sub_resource type="Curve" id="Curve_2defo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_u40cd"]
+_data = [Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_w351y"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.997312, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_jjdkn"]
@@ -60,17 +63,17 @@ point_count = 3
 script = ExtResource("1_imjo1")
 context_map = NodePath("ContextMap")
 
-[node name="MovementTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+[node name="ContextMap" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("2_eih87")]
+controller = NodePath("..")
 
-[node name="ContextMap" parent="." instance=ExtResource("2_eih87")]
-
-[node name="VisionArea" type="Area2D" parent="."]
+[node name="EcholocationArea" type="Area2D" parent="."]
+z_as_relative = false
+collision_layer = 0
+collision_mask = 8388608
 monitorable = false
 
-[node name="VisionAreaCollisionShape" type="CollisionShape2D" parent="VisionArea"]
-shape = SubResource("CircleShape2D_q3wgb")
+[node name="EcholocationCollisionShape" type="CollisionShape2D" parent="EcholocationArea"]
+shape = SubResource("CircleShape2D_1tclh")
 
 [node name="BatUtilityAIAgent" type="Node" parent="."]
 script = ExtResource("3_5p0vp")
@@ -78,9 +81,11 @@ script = ExtResource("3_5p0vp")
 [node name="Idle" type="Node" parent="BatUtilityAIAgent"]
 script = ExtResource("4_25ky4")
 
-[node name="nothing" type="Node" parent="BatUtilityAIAgent/Idle"]
-script = ExtResource("5_13hhv")
-curve = SubResource("Curve_5cx5f")
+[node name="is_idle" type="Node" parent="BatUtilityAIAgent/Idle" node_paths=PackedStringArray("node")]
+script = ExtResource("7_ar8e3")
+node = NodePath("../../..")
+property_name = "idle"
+curve = SubResource("Curve_2defo")
 
 [node name="Wander" type="Node" parent="BatUtilityAIAgent"]
 script = ExtResource("4_25ky4")
@@ -88,10 +93,16 @@ script = ExtResource("4_25ky4")
 [node name="UtilityAIAggregation" type="Node" parent="BatUtilityAIAgent/Wander"]
 script = ExtResource("6_nya6u")
 
-[node name="is_attacking" type="Node" parent="BatUtilityAIAgent/Wander/UtilityAIAggregation" node_paths=PackedStringArray("node")]
+[node name="is_in_combat" type="Node" parent="BatUtilityAIAgent/Wander/UtilityAIAggregation" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
-property_name = "is_busy"
+property_name = "in_combat"
+curve = SubResource("Curve_u40cd")
+
+[node name="is_idle" type="Node" parent="BatUtilityAIAgent/Wander/UtilityAIAggregation" node_paths=PackedStringArray("node")]
+script = ExtResource("7_ar8e3")
+node = NodePath("../../../..")
+property_name = "idle"
 curve = SubResource("Curve_w351y")
 
 [node name="Chase" type="Node" parent="BatUtilityAIAgent"]
@@ -103,7 +114,7 @@ script = ExtResource("6_nya6u")
 [node name="is_enemy_nearby" type="Node" parent="BatUtilityAIAgent/Chase/UtilityAIAggregation" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
-property_name = "is_enemy_nearby"
+property_name = "enemy_nearby"
 curve = SubResource("Curve_jjdkn")
 
 [node name="UtilityAIAggregation" type="Node" parent="BatUtilityAIAgent/Chase/UtilityAIAggregation"]
@@ -114,14 +125,12 @@ aggregation_type = 2
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../../..")
 property_name = "_get_health"
-max_value = 100.0
 curve = SubResource("Curve_4urjt")
 
 [node name="energy" type="Node" parent="BatUtilityAIAgent/Chase/UtilityAIAggregation/UtilityAIAggregation" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../../..")
 property_name = "_get_energy"
-max_value = 100.0
 curve = SubResource("Curve_mnkn5")
 
 [node name="Attack" type="Node" parent="BatUtilityAIAgent"]
@@ -133,13 +142,13 @@ script = ExtResource("6_nya6u")
 [node name="is_enemy_nearby" type="Node" parent="BatUtilityAIAgent/Attack/UtilityAIAggregation" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
-property_name = "is_enemy_nearby"
+property_name = "enemy_nearby"
 curve = SubResource("Curve_qwbs3")
 
 [node name="is_attacking" type="Node" parent="BatUtilityAIAgent/Attack/UtilityAIAggregation" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
-property_name = "is_attacking"
+property_name = "attacking"
 curve = SubResource("Curve_d53bn")
 
 [node name="UtilityAIAggregation" type="Node" parent="BatUtilityAIAgent/Attack/UtilityAIAggregation"]
@@ -150,14 +159,12 @@ aggregation_type = 2
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../../..")
 property_name = "_get_health"
-max_value = 100.0
 curve = SubResource("Curve_1vmfh")
 
 [node name="energy" type="Node" parent="BatUtilityAIAgent/Attack/UtilityAIAggregation/UtilityAIAggregation" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../../..")
 property_name = "_get_energy"
-max_value = 100.0
 curve = SubResource("Curve_shvfk")
 
 [node name="Flee" type="Node" parent="BatUtilityAIAgent"]
@@ -167,29 +174,28 @@ script = ExtResource("4_25ky4")
 script = ExtResource("6_nya6u")
 aggregation_type = 2
 
-[node name="is_enemy_nearby" type="Node" parent="BatUtilityAIAgent/Flee/UtilityAIAggregation" node_paths=PackedStringArray("node")]
+[node name="is_enemy_too_close" type="Node" parent="BatUtilityAIAgent/Flee/UtilityAIAggregation" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
-property_name = "is_enemy_nearby"
+property_name = "enemy_too_close"
 curve = SubResource("Curve_gxyhr")
 
 [node name="health" type="Node" parent="BatUtilityAIAgent/Flee/UtilityAIAggregation" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
 property_name = "_get_health"
-max_value = 100.0
 curve = SubResource("Curve_h6b1h")
 
 [node name="energy" type="Node" parent="BatUtilityAIAgent/Flee/UtilityAIAggregation" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
 property_name = "_get_energy"
-max_value = 100.0
 curve = SubResource("Curve_5bgqs")
 
 [node name="utility_debug" parent="." node_paths=PackedStringArray("utility_agent") instance=ExtResource("8_1sivf")]
 position = Vector2(0, 60)
 utility_agent = NodePath("../BatUtilityAIAgent")
 
-[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="area_entered" from="EcholocationArea" to="." method="_on_echolocation_area_area_entered"]
+[connection signal="area_exited" from="EcholocationArea" to="." method="_on_echolocation_area_area_exited"]
 [connection signal="top_score_action_changed" from="BatUtilityAIAgent" to="." method="_on_bat_utility_ai_agent_top_score_action_changed"]

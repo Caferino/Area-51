@@ -28,14 +28,14 @@ func spawn():
 	controller.entity_attack.connect(_on_entity_attack)
 	controller.entity_interact.connect(_on_entity_interact)
 	
-	muscles.handle_animation(self, controller.dir, controller.is_sprinting)
+	muscles.handle_animation(self, controller.dir, controller.sprinting)
 	print(name, " is waking up")  # DEBUG
 
 
 ## Handles the entity's movement every physics frame.
 func _physics_process(_delta: float) -> void:
-	if !controller.is_attacking:
-		muscles.handle_movement(self, controller.dir, controller.is_sprinting)
+	if !controller.attacking:
+		muscles.handle_movement(self, controller.dir, controller.sprinting)
 		controller.rotate_interactor(muscles.last_direction)
 
 
@@ -56,7 +56,7 @@ func _on_entity_stop():
 
 ## Runs whenever the entity attacks.
 func _on_entity_attack():
-	if !controller.is_attacking:
+	if !controller.attacking:
 		controller.on_attack()
 		muscles.stop(self, true)
 		muscles.attack(body.gear["MeleeWeapon"], body.limbs["Torso"].animator, body.limbs["Head"].animator)

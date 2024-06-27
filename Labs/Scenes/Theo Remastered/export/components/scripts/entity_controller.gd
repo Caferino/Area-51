@@ -8,6 +8,6 @@ signal entity_interact()  ## Emitted whenever the entity gives interact input ([
 
 var dir              : Vector2  = Vector2()  ## Current direction.
 var anim_state       : String   = "Idle"     ## Current animation state.
-var is_attacking     : bool     = false      ## Is the entity currently attacking?
-var is_sprinting     : bool     = false      ## Is the entity currently sprinting?
-var is_moving        : bool     = false      ## Is the entity currently moving?
+var attacking     : bool     = false      ## Is the entity currently attacking?
+var sprinting     : bool     = false      ## Is the entity currently sprinting?
+var moving        : bool     = false      ## Is the entity currently moving?

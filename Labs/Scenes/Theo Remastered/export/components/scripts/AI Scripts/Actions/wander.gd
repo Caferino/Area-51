@@ -12,7 +12,7 @@ func _physics_process(delta):
 
 
 func tick(actor, _blackboard):
-	if actor.is_enemy_nearby:
+	if actor.enemy_nearby:
 		print("Enemy nearby")
 		wander_time = 0
 		wait_time = 0

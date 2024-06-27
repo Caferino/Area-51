@@ -1,12 +1,16 @@
 class_name ContextMap extends Node2D
 
+@export var controller : AIEntityController = null
+
+signal chosen_dir_updated()
+
 # WARN - prob only works at ready or every frame
 var space_state    : PhysicsDirectSpaceState2D = null 
 var chosen_dir     : Vector2          = Vector2.ZERO
 var ray_directions : Array[Vector2]   = []
 var interest       : Array[float]     = []
 var danger         : Array[float]     = []
-var total_rays     : int              = 8
+var total_rays     : int              =    8
 var look_ahead     : float            = 50.0   ## Must be bigger than the aware_zone area.
 var added_interest : float            =  5.0
 var enable_layers  : int              = 4161   ## Decimal collision_bitmask for layers 1, 7 and 13.
@@ -23,11 +27,28 @@ func _ready():
 
 
 func _physics_process(_delta):
+	situational_awareness()
+
+
+func situational_awareness():
+	## WARN - Might need two methods that handle context, this one and another on _physics_process of BatAI, besides handle_energy
+	## e.x. "if current_target is not null, check if current_target is too close"
+	## then use that bool here appropiately
 	if $AwareZoneArea.get_overlapping_bodies():
-		_handle_context()
+		if controller.chasing:
+			if controller.enemy_too_close:
+				chosen_dir = _handle_context()
+			else:
+				chosen_dir = controller.entity.global_position.direction_to(controller.current_target.global_position)
+		else:
+			chosen_dir = _handle_context()
+	else:
+		chosen_dir = controller.dir
+	
+	chosen_dir_updated.emit()
 
 
-func _handle_context():
+func _handle_context() -> Vector2:
 	for i in total_rays:
 		## Interest
 		interest[i] = max(1, ray_directions[i].dot(transform.x))
@@ -48,4 +69,4 @@ func _handle_context():
 			interest[i] = 0.0
 		chosen_dir += ray_directions[i] * interest[i]
 	
-	chosen_dir = chosen_dir.normalized()
+	return chosen_dir.normalized()

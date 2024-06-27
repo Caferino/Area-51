@@ -21,30 +21,38 @@ class_name BatAIControllerComponent extends AIEntityController
 ## When should it recharge, when decrease?
 
 
-## WARNING - bat.gd moves with physics_process(). I remember choosing this, but maybe it's wrong
+func _ready():
+	context_map.chosen_dir_updated.connect(_on_chosen_dir_updated)
+
+
 func _process(delta: float):
+	_handle_environment()
 	_handle_energy(delta)
-	_get_direction()
+
+
+func _handle_environment():
+	if current_target:
+		if entity.global_position.distance_to(current_target.global_position) < 30:
+			enemy_too_close = true
+		else:
+			enemy_too_close = false
 
 
 func _handle_energy(delta: float):
 	time_accumulator += delta
 	if time_accumulator >= 1.0:
 		time_accumulator -= 1.0
-		if is_busy:
-			if entity.heart.energy - 4.0 < 0: 
+		if not moving:
+			if entity.heart.energy - 0.01 < 0: 
 				entity.heart.energy = 0.0
 			else:
-				entity.heart.energy -= 4.0
+				entity.heart.energy -= 0.01
 		else:
-			if entity.heart.energy + 4.0 > 100.0:
-				entity.heart.energy = 100.0
+			if entity.heart.energy + 0.01 > 1.0:
+				entity.heart.energy = 1.0
 			else:
-				entity.heart.energy += 4.0
-
-
-func _get_direction():
-	dir = context_map.chosen_dir
+				entity.heart.energy += 0.01
+	#print("Energy: ", entity.heart.energy)  # DEBUG
 
 
 func _get_energy():
@@ -55,50 +63,77 @@ func _get_health():
 	return entity.heart.health
 
 
+func _on_echolocation_area_area_entered(area: Area2D) -> void:
+	print("Area entered")
+	if area.is_in_group("Noise"):
+		enemy_nearby = true
+		current_target = area
+
+
+func _on_echolocation_area_area_exited(area: Area2D) -> void:
+	print("Area exited")
+	if area.is_in_group("Noise"):
+		chasing = false
+		enemy_nearby = false
+		current_target = null
+
+
 # ===== ===== ===== UTILITY AI SYSTEM ===== ===== ===== #
 func _on_bat_utility_ai_agent_top_score_action_changed(top_action_id: Variant) -> void:
-	print("Top Score Changed to: ", top_action_id)
+	call(top_action_id)
+
+
+func Idle():
+	idle = true
+	moving = false
 	
-	match top_action_id:
-		"Idle":
-			_on_idle()
-		"Wander":
-			_on_wander()
-		"Chase":
-			_on_chase()
-		"Attack":
-			_on_attack()
-		"Flee":
-			_on_flee()
+	dir = Vector2.ZERO
+	if randi_range(1, 10) <= 2:  # 20% chance to stop moving/wandering. Might need a better way using energy
+		await get_tree().create_timer(randf_range(0.5, 1)).timeout
+	
+	idle = false
 
 
-func _on_idle():
-	is_idle = true
-	$MovementTimer.start(2)
-	_on_wander()
-	print("Idle!")
+func Wander():
+	wandering = true
+	moving = true
+	
+	dir = Vector2(randf_range(-1, 1), randf_range(-1, 1))
+	await get_tree().create_timer(randf_range(0.15, 0.3)).timeout  # Lower for erratic speed
+	
+	idle = true
+	moving = false
+	wandering = false
 
 
-func _on_wander():
-	#is_moving = true
-	print(entity.name, " is wandering!", context_map.chosen_dir)
-
-
-func _on_chase():
+func Chase():
 	print("Chasing!")
+	chasing = true
+	moving = true
+	
+	dir = self.global_position.direction_to(current_target.global_position)
+	print("Direction: ", dir)
 
 
-func _on_attack():
+func Attack():
 	print("Attacking!")
 
 
-func _on_flee():
+func Flee():
 	print("Fleeing!")
 
 
-func _on_movement_timer_timeout():
-	pass
-	#$MovementTimer.start(1)
+func _on_chosen_dir_updated():
+	dir = context_map.chosen_dir
+
+
+## AI component that judges the situation to choose the best direction to go to.
+func situational_awareness():
+	if chasing:
+		return self.global_position.direction_to(current_target.global_position)
+	else:
+		return context_map.chosen_dir
+
 
 
 # ============ OLD ================== #
@@ -112,9 +147,9 @@ func _on_movement_timer_timeout():
 ### BehaviorTree & Utility Agents AI Variables
 #var dir              : Vector2  = Vector2()  ## Current direction.
 #var anim_state       : String   = "Move"     ## Current animation state.
-#var is_attacking     : bool     = false      ## Is the entity currently attacking?
-#var is_sprinting     : bool     = false      ## Is the entity currently sprinting?
-#var is_moving        : bool     = false      ## Is the entity currently moving?
+#var attacking     : bool     = false      ## Is the entity currently attacking?
+#var sprinting     : bool     = false      ## Is the entity currently sprinting?
+#var moving        : bool     = false      ## Is the entity currently moving?
 
 
 ### Rotates the interactor's [member Marker2D.rotation].
@@ -352,6 +387,3 @@ func _on_movement_timer_timeout():
 		#"relax":
 			## doesn't need to do anything. Already safe.
 			#pass
-
-
-

@@ -2,7 +2,7 @@ extends ConditionLeaf
 
 
 func tick(actor, _blackboard):
-	if actor.is_chasing:
+	if actor.chasing:
 		return SUCCESS
 	else:
 		return SUCCESS

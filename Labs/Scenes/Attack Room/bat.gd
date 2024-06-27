@@ -34,5 +34,5 @@ func spawn():
 
 ## Handles the entity's movement every physics frame.
 func _physics_process(_delta: float) -> void:
-	if !controller.is_attacking:
-		muscles.handle_movement(self, controller.dir, controller.is_sprinting)
+	if !controller.attacking:
+		muscles.handle_movement(self, controller.dir, controller.sprinting)

@@ -9,13 +9,13 @@ class_name PlayerControllerComponent extends EntityController
 
 ## Checks whether the player is giving movement input every physics frame.
 func _physics_process(_delta: float) -> void:
-	if !is_attacking:
+	if !attacking:
 		check_movement()
 
 
 ## Runs whenever there is an [InputEvent] to check whether it's an attack or interaction.
 func _input(_event: InputEvent):
-	if !is_attacking:
+	if !attacking:
 		if Input.is_action_just_pressed("attack"):
 			entity_attack.emit()
 		elif Input.is_action_just_pressed("interact"):
@@ -34,23 +34,23 @@ func check_movement():
 	if Input.is_action_pressed("move_left")    : dir.x -= 1
 	
 	if dir != Vector2.ZERO:
-		if !is_moving: 
-			is_moving = true
+		if !moving: 
+			moving = true
 			entity_move.emit()
 		
 		dir = dir.normalized()
 		
 		if Input.is_action_pressed("sprint"):
-			if !is_sprinting: entity_sprint.emit()
-			is_sprinting = true
+			if !sprinting: entity_sprint.emit()
+			sprinting = true
 			anim_state   = "Run"
 		else:
-			if is_sprinting: entity_move.emit()
-			is_sprinting = false
+			if sprinting: entity_move.emit()
+			sprinting = false
 			anim_state   = "Move"
 	else:
 		anim_state = "Idle"
-		is_moving = false
+		moving = false
 
 
 ## Rotates the interactor's [member Marker2D.rotation].
@@ -68,12 +68,12 @@ func on_stop():
 
 
 func on_attack():
-	is_attacking = true
+	attacking = true
 	camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
 
 
 func on_attack_finished():
-	is_attacking = false
+	attacking = false
 	camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
 
 

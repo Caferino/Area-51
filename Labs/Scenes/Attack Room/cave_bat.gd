@@ -12,7 +12,7 @@ func _ready():
 	stamina_stats[GameEnums.STAMINA_STATS.CAPACITY]         = 100
 	stamina_stats[GameEnums.STAMINA_STATS.SPRINT_RATE]      =   2
 	stamina_stats[GameEnums.STAMINA_STATS.REGEN_RATE]       =   3
-	stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]   =  60
+	stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]   = 160
 	stamina_stats[GameEnums.STAMINA_STATS.WALK_ACCEL]       =   3
 	stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] = 120
 	stamina_stats[GameEnums.STAMINA_STATS.SPRINT_ACCEL]     =   2

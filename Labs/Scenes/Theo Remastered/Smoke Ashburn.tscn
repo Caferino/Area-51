@@ -1,9 +1,10 @@
-[gd_scene load_steps=108 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=109 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
 [ext_resource type="PackedScene" uid="uid://giwbm1t1m8mo" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/health_component.tscn" id="4_fi2wd"]
 [ext_resource type="PackedScene" uid="uid://lprf3rgs43hq" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/humanoid_movement_component.tscn" id="5_ql8g5"]
+[ext_resource type="PackedScene" uid="uid://kgci8lqc67ix" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/sound_component.tscn" id="5_t4b10"]
 [ext_resource type="PackedScene" uid="uid://bhknrcawdvqvk" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/attack_component.tscn" id="6_dybqt"]
 [ext_resource type="PackedScene" uid="uid://baq33xt06du5y" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/player_controller_component.tscn" id="6_t0pop"]
 [ext_resource type="PackedScene" uid="uid://bcuy0jppjef6f" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/body_component.tscn" id="8_5ixyk"]
@@ -532,7 +533,7 @@ animations = [{
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4097
-collision_mask = 4294959103
+collision_mask = 4294908925
 motion_mode = 1
 script = ExtResource("1_c7twf")
 lore = NodePath("LoreComponent")
@@ -552,6 +553,8 @@ shape = SubResource("RectangleShape2D_fv7u5")
 [node name="HealthComponent" parent="." instance=ExtResource("4_fi2wd")]
 
 [node name="HumanoidMovementComponent" parent="." instance=ExtResource("5_ql8g5")]
+
+[node name="SoundComponent" parent="." instance=ExtResource("5_t4b10")]
 
 [node name="PlayerControllerComponent" parent="." instance=ExtResource("6_t0pop")]
 

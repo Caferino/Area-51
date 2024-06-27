@@ -13,15 +13,15 @@ func on_move():
 
 
 func on_stop():
-	is_moving = false
+	moving = false
 
 
 func on_attack():
-	is_attacking = true
+	attacking = true
 
 
 func on_attack_finished():
-	is_attacking = false
+	attacking = false
 
 
 func on_sprint():
@@ -30,11 +30,11 @@ func on_sprint():
 
 func _on_vision_area_body_entered(target: Node2D) -> void:
 	if target.is_in_group("Player"):
-		is_enemy_nearby = true
+		enemy_nearby = true
 		current_target = target
 
 
 func _on_vision_area_body_exited(target: Node2D) -> void:
 	if target.is_in_group("Player"):
-		is_enemy_nearby = false
+		enemy_nearby = false
 		current_target = null

@@ -1,8 +1,9 @@
 class_name HealthComponent extends Node
 ## The entity's [color=red]heart.
 
-@export var health : float = 100.0  ## Total health points.
-@export var energy : float = 100.0  ## Total stamina.
+@export var entity : Entity = null  # TODO - For future better access to MAX_HEALTH
+@export var health : float = 1.0  ## Total health points %.
+@export var energy : float = 1.0  ## Total stamina %.
 
 
 ## Set the entity's health by the given amount.

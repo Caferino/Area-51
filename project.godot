@@ -33,6 +33,10 @@ Caferino="*res://Labs/Scenes/Caferino/caferino.gd"
 Bizck="*res://Labs/Scenes/Caferino/bizck.gd"
 Raz="*res://Labs/Scenes/Caferino/raz.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1920
@@ -253,7 +257,7 @@ hotbar_5={
 2d_navigation/layer_22="Dynamic (Small)"
 2d_physics/layer_23="Debris / Fragments"
 2d_navigation/layer_23="Ignore (Static)"
-2d_physics/layer_24="One-Way Platforms"
+2d_physics/layer_24="Sounds"
 2d_navigation/layer_24="Ignore (Dynamic)"
 2d_physics/layer_25="One-Way Slopes"
 2d_navigation/layer_25="Debug"

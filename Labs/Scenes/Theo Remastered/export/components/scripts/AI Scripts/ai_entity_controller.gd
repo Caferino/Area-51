@@ -5,9 +5,13 @@ class_name AIEntityController extends EntityController
 
 var enemy_distance_tolerance : float = 50
 var time_accumulator         : float = 0.0
-var current_target           : Node  = null
-var is_idle                  : bool  = false
-var is_busy                  : bool  = false
-var is_chasing               : bool  = false
-var is_stunned               : bool  = false
-var is_enemy_nearby          : bool  = false
+var idle                  : bool  = false
+#var busy                  : bool  = false  ## DEPRECATED
+var chasing               : bool  = false
+var stunned               : bool  = false
+var wandering             : bool  = false
+var in_combat             : bool  = false
+var enemy_nearby          : bool  = false
+var enemy_too_close       : bool  = false
+
+var current_target           : Node  = null  ## Targets entities, interactables or goals.
