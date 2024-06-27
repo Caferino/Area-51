@@ -56,7 +56,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.746305, 0), 0.0, 0.0, 0, 0, Ve
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_5bgqs"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.504926, 0), 0.0, 0.0, 0, 0, Vector2(0.992611, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.346512, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [node name="BatAIControllerComponent" type="Node2D" node_paths=PackedStringArray("context_map")]

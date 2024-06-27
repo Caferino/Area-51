@@ -42,17 +42,17 @@ func _handle_energy(delta: float):
 	time_accumulator += delta
 	if time_accumulator >= 1.0:
 		time_accumulator -= 1.0
-		if not moving:
-			if entity.heart.energy - 0.01 < 0: 
+		if moving:
+			if entity.heart.energy - 0.05 < 0.0: 
 				entity.heart.energy = 0.0
 			else:
-				entity.heart.energy -= 0.01
+				entity.heart.energy -= 0.05
 		else:
-			if entity.heart.energy + 0.01 > 1.0:
+			if entity.heart.energy + 0.05 > 1.0:
 				entity.heart.energy = 1.0
 			else:
-				entity.heart.energy += 0.01
-	#print("Energy: ", entity.heart.energy)  # DEBUG
+				entity.heart.energy += 0.05
+	print("Energy: ", entity.heart.energy, " and moving: ", moving)  # DEBUG
 
 
 func _get_energy():
@@ -107,12 +107,11 @@ func Wander():
 
 
 func Chase():
-	print("Chasing!")
+	print("Chasing! ", moving)
 	chasing = true
 	moving = true
 	
 	dir = self.global_position.direction_to(current_target.global_position)
-	print("Direction: ", dir)
 
 
 func Attack():
