@@ -15,13 +15,13 @@ func tick(actor, _blackboard):
 		actor.sprinting = false
 		return FAILURE
 	
-	if current_target_distance >= actor.enemy_distance_tolerance + 50:
+	if current_target_distance >= actor.distance_tolerance + 50:
 		print("Sprinting!!!")
 		actor.dir = actor.global_position.direction_to(actor.current_target.global_position)
 		actor.anim_state = "Run"
 		actor.sprinting = true
 		return RUNNING
-	elif current_target_distance >= actor.enemy_distance_tolerance:
+	elif current_target_distance >= actor.distance_tolerance:
 		print("Chasing!!")
 		actor.dir = actor.global_position.direction_to(actor.current_target.global_position)
 		actor.anim_state = "Move"

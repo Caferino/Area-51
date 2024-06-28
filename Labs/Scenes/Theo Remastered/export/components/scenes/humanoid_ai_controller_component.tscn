@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dvgwih7dvsts"]
+[gd_scene load_steps=20 format=3 uid="uid://dvgwih7dvsts"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/humanoid_ai_controller_component.gd" id="1_kinwj"]
 [ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/ContextMap.tscn" id="2_qpkxs"]
@@ -8,11 +8,6 @@
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Chase.gd" id="6_pe8gs"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="7_qn0g0"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Actions/wander.gd" id="8_26ww6"]
-[ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="9_gg53i"]
-[ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="10_uww5g"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration.gd" id="11_s2fyg"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="12_p3anh"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="13_n67y1"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_va1q1"]
 animation = &"down"
@@ -117,20 +112,6 @@ _data = {
 "up": SubResource("Animation_hamru")
 }
 
-[sub_resource type="Curve" id="Curve_pbnfd"]
-_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="Curve" id="Curve_434jm"]
-_data = [Vector2(0.00310559, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-metadata/_snap_enabled = true
-metadata/_snap_count = 5
-
-[sub_resource type="Curve" id="Curve_0bn0i"]
-_data = [Vector2(0.00310559, 0.00377357), 0.0, 0.0, 0, 0, Vector2(0.5, 0.501887), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [node name="HumanoidAIControllerComponent" type="Node2D" node_paths=PackedStringArray("interactor_animator_tree", "context_map")]
 script = ExtResource("1_kinwj")
 interactor_animator_tree = NodePath("VisionArea/InteractorTree")
@@ -157,7 +138,7 @@ libraries = {
 [node name="HumanAIBehaviorTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_qdxfj")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@17590")
+blackboard = NodePath("@Node@98602")
 actor = NodePath("..")
 
 [node name="SelectorComposite" type="Node" parent="HumanAIBehaviorTree"]
@@ -175,39 +156,6 @@ script = ExtResource("7_qn0g0")
 
 [node name="Wander" type="Node" parent="HumanAIBehaviorTree/SelectorComposite/UntilFailDecorator"]
 script = ExtResource("8_26ww6")
-
-[node name="HumanWorkerUtilityAIAgent DEPRECATED" type="Node" parent="."]
-script = ExtResource("9_gg53i")
-enabled = false
-
-[node name="Idle" type="Node" parent="HumanWorkerUtilityAIAgent DEPRECATED"]
-script = ExtResource("10_uww5g")
-
-[node name="nothing" type="Node" parent="HumanWorkerUtilityAIAgent DEPRECATED/Idle"]
-script = ExtResource("11_s2fyg")
-curve = SubResource("Curve_pbnfd")
-
-[node name="Wander" type="Node" parent="HumanWorkerUtilityAIAgent DEPRECATED"]
-script = ExtResource("10_uww5g")
-
-[node name="UtilityAIAggregation" type="Node" parent="HumanWorkerUtilityAIAgent DEPRECATED/Wander"]
-script = ExtResource("12_p3anh")
-
-[node name="is busy" type="Node" parent="HumanWorkerUtilityAIAgent DEPRECATED/Wander/UtilityAIAggregation" node_paths=PackedStringArray("node")]
-script = ExtResource("13_n67y1")
-node = NodePath("../../../..")
-property_name = "is_busy"
-curve = SubResource("Curve_434jm")
-
-[node name="Chase" type="Node" parent="HumanWorkerUtilityAIAgent DEPRECATED"]
-script = ExtResource("10_uww5g")
-
-[node name="UtilityAIAggregation" type="Node" parent="HumanWorkerUtilityAIAgent DEPRECATED/Chase"]
-script = ExtResource("12_p3anh")
-
-[node name="UtilityAIConsiderationFromNode" type="Node" parent="HumanWorkerUtilityAIAgent DEPRECATED/Chase/UtilityAIAggregation"]
-script = ExtResource("13_n67y1")
-curve = SubResource("Curve_0bn0i")
 
 [connection signal="body_entered" from="VisionArea" to="." method="_on_vision_area_body_entered"]
 [connection signal="body_exited" from="VisionArea" to="." method="_on_vision_area_body_exited"]
