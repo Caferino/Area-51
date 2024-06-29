@@ -6,8 +6,8 @@ signal entity_sprint()    ## Emitted whenever the entity gives sprinting input (
 signal entity_attack()    ## Emitted whenever the entity gives attack input ([kbd]Left-Click[/kbd]).
 signal entity_interact()  ## Emitted whenever the entity gives interact input ([kbd]'F'[/kbd]).
 
-var dir              : Vector2  = Vector2()  ## Current direction.
-var anim_state       : String   = "Idle"     ## Current animation state.
-var attacking     : bool     = false      ## Is the entity currently attacking?
-var sprinting     : bool     = false      ## Is the entity currently sprinting?
-var moving        : bool     = false      ## Is the entity currently moving?
+var dir        : Vector2  = Vector2()  ## Current direction.
+var anim_state : String   = "Idle"     ## Current animation state.
+var attacking  : bool     = false      ## Is the entity currently attacking?
+var sprinting  : bool     = false      ## Is the entity currently sprinting?
+var moving     : bool     = false      ## Is the entity currently moving?

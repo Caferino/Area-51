@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq6nj3buvscyg"]
+[gd_scene load_steps=5 format=3 uid="uid://dq6nj3buvscyg"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Attack Room/Attack Room.gd" id="1_ljmdg"]
 [ext_resource type="PackedScene" uid="uid://ui6le12cycb8" path="res://Labs/Scenes/Farming Room/FenceVertical.tscn" id="3_ndsrj"]
 [ext_resource type="PackedScene" uid="uid://tr0m4o6ekavs" path="res://Labs/Scenes/Farming Room/FenceHorizontal.tscn" id="4_2ge51"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="4_wn4dw"]
@@ -8,7 +7,6 @@
 
 [node name="AttackRoom" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_ljmdg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3

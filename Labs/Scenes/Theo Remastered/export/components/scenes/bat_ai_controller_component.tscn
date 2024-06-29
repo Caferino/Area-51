@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ble3l5001dbpu"]
+[gd_scene load_steps=23 format=3 uid="uid://ble3l5001dbpu"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/bat_ai_controller_component.gd" id="1_imjo1"]
 [ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/ContextMap.tscn" id="2_eih87"]
@@ -16,24 +16,16 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_0o3l8"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.146512, 1), 0.0, 0.0, 0, 0, Vector2(0.351163, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.248837, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
-
-[sub_resource type="Curve" id="Curve_woty5"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.501887), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="Curve" id="Curve_u40cd"]
 _data = [Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_fbp3s"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.202326, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.704651, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
-
-[sub_resource type="Curve" id="Curve_yn3xr"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="Curve" id="Curve_jjdkn"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -117,12 +109,6 @@ node = NodePath("../../../../..")
 property_name = "_get_energy"
 curve = SubResource("Curve_0o3l8")
 
-[node name="wander_time" type="Node" parent="BatUtilityAIAgent/Idle/Negators/Summators" node_paths=PackedStringArray("node")]
-script = ExtResource("7_ar8e3")
-node = NodePath("../../../../..")
-property_name = "_get_wander_time"
-curve = SubResource("Curve_woty5")
-
 [node name="Wander" type="Node" parent="BatUtilityAIAgent"]
 script = ExtResource("4_25ky4")
 
@@ -144,12 +130,6 @@ script = ExtResource("7_ar8e3")
 node = NodePath("../../../../..")
 property_name = "_get_energy"
 curve = SubResource("Curve_fbp3s")
-
-[node name="wander_time" type="Node" parent="BatUtilityAIAgent/Wander/Negators/Summators" node_paths=PackedStringArray("node")]
-script = ExtResource("7_ar8e3")
-node = NodePath("../../../../..")
-property_name = "_get_wander_time"
-curve = SubResource("Curve_yn3xr")
 
 [node name="Chase" type="Node" parent="BatUtilityAIAgent"]
 script = ExtResource("4_25ky4")

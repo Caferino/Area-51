@@ -5,6 +5,7 @@ class_name AIEntityController extends EntityController
 
 var distance_tolerance : float = 50
 var time_accumulator   : float = 0.0
+var iterations         : int   = 0
 var idle               : bool  = false
 var wandering          : bool  = false
 var chasing            : bool  = false

@@ -11,7 +11,9 @@ script = ExtResource("1_5iujm")
 [node name="AwareZoneArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4161
-monitorable = false
 
 [node name="AwareZoneCollisionShape" type="CollisionShape2D" parent="AwareZoneArea"]
 shape = SubResource("CircleShape2D_k5ghh")
+
+[connection signal="body_entered" from="AwareZoneArea" to="." method="_on_aware_zone_area_body_entered"]
+[connection signal="body_exited" from="AwareZoneArea" to="." method="_on_aware_zone_area_body_exited"]

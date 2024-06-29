@@ -1,25 +1,6 @@
 class_name BatAIControllerComponent extends AIEntityController
 ## An entity "bat" being controlled by an [color=violet]AI.
 
-## TODO - The logic should be as follow:
-# When Idle, Wandering or Fleeing, the bat is NOT busy
-# When Chasing or Attacking, the bat IS busy
-# When busy, suck energy. When not busy, recharge it.
-
-# When fleeing, it should probably consider if the enemy is nearby
-# to know when to stop and be idle/wander, not flee forever
-
-# WARN - Combining SUM and MULT aggregations in a way that it goes beyond 1.0
-# is useful to keep that action on top as long as you need, before it returns back
-# below under 1.0
-
-## TODO - Energy can be used to balance this mob in combat.
-## Once its energy reaches 0, it can start moving slow or need to flee...
-## What should recharge it? When it is Idle? Fleeing? Wandering too?
-## Should energy be consumed only while Chasing and Attacking?
-## TODO Should the energy variable be used only during combat?
-## When should it recharge, when decrease?
-
 
 func _ready():
 	context_map.chosen_dir_updated.connect(_on_chosen_dir_updated)
@@ -31,7 +12,8 @@ func _process(delta: float):
 	call(current_action)
 
 
-## Not sure if this will stay or fuse
+## WARN - Not sure if this will stay or fuse
+## This could loop in the Chase state maybe DEPRECATED
 func _handle_environment():
 	if current_target:
 		if entity.global_position.distance_to(current_target.global_position) < 30:
@@ -44,16 +26,17 @@ func _handle_energy(delta: float):
 	time_accumulator += delta
 	if time_accumulator >= 1.0:
 		time_accumulator -= 1.0
+		var energy_amount = randf_range(0.01, 0.06)
 		if moving:
-			if entity.heart.energy - 0.05 < 0.0: 
+			if entity.heart.energy - energy_amount < 0.0: 
 				entity.heart.energy = 0.0
 			else:
-				entity.heart.energy -= 0.05
+				entity.heart.energy -= energy_amount
 		else:
-			if entity.heart.energy + 0.05 > 1.0:
+			if entity.heart.energy + energy_amount > 1.0:
 				entity.heart.energy = 1.0
 			else:
-				entity.heart.energy += 0.05
+				entity.heart.energy += energy_amount
 	print("Energy: ", entity.heart.energy, " and moving: ", moving)  # DEBUG
 
 
@@ -72,22 +55,6 @@ func _on_echolocation_area_area_exited(area: Area2D) -> void:
 		current_target = null
 
 
-func _get_wander_time():
-	return $WanderTime.time_left
-
-
-func _get_energy():
-	return entity.heart.energy
-
-
-func _get_health():
-	return entity.heart.health
-
-
-func _on_chosen_dir_updated():
-	dir = context_map.chosen_dir
-
-
 ## AI component that judges the situation to choose the best direction to go to.
 func situational_awareness():
 	if chasing:
@@ -96,14 +63,34 @@ func situational_awareness():
 		return context_map.chosen_dir
 
 
-# ===== ===== ===== UTILITY AI SYSTEM ===== ===== ===== #
+## Receives the ContextMap's chosen direction.
+func _on_chosen_dir_updated():
+	dir = context_map.chosen_dir
+
+
+### Utility agent access method.
+#func _get_wander_time():
+	#return $WanderTime.time_left
+
+
+## Utility agent access method.
+func _get_energy():
+	return entity.heart.energy
+
+
+## Utility agent access method.
+func _get_health():
+	return entity.heart.health
+
+
+## ===== ===== ===== UTILITY AI SYSTEM ===== ===== ===== ##
 func _on_bat_utility_ai_agent_top_score_action_changed(top_action_id: Variant) -> void:
 	call(current_action + "_Exit")
 	current_action = top_action_id
 	call(top_action_id + "_Enter")
 
 
-# ===== ===== Idle ===== ===== #
+## ===== ===== Idle ===== ===== ##
 func Idle_Enter():
 	print("Idle Enter!")
 	idle = true
@@ -123,21 +110,19 @@ func Idle_Exit():
 	idle = false
 
 
-# ===== ===== Wander ===== ===== #
+## ===== ===== Wander ===== ===== ##
 func Wander_Enter():
 	print("Wander Enter!")
+	$WanderTime.start(randf_range(1, 6))
 	wandering = true
-	moving = true
 
 
 func Wander():
 	print("Wandering!")
 	if $WanderTime.time_left == 0:
+		$WanderTime.start(randf_range(0.1, 0.5))
 		dir = Vector2(randf_range(-1, 1), randf_range(-1, 1))
-	else:
-		$WanderTime.start(randf_range(0, 1))
-	# WARN - These will pile up
-	#await get_tree().create_timer(randf_range(0.15, 0.3)).timeout  # Lower for erratic speed
+		moving = true
 
 
 func Wander_Exit():
@@ -146,7 +131,7 @@ func Wander_Exit():
 	moving = false
 
 
-# ===== ===== Chase ===== ===== #
+## ===== ===== Chase ===== ===== ##
 func Chase_Enter():
 	print("Chase Enter!")
 	chasing = true
@@ -155,6 +140,8 @@ func Chase_Enter():
 
 func Chase():
 	print("Chasing!")
+	
+	## NOTE - CHECK OUT handle_environment() ABOVE
 	
 	dir = self.global_position.direction_to(current_target.global_position)
 
@@ -165,7 +152,7 @@ func Chase_Exit():
 	moving = false
 
 
-# ===== ===== Attack ===== ===== #
+## ===== ===== Attack ===== ===== ##
 func Attack_Enter():
 	print("Attack Enter!")
 	attacking = true
@@ -180,7 +167,7 @@ func Attack_Exit():
 	attacking = false
 
 
-# ===== ===== Flee ===== ===== #
+## ===== ===== Flee ===== ===== ##
 func Flee_Enter():
 	print("Flee Enter!")
 	fleeing = true
