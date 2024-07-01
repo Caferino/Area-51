@@ -40,16 +40,12 @@ func situational_awareness():
 		if controller.chasing:
 			if controller.enemy_too_close:
 				chosen_dir = _handle_context()
-				print("Handling context, enemy too close! ", chosen_dir)
 			else:
-				chosen_dir = controller.entity.global_position.direction_to(controller.current_target.global_position)
-				print("Chasing the player!")
+				chosen_dir = controller.dir
 		else:
 			chosen_dir = _handle_context()
-			print("Handling context! ", chosen_dir)
 	else:
 		chosen_dir = controller.dir
-		print("Not chosing any direction")
 	
 	chosen_dir_updated.emit()
 

@@ -7,19 +7,8 @@ func _ready():
 
 
 func _process(delta: float):
-	_handle_environment()
 	_handle_energy(delta)
 	call(current_action)
-
-
-## WARN - Not sure if this will stay or fuse
-## This could loop in the Chase state maybe DEPRECATED
-func _handle_environment():
-	if current_target:
-		if entity.global_position.distance_to(current_target.global_position) < 30:
-			enemy_too_close = true
-		else:
-			enemy_too_close = false
 
 
 func _handle_energy(delta: float):
@@ -37,22 +26,21 @@ func _handle_energy(delta: float):
 				entity.heart.energy = 1.0
 			else:
 				entity.heart.energy += energy_amount
-	print("Energy: ", entity.heart.energy, " and moving: ", moving)  # DEBUG
+		print("Energy: ", entity.heart.energy, " and moving: ", moving)  # DEBUG
 
 
 func _on_echolocation_area_area_entered(area: Area2D) -> void:
-	print("Area entered")
 	if area.is_in_group("Noise"):
-		enemy_nearby = true
 		current_target = area
+		target_location = current_target.global_position
+		enemy_nearby = true
 
 
 func _on_echolocation_area_area_exited(area: Area2D) -> void:
-	print("Area exited")
 	if area.is_in_group("Noise"):
-		chasing = false
+		target_location = current_target.global_position
+		#current_target = null ## TODO - What if lost when > distance_treshold
 		enemy_nearby = false
-		current_target = null
 
 
 ## AI component that judges the situation to choose the best direction to go to.
@@ -66,11 +54,6 @@ func situational_awareness():
 ## Receives the ContextMap's chosen direction.
 func _on_chosen_dir_updated():
 	dir = context_map.chosen_dir
-
-
-### Utility agent access method.
-#func _get_wander_time():
-	#return $WanderTime.time_left
 
 
 ## Utility agent access method.
@@ -98,11 +81,7 @@ func Idle_Enter():
 
 
 func Idle():
-	print("Idle!")
-	
 	dir = Vector2.ZERO
-	#if randi_range(1, 10) <= 2:  # 20% chance to stop moving/wander. Might need a better way using energy
-		#await get_tree().create_timer(randf_range(0.5, 1)).timeout
 
 
 func Idle_Exit():
@@ -118,7 +97,6 @@ func Wander_Enter():
 
 
 func Wander():
-	print("Wandering!")
 	if $WanderTime.time_left == 0:
 		$WanderTime.start(randf_range(0.1, 0.5))
 		dir = Vector2(randf_range(-1, 1), randf_range(-1, 1))
@@ -134,20 +112,24 @@ func Wander_Exit():
 ## ===== ===== Chase ===== ===== ##
 func Chase_Enter():
 	print("Chase Enter!")
+	in_combat = true
 	chasing = true
 	moving = true
 
 
 func Chase():
-	print("Chasing!")
-	
-	## NOTE - CHECK OUT handle_environment() ABOVE
-	
-	dir = self.global_position.direction_to(current_target.global_position)
+	if current_target:
+		target_location = current_target.global_position
+		target_distance = entity.global_position.distance_to(target_location)
+		if target_distance > 30:
+			dir = entity.global_position.direction_to(target_location)
+	#else:
+		# TODO - Scout/Search
 
 
 func Chase_Exit():
 	print("Chase Exit!")
+	in_combat = false
 	chasing = false
 	moving = false
 
@@ -155,6 +137,7 @@ func Chase_Exit():
 ## ===== ===== Attack ===== ===== ##
 func Attack_Enter():
 	print("Attack Enter!")
+	in_combat = true
 	attacking = true
 
 
@@ -164,21 +147,35 @@ func Attack():
 
 func Attack_Exit():
 	print("Attack Exit!")
+	in_combat = false
 	attacking = false
 
 
 ## ===== ===== Flee ===== ===== ##
 func Flee_Enter():
 	print("Flee Enter!")
+	offset = randf_range(-0.7, 0.7)
+	enemy_too_close = true
+	in_combat = false
 	fleeing = true
 	moving = true
 
 
 func Flee():
-	print("Fleeing!")
+	if current_target:
+		print("What the")
+		target_location = current_target.global_position
+		if entity.global_position.distance_to(target_location) > 300:  # TODO - Move
+			print("Fuck?!")
+			current_target = null
+	
+	target_distance = entity.global_position.distance_to(target_location)
+	dir = -entity.global_position.direction_to(target_location) + Vector2(offset, offset)
+	print(target_distance)
 
 
 func Flee_Exit():
 	print("Flee Exit!")
+	enemy_too_close = false
 	fleeing = false
 	moving = false

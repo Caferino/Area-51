@@ -14,6 +14,9 @@ var stunned            : bool  = false
 var in_combat          : bool  = false
 var enemy_nearby       : bool  = false
 var enemy_too_close    : bool  = false
+var target_distance    : float = 0.0
+var target_location    : Vector2
 
 var current_target     : Node   = null  ## Targets entities, interactables or goals.
 var current_action     : String = "Idle"
+var offset             : float  = 0.0
