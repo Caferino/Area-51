@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhknrcawdvqvk"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/equipment_component.gd" id="1_l6knl"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/attack_component.gd" id="1_11icm"]
 
 [node name="AttackComponent" type="Node2D"]
-script = ExtResource("1_l6knl")
+script = ExtResource("1_11icm")

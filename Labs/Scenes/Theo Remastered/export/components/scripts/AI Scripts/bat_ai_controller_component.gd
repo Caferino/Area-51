@@ -33,6 +33,7 @@ func _on_echolocation_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Noise"):
 		current_target = area
 		target_location = current_target.global_position
+		target_distance = entity.global_position.distance_to(target_location)
 		enemy_nearby = true
 
 
@@ -41,6 +42,15 @@ func _on_echolocation_area_area_exited(area: Area2D) -> void:
 		target_location = current_target.global_position
 		#current_target = null ## TODO - What if lost when > distance_treshold
 		enemy_nearby = false
+
+
+func _on_claws_area_area_entered(area: Area2D) -> void:
+	print("Claws on!")
+	if $AttackCooldown.time_left == 0:
+		$AttackCooldown.start(1)
+		if randf_range(0, 1) <= 0.25:
+			# Hurt/deal damage to the entity
+			print("Take that!")
 
 
 ## AI component that judges the situation to choose the best direction to go to.
@@ -122,9 +132,8 @@ func Chase():
 		target_location = current_target.global_position
 		target_distance = entity.global_position.distance_to(target_location)
 		if target_distance > 30:
-			dir = entity.global_position.direction_to(target_location)
-	#else:
-		# TODO - Scout/Search
+			offset = randf_range(-0.1, 0.1)
+			dir = (entity.global_position.direction_to(target_location) + Vector2(offset, offset)).normalized()
 
 
 func Chase_Exit():
@@ -134,21 +143,26 @@ func Chase_Exit():
 	moving = false
 
 
-## ===== ===== Attack ===== ===== ##
-func Attack_Enter():
-	print("Attack Enter!")
-	in_combat = true
-	attacking = true
-
-
-func Attack():
-	print("Attacking!")
-
-
-func Attack_Exit():
-	print("Attack Exit!")
-	in_combat = false
-	attacking = false
+## ===== ===== Attack ===== ===== ##  POSSIBLY DEPRECATED
+#func Attack_Enter():
+	#print("Attack Enter!")
+	#in_combat = true
+	#attacking = true
+	#moving = true
+#
+#
+#func Attack():
+	#print("Attacking! ")
+	#if current_target:
+		#target_location = current_target.global_position
+		#target_distance = entity.global_position.distance_to(target_location)
+#
+#
+#func Attack_Exit():
+	#print("Attack Exit!")
+	#in_combat = false
+	#attacking = false
+	#moving = false
 
 
 ## ===== ===== Flee ===== ===== ##
@@ -163,15 +177,14 @@ func Flee_Enter():
 
 func Flee():
 	if current_target:
-		print("What the")
 		target_location = current_target.global_position
-		if entity.global_position.distance_to(target_location) > 300:  # TODO - Move
-			print("Fuck?!")
+		if entity.global_position.distance_to(target_location) > 300:  # TODO - Move somewhere else
 			current_target = null
 	
 	target_distance = entity.global_position.distance_to(target_location)
 	dir = -entity.global_position.direction_to(target_location) + Vector2(offset, offset)
-	print(target_distance)
+	# NOTE - Not normalizing dir here gives a cool "flinch", "adrenaline rush sprint" effect 
+	# randomly sometimes whenever x or y go beyond 1.0, unlike in Chase()
 
 
 func Flee_Exit():

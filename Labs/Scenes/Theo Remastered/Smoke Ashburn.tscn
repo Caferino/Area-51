@@ -717,6 +717,7 @@ animator = NodePath("LeftLegAnimator")
 [node name="LeftLegArea" type="Area2D" parent="BodyComponent/LeftLeg"]
 collision_layer = 4096
 collision_mask = 3
+monitorable = false
 
 [node name="LeftLegCollisionShape" type="CollisionShape2D" parent="BodyComponent/LeftLeg/LeftLegArea"]
 position = Vector2(-7, 13)
@@ -744,6 +745,7 @@ animator = NodePath("RightLegAnimator")
 [node name="RightLegArea" type="Area2D" parent="BodyComponent/RightLeg"]
 collision_layer = 4096
 collision_mask = 3
+monitorable = false
 
 [node name="RightLegCollisionShape" type="CollisionShape2D" parent="BodyComponent/RightLeg/RightLegArea"]
 position = Vector2(7, 13)
