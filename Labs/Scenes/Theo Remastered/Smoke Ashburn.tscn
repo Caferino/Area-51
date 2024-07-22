@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=106 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -283,6 +283,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xonh7"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fih4q"]
+graph_offset = Vector2(-127.357, 33.9091)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_04gw0")
 nodes/Movement/position = Vector2(140, 60)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_xonh7")
@@ -384,6 +385,7 @@ graph_offset = Vector2(52, -63)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_u3wnr"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5dsi7"]
+graph_offset = Vector2(-98.0843, -43.4053)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_1axe4")
 nodes/Movement/position = Vector2(180, 60)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_u3wnr")
@@ -496,6 +498,7 @@ graph_offset = Vector2(-55, -14)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_suc2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a0x5n"]
+graph_offset = Vector2(-212.087, 170.909)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_3f5lu")
 nodes/Movement/position = Vector2(240, 420)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_suc2h")
@@ -506,34 +509,17 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a504e"]
 size = Vector2(12.5, 2)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_808wd"]
-animations = [{
-"frames": [],
-"loop": false,
-"name": &"default",
-"speed": 0.0
-}]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dpjav"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqnt2"]
-size = Vector2(12.5, 2)
+size = Vector2(5, 5)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_u7gkm"]
-animations = [{
-"frames": [],
-"loop": false,
-"name": &"default",
-"speed": 0.0
-}]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_suhwq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r48ac"]
+size = Vector2(1, 1)
 
 [node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body") groups=["Player", "Protagonist"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4097
-collision_mask = 4294908925
+collision_mask = 4293860349
 motion_mode = 1
 script = ExtResource("1_c7twf")
 lore = NodePath("LoreComponent")
@@ -698,7 +684,7 @@ tree_root = SubResource("AnimationNodeBlendTree_a0x5n")
 anim_player = NodePath("../TorsoAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0, 0)
 parameters/Movement/Move/blend_position = Vector2(0, 0)
-parameters/Movement/Run/blend_position = Vector2(0, 0)
+parameters/Movement/Run/blend_position = Vector2(0.24527, 0.424868)
 parameters/TimeScale/scale = 1.0
 
 [node name="TorsoAnimator" type="AnimationPlayer" parent="BodyComponent/Torso"]
@@ -711,8 +697,8 @@ speed_scale = 2.0
 [node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 script = ExtResource("12_xfj4o")
 accessories = NodePath("LeftLegArea/AccessoriesComponent")
-animator_tree = NodePath("LeftLegAnimatorTree")
-animator = NodePath("LeftLegAnimator")
+animator_tree = NodePath("")
+animator = NodePath("")
 
 [node name="LeftLegArea" type="Area2D" parent="BodyComponent/LeftLeg"]
 collision_layer = 4096
@@ -723,24 +709,13 @@ monitorable = false
 position = Vector2(-7, 13)
 shape = SubResource("RectangleShape2D_a504e")
 
-[node name="LeftLegAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/LeftLeg/LeftLegArea"]
-sprite_frames = SubResource("SpriteFrames_808wd")
-
 [node name="AccessoriesComponent" parent="BodyComponent/LeftLeg/LeftLegArea" instance=ExtResource("10_6yihg")]
-
-[node name="LeftLegAnimatorTree" type="AnimationTree" parent="BodyComponent/LeftLeg"]
-root_node = NodePath("")
-tree_root = SubResource("AnimationNodeBlendTree_dpjav")
-anim_player = NodePath("../LeftLegAnimator")
-
-[node name="LeftLegAnimator" type="AnimationPlayer" parent="BodyComponent/LeftLeg"]
-root_node = NodePath("")
 
 [node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 script = ExtResource("12_xfj4o")
 accessories = NodePath("RightLegArea/AccessoriesComponent")
-animator_tree = NodePath("RightLegAnimatorTree")
-animator = NodePath("RightLegAnimator")
+animator_tree = NodePath("")
+animator = NodePath("")
 
 [node name="RightLegArea" type="Area2D" parent="BodyComponent/RightLeg"]
 collision_layer = 4096
@@ -752,18 +727,24 @@ position = Vector2(7, 13)
 shape = SubResource("RectangleShape2D_kqnt2")
 debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 
-[node name="RightLegAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/RightLeg/RightLegArea"]
-sprite_frames = SubResource("SpriteFrames_u7gkm")
-
 [node name="AccessoriesComponent" parent="BodyComponent/RightLeg/RightLegArea" instance=ExtResource("10_6yihg")]
 
-[node name="RightLegAnimatorTree" type="AnimationTree" parent="BodyComponent/RightLeg"]
-root_node = NodePath("")
-tree_root = SubResource("AnimationNodeBlendTree_suhwq")
-anim_player = NodePath("../RightLegAnimator")
+[node name="Hands" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
+script = ExtResource("12_xfj4o")
+accessories = NodePath("../RightLeg/RightLegArea/AccessoriesComponent")
+animator_tree = NodePath("")
+animator = NodePath("")
 
-[node name="RightLegAnimator" type="AnimationPlayer" parent="BodyComponent/RightLeg"]
-root_node = NodePath("")
+[node name="HandsArea" type="RigidBody2D" parent="BodyComponent/Hands"]
+collision_layer = 16384
+collision_mask = 0
+freeze = true
+freeze_mode = 1
+
+[node name="HandsCollisionShape" type="CollisionShape2D" parent="BodyComponent/Hands/HandsArea"]
+z_index = 2
+shape = SubResource("RectangleShape2D_r48ac")
+debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 
 [node name="EquipmentComponent" parent="BodyComponent" instance=ExtResource("6_dybqt")]
 y_sort_enabled = true

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyu16u72a1lk2"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/field.gd" id="1_ec6b2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0kjf"]
+size = Vector2(500, 500)
+
+[node name="Field" type="Area2D"]
+y_sort_enabled = true
+monitoring = false
+script = ExtResource("1_ec6b2")
+amount = 50
+plants = ["weed1", "weed2", "weed3", "weed4", "weed5", "weed6", "weed7", "weed8"]
+
+[node name="Area" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e0kjf")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ble3l5001dbpu"]
+[gd_scene load_steps=27 format=3 uid="uid://ble3l5001dbpu"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/bat_ai_controller_component.gd" id="1_imjo1"]
 [ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/ContextMap.tscn" id="2_eih87"]
@@ -14,12 +14,17 @@ radius = 3.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tclh"]
 radius = 100.0
 
-[sub_resource type="Curve" id="Curve_gitm8"]
+[sub_resource type="Curve" id="Curve_ru1fk"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_ty1yd"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_e1qmw"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_tv76m"]
@@ -93,9 +98,6 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="ContextMap" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("2_eih87")]
-controller = NodePath("..")
-
 [node name="ClawsArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4096
@@ -114,6 +116,9 @@ monitorable = false
 [node name="EcholocationCollisionShape" type="CollisionShape2D" parent="EcholocationArea"]
 shape = SubResource("CircleShape2D_1tclh")
 
+[node name="ContextMap" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("2_eih87")]
+controller = NodePath("..")
+
 [node name="BatUtilityAIAgent" type="Node" parent="."]
 script = ExtResource("3_5p0vp")
 
@@ -127,7 +132,7 @@ script = ExtResource("6_nya6u")
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
 property_name = "enemy_nearby"
-curve = SubResource("Curve_gitm8")
+curve = SubResource("Curve_ru1fk")
 
 [node name="in_combat" type="Node" parent="BatUtilityAIAgent/Idle/Negators" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
@@ -138,6 +143,12 @@ curve = SubResource("Curve_ty1yd")
 [node name="Augmentors (Priority 2)" type="Node" parent="BatUtilityAIAgent/Idle/Negators"]
 script = ExtResource("6_nya6u")
 aggregation_type = 2
+
+[node name="stunned" type="Node" parent="BatUtilityAIAgent/Idle/Negators/Augmentors (Priority 2)" node_paths=PackedStringArray("node")]
+script = ExtResource("7_ar8e3")
+node = NodePath("../../../../..")
+property_name = "stunned"
+curve = SubResource("Curve_e1qmw")
 
 [node name="energy" type="Node" parent="BatUtilityAIAgent/Idle/Negators/Augmentors (Priority 2)" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
@@ -207,26 +218,26 @@ node = NodePath("../../../../..")
 property_name = "_get_energy"
 curve = SubResource("Curve_mnkn5")
 
-[node name="Attack DEPRECATED" type="Node" parent="BatUtilityAIAgent"]
+[node name="Attack DP" type="Node" parent="BatUtilityAIAgent"]
 script = ExtResource("4_25ky4")
 
-[node name="Augmentors (Priority 3)" type="Node" parent="BatUtilityAIAgent/Attack DEPRECATED"]
+[node name="Augmentors (Priority 3)" type="Node" parent="BatUtilityAIAgent/Attack DP"]
 script = ExtResource("6_nya6u")
 
-[node name="target_distance" type="Node" parent="BatUtilityAIAgent/Attack DEPRECATED/Augmentors (Priority 3)" node_paths=PackedStringArray("node")]
+[node name="target_distance" type="Node" parent="BatUtilityAIAgent/Attack DP/Augmentors (Priority 3)" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
 property_name = "target_distance"
 max_value = 5.0
 curve = SubResource("Curve_4f02w")
 
-[node name="enemy_nearby" type="Node" parent="BatUtilityAIAgent/Attack DEPRECATED/Augmentors (Priority 3)" node_paths=PackedStringArray("node")]
+[node name="enemy_nearby" type="Node" parent="BatUtilityAIAgent/Attack DP/Augmentors (Priority 3)" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
 property_name = "enemy_nearby"
 curve = SubResource("Curve_xkwig")
 
-[node name="DEPRECATED" type="Node" parent="BatUtilityAIAgent/Attack DEPRECATED/Augmentors (Priority 3)" node_paths=PackedStringArray("node")]
+[node name="DEPRECATED" type="Node" parent="BatUtilityAIAgent/Attack DP/Augmentors (Priority 3)" node_paths=PackedStringArray("node")]
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
 property_name = "enemy_nearby"
@@ -242,7 +253,7 @@ script = ExtResource("6_nya6u")
 script = ExtResource("7_ar8e3")
 node = NodePath("../../../..")
 property_name = "target_distance"
-max_value = 300.0
+max_value = 500.0
 curve = SubResource("Curve_4n4ia")
 
 [node name="Max" type="Node" parent="BatUtilityAIAgent/Flee/Augmentors (Priority 3)"]

@@ -17,15 +17,16 @@ func _handle_energy(delta: float):
 		time_accumulator -= 1.0
 		var energy_amount = randf_range(0.01, 0.06)
 		if moving:
-			if entity.heart.energy - energy_amount < 0.0: 
+			if entity.heart.energy - energy_amount < 0.0:
+				stun(3)
 				entity.heart.energy = 0.0
 			else:
 				entity.heart.energy -= energy_amount
 		else:
-			if entity.heart.energy + energy_amount > 1.0:
+			if entity.heart.energy + energy_amount * 2 > 1.0:
 				entity.heart.energy = 1.0
 			else:
-				entity.heart.energy += energy_amount
+				entity.heart.energy += energy_amount * 2
 		print("Energy: ", entity.heart.energy, " and moving: ", moving)  # DEBUG
 
 
@@ -45,20 +46,20 @@ func _on_echolocation_area_area_exited(area: Area2D) -> void:
 
 
 func _on_claws_area_area_entered(area: Area2D) -> void:
-	print("Claws on!")
 	if $AttackCooldown.time_left == 0:
 		$AttackCooldown.start(1)
 		if randf_range(0, 1) <= 0.25:
-			# Hurt/deal damage to the entity
+			# TODO - Hurt/deal damage to the entity
 			print("Take that!")
 
 
-## AI component that judges the situation to choose the best direction to go to.
-func situational_awareness():
-	if chasing:
-		return self.global_position.direction_to(current_target.global_position)
-	else:
-		return context_map.chosen_dir
+## TODO - Create an animation (sweat drops, flash blue) as a clue
+func stun(time: float) -> void:
+	stunned = true
+	$ClawsArea.monitoring = false
+	await get_tree().create_timer(time).timeout
+	$ClawsArea.monitoring = true
+	stunned = false
 
 
 ## Receives the ContextMap's chosen direction.
@@ -102,7 +103,7 @@ func Idle_Exit():
 ## ===== ===== Wander ===== ===== ##
 func Wander_Enter():
 	print("Wander Enter!")
-	$WanderTime.start(randf_range(1, 6))
+	$WanderTime.start(randf_range(1, 3))
 	wandering = true
 
 
@@ -176,12 +177,13 @@ func Flee_Enter():
 
 
 func Flee():
+	target_distance = entity.global_position.distance_to(target_location)
 	if current_target:
 		target_location = current_target.global_position
-		if entity.global_position.distance_to(target_location) > 300:  # TODO - Move somewhere else
+		if entity.global_position.distance_to(target_location) > 500:  # TODO - Move somewhere else
+			print("Lost target!")
 			current_target = null
 	
-	target_distance = entity.global_position.distance_to(target_location)
 	dir = -entity.global_position.direction_to(target_location) + Vector2(offset, offset)
 	# NOTE - Not normalizing dir here gives a cool "flinch", "adrenaline rush sprint" effect 
 	# randomly sometimes whenever x or y go beyond 1.0, unlike in Chase()

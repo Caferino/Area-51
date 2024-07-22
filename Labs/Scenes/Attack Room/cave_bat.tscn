@@ -81,7 +81,6 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_p1y36")
 blend_point_3/pos = Vector2(1, 0)
 min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
-blend_mode = 1
 sync = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ml5s6"]
@@ -188,7 +187,7 @@ animator_tree = NodePath("CaveBatAnimationTree")
 animator = NodePath("CaveBatAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
-position = Vector2(0, -2.91928)
+position = Vector2(0, -3.03321)
 monitoring = false
 
 [node name="TorsoCollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]
@@ -207,7 +206,7 @@ root_node = NodePath("../../..")
 tree_root = SubResource("AnimationNodeBlendTree_cbxkp")
 anim_player = NodePath("../CaveBatAnimator")
 parameters/Movement/Dead/blend_position = Vector2(0, 0)
-parameters/Movement/Idle/blend_position = Vector2(-0.224519, 0.189928)
+parameters/Movement/Idle/blend_position = Vector2(-0.0900255, 0.348201)
 parameters/TimeScale/scale = 1.0
 
 [node name="CaveBatAnimator" type="AnimationPlayer" parent="BodyComponent/Torso"]

@@ -31,6 +31,14 @@ func handle_movement(entity: Entity, direction: Vector2, is_sprinting: bool):
 	# TODO - Not sure if I need DeltaTime here, maybe only if it was online?
 	entity.velocity = entity.velocity.lerp(direction, accel)
 	entity.move_and_slide()
+	## TODO - Alternative to add custom logic when colliding with rigidbodies
+	#if entity.move_and_slide():
+		#print("True slide")
+		#for i in entity.get_slide_collision_count():
+			#print("Inside collision")
+			#var c = entity.get_slide_collision(i)
+			#if c.get_collider() is HangingDecor:
+				#print("HangingDecor collided")
 	
 	# This block prevents the entire animation process from running every physics frame unnecessarily
 	if entity.velocity.is_zero_approx() and entity.velocity != Vector2.ZERO:
@@ -70,7 +78,8 @@ func handle_animation(entity: Entity, direction: Vector2, is_sprinting: bool):
 			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] - 60) / 60 + 1.8
 	
 	# TODO ! Try to make this system faster, reduce CPU overhead
-	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0] (check entity's soul)
+	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", 
+	#Vector2(0, 1), "parameters/TimeScale/scale", 1.0] (check entity's soul)
 	for limb in entity.body_pose:
 		entity.body_pose[limb][3] = current_state
 		entity.body_pose[limb][4] = "parameters/Movement/" + current_state + "/blend_position"

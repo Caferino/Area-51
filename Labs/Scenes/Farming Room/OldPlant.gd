@@ -1,4 +1,4 @@
-class_name Plant extends Node2D
+class_name OldPlant extends Node2D
 
 @onready var sprite = $Sprite
 @onready var leaves = $Leaves

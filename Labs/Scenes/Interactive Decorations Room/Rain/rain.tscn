@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://7eg7lf7mwwdx"]
+
+[ext_resource type="Texture2D" uid="uid://wpfksgmoh4vs" path="res://Labs/Scenes/Interactive Decorations Room/Rain/raindrop.png" id="1_y1q0h"]
+[ext_resource type="PackedScene" uid="uid://dy243roen5s8r" path="res://Labs/Scenes/Interactive Decorations Room/Rain/drop.tscn" id="2_srds0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iylsx"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(525, 300, 1)
+angle_min = -45.0
+angle_max = -45.0
+direction = Vector3(-1, 1, 0)
+spread = 9.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 1500.0
+gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 1, 0.784314)
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 6
+
+[node name="Rain" type="GPUParticles2D"]
+z_index = 1
+amount = 64
+sub_emitter = NodePath("Drop")
+process_material = SubResource("ParticleProcessMaterial_iylsx")
+texture = ExtResource("1_y1q0h")
+lifetime = 0.1
+
+[node name="Drop" parent="." instance=ExtResource("2_srds0")]

@@ -1,6 +1,4 @@
-extends Node2D
-
-class_name Field
+class_name OldField extends Node2D
 
 # TODO - Remaster this with signals and a better hierarchy: World / Managers / FarmManager / MineMan...
 @onready var surface = get_parent().get_parent().find_child("Surface")
@@ -14,7 +12,7 @@ func _ready():
 
 func load_plants():
 	for i in range(100):
-		var plant = preload("res://Labs/Scenes/Farming Room/Plant.tscn").instantiate()
+		var plant = preload("res://Labs/Scenes/Farming Room/Plant.tscn").instantiate()  ## WARN - BAD LINE
 		plant.get_node("Sprite").texture = get_parent().get_crop_texture("corn")
 		
 		var area_size_x = area.get_shape().size.x / 2

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjsx7kxrgbrut"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Level Components/level_component.gd" id="1_h5pvy"]
+[ext_resource type="PackedScene" uid="uid://cxptmvqe4te2" path="res://Labs/Scenes/Level Components/Space and Time/level_time_component.tscn" id="2_igk28"]
+[ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space and Time/level_space_component.tscn" id="3_14crm"]
+
+[sub_resource type="Environment" id="Environment_5wis1"]
+
+[node name="LevelComponent" type="Node2D" node_paths=PackedStringArray("space", "time")]
+script = ExtResource("1_h5pvy")
+space = NodePath("LevelSpaceComponent")
+time = NodePath("LevelTimeComponent")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5wis1")
+
+[node name="LevelTimeComponent" parent="." instance=ExtResource("2_igk28")]
+
+[node name="LevelSpaceComponent" parent="." instance=ExtResource("3_14crm")]

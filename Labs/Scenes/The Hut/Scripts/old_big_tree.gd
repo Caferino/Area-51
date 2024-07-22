@@ -1,4 +1,4 @@
-class_name BigTree extends Node2D
+class_name OldBigTree extends Node2D
 
 ## TODO - Remaster this Tree script, simply replacing the AnimatedSprite logic
 ## and make a class Tree that hold these stats and probably more (hitbox script)

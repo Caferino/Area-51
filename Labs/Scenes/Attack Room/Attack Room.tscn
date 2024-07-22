@@ -160,3 +160,12 @@ position = Vector2(620.667, 343.444)
 
 [node name="CaveBat" parent="." instance=ExtResource("5_ag3o8")]
 position = Vector2(528, 510)
+
+[node name="CaveBat2" parent="." instance=ExtResource("5_ag3o8")]
+position = Vector2(901, 335)
+
+[node name="CaveBat3" parent="." instance=ExtResource("5_ag3o8")]
+position = Vector2(311, 345)
+
+[node name="CaveBat4" parent="." instance=ExtResource("5_ag3o8")]
+position = Vector2(870, 548)

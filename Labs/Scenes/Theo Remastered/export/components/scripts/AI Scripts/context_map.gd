@@ -27,15 +27,12 @@ func _ready():
 		ray_directions[i] = Vector2.RIGHT.rotated(angle)
 
 
-## NOTE - Forgot why not _process - Because get_overlapping_bodies() is heavy
-## TODO - Should create a variable that turns a boolean on whenever AwareZone collides
-## Also because I am creathing a PhysicsRay in handle_context()
+## It has to be in physics because a PhysicsRay2D is created inside the loop.
 func _physics_process(_delta):
 	situational_awareness()
 
 
 func situational_awareness():
-	## WARN - Should turn this into a boolean that signals switch on/off, this is expensive
 	if overlap_bodies:
 		if controller.chasing:
 			if controller.enemy_too_close:

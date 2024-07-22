@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coqvyl64ywqwc"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Environment/environment_component.gd" id="1_dbe86"]
+
+[node name="EnvironmentComponent" type="Node2D"]
+script = ExtResource("1_dbe86")
