@@ -166,6 +166,28 @@ Created three new Autoload scripts that are inspired on the three gods of the wo
 
 ---
 
+**E019: AI Refactor**
+
+![E019-1](.image/README/E018-1.png "AI Refactor")![E019-2](.image/README/E018-2.png "AI Refactor")
+
+Another big one. Spent about a month refactoring the AI system, mimicking the structure I used for the human body: there is a controller for every entity's AI that gives it the direction to move or action to do based on the current situation or context. I ended creating my own baby AI system with no help by upgrading the Utility AI I had with State Machines, a kind of hybrid that simply runs a Start(), Update() and End() function given the Utility AI's Agent chosen priority action. It is still not complete, I have yet to implement the combat, which requires me to design a Situational Awareness system, something that judges the current situation more profoundly, to play with its priorities. For this, I read that GOAP is best, although it is also the heaviest regarding performance. I'd use it only for humanoid enemies, not small critters like a bat, which shine the most when using simpler AIs like my Utility/STM hybrid one. GOAP, and possibly in the future, neural training and machine learning if possible, will be used just for learning purposes. Although if successful, I think it'd be crazy. Godot has made it so easy to design everything in a very scalable way; I just have spent a lot of time designing these things, trials and errors and such to come up with the best framework possible that would allow to create maybe a good line of 2D RPGs, with open-world capabilities in mind. I feel like I am in the most juicy part of what I have dreamed to reach. It's finally here, designing the best AI possible, the situational awareness. Feels like it's going to be a bunch of if/elses, with simple math, but a very, and I mean, very difficult design. I am impressed by Elden Ring's AI and some shooters, I will need to invest a lot of time reading about them and then try to create my own. However, since that takes a lot of grind, I have been working on other side projects, to destress myself from all this a little, also because I really need a job already and Mexico doesn't really have any game dev companies, purely web dev, which I am starting to give a wider shot at in Area52 (just learnt the basics of .NET Blazor, to make a website prototype where I plan to showcase this progress in a better way someday). Anything to get a damn job, I feel like I've proven that I can get shit done. I hope.
+
+---
+
+**E020: Plants & Grass**
+
+![E020-1](.image/README/E018-1.png "Plants &amp; Grass")![E020-2](.image/README/E018-2.png "Plants &amp; Grass")
+
+Can generate a set amount on the given area. Planning to see if concurrency can be used for the upcoming wind simulation, or something to help this great amount of sprites.
+
+---
+
+**E021: Hanging Objects**
+
+![E021-1](.image/README/E018-1.png "Hanging Objects")![E021-2](.image/README/E018-2.png "Hanging Objects")
+
+---
+
 E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
 
 [TBA]
