@@ -178,7 +178,7 @@ Another big one. Spent about a month refactoring the AI system, mimicking the st
 
 ![E020-1](.image/README/E018-1.png "Plants &amp; Grass")![E020-2](.image/README/E018-2.png "Plants &amp; Grass")
 
-Can generate a set amount on the given area. Planning to see if concurrency can be used for the upcoming wind simulation, or something to help this great amount of sprites.
+Can generate a set amount on the given area. Planning to see if concurrency can be used for the upcoming wind simulation, or something to help this great amount of sprites. Might create circular and triangular areas to be able to cover absolutely any 2D surface possible.
 
 ---
 
