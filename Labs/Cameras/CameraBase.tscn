@@ -8,7 +8,7 @@ script = ExtResource("1_l0eny")
 camera = NodePath("Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(4.5, 4.5)
 position_smoothing_enabled = true
 
 [node name="Rain" parent="." instance=ExtResource("2_73kuo")]

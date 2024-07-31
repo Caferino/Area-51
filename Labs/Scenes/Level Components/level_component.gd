@@ -1,11 +1,14 @@
-class_name LevelComponent extends Node2D
+class_name Level extends Node2D
 
 @export var space : LevelSpaceComponent = null
 @export var time  : LevelTimeComponent  = null
 
 
 var stats : Dictionary = {
-	"time_cycle" : {},
+	"time" : {
+		"interval" = 6.0,  # Also known as "tick_interval"
+		"cycle"    = 0.0
+	},
 	"environment" : {},
 	"weather" : {},
 	"wind" : {}
@@ -31,9 +34,28 @@ var stats : Dictionary = {
 
 func _ready() -> void:
 	## TODO - Should I register all of Space's nodes here and then do stuff to them every tick?
-	time.tick_timeout.connect(_on_tick_timeout)
+	time.interval = stats["time"]["interval"]
+	time.tick.connect(_on_tick)
+	time.start()
 
 
-func _on_tick_timeout():
-	print("Tick!")
-	## TODO - Juicy logic here
+func _on_tick():
+	## If you want the level to control when the Time Ticker restarts, stop it first.
+	game_loop()
+
+
+func game_loop():
+	## Each level must have its own game_loop if it has a unique logic.
+	## Just DRY if a lot of levels share the same logic. Create a class for them, "Outside"...
+	
+	## IMPORTANT WARN - ! Make sure to animate only fields inside viewport/area around and in viewport
+	## to reduce lag significantly in the future for the open world design. Start learning it here too,
+	## in case you want massive caves or something. Learn advanced skills, this is what all this is for.
+	
+	## NOTE - What if every tick, here, I generate a RNG that defines everything?
+	## WARN - Could that make this RNG predictable sometimes? Maybe generate it when calling each space's node
+	
+	## Do something to space continuum
+	print("Level's GameLoop!")
+	
+	

@@ -1,9 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://ccbeafxootyvt"]
+[gd_scene load_steps=33 format=3 uid="uid://ccbeafxootyvt"]
 
+[ext_resource type="Script" path="res://Labs/Scenes/The Hut/The Hut.gd" id="1_1w3b8"]
 [ext_resource type="Texture2D" uid="uid://dka86wo2tsoug" path="res://Labs/Scenes/The Hut/Plants and Paths.png" id="2_3qdho"]
+[ext_resource type="PackedScene" uid="uid://cxptmvqe4te2" path="res://Labs/Scenes/Level Components/Space and Time/level_time_component.tscn" id="2_4ildl"]
 [ext_resource type="Texture2D" uid="uid://chmsiqs8w2akd" path="res://Labs/Scenes/The Hut/Trees.png" id="2_t75h0"]
 [ext_resource type="PackedScene" uid="uid://mrd6gxhdcf0o" path="res://Labs/Assets/X. Resources/Animals/Lucas.tscn" id="2_w6cke"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="3_der8g"]
+[ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space and Time/level_space_component.tscn" id="3_undjk"]
 [ext_resource type="Script" path="res://inventory/scripts/ui/ui_container.gd" id="5_83uno"]
 [ext_resource type="PackedScene" uid="uid://b8wmxtfw71wp" path="res://inventory/scenes/ui/settings.tscn" id="6_qajyd"]
 [ext_resource type="PackedScene" uid="uid://cjly7inr5q30p" path="res://inventory/scenes/ui/inventory_container.tscn" id="7_8t5op"]
@@ -6569,8 +6572,17 @@ script = ExtResource("14_c1tuy")
 name = "caca"
 size = 2
 
-[node name="TheHut" type="Node2D"]
+[node name="TheHut" type="Node2D" node_paths=PackedStringArray("space", "time")]
 y_sort_enabled = true
+script = ExtResource("1_1w3b8")
+space = NodePath("LevelSpaceComponent")
+time = NodePath("LevelTimeComponent")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="LevelTimeComponent" parent="." instance=ExtResource("2_4ildl")]
+
+[node name="LevelSpaceComponent" parent="." instance=ExtResource("3_undjk")]
 
 [node name="ui" type="CanvasLayer" parent="."]
 

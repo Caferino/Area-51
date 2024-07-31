@@ -5,7 +5,7 @@
 [node name="LevelTimeComponent" type="Node"]
 script = ExtResource("1_186hx")
 
-[node name="Ticker" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="Ticker" to="." method="_on_ticker_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

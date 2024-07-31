@@ -48,7 +48,7 @@ func _on_echolocation_area_area_exited(area: Area2D) -> void:
 func _on_claws_area_area_entered(area: Area2D) -> void:
 	if $AttackCooldown.time_left == 0:
 		$AttackCooldown.start(1)
-		if randf_range(0, 1) <= 0.25:
+		if randf() <= 0.25:
 			# TODO - Hurt/deal damage to the entity
 			print("Take that!")
 
