@@ -168,15 +168,25 @@ Created three new Autoload scripts that are inspired on the three gods of the wo
 
 **E019: AI Refactor**
 
-![E019-1](.image/README/E018-1.png "AI Refactor")![E019-2](.image/README/E018-2.png "AI Refactor")
+![E019-1](.image/README/E019-1.png "AI Refactor")![E019-2](.image/README/E019-2.png "AI Refactor")
 
-Another big one. Spent about a month refactoring the AI system, mimicking the structure I used for the human body: there is a controller for every entity's AI that gives it the direction to move or action to do based on the current situation or context. I ended creating my own baby AI system with no help by upgrading the Utility AI I had with State Machines, a kind of hybrid that simply runs a Start(), Update() and End() function given the Utility AI's Agent chosen priority action. It is still not complete, I have yet to implement the combat, which requires me to design a Situational Awareness system, something that judges the current situation more profoundly, to play with its priorities. For this, I read that GOAP is best, although it is also the heaviest regarding performance. I'd use it only for humanoid enemies, not small critters like a bat, which shine the most when using simpler AIs like my Utility/STM hybrid one. GOAP, and possibly in the future, neural training and machine learning if possible, will be used just for learning purposes. Although if successful, I think it'd be crazy. Godot has made it so easy to design everything in a very scalable way; I just have spent a lot of time designing these things, trials and errors and such to come up with the best framework possible that would allow to create maybe a good line of 2D RPGs, with open-world capabilities in mind. I feel like I am in the most juicy part of what I have dreamed to reach. It's finally here, designing the best AI possible, the situational awareness. Feels like it's going to be a bunch of if/elses, with simple math, but a very, and I mean, very difficult design. I am impressed by Elden Ring's AI and some shooters, I will need to invest a lot of time reading about them and then try to create my own. However, since that takes a lot of grind, I have been working on other side projects, to destress myself from all this a little, also because I really need a job already and Mexico doesn't really have any game dev companies, purely web dev, which I am starting to give a wider shot at in Area52 (just learnt the basics of .NET Blazor, to make a website prototype where I plan to showcase this progress in a better way someday). Anything to get a damn job, I feel like I've proven that I can get shit done. I hope.
+![E019-3](.image/README/E019-3.png "AI Refactor")
+
+![E019-4](.image/README/E019-4.png "AI Refactor")
+
+Another big one. Spent about a month refactoring the AI system, mimicking the structure I used for the human body: there is a controller for every entity's AI that gives it the direction to move or action to do based on the current situation or context. I ended creating my own baby AI system with no help by upgrading the Utility AI I had with State Machines, a kind of hybrid that simply runs a Start(), Update() and End() function given the Utility AI's Agent chosen priority action. It is still not complete, I have yet to implement the combat, which requires me to design a Situational Awareness system, something that judges the current situation more profoundly, to play with its priorities. For this, I read that GOAP is best, although it is also the heaviest regarding performance. I'd use it only for humanoid enemies, not small critters like a bat, which shine the most when using simpler AIs like my Utility/STM hybrid one. GOAP, and possibly in the future, neural training and machine learning if possible, will be used just for learning purposes. Although if successful, I think it'd be crazy. Godot has made it so easy to design everything in a very scalable way; I just have spent a lot of time designing these things, trials and errors and such to come up with the best framework possible that would allow to create maybe a good line of 2D RPGs, with open-world capabilities in mind. I feel like I am in the most juicy part of what I have dreamed to reach. It's finally here, designing the best AI possible, the situational awareness. Feels like it's going to be a bunch of if/elses, with simple math, but a very, and I mean, very difficult design. I am impressed by Elden Ring's AI and some shooters, I will need to invest a lot of time reading about them and then try to create my own. However, since that takes a lot of grind, I have been working on other side projects, to destress myself from all this a little, also because I really need a job already and Mexico doesn't really have any game dev companies, purely web dev, which I am starting to give a wider shot at in Area52 (just learnt the basics of .NET Blazor, to make a website prototype where I plan to showcase this progress in a better way someday). Anything to get a damn job, I feel like I've proven that I can get stuff done, I hope.
+
+In summary, this might be one of the most important experiments if this ever becomes a working framework:
+
+1. HumanoidAIController & BatAIController Components:
+2. ContextMap Component:
+3. BehaviorTree vs Utility AI + State Machines Components:
 
 ---
 
 **E020: Plants & Grass**
 
-![E020-1](.image/README/E018-1.png "Plants &amp; Grass")![E020-2](.image/README/E018-2.png "Plants &amp; Grass")
+![E020-1](.image/README/E020-1.png "Plants &amp; Grass")![E020-2](.image/README/E020-2.png "Plants &amp; Grass")
 
 Can generate a set amount on the given area. Planning to see if concurrency can be used for the upcoming wind simulation, or something to help this great amount of sprites. Might create circular and triangular areas to be able to cover absolutely any 2D surface possible.
 
@@ -184,7 +194,9 @@ Can generate a set amount on the given area. Planning to see if concurrency can 
 
 **E021: Hanging Objects**
 
-![E021-1](.image/README/E018-1.png "Hanging Objects")![E021-2](.image/README/E018-2.png "Hanging Objects")
+![E021-1](.image/README/E021.gif "Hanging Objects")
+
+A sample of hanging objects. Used rigidbodies and a small logic to avoid pulling it in bizarre manners, that is, "hold" the hanging object for a second, then "let it go". A very simple timer to fix that innevitable bug, there was no other way around it, one-way collisions, using four segment collisions, etc. Also, small teaser of the upcoming rain mechanic. I am currently refactoring the way levels are done, by treating again, like the Human Body experiment, everything is a component in it, Space, Time... and something to play with the weather, rain, wind that moves (skews based on wind strength) the plants, seasons, precipitation, rain chance, temperature... Designing this is proving to be a challenge, so I am going to spend more time on other projects while I work this out. Not having a source of income is becoming a difficult toll too, I don't think I should continue with these anymore, I think I am not developing skills that will land me a job here in Mexico or USA, it wasn't enough.
 
 ---
 
