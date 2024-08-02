@@ -1,3 +1,7 @@
+# Opening Sequence Mockup
+
+[Alcarodian Dungeons Opening Sequence](https://www.youtube.com/watch?v=roq8450G_l8 "https://www.youtube.com/watch?v=roq8450G_l8")
+
 # Spotlight
 
 *(Loading GIFs, might take a while...)*
@@ -26,8 +30,6 @@ In summary, this might be one of the most important experiments if this ever bec
 The goal of this project is to practice common game development processes for curiosity. For this, Godot 4.2.1 is being used. Random topics are chosen based on personal interests. Everything shall be considered an endless work in progress with no coherence or expectations. References to the used tutorials / guides / documentations will be ommitted for now; the point is to make this a quick and enjoyable exploration with backups behind.
 
 # Experiments
-
-<center>
 
 ---
 
