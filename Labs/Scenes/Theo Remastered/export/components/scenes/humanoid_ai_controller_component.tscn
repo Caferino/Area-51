@@ -117,7 +117,8 @@ script = ExtResource("1_kinwj")
 interactor_animator_tree = NodePath("VisionArea/InteractorTree")
 context_map = NodePath("ContextMap")
 
-[node name="ContextMap" parent="." instance=ExtResource("2_qpkxs")]
+[node name="ContextMap" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("2_qpkxs")]
+controller = NodePath("..")
 
 [node name="VisionArea" type="Area2D" parent="."]
 monitorable = false
@@ -138,7 +139,7 @@ libraries = {
 [node name="HumanAIBehaviorTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("3_qdxfj")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@98602")
+blackboard = NodePath("@Node@24279")
 actor = NodePath("..")
 
 [node name="SelectorComposite" type="Node" parent="HumanAIBehaviorTree"]
