@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://kgci8lqc67ix"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/sound_component.gd" id="1_j1ivy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdpd0"]
+radius = 30.0
+
+[node name="SoundComponent" type="Node2D"]
+script = ExtResource("1_j1ivy")
+
+[node name="NoiseArea" type="Area2D" parent="." groups=["Noise"]]
+z_as_relative = false
+collision_layer = 8388608
+collision_mask = 0
+monitoring = false
+
+[node name="NoiseCollisionShape" type="CollisionShape2D" parent="NoiseArea"]
+shape = SubResource("CircleShape2D_bdpd0")
+debug_color = Color(0.821922, 0.60372, 1, 0.419608)

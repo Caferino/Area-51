@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Area 51"
 config/tags=PackedStringArray("testing")
-run/main_scene="res://Labs/Scenes/The Hut/The Hut.tscn"
+run/main_scene="res://Labs/Scenes/Interactive Decorations Room/The Farm Too.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -33,6 +33,10 @@ Caferino="*res://Labs/Scenes/Caferino/caferino.gd"
 Bizck="*res://Labs/Scenes/Caferino/bizck.gd"
 Raz="*res://Labs/Scenes/Caferino/raz.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1920
@@ -50,7 +54,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/beehave/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/utility_ai/plugin.cfg")
 
 [filesystem]
 
@@ -253,7 +257,7 @@ hotbar_5={
 2d_navigation/layer_22="Dynamic (Small)"
 2d_physics/layer_23="Debris / Fragments"
 2d_navigation/layer_23="Ignore (Static)"
-2d_physics/layer_24="One-Way Platforms"
+2d_physics/layer_24="Sounds"
 2d_navigation/layer_24="Ignore (Dynamic)"
 2d_physics/layer_25="One-Way Slopes"
 2d_navigation/layer_25="Debug"
@@ -274,4 +278,4 @@ hotbar_5={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method.mobile="gl_compatibility"
-driver/run_on_separate_thread=false
+driver/run_on_separate_thread=true

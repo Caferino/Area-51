@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://chim0ijmmeh0a" path="res://Labs/Scenes/Farming Room/Fence.tscn" id="4_ui5f6"]
 [ext_resource type="PackedScene" uid="uid://ui6le12cycb8" path="res://Labs/Scenes/Farming Room/FenceVertical.tscn" id="5_i7e6s"]
 [ext_resource type="PackedScene" uid="uid://mrd6gxhdcf0o" path="res://Labs/Assets/X. Resources/Animals/Lucas.tscn" id="5_j4sov"]
-[ext_resource type="PackedScene" uid="uid://bmrctgfhetcgl" path="res://Labs/Scenes/Farming Room/Plant.tscn" id="5_lr3xl"]
+[ext_resource type="PackedScene" uid="uid://bmrctgfhetcgl" path="res://Labs/Scenes/Farming Room/OldPlant.tscn" id="5_lr3xl"]
 [ext_resource type="PackedScene" uid="uid://tr0m4o6ekavs" path="res://Labs/Scenes/Farming Room/FenceHorizontal.tscn" id="6_6sksl"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="7_qaouk"]
 [ext_resource type="PackedScene" uid="uid://b14q5yhfbenc1" path="res://Labs/Scenes/Farming Room/DayNightCycle.tscn" id="7_vog8i"]
@@ -73,7 +73,6 @@ position = Vector2(1163, 567)
 position = Vector2(1163, 471)
 
 [node name="Smoke Ashburn" parent="Surface" instance=ExtResource("7_qaouk")]
-z_index = 1
 position = Vector2(1014, 520)
 
 [node name="Lucas" parent="Surface" instance=ExtResource("5_j4sov")]

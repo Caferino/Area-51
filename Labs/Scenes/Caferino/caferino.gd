@@ -9,6 +9,6 @@ var entities: Dictionary = {
 }
 
 
-func spawn(entity_name: String, race_name: String = "default") -> Entity:
+func spawn(entity_name: String, _race_name: String = "default") -> Entity:
 	var entity = entities[entity_name].instantiate()
 	return entity

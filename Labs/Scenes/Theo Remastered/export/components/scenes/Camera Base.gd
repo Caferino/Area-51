@@ -38,7 +38,7 @@ func _input(_event: InputEvent):
 
 ## Begins to follow the mouse inside a certain distance ([member CameraBase.drag_dist]).
 func start_dragging():
-	if !controller.is_moving:
+	if !controller.moving:
 		if !dragging_cam:
 			Input.set_custom_mouse_cursor(load("res://Labs/Assets/X. Other/Cursor/dragging.svg"))
 		

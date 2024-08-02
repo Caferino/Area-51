@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8cdbpwu5qc4v"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/hitbox_component.gd" id="1_0b7yf"]
+
+[node name="HitboxComponent" type="Node"]
+script = ExtResource("1_0b7yf")

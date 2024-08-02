@@ -6,6 +6,7 @@ var MAX_HEALTH := 10.0
 var loot_radius = Vector2(40.0, 50.0)  ## Ring
 var state = 1                          ## 1 == Grown Tree;  0 == Stump
 
+
 func _ready() -> void:
 	health_component.set_health(initial_health)
 	$AnimatedSprite.play("tree")

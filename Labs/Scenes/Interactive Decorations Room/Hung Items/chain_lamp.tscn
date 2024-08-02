@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0cpacer53p1n"]
+
+[ext_resource type="PackedScene" uid="uid://5tvhugm6pegv" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/chain_left.tscn" id="1_ct2pn"]
+[ext_resource type="PackedScene" uid="uid://cpte3ma72ssc1" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/chain_right.tscn" id="2_q06hi"]
+[ext_resource type="Script" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/hanging_decor.gd" id="3_bbn3l"]
+[ext_resource type="Texture2D" uid="uid://dq6larkgn5vkm" path="res://Labs/Assets/X. Resources/LFX/light_1.webp" id="3_y4kup"]
+[ext_resource type="Texture2D" uid="uid://doak33mn2mpud" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/lamp.png" id="4_56sl1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac121"]
+size = Vector2(10, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8nef"]
+size = Vector2(10, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3q51"]
+size = Vector2(10, 1)
+
+[node name="ChainLamp" type="Node2D"]
+z_index = 3
+y_sort_enabled = true
+
+[node name="ChainBlock" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Hook" type="PinJoint2D" parent="."]
+position = Vector2(0, 2)
+node_a = NodePath("../ChainBlock")
+node_b = NodePath("../chain_left")
+
+[node name="chain_left" parent="." instance=ExtResource("1_ct2pn")]
+position = Vector2(0, 10)
+collision_layer = 0
+collision_mask = 0
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(0, 20)
+node_a = NodePath("../chain_left")
+node_b = NodePath("../chain_right")
+
+[node name="chain_right" parent="." instance=ExtResource("2_q06hi")]
+position = Vector2(0, 25)
+collision_layer = 0
+collision_mask = 0
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(0, 32)
+node_a = NodePath("../chain_right")
+node_b = NodePath("../chain_left2")
+
+[node name="chain_left2" parent="." instance=ExtResource("1_ct2pn")]
+position = Vector2(0, 42)
+collision_layer = 0
+collision_mask = 0
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, 52)
+node_a = NodePath("../chain_left2")
+node_b = NodePath("../chain_right2")
+
+[node name="chain_right2" parent="." instance=ExtResource("2_q06hi")]
+position = Vector2(0, 57)
+collision_layer = 0
+collision_mask = 0
+
+[node name="LampHook" type="PinJoint2D" parent="."]
+position = Vector2(0, 66)
+node_a = NodePath("../chain_right2")
+node_b = NodePath("../Lamp")
+
+[node name="Lamp" type="RigidBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 85)
+collision_layer = 1048576
+collision_mask = 16384
+mass = 3.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 12)
+freeze_mode = 1
+max_contacts_reported = 1
+contact_monitor = true
+linear_damp = 0.5
+script = ExtResource("3_bbn3l")
+
+[node name="PointLight" type="PointLight2D" parent="Lamp"]
+color = Color(1, 1, 0, 1)
+energy = 3.0
+shadow_enabled = true
+texture = ExtResource("3_y4kup")
+texture_scale = 3.0
+
+[node name="LampSprite" type="Sprite2D" parent="Lamp"]
+z_index = 2
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, 12)
+texture = ExtResource("4_56sl1")
+offset = Vector2(0, -12)
+
+[node name="LeftCollisionShape" type="CollisionShape2D" parent="Lamp"]
+position = Vector2(-5, 25)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_ac121")
+one_way_collision = true
+
+[node name="RightCollisionShape" type="CollisionShape2D" parent="Lamp"]
+position = Vector2(5, 25)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_x8nef")
+one_way_collision = true
+
+[node name="BottomCollisionShape" type="CollisionShape2D" parent="Lamp"]
+position = Vector2(0, 30)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_j3q51")
+one_way_collision = true
+
+[connection signal="body_entered" from="Lamp" to="Lamp" method="_on_body_entered"]

@@ -16,6 +16,6 @@ texture = ExtResource("1_0jplq")
 collision_layer = 64
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape2D" parent="FenceBody"]
+[node name="FenceCollisionShape" type="CollisionShape2D" parent="FenceBody"]
 position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_2qv2s")

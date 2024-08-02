@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://cafk5x7ikmps6"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/The Hut/Scenes/big_tree.gd" id="1_3l68o"]
+[ext_resource type="Texture2D" uid="uid://bgecfrfntsmyu" path="res://Labs/Scenes/The Hut/big_tree_trunk_1.png" id="1_dudqo"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/health_component.gd" id="2_bqxnq"]
+[ext_resource type="Texture2D" uid="uid://b6itix1aiqy6n" path="res://Labs/Scenes/The Hut/big_tree_leaves_1.png" id="2_lm3qv"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/static_collision_component.gd" id="3_vhrye"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/interactable_component.gd" id="4_raw7i"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/appearance_component.gd" id="5_eilfr"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/interactable_area.gd" id="6_efxkf"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/timer_component.gd" id="8_022p5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xuedc"]
+radius = 55.0
+height = 124.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qijo"]
+radius = 58.0086
+
+[node name="Big Tree" type="Marker2D" node_paths=PackedStringArray("health_component", "timer_component", "appearance_component")]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_3l68o")
+health_component = NodePath("HealthComponent")
+timer_component = NodePath("TimerComponent")
+appearance_component = NodePath("AppearanceComponent")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_bqxnq")
+health = 10.0
+
+[node name="TimerComponent" type="Node" parent="."]
+script = ExtResource("8_022p5")
+
+[node name="GrowthTimer" type="Timer" parent="TimerComponent"]
+wait_time = 3.5
+
+[node name="StaticCollisionComponent" type="Node2D" parent="."]
+script = ExtResource("3_vhrye")
+
+[node name="BigTreeStaticBody" type="StaticBody2D" parent="StaticCollisionComponent"]
+collision_layer = 33
+collision_mask = 0
+
+[node name="BigTreeCollisionShape" type="CollisionShape2D" parent="StaticCollisionComponent/BigTreeStaticBody"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xuedc")
+
+[node name="BigTreeRootCollisionShape" type="CollisionPolygon2D" parent="StaticCollisionComponent/BigTreeStaticBody"]
+position = Vector2(0, 54)
+polygon = PackedVector2Array(10, 0, 0, 15, -10, 0)
+
+[node name="InteractableComponent" type="Node2D" parent="."]
+script = ExtResource("4_raw7i")
+
+[node name="InteractableArea" type="Area2D" parent="InteractableComponent" node_paths=PackedStringArray("parent") groups=["Interactive", "Tree"]]
+script = ExtResource("6_efxkf")
+parent = NodePath("../..")
+
+[node name="InteractableCollisionShape" type="CollisionShape2D" parent="InteractableComponent/InteractableArea"]
+shape = SubResource("CircleShape2D_8qijo")
+
+[node name="AppearanceComponent" type="Node2D" parent="."]
+script = ExtResource("5_eilfr")
+
+[node name="TreeStump" type="Marker2D" parent="AppearanceComponent"]
+
+[node name="TreeStumpSprite" type="Sprite2D" parent="AppearanceComponent/TreeStump"]
+position = Vector2(0, -46)
+texture = ExtResource("1_dudqo")
+offset = Vector2(0, 46)
+
+[node name="Leaves" type="Marker2D" parent="AppearanceComponent"]
+
+[node name="LeavesSprite" type="Sprite2D" parent="AppearanceComponent/Leaves"]
+z_index = 3
+position = Vector2(0, -57)
+texture = ExtResource("2_lm3qv")

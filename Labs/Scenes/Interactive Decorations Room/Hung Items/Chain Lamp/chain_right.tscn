@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpte3ma72ssc1"]
+
+[ext_resource type="Texture2D" uid="uid://kmh54a7uy2ey" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/chain_right.png" id="1_gslop"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ugpv"]
+size = Vector2(12, 18)
+
+[node name="chain_right" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2ugpv")
+
+[node name="chain" type="Sprite2D" parent="."]
+texture = ExtResource("1_gslop")

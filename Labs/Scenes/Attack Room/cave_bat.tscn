@@ -1,0 +1,217 @@
+[gd_scene load_steps=36 format=3 uid="uid://6e48hltp552g"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Attack Room/cave_bat.gd" id="1_ole8l"]
+[ext_resource type="SpriteFrames" uid="uid://chu623tm2sfh0" path="res://animations/Enemies/Bat.tres" id="2_h7mxl"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/lore_component.gd" id="2_prdxt"]
+[ext_resource type="Shader" uid="uid://dwupimh85cuua" path="res://Labs/Scenes/Attack Room/hit_flash.tres" id="2_von14"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/body_component.gd" id="3_bi68t"]
+[ext_resource type="AnimationLibrary" uid="uid://dffivdm8xr4p2" path="res://animations/Enemies/cavebat_bat.res" id="4_otg0b"]
+[ext_resource type="AnimationLibrary" uid="uid://cnrbjdq41n4gl" path="res://animations/VFX/effects.res" id="4_tvq3j"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/effects_animator_component.gd" id="6_v0wv7"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/health_component.gd" id="8_4f4v3"]
+[ext_resource type="PackedScene" uid="uid://ble3l5001dbpu" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/bat_ai_controller_component.tscn" id="8_ksnnl"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/flying_mammal_movement_component.gd" id="9_6qkra"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="11_us4hq"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/auto_play_animatedsprite.gd" id="13_xy2gm"]
+[ext_resource type="PackedScene" uid="uid://byvgnjjoahfqa" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/accessories_component.tscn" id="14_et7kk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cqoxk"]
+
+[sub_resource type="Animation" id="Animation_weqj6"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5m1o"]
+_data = {
+"RESET": SubResource("Animation_weqj6")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tuv1p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsd8g"]
+resource_local_to_scene = true
+shader = ExtResource("2_von14")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(0.917647, 0, 0, 0.490196)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ko8u4"]
+animation = &"cave_bat/dead_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p6oh8"]
+animation = &"cave_bat/dead_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a4f1e"]
+animation = &"cave_bat/dead_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g0gee"]
+animation = &"cave_bat/dead_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_13s7g"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ko8u4")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_p6oh8")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_a4f1e")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_g0gee")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w5omv"]
+animation = &"cave_bat/fly_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ykmog"]
+animation = &"cave_bat/fly_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rtnfn"]
+animation = &"cave_bat/fly_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p1y36"]
+animation = &"cave_bat/fly_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mnpbb"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_w5omv")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_ykmog")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_rtnfn")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_p1y36")
+blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+sync = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ml5s6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_dlg3w"]
+states/Dead/node = SubResource("AnimationNodeBlendSpace2D_13s7g")
+states/Dead/position = Vector2(664, 134)
+states/End/position = Vector2(899, 245)
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_mnpbb")
+states/Idle/position = Vector2(361.667, 134)
+states/Start/position = Vector2(157, 245)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ml5s6")]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_nayth"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cbxkp"]
+nodes/Movement/node = SubResource("AnimationNodeStateMachine_dlg3w")
+nodes/Movement/position = Vector2(120, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_nayth")
+nodes/TimeScale/position = Vector2(400, 100)
+nodes/output/position = Vector2(640, 140)
+node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
+
+[sub_resource type="Animation" id="Animation_2dgkm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyComponent/Torso/TorsoArea/CaveBatSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"fly_down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyComponent/Torso/TorsoArea/CaveBatSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnx1m"]
+_data = {
+"RESET": SubResource("Animation_2dgkm")
+}
+
+[node name="CaveBat" type="CharacterBody2D" node_paths=PackedStringArray("lore", "heart", "muscles", "effects", "controller", "body") groups=["Enemies"]]
+z_index = 2
+collision_layer = 8192
+collision_mask = 8256
+motion_mode = 1
+script = ExtResource("1_ole8l")
+lore = NodePath("LoreComponent")
+heart = NodePath("HealthComponent")
+muscles = NodePath("FlyingMammalMovementComponent")
+effects = NodePath("EffectsAnimatorComponent")
+controller = NodePath("BatAIControllerComponent")
+body = NodePath("BodyComponent")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cqoxk")
+debug_color = Color(0.890196, 0, 0.247059, 0.419608)
+
+[node name="LoreComponent" type="Node" parent="."]
+script = ExtResource("2_prdxt")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("8_4f4v3")
+
+[node name="FlyingMammalMovementComponent" type="Node" parent="."]
+script = ExtResource("9_6qkra")
+
+[node name="EffectsAnimatorComponent" type="Node" parent="." node_paths=PackedStringArray("effects_animator")]
+script = ExtResource("6_v0wv7")
+effects_animator = NodePath("EffectsAnimator")
+
+[node name="EffectsAnimator" type="AnimationPlayer" parent="EffectsAnimatorComponent"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_w5m1o"),
+"effects": ExtResource("4_tvq3j")
+}
+
+[node name="BatAIControllerComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("8_ksnnl")]
+entity = NodePath("..")
+
+[node name="BodyComponent" type="Node2D" parent="."]
+script = ExtResource("3_bi68t")
+
+[node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
+script = ExtResource("11_us4hq")
+accessories = NodePath("TorsoArea/AccessoriesComponent")
+animator_tree = NodePath("CaveBatAnimationTree")
+animator = NodePath("CaveBatAnimator")
+
+[node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
+position = Vector2(0, -3.03321)
+monitoring = false
+
+[node name="TorsoCollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]
+shape = SubResource("CircleShape2D_tuv1p")
+
+[node name="CaveBatSprite" type="AnimatedSprite2D" parent="BodyComponent/Torso/TorsoArea"]
+material = SubResource("ShaderMaterial_wsd8g")
+sprite_frames = ExtResource("2_h7mxl")
+animation = &"fly_down"
+script = ExtResource("13_xy2gm")
+
+[node name="AccessoriesComponent" parent="BodyComponent/Torso/TorsoArea" instance=ExtResource("14_et7kk")]
+
+[node name="CaveBatAnimationTree" type="AnimationTree" parent="BodyComponent/Torso"]
+root_node = NodePath("../../..")
+tree_root = SubResource("AnimationNodeBlendTree_cbxkp")
+anim_player = NodePath("../CaveBatAnimator")
+parameters/Movement/Dead/blend_position = Vector2(0, 0)
+parameters/Movement/Idle/blend_position = Vector2(-0.0900255, 0.348201)
+parameters/TimeScale/scale = 1.0
+
+[node name="CaveBatAnimator" type="AnimationPlayer" parent="BodyComponent/Torso"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_wnx1m"),
+"cave_bat": ExtResource("4_otg0b")
+}

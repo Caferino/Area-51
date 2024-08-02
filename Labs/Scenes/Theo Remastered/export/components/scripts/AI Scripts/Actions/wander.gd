@@ -12,7 +12,7 @@ func _physics_process(delta):
 
 
 func tick(actor, _blackboard):
-	if actor.is_enemy_nearby:
+	if actor.enemy_nearby:
 		print("Enemy nearby")
 		wander_time = 0
 		wait_time = 0
@@ -20,11 +20,13 @@ func tick(actor, _blackboard):
 	else:
 		if actor.dir != Vector2.ZERO and wander_time <= 0:
 			print("Stop Wandering")
+			actor.anim_state = "Idle"
 			actor.dir = Vector2.ZERO
 			wait_time = randf_range(2, 5)
 			return SUCCESS
 		elif wait_time <= 0:
 			print("Wandering")
+			actor.anim_state = "Move"
 			actor.dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 			if wander_time <= 0: wander_time = randf_range(2, 8)
 			if wait_time <= 0: wait_time = randf_range(2, 5)

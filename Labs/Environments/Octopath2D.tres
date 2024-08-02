@@ -1,0 +1,48 @@
+[gd_resource type="Environment" load_steps=6 format=3 uid="uid://dek43htan2cqp"]
+
+[ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://Labs/Assets/13. Sky/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_al78p"]
+
+[sub_resource type="Gradient" id="Gradient_hvtq0"]
+offsets = PackedFloat32Array(0, 0.987578, 1)
+colors = PackedColorArray(0, 0, 0.0196078, 1, 0.944099, 0.944099, 0.944099, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2vlh5"]
+gradient = SubResource("Gradient_hvtq0")
+use_hdr = true
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0uyrx"]
+panorama = ExtResource("1_al78p")
+
+[sub_resource type="Sky" id="Sky_4dca6"]
+sky_material = SubResource("PanoramaSkyMaterial_0uyrx")
+process_mode = 1
+
+[resource]
+background_mode = 3
+sky = SubResource("Sky_4dca6")
+ambient_light_source = 1
+reflected_light_source = 1
+tonemap_mode = 2
+ssr_fade_in = 5.14451
+ssr_fade_out = 0.217638
+ssr_depth_tolerance = 89.11
+ssao_radius = 12.55
+ssao_intensity = 13.17
+ssao_power = 0.549032
+ssao_detail = 3.51
+ssao_horizon = 0.82
+ssil_intensity = 3.93
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_normalized = true
+glow_strength = 0.81
+glow_bloom = 0.8
+glow_hdr_scale = 0.94
+fog_light_energy = 6.76
+fog_density = 0.0141
+volumetric_fog_density = 0.4046
+volumetric_fog_albedo = Color(0.0705882, 0.0705882, 0.0705882, 1)
+volumetric_fog_anisotropy = 0.4
+volumetric_fog_sky_affect = 0.976
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_2vlh5")

@@ -140,8 +140,9 @@ libraries = {
 "": SubResource("AnimationLibrary_k7x51")
 }
 
-[node name="LootingArea" type="Area2D" parent="."]
+[node name="LootingArea" type="Area2D" parent="." groups=["Player"]]
 collision_layer = 0
+collision_mask = 1024
 monitorable = false
 
 [node name="LootingAreaCollisionShape" type="CollisionShape2D" parent="LootingArea"]

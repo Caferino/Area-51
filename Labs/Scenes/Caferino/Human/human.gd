@@ -1,5 +1,5 @@
 class_name Human extends Entity
-## A human being, by [color=brown]Caferino.
+## A [color=pink]human being[/color], by [color=brown]Caferino.
 
 @export var lore        : LoreComponent              ## The entity's [color=ivory]lore.
 @export var health      : HealthComponent            ## The entity's [color=red]heart.
@@ -7,92 +7,35 @@ class_name Human extends Entity
 @export var controller  : EntityController           ## The entity's [color=gray]controller.
 @export var body        : BodyComponent              ## The entity's [color=blue]body.
 
-## The entity's base stats.
-var base_stats: Dictionary = {
-	GameEnums.STAT.STRENGTH     : 5,
-	GameEnums.STAT.DEXTERITY    : 5,
-	GameEnums.STAT.VITALITY     : 5,
-	GameEnums.STAT.INTELLIGENCE : 5
-}
-
-## The entity's stamina stats.
-var stamina_stats: Dictionary = {
-	GameEnums.STAMINA_STATS.CAPACITY         : 100,  # %
-	GameEnums.STAMINA_STATS.SPRINT_RATE      :   2,  # -units/s
-	GameEnums.STAMINA_STATS.REGEN_RATE       :   3,  # +units/s  # TODO - Small pause b4 recharging
-	GameEnums.STAMINA_STATS.MAX_WALK_SPEED   :  60,
-	GameEnums.STAMINA_STATS.WALK_ACCEL       :   3,
-	GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED : 120,
-	GameEnums.STAMINA_STATS.SPRINT_ACCEL     :   2
-}
-
-## The entity's body pose.
-## [br][br]
-## [b]Defined as:[/b]
-## [codeblock]
-## body_pose: Dictionary<String, Variant> = {
-##     [0] "marker2D_position": Vector2
-##     [1] "marker2D_rotation": rotation_degrees,
-##     [2] "animation_tree_parameter_path": "parameters/Movement/playback",  # Example string
-##     [3] "animation_tree_state": "Idle",  # Example string
-##     [4] "animation_tree_blend_position_path": "parameters/Movement/Idle/blend_position",  # Example string
-##     [5] "animation_tree_blend_position_direction": Vector2(0, 1),  # Example vector
-##     [6] "animation_tree_time_scale_path": "parameters/TimeScale/scale",  # Example string
-##     [7] "animation_tree_time_scale_speed_scale": 2.0,  # Example float
-## }
-var body_pose: Dictionary = {
-	"Head"      : [Vector2(0, -13), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0],
-	"Torso"     : [Vector2(0, 0), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 2.0]
-}  # TODO - Make it dynamic. Empty at first, or with a default structure for every human being
-
-## The entity's accessories.
-## [br][br]
-## [b]Defined as:[/b]
-## [codeblock]
-## body_accessories: Dictionary<String, Variant> = {
-##     [0] "marker2D_position": Vector2
-##     [1] "marker2D_rotation": rotation_degrees,
-##     [2] "animation_tree_parameter_path": "parameters/Movement/playback",  # Example string
-##     [3] "animation_tree_state": "Idle",  # Example string
-##     [4] "animation_tree_blend_position_path": "parameters/Movement/Idle/blend_position",  # Example string
-##     [5] "animation_tree_blend_position_direction": Vector2(0, 1),  # Example vector
-##     [6] "animation_tree_time_scale_path": "parameters/TimeScale/scale",  # Example string
-##     [7] "animation_tree_time_scale_speed_scale": 2.0,  # Example float
-## }
-var body_accessories: Dictionary = {
-	"Hat"       : [Vector2(0, -9), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0],
-	"Weapon"    : [Vector2(0, 0), -90, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
-}  # TODO - Should start empty, this is for Smoke
-
 
 ## Spawns the entity.
 func _ready():
+	body_pose["Head"]          = [Vector2(0, -13), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
+	body_pose["Torso"]         = [Vector2(0, 0), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 2.0]
+	
+	body_accessories["Hat"]    = [Vector2(0, -9), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
+	body_accessories["Weapon"] = [Vector2(0, 0), -90, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
 	spawn()
 
 
-## Connects the following entity's component signals:
-## [br]
-## [br] [signal MeleeWeapon.attack_finished]
-## [br] [signal BodyComponent.limb_interact]
-## [br] [signal HumanoidMovementComponent.stopped_moving]
-## [br] [signal PlayerControllerComponent.attacked]
-## [br] [signal PlayerControllerComponent.player_interact]
+## Connects the entity's component signals.
 func spawn():
 	body.gear["MeleeWeapon"].attack_finished.connect(_on_attack_finished)
 	body.limb_interact.connect(_on_limb_interact)
 	muscles.stopped_moving.connect(_on_entity_stop)
-	controller.player_move.connect(_on_entity_move)
-	controller.player_sprint.connect(_on_entity_sprint)
-	controller.player_attack.connect(_on_entity_attack)
-	controller.player_interact.connect(_on_entity_interact)
-	print("Waking up")  # DEBUG
-	muscles.handle_animation(self)
+	controller.entity_move.connect(_on_entity_move)
+	controller.entity_sprint.connect(_on_entity_sprint)
+	controller.entity_attack.connect(_on_entity_attack)
+	controller.entity_interact.connect(_on_entity_interact)
+	
+	muscles.handle_animation(self, controller.dir, controller.sprinting)
+	print(name, " is waking up")  # DEBUG
 
 
-## Handles the entity's movement every physics frame
+## Handles the entity's movement every physics frame.
 func _physics_process(_delta: float) -> void:
-	if !controller.is_attacking:
-		muscles.handle_movement(self, controller.dir, controller.is_sprinting)
+	if !controller.attacking:
+		muscles.handle_movement(self, controller.dir, controller.sprinting)
 		controller.rotate_interactor(muscles.last_direction)
 
 
@@ -113,7 +56,7 @@ func _on_entity_stop():
 
 ## Runs whenever the entity attacks.
 func _on_entity_attack():
-	if !controller.is_attacking:
+	if !controller.attacking:
 		controller.on_attack()
 		muscles.stop(self, true)
 		muscles.attack(body.gear["MeleeWeapon"], body.limbs["Torso"].animator, body.limbs["Head"].animator)

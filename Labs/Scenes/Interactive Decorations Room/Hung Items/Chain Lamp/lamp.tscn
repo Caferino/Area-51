@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bclnux4mad2ct"]
+
+[ext_resource type="Texture2D" uid="uid://doak33mn2mpud" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/lamp.png" id="1_4ixsu"]
+[ext_resource type="Texture2D" uid="uid://dq6larkgn5vkm" path="res://Labs/Assets/X. Resources/LFX/light_1.webp" id="2_31enh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t05st"]
+size = Vector2(8, 8)
+
+[node name="Lamp" type="RigidBody2D"]
+collision_layer = 1048576
+mass = 3.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 12)
+freeze_mode = 1
+linear_damp = 0.5
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0, 1)
+energy = 3.0
+shadow_enabled = true
+texture = ExtResource("2_31enh")
+texture_scale = 3.0
+
+[node name="LampSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_4ixsu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t05st")

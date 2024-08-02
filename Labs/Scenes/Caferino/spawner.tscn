@@ -17,6 +17,7 @@ animations = [{
 [node name="Spawner" type="Marker2D"]
 y_sort_enabled = true
 script = ExtResource("1_jil74")
+enabled = true
 
 [node name="SpawnerAnimatedSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

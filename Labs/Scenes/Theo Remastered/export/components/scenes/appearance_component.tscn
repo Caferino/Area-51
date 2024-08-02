@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://casepxjwvg6d"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/appearance_component.gd" id="1_pl4qi"]
+
+[node name="AppearanceComponent" type="Node2D"]
+script = ExtResource("1_pl4qi")
