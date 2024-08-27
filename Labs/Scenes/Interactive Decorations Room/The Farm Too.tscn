@@ -6717,12 +6717,14 @@ position = Vector2(1041, 365)
 
 [node name="Field" parent="." instance=ExtResource("14_0nvuv")]
 position = Vector2(723, 470)
+amount = 3
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("15_h8soo")]
 visible = false
 position = Vector2(1014, 0)
 
 [node name="ChainLamp" parent="." instance=ExtResource("17_80hkq")]
+visible = false
 position = Vector2(855, 422)
 
 [connection signal="pressed" from="ui/ui_container/buttons/settings" to="ui/ui_container" method="_on_settings_pressed"]

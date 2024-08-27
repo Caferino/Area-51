@@ -1,42 +1,14 @@
 extends Alcarodia
 ## Bizck, the [color=green]God of Nature.
 
-const PLANT : PackedScene = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/plant.tscn")
+const PLANT            : PackedScene = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/plant.tscn")
+const LEAVES_PARTICLES : PackedScene = preload("res://Labs/Scenes/Farming Room/leaves_particles.tscn")  # TODO - Migration
 
-
-func create_plant(plant_name: String = "", animated: bool = false, random_growth: bool = false) -> Plant:
-	var plant = PLANT.instantiate()
-	var plant_path = static_plants["weeds"][plant_name]
-	
-	## Name
-	plant.name = plant_path["name"]
-	
-	## Growth Stages
-	plant.growth_stages = plant_path["growth_stages"]
-	
-	## Margins
-	plant.margin_x = plant_path["margin_x"]
-	plant.margin_y = plant_path["margin_y"]
-	
-	## Sprite
-	var sprite = Sprite2D.new()
-	if animated:
-		pass
-	else:
-		sprite.texture = plant_path["texture"]
-		sprite.hframes = plant_path["hframes"]
-		sprite.vframes = plant_path["vframes"]
-		sprite.offset  = Vector2(0, plant_path["offset_y"])
-		sprite.y_sort_enabled = true
-		if random_growth:
-			plant.current_stage = randi_range(0, plant.growth_stages)
-			sprite.frame        = plant.current_stage
-	plant.add_child(sprite)
-	
-	return plant
-
-
-
+var leaves: Dictionary = {
+	0: {
+		"texture" = preload("res://Labs/Scenes/Farming Room/leaf.png")  # TODO - Migration
+	},
+}
 
 ## NOTE - To load or to preload... We'll see
 var static_plants: Dictionary = {
@@ -50,7 +22,8 @@ var static_plants: Dictionary = {
 			"name" = "Agavia",
 			"growth_stages" = 7,
 			"texture" = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/weeds/weed1.png"),
-			"leaves" = null,  # TODO - CREATE GROUPS OF THESE INSTEAD, REPETITIVE AMONGST PLANTS
+			"leaves_id" = 0,
+			"leaves_amount" = 8,
 			"hframes" = 2,
 			"vframes" = 4,
 			"margin_x" = 5,
@@ -61,7 +34,8 @@ var static_plants: Dictionary = {
 			"name" = "Agavia",
 			"growth_stages" = 7,
 			"texture" = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/weeds/weed2.png"),
-			"leaves" = null,  # TODO - Probably needed if unique leaves particles
+			"leaves_id" = 0,
+			"leaves_amount" = 8,
 			"hframes" = 2,
 			"vframes" = 4,
 			"margin_x" = 5,
@@ -72,7 +46,8 @@ var static_plants: Dictionary = {
 			"name" = "Agavia",
 			"growth_stages" = 7,
 			"texture" = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/weeds/weed3.png"),
-			"leaves" = null,  # TODO - Probably needed if unique leaves particles
+			"leaves_id" = 0,
+			"leaves_amount" = 8,
 			"hframes" = 2,
 			"vframes" = 4,
 			"margin_x" = 5,
@@ -83,7 +58,8 @@ var static_plants: Dictionary = {
 			"name" = "Agavia",
 			"growth_stages" = 7,
 			"texture" = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/weeds/weed4.png"),
-			"leaves" = null,  # TODO - Probably needed if unique leaves particles
+			"leaves_id" = 0,
+			"leaves_amount" = 8,
 			"hframes" = 2,
 			"vframes" = 4,
 			"margin_x" = 5,
@@ -94,7 +70,8 @@ var static_plants: Dictionary = {
 			"name" = "Agavia",
 			"growth_stages" = 7,
 			"texture" = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/weeds/weed5.png"),
-			"leaves" = null,  # TODO - Probably needed if unique leaves particles
+			"leaves_id" = 0,
+			"leaves_amount" = 8,
 			"hframes" = 2,
 			"vframes" = 4,
 			"margin_x" = 5,
@@ -105,7 +82,8 @@ var static_plants: Dictionary = {
 			"name" = "Agavia",
 			"growth_stages" = 7,
 			"texture" = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/weeds/weed6.png"),
-			"leaves" = null,  # TODO - Probably needed if unique leaves particles
+			"leaves_id" = 0,
+			"leaves_amount" = 8,
 			"hframes" = 2,
 			"vframes" = 4,
 			"margin_x" = 5,
@@ -116,7 +94,8 @@ var static_plants: Dictionary = {
 			"name" = "Agavia",
 			"growth_stages" = 7,
 			"texture" = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/weeds/weed7.png"),
-			"leaves" = null,  # TODO - Probably needed if unique leaves particles
+			"leaves_id" = 0,
+			"leaves_amount" = 8,
 			"hframes" = 2,
 			"vframes" = 4,
 			"margin_x" = 5,
@@ -127,7 +106,8 @@ var static_plants: Dictionary = {
 			"name" = "Agavia",
 			"growth_stages" = 7,
 			"texture" = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/weeds/weed8.png"),
-			"leaves" = null,  # TODO - Probably needed if unique leaves particles
+			"leaves_id" = 0,
+			"leaves_amount" = 8,
 			"hframes" = 2,
 			"vframes" = 4,
 			"margin_x" = 5,
@@ -149,6 +129,49 @@ var static_plants: Dictionary = {
 		}
 	}
 }
+
+
+func create_plant(plant_name: String = "", animated: bool = false, random_growth: bool = false) -> Plant:
+	var plant            = PLANT.instantiate()
+	var leaves_particles = LEAVES_PARTICLES.instantiate()
+	
+	## Plant Setup
+	var plant_path = static_plants["weeds"][plant_name]  # TODO - "weeds" will be a variable
+	plant.name = plant_path["name"]                    ## Plant Name
+	plant.growth_stages = plant_path["growth_stages"]  ## Growth Stages
+	plant.margin_x = plant_path["margin_x"]            ## Margin x
+	plant.margin_y = plant_path["margin_y"]            ## Margin y
+	
+	## Sprite Setup
+	var sprite = Sprite2D.new()
+	print(sprite.name)
+	if animated:
+		# TODO - Similar to static, it's just the frames that work different
+		pass
+	else:
+		sprite.name    = "PlantSprite"  # TODO - Create one for Trunk, one for Leaves someday for dynamic trees
+		sprite.texture = plant_path["texture"]
+		sprite.hframes = plant_path["hframes"]
+		sprite.vframes = plant_path["vframes"]
+		sprite.offset  = Vector2(0, plant_path["offset_y"])
+		sprite.y_sort_enabled = true
+		if random_growth:
+			plant.current_stage = randi_range(0, plant.growth_stages)
+			sprite.frame        = plant.current_stage
+	
+	## Leaves Setup
+	leaves_particles.amount = plant_path["leaves_amount"]
+	var leaves_path = leaves[plant_path["leaves_id"]]
+	leaves_particles.texture = leaves_path["texture"]
+	
+	plant.add_child(sprite)
+	plant.add_child(leaves_particles)
+	plant.setup()
+	return plant
+
+
+
+
 
 
 

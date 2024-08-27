@@ -187,7 +187,7 @@ animator_tree = NodePath("CaveBatAnimationTree")
 animator = NodePath("CaveBatAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
-position = Vector2(0, -3.03321)
+position = Vector2(0, -1.25501)
 monitoring = false
 
 [node name="TorsoCollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]

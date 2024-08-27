@@ -70,10 +70,12 @@ func _on_attack_finished():
 ## Runs whenever a body limb interacts with something.
 func _on_limb_interact(entered: bool, limb_name: String, area: Area2D):
 	if area.is_in_group("Plants"):
-		if entered and limb_name == "left_leg"    : area.interact(-0.1, 0.2, "shake")
-		elif limb_name == "left_leg"              : area.interact( 0.0, 0.2, "tilt_back")
-		elif entered and limb_name == "right_leg" : area.interact( 0.1, 0.2, "shake")
-		else                                      : area.interact( 0.0, 0.2, "tilt_back")
+		if limb_name == "LeftLeg":
+			if entered : area.get_parent().interact(-0.1, 0.2, "shake")
+			else       : area.get_parent().interact( 0.0, 0.2, "tilt_back")
+		elif limb_name == "RightLeg":
+			if entered : area.get_parent().interact( 0.1, 0.2, "shake")
+			else       : area.get_parent().interact( 0.0, 0.2, "tilt_back")
 
 
 ## Runs whenever the player (if controlled by one), interacts with something.
