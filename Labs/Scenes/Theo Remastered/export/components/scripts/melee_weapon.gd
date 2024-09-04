@@ -14,7 +14,7 @@ signal attack_finished()  ## Emitted after the weapon's attack ends.
 func _ready():
 	get_child(0).get_child(1).visible = false
 	get_child(0).monitoring = false
-	get_child(1).speed_scale = attack_stats[GameEnums.ATTACK_STATS.WEAPON_SPEED]
+	get_child(1).speed_scale = attack_stats[GameEnums.ATTACK_STAT.WEAPON_SPEED]
 
 
 ## Runs after the weapon's attack animation ends.

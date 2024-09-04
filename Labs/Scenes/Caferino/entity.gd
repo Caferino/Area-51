@@ -15,13 +15,13 @@ var base_stats: Dictionary = {
 
 ## The entity's stamina stats.
 var stamina_stats: Dictionary = {
-	GameEnums.STAMINA_STATS.CAPACITY         : 100,  # %
-	GameEnums.STAMINA_STATS.SPRINT_RATE      :   2,  # -units/s
-	GameEnums.STAMINA_STATS.REGEN_RATE       :   3,  # +units/s  # TODO - Small pause b4 recharging
-	GameEnums.STAMINA_STATS.MAX_WALK_SPEED   :  60,
-	GameEnums.STAMINA_STATS.WALK_ACCEL       :   3,
-	GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED : 120,
-	GameEnums.STAMINA_STATS.SPRINT_ACCEL     :   2
+	GameEnums.STAMINA_STAT.CAPACITY         : 100,  # %
+	GameEnums.STAMINA_STAT.SPRINT_RATE      :   2,  # -units/s
+	GameEnums.STAMINA_STAT.REGEN_RATE       :   3,  # +units/s  # TODO - Small pause b4 recharging
+	GameEnums.STAMINA_STAT.MAX_WALK_SPEED   :  60,
+	GameEnums.STAMINA_STAT.WALK_ACCEL       :   3,
+	GameEnums.STAMINA_STAT.MAX_SPRINT_SPEED : 120,
+	GameEnums.STAMINA_STAT.SPRINT_ACCEL     :   2
 }
 
 ## The entity's body pose.

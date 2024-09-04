@@ -6573,11 +6573,11 @@ script = ExtResource("14_c1tuy")
 name = "caca"
 size = 2
 
-[node name="TheHut" type="Node2D" node_paths=PackedStringArray("space", "time")]
+[node name="TheHut" type="Node2D" node_paths=PackedStringArray("time", "space")]
 y_sort_enabled = true
 script = ExtResource("1_1w3b8")
-space = NodePath("LevelSpaceComponent")
 time = NodePath("LevelTimeComponent")
+space = NodePath("LevelSpaceComponent")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
