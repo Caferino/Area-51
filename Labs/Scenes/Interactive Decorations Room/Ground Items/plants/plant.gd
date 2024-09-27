@@ -12,6 +12,7 @@ var margin_x                  : float    = 0
 var margin_y                  : float    = 0
 #var rng_group                : int      = 0   ## For batch-management, save CPU.
 var plant_name                : String   = ""
+var tween                     : Tween    = null
 
 
 #func _ready():
@@ -53,17 +54,15 @@ func tilt(direction = 0, strength = 0.2, action = null):
 
 func tilt_back(strength = 0.2):
 	rot_center = 0
-	if current_stage > 1:
-		var tween = create_tween()
-		tween.stop()
+	if current_stage > 1 and tween.is_running() == false:
+		tween = create_tween()
 		tween.tween_property(self, "rotation", rot_center, strength).set_trans(Tween.TRANS_LINEAR)
 		tween.play()
 
 
 func shake(strength = 0.2):
 	if current_stage > 1:
-		var tween = create_tween()
-		tween.stop()
+		tween = create_tween()
 		tween.tween_property(self, "rotation", rot_center, strength).set_trans(Tween.TRANS_LINEAR)
 		tween.tween_property(self, "rotation", rot_center + 0.1, strength).set_trans(Tween.TRANS_LINEAR)
 		tween.tween_property(self, "rotation", rot_center - 0.1, strength * 2).set_trans(Tween.TRANS_LINEAR)

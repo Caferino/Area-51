@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjsx7kxrgbrut"]
+[gd_scene load_steps=6 format=3 uid="uid://bjsx7kxrgbrut"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Level Components/level.gd" id="1_oayq3"]
-[ext_resource type="PackedScene" uid="uid://cxptmvqe4te2" path="res://Labs/Scenes/Level Components/Space and Time/level_time_component.tscn" id="2_mdxxx"]
-[ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space and Time/level_space_component.tscn" id="3_88r1o"]
+[ext_resource type="PackedScene" uid="uid://cxptmvqe4te2" path="res://Labs/Scenes/Level Components/Time/level_time_component.tscn" id="2_mdxxx"]
+[ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space/level_space_component.tscn" id="3_88r1o"]
+[ext_resource type="PackedScene" uid="uid://dxc53orbb4n83" path="res://Labs/Scenes/Level Components/Weather/level_weather_component.tscn" id="4_08pqk"]
 
 [sub_resource type="Environment" id="Environment_5wis1"]
 
@@ -11,11 +12,11 @@ script = ExtResource("1_oayq3")
 time = NodePath("LevelTimeComponent")
 space = NodePath("LevelSpaceComponent")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5wis1")
+
 [node name="LevelTimeComponent" parent="." instance=ExtResource("2_mdxxx")]
 
 [node name="LevelSpaceComponent" parent="." instance=ExtResource("3_88r1o")]
 
-[node name="LevelWeatherComponent" type="Node2D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="LevelWeatherComponent"]
-environment = SubResource("Environment_5wis1")
+[node name="LevelWeatherComponent" parent="." instance=ExtResource("4_08pqk")]

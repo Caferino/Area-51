@@ -1,4 +1,5 @@
 class_name Entity extends CharacterBody2D
+## An [color=white]entity[/color], by [color=white]Alcarodia.
 
 ## This is where the general stats of every entity/mob can go:
 ## e.x.: Level... (What if not every entity has stamina, speed, intelligence, dexterity, etc.?)

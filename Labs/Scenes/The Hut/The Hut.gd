@@ -5,6 +5,18 @@ class_name TheHut extends Level
 
 ## Maybe someday: Level extends Area ex Zone ex Country ex Kingdom ex Realm...
 
+func _ready() -> void:
+	### WEATHER COMPONENT ###
+	### WIND ###
+	weather_stats[GameEnums.WEATHER.WIND_STRENGTH]  = 0.0  #
+	weather_stats[GameEnums.WEATHER.WIND_DIRECTION] = 0.0  # degrees
+	weather_stats[GameEnums.WEATHER.WIND_FREQUENCY] = 0.0  # %
+	### RAIN ###
+	weather_stats[GameEnums.WEATHER.RAIN_STRENGTH]  = 0.0
+	weather_stats[GameEnums.WEATHER.RAIN_DIRECTION] = 0.0
+	weather_stats[GameEnums.WEATHER.RAIN_FREQUENCY] = 0.0
+
+
 #
 #func game_loop():  ## WARN - Deprecate maybe, no use for it yet now, comment it
 	### Each level must have its own game_loop if it has a unique logic.

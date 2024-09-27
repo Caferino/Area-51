@@ -1,5 +1,8 @@
 class_name GameEnums
 
+###########################################
+### ============== ITEMS ============== ###
+###########################################
 enum ITEM_TYPE {
 	MATERIAL,
 	CURRENCY,
@@ -20,6 +23,9 @@ enum WEAPON_TYPE {
 	BLUNT
 }
 
+###########################################
+### ============ ENTITIES ============= ###
+###########################################
 enum STAT {
 	VITALITY,
 	STRENGTH,
@@ -69,10 +75,27 @@ enum STAMINA_STAT {
 	DEACCEL
 }
 
+###########################################
+### ============== LEVEL ============== ###
+###########################################
 enum LEVEL_STAT {
 	INTERVAL,
 }
 
+enum WEATHER {
+	### WIND ###
+	WIND_STRENGTH,
+	WIND_DIRECTION,
+	WIND_FREQUENCY,
+	### RAIN ###
+	RAIN_STRENGTH,
+	RAIN_DIRECTION,
+	RAIN_FREQUENCY,
+}
+
+###########################################
+### ============= AFFIXES ============= ###
+###########################################
 enum RARITY {
 	NORMAL,
 	MAGIC,

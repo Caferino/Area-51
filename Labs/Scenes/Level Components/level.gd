@@ -1,22 +1,39 @@
 class_name Level extends Node2D
+## A [color=white]level[/color], by [color=white]Alcarodia.
 
-@export var time  : LevelTimeComponent  = null
-@export var space : LevelSpaceComponent = null
-@export var world : WorldEnvironment    = null
-
-var time_stats: Dictionary = {  ## WARN - Might deprecate
-	#GameEnums.LEVEL_STAT.INTERVAL : 0.6,
-}
+@export var env     : WorldEnvironment    = null
+@export var time    : LevelTimeComponent  = null
+@export var space   : LevelSpaceComponent = null
+@export var weather : WeatherComponent    = null
 
 var environment_stats: Dictionary = {}
 
-var weather_stats: Dictionary = {}
+var weather_stats: Dictionary = {
+	### WIND ###
+	GameEnums.WEATHER.WIND_STRENGTH:  0.0,  # check plant's tilt() strength
+	GameEnums.WEATHER.WIND_DIRECTION: 0.0,  # degrees
+	GameEnums.WEATHER.WIND_FREQUENCY: 0.0,  # %
+	### RAIN ###
+	GameEnums.WEATHER.RAIN_STRENGTH:  0.0,  # check plant's tilt() strength
+	GameEnums.WEATHER.RAIN_DIRECTION: 0.0,  # degrees
+	GameEnums.WEATHER.RAIN_FREQUENCY: 0.0,  # %
+}
+
+
+
+
+
+
+
 
 
 ## NOTE - Each field should have its own long-time timer, which, at the end, it should trigger
 ## a growth cycle in a random set of plants within it. It should also have a 'priority queue'
 ## for plants that were watered or fertilized, to forcefully grow (maybe way quicker too, somehow?)
 
+#var time_stats: Dictionary = {  ## WARN - Might deprecate
+	##GameEnums.LEVEL_STAT.INTERVAL : 0.6,
+#}
 
 #func _ready() -> void:
 	#time.interval = time_stats[GameEnums.LEVEL_STAT.INTERVAL]

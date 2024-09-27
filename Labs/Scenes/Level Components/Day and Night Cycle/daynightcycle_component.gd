@@ -1,2 +1,0 @@
-class_name DayNightCycleComponent extends Node2D
-

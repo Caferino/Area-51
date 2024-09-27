@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://vvs5hdnu2bbg"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Weather/Rain/level_rain_component.gd" id="1_wu2br"]
+[ext_resource type="PackedScene" uid="uid://b3h6qe16a5yb3" path="res://Labs/Scenes/Level Components/Weather/Rain/rain.tscn" id="2_41y87"]
+
+[node name="LevelRainComponent" type="Node2D"]
+script = ExtResource("1_wu2br")
+
+[node name="RainArea" parent="." instance=ExtResource("2_41y87")]

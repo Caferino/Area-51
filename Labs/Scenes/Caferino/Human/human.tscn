@@ -168,6 +168,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xonh7"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gqxt4"]
+graph_offset = Vector2(-91.8788, -10.6061)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_04gw0")
 nodes/Movement/position = Vector2(140, 60)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_xonh7")
@@ -486,7 +487,6 @@ animator_tree = NodePath("HatAnimatorTree")
 animator = NodePath("HatAnimator")
 
 [node name="HatArea" type="Area2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
-visible = false
 collision_layer = 4096
 collision_mask = 0
 monitoring = false
@@ -500,7 +500,7 @@ shape = SubResource("CircleShape2D_epeuq")
 y_sort_enabled = true
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_215dc")
-animation = &"right"
+animation = &"down"
 script = ExtResource("9_ijbbl")
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
@@ -512,9 +512,10 @@ scale = Vector2(0.452381, 0.384615)
 texture = ExtResource("10_57p1j")
 
 [node name="HatAnimatorTree" type="AnimationTree" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
+callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_gqxt4")
 anim_player = NodePath("../HatAnimator")
-parameters/Movement/Idle/blend_position = Vector2(0.649696, -0.0560786)
+parameters/Movement/Idle/blend_position = Vector2(0.00418258, -0.438406)
 parameters/Movement/Move/blend_position = Vector2(0.159323, 0.125098)
 parameters/Movement/Run/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
@@ -525,7 +526,9 @@ libraries = {
 }
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="BodyComponent/Head"]
+deterministic = false
 root_node = NodePath("../HeadArea/HeadAnimatedSprite")
+callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_nk2hc")
 anim_player = NodePath("../HeadAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.675978, -0.180423)
@@ -577,7 +580,9 @@ texture = ExtResource("10_57p1j")
 [node name="AccessoriesComponent" parent="BodyComponent/Torso/TorsoArea" instance=ExtResource("11_7b0wa")]
 
 [node name="TorsoAnimatorTree" type="AnimationTree" parent="BodyComponent/Torso"]
+deterministic = false
 root_node = NodePath("../TorsoArea/TorsoSprite")
+callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_bli6c")
 anim_player = NodePath("../TorsoAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0, 0)
