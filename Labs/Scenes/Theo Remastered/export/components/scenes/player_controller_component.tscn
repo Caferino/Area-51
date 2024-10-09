@@ -125,10 +125,12 @@ controller = NodePath("..")
 [node name="InteractorArea" type="Area2D" parent="."]
 rotation = 1.5708
 collision_layer = 0
+collision_mask = 16384
 monitorable = false
 
 [node name="InteractorCollisionShape" type="CollisionShape2D" parent="InteractorArea"]
 shape = SubResource("SegmentShape2D_0i0l6")
+debug_color = Color(0, 0, 0, 0.592157)
 
 [node name="InteractorTree" type="AnimationTree" parent="InteractorArea"]
 tree_root = SubResource("AnimationNodeBlendTree_6mfbc")

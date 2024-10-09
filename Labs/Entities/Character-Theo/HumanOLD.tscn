@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://bpbqkks0plgi"]
+[gd_scene load_steps=85 format=3 uid="uid://bpbqkks0plgi"]
 
 [ext_resource type="PackedScene" uid="uid://cqypn2n1j0p6t" path="res://Labs/Scenes/Attack Room/weapon.tscn" id="2_ywj5n"]
 [ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Scenes/Caferino/Human/Bodies/Male/Theo/theo_body_curated.png" id="3_wylio"]
@@ -11,7 +11,6 @@
 [ext_resource type="AnimationLibrary" uid="uid://e1l506hb0dsw" path="res://animations/2D Updated/2D Human Head Movement.res" id="10_qkjmc"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="11_30xyc"]
 [ext_resource type="AnimationLibrary" uid="uid://c7qhbii8g763v" path="res://animations/2D Updated/2D Hat Movement.res" id="12_pwhlb"]
-[ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="13_be1rb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt55q"]
 size = Vector2(28, 7)
@@ -492,9 +491,6 @@ vframes = 21
 frame = 2
 
 [node name="BodyAnimatorTree" type="AnimationTree" parent="BodyOrigin/Body/BodySprite"]
-libraries = {
-"": ExtResource("4_je47j")
-}
 tree_root = SubResource("AnimationNodeBlendTree_odx2k")
 anim_player = NodePath("../BodyAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.00101006, 0.704233)
@@ -530,15 +526,12 @@ z_index = 1
 y_sort_enabled = true
 
 [node name="HeadSprite" type="AnimatedSprite2D" parent="HeadOrigin/Head"]
+visible = false
 y_sort_enabled = true
-position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2qvm0")
 animation = &"down"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="HeadOrigin/Head/HeadSprite"]
-libraries = {
-"2D Human Head Movement": ExtResource("10_qkjmc")
-}
 tree_root = SubResource("AnimationNodeBlendTree_k8aew")
 anim_player = NodePath("../HeadAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.0158401, 0.506349)
@@ -575,9 +568,6 @@ sprite_frames = SubResource("SpriteFrames_aj8lf")
 animation = &"left"
 
 [node name="HatAnimatorTree" type="AnimationTree" parent="HeadOrigin/Head/HeadSprite/Hat/HatObject/HatSprite"]
-libraries = {
-"": ExtResource("12_pwhlb")
-}
 tree_root = SubResource("AnimationNodeBlendTree_wggd8")
 anim_player = NodePath("../HatAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0, 0)
@@ -616,8 +606,6 @@ texture = ExtResource("5_succy")
 visible = false
 
 [node name="CameraOrigin" type="Marker2D" parent="."]
-
-[node name="Camera Base" parent="CameraOrigin" instance=ExtResource("13_be1rb")]
 
 [connection signal="area_entered" from="FeetOrigin/Feet/LeftFoot" to="." method="_on_left_foot_area_entered"]
 [connection signal="area_exited" from="FeetOrigin/Feet/LeftFoot" to="." method="_on_left_foot_area_exited"]

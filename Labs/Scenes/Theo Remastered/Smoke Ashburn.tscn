@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=107 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -18,10 +18,12 @@
 [ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="16_m3k4p"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="17_io7h4"]
 [ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/sword.tscn" id="18_vljcp"]
+[ext_resource type="PackedScene" uid="uid://but837cn50spw" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/inventory_component.tscn" id="20_oqpkj"]
 [ext_resource type="AnimationLibrary" uid="uid://bdyf8ugjxxxjl" path="res://animations/2D Updated/2D Hat Movement Remastered.res" id="20_sui4d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fv7u5"]
-size = Vector2(28, 7)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6wl4j"]
+radius = 3.5
+height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gedt6"]
 radius = 11.0003
@@ -529,7 +531,8 @@ body = NodePath("BodyComponent")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.5)
-shape = SubResource("RectangleShape2D_fv7u5")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6wl4j")
 
 [node name="LoreComponent" parent="." instance=ExtResource("2_joc08")]
 
@@ -580,14 +583,17 @@ scale = Vector2(0.285714, 0.331417)
 texture = ExtResource("11_6fk20")
 
 [node name="AccessoriesComponent" parent="BodyComponent/Head/HeadArea" instance=ExtResource("10_6yihg")]
+y_sort_enabled = true
 
 [node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent" node_paths=PackedStringArray("animator_tree", "animator")]
+z_index = 1
 y_sort_enabled = true
 script = ExtResource("12_xfj4o")
 animator_tree = NodePath("HatAnimatorTree")
 animator = NodePath("HatAnimator")
 
 [node name="HatArea" type="Area2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
+y_sort_enabled = true
 collision_layer = 4096
 collision_mask = 0
 monitoring = false
@@ -601,7 +607,7 @@ shape = SubResource("CircleShape2D_u50h0")
 y_sort_enabled = true
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
-animation = &"down"
+animation = &"right"
 script = ExtResource("16_3nyy4")
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
@@ -749,6 +755,8 @@ debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 y_sort_enabled = true
 
 [node name="MeleeWeapon" parent="BodyComponent/EquipmentComponent" instance=ExtResource("18_vljcp")]
+
+[node name="InventoryComponent" parent="." instance=ExtResource("20_oqpkj")]
 
 [connection signal="animation_finished" from="BodyComponent/Torso/TorsoAnimator" to="BodyComponent/Torso" method="_on_torso_animator_animation_finished"]
 [connection signal="area_entered" from="BodyComponent/LeftLeg/LeftLegArea" to="BodyComponent/LeftLeg" method="_on_limb_area_entered"]

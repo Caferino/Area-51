@@ -45,13 +45,13 @@ y_sort_enabled = true
 script = ExtResource("1_kbko6")
 health_component = NodePath("HealthComponent")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Interactive", "Tree"] instance=ExtResource("3_4o4lw")]
-collision_layer = 4097
+[node name="InteractableArea" parent="." node_paths=PackedStringArray("health_component") groups=["Interactive", "Tree"] instance=ExtResource("3_4o4lw")]
+collision_layer = 16384
 collision_mask = 0
 monitoring = false
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="InteractableCollisionShape" type="CollisionShape2D" parent="InteractableArea"]
 shape = SubResource("CircleShape2D_xhe3r")
 
 [node name="StaticBody" type="StaticBody2D" parent="."]

@@ -28,9 +28,9 @@ func attack():
 
 func _on_hit_box_area_entered(area):
 	var target = area.get_parent()
-	if target.is_in_group("Plants"):
+	if target.is_in_group("Plant"):
 		cut_plant(target)
-	if target.is_in_group("Enemies"):
+	if target.is_in_group("Enemy"):
 		target.pushback(global_position, knockback_power)
 		target.hurt()
 
@@ -66,5 +66,5 @@ func enable_collision()  : collision_shape.disabled = true
 
 
 func _on_hit_box_body_entered(body):
-	if body.is_in_group("Enemies"):
+	if body.is_in_group("Enemy"):
 		body.hurt(collision_shape.position)

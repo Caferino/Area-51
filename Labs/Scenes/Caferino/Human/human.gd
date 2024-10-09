@@ -6,6 +6,7 @@ class_name Human extends Entity
 @export var muscles     : HumanoidMovementComponent  ## The entity's [color=salmon]muscles.
 @export var controller  : EntityController           ## The entity's [color=gray]controller.
 @export var body        : BodyComponent              ## The entity's [color=blue]body.
+@export var inventory   : InventoryComponent         ## The entity's [color=brown]inventory.
 
 
 ## Spawns the entity.
@@ -69,13 +70,14 @@ func _on_attack_finished():
 
 ## Runs whenever a body limb interacts with something.
 func _on_limb_interact(entered: bool, limb_name: String, area: Area2D):
-	if area.is_in_group("Plants"):
+	if area.is_in_group("Plant"):
 		if limb_name == "LeftLeg":
 			if entered : area.get_parent().interact(-0.1, 0.2, "shake")
 			else       : area.get_parent().interact( 0.0, 0.2, "tilt_back")
 		elif limb_name == "RightLeg":
 			if entered : area.get_parent().interact( 0.1, 0.2, "shake")
 			else       : area.get_parent().interact( 0.0, 0.2, "tilt_back")
+	
 
 
 ## Runs whenever the player (if controlled by one), interacts with something.
@@ -84,4 +86,4 @@ func _on_entity_interact():
 	for interactable in interactables:
 		if interactable.is_in_group("Interactive"):
 			if interactable.is_in_group("Tree"):
-				interactable.interact("hatchet")
+				interactable.get_parent().interact("hatchet")

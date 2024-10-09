@@ -1,6 +1,8 @@
 extends Area2D
 
 @onready var tween = create_tween()
+var item_name : String = ""
+var item_qty  : int = 1
 var animator
 var sprite
 
@@ -8,7 +10,8 @@ var sprite
 func setup(item):
 	animator = $AnimationPlayer
 	sprite   = $AnimatedSprite
-	set_name(item.name)
+	item_name = item.name
+	#set_name(item.name)
 	set_texture(item.texture)
 
 

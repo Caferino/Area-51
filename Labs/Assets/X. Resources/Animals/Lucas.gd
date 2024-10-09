@@ -78,4 +78,3 @@ func handle_animation():
 		sprite.flip_h = false
 	if velocity.x < -animation_change_snappiness:
 		sprite.flip_h = true
-

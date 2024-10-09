@@ -1,3 +1,4 @@
+@icon("res://Labs/Assets/X. Other/Icons/context_map.svg")
 class_name ContextMap extends Node2D
 
 @export var controller : AIEntityController = null

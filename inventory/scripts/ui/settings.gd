@@ -7,7 +7,9 @@ func _ready():
 	%min.text = "Min: %s" % %scale_slider.min_value
 	%max.text = "Max: %s" % %scale_slider.max_value
 	settings_data.changed.connect(_on_data_changed)
-	_on_data_changed()
+	#print("Is this piece of shit executing too? WHy the fuck true? ", settings_data.fullscreen)
+	#_on_data_changed()
+	#print("Yup, it is ")
 	set_scale_label()
 
 

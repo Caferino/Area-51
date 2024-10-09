@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_y2cad")
-fullscreen = true
+fullscreen = false
 ui_scale = 2.0

@@ -14,6 +14,7 @@ config/name="Area 51"
 config/tags=PackedStringArray("testing")
 run/main_scene="res://Labs/Scenes/Interactive Decorations Room/The Farm Too.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -32,6 +33,8 @@ InterfaceManager="*res://inventory/managers/interface_manager.gd"
 Caferino="*res://Labs/Scenes/Caferino/caferino.gd"
 Bizck="*res://Labs/Scenes/Caferino/bizck.gd"
 Raz="*res://Labs/Scenes/Caferino/raz.gd"
+WorldState="*res://Labs/Scenes/AI Systems/GOAP/World States/world_states.gd"
+Goap="*res://Labs/Scenes/AI Systems/GOAP/GOAPs/goap.gd"
 
 [debug]
 
@@ -61,6 +64,13 @@ enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/utili
 
 import/blender/enabled=false
 import/fbx/enabled=false
+
+[global_group]
+
+Interactive="Interactable areas, triggers, items, objects..."
+Collectable=""
+Enemy=""
+Plant=""
 
 [input]
 
@@ -232,7 +242,7 @@ hotbar_5={
 2d_navigation/layer_9="Area (Crowd)"
 2d_physics/layer_10="Small Furniture"
 2d_navigation/layer_10="Area (Resource)"
-2d_physics/layer_11="Dropped Items"
+2d_physics/layer_11="Collectables"
 2d_navigation/layer_11="Avoid High Priority"
 2d_physics/layer_12="Small Projectiles"
 2d_navigation/layer_12="Avoid Medium Priority"

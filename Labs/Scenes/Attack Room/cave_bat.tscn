@@ -137,7 +137,7 @@ _data = {
 "RESET": SubResource("Animation_2dgkm")
 }
 
-[node name="CaveBat" type="CharacterBody2D" node_paths=PackedStringArray("lore", "heart", "muscles", "effects", "controller", "body") groups=["Enemies"]]
+[node name="CaveBat" type="CharacterBody2D" node_paths=PackedStringArray("lore", "heart", "muscles", "effects", "controller", "body") groups=["Enemy"]]
 z_index = 2
 collision_layer = 8192
 collision_mask = 8256
@@ -187,7 +187,7 @@ animator_tree = NodePath("CaveBatAnimationTree")
 animator = NodePath("CaveBatAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
-position = Vector2(0, -1.25501)
+position = Vector2(0, -4.49452)
 monitoring = false
 
 [node name="TorsoCollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]
@@ -202,7 +202,9 @@ script = ExtResource("13_xy2gm")
 [node name="AccessoriesComponent" parent="BodyComponent/Torso/TorsoArea" instance=ExtResource("14_et7kk")]
 
 [node name="CaveBatAnimationTree" type="AnimationTree" parent="BodyComponent/Torso"]
+deterministic = false
 root_node = NodePath("../../..")
+callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_cbxkp")
 anim_player = NodePath("../CaveBatAnimator")
 parameters/Movement/Dead/blend_position = Vector2(0, 0)

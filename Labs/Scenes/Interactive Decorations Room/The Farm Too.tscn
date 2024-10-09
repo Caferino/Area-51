@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bfa1up1tlkgls"]
+[gd_scene load_steps=31 format=3 uid="uid://bfa1up1tlkgls"]
 
 [ext_resource type="Environment" uid="uid://dek43htan2cqp" path="res://Labs/Environments/Octopath2D.tres" id="1_buauu"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="1_d7f0l"]
@@ -12,11 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://byniytvl8d7xg" path="res://inventory/scenes/ui/crafting_list.tscn" id="10_egrml"]
 [ext_resource type="PackedScene" uid="uid://blvn2a1umjmgr" path="res://inventory/scenes/ui/player_stats_window.tscn" id="11_6yya6"]
 [ext_resource type="PackedScene" uid="uid://bln54lekmrmlp" path="res://inventory/scenes/inventory/hotbar_node.tscn" id="12_1pulg"]
+[ext_resource type="Script" path="res://inventory/scripts/ui/game_buttons.gd" id="13_ad8o4"]
 [ext_resource type="PackedScene" uid="uid://bmr77x00d4g68" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Tree.tscn" id="13_e6idw"]
 [ext_resource type="PackedScene" uid="uid://dyu16u72a1lk2" path="res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/field.tscn" id="14_0nvuv"]
 [ext_resource type="PackedScene" uid="uid://cafk5x7ikmps6" path="res://Labs/Scenes/The Hut/Scenes/big_tree.tscn" id="14_2a5gf"]
 [ext_resource type="PackedScene" uid="uid://7eg7lf7mwwdx" path="res://Labs/Scenes/Interactive Decorations Room/Rain/rain.tscn" id="15_h8soo"]
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="17_80hkq"]
+[ext_resource type="PackedScene" uid="uid://omqabjcbky1r" path="res://Labs/Scenes/Caferino/spawner.tscn" id="18_l0587"]
+[ext_resource type="PackedScene" uid="uid://da476plesi1hp" path="res://Labs/Scenes/Interactables/firepit/firepit.tscn" id="20_rpk46"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_syhij"]
 auto_exposure_enabled = true
@@ -3415,14 +3418,14 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(63, 32)
 
-[node name="buttons" type="Control" parent="ui/ui_container"]
+[node name="settings buttons" type="Control" parent="ui/ui_container"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 
-[node name="settings" type="Button" parent="ui/ui_container/buttons"]
+[node name="settings" type="Button" parent="ui/ui_container/settings buttons"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -3432,26 +3435,58 @@ offset_bottom = 31.0
 grow_horizontal = 0
 text = "Settings"
 
-[node name="quit" type="Button" parent="ui/ui_container/buttons"]
+[node name="quit" type="Button" parent="ui/ui_container/settings buttons"]
 layout_mode = 0
 offset_left = -70.0
 offset_top = 102.0
 offset_bottom = 133.0
 text = "Quit"
 
-[node name="save" type="Button" parent="ui/ui_container/buttons"]
+[node name="save" type="Button" parent="ui/ui_container/settings buttons"]
 layout_mode = 0
 offset_left = -70.0
 offset_top = 34.0
 offset_bottom = 65.0
 text = "Save"
 
-[node name="load" type="Button" parent="ui/ui_container/buttons"]
+[node name="load" type="Button" parent="ui/ui_container/settings buttons"]
 layout_mode = 0
 offset_left = -70.0
 offset_top = 68.0
 offset_bottom = 99.0
 text = "Load"
+
+[node name="game buttons" type="Control" parent="ui/ui_container" node_paths=PackedStringArray("order_button")]
+layout_mode = 1
+anchor_left = 0.56
+anchor_top = 1.0
+anchor_right = 0.56
+anchor_bottom = 1.0
+offset_left = 302.8
+offset_top = -426.0
+offset_right = 441.8
+offset_bottom = -361.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("13_ad8o4")
+order_button = NodePath("order")
+
+[node name="order" type="Button" parent="ui/ui_container/game buttons"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -24.0
+offset_right = 48.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+text = "Build a firepit!"
 
 [node name="Tree" parent="." instance=ExtResource("13_e6idw")]
 position = Vector2(370, 363)
@@ -3464,7 +3499,7 @@ position = Vector2(1041, 365)
 
 [node name="Field" parent="." instance=ExtResource("14_0nvuv")]
 position = Vector2(723, 470)
-amount = 3
+amount = 15
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("15_h8soo")]
 visible = false
@@ -3474,7 +3509,14 @@ position = Vector2(1014, 0)
 visible = false
 position = Vector2(855, 422)
 
-[connection signal="pressed" from="ui/ui_container/buttons/settings" to="ui/ui_container" method="_on_settings_pressed"]
-[connection signal="pressed" from="ui/ui_container/buttons/quit" to="ui/ui_container" method="_on_quit_pressed"]
-[connection signal="pressed" from="ui/ui_container/buttons/save" to="ui/ui_container" method="_on_save_pressed"]
-[connection signal="pressed" from="ui/ui_container/buttons/load" to="ui/ui_container" method="_on_load_pressed"]
+[node name="Spawner" parent="." instance=ExtResource("18_l0587")]
+position = Vector2(680, 116)
+
+[node name="Firepit" parent="." instance=ExtResource("20_rpk46")]
+position = Vector2(448, 623)
+
+[connection signal="pressed" from="ui/ui_container/settings buttons/settings" to="ui/ui_container" method="_on_settings_pressed"]
+[connection signal="pressed" from="ui/ui_container/settings buttons/quit" to="ui/ui_container" method="_on_quit_pressed"]
+[connection signal="pressed" from="ui/ui_container/settings buttons/save" to="ui/ui_container" method="_on_save_pressed"]
+[connection signal="pressed" from="ui/ui_container/settings buttons/load" to="ui/ui_container" method="_on_load_pressed"]
+[connection signal="pressed" from="ui/ui_container/game buttons/order" to="ui/ui_container/game buttons" method="_on_order_pressed"]
