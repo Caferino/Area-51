@@ -325,17 +325,13 @@ func clear_state():
 
 
 func get_elements(group_name):
-	if _detection_area.get_overlapping_areas():  ## DEBUG - DELETE
-		print("get_elements overlapping areas: ", _detection_area.get_overlapping_areas())
-	else:                                        ## DEBUG - DELETE
-		print("get_elements NO overlapping areas found!")
-	#return self.get_tree().get_nodes_in_group(group_name)
+	return self.get_tree().get_nodes_in_group(group_name)
 
 
 ## WARNING - I thought I could get rid of the big loop that iterates through
 ## all the interactive objects of a certain group, however, I might have to do it
 ## regardless, and might even add extra overhead if I want to check if it overlaps
-## with the NPC's DetectionArea which kinda sucks. Maybe remove that check?
+## with the NPC's DetectionArea, which kinda sucks. Maybe remove that check?
 ## ATTENTION - Get rid of DetectionArea completely? Can help for realism, but,
 ## adds overhead so far right now. Meditate this, find a solution.
 
@@ -343,15 +339,15 @@ func get_elements(group_name):
 ## NOTE - THIS SEEKS CLOSE ITEMS LIKE TREES, FOOD, ETC, BUT, MAYBE THAT STUFF
 ## IS DONE BY THE NPC, HOLD IT IN AN INTERNAL MEMORY OR SOMETHING
 func get_closest_element(group_name, reference):
-	pass
-	#var elements = get_elements(group_name)
-	#var closest_element
-	#var closest_distance = 1000000000
-	#
-	#for element in elements:
-		#var distance = reference.position.distance_to(element.position)
-		#if distance < closest_distance:
-			#closest_distance = distance
-			#closest_element = element
-	#
-	#return closest_element
+	var elements = get_elements(group_name)
+	var closest_element
+	var closest_distance = 1000000000
+	
+	for element in elements:
+		if _detection_area.overlaps_area(element):
+			var distance = reference.global_position.distance_to(element.global_position)
+			if distance < closest_distance:
+				closest_distance = distance
+				closest_element = element
+	
+	return closest_element

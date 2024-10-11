@@ -35,7 +35,7 @@ func get_effects() -> Dictionary:
 func perform(agent, delta) -> bool:
 	print("Performing collect_wood!")
 	# WARN - Most likely Deprecated, I don't use wood_stocks, just picked up wooden logs.
-	var closest_stock = WorldState.get_closest_element("wood_stock", agent)
+	var closest_stock = agent.get_closest_element("wood_stock", agent)
 	
 	# WARN - This will be dangerous if the player or anyone affects anyone's state
 	# The NPC might not have 5 logs in his inventory, but if you do, this state turns true,

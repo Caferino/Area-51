@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3w625uu3cw8n"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/AI Systems/GOAP/human_ai_goap.gd" id="1_4kcq3"]
+[ext_resource type="Script" path="res://Labs/Scenes/AI Systems/GOAP/GOAPs/human_ai_goap.gd" id="1_n0m3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66obb"]
 size = Vector2(2000, 2000)
 
 [node name="HumanAiGoap" type="Node2D" node_paths=PackedStringArray("_detection_area")]
-script = ExtResource("1_4kcq3")
+script = ExtResource("1_n0m3c")
 _detection_area = NodePath("DetectionArea")
 
 [node name="DetectionArea" type="Area2D" parent="."]

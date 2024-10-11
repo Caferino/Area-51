@@ -1,7 +1,7 @@
 class_name BuildFirepitAction extends GoapAction
 
 # TODO - CHANGE IT, no idea where did this one come from...
-const Firepit = preload("res://Labs/Scenes/Utility AI Example/objects/firepit.tscn")
+const Firepit = preload("res://Labs/Scenes/Interactables/firepit/firepit.tscn")
 
 func get_class_name(): return "BuildFirepitAction"
 
@@ -39,7 +39,7 @@ func perform(agent, delta) -> bool:
 		agent.get_parent().add_child(firepit)
 		firepit.position = _closest_spot.position
 		firepit.z_index = _closest_spot.z_index
-		WorldState.set_state("has_wood", false)
+		agent.set_state("has_wood", false)
 		return true
 	
 	# TODO - Adapt this to send dir to the entity's controller
