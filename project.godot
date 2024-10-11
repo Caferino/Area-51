@@ -33,8 +33,7 @@ InterfaceManager="*res://inventory/managers/interface_manager.gd"
 Caferino="*res://Labs/Scenes/Caferino/caferino.gd"
 Bizck="*res://Labs/Scenes/Caferino/bizck.gd"
 Raz="*res://Labs/Scenes/Caferino/raz.gd"
-WorldState="*res://Labs/Scenes/AI Systems/GOAP/World States/world_states.gd"
-Goap="*res://Labs/Scenes/AI Systems/GOAP/GOAPs/goap.gd"
+WorldState="*res://Labs/Scenes/AI Systems/GOAP/World States (maybe DP)/world_statesDP.gd"
 
 [debug]
 

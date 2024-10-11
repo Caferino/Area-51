@@ -18,16 +18,16 @@ class_name ChopTreeAction extends GoapAction
 
 func get_class_name(): return "ChopTreeAction"
 
-func is_valid() -> bool:
+func is_valid(_agent) -> bool:
 	return true
 	#return WorldState.get_elements("tree").size() > 0
 
 
-func get_cost(blackboard) -> int:
-	if blackboard.has("global_position"):
+func get_cost(agent) -> int:
+	if agent._states.has("global_position"):
 		# TODO - ADAPT THIS
 		return 3
-		#var closest_tree = WorldState.get_closest_element("tree", blackboard)
+		#var closest_tree = agent.get_closest_element("tree", blackboard)
 		#return int(closest_tree.position.distnce_to(blackboard.position) / 7)
 	return 3
 
@@ -42,18 +42,19 @@ func get_effects() -> Dictionary:
 	}
 
 
-func perform(actor, delta) -> bool:
-	#var _closest_tree = WorldState.get_closest_element("Tree", actor)
+func perform(agent, delta) -> bool:
+	print("Performing chop_tree!")
+	#var _closest_tree = agent.get_closest_element("Tree", agent)
 	
 	#if _closest_tree:
 		### NOTE - This condition is doing a good job at stopping the NPC around the tree...
 		### Expand on it, check if overlapping_areas...
-		#if _closest_tree.position.distance_to(actor.position) < 10:
-			#if actor.chop_tree(_closest_tree):
-				#WorldState.set_state("has_wood", true)
+		#if _closest_tree.position.distance_to(agent.position) < 10:
+			#if agent.chop_tree(_closest_tree):
+				#agent.set_state("has_wood", true)
 				#return true
 			#return false
 		#else:
 			## TODO - Adapt, send dir to entity's controller
-			#actor.move_to(actor.position.direction_to(_closest_tree.position), delta)
+			#agent.move_to(agent.position.direction_to(_closest_tree.position), delta)
 	return false

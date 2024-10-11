@@ -31,7 +31,6 @@ func _ready():
 ## If a tree is special, overwrite this function and call it after or before
 ## the special interaction with super.interact().
 func interact(item: String = ""):
-	print("WoodenTree interact")
 	if item == "hatchet":
 		health_component.damage(1)
 		if state == 1: drop_logs()

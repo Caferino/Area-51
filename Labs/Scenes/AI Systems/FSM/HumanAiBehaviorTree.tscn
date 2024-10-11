@@ -10,7 +10,7 @@
 [node name="HumanAIBehaviorTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_23d5b")
 actor_node_path = NodePath("..")
-blackboard = NodePath("@Node@17301")
+blackboard = NodePath("@Node@17295")
 actor = NodePath("")
 
 [node name="SelectorComposite" type="Node" parent="."]

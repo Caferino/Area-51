@@ -2,13 +2,13 @@ class_name HasWoodGoal extends GoapGoal
 
 func get_class_name(): return "HasWoodGoal"
 
-func is_valid() -> bool:
+func is_valid(_agent) -> bool:
 	return true
 	## TODO - Adapt this
 	#return WorldState.get_elements("firepit").size() == 0
 
 
-func priority() -> int:
+func priority(_agent) -> int:
 	return 1
 
 

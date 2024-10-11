@@ -6,6 +6,11 @@
 #
 # This example keeps things simple, creating only one planner with pre-defined actions.
 # WARNING TODO - Redo this. Might not be global, and it shouldn't start with pre-defined actions.
+
+## ATTENTION - This entire file, code has become DEPRECATED.
+## It now exists inside human_ai_goap or any other entity's ai_goap system.
+## The actions (and goals) are setup through the entity's unique personality.
+## Therefor, this entire code is not needed anymore, but will leave it just in case, for a while.
 extends Node
 
 var _action_planner = GoapActionPlanner.new()

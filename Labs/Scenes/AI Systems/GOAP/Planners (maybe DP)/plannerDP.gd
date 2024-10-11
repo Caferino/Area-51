@@ -1,7 +1,7 @@
 class_name GoapActionPlanner extends Node
 # The GOAP's heart.
 
-var _actions : Array = []
+var _actions : Array[GoapAction] = []
 
 
 # Set actions vailable for planning.
