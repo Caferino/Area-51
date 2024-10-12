@@ -36,4 +36,3 @@ func pick_up():
 		#$AnimatedSprite/Area/AnimationPlayer.play("pick_up")
 		#await get_tree().create_timer(2).timeout
 		#queue_free()
-

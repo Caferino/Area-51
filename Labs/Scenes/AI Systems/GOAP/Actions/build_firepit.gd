@@ -6,6 +6,8 @@ const Firepit = preload("res://Labs/Scenes/Interactables/firepit/firepit.tscn")
 func get_class_name(): return "BuildFirepitAction"
 
 func is_valid(_agent) -> bool:
+	print("collect_wood is_valid = true")
+	
 	# Adapt this for the game, should probably check the entity's inventory
 	# TODO - Check if the NPC has the needed items to craft and place a firepit
 	return true

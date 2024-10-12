@@ -7,7 +7,12 @@ func get_class_name(): return "CollectWoodAction"
 
 func is_valid(_agent) -> bool:
 	# Adapt this for the game, should probably check the entity's inventory
+	print("collect_wood is_valid = true")
 	return true
+	# TODO - I have two ways to detect Collectables. Get a list with all of them
+	# all the time and search those that are wood... (yikes)
+	# or add the collectable to specific groups they belong to, 'wood', 'mineral'...
+	# maybe by adding to the data structure where I hold their textures2D
 	#return WorldState.get_elements("wood").size() > 0
 
 

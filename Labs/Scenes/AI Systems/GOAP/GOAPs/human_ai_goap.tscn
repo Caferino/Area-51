@@ -11,7 +11,7 @@ _detection_area = NodePath("DetectionArea")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 16384
+collision_mask = 17408
 monitorable = false
 
 [node name="DetectionCollisionShape" type="CollisionShape2D" parent="DetectionArea"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://67syy5nfi4pk"]
+[gd_scene load_steps=5 format=3 uid="uid://67syy5nfi4pk"]
 
 [ext_resource type="Script" path="res://inventory/managers/item_manager.gd" id="1_cbkn8"]
 [ext_resource type="PackedScene" uid="uid://ccrxttes5b64y" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.tscn" id="1_faq72"]
-[ext_resource type="Resource" uid="uid://brdj1w4ybn1ym" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/Items/logs.tres" id="3_byc1e"]
+[ext_resource type="Resource" uid="uid://d4de6ndv12o5w" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/items/logs.tres" id="2_2upfa"]
+[ext_resource type="Resource" uid="uid://brdj1w4ybn1ym" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/Items/logsOLD.tres" id="3_byc1e"]
 
 [node name="ItemManager" type="ResourcePreloader"]
-resources = [PackedStringArray("collectable", "logs"), [ExtResource("1_faq72"), ExtResource("3_byc1e")]]
+resources = [PackedStringArray("collectable", "logs", "logsOLD"), [ExtResource("1_faq72"), ExtResource("2_2upfa"), ExtResource("3_byc1e")]]
 script = ExtResource("1_cbkn8")

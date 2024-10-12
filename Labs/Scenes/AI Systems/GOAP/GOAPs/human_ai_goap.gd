@@ -230,6 +230,7 @@ func _build_plans(step):
 		return true
 	
 	for action in _actions:
+		print("Calling action here! ", _actions)
 		if not action.is_valid(self):
 			continue
 		
@@ -336,8 +337,13 @@ func get_elements(group_name):
 ## adds overhead so far right now. Meditate this, find a solution.
 
 
-## NOTE - THIS SEEKS CLOSE ITEMS LIKE TREES, FOOD, ETC, BUT, MAYBE THAT STUFF
-## IS DONE BY THE NPC, HOLD IT IN AN INTERNAL MEMORY OR SOMETHING
+# Seeks the nearest interactable or collectable item of the given group_name.
+# NOTE TODO - Someday I could add a "how_many" parameter, or create a distinct 
+# entire function "get_closest_elements" that returns the n closest items for 
+# the NPC or AI to choose the best option, like a more suitable weapon.
+# NOTE - Could also add a distance ref to each. Returning a list like that, 
+# plus avoiding editing all the get_closest_elements" everywhere, a distinct 
+# function might be a better idea, maybe. 
 func get_closest_element(group_name, reference):
 	var elements = get_elements(group_name)
 	var closest_element

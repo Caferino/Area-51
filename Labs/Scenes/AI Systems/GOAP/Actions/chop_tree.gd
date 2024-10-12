@@ -18,15 +18,16 @@ class_name ChopTreeAction extends GoapAction
 
 func get_class_name(): return "ChopTreeAction"
 
-func is_valid(_agent) -> bool:
-	return true
-	#return WorldState.get_elements("tree").size() > 0
+
+func is_valid(agent) -> bool:
+	return agent.get_elements("Tree").size() > 0
 
 
 func get_cost(agent) -> int:
-	if agent._states.has("global_position"):
-		# TODO - ADAPT THIS
-		return 3
+	# TODO - ADAPT THIS, might not need this, judging my game's context.
+	# It might be something completely different, think Rimworld, which
+	# costs and priorities might be more straightforward or loyal to time.
+	#if agent._states.has("global_position"):
 		#var closest_tree = agent.get_closest_element("tree", blackboard)
 		#return int(closest_tree.position.distnce_to(blackboard.position) / 7)
 	return 3
@@ -45,6 +46,24 @@ func get_effects() -> Dictionary:
 func perform(agent, delta) -> bool:
 	print("Performing chop_tree!")
 	#var _closest_tree = agent.get_closest_element("Tree", agent)
+	
+	## 1. Give dir to the AI Controller
+	## 2. In an if/else, if it's moving and hasn't gotten stuck, keep moving until
+	## the interactor overlaps the tree's interation area.
+	## -- 2.1 To know if it has gotten stuck, while it's moving, save the previous
+	## position the NPC was on the previous frame. If it's stuck, such difference
+	## shall be near zero. Problem is I might need to measure this, might be
+	## some really small numbers, decimals, < 0.0 
+	## 3. Once the interactor overlaps, quickly proceed to chop the tree.
+	## Might use or need a cooldown timer for this short animation or something.
+	## 4. Once he drops n amount of logs, he should move on to collect_wood.
+	## This probably means this entire action can be skipped, shortened, or
+	## interrupted if there's already wood on the ground, dropped by someone else,
+	## etc, if is_valid is checked every tick that is. This can be problematic too,
+	## if multiple lumberjacks are chopping a tree, constantly interrupting eachother.
+	## Maybe the priority, cost or something for collect_wood should be low, or
+	## work on that much later, on a way to synchronize multiple NPCs workers or enemies
+	## to make them feel smart and powerful. An invisible leader/commander.
 	
 	#if _closest_tree:
 		### NOTE - This condition is doing a good job at stopping the NPC around the tree...

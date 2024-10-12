@@ -8,7 +8,6 @@ var items = {}
 var rare_names = {}
 var affix_groups = {}
 
-
 var equipment_names = {
 	GameEnums.EQUIPMENT_TYPE.HEAD: "Head",
 	GameEnums.EQUIPMENT_TYPE.CHEST: "Armor",
@@ -16,13 +15,11 @@ var equipment_names = {
 	GameEnums.EQUIPMENT_TYPE.MAIN_HAND: "Weapon"
 }
 
-
 var type_names = {
 	GameEnums.ITEM_TYPE.CONSUMABLE: "Consumable",
 	GameEnums.ITEM_TYPE.CURRENCY: "Currency",
 	GameEnums.ITEM_TYPE.MATERIAL: "Material"
 }
-
 
 var usable = {
 	"healing": preload("res://inventory/scripts/resources/usable_items/item_healing.gd"),
