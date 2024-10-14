@@ -79,6 +79,3 @@ func on_attack_finished():
 
 func on_sprint():
 	camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
-
-
-

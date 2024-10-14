@@ -1,22 +1,94 @@
 class_name Plant extends Node2D
 ## A [color=green]plant[/color], by Bizck.
 
-var water            : float  = 0
-var growth_stages    : int    = 0
-var current_stage    : int    = 0
-var current_rotation : float  = 0
-var margin_x         : float  = 0
-var margin_y         : float  = 0
-var plant_name       : String = ""
+@onready var leaves_particles : GPUParticles2D
+@onready var plant_sprite     : Sprite2D
+var water                     : float    = 0
+var growth_stages             : int      = 0
+var current_stage             : int      = 0
+var current_rotation          : float    = 0
+var rot_center                : float    = 0
+var margin_x                  : float    = 0
+var margin_y                  : float    = 0
+#var rng_group                : int      = 0   ## For batch-management, save CPU.
+var plant_name                : String   = ""
+var tween                     : Tween    = null
 
 
-func _ready():
-	pass
+#func _ready():
+	##rng_group = randi_range(1, 5)  # TODO - Make it a variable so no weird shit happens someday
+	##current_stage = rng_group
+	##sprite.frame = current_stage
+	#pass
 
 
+func setup():
+	plant_sprite = $PlantSprite
+	leaves_particles = $LeavesParticles
 
 
+func interact(direction = 0, strength = 0.2, action = null):
+	tilt(direction, strength, action)
 
+
+# TODO - Patterns are obvious... But what if this function received two RNs?
+# ! Or use perlin noise and a seed / % chance that changes once with RNG
+#func grow(rand_growth):
+	#if rand_growth == rng_group:
+		#current_stage += 1
+		#if current_stage > 1:
+			#z_index = 1
+		#if current_stage > growth_stages:
+			#current_stage = 0
+			#z_index = 0
+		#sprite.frame = current_stage
+		#shake()
+
+
+func tilt(direction = 0, strength = 0.2, action = null):
+	rot_center = direction
+	if action:
+		if action == "shake" : shake(strength)
+		elif action == "tilt_back" : tilt_back(strength)
+
+
+func tilt_back(strength = 0.2):
+	rot_center = 0
+	if current_stage > 1 and tween.is_running() == false:
+		tween = create_tween()
+		tween.tween_property(self, "rotation", rot_center, strength).set_trans(Tween.TRANS_LINEAR)
+		tween.play()
+
+
+func shake(strength = 0.2):
+	if current_stage > 1:
+		tween = create_tween()
+		tween.tween_property(self, "rotation", rot_center, strength).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "rotation", rot_center + 0.1, strength).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "rotation", rot_center - 0.1, strength * 2).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(self, "rotation", rot_center, strength).set_trans(Tween.TRANS_LINEAR)
+		tween.play()
+
+
+func take_damage(weapon_type):
+	var strength = 0.025
+	# TODO - Any way to stop the growth's shake while getting cut at the same time?
+	shake(strength)
+	if weapon_type == GameEnums.WEAPON_TYPE.SLASH:
+		drop_leaves()
+		await get_tree().create_timer(strength * 5).timeout
+		current_stage = 1
+		plant_sprite.frame = 1
+		z_index = 0
+
+
+func drop_leaves():
+	if current_stage > 1:
+		leaves_particles.amount = current_stage
+		if current_stage > 3:
+			leaves_particles.amount = current_stage + (current_stage - 3) * 2
+		leaves_particles.emitting = true
+		leaves_particles.restart()
 
 
 

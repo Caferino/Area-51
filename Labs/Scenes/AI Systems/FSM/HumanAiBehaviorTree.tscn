@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://2aje56t2bt1f"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_23d5b"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_kudbb"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/delayer.gd" id="3_rga3h"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Actions/chase.gd" id="4_bsf56"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="5_0ux2a"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Actions/wander.gd" id="6_sx6tb"]
+
+[node name="HumanAIBehaviorTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_23d5b")
+actor_node_path = NodePath("..")
+blackboard = NodePath("@Node@17295")
+actor = NodePath("")
+
+[node name="SelectorComposite" type="Node" parent="."]
+script = ExtResource("2_kudbb")
+
+[node name="DelayDecorator" type="Node" parent="SelectorComposite"]
+script = ExtResource("3_rga3h")
+wait_time = 0.2
+
+[node name="Chase" type="Node" parent="SelectorComposite/DelayDecorator"]
+script = ExtResource("4_bsf56")
+
+[node name="UntilFailDecorator" type="Node" parent="SelectorComposite"]
+script = ExtResource("5_0ux2a")
+
+[node name="Wander" type="Node" parent="SelectorComposite/UntilFailDecorator"]
+script = ExtResource("6_sx6tb")

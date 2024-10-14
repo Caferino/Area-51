@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://da476plesi1hp"]
+
+[ext_resource type="Texture2D" uid="uid://o8yxhi7rrahd" path="res://Labs/Scenes/Interactables/firepit/firepit_spritesheet.png" id="1_7x3ty"]
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/auto_play_animatedsprite.gd" id="1_pcgtp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljk2y"]
+atlas = ExtResource("1_7x3ty")
+region = Rect2(0, 0, 150, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak7h1"]
+atlas = ExtResource("1_7x3ty")
+region = Rect2(150, 0, 150, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aqvb"]
+atlas = ExtResource("1_7x3ty")
+region = Rect2(300, 0, 150, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r53ht"]
+atlas = ExtResource("1_7x3ty")
+region = Rect2(450, 0, 150, 126)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xlj4u"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_ljk2y")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_ak7h1")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_7aqvb")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_r53ht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu1vq"]
+size = Vector2(15, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_23yuy"]
+radius = 50.0
+
+[node name="Firepit" type="Marker2D"]
+z_index = 1
+y_sort_enabled = true
+
+[node name="FirepitAnimatedSprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_xlj4u")
+frame = 1
+frame_progress = 0.706437
+script = ExtResource("1_pcgtp")
+
+[node name="FirepitHurtArea" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 0
+monitoring = false
+
+[node name="FirepitHurtCollisionShape" type="CollisionShape2D" parent="FirepitHurtArea"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_bu1vq")
+debug_color = Color(0, 0, 0, 0.42)
+
+[node name="InteractableArea" type="Area2D" parent="." groups=["Interactive"]]
+collision_layer = 16384
+collision_mask = 0
+monitoring = false
+
+[node name="InteractableCollisionShape" type="CollisionShape2D" parent="InteractableArea"]
+shape = SubResource("CircleShape2D_23yuy")
+debug_color = Color(0.36319, 0.616889, 7.70092e-07, 0.42)

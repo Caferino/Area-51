@@ -5,5 +5,6 @@
 
 [resource]
 script = ExtResource("1_fpn4k")
-name = "logs"
+name = "Logs"
 texture = ExtResource("2_lglll")
+groups = Array[String](["Wood"])

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfkj6fhp2d0cr"]
+
+[ext_resource type="Texture2D" uid="uid://bmjv3n23v71ah" path="res://Labs/Scenes/Farming Room/leaf.png" id="1_awemy"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ln0u0"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 69.0
+initial_velocity_max = 420.0
+angular_velocity_max = 500.0
+orbit_velocity_max = 0.2
+gravity = Vector3(0, 600, 0)
+scale_min = 0.01
+scale_max = 0.05
+hue_variation_max = 0.5
+
+[node name="LeavesParticles" type="GPUParticles2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_ln0u0")
+texture = ExtResource("1_awemy")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.42

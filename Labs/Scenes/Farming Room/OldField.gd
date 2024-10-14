@@ -12,7 +12,7 @@ func _ready():
 
 func load_plants():
 	for i in range(100):
-		var plant = preload("res://Labs/Scenes/Farming Room/Plant.tscn").instantiate()  ## WARN - BAD LINE
+		var plant = preload("res://Labs/Scenes/Farming Room/OldPlant.tscn").instantiate()  ## WARN - BAD LINE
 		plant.get_node("Sprite").texture = get_parent().get_crop_texture("corn")
 		
 		var area_size_x = area.get_shape().size.x / 2

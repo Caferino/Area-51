@@ -1,6 +1,8 @@
+@icon("res://Labs/Assets/X. Other/Icons/context_map.svg")
 class_name ContextMap extends Node2D
 
 @export var controller : AIEntityController = null
+@export var pers_space : Area2D = null
 
 signal chosen_dir_updated()
 
@@ -32,6 +34,7 @@ func _physics_process(_delta):
 	situational_awareness()
 
 
+## TODO - Fear factor? A variable to further influence the Utility Agent's decisions?
 func situational_awareness():
 	if overlap_bodies:
 		if controller.chasing:

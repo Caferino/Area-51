@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://nsemwd76op77"]
 
 [ext_resource type="PackedScene" uid="uid://ywdwc8rryrt" path="res://Labs/Entities/Character-Theo/Theo.tscn" id="1_qf6fk"]
-[ext_resource type="PackedScene" uid="uid://bmr77x00d4g68" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Tree.tscn" id="2_fg7xa"]
+[ext_resource type="PackedScene" uid="uid://bmr77x00d4g68" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/tree.tscn" id="2_fg7xa"]
 
 [node name="CollectableItemsScene" type="Node2D"]
 y_sort_enabled = true

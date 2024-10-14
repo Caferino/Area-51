@@ -1,5 +1,8 @@
 class_name GameEnums
 
+###########################################
+### ============== ITEMS ============== ###
+###########################################
 enum ITEM_TYPE {
 	MATERIAL,
 	CURRENCY,
@@ -20,6 +23,9 @@ enum WEAPON_TYPE {
 	BLUNT
 }
 
+###########################################
+### ============ ENTITIES ============= ###
+###########################################
 enum STAT {
 	VITALITY,
 	STRENGTH,
@@ -36,7 +42,7 @@ enum STAT {
 	MOVE_SPEED
 }  # TODO - Might deprecate, it's too general. Modularize
 
-enum AI_STATS {
+enum AI_STAT {
 	DEFAULT_MAX_SPEED,
 	DEFAULT_STEER_FORCE,
 	DEFAULT_LOOK_AHEAD,
@@ -45,20 +51,20 @@ enum AI_STATS {
 	DEFAULT_BACKOFF_SPEED
 }
 
-enum PLANT_STATS {
+enum PLANT_STAT {
 	WATER,
 	GROWTH_STAGES,
 	CURRENT_STAGE,
 	CURRENT_ROTATION
 }
 
-enum ATTACK_STATS {
+enum ATTACK_STAT {
 	WEAPON_SPEED,
 	WEAPON_DAMAGE,
 	KNOCKBACK_POWER
 }
 
-enum STAMINA_STATS {
+enum STAMINA_STAT {
 	CAPACITY,
 	SPRINT_RATE,
 	REGEN_RATE,
@@ -69,6 +75,27 @@ enum STAMINA_STATS {
 	DEACCEL
 }
 
+###########################################
+### ============== LEVEL ============== ###
+###########################################
+enum LEVEL_STAT {
+	INTERVAL,
+}
+
+enum WEATHER {
+	### WIND ###
+	WIND_STRENGTH,
+	WIND_DIRECTION,
+	WIND_FREQUENCY,
+	### RAIN ###
+	RAIN_STRENGTH,
+	RAIN_DIRECTION,
+	RAIN_FREQUENCY,
+}
+
+###########################################
+### ============= AFFIXES ============= ###
+###########################################
 enum RARITY {
 	NORMAL,
 	MAGIC,

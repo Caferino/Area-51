@@ -1,0 +1,1 @@
+class_name CycleComponent extends Node2D

@@ -8,7 +8,6 @@ var items = {}
 var rare_names = {}
 var affix_groups = {}
 
-
 var equipment_names = {
 	GameEnums.EQUIPMENT_TYPE.HEAD: "Head",
 	GameEnums.EQUIPMENT_TYPE.CHEST: "Armor",
@@ -16,13 +15,11 @@ var equipment_names = {
 	GameEnums.EQUIPMENT_TYPE.MAIN_HAND: "Weapon"
 }
 
-
 var type_names = {
 	GameEnums.ITEM_TYPE.CONSUMABLE: "Consumable",
 	GameEnums.ITEM_TYPE.CURRENCY: "Currency",
 	GameEnums.ITEM_TYPE.MATERIAL: "Material"
 }
-
 
 var usable = {
 	"healing": preload("res://inventory/scripts/resources/usable_items/item_healing.gd"),
@@ -86,7 +83,7 @@ func get_items(items_data: Array) -> Array:
 ## Build an item from a dictionary (usually from item.get_data())
 func get_item_from_data(item_data):
 	var item = get_item(item_data.id)
-	item.quntity = item_data.quantity
+	item.quantity = item_data.quantity
 	if item_data.has("item_name"): item.name = item_data.item_name
 	if item_data.has("rarity"): item.rarity = item_data.rarity
 	if item_data.has("components"):

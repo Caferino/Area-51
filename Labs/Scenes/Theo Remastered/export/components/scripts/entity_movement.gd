@@ -22,13 +22,15 @@ func handle_movement(entity: Entity, direction: Vector2, is_sprinting: bool):
 	var accel = 0.12  ## Lower for "walking on ice" effect, it'd need DEACCEL, done below
 	if direction != Vector2.ZERO:
 		if is_sprinting:
-			direction *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED]
+			direction *= entity.stamina_stats[GameEnums.STAMINA_STAT.MAX_SPRINT_SPEED]
 		else:
-			direction *= entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED]
+			direction *= entity.stamina_stats[GameEnums.STAMINA_STAT.MAX_WALK_SPEED]
 	else:
 		accel = 0.33  ## Reduce for DEACCEL effect
 	
 	# TODO - Not sure if I need DeltaTime here, maybe only if it was online?
+	## WARNING - Remember: using lerp makes the NPC walk super, super slow for
+	## a tiny fraction of a second at the very end. Forcing the use of direct anim_state
 	entity.velocity = entity.velocity.lerp(direction, accel)
 	entity.move_and_slide()
 	## TODO - Alternative to add custom logic when colliding with rigidbodies
@@ -55,9 +57,9 @@ func handle_movement(entity: Entity, direction: Vector2, is_sprinting: bool):
 ## following formula to calculate the [member AnimationPlayer.speed_scale]:
 ## [codeblock]
 ## if current_state == "Run":
-##     speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] - 60) / 60 + 1.8
+##     speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STAT.MAX_SPRINT_SPEED] - 60) / 60 + 1.8
 ## else:
-##     speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] - 60) / 60 + 1.8
+##     speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STAT.MAX_WALK_SPEED] - 60) / 60 + 1.8
 ## [/codeblock]
 ## The default speed_scale value of 1.0 felt too slow for the entity's movement.
 ## A value between 1.8 - 2.0 provides a more snappy and arcade feel.
@@ -73,9 +75,9 @@ func handle_animation(entity: Entity, direction: Vector2, is_sprinting: bool):
 	if direction != Vector2.ZERO:
 		last_direction = direction
 		if is_sprinting:
-			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_SPRINT_SPEED] - 60) / 60 + 1.8
+			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STAT.MAX_SPRINT_SPEED] - 60) / 60 + 1.8
 		else:
-			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STATS.MAX_WALK_SPEED] - 60) / 60 + 1.8
+			speed_scale = (entity.stamina_stats[GameEnums.STAMINA_STAT.MAX_WALK_SPEED] - 60) / 60 + 1.8
 	
 	# TODO ! Try to make this system faster, reduce CPU overhead
 	#pose[Vector2(0, -15), "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", 
@@ -142,5 +144,5 @@ func stop(entity: Entity, stop_velocity: bool):
 		entity.body_pose[limb][3] = "Idle"
 		entity.body_pose[limb][4] = "parameters/Movement/Idle/blend_position"
 		entity.body_pose[limb][5] = last_direction
-		entity.body_pose[limb][7] = entity.body.gear["MeleeWeapon"].attack_stats[GameEnums.ATTACK_STATS.WEAPON_SPEED]
+		entity.body_pose[limb][7] = entity.body.gear["MeleeWeapon"].attack_stats[GameEnums.ATTACK_STAT.WEAPON_SPEED]
 		move_limb(entity, limb)

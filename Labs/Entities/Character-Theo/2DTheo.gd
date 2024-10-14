@@ -184,22 +184,22 @@ func rotate_weapon(direction):
 
 
 func _on_left_foot_area_entered(area):
-	if area.get_parent().is_in_group("Plants"):
+	if area.get_parent().is_in_group("Plant"):
 		area.get_parent().tilt(-0.1, 0.2, "shake")
 
 
 func _on_left_foot_area_exited(area):
-	if area.get_parent().is_in_group("Plants"):
+	if area.get_parent().is_in_group("Plant"):
 		area.get_parent().tilt_back()
 
 
 func _on_right_foot_area_entered(area):
-	if area.get_parent().is_in_group("Plants"):
+	if area.get_parent().is_in_group("Plant"):
 		area.get_parent().tilt(0.1, 0.2, "shake")
 
 
 func _on_right_foot_area_exited(area):
-	if area.get_parent().is_in_group("Plants"):
+	if area.get_parent().is_in_group("Plant"):
 		area.get_parent().tilt_back()
 
 
@@ -278,7 +278,7 @@ func interact():
 # In GTA V, how do they know what kind of bullet or item turns gasoline on fire f.e.?
 
 func _on_body_area_body_entered(body):
-	if body.is_in_group("Enemies"):
+	if body.is_in_group("Enemy"):
 		print("Ouch!!!")
 
 

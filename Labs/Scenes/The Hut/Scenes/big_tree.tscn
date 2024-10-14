@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cafk5x7ikmps6"]
+[gd_scene load_steps=11 format=3 uid="uid://cafk5x7ikmps6"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/The Hut/Scenes/big_tree.gd" id="1_3l68o"]
 [ext_resource type="Texture2D" uid="uid://bgecfrfntsmyu" path="res://Labs/Scenes/The Hut/big_tree_trunk_1.png" id="1_dudqo"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/static_collision_component.gd" id="3_vhrye"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/interactable_component.gd" id="4_raw7i"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/appearance_component.gd" id="5_eilfr"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/interactable_area.gd" id="6_efxkf"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/timer_component.gd" id="8_022p5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xuedc"]
@@ -53,9 +52,10 @@ polygon = PackedVector2Array(10, 0, 0, 15, -10, 0)
 [node name="InteractableComponent" type="Node2D" parent="."]
 script = ExtResource("4_raw7i")
 
-[node name="InteractableArea" type="Area2D" parent="InteractableComponent" node_paths=PackedStringArray("parent") groups=["Interactive", "Tree"]]
-script = ExtResource("6_efxkf")
-parent = NodePath("../..")
+[node name="InteractableArea" type="Area2D" parent="InteractableComponent" groups=["Interactive", "Tree"]]
+collision_layer = 16384
+collision_mask = 0
+monitoring = false
 
 [node name="InteractableCollisionShape" type="CollisionShape2D" parent="InteractableComponent/InteractableArea"]
 shape = SubResource("CircleShape2D_8qijo")
