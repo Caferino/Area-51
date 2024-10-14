@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://iixw61r8utqk" path="res://inventory/scenes/interactables/treasure_chest.tscn" id="13_272f7"]
 [ext_resource type="PackedScene" uid="uid://c5uh6bhur8igq" path="res://inventory/scenes/interactables/interactable_chest.tscn" id="14_3mw5w"]
 [ext_resource type="Script" path="res://inventory/scripts/resources/inventory.gd" id="14_c1tuy"]
-[ext_resource type="PackedScene" uid="uid://bmr77x00d4g68" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Tree.tscn" id="16_utayo"]
+[ext_resource type="PackedScene" uid="uid://bmr77x00d4g68" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/tree.tscn" id="16_utayo"]
 [ext_resource type="PackedScene" uid="uid://cafk5x7ikmps6" path="res://Labs/Scenes/The Hut/Scenes/big_tree.tscn" id="18_3ipfv"]
 [ext_resource type="PackedScene" uid="uid://omqabjcbky1r" path="res://Labs/Scenes/Caferino/spawner.tscn" id="21_5vemn"]
 

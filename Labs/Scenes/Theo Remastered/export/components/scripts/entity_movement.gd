@@ -29,6 +29,8 @@ func handle_movement(entity: Entity, direction: Vector2, is_sprinting: bool):
 		accel = 0.33  ## Reduce for DEACCEL effect
 	
 	# TODO - Not sure if I need DeltaTime here, maybe only if it was online?
+	## WARNING - Remember: using lerp makes the NPC walk super, super slow for
+	## a tiny fraction of a second at the very end. Forcing the use of direct anim_state
 	entity.velocity = entity.velocity.lerp(direction, accel)
 	entity.move_and_slide()
 	## TODO - Alternative to add custom logic when colliding with rigidbodies

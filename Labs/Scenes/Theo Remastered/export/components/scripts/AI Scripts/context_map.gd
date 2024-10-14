@@ -2,6 +2,7 @@
 class_name ContextMap extends Node2D
 
 @export var controller : AIEntityController = null
+@export var pers_space : Area2D = null
 
 signal chosen_dir_updated()
 

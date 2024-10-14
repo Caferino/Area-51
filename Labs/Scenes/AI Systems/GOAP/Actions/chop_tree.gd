@@ -14,7 +14,12 @@ class_name ChopTreeAction extends GoapAction
 ## could have 4 of these dots, north, east, west, south... maybe more, as it's big...
 
 ## How to move the entity towards a tree and stop properly, not walk endlessly towards
-## its center? 
+## its center?
+
+var tree      : Area2D = null
+var chopping  : bool   = false
+var near_tree : bool   = false
+var prev_dis  : float  = 10000.0      ## To know if the entity is stuck. 
 
 func get_class_name(): return "ChopTreeAction"
 
@@ -23,7 +28,7 @@ func is_valid(agent) -> bool:
 	return agent.get_elements("Tree").size() > 0
 
 
-func get_cost(agent) -> int:
+func get_cost(_agent) -> int:
 	# TODO - ADAPT THIS, might not need this, judging my game's context.
 	# It might be something completely different, think Rimworld, which
 	# costs and priorities might be more straightforward or loyal to time.
@@ -43,10 +48,39 @@ func get_effects() -> Dictionary:
 	}
 
 
-func perform(agent, delta) -> bool:
+func perform(agent, _delta) -> bool:
 	print("Performing chop_tree!")
-	#var _closest_tree = agent.get_closest_element("Tree", agent)
-	
+	if agent.controller.moving and tree:
+		print("Moving...")
+		if agent.controller.interactor_area.has_overlapping_areas():
+			print("Overlapping areas... true!")
+			var areas = agent.controller.interactor_area.get_overlapping_areas()
+			for a in areas:
+				print("a in areas = ", a)
+				if a.is_in_group("Tree"):
+					print("Performing a very sharp cut!!!!")
+					near_tree = true   ## WARN - Do not forget to set it to null after chop
+					agent.controller.dir = Vector2.ZERO
+					agent.controller.anim_state = "Idle"
+					agent.controller.moving = false  ## Without it this block runs twice, Moonwalk's Paradox
+		else:
+			agent.controller.dir = agent.global_position.direction_to(tree.global_position)
+			
+			## Instead of all this I could use the ContextMap's AwareZone
+			## Might need to add it to HumanoidAIComponent and do a
+			## context_map.aware_zone_area.overlaps_area(tree)  # tree is already an Area2D right?
+			var curr_dis = agent.global_position.distance_to(tree.global_position)
+			if agent.controller.context_map.pers_space.overlaps_area(tree):
+				print("I think I am stuck!!")
+				agent.controller.dir = agent.controller.context_map.chosen_dir
+			prev_dis = curr_dis
+	elif near_tree:
+		print("Got a tree in front of me, boss!")
+	elif not chopping:
+		tree = agent.get_closest_element("Tree", agent)
+		agent.controller.dir = agent.global_position.direction_to(tree.global_position)
+		agent.controller.anim_state = "Move"
+		agent.controller.entity_move.emit()
 	## 1. Give dir to the AI Controller
 	## 2. In an if/else, if it's moving and hasn't gotten stuck, keep moving until
 	## the interactor overlaps the tree's interation area.

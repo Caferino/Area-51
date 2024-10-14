@@ -37,7 +37,7 @@ func get_effects() -> Dictionary:
 	}
 
 
-func perform(agent, delta) -> bool:
+func perform(agent, _delta) -> bool:
 	print("Performing collect_wood!")
 	# WARN - Most likely Deprecated, I don't use wood_stocks, just picked up wooden logs.
 	var closest_stock = agent.get_closest_element("wood_stock", agent)

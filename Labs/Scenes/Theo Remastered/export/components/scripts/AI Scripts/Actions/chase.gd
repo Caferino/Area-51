@@ -10,28 +10,24 @@ func tick(actor, _blackboard):
 		current_target_distance = actor.global_position.distance_to(actor.current_target.global_position)
 	else:
 		#print("He got away x2!!!")
-		#actor.dir = Vector2.ZERO  # NOTE - This makes him not stop walking, is bad though
+		actor.dir = Vector2.ZERO  # NOTE - This makes him not stop walking, is bad though
 		actor.anim_state = "Idle"
-		actor.sprinting = false
 		return FAILURE
 	
 	if current_target_distance >= actor.distance_tolerance + 50:
 		#print("Sprinting!!!")
 		actor.dir = actor.global_position.direction_to(actor.current_target.global_position)
-		actor.anim_state = "Run"
-		actor.sprinting = true
+		actor.entity_sprint.emit()
 		return RUNNING
 	elif current_target_distance >= actor.distance_tolerance:
 		#print("Chasing!!")
 		actor.dir = actor.global_position.direction_to(actor.current_target.global_position)
-		actor.anim_state = "Move"
-		actor.sprinting = false
+		actor.entity_move.emit()
 		return RUNNING
 	elif current_target_distance > 0:
 		#print("Too close!")
 		actor.dir = Vector2.ZERO
 		actor.anim_state = "Idle"
-		actor.sprinting = false
 		## TODO - Rotate him here somehow without moving. No method for that yet
 		return SUCCESS
 	#else:  ## DEPRECATED

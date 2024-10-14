@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
-ItemManager="*res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/ItemManager.tscn"
+ItemManager="*res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/item_manager.tscn"
 Randomizer="*res://Labs/Scenes/Collectable Items & Inventory/Randomizer.gd"
 SignalManager="*res://inventory/managers/signal_manager.gd"
 SettingsManager="*res://inventory/managers/settings_manager.gd"

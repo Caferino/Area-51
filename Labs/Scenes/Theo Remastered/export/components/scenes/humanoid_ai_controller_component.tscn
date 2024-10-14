@@ -275,11 +275,11 @@ libraries = {
 }
 
 [node name="HumanAIBehaviorTree" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_ijjbt")]
-blackboard = NodePath("@Node@17293")
+blackboard = NodePath("@Node@24047")
 actor = NodePath("..")
 
-[node name="HumanAiGoap" parent="." node_paths=PackedStringArray("_actor") instance=ExtResource("4_day17")]
-_actor = NodePath("..")
+[node name="HumanAiGoap" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("4_day17")]
+controller = NodePath("..")
 _enabled = false
 _tick_rate = 20
 

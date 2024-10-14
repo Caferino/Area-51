@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bmr77x00d4g68"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Tree.gd" id="1_kbko6"]
-[ext_resource type="PackedScene" uid="uid://d14w35unh21j0" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/HealthComponent.tscn" id="1_ktrd2"]
+[ext_resource type="Script" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/tree.gd" id="1_kbko6"]
+[ext_resource type="PackedScene" uid="uid://d14w35unh21j0" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/health_component.tscn" id="1_ktrd2"]
 [ext_resource type="Texture2D" uid="uid://lme0j6u8o1qn" path="res://Labs/Scenes/Collectable Items & Inventory/Tree.png" id="2_rvrjp"]
-[ext_resource type="PackedScene" uid="uid://cb0gxldgrnbao" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/HitboxComponent.tscn" id="3_4o4lw"]
+[ext_resource type="PackedScene" uid="uid://cb0gxldgrnbao" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/hitbox_component.tscn" id="3_4o4lw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xhe3r"]
 radius = 52.0

@@ -16,9 +16,9 @@ var _actions           : Array[GoapAction] = []
 var _current_plan      : Array             = []
 var _current_plan_step : int               = 0
 
-@export var _detection_area : Area2D = null
+@export var detection_area : Area2D = null
 
-@export var _actor : HumanoidAIControllerComponent = null
+@export var controller : HumanoidAIControllerComponent = null
 
 ## Whether this behavior tree should be enabled or not.
 @export var _enabled : bool = true:
@@ -48,7 +48,7 @@ var _current_plan_step : int               = 0
 
 # Setup GOAP's goals based on the entity's personality roles & their goals
 func setup():
-	for personality_role in _actor.personality.roles:
+	for personality_role in controller.personality.roles:
 		_goals.append_array(personality_role.goals)
 		_actions = personality_role.actions
 		# DEBUG FOR MULTIPLE GOALS IN ONE ROLE:
@@ -344,13 +344,13 @@ func get_elements(group_name):
 # NOTE - Could also add a distance ref to each. Returning a list like that, 
 # plus avoiding editing all the get_closest_elements" everywhere, a distinct 
 # function might be a better idea, maybe. 
-func get_closest_element(group_name, reference):
+func get_closest_element(group_name, reference) -> Area2D:
 	var elements = get_elements(group_name)
 	var closest_element
 	var closest_distance = 1000000000
 	
 	for element in elements:
-		if _detection_area.overlaps_area(element):
+		if detection_area.overlaps_area(element):
 			var distance = reference.global_position.distance_to(element.global_position)
 			if distance < closest_distance:
 				closest_distance = distance

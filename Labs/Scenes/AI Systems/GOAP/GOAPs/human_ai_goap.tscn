@@ -5,9 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66obb"]
 size = Vector2(2000, 2000)
 
-[node name="HumanAiGoap" type="Node2D" node_paths=PackedStringArray("_detection_area")]
+[node name="HumanAiGoap" type="Node2D" node_paths=PackedStringArray("detection_area")]
 script = ExtResource("1_n0m3c")
-_detection_area = NodePath("DetectionArea")
+detection_area = NodePath("DetectionArea")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
