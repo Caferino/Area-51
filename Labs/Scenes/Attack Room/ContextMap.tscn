@@ -22,7 +22,7 @@ shape = SubResource("CircleShape2D_k5ghh")
 
 [node name="PersonalSpaceArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 16384
+collision_mask = 20480
 monitorable = false
 
 [node name="PersonalSpaceCollisionShape" type="CollisionShape2D" parent="PersonalSpaceArea"]

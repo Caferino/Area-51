@@ -13,10 +13,12 @@ var ray_directions : Array[Vector2]   = []
 var interest       : Array[float]     = []
 var danger         : Array[float]     = []
 var total_rays     : int              =    8
-var look_ahead     : float            = 50.0   ## Must be bigger than the aware_zone area.
+var look_ahead     : float            = 25.0   ## Must be bigger than the aware_zone area.
 var added_interest : float            =  5.0
 var enable_layers  : int              = 4161   ## Decimal collision_bitmask for layers 1, 7 and 13.
 var overlap_bodies : bool             = false
+
+## ATTENTION - enable_layers can be problematic if it sees itself. Danger all the time
 
 ## Generates the rays.
 func _ready():

@@ -516,11 +516,11 @@ size = Vector2(12.5, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r48ac"]
 size = Vector2(1, 1)
 
-[node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body") groups=["Player", "Protagonist"]]
+[node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body", "inventory") groups=["Player", "Protagonist"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4097
-collision_mask = 4293860349
+collision_mask = 80877
 motion_mode = 1
 script = ExtResource("1_c7twf")
 lore = NodePath("LoreComponent")
@@ -528,6 +528,7 @@ health = NodePath("HealthComponent")
 muscles = NodePath("HumanoidMovementComponent")
 controller = NodePath("PlayerControllerComponent")
 body = NodePath("BodyComponent")
+inventory = NodePath("InventoryComponent")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.5)
@@ -607,7 +608,7 @@ shape = SubResource("CircleShape2D_u50h0")
 y_sort_enabled = true
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
-animation = &"right"
+animation = &""
 script = ExtResource("16_3nyy4")
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]

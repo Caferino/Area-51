@@ -8,13 +8,15 @@ enum ProcessThread { IDLE, PHYSICS }
 signal tree_enabled
 signal tree_disabled
 
+var states             : Dictionary        = {}
 var _current_goal      : GoapGoal          = null
 var _last_tick         : int               = 0
-var _states            : Dictionary        = {}
 var _goals             : Array[GoapGoal]   = []
 var _actions           : Array[GoapAction] = []
 var _current_plan      : Array             = []
 var _current_plan_step : int               = 0
+
+@export var g_timer : Timer = null
 
 @export var detection_area : Area2D = null
 
@@ -50,7 +52,9 @@ var _current_plan_step : int               = 0
 func setup():
 	for personality_role in controller.personality.roles:
 		_goals.append_array(personality_role.goals)
-		_actions = personality_role.actions
+		_actions.append_array(personality_role.actions)
+		for state in personality_role.states:
+			states[state] = personality_role.states[state]
 		# DEBUG FOR MULTIPLE GOALS IN ONE ROLE:
 		#for goal in _goals:
 			#print("GOAL +++++++++ ", goal.get_class_name())
@@ -142,7 +146,7 @@ func _follow_plan(plan, delta):
 		_current_plan_step += 1
 
 
-## interrupts this tree if anything was running
+## Interrupts this tree if anything was running
 ## TODO - Probably adapt this to the needed system.
 ## "Save" or "Remember, memorize" what plan the entity was doing to resume later.
 func interrupt() -> void:
@@ -221,7 +225,7 @@ func _build_plans(step):
 	var state = step.state.duplicate()
 	# Check if the states contains data that can satisfy the current state
 	for s in step.state:
-		if state[s] == _states.get(s):
+		if state[s] == states.get(s):
 			state.erase(s)
 	
 	# If the state is empty, it means this branch already found the solution,
@@ -314,15 +318,15 @@ func _print_plan(plan):
 #######################################################
 
 func get_state(state_name, default = null):
-	return _states.get(state_name, default)
+	return states.get(state_name, default)
 
 
 func set_state(state_name, value):
-	_states[state_name] = value
+	states[state_name] = value
 
 
 func clear_state():
-	_states = {}
+	states = {}
 
 
 func get_elements(group_name):

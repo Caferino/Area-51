@@ -69,6 +69,7 @@ Interactive="Interactable areas, triggers, items, objects..."
 Collectable=""
 Enemy=""
 Plant=""
+Tree=""
 
 [input]
 
