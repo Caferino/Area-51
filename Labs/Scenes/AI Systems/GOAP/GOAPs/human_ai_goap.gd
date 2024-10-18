@@ -16,7 +16,7 @@ var _actions           : Array[GoapAction] = []
 var _current_plan      : Array             = []
 var _current_plan_step : int               = 0
 
-@export var g_timer : Timer = null
+@export var gbl_timer : Timer = null
 
 @export var detection_area : Area2D = null
 

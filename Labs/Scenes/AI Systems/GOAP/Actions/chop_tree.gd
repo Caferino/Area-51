@@ -18,6 +18,7 @@ class_name ChopTreeAction extends GoapAction
 
 var tree      : Area2D = null
 var near_tree : bool   = false
+var prev_dis  : float  = 10000.0      ## To know if the entity is stuck. 
 
 func get_class_name(): return "ChopTreeAction"
 
@@ -49,39 +50,31 @@ func get_effects() -> Dictionary:
 func perform(agent, _delta) -> bool:
 	print("Performing chop_tree!")
 	if agent.controller.moving and tree:
-		print("Moving...")
+		print("Moving to the tree...")
 		if agent.controller.interactor_area.overlaps_area(tree):
-			print("Performing a sharp cut!!!!")
+			print("Reached the tree!")
 			near_tree = true   ## WARN - Do not forget to set it to null after chop
 			agent.controller.dir = Vector2.ZERO
 			agent.controller.anim_state = "Idle"
 			agent.controller.moving = false  ## Without it this block runs twice, Moonwalk's Paradox
 		elif agent.controller.context_map.pers_space.overlaps_area(tree) or agent.controller.context_map.pers_space.has_overlapping_bodies():
-			print("I think I am stuck!! ", agent.controller.dir)
-			# NOTE - The randomness helps with getting stuck looping vertically or horizontally
-			# I tried to make it more granular, but you either choose x or y, positive or negative,
-			# it's very difficult to make it work that smart with this. Maybe need a more expensive
-			# and complex system for that (know if moving left or right is better than down or up).
-			# So far this works well and it's cheap as hell, and only looks bad when the player 
-			# has the goal to make it look bad, and even so, it's like 70% fine. Good enough.
-			agent.controller.dir = agent.controller.context_map.chosen_dir + Vector2(randf_range(-1, 1), randf_range(-1, 1))
+			agent.controller.dir = agent.controller.context_map.chosen_dir
+			var y = agent.controller.dir.y
+			# Forgot to add this in the previous commit
+			if y + 0.25 > 0.9 and y - 0.25 < 0.9 or y + 0.25 > -0.9 and y - 0.25 < -0.9:
+				agent.controller.dir += Vector2(randf_range(-1, 1), randf_range(-1, 1))
+			print("I think I am stuck!!")
 		else:
 			agent.controller.dir = agent.global_position.direction_to(tree.global_position)
 	elif near_tree:
-		print("Got a tree in front of me, boss!")
-		## WARNING TODO - Right now, the NPC can be pushed away from the tree
-		## while it chops, but it won't stop cause tree holds the Area2D now.
-		## Maybe someday make it so it checks if it's still overlapping, return.
-		## Might make it a little more expensive, but they'd be more intelligent
-		## and might be necessary if they get pushed away by something strong
-		## Reuse the for a in areas loop above maybe
+		print("Got the tree in front of me!")
 		if agent.get_elements("Wood").size() > 20:
 			return true
 		elif not agent.controller.interactor_area.overlaps_area(tree):
 			near_tree = false
 			tree = null
-		elif agent.g_timer.is_stopped() and tree.get_parent().interactable.state:
-			agent.g_timer.start(2.5)
+		elif agent.gbl_timer.is_stopped() and tree.get_parent().interactable.state:
+			agent.gbl_timer.start(2.5)
 			print("Chopping!")
 			tree.get_parent().interact("hatchet")
 	elif not tree:
