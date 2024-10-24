@@ -15,11 +15,10 @@ var _goals             : Array[GoapGoal]   = []
 var _actions           : Array[GoapAction] = []
 var _current_plan      : Array             = []
 var _current_plan_step : int               = 0
+var goal_complete     : bool              = false
 
 @export var gbl_timer : Timer = null
-
 @export var detection_area : Area2D = null
-
 @export var controller : HumanoidAIControllerComponent = null
 
 ## Whether this behavior tree should be enabled or not.
@@ -111,7 +110,10 @@ func _process_internally(delta: float) -> void:
 # It makes the NPC more dynamic, adaptable and independent.
 func tick(delta: float):
 	var best_goal = _get_best_goal()
-	if _current_goal == null or best_goal != _current_goal:
+	if goal_complete:
+		goal_complete = false
+		controller.switch_ai()
+	elif _current_goal == null or best_goal != _current_goal:
 		_current_goal = best_goal
 		_current_plan = get_plan(_current_goal)
 		_current_plan_step = 0
@@ -137,13 +139,19 @@ func _get_best_goal() -> GoapGoal:
 #
 # Every action exposes a function called perform, which will return true when
 # the job is complete, so the agent can jump to the next action in the list.
+# TODO - Inside tick(), I need a way to return to the BehaviorTree
 func _follow_plan(plan, delta):
 	if plan.size() == 0:
 		return
 	
 	var is_step_complete = plan[_current_plan_step].perform(self, delta)
-	if is_step_complete and _current_plan_step < plan.size() - 1:
+	if is_step_complete and _current_plan_step < plan.size():
 		_current_plan_step += 1
+		print("Current plan step = ", _current_plan_step)
+	if _current_plan_step == plan.size():
+		## WARN TODO - I think I will need to reset priorities and more
+		_current_plan_step = 0
+		goal_complete = true
 
 
 ## Interrupts this tree if anything was running
@@ -151,10 +159,6 @@ func _follow_plan(plan, delta):
 ## "Save" or "Remember, memorize" what plan the entity was doing to resume later.
 func interrupt() -> void:
 	pass
-	#if self.get_child_count() != 0:
-		#var first_child = self.get_child(0)
-		#if "interrupt" in first_child:
-			#first_child.interrupt(actor, blackboard)
 
 
 ## Enables this tree.

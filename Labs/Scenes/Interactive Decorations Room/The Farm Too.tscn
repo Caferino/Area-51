@@ -3497,6 +3497,36 @@ position = Vector2(388, 477)
 [node name="Big Tree" parent="." instance=ExtResource("14_2a5gf")]
 position = Vector2(1041, 365)
 
+[node name="Big Tree2" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(163, 454)
+
+[node name="Big Tree6" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(153, 575)
+
+[node name="Big Tree7" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(166, 696)
+
+[node name="Big Tree8" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(544, 324)
+
+[node name="Big Tree9" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(394, 215)
+
+[node name="Big Tree10" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(164, 331)
+
+[node name="Big Tree11" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(556, 565)
+
+[node name="Big Tree3" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(271, 257)
+
+[node name="Big Tree4" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(547, 444)
+
+[node name="Big Tree5" parent="." instance=ExtResource("14_2a5gf")]
+position = Vector2(273, 628)
+
 [node name="Field" parent="." instance=ExtResource("14_0nvuv")]
 position = Vector2(723, 470)
 amount = 15

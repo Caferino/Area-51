@@ -41,7 +41,6 @@ script = ExtResource("4_sfqot")
 
 [node name="BigTreeStaticBody" type="StaticBody2D" parent="StaticCollisionComponent"]
 collision_layer = 33
-collision_mask = 0
 
 [node name="BigTreeCollisionShape" type="CollisionShape2D" parent="StaticCollisionComponent/BigTreeStaticBody"]
 position = Vector2(0, 8)

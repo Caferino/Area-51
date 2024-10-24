@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Labs/Scenes/AI Systems/GOAP/GOAPs/human_ai_goap.gd" id="1_n0m3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66obb"]
-size = Vector2(2000, 2000)
+size = Vector2(500, 500)
 
 [node name="HumanAiGoap" type="Node2D" node_paths=PackedStringArray("gbl_timer", "detection_area")]
 script = ExtResource("1_n0m3c")
@@ -15,7 +15,7 @@ collision_layer = 0
 collision_mask = 17408
 monitorable = false
 
-[node name="DetectionCollisionShape" type="CollisionShape2D" parent="DetectionArea"]
+[node name="CollisionShape" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("RectangleShape2D_66obb")
 debug_color = Color(0.999975, 0.534539, 0, 0.42)
 

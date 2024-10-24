@@ -13,12 +13,18 @@ var ray_directions : Array[Vector2]   = []
 var interest       : Array[float]     = []
 var danger         : Array[float]     = []
 var total_rays     : int              =    8
-var look_ahead     : float            = 25.0   ## Must be bigger than the aware_zone area.
+var look_ahead     : float            = 25.0       ## Must be bigger than the aware_zone area.
 var added_interest : float            =  5.0
-var enable_layers  : int              = 4161   ## Decimal collision_bitmask for layers 1, 7 and 13.
-var overlap_bodies : bool             = false
+## TODO - Make enable_layers unique per entity, not everyone sees the same thing
+## FIXME - Feels like it is not detecting StaticBodies I think...
+var enable_layers  : int              = 134221921  ## Decimal bitmask for layers 1, 6, 7, 13 & 28.
 
 ## ATTENTION - enable_layers can be problematic if it sees itself. Danger all the time
+
+## TBD - I think the avoidance of obstacles, like in chop_tree at GOAP AI,
+## should or could be done here by adding interest to the vector closest to the
+## target. But be careful to measure this well somehow, not big numbers, 
+## or it will get stuck.
 
 ## Generates the rays.
 func _ready():
@@ -38,13 +44,14 @@ func _physics_process(_delta):
 
 ## TODO - Fear factor? A variable to further influence the Utility Agent's decisions?
 func situational_awareness():
-	if overlap_bodies:
+	if $AwareZoneArea.get_overlapping_bodies():
 		if controller.chasing:
 			if controller.enemy_too_close:
 				chosen_dir = _handle_context()
 			else:
 				chosen_dir = controller.dir
 		else:
+			
 			chosen_dir = _handle_context()
 	else:
 		chosen_dir = controller.dir
@@ -74,12 +81,3 @@ func _handle_context() -> Vector2:
 		chosen_dir += ray_directions[i] * interest[i]
 	
 	return chosen_dir.normalized()
-
-
-func _on_aware_zone_area_body_entered(_body: Node2D) -> void:
-	overlap_bodies = true
-
-
-func _on_aware_zone_area_body_exited(_body: Node2D) -> void:
-	if not $AwareZoneArea.get_overlapping_bodies():
-		overlap_bodies = false

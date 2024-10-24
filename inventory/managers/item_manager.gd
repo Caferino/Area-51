@@ -4,7 +4,12 @@ const ITEM_PATH = "res://inventory/data/json/items.json"
 const AFFIXES_PATH = "res://inventory/data/json/affixes.json"
 const RARE_NAMES_PATH = "res://inventory/data/json/rare_names.json"
 
+## These might go in a StructureManager
+var curr_structure : Node2D = null
+var curr_area : Area2D = null
+
 var items = {}
+var structures = {}  ## TODO - Will I maybe need a global structure_manager?
 var rare_names = {}
 var affix_groups = {}
 
@@ -55,6 +60,7 @@ func _ready():
 
 
 ## Build the item of the given id
+## This and probably most functions will have to adapt to the game
 func get_item(id: String) -> Item:
 	var data = items[id]
 	var item = Item.new()
@@ -246,15 +252,85 @@ func get_type_name(item):
 #
 #func get_item(id: String):
 	#return my_items[id].instantiate()
-#
-#
-func drop_item(item, position, loot_radius, scene):
+
+
+func drop_item(item, global_position, loot_radius, scene):
 	if ItemManager.has_resource(item):
 		item = ItemManager.get_resource(item)
 		var collectable = ItemManager.get_resource("collectable").instantiate()
 		
 		collectable.setup(item)
-		collectable.global_position = position
+		collectable.global_position = global_position
 		scene.add_child(collectable)
 		
 		collectable.drop(loot_radius)
+
+
+
+################# ################# #################
+################# STRUCTURE_MANAGER #################
+################# ################# #################
+
+## Prepare the structure to place, helpful to separate the NPC vs Player's methods
+func prepare_structure(structure: StringName, scene: Node2D):
+	if curr_structure:
+		# INFO - If the previous one was never placed/used, remove it to clean memory:
+		if not curr_structure.get_parent():
+			curr_structure.queue_free()
+			reset_saved_structure()
+	if ItemManager.has_resource(structure):
+		curr_structure = ItemManager.get_resource(structure).instantiate()
+		curr_area = curr_structure.find_child("StructureArea").duplicate()
+		curr_structure.find_child("StructureArea").queue_free()
+		scene.add_child.call_deferred(curr_area)
+		curr_area.set_owner.call_deferred(scene)
+		## TODO ATTENTION - I MUST call .queue_free after removing childs everywhere, for memory
+
+
+## TBD - I think I got a better idea to avoid this thread issue:
+## 1. A threaded function that runs the loop for 50 random Vector2 positions 
+## just as I already have it pretty much.
+## 2. Send a signal that runs a function in the main thread, moving those areas
+## to their respective spots, a O(50) loop, can lower the size to 7 attempts
+## 3. Run another threaded function that checks the overlaps of those areas,
+## then returns false or true if it finds the spot, which should simply be assigned at some point 
+## Verifies if the structure's area is not overlapping with something it shouldn't
+func verify_structure_area(global_position: Vector2):# -> bool:
+	if curr_area:
+		var callable = Callable(self, "verify_structure_overlap")
+		callable.call_deferred(global_position)
+		#curr_area.call_deferred("set_global_position", global_position) # global_position = global_position  ## FIXME - Final boss bug, for using multithreading
+		#curr_area.global_position = global_position # global_position = global_position  ## FIXME - Final boss bug, for using multithreading
+		### I cannot interact with properties like global_position on another thread. None of this works.
+		#if not curr_area.has_overlapping_bodies(): # Not working well
+			#return true
+	#print("OVERLAP !!! ============================")
+	#return false
+
+
+func verify_structure_overlap(global_position: Vector2):# -> bool:
+	curr_area.global_position = global_position
+	if not curr_area.has_overlapping_bodies(): # FIXME - Not working well
+		print("SUCCESS !!! ############################## ", curr_area.monitorable)
+		SignalManager.search_done.emit(global_position)
+		#return true
+	else:
+		print("OVERLAP !!! ============================")
+	#return false
+
+
+## Places the structure in the given global_position and adds it to the scene
+## TODO - Maybe place it somewhere that makes sense, for future management
+## Somewhere I can easily loop through in my remastered LevelComponent
+func place_structure(global_position: Vector2, scene: Node2D):
+	curr_area.queue_free()
+	scene.add_child(curr_structure)  # Must run first, or global_position'll be nuts (The Void's)
+	curr_structure.global_position = global_position
+	print("Placed item at = ", curr_structure.global_position)
+	reset_saved_structure()
+
+
+## Resets the current saved structure and area, not delete from memory
+func reset_saved_structure():
+	curr_structure = null
+	curr_area = null

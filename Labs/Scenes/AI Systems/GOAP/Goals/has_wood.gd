@@ -7,7 +7,7 @@ func is_valid(_agent) -> bool:
 
 
 func priority(agent) -> int:
-	return agent.states["has_wood"]
+	return agent.states["has_wood_priority"]
 
 
 func get_desired_state() -> Dictionary:
