@@ -14,7 +14,7 @@ signal inventory_group_content_changed(groups)
 signal cooldown_started(usable)
 
 # Structure Manager
-signal search_done(global_position)
+signal spot_check()
 
 # Interactables
 signal crafting_opened(crafting_list_id)

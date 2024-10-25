@@ -60,6 +60,7 @@ monitoring = false
 
 [node name="InteractableCollisionShape" type="CollisionShape2D" parent="InteractableComponent/InteractableArea"]
 shape = SubResource("CircleShape2D_8qijo")
+debug_color = Color(0.405078, 0.607678, 1.92523e-07, 0.42)
 
 [node name="AppearanceComponent" type="Node2D" parent="."]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://15p1vg3jhgwh"]
+[gd_scene load_steps=94 format=3 uid="uid://15p1vg3jhgwh"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Caferino/Human/human.gd" id="1_5wlde"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_d3wfr"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bcuy0jppjef6f" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/body_component.tscn" id="6_n3equ"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="7_ep3u8"]
 [ext_resource type="SpriteFrames" uid="uid://btrqhkqhl57g1" path="res://Labs/Scenes/Caferino/Human/Heads/Male/Theo/theo_head.tres" id="8_hhjxs"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/auto_play_animatedsprite.gd" id="9_ijbbl"]
 [ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="10_57p1j"]
 [ext_resource type="PackedScene" uid="uid://byvgnjjoahfqa" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/accessories_component.tscn" id="11_7b0wa"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="12_kd6b2"]
@@ -473,7 +472,7 @@ debug_color = Color(0.658824, 0.513726, 0, 0.419608)
 y_sort_enabled = true
 sprite_frames = ExtResource("8_hhjxs")
 animation = &"down"
-script = ExtResource("9_ijbbl")
+autoplay = "left"
 
 [node name="HeadShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/HeadAnimatedSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
@@ -508,7 +507,7 @@ shape = SubResource("CircleShape2D_epeuq")
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_215dc")
 animation = &"up"
-script = ExtResource("9_ijbbl")
+autoplay = "left"
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
