@@ -3,13 +3,13 @@ class_name BuildFirepitAction extends GoapAction
 # TODO - CHANGE IT, no idea where did this one come from...
 const Firepit = preload("res://Labs/Scenes/Interactables/firepit/firepit.tscn")
 
+var area : CollisionShape2D = null
+var spot : Vector2 = Vector2.ZERO
+var try_place : bool = false
+
 func get_class_name(): return "BuildFirepitAction"
 
 func is_valid(_agent) -> bool:
-	print("collect_wood is_valid = true")
-	
-	# Adapt this for the game, should probably check the entity's inventory
-	# TODO - Check if the NPC has the needed items to craft and place a firepit
 	return true
 
 
@@ -29,21 +29,35 @@ func get_effects() -> Dictionary:
 	}
 
 
-func perform(agent, delta) -> bool:
-	print("Performing build_firepit!")
-	var _closest_spot = agent.get_closest_element("firepit_spot", agent)
-	
-	if _closest_spot == null:
-		return false
-	
-	if _closest_spot.position.distance_to(agent.position) < 20:
-		var firepit = Firepit.instantiate()
-		agent.get_parent().add_child(firepit)
-		firepit.position = _closest_spot.position
-		firepit.z_index = _closest_spot.z_index
-		agent.set_state("has_wood", false)
+func perform(agent, _delta) -> bool:
+	print("Performing build_firepit!")  # DEBUG
+	if ItemManager.valid_spot:
+		print("Building the firepit! -------------")  # DEBUG
+		# FIXME - The second parameter is disgusting, look at that shit! Fuck, it's below me now!
+		ItemManager.place_structure(spot, agent.controller.get_parent().get_parent().get_parent())
+		try_place = false
+		#agent.controller.entity.inventory.items["Logs"] -= agent.states["need_wood"]
 		return true
-	
-	# TODO - Adapt this to send dir to the entity's controller
-	agent.move_to(agent.position.direction_to(_closest_spot.position), delta)
+	elif try_place:
+		print("Trying again! -----------")  # DEBUG
+		spot = _random_position()
+		ItemManager.move_structure_area(spot)
+	else:
+		print("Preparing firepit! ---------- ")  # DEBUG
+		try_place = true
+		ItemManager.prepare_structure("firepit", agent.controller.get_parent().get_parent().get_parent())
+		if not area:
+			area = agent.detection_area.find_child("CollisionShape")
+		spot = _random_position()
+		ItemManager.move_structure_area(spot)
 	return false
+
+
+func _random_position() -> Vector2:
+	var area_size_x = area.get_shape().size.x / 2
+	var area_size_y = area.get_shape().size.y / 2
+	var area_x = area.global_position.x
+	var area_y = area.global_position.y
+	var rand_x = randf_range(area_x - area_size_x, area_x + area_size_x)
+	var rand_y = randf_range(area_y - area_size_y, area_y + area_size_y)
+	return Vector2(rand_x, rand_y)

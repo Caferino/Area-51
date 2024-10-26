@@ -3,31 +3,28 @@ class_name CollectWoodAction extends GoapAction
 ## WARNING NOTE - I think the original author never used the wood_stocks he made,
 ## although he was close to, he kinda coded everything for them, but never got used.
 
+var wood : Area2D = null
+
 func get_class_name(): return "CollectWoodAction"
 
 func is_valid(_agent) -> bool:
-	# Adapt this for the game, should probably check the entity's inventory
-	print("collect_wood is_valid = true")
+	# WARN - This may need to always return true, because what if it receives the
+	# build_firepit order and already has the wood in its inventory? It will never
+	# consider this action, and therefor will never build a plan because of this check
+	#return agent.controller.entity.inventory.items["Logs"] < agent.states["need_wood"]
+	# However, how to fix that? Create a check_wood action that does just one if
+	# "The npc checks its inventory to verify it has the needed items"
+	# has no preconditions, so it can be done anytime. Just the effects
 	return true
-	# TODO - I have two ways to detect Collectables. Get a list with all of them
-	# all the time and search those that are wood... (yikes)
-	# or add the collectable to specific groups they belong to, 'wood', 'mineral'...
-	# maybe by adding to the data structure where I hold their textures2D
-	#return WorldState.get_elements("wood").size() > 0
 
 
-func get_cost(agent) -> int:
-	if agent._states.has("global_position"):
-		# TODO - ADAPT THIS
-		return 5
-		#var closest_tree = WorldState.get_closest_element("wood", blackboard)
-		#return int(closest_tree.global_position.distance_to(blackboard.global_position) / 5)
-	return 5
+func get_cost(_agent) -> int:
+	return 1
 
 
 func get_preconditions() -> Dictionary:
 	return {
-		"dropped_wood" : true
+		"chopped_wood" : true
 	}
 
 
@@ -39,26 +36,40 @@ func get_effects() -> Dictionary:
 
 func perform(agent, _delta) -> bool:
 	print("Performing collect_wood!")
-	# WARN - Most likely Deprecated, I don't use wood_stocks, just picked up wooden logs.
-	var closest_stock = agent.get_closest_element("wood_stock", agent)
-	
-	# WARN - This will be dangerous if the player or anyone affects anyone's state
-	# The NPC might not have 5 logs in his inventory, but if you do, this state turns true,
-	# potentially confusing the NPC's current goal with a lie.
-	# TODO - This is why every NPC should have its own WorldStates or something.
-	#if entity's inventory["Logs"] > 4 : WorldState.set_state("has_wood", true)
-	
-	
-	## WARN - Most likely Deprecated
-	if closest_stock:
-		if closest_stock.position.distance_to(agent.global_position) < 10:
-			closest_stock.queue_free()
-			agent.set_state("has_wood", true)
-			return true
+	## ATTENTION WARNING - Someday fix collectables that drop out of bounds, unreachable spots
+	if agent.controller.entity.inventory.items["Logs"] >= agent.states["need_wood"]:
+		print("COLLECT_WOOD ACTION SHOULD BE FINISHED NOW!")
+		agent.controller.anim_state = "Idle"
+		agent.controller.dir = Vector2.ZERO
+		return true
+	elif agent.controller.moving and is_instance_valid(wood):
+		print("Moving to the wood...")
+		if agent.controller.context_map.pers_space.has_overlapping_bodies():
+			# WARN - Weird ass bug. 'Monitorable' has to be turned ON for
+			# StaticBodies to be seen. So weird, and I think I removed some b4
+			print("I think I am stuck!! ", agent.controller.dir)
+			var y = agent.controller.dir.y
+			var x = agent.controller.dir.x
+			if y > 0.8 and y <= 1 or y < -0.8 and y >= -1 and agent.gbl_timer.is_stopped():
+				agent.gbl_timer.start(1.2)
+				if randi_range(0, 1): y = y * -1
+				agent.controller.dir = Vector2(y, x)
+			elif x > 0.8 and x <= 1 or x < -0.8 and x >= -1 and agent.gbl_timer.is_stopped():
+				# TODO - x is more problematic, bounces up and down frequently... Polish
+				agent.gbl_timer.start(1.2)
+				if randi_range(0, 1): x = x * -1
+				agent.controller.dir = Vector2(y, x)
+			elif agent.gbl_timer.is_stopped():
+				agent.controller.dir = agent.controller.context_map.chosen_dir
 		else:
-			pass
-			# TODO - Might have to adapt this to send dir to the entity's AI controller
-			# WARN - Adapt this, using move_to is wrong in my game. Give dir to the controller.
-			#goap.move_to(actor.position.direction_to(closest_stock.global_position), delta)
+			agent.controller.dir = agent.global_position.direction_to(wood.global_position)
+			print("All fine so far... ", agent.controller.dir)
+	elif not is_instance_valid(wood):
+		## WARN - Check if there is wood on the ground, same for trees maybe, 
+		## in case they get removed during this perform, or it will crash
+		wood = agent.get_closest_element("Wood", agent)
+		agent.controller.dir = agent.global_position.direction_to(wood.global_position)
+		agent.controller.anim_state = "Move"
+		agent.controller.entity_move.emit()
 	
 	return false

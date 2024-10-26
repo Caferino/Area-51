@@ -41,7 +41,8 @@ func on_stop():
 	## to the feel of realism and gameplay after rigurous testing.
 	## It is a problem because anim_state takes under a second to update if
 	## I want to change it here, which makes the entity seems like it is still
-	## walking when it visibly is not. 
+	## walking when it visibly is not.
+	anim_state = "Idle"  # Will leave it here anyway just in case
 	moving = false
 	sprinting = false
 
@@ -78,13 +79,24 @@ func _on_vision_area_body_exited(target: Node2D) -> void:
 func _on_received_order(order : int) -> void:
 	print("Human says: Working on it!")
 	if order == 0:   ## Build a firepit
+		## TODO - Plans/Goals/Orders like these can be made into modules someday
 		print("Building a firepit! Planning...")  ## DEBUG
-		dir = Vector2.ZERO            # Stop the entity
+		ai_goap.states["has_firepit_priority"] = 10   # Setup GOAP
+		ai_goap.states["need_wood"] = 1
+		dir = Vector2.ZERO                            # Stop the entity
 		anim_state = "Idle"
-		ai_behavior_tree.disable()    # Switch AI System
-		ai_goap.enable()
+		switch_ai()
 		## TODO - The switch back will be done later, somewhere
 	elif order == 1:    ## WARN - Delete/Edit placeholders
 		print("Doing something else! Planning...")
 	else:
 		pass
+
+
+func switch_ai():
+	if ai_goap._enabled:
+		ai_goap.disable()
+		ai_behavior_tree.enable()
+	else:
+		ai_goap.enable()
+		ai_behavior_tree.disable()

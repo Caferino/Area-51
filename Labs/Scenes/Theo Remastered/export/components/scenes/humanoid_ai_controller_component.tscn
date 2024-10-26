@@ -234,6 +234,7 @@ script = ExtResource("2_pp7or")
 script = ExtResource("3_eg3ru")
 
 [node name="ContextMap" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("2_qpkxs")]
+position = Vector2(0, 12.5)
 controller = NodePath("..")
 
 [node name="InteractorArea" type="Area2D" parent="."]
@@ -275,7 +276,7 @@ libraries = {
 }
 
 [node name="HumanAIBehaviorTree" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_ijjbt")]
-blackboard = NodePath("@Node@24047")
+blackboard = NodePath("@Node@17293")
 actor = NodePath("..")
 
 [node name="HumanAiGoap" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("4_day17")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=106 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="12_xfj4o"]
 [ext_resource type="Texture2D" uid="uid://mphv3ma21huh" path="res://Labs/Scenes/Caferino/Rakshasa/black_cat_head.png" id="13_beobx"]
 [ext_resource type="Texture2D" uid="uid://bjpghtdgac6ed" path="res://Labs/Scenes/Caferino/Rakshasa/black_cat_body.png" id="15_udclq"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/auto_play_animatedsprite.gd" id="16_3nyy4"]
 [ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="16_m3k4p"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="17_io7h4"]
 [ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/sword.tscn" id="18_vljcp"]
@@ -516,11 +515,11 @@ size = Vector2(12.5, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r48ac"]
 size = Vector2(1, 1)
 
-[node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body") groups=["Player", "Protagonist"]]
+[node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body", "inventory") groups=["Player", "Protagonist"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4097
-collision_mask = 4293860349
+collision_mask = 80877
 motion_mode = 1
 script = ExtResource("1_c7twf")
 lore = NodePath("LoreComponent")
@@ -528,6 +527,7 @@ health = NodePath("HealthComponent")
 muscles = NodePath("HumanoidMovementComponent")
 controller = NodePath("PlayerControllerComponent")
 body = NodePath("BodyComponent")
+inventory = NodePath("InventoryComponent")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12.5)
@@ -572,7 +572,7 @@ debug_color = Color(0.658824, 0.513726, 0, 0.419608)
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_xcbgx")
 animation = &"down"
-script = ExtResource("16_3nyy4")
+autoplay = "left"
 
 [node name="HeadShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/HeadAnimatedSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
@@ -607,8 +607,8 @@ shape = SubResource("CircleShape2D_u50h0")
 y_sort_enabled = true
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
-animation = &"right"
-script = ExtResource("16_3nyy4")
+animation = &"left"
+autoplay = "left"
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
 modulate = Color(0, 0, 0, 0.0980392)

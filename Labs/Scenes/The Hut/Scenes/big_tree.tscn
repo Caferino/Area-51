@@ -33,13 +33,13 @@ script = ExtResource("8_022p5")
 
 [node name="GrowthTimer" type="Timer" parent="TimerComponent"]
 wait_time = 3.5
+one_shot = true
 
 [node name="StaticCollisionComponent" type="Node2D" parent="."]
 script = ExtResource("3_vhrye")
 
 [node name="BigTreeStaticBody" type="StaticBody2D" parent="StaticCollisionComponent"]
 collision_layer = 33
-collision_mask = 0
 
 [node name="BigTreeCollisionShape" type="CollisionShape2D" parent="StaticCollisionComponent/BigTreeStaticBody"]
 rotation = 1.5708
@@ -49,8 +49,9 @@ shape = SubResource("CapsuleShape2D_xuedc")
 position = Vector2(0, 54)
 polygon = PackedVector2Array(10, 0, 0, 15, -10, 0)
 
-[node name="InteractableComponent" type="Node2D" parent="."]
+[node name="InteractableComponent" type="Node2D" parent="." node_paths=PackedStringArray("interactable")]
 script = ExtResource("4_raw7i")
+interactable = NodePath("..")
 
 [node name="InteractableArea" type="Area2D" parent="InteractableComponent" groups=["Interactive", "Tree"]]
 collision_layer = 16384
@@ -59,6 +60,7 @@ monitoring = false
 
 [node name="InteractableCollisionShape" type="CollisionShape2D" parent="InteractableComponent/InteractableArea"]
 shape = SubResource("CircleShape2D_8qijo")
+debug_color = Color(0.405078, 0.607678, 1.92523e-07, 0.42)
 
 [node name="AppearanceComponent" type="Node2D" parent="."]
 script = ExtResource("5_eilfr")
@@ -66,9 +68,7 @@ script = ExtResource("5_eilfr")
 [node name="TreeStump" type="Marker2D" parent="AppearanceComponent"]
 
 [node name="TreeStumpSprite" type="Sprite2D" parent="AppearanceComponent/TreeStump"]
-position = Vector2(0, -46)
 texture = ExtResource("1_dudqo")
-offset = Vector2(0, 46)
 
 [node name="Leaves" type="Marker2D" parent="AppearanceComponent"]
 

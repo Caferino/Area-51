@@ -139,8 +139,8 @@ _data = {
 
 [node name="CaveBat" type="CharacterBody2D" node_paths=PackedStringArray("lore", "heart", "muscles", "effects", "controller", "body") groups=["Enemy"]]
 z_index = 2
-collision_layer = 8192
-collision_mask = 8256
+collision_layer = 134217728
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_ole8l")
 lore = NodePath("LoreComponent")
@@ -187,7 +187,7 @@ animator_tree = NodePath("CaveBatAnimationTree")
 animator = NodePath("CaveBatAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
-position = Vector2(0, -4.49452)
+position = Vector2(0, -1.63874)
 monitoring = false
 
 [node name="TorsoCollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]

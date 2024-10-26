@@ -69,6 +69,7 @@ Interactive="Interactable areas, triggers, items, objects..."
 Collectable=""
 Enemy=""
 Plant=""
+Tree=""
 
 [input]
 
@@ -272,7 +273,7 @@ hotbar_5={
 2d_navigation/layer_25="Debug"
 2d_physics/layer_26="Player Projectiles"
 2d_physics/layer_27="Enemy Projectiles"
-2d_physics/layer_28="Non-Collidable Objects"
+2d_physics/layer_28="Flying NPC"
 2d_physics/layer_29="Trigger Zones"
 2d_physics/layer_30="Invisible Colliders"
 2d_physics/layer_31="Temporary Colliders"

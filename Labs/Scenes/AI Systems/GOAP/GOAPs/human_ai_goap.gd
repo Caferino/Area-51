@@ -8,16 +8,17 @@ enum ProcessThread { IDLE, PHYSICS }
 signal tree_enabled
 signal tree_disabled
 
+var states             : Dictionary        = {}
 var _current_goal      : GoapGoal          = null
 var _last_tick         : int               = 0
-var _states            : Dictionary        = {}
 var _goals             : Array[GoapGoal]   = []
 var _actions           : Array[GoapAction] = []
 var _current_plan      : Array             = []
 var _current_plan_step : int               = 0
+var goal_complete     : bool              = false
 
+@export var gbl_timer : Timer = null
 @export var detection_area : Area2D = null
-
 @export var controller : HumanoidAIControllerComponent = null
 
 ## Whether this behavior tree should be enabled or not.
@@ -50,7 +51,9 @@ var _current_plan_step : int               = 0
 func setup():
 	for personality_role in controller.personality.roles:
 		_goals.append_array(personality_role.goals)
-		_actions = personality_role.actions
+		_actions.append_array(personality_role.actions)
+		for state in personality_role.states:
+			states[state] = personality_role.states[state]
 		# DEBUG FOR MULTIPLE GOALS IN ONE ROLE:
 		#for goal in _goals:
 			#print("GOAL +++++++++ ", goal.get_class_name())
@@ -107,7 +110,10 @@ func _process_internally(delta: float) -> void:
 # It makes the NPC more dynamic, adaptable and independent.
 func tick(delta: float):
 	var best_goal = _get_best_goal()
-	if _current_goal == null or best_goal != _current_goal:
+	if goal_complete:
+		goal_complete = false
+		controller.switch_ai()
+	elif _current_goal == null or best_goal != _current_goal:
 		_current_goal = best_goal
 		_current_plan = get_plan(_current_goal)
 		_current_plan_step = 0
@@ -133,24 +139,26 @@ func _get_best_goal() -> GoapGoal:
 #
 # Every action exposes a function called perform, which will return true when
 # the job is complete, so the agent can jump to the next action in the list.
+# TODO - Inside tick(), I need a way to return to the BehaviorTree
 func _follow_plan(plan, delta):
 	if plan.size() == 0:
 		return
 	
 	var is_step_complete = plan[_current_plan_step].perform(self, delta)
-	if is_step_complete and _current_plan_step < plan.size() - 1:
+	if is_step_complete and _current_plan_step < plan.size():
 		_current_plan_step += 1
+		print("Current plan step = ", _current_plan_step)
+	if _current_plan_step == plan.size():
+		## WARN TODO - I think I will need to reset priorities and more
+		_current_plan_step = 0
+		goal_complete = true
 
 
-## interrupts this tree if anything was running
+## Interrupts this tree if anything was running
 ## TODO - Probably adapt this to the needed system.
 ## "Save" or "Remember, memorize" what plan the entity was doing to resume later.
 func interrupt() -> void:
 	pass
-	#if self.get_child_count() != 0:
-		#var first_child = self.get_child(0)
-		#if "interrupt" in first_child:
-			#first_child.interrupt(actor, blackboard)
 
 
 ## Enables this tree.
@@ -221,7 +229,7 @@ func _build_plans(step):
 	var state = step.state.duplicate()
 	# Check if the states contains data that can satisfy the current state
 	for s in step.state:
-		if state[s] == _states.get(s):
+		if state[s] == states.get(s):
 			state.erase(s)
 	
 	# If the state is empty, it means this branch already found the solution,
@@ -314,15 +322,15 @@ func _print_plan(plan):
 #######################################################
 
 func get_state(state_name, default = null):
-	return _states.get(state_name, default)
+	return states.get(state_name, default)
 
 
 func set_state(state_name, value):
-	_states[state_name] = value
+	states[state_name] = value
 
 
 func clear_state():
-	_states = {}
+	states = {}
 
 
 func get_elements(group_name):

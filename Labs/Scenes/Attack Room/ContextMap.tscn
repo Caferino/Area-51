@@ -14,20 +14,15 @@ pers_space = NodePath("PersonalSpaceArea")
 
 [node name="AwareZoneArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 20545
-monitorable = false
+collision_mask = 20576
 
 [node name="AwareZoneCollisionShape" type="CollisionShape2D" parent="AwareZoneArea"]
 shape = SubResource("CircleShape2D_k5ghh")
 
 [node name="PersonalSpaceArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 16384
-monitorable = false
+collision_mask = 20576
 
 [node name="PersonalSpaceCollisionShape" type="CollisionShape2D" parent="PersonalSpaceArea"]
 shape = SubResource("CircleShape2D_8ca06")
 debug_color = Color(0.88672, 0.000287437, 0.804041, 0.42)
-
-[connection signal="body_entered" from="AwareZoneArea" to="." method="_on_aware_zone_area_body_entered"]
-[connection signal="body_exited" from="AwareZoneArea" to="." method="_on_aware_zone_area_body_exited"]

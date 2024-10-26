@@ -12,7 +12,7 @@ class_name WoodenTree extends Node2D
 @export var timer_component        : TimerComponent        ##
 @export var appearance_component   : AppearanceComponent   ##
 
-var initial_health           = randf_range(4, 6)     ##
+var initial_health           = randf_range(4, 6)     ## This should go in the unique tree class
 var loot_radius              = Vector2(80.0, 100.0)  ## Ring ## TODO - Make it based on size
 var state                    = 1                     ## 0 = Stump, 1 = Grown
 var size                     = 1                     ## Size of the tree (1 = small, 2 = big)
@@ -31,10 +31,12 @@ func _ready():
 ## If a tree is special, overwrite this function and call it after or before
 ## the special interaction with super.interact().
 func interact(item: String = ""):
-	if item == "hatchet":
+	if item == "":
+		return
+	elif item == "hatchet":
 		health_component.damage(1)
 		if state == 1: drop_logs()
-		if health_component.health == 0:
+		if health_component.health == 0 and timer_component.timers["GrowthTimer"].is_stopped():
 			on_depleted_health(item)
 	elif item == "shovel":
 		if health_component.health == 0: ## TODO - and if stump
