@@ -25,10 +25,15 @@ To build a firepit, the NPC must be able to see a tree within its detection area
 **TL;DR:** 
 
 [+] The entity can switch between a BTR and GOAP AI Systems. BTR is useful for decorative simple stuff like wandering around, following something or someone, being idle... The GOAP is better for complex stuff, like combat or work.
+
 [+] Right now, the entity can receive the order of building a firepit. It'll build this plan: chop_tree, collect_wood, build_firepit.
+
 [+] During chop_tree, the entity will choose the nearest tree and move toward it, avoiding other entities or obstacles like walls and fences. It will also position itself correctly in front of the tree, avoiding getting stuck on corners or weird spots. It works exactly as if it was another player.
+
 [+] After having chopped enough wood (in_inventory + on_ground >= needed_amount), it will move to collect_wood, which simply makes it move toward the collectables. If someone else picks them up, the entity restarts the same plan, returning back to chopping a tree.
+
 [+] After having enough wood in its inventory, it will attempt to place the firepit somewhere reachable, that is, somewhere it doesn't overlap with another structure's collision shape or body.
+
 [+] After it's done, it switches back to the BTR and idles around. This base simple system shall be easy to expand for other jobs like mining or crafting. Combat and more will be the most interesting ones to build, playing with priorities and costs more in-depth.
 
 I finally feel free.
