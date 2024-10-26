@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bfa1up1tlkgls"]
+[gd_scene load_steps=29 format=3 uid="uid://bfa1up1tlkgls"]
 
 [ext_resource type="Environment" uid="uid://dek43htan2cqp" path="res://Labs/Environments/Octopath2D.tres" id="1_buauu"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="1_d7f0l"]
@@ -14,11 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://bln54lekmrmlp" path="res://inventory/scenes/inventory/hotbar_node.tscn" id="12_1pulg"]
 [ext_resource type="Script" path="res://inventory/scripts/ui/game_buttons.gd" id="13_ad8o4"]
 [ext_resource type="PackedScene" uid="uid://dyu16u72a1lk2" path="res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/field.tscn" id="14_0nvuv"]
-[ext_resource type="PackedScene" uid="uid://cafk5x7ikmps6" path="res://Labs/Scenes/The Hut/Scenes/big_tree.tscn" id="14_2a5gf"]
 [ext_resource type="PackedScene" uid="uid://7eg7lf7mwwdx" path="res://Labs/Scenes/Interactive Decorations Room/Rain/rain.tscn" id="15_h8soo"]
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="17_80hkq"]
 [ext_resource type="PackedScene" uid="uid://omqabjcbky1r" path="res://Labs/Scenes/Caferino/spawner.tscn" id="18_l0587"]
-[ext_resource type="PackedScene" uid="uid://da476plesi1hp" path="res://Labs/Scenes/Interactables/firepit/firepit.tscn" id="20_rpk46"]
 [ext_resource type="PackedScene" uid="uid://lnk761br01lx" path="res://Labs/Scenes/The Hut/Scenes/small_tree.tscn" id="21_rs1mx"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_syhij"]
@@ -3489,43 +3487,10 @@ disabled = true
 text = "Build a firepit!"
 
 [node name="SmallTree" parent="." instance=ExtResource("21_rs1mx")]
-position = Vector2(437, 301)
+position = Vector2(696, 480)
 
 [node name="SmallTree2" parent="." instance=ExtResource("21_rs1mx")]
 position = Vector2(388, 477)
-
-[node name="Big Tree" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(1041, 365)
-
-[node name="Big Tree2" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(163, 454)
-
-[node name="Big Tree6" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(153, 575)
-
-[node name="Big Tree7" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(166, 696)
-
-[node name="Big Tree8" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(544, 324)
-
-[node name="Big Tree9" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(394, 215)
-
-[node name="Big Tree10" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(164, 331)
-
-[node name="Big Tree11" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(556, 565)
-
-[node name="Big Tree3" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(271, 257)
-
-[node name="Big Tree4" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(547, 444)
-
-[node name="Big Tree5" parent="." instance=ExtResource("14_2a5gf")]
-position = Vector2(273, 628)
 
 [node name="Field" parent="." instance=ExtResource("14_0nvuv")]
 position = Vector2(723, 470)
@@ -3541,9 +3506,6 @@ position = Vector2(855, 422)
 
 [node name="Spawner" parent="." instance=ExtResource("18_l0587")]
 position = Vector2(395, 1002)
-
-[node name="Firepit" parent="." instance=ExtResource("20_rpk46")]
-position = Vector2(448, 623)
 
 [connection signal="pressed" from="ui/ui_container/settings buttons/settings" to="ui/ui_container" method="_on_settings_pressed"]
 [connection signal="pressed" from="ui/ui_container/settings buttons/quit" to="ui/ui_container" method="_on_quit_pressed"]
