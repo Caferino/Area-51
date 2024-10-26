@@ -1,6 +1,6 @@
 @icon("res://Labs/Assets/X. Other/Icons/goap.svg")
 class_name HumanAiGoap extends Node
-## Controls the flow of execution of the entire behavior tree.
+## A humanoid [color=brown]Goal-Oriented Action Planner AI.
 
 enum { SUCCESS, FAILURE, RUNNING }
 enum ProcessThread { IDLE, PHYSICS }
@@ -8,18 +8,18 @@ enum ProcessThread { IDLE, PHYSICS }
 signal tree_enabled
 signal tree_disabled
 
-var states             : Dictionary        = {}
-var _current_goal      : GoapGoal          = null
-var _last_tick         : int               = 0
-var _goals             : Array[GoapGoal]   = []
-var _actions           : Array[GoapAction] = []
-var _current_plan      : Array             = []
-var _current_plan_step : int               = 0
-var goal_complete     : bool              = false
+var states             : Dictionary        = {}    ##
+var _current_goal      : GoapGoal          = null  ##
+var _last_tick         : int               = 0     ##
+var _goals             : Array[GoapGoal]   = []    ##
+var _actions           : Array[GoapAction] = []    ##
+var _current_plan      : Array             = []    ##
+var _current_plan_step : int               = 0     ##
+var goal_complete     : bool              = false  ##
 
-@export var gbl_timer : Timer = null
-@export var detection_area : Area2D = null
-@export var controller : HumanoidAIControllerComponent = null
+@export var gbl_timer      : Timer                         = null  ## Global timer for general use.
+@export var controller     : HumanoidAIControllerComponent = null  ## The AI's main controller.
+@export var detection_area : Area2D                        = null  ## A line of sight for props.
 
 ## Whether this behavior tree should be enabled or not.
 @export var _enabled : bool = true:
@@ -46,8 +46,9 @@ var goal_complete     : bool              = false
 		set_physics_process(_enabled and _process_thread == ProcessThread.PHYSICS)
 		set_process(_enabled and _process_thread == ProcessThread.IDLE)
 
+func get_class_name() -> Array[StringName]: return [&"HumanAiGoap"]
 
-# Setup GOAP's goals based on the entity's personality roles & their goals
+## Setup GOAP's goals based on the entity's personality roles & their goals
 func setup():
 	for personality_role in controller.personality.roles:
 		_goals.append_array(personality_role.goals)
@@ -59,7 +60,7 @@ func setup():
 			#print("GOAL +++++++++ ", goal.get_class_name())
 
 
-# Prepares the given process mode and the random tick rate interval.
+## Prepares the given process mode and the random tick rate interval.
 func _ready() -> void:
 	set_physics_process(_enabled and _process_thread == ProcessThread.PHYSICS)
 	set_process(_enabled and _process_thread == ProcessThread.IDLE)
@@ -68,24 +69,24 @@ func _ready() -> void:
 	_last_tick = randi_range(0, _tick_rate - 1)
 
 
-# Runs at an inconsistent amount of frames per second. Dynamic Tick System.
-# WARNING NOTE - If using the 'idle' mode, that is, running at the same amount of frames
-# as the game is currently running (instead of the fixed 60fps in '_physics_process, 'Physics' mode),
-# this can make the GOAP run either more times (if >60fps), or less (if <60fps) per second,
-# essentially making the NPC 'smarter' or 'dumber' given the current FPS. This is more dynamic, but
-# might be problematic, as fps are not consistent all the time. This can be useful in some cases.
+## Runs at an inconsistent amount of frames per second. Dynamic Tick System.
+## WARNING NOTE - If using the 'idle' mode, that is, running at the same amount of frames as the
+## game is currently running (instead of the fixed 60fps in '_physics_process, 'Physics' mode),
+## this can make the GOAP run either more times (if >60fps), or less (if <60fps) per second,
+## essentially making the NPC 'smarter' or 'dumber' given the current FPS. This is more dynamic, but
+## might be problematic, as fps are not consistent all the time. This can be useful in some cases.
 func _process(delta: float) -> void:
 	_process_internally(delta)
 
 
-# Runs 60 times per second no matter what. Static Tick System.
-# This consistency gives more control and predictability over the tick system.
+## Runs 60 times per second no matter what. Static Tick System.
+## This consistency gives more control and predictability over the tick system.
 func _physics_process(delta: float) -> void:
 	_process_internally(delta)
 
 
-# Checks whether it's time to execute a tick.
-# (Optional) Holds the debugging frame to measure the tick's process time taken.
+## Checks whether it's time to execute a tick.
+## (Optional) Holds the debugging frame to measure the tick's process time taken.
 func _process_internally(delta: float) -> void:
 	if _last_tick < _tick_rate - 1:
 		_last_tick += 1
@@ -100,14 +101,14 @@ func _process_internally(delta: float) -> void:
 	#_process_time_metric_value = Time.get_ticks_usec() - start_time
 
 
-# Checks whether there is a better goal to do. If there is one, it fetches a plan
-# given by the planner below to start working on it.
-# NOTE - Fused world_states.gd, agent.gd and planner.gd altogether here.
-# This allows me to send the goap to is_valid() and therefore avoid the need
-# for a global class (like world_states.gd) to get the nearest elements.
-# I can now use the NPC's DetectionArea to avoid looping through all the
-# interactive items in the entire level like world_states.gd was doing it.
-# It makes the NPC more dynamic, adaptable and independent.
+## Checks whether there is a better goal to do. If there is one, it fetches a plan
+## given by the planner below to start working on it.
+## NOTE - Fused world_states.gd, agent.gd and planner.gd altogether here.
+## This allows me to send the goap to is_valid() and therefore avoid the need
+## for a global class (like world_states.gd) to get the nearest elements.
+## I can now use the NPC's DetectionArea to avoid looping through all the
+## interactive items in the entire level like world_states.gd was doing it.
+## It makes the NPC more dynamic, adaptable and independent.
 func tick(delta: float):
 	var best_goal = _get_best_goal()
 	if goal_complete:
@@ -122,7 +123,7 @@ func tick(delta: float):
 		_follow_plan(_current_plan, delta)
 
 
-# Returns the highest priority goal available.
+## Returns the highest priority goal available.
 func _get_best_goal() -> GoapGoal:
 	var highest_priority_goal : GoapGoal = null
 	
@@ -134,12 +135,12 @@ func _get_best_goal() -> GoapGoal:
 	return highest_priority_goal
 
 
-# Executes the plan. This function is called on every tick.
-# "plan" is the current list of actions, and delta is the time since last loop.
-#
-# Every action exposes a function called perform, which will return true when
-# the job is complete, so the agent can jump to the next action in the list.
-# TODO - Inside tick(), I need a way to return to the BehaviorTree
+## Executes the plan. This function is called on every tick.
+## "plan" is the current list of actions, and delta is the time since last loop.
+## [br][br]
+## Every action exposes a function called perform, which will return true when
+## the job is complete, so the agent can jump to the next action in the list.
+## TODO - Inside tick(), I need a way to return to the BehaviorTree
 func _follow_plan(plan, delta):
 	if plan.size() == 0:
 		return
@@ -171,8 +172,6 @@ func disable() -> void:
 	self._enabled = false
 
 
-func get_class_name() -> Array[StringName]:
-	return [&"HumanAiGoap"]
 
 
 ###########################################
@@ -182,8 +181,8 @@ func get_class_name() -> Array[StringName]:
 ##  |_|  |___||_|_||_\_||_\_||___>|_\_\  ##
 ###########################################
 
-# Receives a goal and an optional blackboard.
-# Returns a list of actions to be executed.
+## Receives a goal and an optional blackboard.
+## Returns a list of actions to be executed.
 func get_plan(goal: GoapGoal = null):
 	var desired_state = goal.get_desired_state().duplicate()
 	
@@ -193,6 +192,7 @@ func get_plan(goal: GoapGoal = null):
 	return _find_best_plan(goal, desired_state)
 
 
+## Finds the best possible available plan given the highest-priority goal.
 func _find_best_plan(goal: GoapGoal = null, desired_state: Dictionary = {}):
 	# goal is set as root action. Feels weird, but the code is simpler this way.
 	var root = {
@@ -210,18 +210,18 @@ func _find_best_plan(goal: GoapGoal = null, desired_state: Dictionary = {}):
 	return []
 
 
-# Builds a graph with actions. Only includes valid plans
-# (plans that achieve the goal).
-# Returns true if the path has a solution.
-# 
-# This function uses recursion to build the graph.
-# This is necessary because any new action included in the graph may
-# add pre-conditions to the desired state that can be satisfied
-# by previously considered actions, meaning, on every step we
-# need to iterate from the beginning to find all the solutions.
-#
-# WARNING TODO - Be aware that, for simplicity, the current implementation is
-# not protected from circular dependencies. This is easy to implement, though.
+## Builds a graph with actions. Only includes valid plans
+## (plans that achieve the goal).
+## Returns true if the path has a solution.
+## [br][br]
+## This function uses recursion to build the graph.
+## This is necessary because any new action included in the graph may
+## add pre-conditions to the desired state that can be satisfied
+## by previously considered actions, meaning, on every step we
+## need to iterate from the beginning to find all the solutions.
+##
+## WARNING TODO - Be aware that, for simplicity, the current implementation is
+## not protected from circular dependencies. This is easy to implement, though.
 func _build_plans(step):
 	var has_followup = false
 	
@@ -276,8 +276,8 @@ func _build_plans(step):
 	return has_followup
 
 
-# Transforms the graph with actions into a list of actions and calculates the cost by
-# summing their costs. Returns a list of plans.
+## Transforms the graph with actions into a list of actions and calculates the cost by
+## summing their costs. Returns a list of plans.
 func _transform_tree_into_array(p):
 	var plans = []
 	
@@ -295,7 +295,7 @@ func _transform_tree_into_array(p):
 	return plans
 
 
-# Compares the plans' costs and returns actions included in the cheapest one.
+## Compares the plans' costs and returns actions included in the cheapest one.
 func _get_cheapest_plan(plans):
 	var best_plan = null
 	for p in plans:
@@ -305,12 +305,15 @@ func _get_cheapest_plan(plans):
 	return best_plan.actions
 
 
+## For debugging.
 func _print_plan(plan):
 	var actions = []
 	for a in plan.actions:
 		actions.push_back(a.get_class_name())
 	print({ "cost": plan.cost, "actions": actions })
 	#WorldState.console_message({ "cost": plan.cost, "actions": actions })
+
+
 
 
 #######################################################
@@ -333,6 +336,7 @@ func clear_state():
 	states = {}
 
 
+## Returns all the scenes that belong to group_name in the current level.
 func get_elements(group_name):
 	return self.get_tree().get_nodes_in_group(group_name)
 
@@ -345,13 +349,13 @@ func get_elements(group_name):
 ## adds overhead so far right now. Meditate this, find a solution.
 
 
-# Seeks the nearest interactable or collectable item of the given group_name.
-# NOTE TODO - Someday I could add a "how_many" parameter, or create a distinct 
-# entire function "get_closest_elements" that returns the n closest items for 
-# the NPC or AI to choose the best option, like a more suitable weapon.
-# NOTE - Could also add a distance ref to each. Returning a list like that, 
-# plus avoiding editing all the get_closest_elements" everywhere, a distinct 
-# function might be a better idea, maybe. 
+## Seeks the nearest interactable or collectable item of the given group_name.
+## NOTE TODO - Someday I could add a "how_many" parameter, or create a distinct 
+## entire function "get_closest_elements" that returns the n closest items for 
+## the NPC or AI to choose the best option, like a more suitable weapon.
+## NOTE - Could also add a distance ref to each. Returning a list like that, 
+## plus avoiding editing all the get_closest_elements" everywhere, a distinct 
+## function might be a better idea, maybe. 
 func get_closest_element(group_name, reference) -> Area2D:
 	var elements = get_elements(group_name)
 	var closest_element

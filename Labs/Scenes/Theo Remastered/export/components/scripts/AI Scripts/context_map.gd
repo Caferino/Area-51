@@ -1,22 +1,22 @@
 @icon("res://Labs/Assets/X. Other/Icons/context_map.svg")
 class_name ContextMap extends Node2D
+## The entity's [color=purple]Context Map.
 
-@export var controller : AIEntityController = null
-@export var pers_space : Area2D = null
+@export var pers_space : Area2D             = null  ## The entity's personal space.
+@export var controller : AIEntityController = null  ## The entity's AI Controller.
 
 signal chosen_dir_updated()
 
 # WARN - prob only works at ready or every frame
-var space_state    : PhysicsDirectSpaceState2D = null 
-var chosen_dir     : Vector2          = Vector2.ZERO
-var ray_directions : Array[Vector2]   = []
-var interest       : Array[float]     = []
-var danger         : Array[float]     = []
-var total_rays     : int              =    8
-var look_ahead     : float            = 25.0       ## Must be bigger than the aware_zone area.
-var added_interest : float            =  5.0
+var space_state    : PhysicsDirectSpaceState2D = null  ##
+var chosen_dir     : Vector2          = Vector2.ZERO   ##
+var ray_directions : Array[Vector2]   = []    ## The raycasts that detect collisions. 
+var interest       : Array[float]     = []    ## Interest values array of size total_rays.
+var danger         : Array[float]     = []    ## Danger values array of size total_rays.
+var total_rays     : int              =    8  ## Total rays. Lower = faster, but less accurate.
+var look_ahead     : float            = 25.0  ## Must be bigger than the aware_zone area.
+var added_interest : float            =  5.0  ## A default value for interest/danger calculations.
 ## TODO - Make enable_layers unique per entity, not everyone sees the same thing
-## FIXME - Feels like it is not detecting StaticBodies I think...
 var enable_layers  : int              = 134221921  ## Decimal bitmask for layers 1, 6, 7, 13 & 28.
 
 ## ATTENTION - enable_layers can be problematic if it sees itself. Danger all the time
@@ -59,6 +59,7 @@ func situational_awareness():
 	chosen_dir_updated.emit()
 
 
+## Calculates interest and danger per ray, influenced by the environment.
 func _handle_context() -> Vector2:
 	for i in total_rays:
 		## Interest

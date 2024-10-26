@@ -290,15 +290,8 @@ func prepare_structure(structure: StringName, scene: Node2D):
 		scene.add_child(curr_area)
 
 
-## TBD - I think I got a better idea to avoid this thread issue:
-## 1. A threaded function that runs the loop for 50 random Vector2 positions 
-## just as I already have it pretty much.
-## 2. Send a signal that runs a function in the main thread, moving those areas
-## to their respective spots, a O(50) loop, can lower the size to 7 attempts
-## 3. Run another threaded function that checks the overlaps of those areas,
-## then returns false or true if it finds the spot, which should simply be assigned at some point 
-## Verifies if the structure's area is not overlapping with something it shouldn't
-func move_structure_area(spot: Vector2):# -> bool:
+## Moves the structure area to the randomly-generated-and-given spot.
+func move_structure_area(spot: Vector2):
 	if curr_area:
 		curr_area.global_position = spot
 
@@ -313,16 +306,15 @@ func place_structure(global_position: Vector2, scene: Node2D):
 	curr_area.free()
 	curr_structure = null
 	curr_area = null
-	print("PLACED ITEM!")
 
 
+## Runs whenever the structure's area receives an overlapping body.
 func _on_area_body_enter(_body: Node2D):
-	print("HMMMMMMMMMMMMMMMMM ENTER")
 	valid_spot = false
 
 
+## Runs whenever the structure's area loses an overlapping body.
 func _on_area_body_exit(_body: Node2D):
-	print("HMMMMMMMMMMMMMMMMM EXIT ", curr_area.has_overlapping_bodies())
 	## NOTE - This check protects the variable valid_spot from changing in case the area
 	## was overlapping two or more bodies, and after moving to the next random spot, it
 	## exited one, but not the other(s), making the AI think it is in a valid_spot,

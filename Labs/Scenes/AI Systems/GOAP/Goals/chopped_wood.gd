@@ -2,8 +2,8 @@ class_name ChoppedWoodGoal extends GoapGoal
 
 func get_class_name(): return "ChoppedWoodGoal"
 
-func is_valid(_agent) -> bool:
-	## WARN - If there is no wood in the ground, this will break. It needs a dynamic valid check 
+func is_valid(_agent: HumanAiGoap) -> bool:
+	## WARN - Maybe not - If there is no wood in the ground, this will break. It needs a dynamic valid check 
 	# TODO - What if I want him to chop and never collect? Might need to create permissions
 	# Maybe a boolean state "chop_endlessly" that's checked here with an OR
 	# or create a goal that somehow makes him ignore "collect_wood"
@@ -11,7 +11,7 @@ func is_valid(_agent) -> bool:
 	# which of these is the closest to reality?
 	# TODO - Also, to avoid so many calls, might add a blackboard param where I calculate these
 	# values and booleans before coming here, because goddamn, look at the size of this thing
-	#return agent.get_elements("Tree").size() > 0# and agent.controller.entity.inventory.items["Logs"] + agent.get_elements("Wood").size() < agent.states["need_wood"]
+	# return agent.get_elements("Tree").size() > 0# and agent.controller.entity.inventory.items["Logs"] + agent.get_elements("Wood").size() < agent.states["need_wood"]
 	return true
 
 

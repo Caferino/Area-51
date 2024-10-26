@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://da476plesi1hp"]
+[gd_scene load_steps=10 format=3 uid="uid://da476plesi1hp"]
 
 [ext_resource type="Texture2D" uid="uid://o8yxhi7rrahd" path="res://Labs/Scenes/Interactables/firepit/firepit_spritesheet.png" id="1_7x3ty"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/auto_play_animatedsprite.gd" id="1_pcgtp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ctj0"]
 radius = 30.0
@@ -62,9 +61,9 @@ shape = SubResource("CircleShape2D_6ctj0")
 y_sort_enabled = true
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_xlj4u")
+autoplay = "default"
 frame = 1
 frame_progress = 0.706437
-script = ExtResource("1_pcgtp")
 
 [node name="FirepitHurtArea" type="Area2D" parent="."]
 collision_layer = 65536
