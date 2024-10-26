@@ -7,7 +7,7 @@ class_name EntityMovement extends Node
 
 signal stopped_moving()  ## Emits whenever the entity stops moving.
 
-var last_direction      : Vector2 = Vector2(0, 1)  ## Entity's last faced direction.
+var last_direction : Vector2 = Vector2(0, 1)  ## Entity's last faced direction.
 
 
 ## Handles the [param entity]'s movement.

@@ -6,7 +6,6 @@
 size = Vector2(500, 500)
 
 [node name="Field" type="Area2D"]
-visible = false
 y_sort_enabled = true
 monitoring = false
 script = ExtResource("1_ec6b2")

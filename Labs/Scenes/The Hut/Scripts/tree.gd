@@ -8,23 +8,19 @@ class_name WoodenTree extends Node2D
 ## each type of tree (small, big, etc.) should have their own
 ## "interact()" method for whatever they do. This could work as an interface
 
-@export var health_component       : HealthComponent       ##
-@export var timer_component        : TimerComponent        ##
-@export var appearance_component   : AppearanceComponent   ##
+@export var health_component     : HealthComponent       ## The tree's health.
+@export var timer_component      : TimerComponent        ## The tree's growth timer.
+@export var appearance_component : AppearanceComponent   ## The tree's sprites (trunk + leaves).
 
-var initial_health           = randf_range(4, 6)     ## This should go in the unique tree class
-var loot_radius              = Vector2(80.0, 100.0)  ## Ring ## TODO - Make it based on size
-var state                    = 1                     ## 0 = Stump, 1 = Grown
-var size                     = 1                     ## Size of the tree (1 = small, 2 = big)
+var size           = 1                     ## Size of the tree (1 = small, 2 = big).
+var state          = 1                     ## 0 = Stump, 1 = Grown
+var loot_radius    = Vector2(80.0, 100.0)  ## Ring ## TODO - Make it based on size.
+var initial_health = randf_range(4, 6)     ## This should go in the unique tree class.
 
 
 ## Connects the necessary components.
 func _ready():
 	timer_component.timers["GrowthTimer"].timeout.connect(_on_growth_timer_timeout)
-
-
-#func set_intial_health(min, max):
-	#initial_health = randf_range(min, max)
 
 
 ## All trees should be interactable with a hatchet and more.
@@ -55,6 +51,7 @@ func on_depleted_health(with):
 		queue_free()
 
 
+## Runs whenever the growth timer has ran out of time, which means it's time to grow.
 func _on_growth_timer_timeout():
 	if state == 0:  ## 0 == Stump, 1 == Grown  
 		state = 1
@@ -62,5 +59,6 @@ func _on_growth_timer_timeout():
 		health_component.set_health(initial_health)
 
 
+## Calls the ItemManager to spawn a certain type of collectables, 'logs' in this case.
 func drop_logs():
 	ItemManager.drop_item("logs", global_position, loot_radius, self.get_parent())

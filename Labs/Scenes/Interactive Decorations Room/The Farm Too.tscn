@@ -3314,7 +3314,7 @@ environment = ExtResource("1_buauu")
 camera_attributes = SubResource("CameraAttributesPractical_syhij")
 
 [node name="Smoke Ashburn" parent="." instance=ExtResource("1_d7f0l")]
-position = Vector2(396, 909)
+position = Vector2(396, 919)
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

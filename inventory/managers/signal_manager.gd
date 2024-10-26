@@ -1,4 +1,5 @@
 extends Node
+## The [color=white]Signal Manager.
 
 ## TODO - I don't like to guess what could be the type of these variables.
 ## Not sure if some of them deal with multiple different types, but if they

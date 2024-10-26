@@ -75,24 +75,23 @@ func _on_vision_area_body_exited(target: Node2D) -> void:
 		SignalManager.in_entity_vision_area.emit(false)
 
 
-## WIP
+## WIP - The entity receives an order to accomplish with a GOAP AI System.
 func _on_received_order(order : int) -> void:
-	print("Human says: Working on it!")
 	if order == 0:   ## Build a firepit
 		## TODO - Plans/Goals/Orders like these can be made into modules someday
-		print("Building a firepit! Planning...")  ## DEBUG
 		ai_goap.states["has_firepit_priority"] = 10   # Setup GOAP
-		ai_goap.states["need_wood"] = 1
+		ai_goap.states["need_wood"] = 3
 		dir = Vector2.ZERO                            # Stop the entity
 		anim_state = "Idle"
 		switch_ai()
 		## TODO - The switch back will be done later, somewhere
-	elif order == 1:    ## WARN - Delete/Edit placeholders
+	elif order == 1:    ## WARN - Placeholders
 		print("Doing something else! Planning...")
 	else:
 		pass
 
 
+## Switches between GOAP and BTR AI Systems.
 func switch_ai():
 	if ai_goap._enabled:
 		ai_goap.disable()
