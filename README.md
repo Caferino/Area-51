@@ -50,37 +50,37 @@ The goal of this project is to practice common game development processes for cu
 
 **E001:** 2D in 3D
 
-![E001](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTdvY2c4OTdsdG5sN3Jqem8wMzAzNzlvbndndDlqOGFkemhjcWF4eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BU92Fr4Bjl2n8oqLHJ/giphy.gif "2D in 3D")
+![E001](.image/README/E001.gif "2D in 3D")
 
 ---
 
 **E002:** Obligatory Minecraft Terrain Generator
 
-![E002](https://media.giphy.com/media/zh0Lkl2wTti58yOZCf/giphy.gif "Minecraft Terrain Generator")    ![E002](https://media.giphy.com/media/BfRq2kKE2nS54O3f8n/giphy.gif "Minecraft Terrain Generator")
+![E002](.image/README/E002-1.gif "Minecraft Terrain Generator")    ![E002](.image/README/E002-2.gif "Minecraft Terrain Generator")
 
 ---
 
 **E003:** 2D Lighting Room
 
-![E003](https://media.giphy.com/media/igkR0me3SqNr0MNM8K/giphy.gif "2D Lighting Room")
+![E003](.image/README/E003.gif "2D Lighting Room")
 
 ---
 
 **E004:** Cinema Room
 
-![E004](https://media.giphy.com/media/7KJbFC1mCqa0i32CFR/giphy.gif "Cinema Room")
+![E004](.image/README/E004.gif "Cinema Room")
 
 ---
 
 **E005:** Farming Room
 
-![E005](https://media.giphy.com/media/9esyycChU10KIwGZT5/giphy.gif "Farming Room")
+![E005](.image/README/E005.gif "Farming Room")
 
 ---
 
 **E006:** Human-Held Camera Effect + RNG Batch Growth for Plants + Plant bending
 
-![E006-2](https://media.giphy.com/media/PVsCaj1MhkQnhBsgFx/giphy.gif "Humand-Held Camera Effect")    ![E006-3](https://media.giphy.com/media/bI5hcjKhDwxTMUbZgu/giphy.gif "Plant Bending")
+![E006-2](.image/README/E006-2.gif "Humand-Held Camera Effect")    ![E006-3](.image/README/E006-3.gif "Plant Bending")
 
   ![E006-1](.image/README/E006-1.gif "Farming Room")
 
@@ -90,19 +90,19 @@ The goal of this project is to practice common game development processes for cu
 
 **E007:** Melee Attacking + Particles
 
-![E007-1](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWFtM2l5N2hpcTd3cGNrdDl2aXlzbXo1aGs4OTZzNmQydnc5aHRjbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/to4jX0P22uM3dBh2p5/giphy.gif "Melee Attacking")    ![E007-2](https://media.giphy.com/media/EgzkDPQtp2uYNjrTg2/giphy.gif "Particles")
+![E007-1](.image/README/E007-1.gif "Melee Attacking")    ![E007-2](.image/README/E007-2.gif "Particles")
 
 ---
 
 **E008:** Basic Pathfinding
 
-![E008](https://media.giphy.com/media/jO6nnm1TB38cFtVB5g/giphy.gif "Basic Pathfinding")
+![E008](.image/README/E008.gif "Basic Pathfinding")
 
 ---
 
 **E009:** Basic Context-Map and Steering AI
 
-![E009-1](https://media.giphy.com/media/qNzygYJxVO3pazxpQo/giphy.gif "Context-Map and Steering AI") ![E009-2](https://media.giphy.com/media/FHv4YXzrbjbc0EixM5/giphy.gif "Context-Map and Steering AI")
+![E009-1](.image/README/E009-1.gif "Context-Map and Steering AI") ![E009-2](.image/README/E009-2.gif "Context-Map and Steering AI")
 
 I'm Batman now
 
@@ -110,7 +110,7 @@ I'm Batman now
 
 **E010:** Smarter Lucas + Main Menu Mockup + Project Structure
 
-![E010](https://media.giphy.com/media/q9fqrspoMSy2czg8rs/giphy.gif "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](https://media.giphy.com/media/MJAPQVovEqJ5HCbUc2/giphy.gif "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-3.png "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-4.png "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](.image/README/E010-5.png "Smarter Lucas + Main Menu Mockup + Project Structure")
+![E010](.image/README/E010-1.gif "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](.image/README/E010-2.gif "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-3.png "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-4.png "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](.image/README/E010-5.png "Smarter Lucas + Main Menu Mockup + Project Structure")
 
 Got busy all month editing and publishing my newest book: "Tales of Alcarodia, Evergreen", Spanish edition. The Kindle and English editions will come out soon too, free for 5 days every 3 months in Amazon, might get busy again. Could only work on a few things meanwhile, like tweaking Lucas' pathfinding, but it needs more work, he flickers badly when touching the edge of his navigation area. There are plenty of fixes, but I am deciding which one could be best, the most "realistic" one. Same for the project's structure, I know it'd be exageratted for a 2D game like this, but I want to learn what it would be like to manage such a project, those that aim to simulate real life as close as possible. Also, I made an idle spritesheet of the pug, there were none online, in case anyone wants it. Both the png and GIMP's xcf are at ***Labs/Assets/X. Resources/Animals/lucas idle sheet final***
 
@@ -134,13 +134,13 @@ I always put the digital versions (eBooks) for free 5 days every 3 months~
 
 **E012:** Collectables
 
-![E012](https://media.giphy.com/media/hJXd66ROKiP1JCISMi/giphy.gif "Collectables")
+![E012](.image/README/E012.gif "Collectables")
 
 ---
 
 **E013:** Modular Inventory System
 
-![E013-1](https://media.giphy.com/media/lKJCqSYARTsqAD6EQT/giphy.gif "Modular Inventory System")![E013-2](.image/README/E013-2.png "Modular Inventory System")
+![E013-1](.image/README/E013-1.gif "Modular Inventory System")![E013-2](.image/README/E013-2.png "Modular Inventory System")
 
 Followed YouTuber Calame321's Modular Inventory System tutorial (https://youtu.be/dMYv6InQgno?si=YqIiAl5yCIHZYhw0), which was mind-blowing. It might appear as a tutorial focused on just the UI and inventory, but it actually teaches you how to pretty much build an entire game, with only the music, enemies, animations and plot missing, that's it. In just 10 hours, I felt I learnt what schools and job experiences teach you in hundreds. Throughout two weeks I followed him, writing and listening at my own pace, absorbing as much as I could to understand the system, not just copy and paste it. So far, I feel I grasped a good amount, half of it, which is allowing me to easily connect it in the project I have. I'd just need to expand it with a new interactable system. I am thinking of adding an "interact()" and "interact_with(item)" functions to every interactable object or NPC in the game, saved in a JSON as an array of ENUMS "interacts_with" or something similar. With this, I think I could easily create modular and editable interactions with almost absolutely anything, maybe, I'll find out.
 
@@ -148,19 +148,19 @@ Followed YouTuber Calame321's Modular Inventory System tutorial (https://youtu.b
 
 **E014:** Save & Load
 
-![E014](https://media.giphy.com/media/fhpQR4OMdBLeBU1jeN/giphy.gif "Save &amp; Load")
+![E014](.image/README/E014.gif "Save &amp; Load")
 
 ---
 
 **E015:** Crafting, Shop, Item Stats, Cooldowns & Random Loot
 
-![E015-1](.image/README/E015-1.gif "Crafting, Shop, Item Stats &amp; Random Loot")    ![E015-2](https://media.giphy.com/media/OzVSvTbtx2Qcy9mtRw/giphy.gif "Crafting, Shop, Item Stats &amp; Random Loot")
+![E015-1](.image/README/E015-1.gif "Crafting, Shop, Item Stats &amp; Random Loot")    ![E015-2](.image/README/E015-2.gif "Crafting, Shop, Item Stats &amp; Random Loot")
 
 ---
 
 **E016: Movement System Refactor and Documentation**
 
-![E016-3](.image/README/E016-3.png "Movement System Refactor and Documentation")![E016-4](.image/README/E016-4.png "Movement System Refactor and Documentation")![E016-2](.image/README/E016-2.png "Movement System Refactor and Documentation")![E016-1](https://media.giphy.com/media/ELxXp1pQao9ZHRuoIh/giphy.gif "Movement System Refactor and Documentation")
+![E016-3](.image/README/E016-3.png "Movement System Refactor and Documentation")![E016-4](.image/README/E016-4.png "Movement System Refactor and Documentation")![E016-2](.image/README/E016-2.png "Movement System Refactor and Documentation")![E016-1](.image/README/E016-1.gif "Movement System Refactor and Documentation")
 
 I finally did something I have wanted to do for a long time: modularize an NPC or Player Character in a scalable way, make it work like a real human body. Now, the player's character, instead of being one single massive script file, it is now made up of reusable components that define what the entity is. For example, the new BodyComponent allows to build/structure bodies of any kind, like a human with missing limbs, a bat, a dog, or anything really. It is also responsible for detecting inputs, whatever the limbs touch or interact with, and carrying accessories (separately on each limb to make it easier to move them along at the same time) and equipment like tools and weapons. The idea of the HealthComponent is to allow for some interesting features like diseases or potion effects in the future; might need to move the entity's stats here for that. The PlayerControllerComponent is for the player to move the current entity it's attached to (could be one or multiple, this is still WIP and way too far ahead). I plan to create an AIControllerComponent for everything else to be controlled as NPCs, using the state machines created in E009.
 
@@ -174,7 +174,7 @@ Also played with Godot's documentation tools to document everything done in this
 
 **E017: Camera Refactor**
 
-![E017](https://media.giphy.com/media/eyCZ5FtIXpkx4b75Qb/giphy.gif "Camera Refactor")
+![E017](.image/README/E017.gif "Camera Refactor")
 
 The camera has been refactored to be more efficent and easy to use. It now shakes more depending on whether the player is idle, walking, running or attacking. Might add the option to disable it. The camera dragging was rebuilt from scratch to be smoother and bug-free. It can freely move around a circular area around the player, and when there is movement, it returns back.
 
@@ -221,7 +221,7 @@ Can generate a set amount on the given area. Planning to see if concurrency can 
 
 **E021: Hanging Objects**
 
-![E021-1](https://media.giphy.com/media/TZFaJfUQz7yDLh6Hqm/giphy.gif "Hanging Objects")
+![E021-1](.image/README/E021.gif "Hanging Objects")
 
 A sample of hanging objects. Used rigidbodies and a small logic to avoid pulling it in bizarre manners, that is, "hold" the hanging object for a second, then "let it go". A very simple timer to fix that innevitable bug, there was no other way around it, one-way collisions, using four segment collisions, etc. Also, small teaser of the upcoming rain mechanic. I am currently refactoring the way levels are done, by treating again, like the Human Body experiment, everything is a component in it, Space, Time... and something to play with the weather, rain, wind that moves (skews based on wind strength) the plants, seasons, precipitation, rain chance, temperature... Designing this is proving to be a challenge, so I am going to spend more time on other projects while I work this out. Not having a source of income is becoming a difficult toll too, I don't think I should continue with these anymore, I think I am not developing skills that will land me a job here in Mexico or USA, it wasn't enough.
 
@@ -231,7 +231,7 @@ A sample of hanging objects. Used rigidbodies and a small logic to avoid pulling
 
 [Longer Version (YouTube)](https://www.youtube.com/watch?v=3-KSTYoMAJE "https://www.youtube.com/watch?v=3-KSTYoMAJE")
 
-![E00G-2](https://media.giphy.com/media/pgURKkGhPlgSJSe39H/giphy.gif "GOAP AI System")![E00G-3](.image/README/E00G-3.png "GOAP AI System")
+![E00G-2](.image/README/E00G-2.gif "GOAP AI System")![E00G-3](.image/README/E00G-3.png "GOAP AI System")
 
 This is it. What I dreamed about since January, almost a year ago. This is the day I pictured I'd never reach, but here it is, it's finally here. After a month and a half of hard work, I am proud to say I finally finished learning and building a GOAP AI System for my NPCs. GOAP AI, (Goal-Oriented Action Planning Artificial Intelligence), was created by Jeff Orkin around 2006 for the game F.E.A.R. I highly recommend AI and Games' video about it, including the interview with Jeff himself: [https://youtu.be/3Of2NtTYcvU?si=4kvQLxwkzxZtrNSQ](https://youtu.be/3Of2NtTYcvU?si=4kvQLxwkzxZtrNSQ "AI and Games")
 
