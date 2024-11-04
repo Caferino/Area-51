@@ -8,19 +8,37 @@ class_name HealthComponent extends Node
 
 ## Set the entity's health by the given amount.
 func set_health(amount: float):
+	## What if it exceeds MAX_HEALTH? Ignore or...
+	## Apply as "shield", "overshield", "overhealth"?
 	health = amount
 
 
-## Damage the entity by the given amount.
+## Take damage from a source (object, event, thing, phenomena).
+func take_damage(source: Node):
+	## TBD - A source can be an item or thing, like a sword, fire or poisonous gas.
+	## How to iterate through the source's effects/values? In a dynamic way
+	## so that some of them can have attributes/properties others don't.
+	pass
+
+
+## Heal an amount of damage from a source (object, event, thing, phenomena).
+func take_heal(source: Node):
+	## TBD - Might work the same as take_damage, but, think about:
+	## What if it exceeds MAX_HEALTH? Ignore or...
+	## Apply as "shield", "overshield", "overhealth"? Stuff like that.
+	## How does Tibia, Runescape or WoW do it?
+	pass
+
+
+## Directly damage the entity by the given amount.
 func damage(amount: float):
 	health -= amount
 	if health < 0:
 		health = 0
 
 
-## Heal the entity by the given amount.
+## Directly heal the entity by the given amount.
 func heal(amount: float):
-	if health + amount >= get_parent().MAX_HEALTH:  # ! TODO - I do not like get_parent(), breaks easily
+	health += amount
+	if health > get_parent().MAX_HEALTH:
 		health = get_parent().MAX_HEALTH
-	else: 
-		health += amount

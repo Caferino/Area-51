@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjsx7kxrgbrut"]
+[gd_scene load_steps=7 format=3 uid="uid://bjsx7kxrgbrut"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Level Components/level.gd" id="1_oayq3"]
 [ext_resource type="PackedScene" uid="uid://cxptmvqe4te2" path="res://Labs/Scenes/Level Components/Time/level_time_component.tscn" id="2_mdxxx"]
 [ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space/level_space_component.tscn" id="3_88r1o"]
 [ext_resource type="PackedScene" uid="uid://dxc53orbb4n83" path="res://Labs/Scenes/Level Components/Weather/level_weather_component.tscn" id="4_08pqk"]
+[ext_resource type="PackedScene" uid="uid://dkv2rmkdva3pp" path="res://Labs/Scenes/Level Components/Cutscenes/cutscenes_component.tscn" id="5_25ma5"]
 
 [sub_resource type="Environment" id="Environment_5wis1"]
 
@@ -20,3 +21,5 @@ environment = SubResource("Environment_5wis1")
 [node name="LevelSpaceComponent" parent="." instance=ExtResource("3_88r1o")]
 
 [node name="LevelWeatherComponent" parent="." instance=ExtResource("4_08pqk")]
+
+[node name="CutscenesComponent" parent="." instance=ExtResource("5_25ma5")]
