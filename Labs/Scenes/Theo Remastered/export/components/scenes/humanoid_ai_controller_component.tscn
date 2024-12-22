@@ -276,7 +276,7 @@ libraries = {
 }
 
 [node name="HumanAIBehaviorTree" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_ijjbt")]
-blackboard = NodePath("@Node@26068")
+blackboard = NodePath("@Node@25299")
 actor = NodePath("..")
 
 [node name="HumanAiGoap" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("4_day17")]

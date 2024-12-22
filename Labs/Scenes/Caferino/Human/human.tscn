@@ -506,7 +506,7 @@ shape = SubResource("CircleShape2D_epeuq")
 [node name="HatAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea"]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_215dc")
-animation = &"up"
+animation = &""
 autoplay = "left"
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]

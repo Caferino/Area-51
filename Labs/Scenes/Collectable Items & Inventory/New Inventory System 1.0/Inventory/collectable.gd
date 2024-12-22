@@ -25,6 +25,7 @@ func drop(loot_radius: Vector2):
 
 
 func pick_up():
+	set_deferred("monitorable", false)
 	animator.play("pickables/pick_up")
 	await get_tree().create_timer(animator.current_animation_length).timeout
 	queue_free()

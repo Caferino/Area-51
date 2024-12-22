@@ -14,7 +14,7 @@ func set_health(amount: float):
 
 
 ## Take damage from a source (object, event, thing, phenomena).
-func take_damage(source: Node):
+func take_damage(_source: Node):
 	## TBD - A source can be an item or thing, like a sword, fire or poisonous gas.
 	## How to iterate through the source's effects/values? In a dynamic way
 	## so that some of them can have attributes/properties others don't.
@@ -22,7 +22,7 @@ func take_damage(source: Node):
 
 
 ## Heal an amount of damage from a source (object, event, thing, phenomena).
-func take_heal(source: Node):
+func take_heal(_source: Node):
 	## TBD - Might work the same as take_damage, but, think about:
 	## What if it exceeds MAX_HEALTH? Ignore or...
 	## Apply as "shield", "overshield", "overhealth"? Stuff like that.
