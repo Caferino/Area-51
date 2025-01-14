@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://kdbyl8joho61"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/context_map.gd" id="1_hw76g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5ghh"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ca06"]
+radius = 24.0
+
+[node name="ContextMap" type="Node2D" node_paths=PackedStringArray("pers_space")]
+script = ExtResource("1_hw76g")
+pers_space = NodePath("PersonalSpaceArea")
+
+[node name="AwareZoneArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 20576
+
+[node name="AwareZoneCollisionShape" type="CollisionShape2D" parent="AwareZoneArea"]
+shape = SubResource("CircleShape2D_k5ghh")
+
+[node name="PersonalSpaceArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 20576
+
+[node name="PersonalSpaceCollisionShape" type="CollisionShape2D" parent="PersonalSpaceArea"]
+shape = SubResource("CircleShape2D_8ca06")
+debug_color = Color(0.88672, 0.000287437, 0.804041, 0.42)

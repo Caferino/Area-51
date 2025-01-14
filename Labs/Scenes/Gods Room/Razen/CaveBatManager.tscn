@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://1l3nflawbofn"]
-
-[ext_resource type="Script" path="res://Labs/Scenes/Gods Room/Razen/CaveBatManager.gd" id="1_rtncv"]
-
-[node name="CaveBatManager" type="Node2D"]
-script = ExtResource("1_rtncv")

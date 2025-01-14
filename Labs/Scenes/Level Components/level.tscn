@@ -8,10 +8,12 @@
 
 [sub_resource type="Environment" id="Environment_5wis1"]
 
-[node name="LevelName" type="Node2D" node_paths=PackedStringArray("time", "space")]
+[node name="LevelName" type="Node2D" node_paths=PackedStringArray("env", "time", "space", "weather")]
 script = ExtResource("1_oayq3")
+env = NodePath("WorldEnvironment")
 time = NodePath("LevelTimeComponent")
 space = NodePath("LevelSpaceComponent")
+weather = NodePath("LevelWeatherComponent")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5wis1")
@@ -23,3 +25,5 @@ environment = SubResource("Environment_5wis1")
 [node name="LevelWeatherComponent" parent="." instance=ExtResource("4_08pqk")]
 
 [node name="CutscenesComponent" parent="." instance=ExtResource("5_25ma5")]
+
+[editable path="LevelSpaceComponent"]

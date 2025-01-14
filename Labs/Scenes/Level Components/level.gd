@@ -20,6 +20,9 @@ var weather_stats: Dictionary = {
 }
 
 
+func _ready():
+	LevelManager.add_level(self)
+
 
 
 

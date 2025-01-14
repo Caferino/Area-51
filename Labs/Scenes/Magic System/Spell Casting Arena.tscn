@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccc7oi54y0lmc"]
+
+[ext_resource type="PackedScene" uid="uid://bjsx7kxrgbrut" path="res://Labs/Scenes/Level Components/level.tscn" id="1_urq00"]
+[ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="2_bqsk7"]
+[ext_resource type="Texture2D" uid="uid://b51d3aeg4l7kj" path="res://Labs/Scenes/Magic System/button_UI_test_delete.png" id="3_qov6a"]
+[ext_resource type="PackedScene" uid="uid://ui6le12cycb8" path="res://Labs/Scenes/Farming Room/FenceVertical.tscn" id="4_l2xs4"]
+
+[node name="SpellCastingArena" instance=ExtResource("1_urq00")]
+
+[node name="Smoke Ashburn" parent="LevelSpaceComponent/Entities" index="0" instance=ExtResource("2_bqsk7")]
+
+[node name="Test" type="Sprite2D" parent="." index="5"]
+position = Vector2(148, 77)
+texture = ExtResource("3_qov6a")
+
+[node name="FenceVertical" parent="." index="6" instance=ExtResource("4_l2xs4")]
+position = Vector2(248, 24)
+
+[editable path="LevelSpaceComponent"]
