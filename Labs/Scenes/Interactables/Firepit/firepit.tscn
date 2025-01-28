@@ -1,0 +1,135 @@
+[gd_scene load_steps=19 format=3 uid="uid://da476plesi1hp"]
+
+[ext_resource type="Texture2D" uid="uid://o8yxhi7rrahd" path="res://Labs/Scenes/Interactables/Firepit/firepit_spritesheet.png" id="1_7x3ty"]
+[ext_resource type="PackedScene" uid="uid://bhwnk61w1gooe" path="res://Labs/Scenes/Interactables/Firepit/firepit_light.tscn" id="1_ye58v"]
+[ext_resource type="PackedScene" uid="uid://bobvy1g7dbeth" path="res://Labs/Scenes/Interactables/Firepit/firepit_soot.tscn" id="2_i21te"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljk2y"]
+atlas = ExtResource("1_7x3ty")
+region = Rect2(0, 0, 150, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak7h1"]
+atlas = ExtResource("1_7x3ty")
+region = Rect2(150, 0, 150, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aqvb"]
+atlas = ExtResource("1_7x3ty")
+region = Rect2(300, 0, 150, 126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r53ht"]
+atlas = ExtResource("1_7x3ty")
+region = Rect2(450, 0, 150, 126)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xlj4u"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_ljk2y")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_ak7h1")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_7aqvb")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_r53ht")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ctj0"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu1vq"]
+size = Vector2(15, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_23yuy"]
+radius = 50.0
+
+[sub_resource type="Gradient" id="Gradient_gw6qs"]
+offsets = PackedFloat32Array(0, 0.608, 0.864, 1)
+colors = PackedColorArray(1, 1, 0, 1, 0.0833334, 0.0833334, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yv332"]
+gradient = SubResource("Gradient_gw6qs")
+
+[sub_resource type="Curve" id="Curve_pxlwu"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_77id5"]
+curve = SubResource("Curve_pxlwu")
+
+[sub_resource type="Curve" id="Curve_8li4x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.196667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1sq2c"]
+curve = SubResource("Curve_8li4x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wrj67"]
+resource_local_to_scene = true
+lifetime_randomness = 0.22
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+angle_min = 1.07288e-05
+angle_max = 90.0
+direction = Vector3(0, -1, 0)
+spread = 70.0
+initial_velocity_min = 0.5
+initial_velocity_max = 10.0
+tangential_accel_min = -3.0
+tangential_accel_max = 3.0
+damping_min = 0.1
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_77id5")
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_1sq2c")
+scale_over_velocity_max = 1000.0
+color_ramp = SubResource("GradientTexture1D_yv332")
+
+[node name="Firepit" type="Marker2D"]
+z_index = 1
+y_sort_enabled = true
+
+[node name="firepit_light" parent="." instance=ExtResource("1_ye58v")]
+
+[node name="FirepitAnimatedSprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_xlj4u")
+autoplay = "default"
+frame_progress = 0.571569
+
+[node name="StructureArea" type="Area2D" parent="."]
+input_pickable = false
+
+[node name="StructureCollisionShape" type="CollisionShape2D" parent="StructureArea"]
+shape = SubResource("CircleShape2D_6ctj0")
+
+[node name="FirepitHurtArea" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 0
+monitoring = false
+
+[node name="FirepitHurtCollisionShape" type="CollisionShape2D" parent="FirepitHurtArea"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_bu1vq")
+debug_color = Color(0, 0, 0, 0.42)
+
+[node name="InteractableArea" type="Area2D" parent="." groups=["Interactive"]]
+collision_layer = 16384
+collision_mask = 0
+
+[node name="InteractableCollisionShape" type="CollisionShape2D" parent="InteractableArea"]
+shape = SubResource("CircleShape2D_23yuy")
+debug_color = Color(0.36319, 0.616889, 7.70092e-07, 0.42)
+
+[node name="Soot" parent="." instance=ExtResource("2_i21te")]
+process_material = SubResource("ParticleProcessMaterial_wrj67")

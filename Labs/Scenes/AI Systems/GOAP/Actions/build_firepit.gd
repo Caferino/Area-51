@@ -1,7 +1,7 @@
 class_name BuildFirepitAction extends GoapAction
 
 # TODO - CHANGE IT, no idea where did this one come from...
-const Firepit = preload("res://Labs/Scenes/Interactables/firepit/firepit.tscn")
+const Firepit = preload("res://Labs/Scenes/Interactables/Firepit/firepit.tscn")
 
 var try  : bool             = false         ## Also called "try_again", used for the placing attempts.
 var spot : Vector2          = Vector2.ZERO  ## The spot at where to try to place the structure.

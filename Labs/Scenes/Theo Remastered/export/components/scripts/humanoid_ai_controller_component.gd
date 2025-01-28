@@ -29,10 +29,12 @@ func on_move():
 	sprinting = false
 
 
-## ATTENTION NOTE - I tried 'anim_state' on this one, but there is a problem. 
-## Its signal is emitted in the movement_component (the muscles), instead
-## of here, in the entity itself, like the rest. It's ugly, but it has a purpose,
-## and that is the use of LERP for the movement's velocity.
+func on_sprint():
+	anim_state = "Run"
+	moving = true
+	sprinting = true
+
+
 func on_stop():
 	## ATTENTION - I am using LERP for the entity's movement velocity, which
 	## gives it a very tiny eased-out ending, that is, the last milliseconds
@@ -40,9 +42,9 @@ func on_stop():
 	## It gives a very tiny slide effect that is hard to notice, but it adds 
 	## to the feel of realism and gameplay after rigurous testing.
 	## It is a problem because anim_state takes under a second to update if
-	## I want to change it here, which makes the entity seems like it is still
-	## walking when it visibly is not.
-	anim_state = "Idle"  # Will leave it here anyway just in case
+	## I want to change it here, which makes the entity seem like it is still
+	## walking when it visibly is not moving anymore.
+	anim_state = "Idle"
 	moving = false
 	sprinting = false
 
@@ -53,12 +55,6 @@ func on_attack():
 
 func on_attack_finished():
 	attacking = false
-
-
-func on_sprint():
-	anim_state = "Run"
-	moving = true
-	sprinting = true
 
 
 func _on_vision_area_body_entered(target: Node2D) -> void:
@@ -82,7 +78,7 @@ func _on_received_order(order : int) -> void:
 		ai_goap.states["has_firepit_priority"] = 10   # Setup GOAP
 		ai_goap.states["need_wood"] = 3
 		dir = Vector2.ZERO                            # Stop the entity
-		anim_state = "Idle"
+		on_stop()
 		switch_ai()
 		## TODO - The switch back will be done later, somewhere
 	elif order == 1:    ## WARN - Placeholders

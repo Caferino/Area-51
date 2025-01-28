@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cynxld5jpn8cb"]
+
+[ext_resource type="Texture2D" uid="uid://bemxsldy7ml8f" path="res://Labs/Scenes/Magic System/Fireball/Components/fireball_texture.png" id="1_nt85p"]
+
+[sub_resource type="Gradient" id="Gradient_06ecq"]
+offsets = PackedFloat32Array(0, 0.224, 0.656, 0.928)
+colors = PackedColorArray(0.696318, 0.312346, 0, 1, 0.831807, 0.619145, 0, 0.903771, 1, 1, 0, 0.784314, 0, 0, 0, 0.117647)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iv3fd"]
+gradient = SubResource("Gradient_06ecq")
+
+[sub_resource type="CurveTexture" id="CurveTexture_22b4x"]
+
+[sub_resource type="Curve" id="Curve_ap5g5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.378472, 0.833962), 0.0, 0.0, 0, 0, Vector2(0.677083, 0.245283), 0.0, 0.0, 0, 0, Vector2(0.996528, 0.0943396), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5o78d"]
+curve = SubResource("Curve_ap5g5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r363g"]
+resource_local_to_scene = true
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angular_velocity_min = -91.56
+angular_velocity_max = -1.60933e-05
+orbit_velocity_min = -0.0899999
+orbit_velocity_max = 0.0900001
+linear_accel_min = -1.16
+linear_accel_max = 28.84
+radial_accel_min = -2.23517e-06
+radial_accel_max = 69.0
+scale_min = 0.5
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_5o78d")
+color_ramp = SubResource("GradientTexture1D_iv3fd")
+emission_curve = SubResource("CurveTexture_22b4x")
+turbulence_noise_strength = 6.45
+sub_emitter_mode = 1
+sub_emitter_frequency = 1.0
+
+[node name="Fireball" type="GPUParticles2D"]
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_r363g")
+texture = ExtResource("1_nt85p")
+lifetime = 3.0
+randomness = 0.08

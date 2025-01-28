@@ -31,15 +31,13 @@ func get_effects() -> Dictionary:
 func perform(agent, _delta) -> bool:
 	if agent.get_elements("Wood").size() + agent.controller.entity.inventory.items["Logs"] >= agent.states["need_wood"]:
 		agent.controller.dir = Vector2.ZERO
-		agent.controller.anim_state = "Idle"
-		agent.controller.moving = false  ## Without it this block runs twice, Moonwalk's Paradox
+		agent.controller.on_stop()
 		return true
 	elif agent.controller.moving and tree:
 		if agent.controller.interactor_area.overlaps_area(tree):
 			near_tree = true   ## WARN - Do not forget to set it to null after chop
 			agent.controller.dir = Vector2.ZERO
-			agent.controller.anim_state = "Idle"
-			agent.controller.moving = false  ## Without it this block runs twice, Moonwalk's Paradox
+			agent.controller.on_stop()
 		## TODO - Reuse this elif for wandering, chasing, etc. It works well. 
 		elif agent.controller.context_map.pers_space.overlaps_area(tree) or agent.controller.context_map.pers_space.has_overlapping_bodies():
 			var y = agent.controller.dir.y
@@ -67,7 +65,6 @@ func perform(agent, _delta) -> bool:
 	elif not tree:
 		tree = agent.get_closest_element("Tree", agent)
 		agent.controller.dir = agent.global_position.direction_to(tree.global_position)
-		agent.controller.anim_state = "Move"
-		agent.controller.entity_move.emit()
+		agent.controller.on_move()
 	
 	return false

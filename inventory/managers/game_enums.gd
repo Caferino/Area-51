@@ -23,8 +23,37 @@ enum WEAPON_TYPE {
 	BLUNT
 }
 
+enum PROJECTILE {
+	TARGET_POSITION,
+	TARGET_ENTITY,
+	TARGET_CHASE,
+	LIFE_TIME,
+	SIZE
+}
+
+
+
 ###########################################
 ### ============ ENTITIES ============= ###
+###########################################
+enum CAFERINO {
+	NONE,
+	HUMAN
+}
+
+enum BIZCK {
+	NONE,
+	CAVE_BAT
+}
+
+enum RAZEN {
+	NONE,
+}
+
+
+
+###########################################
+### ============== STATS ============== ###
 ###########################################
 enum STAT {
 	VITALITY,
@@ -75,6 +104,8 @@ enum STAMINA_STAT {
 	DEACCEL
 }
 
+
+
 ###########################################
 ### ============== LEVEL ============== ###
 ###########################################
@@ -92,6 +123,8 @@ enum WEATHER {
 	RAIN_DIRECTION,
 	RAIN_FREQUENCY,
 }
+
+
 
 ###########################################
 ### ============= AFFIXES ============= ###
@@ -111,4 +144,24 @@ enum AFFIX_TYPE {
 enum INTERFACE {
 	DAMAGEABLE,
 	FLAMMABLE
+}
+
+
+
+###########################################
+### ============== MAGIC ============== ###
+###########################################
+enum ENERGY {
+	RED,
+	BLUE,
+	GREEN,
+	YELLOW,
+	BLACK,
+	PURPLE,
+	WHITE,
+	AMBER
+}
+
+enum SPELLS {
+	FIREBALL
 }

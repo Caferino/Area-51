@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxc53orbb4n83"]
+[gd_scene load_steps=6 format=3 uid="uid://dxc53orbb4n83"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Level Components/Weather/level_weather_component.gd" id="1_c5kai"]
+[ext_resource type="PackedScene" uid="uid://chav0mjysm6tc" path="res://Labs/Shaders/Filters/filter_sunrays.tscn" id="2_22oh2"]
 [ext_resource type="PackedScene" uid="uid://vvs5hdnu2bbg" path="res://Labs/Scenes/Level Components/Weather/Rain/level_rain_component.tscn" id="2_avqyh"]
 [ext_resource type="PackedScene" uid="uid://ds7aoehtv76ib" path="res://Labs/Scenes/Level Components/Weather/Wind/level_wind_component.tscn" id="3_cp8td"]
+[ext_resource type="PackedScene" uid="uid://cuebdvvge3rvj" path="res://Labs/Scenes/Level Components/Weather/DayNight/day_night_component.tscn" id="4_xnbfq"]
 
-[node name="LevelWeatherComponent" type="Node2D" node_paths=PackedStringArray("rain_component", "wind_component")]
+[node name="LevelWeatherComponent" type="Node2D" node_paths=PackedStringArray("rain_component", "wind_component", "dayn_component")]
 script = ExtResource("1_c5kai")
 rain_component = NodePath("LevelRainComponent")
 wind_component = NodePath("LevelWindComponent")
+dayn_component = NodePath("DayNightComponent")
+
+[node name="SunRays" parent="." instance=ExtResource("2_22oh2")]
+
+[node name="DayNightComponent" parent="." instance=ExtResource("4_xnbfq")]
 
 [node name="LevelRainComponent" parent="." instance=ExtResource("2_avqyh")]
 

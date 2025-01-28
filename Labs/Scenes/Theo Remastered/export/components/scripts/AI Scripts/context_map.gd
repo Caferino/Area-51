@@ -60,6 +60,9 @@ func situational_awareness():
 
 
 ## Calculates interest and danger per ray, influenced by the environment.
+## TODO - I remember trying using 8 rays instead of creating the query here.
+## Forgot what went wrong. Might refactor this, and return chosen_dir only,
+## leave the normalize() calculation to the function calling context_map.chosen_dir
 func _handle_context() -> Vector2:
 	for i in total_rays:
 		## Interest
@@ -73,11 +76,12 @@ func _handle_context() -> Vector2:
 		danger[i] = 1.0 if result else 0.0
 		
 		## Direction
+		var half_rays = total_rays/2  # In case total_rays changes during gameplay
 		if danger[i] > 0.0:
-			if i > total_rays/2:
-				interest[i - (total_rays/2) - 1] = added_interest
+			if i > half_rays:
+				interest[i - half_rays - 1] = added_interest
 			else:
-				interest[i + (total_rays/2) - 1] = added_interest
+				interest[i + half_rays - 1] = added_interest
 			interest[i] = 0.0
 		chosen_dir += ray_directions[i] * interest[i]
 	

@@ -14,12 +14,23 @@ func _physics_process(_delta: float) -> void:
 
 
 ## Runs whenever there is an [InputEvent] to check whether it's an attack or interaction.
-func _input(_event: InputEvent):
-	if !attacking:
+## TODO - Room for improvement: maybe using _unhandled_input(), a Dict with functions and StringNames...
+## WARN TODO - Sometimes double input are read, not sure if it's my faulty keyboard or this
+func _unhandled_input(event: InputEvent) -> void:
+	if aiming:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			confirm_action()
+	elif !attacking and event is not InputEventMouseMotion:
 		if Input.is_action_just_pressed("attack"):
 			entity_attack.emit()
 		elif Input.is_action_just_pressed("interact"):
 			entity_interact.emit()
+		# NOTE - Feels wrong. DRY... Is there a better way, no loops?
+		# TODO - For now, it shoots a fireball, but it should use the item in the given keybind/hotbar
+		elif Input.is_action_just_pressed("action_1"):
+			on_action_1()
+		elif Input.is_action_just_pressed("action_2"):
+			on_action_2()
 
 
 ## Reads the player's given movement input.
@@ -68,8 +79,53 @@ func on_stop():
 
 
 func on_attack():
-	attacking = true
+	attacking = true   ## NOTE - Disabling this adds a pretty kickass gameplay speed for attacking, could be a potion effect
 	camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
+
+
+func on_action_1():
+	# TODO - This fireball code should be on its own or somewhere else
+	# WARN - For now, for simplicity, I will hardcode it here.
+	prepare_spell()
+
+
+func on_action_2():
+	print("Action 2!")
+
+
+## NOTE - What if spells have 2 phases: preparation and execution.
+## During preparation the initial animation runs, placement prop, aiming, all that;
+## while execution means the shooting of the projectile or spell, its effects being
+## applied to entities within an area or a certain singular target, etc.
+# TODO - This fireball code should be on its own or somewhere else
+# WARN - For now, for simplicity, I will hardcode it here.
+## WARN - DRY, what about prepare_spell(StringName: spell) ? 
+func prepare_spell():
+	if obj_in_hand: remove_object_in_hand()  # remove whatever is currently held first
+	obj_in_hand = Cast.spell[GameEnums.SPELLS.FIREBALL].instantiate()
+	owner.add_child(obj_in_hand)  # owner is optional, but might be useful later.
+	aiming = true
+
+
+func confirm_action():
+	# TODO - This might grow more complex, not just for fireballs/projectiles.
+	LevelManager.spawn(obj_in_hand, owner)
+	obj_in_hand.z_index = 3
+	obj_in_hand.life.start(obj_in_hand.base_stats[GameEnums.PROJECTILE.LIFE_TIME])
+	obj_in_hand.shoot(get_global_mouse_position())
+	aiming = false
+	
+	clear_hands()
+
+
+## TODO - This needs a better name
+func clear_hands():
+	obj_in_hand = null
+
+
+func remove_object_in_hand():
+	obj_in_hand.queue_free()
+	obj_in_hand = null
 
 
 func on_attack_finished():

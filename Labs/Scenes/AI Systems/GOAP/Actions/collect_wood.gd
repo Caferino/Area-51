@@ -37,8 +37,8 @@ func get_effects() -> Dictionary:
 func perform(agent, _delta) -> bool:
 	## ATTENTION WARNING - Someday fix collectables that drop out of bounds, unreachable spots
 	if agent.controller.entity.inventory.items["Logs"] >= agent.states["need_wood"]:
-		agent.controller.anim_state = "Idle"
 		agent.controller.dir = Vector2.ZERO
+		agent.controller.on_stop()
 		return true
 	elif agent.controller.moving and is_instance_valid(wood):
 		if agent.controller.context_map.pers_space.has_overlapping_bodies():
@@ -63,7 +63,6 @@ func perform(agent, _delta) -> bool:
 		## in case they get removed during this perform, or it will crash
 		wood = agent.get_closest_element("Wood", agent)
 		agent.controller.dir = agent.global_position.direction_to(wood.global_position)
-		agent.controller.anim_state = "Move"
-		agent.controller.entity_move.emit()
+		agent.controller.on_move()
 	
 	return false

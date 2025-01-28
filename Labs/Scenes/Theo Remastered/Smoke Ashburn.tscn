@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bpp6n7a3kmr5s" path="res://Labs/Assets/9. Templates/ground_shadow.png" id="11_6fk20"]
 [ext_resource type="AnimationLibrary" uid="uid://diupfaaatv8xc" path="res://animations/2D Updated/2D Human Body Movement Remastered.res" id="12_pdib2"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="12_xfj4o"]
-[ext_resource type="Texture2D" uid="uid://mphv3ma21huh" path="res://Labs/Scenes/Caferino/Rakshasa/black_cat_head.png" id="13_beobx"]
-[ext_resource type="Texture2D" uid="uid://bjpghtdgac6ed" path="res://Labs/Scenes/Caferino/Rakshasa/black_cat_body.png" id="15_udclq"]
+[ext_resource type="Texture2D" uid="uid://mphv3ma21huh" path="res://Labs/Scenes/Entities/Alcarodia/Caferino/Rakshasa/black_cat_head.png" id="13_beobx"]
+[ext_resource type="Texture2D" uid="uid://bjpghtdgac6ed" path="res://Labs/Scenes/Entities/Alcarodia/Caferino/Rakshasa/black_cat_body.png" id="15_udclq"]
 [ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="16_m3k4p"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="17_io7h4"]
 [ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/sword.tscn" id="18_vljcp"]
@@ -519,7 +519,7 @@ size = Vector2(1, 1)
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4097
-collision_mask = 80877
+collision_mask = 78829
 motion_mode = 1
 script = ExtResource("1_c7twf")
 lore = NodePath("LoreComponent")
@@ -576,7 +576,7 @@ autoplay = "left"
 
 [node name="HeadShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/HeadAnimatedSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
-z_index = -1
+z_index = -2
 texture_filter = 2
 position = Vector2(0, 28)
 scale = Vector2(0.285714, 0.331417)
@@ -607,7 +607,7 @@ shape = SubResource("CircleShape2D_u50h0")
 y_sort_enabled = true
 position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
-animation = &"left"
+animation = &"right"
 autoplay = "left"
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]

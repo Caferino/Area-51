@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://inventory/managers/item_manager.gd" id="1_cbkn8"]
 [ext_resource type="PackedScene" uid="uid://ccrxttes5b64y" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.tscn" id="1_faq72"]
 [ext_resource type="Resource" uid="uid://d4de6ndv12o5w" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/items/logs.tres" id="2_2upfa"]
-[ext_resource type="PackedScene" uid="uid://da476plesi1hp" path="res://Labs/Scenes/Interactables/firepit/firepit.tscn" id="2_pdxy8"]
+[ext_resource type="PackedScene" uid="uid://da476plesi1hp" path="res://Labs/Scenes/Interactables/Firepit/firepit.tscn" id="2_pdxy8"]
 
 [node name="ItemManager" type="ResourcePreloader"]
 resources = [PackedStringArray("collectable", "firepit", "logs"), [ExtResource("1_faq72"), ExtResource("2_pdxy8"), ExtResource("2_2upfa")]]

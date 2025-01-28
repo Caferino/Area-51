@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/humanoid_ai_controller_component.gd" id="1_kinwj"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/personality_component.gd" id="2_pp7or"]
-[ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/ContextMap.tscn" id="2_qpkxs"]
+[ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/context_map.tscn" id="2_qpkxs"]
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Personality Roles/lumberjack_role.gd" id="3_eg3ru"]
 [ext_resource type="PackedScene" uid="uid://2aje56t2bt1f" path="res://Labs/Scenes/AI Systems/FSM/HumanAiBehaviorTree.tscn" id="3_ijjbt"]
 [ext_resource type="PackedScene" uid="uid://b3w625uu3cw8n" path="res://Labs/Scenes/AI Systems/GOAP/GOAPs/human_ai_goap.tscn" id="4_day17"]
@@ -276,7 +276,7 @@ libraries = {
 }
 
 [node name="HumanAIBehaviorTree" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_ijjbt")]
-blackboard = NodePath("@Node@26068")
+blackboard = NodePath("@Node@19781")
 actor = NodePath("..")
 
 [node name="HumanAiGoap" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("4_day17")]

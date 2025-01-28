@@ -15,7 +15,7 @@ var _goals             : Array[GoapGoal]   = []    ##
 var _actions           : Array[GoapAction] = []    ##
 var _current_plan      : Array             = []    ##
 var _current_plan_step : int               = 0     ##
-var goal_complete     : bool              = false  ##
+var goal_complete      : bool              = false  ##
 
 @export var gbl_timer      : Timer                         = null  ## Global timer for general use.
 @export var controller     : HumanoidAIControllerComponent = null  ## The AI's main controller.
