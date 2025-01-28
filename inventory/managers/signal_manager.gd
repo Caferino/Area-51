@@ -33,8 +33,9 @@ signal heal_player(health_points)
 signal saving_game()
 
 # Level Manager
-signal connect_levels(level: Level)
+signal connect_levels(level:Level)
+signal time_tick(day:int, hour:int, minute:int)
 
 ## Created by me, to connect the player/world/entities with the UI
 signal in_entity_vision_area(entered:bool)
-signal entity_order(order : int)  ## Maybe change to String/StringName
+signal entity_order(order:int)  ## Maybe change to String/StringName

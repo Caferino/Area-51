@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://blb1i60ktuh7b" path="res://Labs/Scenes/Farming Room/FenceVertical.png" id="1_0jplq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qv2s"]
-size = Vector2(16, 103)
+size = Vector2(16, 106)
 
 [node name="FenceVertical" type="Node2D"]
 z_index = 1
@@ -17,5 +17,5 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="FenceCollisionShape" type="CollisionShape2D" parent="FenceBody"]
-position = Vector2(0, 10.5)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_2qv2s")

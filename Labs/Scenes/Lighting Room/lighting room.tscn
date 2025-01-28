@@ -1,5 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bklqbq2ikyjx8"]
+[gd_scene load_steps=20 format=3 uid="uid://bklqbq2ikyjx8"]
 
+[ext_resource type="Texture2D" uid="uid://bemxsldy7ml8f" path="res://Labs/Scenes/Magic System/Fireball/Components/fireball_texture.png" id="1_iyq6t"]
+[ext_resource type="PackedScene" uid="uid://chav0mjysm6tc" path="res://Labs/Shaders/Filters/filter_sunrays.tscn" id="1_wvjc3"]
 [ext_resource type="PackedScene" uid="uid://circ2b26dkf5t" path="res://Labs/Scenes/Structures/Static/Walls/wall.tscn" id="2_cmr2a"]
 [ext_resource type="Texture2D" uid="uid://dq6larkgn5vkm" path="res://Labs/Assets/X. Resources/LFX/light_1.webp" id="3_0hgbp"]
 [ext_resource type="Texture2D" uid="uid://5bs4m3qt5s4o" path="res://Labs/Assets/X. Resources/LFX/red_light.jpg" id="3_afc86"]
@@ -10,11 +12,71 @@
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="8_ppwdf"]
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="9_bvn78"]
 
+[sub_resource type="Gradient" id="Gradient_06ecq"]
+offsets = PackedFloat32Array(0, 0.224, 0.656, 0.928)
+colors = PackedColorArray(0.696318, 0.312346, 0, 1, 0.831807, 0.619145, 0, 0.903771, 1, 1, 0, 0.784314, 0, 0, 0, 0.117647)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iv3fd"]
+gradient = SubResource("Gradient_06ecq")
+
+[sub_resource type="CurveTexture" id="CurveTexture_22b4x"]
+
+[sub_resource type="Curve" id="Curve_ap5g5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.378472, 0.833962), 0.0, 0.0, 0, 0, Vector2(0.677083, 0.245283), 0.0, 0.0, 0, 0, Vector2(0.996528, 0.0943396), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5o78d"]
+curve = SubResource("Curve_ap5g5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r363g"]
+resource_local_to_scene = true
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angular_velocity_min = -91.56
+angular_velocity_max = -1.60933e-05
+orbit_velocity_min = -0.0899999
+orbit_velocity_max = 0.0900001
+linear_accel_min = -1.16
+linear_accel_max = 28.84
+radial_accel_min = -2.23517e-06
+radial_accel_max = 69.0
+scale_min = 0.5
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_5o78d")
+color_ramp = SubResource("GradientTexture1D_iv3fd")
+emission_curve = SubResource("CurveTexture_22b4x")
+turbulence_noise_strength = 6.45
+sub_emitter_mode = 1
+sub_emitter_frequency = 1.0
+
+[sub_resource type="Environment" id="Environment_5lht6"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.82
+glow_strength = 0.63
+glow_blend_mode = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1n6rs"]
 shader = ExtResource("5_rcxqj")
 
 [node name="Lighting Room" type="Node2D"]
 y_sort_enabled = true
+
+[node name="Fireball" type="GPUParticles2D" parent="."]
+position = Vector2(68, 678)
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_r363g")
+texture = ExtResource("1_iyq6t")
+lifetime = 3.0
+randomness = 0.08
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Fireball"]
+environment = SubResource("Environment_5lht6")
+
+[node name="Sunrays" parent="." instance=ExtResource("1_wvjc3")]
+visible = false
 
 [node name="blue light3" type="PointLight2D" parent="."]
 visible = false
@@ -82,6 +144,7 @@ layer = -30
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.00784314, 0.0823529, 0.113725, 0.941176)

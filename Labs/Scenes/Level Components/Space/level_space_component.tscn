@@ -5,16 +5,30 @@
 [node name="LevelSpaceComponent" type="Node2D"]
 script = ExtResource("1_66r0s")
 
-[node name="Fields" type="Node2D" parent="."]
+[node name="Entities" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Fields" type="Node2D" parent="."]
 
 [node name="Tilemaps" type="Node2D" parent="."]
 
 [node name="Interactables" type="Node2D" parent="."]
 
+[node name="GatheringNodes" type="Node2D" parent="Interactables"]
+
+[node name="Trees" type="Node2D" parent="Interactables/GatheringNodes"]
+
+[node name="Rocks" type="Node2D" parent="Interactables/GatheringNodes"]
+
+[node name="Herbs" type="Node2D" parent="Interactables/GatheringNodes"]
+
+[node name="CraftingNodes" type="Node2D" parent="Interactables"]
+
+[node name="Objectives" type="Node2D" parent="Interactables"]
+
 [node name="StaticDecor" type="Node2D" parent="."]
 
 [node name="ReactiveDecor" type="Node2D" parent="."]
+
+[node name="Spawners" type="Node2D" parent="."]

@@ -9,6 +9,7 @@
 [sub_resource type="Environment" id="Environment_5wis1"]
 
 [node name="LevelName" type="Node2D" node_paths=PackedStringArray("env", "time", "space", "weather")]
+y_sort_enabled = true
 script = ExtResource("1_oayq3")
 env = NodePath("WorldEnvironment")
 time = NodePath("LevelTimeComponent")
@@ -21,9 +22,33 @@ environment = SubResource("Environment_5wis1")
 [node name="LevelTimeComponent" parent="." instance=ExtResource("2_mdxxx")]
 
 [node name="LevelSpaceComponent" parent="." instance=ExtResource("3_88r1o")]
+y_sort_enabled = true
+
+[node name="Entities" parent="LevelSpaceComponent" index="0"]
+y_sort_enabled = true
+
+[node name="Items" parent="LevelSpaceComponent" index="1"]
+y_sort_enabled = true
+
+[node name="Fields" parent="LevelSpaceComponent" index="2"]
+y_sort_enabled = true
+
+[node name="Tilemaps" parent="LevelSpaceComponent" index="3"]
+y_sort_enabled = true
+
+[node name="Interactables" parent="LevelSpaceComponent" index="4"]
+y_sort_enabled = true
+
+[node name="StaticDecor" parent="LevelSpaceComponent" index="5"]
+y_sort_enabled = true
+
+[node name="ReactiveDecor" parent="LevelSpaceComponent" index="6"]
+y_sort_enabled = true
 
 [node name="LevelWeatherComponent" parent="." instance=ExtResource("4_08pqk")]
+y_sort_enabled = true
 
 [node name="CutscenesComponent" parent="." instance=ExtResource("5_25ma5")]
+y_sort_enabled = true
 
 [editable path="LevelSpaceComponent"]

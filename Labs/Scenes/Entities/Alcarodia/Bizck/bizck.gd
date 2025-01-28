@@ -1,8 +1,9 @@
 extends Alcarodia
 ## Bizck, the [color=green]God of Nature.
 
-const PLANT            : PackedScene = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/plant.tscn")
-const LEAVES_PARTICLES : PackedScene = preload("res://Labs/Scenes/Farming Room/leaves_particles.tscn")  # TODO - Migration
+const PLANT            : PackedScene    = preload("res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/plant.tscn")
+const LEAVES_PARTICLES : PackedScene    = preload("res://Labs/Scenes/Farming Room/leaves_particles.tscn")  # TODO - Migration
+const AIR_SWAY         : ShaderMaterial = preload("res://Labs/Shaders/plant_sway.tres")
 
 var leaves: Dictionary = {
 	0: {
@@ -144,7 +145,7 @@ func create_plant(plant_name: String = "", animated: bool = false, random_growth
 	
 	## Sprite Setup
 	var sprite = Sprite2D.new()
-	print(sprite.name)
+	sprite.material = AIR_SWAY
 	if animated:
 		# TODO - Similar to static, it's just the frames that work different
 		pass
@@ -190,4 +191,3 @@ func create_plant(plant_name: String = "", animated: bool = false, random_growth
 #}
 #
 #
-

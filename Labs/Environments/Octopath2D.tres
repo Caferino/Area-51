@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b6w83nokw3oyv" path="res://Labs/Assets/13. Sky/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_al78p"]
 
 [sub_resource type="Gradient" id="Gradient_hvtq0"]
-offsets = PackedFloat32Array(0, 0.987578, 1)
+offsets = PackedFloat32Array(0, 0.992857, 1)
 colors = PackedColorArray(0, 0, 0.0196078, 1, 0.944099, 0.944099, 0.944099, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2vlh5"]
@@ -35,8 +35,7 @@ ssil_intensity = 3.93
 sdfgi_use_occlusion = true
 glow_enabled = true
 glow_normalized = true
-glow_strength = 0.81
-glow_bloom = 0.8
+glow_strength = 0.5
 glow_hdr_scale = 0.94
 fog_light_energy = 6.76
 fog_density = 0.0141

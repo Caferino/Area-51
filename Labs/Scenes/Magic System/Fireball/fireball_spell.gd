@@ -1,4 +1,14 @@
-extends Projectile
+class_name FireballSpell extends Projectile
+## A strong red & green spell.
+
+## WARNING NOTE - To create bouncy fireballs, frozen fireballs, slimy, etc,
+## I have two ways: use variables like right now, or, maybe better, create
+## them as scrips, slimy_fireball_spell.gd, extends this class FireballSpell,
+## and override fireball_spell.gd's necessary methods and properties there.
+
+## WARNING NOTE - The heatwave Sprite2D, for some weird reason, must have a
+## high z-index, like 10 or more, because, it it's lower than other visuals,
+## the particles and the shader start blinking, things breaks, it's weird.
 
 @export var explosion_area : CollisionShape2D
 @export var fireball       : GPUParticles2D
@@ -28,6 +38,7 @@ func _ready() -> void:
 	E_SCALE_MAX = explosion.process_material.scale_max
 
 
+## Diminishes its size over its lifetime left.
 func _process(_delta: float) -> void:
 	if is_moving:
 		var time_left                        = life.time_left
@@ -41,22 +52,25 @@ func _process(_delta: float) -> void:
 		explosion.process_material.scale_max = E_SCALE_MAX * time_left / LIFE_TIME
 
 
+## Stop the lifetime timer to rely on the explosion's animation finished() signal.
 func explode():
 	life.stop()
-	fireball.emitting = false
-	explosion.emitting = true
+	$AnimationPlayer.play("Red Spells/fireball_explosion")
 	
 	## TODO - Apply damage to all bodies colliding with explosion_area ONCE
 
 
-func _on_timer_timeout() -> void:
-	queue_free()
-
-
+## Collision with CollisionShapes.
 func _on_body_entered(body: Node) -> void:
 	stop()
 	explode()
 
 
+## If it collides and explodes, wait for the animation to finish before freeing.
 func _on_explosion_finished() -> void:
+	queue_free()
+
+
+## If it takes too long to collide, free it.
+func _on_timer_timeout() -> void:
 	queue_free()

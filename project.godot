@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Area 51"
 config/tags=PackedStringArray("testing")
-run/main_scene="res://Labs/Scenes/Interactive Decorations Room/The Farm Too.tscn"
+run/main_scene="res://Labs/Scenes/Magic System/Spell Casting Arena.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/use_filter=false
 config/icon="res://icon.svg"

@@ -259,6 +259,30 @@ I finally feel free.
 
 ---
 
+**E022: Fireball + Shaders**
+
+![E022](.image/README/E022.gif "Fireball + Shaders")
+
+Laid the fundation of the structure of what the magic/combat system might look like. At the same time I introduced myself to the magic of shaders to create the heatwave. I am impressed and recently very inspired by how the game Balatro managed to create, as someone else said: digital crack. Shaders will be something I must master, because I really think it makes a huge difference in 2D games more now than ever. They can be a strong addictive factor if the art is very good too, like in Balatro, holographic, the creative and colorful joker cards, the CTR old tv theme, they all blent so good. (By the way, found this cool seed to try with a Yellow Deck. It gives you the Homeless Joker Card and a +1 hand voucher in the very first shop, creating a very fun set that relies on tarot cards: 4WBAP4QZ). There are plenty of tweaks that need to be done, like hiding the shader's outline box when cast, enhance the controls and speed to make the gameplay feel better...
+
+I wanna see if I can make the smoke look better (use a flipbook/spritesheet for random sprites instead of the same one), and make the fire look better and whatnot with shaders, make it glow, spark, etc., although for now it kind of works and I can leave this for a sequel or something.
+
+---
+
+**E023: Day & Night Cycle**
+
+![E023](.image/README/E023.gif "Day &amp; Night Cycle")
+
+Followed bitbrain's video to implement a Day Night Cycle component in the levels. I highly recommend it: [https://www.youtube.com/watch?v=HjwWe-V3nHs](https://www.youtube.com/watch?v=HjwWe-V3nHs "Day &amp; Night Cycle in under 8 minutes! Godot 4.0 Tutorial")
+
+With the use of shaders I am trying to enhance the visuals of the scene with some sunrays taken from Godot's Shaders website ([https://godotshaders.com/shader/god-rays/](https://godotshaders.com/shader/god-rays/ "God rays by pend00")) and currently looking to make the firepit illuminate in a better way, implement shadows or contrast.
+
+However, all this feels like it could increase the scope of the game if I ever try to finish this. I could leave it for the sequel or something, keep it simple for now.
+
+I got a little addicted with particles and shaders, with trying to make the game sexy. Sound, combat, gameplay, UI, story/fun/game loop, I am still struggling to choose a path, one that keeps the scope manageable. I been doing bits of every system with a lot of care so they barely need a refactor, mostly tweaks. The structure is deeply-thought to be scalable, to make sense in the future when someone new comes to maintain it (me). So far, it takes me less than an hour to understand something I wrote 6+ months ago thanks to this approach, the comments, the variable names, the structure between parents, children, files/folders organization, names, nomenclature, all that; I spent a lot of time designing that, crying and feeling beaten up, but I think it is paying off pretty well. I am starting to run out of frameworks to build to actually start building the game, if this all works out, which could take me 1 or 2 more years of hard work, I could probably and easily create a small-scale zelda-like game, with probably a binding of isaac/rogue-like dungeon kill-loot-strategize-upgrade-test-build kind of loop, a small one that could grow very, very easily in the future with sequels, II, III, IV... with the idea of adding a bunch of new items, professions for crafting (instead of just Blacksmithing and Jewelcrafting as this might have, add more like Alchemy, Inscription, Enchanting, Leatherworking... like WoW, professions that feed eachother for endless demand and supply), more enemies, bosses, spells, scrolls and more that will also make sense with the game's plot as I've been thinking about. This game would fit very well in the universe I wrote for my books, and since gaming is becoming as, or more mainstream than books, but not movies or tv shows, yet, it could probably help me sell 2 copies if this shit turns out good. Now I feel like I have a goal that is worth it, but I need to get my shit together in real life too, there is somehow more insanity this year than the last, god damn it.
+
+---
+
 E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
 
 [TBA]

@@ -79,7 +79,7 @@ func on_stop():
 
 
 func on_attack():
-	attacking = true
+	attacking = true   ## NOTE - Disabling this adds a pretty kickass gameplay speed for attacking, could be a potion effect
 	camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
 
 
