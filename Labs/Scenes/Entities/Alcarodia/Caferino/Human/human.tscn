@@ -441,7 +441,8 @@ shape = SubResource("CapsuleShape2D_vqh28")
 
 [node name="Background" type="Node" parent="LoreComponent"]
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_312nv")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_312nv")]
+entity = NodePath("..")
 
 [node name="HumanoidMovementComponent" parent="." instance=ExtResource("4_m45k1")]
 

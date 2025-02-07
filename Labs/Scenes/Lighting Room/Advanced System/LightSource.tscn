@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://pp7h3d7ydfr1"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Lighting Room/Advanced System/LightSource.gd" id="1"]
+
+[node name="LightSource" type="Marker2D" groups=["lights"]]
+script = ExtResource("1")

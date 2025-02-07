@@ -5,7 +5,7 @@ class_name CameraBase extends Node2D
 @export  var controller : PlayerControllerComponent             ## The attached [PlayerControllerComponent].
 @export  var camera     : Camera2D                              ## The attached [Camera2D].
 
-const zoom_speed        : Vector2  = Vector2(1, 1)              ## Zoom in/out speed.
+const zoom_speed        : Vector2  = Vector2(0.5, 0.5)              ## Zoom in/out speed.
 const drag_dist         : float    = 500.0                      ## The camera's dragging distance allowed.
 var dragging_cam        : bool     = false                      ## Is the camera currently being dragged?
 # For the camera's breathing effect
@@ -27,9 +27,9 @@ func _ready():
 ## Reads the given zoom-in/out input from the player and whether the screen is being dragged.
 func _input(_event: InputEvent):
 	if Input.is_action_pressed("zoom_in"):
-		camera.zoom = clamp(camera.zoom + zoom_speed, Vector2(2, 2), Vector2(10,10))
+		camera.zoom = clamp(camera.zoom + zoom_speed, Vector2(2, 2), Vector2(9,9))
 	if Input.is_action_pressed("zoom_out"):
-		camera.zoom = clamp(camera.zoom - zoom_speed, Vector2(2, 2), Vector2(10,10))
+		camera.zoom = clamp(camera.zoom - zoom_speed, Vector2(2, 2), Vector2(9,9))
 	if Input.is_action_pressed("drag_camera"):
 		start_dragging()
 	elif Input.is_action_just_released("drag_camera"):
@@ -66,6 +66,7 @@ func stop_dragging():
 
 ## Simulates a handheld effect by using tweens.
 func hold_camera():
+	# NOTE - Must kill and create_tween everytime, or we get Orphan Tweeners overtime
 	tween.kill()
 	tween = create_tween()
 	tween.connect("finished", breath)

@@ -1,13 +1,8 @@
-class_name DayNightComponent extends Node2D
+extends CanvasModulate
 ## [Color=yellow]Day [Color=purple]Night [Color=white]Cycle
 
-## TODO - Control sunrays more granularly. Make them show only in the morning,
-## not during all day and night (unless moonlight. Moon phases too, baby!)
-
-@export var lighting : ColorRect = null
-@export var sunrays  : ColorRect = null
-@export var camera   : Node2D    = null   ## NOTE - Shall grab Caferino's current player's camera
-@export var cycle    : GradientTexture1D = null
+@export var camera : Node2D = null
+@export var cycle : GradientTexture1D
 
 var image   = Image.new()
 var texture = ImageTexture.new()
@@ -24,7 +19,7 @@ func _process(_delta: float) -> void:
 	## and probably accessible and updated in realtime in a lightweight way inside a dictionary
 	## to access with StringNames declared in GameEnums for performance.
 	var value = (sin(WorldTime.current_time - PI / 2) + 1.0) / 2.0
-	lighting.material.set_shader_parameter("dark_color", cycle.gradient.sample(value))
+	self.color = cycle.gradient.sample(value)
 
 
 func _physics_process(_delta):
@@ -34,8 +29,8 @@ func _physics_process(_delta):
 		var canvas_transform = camera.get_canvas_transform()
 		var top_left = -canvas_transform.origin / canvas_transform.get_scale() * camera.zoom.x
 		t = Transform2D(0, top_left)
-	lighting.material.set_shader_parameter("global_transform", t)
-	lighting.material.set_shader_parameter("zoom", camera.zoom.x)
+	material.set_shader_parameter("global_transform", t)
+	material.set_shader_parameter("zoom", camera.zoom.x)
 
 
 func _update_texture():
@@ -55,5 +50,5 @@ func _update_texture():
 	
 	texture = ImageTexture.create_from_image(image)
 	
-	lighting.material.set_shader_parameter("n_lights", lights.size())
-	lighting.material.set_shader_parameter("light_data", texture)
+	material.set_shader_parameter("n_lights", lights.size())
+	material.set_shader_parameter("light_data", texture)

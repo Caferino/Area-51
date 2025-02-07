@@ -4,6 +4,15 @@ extends Human
 
 ## The Hero of the Realm ##
 
+## Tell Caferino that you have arrived.
+## WARN NOTE - Had this in _ready() at first, but, for some weird ass reason,
+## it'd not run in the same order in some levels, with the exact same structure.
+## My DayNight Lighting.gd script needs the player's camera, and global variable
+## Caferino helps grab the player as a variable to access. It'd work sometimes. Weird.
+func _enter_tree() -> void:
+	Caferino.player = self
+
+
 ## Prepares Smoke's stats and body
 func _ready():
 	base_stats[GameEnums.STAT.STRENGTH]     = 5
@@ -24,4 +33,5 @@ func _ready():
 	
 	body_accessories["Hat"]    = [Vector2(0, -9), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
 	body_accessories["Weapon"] = [Vector2(0, 0), -90, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
+	
 	spawn()

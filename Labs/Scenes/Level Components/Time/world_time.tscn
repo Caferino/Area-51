@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxptmvqe4te2"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Time/level_time_component.gd" id="1_52hmf"]
+
+[node name="WorldTime" type="Node"]
+script = ExtResource("1_52hmf")
+INGAME_SPEED = 100.0
+
+[node name="Timer" type="Timer" parent="."]

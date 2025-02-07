@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bww8xvri3bw1p"]
+
+[ext_resource type="Shader" path="res://Labs/Shaders/fieryglow.gdshader" id="1_qxnek"]
+[ext_resource type="Texture2D" uid="uid://p5ks8ml38c7u" path="res://Labs/Shaders/firepit_glow_color_curve.tres" id="2_dt8yv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gyedh"]
+frequency = 0.0095
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ospg2"]
+noise = SubResource("FastNoiseLite_gyedh")
+
+[resource]
+shader = ExtResource("1_qxnek")
+shader_parameter/glow_scale_y = 1.4
+shader_parameter/glow_strength = 1.25
+shader_parameter/glow_intensity = 0.0
+shader_parameter/glow_position = Vector2(-0.1, -0.15)
+shader_parameter/glow_size = Vector2(1.045, 1.345)
+shader_parameter/pulsation_speed = 5.0
+shader_parameter/glow_intensity_start = 0.7
+shader_parameter/glow_intensity_stop = 0.69
+shader_parameter/noise = SubResource("NoiseTexture2D_ospg2")
+shader_parameter/color_curve = ExtResource("2_dt8yv")
