@@ -1,4 +1,5 @@
 class_name LevelTimeComponent extends Node
+## The Fourth Dimension.
 
 @export var INGAME_SPEED = 1.0
 @export var INITIAL_HOUR = 12:

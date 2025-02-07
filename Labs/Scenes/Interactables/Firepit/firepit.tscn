@@ -1,22 +1,22 @@
 [gd_scene load_steps=19 format=3 uid="uid://da476plesi1hp"]
 
 [ext_resource type="Texture2D" uid="uid://o8yxhi7rrahd" path="res://Labs/Scenes/Interactables/Firepit/firepit_spritesheet.png" id="1_7x3ty"]
-[ext_resource type="PackedScene" uid="uid://bhwnk61w1gooe" path="res://Labs/Scenes/Interactables/Firepit/firepit_light.tscn" id="1_ye58v"]
+[ext_resource type="Script" path="res://Labs/Scenes/Lighting Room/Advanced System/LightSource.gd" id="1_k2ppa"]
 [ext_resource type="PackedScene" uid="uid://bobvy1g7dbeth" path="res://Labs/Scenes/Interactables/Firepit/firepit_soot.tscn" id="2_i21te"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ljk2y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga5x8"]
 atlas = ExtResource("1_7x3ty")
 region = Rect2(0, 0, 150, 126)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ak7h1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpmae"]
 atlas = ExtResource("1_7x3ty")
 region = Rect2(150, 0, 150, 126)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7aqvb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6yvq"]
 atlas = ExtResource("1_7x3ty")
 region = Rect2(300, 0, 150, 126)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r53ht"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgcx4"]
 atlas = ExtResource("1_7x3ty")
 region = Rect2(450, 0, 150, 126)
 
@@ -24,16 +24,16 @@ region = Rect2(450, 0, 150, 126)
 animations = [{
 "frames": [{
 "duration": 0.1,
-"texture": SubResource("AtlasTexture_ljk2y")
+"texture": SubResource("AtlasTexture_ga5x8")
 }, {
 "duration": 0.1,
-"texture": SubResource("AtlasTexture_ak7h1")
+"texture": SubResource("AtlasTexture_rpmae")
 }, {
 "duration": 0.1,
-"texture": SubResource("AtlasTexture_7aqvb")
+"texture": SubResource("AtlasTexture_o6yvq")
 }, {
 "duration": 0.1,
-"texture": SubResource("AtlasTexture_r53ht")
+"texture": SubResource("AtlasTexture_tgcx4")
 }],
 "loop": true,
 "name": &"default",
@@ -97,15 +97,20 @@ color_ramp = SubResource("GradientTexture1D_yv332")
 [node name="Firepit" type="Marker2D"]
 z_index = 1
 y_sort_enabled = true
+script = ExtResource("1_k2ppa")
 
-[node name="firepit_light" parent="." instance=ExtResource("1_ye58v")]
+[node name="LightSource" type="Marker2D" parent="." groups=["lights"]]
+script = ExtResource("1_k2ppa")
+radius = 400.0
+strength = 2.5
 
 [node name="FirepitAnimatedSprite" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_xlj4u")
 autoplay = "default"
-frame_progress = 0.571569
+frame = 1
+frame_progress = 0.446685
 
 [node name="StructureArea" type="Area2D" parent="."]
 input_pickable = false

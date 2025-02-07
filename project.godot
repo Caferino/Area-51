@@ -35,6 +35,7 @@ Caferino="*res://Labs/Scenes/Entities/Alcarodia/Caferino/caferino.gd"
 Bizck="*res://Labs/Scenes/Entities/Alcarodia/Bizck/bizck.gd"
 Raz="*res://Labs/Scenes/Entities/Alcarodia/Razen/razen.gd"
 Cast="*res://Labs/Scenes/Magic System/Cast.gd"
+WorldTime="*res://Labs/Scenes/Level Components/Time/world_time.tscn"
 
 [debug]
 
@@ -300,4 +301,5 @@ action_2={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_environment="res://Labs/Scenes/Lighting Room/Advanced System/default_env.tres"
 driver/run_on_separate_thread=true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Labs/Scenes/The Hut/The Hut.gd" id="1_1w3b8"]
 [ext_resource type="Texture2D" uid="uid://dka86wo2tsoug" path="res://Labs/Scenes/The Hut/Plants and Paths.png" id="2_3qdho"]
-[ext_resource type="PackedScene" uid="uid://cxptmvqe4te2" path="res://Labs/Scenes/Level Components/Time/level_time_component.tscn" id="2_4ildl"]
+[ext_resource type="PackedScene" uid="uid://cxptmvqe4te2" path="res://Labs/Scenes/Level Components/Time/world_time.tscn" id="2_4ildl"]
 [ext_resource type="Texture2D" uid="uid://chmsiqs8w2akd" path="res://Labs/Scenes/The Hut/Trees.png" id="2_t75h0"]
 [ext_resource type="PackedScene" uid="uid://mrd6gxhdcf0o" path="res://Labs/Assets/X. Resources/Animals/Lucas.tscn" id="2_w6cke"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="3_der8g"]

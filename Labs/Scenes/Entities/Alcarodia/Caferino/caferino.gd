@@ -1,6 +1,9 @@
 extends Alcarodia
 ## The [color=brown]Brown God.
 
+## Caferino has a keen eye over the player.
+var player : Human = null
+
 ## All the entities Caferino has created.
 # "CAFERINO" is a const declared in Alcarodia.gd, a path (like "res://...")
 var entities: Dictionary = {

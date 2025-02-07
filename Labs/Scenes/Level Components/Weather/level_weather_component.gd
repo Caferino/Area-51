@@ -1,9 +1,9 @@
 class_name WeatherComponent extends Node2D
 ## Manages weather phenomenas.
 
-@export var rain_component : RainComponent  = null
-@export var wind_component : WindComponent  = null
-@export var dayn_component : CanvasModulate = null  ## Day-Night Component
+@export var rain_component : RainComponent     = null
+@export var wind_component : WindComponent     = null
+@export var dayn_component : DayNightComponent = null
 
 ## TODO - In case I add a UI for Day/Night, or morning sounds, ambience...
 ## Here would go the setup. Deprecate the cgiven layout, it's from:

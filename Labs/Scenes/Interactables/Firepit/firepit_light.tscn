@@ -1,7 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhwnk61w1gooe"]
 
-[ext_resource type="Texture2D" uid="uid://dq6larkgn5vkm" path="res://Labs/Assets/X. Resources/LFX/light_1.webp" id="1_800x0"]
+[ext_resource type="Texture2D" uid="uid://cfkgta4sdb2lm" path="res://Labs/Scenes/Interactables/Firepit/firepit_glow.png" id="1_vrbaj"]
 
 [node name="firepit_light" type="PointLight2D"]
 color = Color(1, 1, 0.686275, 1)
-texture = ExtResource("1_800x0")
+texture = ExtResource("1_vrbaj")
+texture_scale = 3.0
