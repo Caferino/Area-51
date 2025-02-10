@@ -126,7 +126,7 @@ func move(delta):
 	dir_velocity = dir_velocity.lerp(desired_velocity, steer_force)
 	rotation = dir_velocity.angle() * delta # try rotation_degrees
 	handle_animation()
-	move_and_collide(dir_velocity * delta)
+	#move_and_collide(dir_velocity * delta)
 
 
 func handle_animation():

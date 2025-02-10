@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://5tvhugm6pegv" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/chain_left.tscn" id="1_ct2pn"]
 [ext_resource type="PackedScene" uid="uid://cpte3ma72ssc1" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/chain_right.tscn" id="2_q06hi"]
 [ext_resource type="Script" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/hanging_decor.gd" id="3_bbn3l"]
-[ext_resource type="Texture2D" uid="uid://dq6larkgn5vkm" path="res://Labs/Assets/X. Resources/LFX/light_1.webp" id="3_y4kup"]
 [ext_resource type="Texture2D" uid="uid://doak33mn2mpud" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/lamp.png" id="4_56sl1"]
+[ext_resource type="PackedScene" uid="uid://pp7h3d7ydfr1" path="res://Labs/Scenes/Lighting Room/Advanced System/LightSource.tscn" id="4_csec7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ac121"]
 size = Vector2(10, 1)
@@ -29,6 +29,7 @@ node_a = NodePath("../ChainBlock")
 node_b = NodePath("../chain_left")
 
 [node name="chain_left" parent="." instance=ExtResource("1_ct2pn")]
+z_index = 6
 position = Vector2(0, 10)
 collision_layer = 0
 collision_mask = 0
@@ -39,6 +40,7 @@ node_a = NodePath("../chain_left")
 node_b = NodePath("../chain_right")
 
 [node name="chain_right" parent="." instance=ExtResource("2_q06hi")]
+z_index = 5
 position = Vector2(0, 25)
 collision_layer = 0
 collision_mask = 0
@@ -49,6 +51,7 @@ node_a = NodePath("../chain_right")
 node_b = NodePath("../chain_left2")
 
 [node name="chain_left2" parent="." instance=ExtResource("1_ct2pn")]
+z_index = 4
 position = Vector2(0, 42)
 collision_layer = 0
 collision_mask = 0
@@ -59,6 +62,7 @@ node_a = NodePath("../chain_left2")
 node_b = NodePath("../chain_right2")
 
 [node name="chain_right2" parent="." instance=ExtResource("2_q06hi")]
+z_index = 3
 position = Vector2(0, 57)
 collision_layer = 0
 collision_mask = 0
@@ -77,20 +81,17 @@ mass = 3.0
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 12)
 freeze_mode = 1
-max_contacts_reported = 1
 contact_monitor = true
+max_contacts_reported = 1
 linear_damp = 0.5
 script = ExtResource("3_bbn3l")
 
-[node name="PointLight" type="PointLight2D" parent="Lamp"]
-color = Color(1, 1, 0, 1)
-energy = 3.0
-shadow_enabled = true
-texture = ExtResource("3_y4kup")
-texture_scale = 3.0
+[node name="LightSource" parent="Lamp" instance=ExtResource("4_csec7")]
+radius = 200.0
+strength = 3.0
 
 [node name="LampSprite" type="Sprite2D" parent="Lamp"]
-z_index = 2
+z_index = 3
 z_as_relative = false
 y_sort_enabled = true
 position = Vector2(0, 12)

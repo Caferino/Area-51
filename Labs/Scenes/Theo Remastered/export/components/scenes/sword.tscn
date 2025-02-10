@@ -8,14 +8,15 @@
 radius = 5.0
 height = 25.0
 
-[node name="Sword" type="Marker2D" groups=["Weapon"]]
+[node name="Sword" type="Marker2D" node_paths=PackedStringArray("origin") groups=["Weapon"]]
 y_sort_enabled = true
 script = ExtResource("1_3ayy2")
+origin = NodePath("SwordArea/SwordCollisionShape")
 
 [node name="SwordArea" type="Area2D" parent="."]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 8195
+collision_mask = 270339
 monitoring = false
 monitorable = false
 

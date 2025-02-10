@@ -17,6 +17,7 @@ func _on_sword_area_area_entered(area: Area2D) -> void:
 ## Runs whenever the sword touches a monitorable body.
 func _on_sword_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
-		pass
+		print("get hit!")
+		body.hurt(self)
 		# Holy fucking shit, this line is one ugly ass motherfucker
 		#body.hurt(get_child(0).get_child(0).position)

@@ -7,11 +7,11 @@ class_name Weapon extends Node
 ## > > child 1: SwordSprite         : Sprite2D
 ## > child 1: SwordAnimator         : AnimationPlayer
 
+@export var origin : CollisionShape2D = null  ## The ColisionShape's position is perfect for this
+
 
 var attack_stats = {
 	GameEnums.ATTACK_STAT.WEAPON_SPEED      :   2,      # speed_scale = [-4, 4] in Godot
 	GameEnums.ATTACK_STAT.WEAPON_DAMAGE     :  10,
 	GameEnums.ATTACK_STAT.KNOCKBACK_POWER   : 100
 }
-
-

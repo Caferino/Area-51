@@ -1,4 +1,4 @@
-class_name LevelSpaceComponent extends Node2D
+class_name SpaceComponent extends Node2D
 ## This Node must have the following children:
 # Fields - For plants and trees.
 # Items - Dropped or spawned.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bfa1up1tlkgls"]
+[gd_scene load_steps=32 format=4 uid="uid://bfa1up1tlkgls"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Level Components/level.gd" id="1_1ky7k"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="1_d7f0l"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://Labs/Scenes/Level Components/Space/level_space_component.gd" id="12_8y5st"]
 [ext_resource type="Script" path="res://inventory/scripts/ui/game_buttons.gd" id="13_ad8o4"]
 [ext_resource type="PackedScene" uid="uid://dyu16u72a1lk2" path="res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/field.tscn" id="14_0nvuv"]
-[ext_resource type="PackedScene" uid="uid://7eg7lf7mwwdx" path="res://Labs/Scenes/Interactive Decorations Room/Rain/rain.tscn" id="15_h8soo"]
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="17_80hkq"]
 [ext_resource type="PackedScene" uid="uid://omqabjcbky1r" path="res://Labs/Scenes/Structures/Dynamic/Spawners/spawner.tscn" id="18_l0587"]
 [ext_resource type="PackedScene" uid="uid://da476plesi1hp" path="res://Labs/Scenes/Interactables/Firepit/firepit.tscn" id="19_0fmy8"]
@@ -3460,6 +3459,7 @@ offset_right = 441.8
 offset_bottom = -361.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 script = ExtResource("13_ad8o4")
 order_button = NodePath("order")
 metadata/_edit_use_anchors_ = true
@@ -3572,24 +3572,19 @@ y_sort_enabled = true
 [node name="Firepit" parent="LevelSpaceComponent/Interactables/CraftingNodes" instance=ExtResource("19_0fmy8")]
 position = Vector2(232, 434)
 
+[node name="Firepit2" parent="LevelSpaceComponent/Interactables/CraftingNodes" instance=ExtResource("19_0fmy8")]
+position = Vector2(103, 611)
+
 [node name="Objectives" type="Node2D" parent="LevelSpaceComponent/Interactables"]
 y_sort_enabled = true
 
 [node name="StaticDecor" type="Node2D" parent="LevelSpaceComponent"]
 y_sort_enabled = true
 
-[node name="GPUParticles2D" parent="LevelSpaceComponent/StaticDecor" instance=ExtResource("15_h8soo")]
-visible = false
-position = Vector2(1014, 0)
-
-[node name="Maze" type="Node2D" parent="LevelSpaceComponent/StaticDecor"]
-y_sort_enabled = true
-
 [node name="ReactiveDecor" type="Node2D" parent="LevelSpaceComponent"]
 y_sort_enabled = true
 
 [node name="ChainLamp" parent="LevelSpaceComponent/ReactiveDecor" instance=ExtResource("17_80hkq")]
-visible = false
 position = Vector2(855, 422)
 
 [node name="Spawners" type="Node2D" parent="LevelSpaceComponent"]

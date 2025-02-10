@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ble3l5001dbpu"]
+[gd_scene load_steps=26 format=3 uid="uid://ble3l5001dbpu"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/bat_ai_controller_component.gd" id="1_imjo1"]
 [ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/context_map.tscn" id="2_eih87"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="4_25ky4"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="6_nya6u"]
 [ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="7_ar8e3"]
-[ext_resource type="PackedScene" path="res://Labs/Scenes/Utility AI Example/ai/utility_debug.tscn" id="8_1sivf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2my2"]
 radius = 3.0
@@ -271,10 +270,6 @@ script = ExtResource("7_ar8e3")
 node = NodePath("../../../../..")
 property_name = "_get_energy"
 curve = SubResource("Curve_yc2yn")
-
-[node name="utility_debug" parent="." node_paths=PackedStringArray("utility_agent") instance=ExtResource("8_1sivf")]
-position = Vector2(0, 60)
-utility_agent = NodePath("../BatUtilityAIAgent")
 
 [connection signal="area_entered" from="ClawsArea" to="." method="_on_claws_area_area_entered"]
 [connection signal="area_entered" from="EcholocationArea" to="." method="_on_echolocation_area_area_entered"]

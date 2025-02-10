@@ -28,6 +28,7 @@ cycle = ExtResource("2_sa1m1")
 
 [node name="SunRays" parent="." instance=ExtResource("3_x7rgs")]
 show_behind_parent = true
+mouse_filter = 1
 
 [node name="DayNightCycle" type="CanvasLayer" parent="."]
 
@@ -36,4 +37,5 @@ material = SubResource("ShaderMaterial_d5a70")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 color = Color(0.0941176, 0.0313726, 0.0352941, 0)

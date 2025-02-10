@@ -16,6 +16,8 @@ func _physics_process(_delta: float) -> void:
 ## Runs whenever there is an [InputEvent] to check whether it's an attack or interaction.
 ## TODO - Room for improvement: maybe using _unhandled_input(), a Dict with functions and StringNames...
 ## WARN TODO - Sometimes double input are read, not sure if it's my faulty keyboard or this
+## WARN NOTE - If this ever seems to fail, make sure there are no Control nodes or ColorRects
+## somewhere with their Mouse input handle mode in 'Stop'. Change them to 'Pass'.
 func _unhandled_input(event: InputEvent) -> void:
 	if aiming:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):

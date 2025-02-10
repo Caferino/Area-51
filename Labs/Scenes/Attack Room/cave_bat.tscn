@@ -139,14 +139,14 @@ _data = {
 
 [node name="CaveBat" type="CharacterBody2D" node_paths=PackedStringArray("lore", "heart", "muscles", "effects", "controller", "body") groups=["Enemy"]]
 z_index = 2
-collision_layer = 134217728
+collision_layer = 134479872
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_ole8l")
 lore = NodePath("LoreComponent")
 heart = NodePath("HealthComponent")
 muscles = NodePath("FlyingMammalMovementComponent")
-effects = NodePath("EffectsAnimatorComponent")
+effects = NodePath("EffectsComponent")
 controller = NodePath("BatAIControllerComponent")
 body = NodePath("BodyComponent")
 
@@ -163,11 +163,11 @@ script = ExtResource("8_4f4v3")
 [node name="FlyingMammalMovementComponent" type="Node" parent="."]
 script = ExtResource("9_6qkra")
 
-[node name="EffectsAnimatorComponent" type="Node" parent="." node_paths=PackedStringArray("effects_animator")]
+[node name="EffectsComponent" type="Node" parent="." node_paths=PackedStringArray("animator")]
 script = ExtResource("6_v0wv7")
-effects_animator = NodePath("EffectsAnimator")
+animator = NodePath("EffectsAnimator")
 
-[node name="EffectsAnimator" type="AnimationPlayer" parent="EffectsAnimatorComponent"]
+[node name="EffectsAnimator" type="AnimationPlayer" parent="EffectsComponent"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_w5m1o"),
@@ -187,7 +187,7 @@ animator_tree = NodePath("CaveBatAnimationTree")
 animator = NodePath("CaveBatAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
-position = Vector2(0, -1.63874)
+position = Vector2(0, -4.41638)
 monitoring = false
 
 [node name="TorsoCollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]
