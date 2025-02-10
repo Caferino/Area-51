@@ -27,7 +27,7 @@ func _handle_energy(delta: float):
 				entity.heart.energy = 1.0
 			else:
 				entity.heart.energy += energy_amount * 2
-		print("Energy: ", entity.heart.energy, " and moving: ", moving)  # DEBUG
+		#print("Energy: ", entity.heart.energy, " and moving: ", moving)  # DEBUG
 
 
 func _on_echolocation_area_area_entered(area: Area2D) -> void:
@@ -45,12 +45,12 @@ func _on_echolocation_area_area_exited(area: Area2D) -> void:
 		enemy_nearby = false
 
 
-func _on_claws_area_area_entered(area: Area2D) -> void:
+func _on_claws_area_area_entered(_area: Area2D) -> void:
 	if $AttackCooldown.time_left == 0:
 		$AttackCooldown.start(1)
 		if randf() <= 0.25:
 			# TODO - Hurt/deal damage to the entity
-			print("Take that!")
+			print("CaveBat bites the player!")
 
 
 ## TODO - Create an animation (sweat drops, flash blue) as a clue

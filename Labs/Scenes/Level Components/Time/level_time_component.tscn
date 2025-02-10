@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://ws5a5ps40itl"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Time/level_time_component.gd" id="1_186hx"]
+[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Time/level_time_component.gd" id="1_ys0e5"]
 
 [node name="LevelTimeComponent" type="Node"]
-script = ExtResource("1_186hx")
+script = ExtResource("1_ys0e5")
 
 [node name="Timer" type="Timer" parent="."]

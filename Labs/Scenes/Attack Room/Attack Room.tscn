@@ -16,6 +16,7 @@ offset_top = 1.0
 offset_right = 40.0
 offset_bottom = 41.0
 scale = Vector2(48.12, 26.96)
+mouse_filter = 1
 
 [node name="Fences" type="Node2D" parent="."]
 y_sort_enabled = true
