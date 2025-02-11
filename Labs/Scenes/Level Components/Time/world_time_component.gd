@@ -4,6 +4,7 @@ extends TimeComponent
 
 func _ready():
 	INGAME_SPEED = 0.1  ## 10 real-life minutes per in-game hour.
+	INITIAL_HOUR = 12
 	current_time = INGAME_TO_REAL_MINUTE_DURATION * INITIAL_HOUR * MINUTES_PER_HOUR
 
 

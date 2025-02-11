@@ -1,8 +1,8 @@
 class_name TimeComponent extends Node
 ## The Fourth Dimension.
 
-@export var INGAME_SPEED : float = 1.0
-@export var INITIAL_HOUR : int = 5:
+@export var INGAME_SPEED : float = 0.1
+@export var INITIAL_HOUR : int = 18:
 	set(h):
 		INITIAL_HOUR = h
 		current_time = INGAME_TO_REAL_MINUTE_DURATION * INITIAL_HOUR * MINUTES_PER_HOUR
