@@ -6,7 +6,7 @@ class_name DayNightComponent extends Node2D
 
 @export var lighting : ColorRect = null
 @export var sunrays  : ColorRect = null
-@export var camera   : Node2D    = null   ## NOTE - Stay NULL. Grabs Caferino's current player's camera in script.
+@export var camera   : Node2D    = null   ## NOTE - Stay NULL. Grabs Caferino.gd's current player's camera in script.
 @export var cycle    : GradientTexture1D = null
 @onready var tween   : Tween = create_tween().set_parallel(true)  ## Animates the sun rays parameters.
 
@@ -16,7 +16,7 @@ var texture : Texture = ImageTexture.new()
 
 func _ready():
 	tween.kill()    ## Avoids a weird error where @onready tweens must be used quickly
-	visible = true  ## Just so I can hide it in the Inspector and not have everything dark
+	visible = true  ## Just so I can hide it in the Inspector and not have everything dark.
 	SignalManager.time_tick.connect(handle_light)
 	image = Image.create_empty(128, 2, false, Image.FORMAT_RGBAH)
 	camera = Caferino.player.controller.camera_base.camera
@@ -70,7 +70,7 @@ func _update_texture():
 ## If I ever seek to control the speed and increase it for cutscenes or 
 ## weird time spells, taking the INGAME_SPEED into account here fixes that.
 ## TODO - Moon Phases can just affect the Night and Midnight's Color's Alpha value.
-func handle_light(_day: int, hour: int, minute: int) -> void:
+func handle_light(day: int, hour: int, minute: int) -> void:
 	#print("Day: ", day, ", Hour: ", hour, ", Minute: ", minute)  # DEBUG
 	if minute == 0:
 		if hour == 6:     ## 6:00 A.M.  -  MORNING
@@ -78,9 +78,11 @@ func handle_light(_day: int, hour: int, minute: int) -> void:
 		elif hour == 9:   ## 9:00 A.M.  -  NOON
 			set_shader_params(Color(1.0, 0.9, 0.65, 0.8), 0.1, 1.0, 0.22, 1.0, 0.16, 1.0)
 		elif hour == 18:  ## 6:00 P.M.  -  NIGHT
-			set_shader_params(Color(1.0, 0.75, 1.0, 0.5), 1.0, 0.1, 1.0, 0.22, 1.0, 0.16)
+			var moon_phase = get_moon_phase(day)
+			set_shader_params(Color(1.0, 0.75, 1.0, moon_phase), 1.0, 0.1, 1.0, 0.22, 1.0, 0.16)
 		elif hour == 5:   ## 5:00 A.M.  -  MIDNIGHT
-			set_shader_params(Color(1.0, 0.75, 1.0, 0.5), 0.1, 1.0, 0.22, 1.0, 0.16, 1.0)
+			var moon_phase = get_moon_phase(day)
+			set_shader_params(Color(1.0, 0.75, 1.0, moon_phase), 0.1, 1.0, 0.22, 1.0, 0.16, 1.0)
 
 
 func set_shader_params(color: Color, iv_cutoff: float, cutoff: float, iv_falloff: float, falloff: float, iv_edge_fade: float, edge_fade: float) -> void:
@@ -97,3 +99,8 @@ func set_shader_params(color: Color, iv_cutoff: float, cutoff: float, iv_falloff
 	tween.tween_property(sunrays.material, "shader_parameter/falloff", falloff, 60 / WorldTime.INGAME_SPEED)
 	tween.tween_property(sunrays.material, "shader_parameter/edge_fade", edge_fade, 60 / WorldTime.INGAME_SPEED)
 	tween.play()
+
+
+func get_moon_phase(day: int):
+	## Taken from: https://calculator.now/moon-phase-calculator/
+	return (1 - cos((2 * PI * day) / 29.53)) * 50 / 100
