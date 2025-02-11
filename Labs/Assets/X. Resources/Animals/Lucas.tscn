@@ -112,6 +112,7 @@ position = Vector2(0, 3.07692)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_twami")
 animation = &"idle"
+autoplay = "idle"
 frame_progress = 0.216254
 offset = Vector2(0, -10.2563)
 
