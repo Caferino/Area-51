@@ -1,8 +1,7 @@
-class_name WeatherComponent extends Node2D
-## Manages weather phenomenas.
+class_name EnvironmentComponent extends Node2D
+## Manages environment phenomenas.
 
-@export var rain_component : RainComponent     = null
-@export var wind_component : WindComponent     = null
+@export var environment    : WorldEnvironment  = null
 @export var dayn_component : DayNightComponent = null
 
 ## TODO - In case I add a UI for Day/Night, or morning sounds, ambience...

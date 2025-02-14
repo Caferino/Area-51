@@ -631,6 +631,7 @@ parameters/TimeScale/scale = 1.0
 libraries = {
 "": ExtResource("20_sui4d")
 }
+autoplay = "idle_down"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="BodyComponent/Head"]
 deterministic = false
@@ -648,6 +649,7 @@ root_node = NodePath("../HeadArea/HeadAnimatedSprite")
 libraries = {
 "": ExtResource("16_m3k4p")
 }
+autoplay = "RESET"
 
 [node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 y_sort_enabled = true
@@ -702,6 +704,7 @@ root_node = NodePath("../TorsoArea/TorsoSprite")
 libraries = {
 "": ExtResource("12_pdib2")
 }
+autoplay = "RESET"
 playback_auto_capture = false
 speed_scale = 2.0
 

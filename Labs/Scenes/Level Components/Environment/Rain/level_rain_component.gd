@@ -11,3 +11,7 @@ class_name RainComponent extends Node2D
 # when to disable them? based or told by who? Weather component? Level information?
 # rain_chance %
 # what does rain_chance 5% mean for example? what is 100%? a full day? NNN ticks/seconds?
+
+
+## WARN NOTE - THIS MIGHT BECOME DEPRECATED, RAIN AREAS COULD GO DIRECTLY IN LEVELSPACECOMPONENT
+## BECAUSE THE WAY I DESIGNED THEM DOESN'T REALLY NEED THIS.

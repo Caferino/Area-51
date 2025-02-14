@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxjw2habygpcl"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Weather/Wind/wind.gd" id="1_u021k"]
+[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Environment/Wind/wind.gd" id="1_u021k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qa8ch"]
 size = Vector2(2500, 1500)

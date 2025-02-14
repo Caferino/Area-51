@@ -7,9 +7,13 @@ class_name PlayerControllerComponent extends EntityController
 # TODO @export var looting_area  : Area2D         ## The player's looting pick-up range.
 
 
+func _ready() -> void:
+	Dialogic.signal_event.connect(dialogic_signal)
+
+
 ## Checks whether the player is giving movement input every physics frame.
 func _physics_process(_delta: float) -> void:
-	if !attacking:
+	if !attacking:# and !is_talking:
 		check_movement()
 
 
@@ -22,11 +26,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if aiming:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			confirm_action()
-	elif !attacking and event is not InputEventMouseMotion:
+	elif !attacking and !is_talking and event is not InputEventMouseMotion:
 		if Input.is_action_just_pressed("attack"):
 			entity_attack.emit()
 		elif Input.is_action_just_pressed("interact"):
 			entity_interact.emit()
+		elif Input.is_action_just_pressed("speak_to"):
+			if speakers: run_dialogue("test")
 		# NOTE - Feels wrong. DRY... Is there a better way, no loops?
 		# TODO - For now, it shoots a fireball, but it should use the item in the given keybind/hotbar
 		elif Input.is_action_just_pressed("action_1"):
@@ -137,3 +143,28 @@ func on_attack_finished():
 
 func on_sprint():
 	camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
+
+
+##### DIALOGUE #####
+## WARN - Came across game-breaking bugs with Dialogic. I reported the bugs, tested them
+## to try and help, and see if they get fixed soon. For now, I should move on to other
+## features until these get fixed first.
+func _on_dialogue_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Speaker") and body not in speakers:
+		speakers.append(body)
+
+
+func _on_dialogue_area_body_exited(body: Node2D) -> void:
+	if body in speakers:
+		speakers.erase(body)
+
+
+func run_dialogue(dialogue):
+	## TODO - If multiple speakers nearvy, choose the closest one maybe.
+	is_talking = true
+	Dialogic.start(dialogue)
+
+
+func dialogic_signal(arg: String):
+	if arg == "exit_test":
+		is_talking = false

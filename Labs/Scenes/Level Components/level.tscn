@@ -1,21 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjsx7kxrgbrut"]
+[gd_scene load_steps=5 format=3 uid="uid://bjsx7kxrgbrut"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Level Components/level.gd" id="1_oayq3"]
 [ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space/level_space_component.tscn" id="3_88r1o"]
-[ext_resource type="PackedScene" uid="uid://dxc53orbb4n83" path="res://Labs/Scenes/Level Components/Weather/level_weather_component.tscn" id="4_08pqk"]
-[ext_resource type="PackedScene" uid="uid://dkv2rmkdva3pp" path="res://Labs/Scenes/Level Components/Cutscenes/cutscenes_component.tscn" id="5_25ma5"]
+[ext_resource type="PackedScene" uid="uid://dxc53orbb4n83" path="res://Labs/Scenes/Level Components/Environment/level_environment_component.tscn" id="4_08pqk"]
+[ext_resource type="PackedScene" uid="uid://dkv2rmkdva3pp" path="res://Labs/Scenes/Level Components/Cutscenes/level_cutscenes_component.tscn" id="5_25ma5"]
 
-[sub_resource type="Environment" id="Environment_5wis1"]
-
-[node name="LevelName" type="Node2D" node_paths=PackedStringArray("env", "space", "weather")]
+[node name="Level(MakeLocal&Rename)" type="Node2D" node_paths=PackedStringArray("space", "env", "cuts")]
 y_sort_enabled = true
 script = ExtResource("1_oayq3")
-env = NodePath("WorldEnvironment")
 space = NodePath("LevelSpaceComponent")
-weather = NodePath("LevelWeatherComponent")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5wis1")
+env = NodePath("LevelEnvironmentComponent")
+cuts = NodePath("LevelCutscenesComponent")
 
 [node name="LevelSpaceComponent" parent="." instance=ExtResource("3_88r1o")]
 y_sort_enabled = true
@@ -41,10 +36,10 @@ y_sort_enabled = true
 [node name="ReactiveDecor" parent="LevelSpaceComponent" index="6"]
 y_sort_enabled = true
 
-[node name="LevelWeatherComponent" parent="." instance=ExtResource("4_08pqk")]
+[node name="LevelEnvironmentComponent" parent="." instance=ExtResource("4_08pqk")]
 y_sort_enabled = true
 
-[node name="CutscenesComponent" parent="." instance=ExtResource("5_25ma5")]
+[node name="LevelCutscenesComponent" parent="." instance=ExtResource("5_25ma5")]
 y_sort_enabled = true
 
 [editable path="LevelSpaceComponent"]

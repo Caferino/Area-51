@@ -6,3 +6,6 @@ class_name WindComponent extends Node2D
 ## more can be added, with different sizes and timings.
 
 ## WARN - Remember. Wizards and such bend reality, they don't necessarily create
+
+## WARN NOTE - MIGHT DEPRECATE THIS, WINDAREA CAN GO IN LEVELSPACECOMPONENT
+## BECAUSE I MIGHT HAVE DESIGNED THEM THE SAME AS RAIN

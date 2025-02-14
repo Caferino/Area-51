@@ -3,13 +3,15 @@
 [ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/Camera Base.gd" id="1_l0eny"]
 [ext_resource type="PackedScene" uid="uid://7eg7lf7mwwdx" path="res://Labs/Scenes/Interactive Decorations Room/Rain/rain.tscn" id="2_73kuo"]
 
-[node name="Camera Base" type="Marker2D" node_paths=PackedStringArray("camera")]
+[node name="Camera Base" type="Marker2D" node_paths=PackedStringArray("camera", "rain")]
 script = ExtResource("1_l0eny")
 camera = NodePath("Camera")
+rain = NodePath("Rain")
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(4.5, 4.5)
 position_smoothing_enabled = true
 
 [node name="Rain" parent="." instance=ExtResource("2_73kuo")]
+emitting = false
 visibility_rect = Rect2(-10, -10, 20, 20)

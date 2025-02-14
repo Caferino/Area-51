@@ -39,6 +39,7 @@ root_node = NodePath("../SwordArea/SwordSprite")
 libraries = {
 "": ExtResource("3_qb8gj")
 }
+autoplay = "RESET"
 
 [connection signal="area_entered" from="SwordArea" to="." method="_on_sword_area_area_entered"]
 [connection signal="body_entered" from="SwordArea" to="." method="_on_sword_area_body_entered"]

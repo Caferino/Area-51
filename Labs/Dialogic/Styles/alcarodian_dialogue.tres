@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=9 format=3 uid="uid://dn4xsu1p0786o"]
+
+[ext_resource type="PackedScene" uid="uid://syki6k0e6aac" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_TextBubble/text_bubble_base.tscn" id="1_mdxjr"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_syeno"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="3_lx7mw"]
+[ext_resource type="PackedScene" uid="uid://d2it0xiap3gnt" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble_layer.tscn" id="4_bnpqn"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="5_11wl3"]
+
+[sub_resource type="Resource" id="Resource_e86td"]
+script = ExtResource("2_syeno")
+scene = ExtResource("1_mdxjr")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_gl6ne"]
+script = ExtResource("2_syeno")
+scene = ExtResource("3_lx7mw")
+overrides = {
+"disabled": "true"
+}
+
+[sub_resource type="Resource" id="Resource_87ju8"]
+script = ExtResource("2_syeno")
+scene = ExtResource("4_bnpqn")
+overrides = {
+"behaviour_direction": "Vector2(1, -5)",
+"behaviour_distance": "0.0",
+"box_modulate": "Color(1, 1, 1, 0)",
+"box_padding": "Vector2(0, 0)",
+"choices_text_font": "\"res://inventory/resources/font/Arcadepix Plus.ttf\"",
+"choices_text_size": "18.0",
+"name_label_alignment": "1",
+"name_label_enabled": "false",
+"name_label_padding": "Vector2(0, 0)",
+"normal_font": "\"res://inventory/resources/font/Arcadepix Plus.ttf\"",
+"text_color": "Color(0.958333, 0.923394, 0.923394, 1)",
+"text_size": "50.0"
+}
+
+[resource]
+script = ExtResource("5_11wl3")
+name = "alcarodian_dialogue"
+layer_list = Array[String](["10", "11"])
+layer_info = {
+"": SubResource("Resource_e86td"),
+"10": SubResource("Resource_gl6ne"),
+"11": SubResource("Resource_87ju8")
+}
+base_overrides = {}
+layers = Array[ExtResource("2_syeno")]([])
+metadata/_latest_layer = "11"

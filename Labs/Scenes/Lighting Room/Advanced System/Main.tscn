@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://kloe5ooxosp"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Weather/DayNight/day_night_component.gd" id="1"]
+[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Environment/DayNight/day_night_component.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://pp7h3d7ydfr1" path="res://Labs/Scenes/Lighting Room/Advanced System/LightSource.tscn" id="2"]
 [ext_resource type="Shader" path="res://Labs/Shaders/advanced_light.gdshader" id="2_ur217"]
 [ext_resource type="Texture2D" uid="uid://k26sh1wum6yi" path="res://icon.svg" id="3"]

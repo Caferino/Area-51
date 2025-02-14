@@ -1,0 +1,5 @@
+[style name="alcarodian_dialogue"]
+Hello. My name is Cassius Bloodgood.
+I am the immortal.
+This is just a test.
+[signal arg="exit_test"]

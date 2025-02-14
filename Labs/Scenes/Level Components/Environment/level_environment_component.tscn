@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxc53orbb4n83"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Environment/level_environment_component.gd" id="1_g4nw5"]
+[ext_resource type="PackedScene" uid="uid://qyke08j6p7jy" path="res://Labs/Scenes/Level Components/Environment/DayNight/day_night_component.tscn" id="2_ht6gm"]
+
+[sub_resource type="Environment" id="Environment_cr366"]
+
+[node name="LevelEnvironmentComponent" type="Node2D" node_paths=PackedStringArray("environment", "dayn_component")]
+script = ExtResource("1_g4nw5")
+environment = NodePath("WorldEnvironment")
+dayn_component = NodePath("DayNightCycle")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cr366")
+
+[node name="DayNightCycle" parent="." instance=ExtResource("2_ht6gm")]

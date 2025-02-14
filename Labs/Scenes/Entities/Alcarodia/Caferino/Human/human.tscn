@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://15p1vg3jhgwh"]
+[gd_scene load_steps=90 format=3 uid="uid://15p1vg3jhgwh"]
 
 [ext_resource type="Script" path="res://Labs/Scenes/Entities/Alcarodia/Caferino/Human/human.gd" id="1_5wlde"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_d3wfr"]
@@ -395,33 +395,13 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3t6o0"]
 size = Vector2(12.5, 2)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vt4xr"]
-animations = [{
-"frames": [],
-"loop": false,
-"name": &"default",
-"speed": 0.0
-}]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_02o6o"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_howde"]
 size = Vector2(12.5, 2)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_58qi7"]
-animations = [{
-"frames": [],
-"loop": false,
-"name": &"default",
-"speed": 0.0
-}]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bmnva"]
-
-[node name="Human" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body", "inventory")]
+[node name="Human" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body", "inventory") groups=["Speaker"]]
 z_index = 1
 y_sort_enabled = true
-collision_layer = 8192
+collision_layer = 16785408
 collision_mask = 12289
 motion_mode = 1
 script = ExtResource("1_5wlde")
@@ -533,6 +513,7 @@ parameters/TimeScale/scale = 1.0
 libraries = {
 "": ExtResource("13_4sa8r")
 }
+autoplay = "idle_down"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="BodyComponent/Head"]
 deterministic = false
@@ -550,6 +531,7 @@ root_node = NodePath("../HeadArea/HeadAnimatedSprite")
 libraries = {
 "": ExtResource("14_njryd")
 }
+autoplay = "RESET"
 
 [node name="Torso" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
 y_sort_enabled = true
@@ -604,13 +586,12 @@ root_node = NodePath("../TorsoArea/TorsoSprite")
 libraries = {
 "": ExtResource("16_hrk1b")
 }
+autoplay = "RESET"
 speed_scale = 2.0
 
-[node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
+[node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
 script = ExtResource("7_ep3u8")
 accessories = NodePath("LeftLegArea/AccessoriesComponent")
-animator_tree = NodePath("LeftLegAnimatorTree")
-animator = NodePath("LeftLegAnimator")
 
 [node name="LeftLegArea" type="Area2D" parent="BodyComponent/LeftLeg"]
 collision_layer = 4096
@@ -620,24 +601,11 @@ collision_mask = 3
 position = Vector2(-7, 13)
 shape = SubResource("RectangleShape2D_3t6o0")
 
-[node name="LeftLegAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/LeftLeg/LeftLegArea"]
-sprite_frames = SubResource("SpriteFrames_vt4xr")
-
 [node name="AccessoriesComponent" parent="BodyComponent/LeftLeg/LeftLegArea" instance=ExtResource("11_7b0wa")]
 
-[node name="LeftLegAnimatorTree" type="AnimationTree" parent="BodyComponent/LeftLeg"]
-root_node = NodePath("")
-tree_root = SubResource("AnimationNodeBlendTree_02o6o")
-anim_player = NodePath("../LeftLegAnimator")
-
-[node name="LeftLegAnimator" type="AnimationPlayer" parent="BodyComponent/LeftLeg"]
-root_node = NodePath("")
-
-[node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
+[node name="RightLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
 script = ExtResource("7_ep3u8")
 accessories = NodePath("RightLegArea/AccessoriesComponent")
-animator_tree = NodePath("RightLegAnimatorTree")
-animator = NodePath("RightLegAnimator")
 
 [node name="RightLegArea" type="Area2D" parent="BodyComponent/RightLeg"]
 collision_layer = 4096
@@ -648,18 +616,7 @@ position = Vector2(7, 13)
 shape = SubResource("RectangleShape2D_howde")
 debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 
-[node name="RightLegAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/RightLeg/RightLegArea"]
-sprite_frames = SubResource("SpriteFrames_58qi7")
-
 [node name="AccessoriesComponent" parent="BodyComponent/RightLeg/RightLegArea" instance=ExtResource("11_7b0wa")]
-
-[node name="RightLegAnimatorTree" type="AnimationTree" parent="BodyComponent/RightLeg"]
-root_node = NodePath("")
-tree_root = SubResource("AnimationNodeBlendTree_bmnva")
-anim_player = NodePath("../RightLegAnimator")
-
-[node name="RightLegAnimator" type="AnimationPlayer" parent="BodyComponent/RightLeg"]
-root_node = NodePath("")
 
 [node name="EquipmentComponent" parent="BodyComponent" instance=ExtResource("17_dajj8")]
 y_sort_enabled = true

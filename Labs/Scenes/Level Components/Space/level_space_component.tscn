@@ -32,3 +32,5 @@ script = ExtResource("1_66r0s")
 [node name="ReactiveDecor" type="Node2D" parent="."]
 
 [node name="Spawners" type="Node2D" parent="."]
+
+[node name="Weather" type="Node2D" parent="."]

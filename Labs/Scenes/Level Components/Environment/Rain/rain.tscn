@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3h6qe16a5yb3"]
+
+[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Environment/Rain/rain.gd" id="1_cbs4l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_53tkg"]
+radius = 1000.0
+
+[node name="RainArea" type="Area2D"]
+monitorable = false
+script = ExtResource("1_cbs4l")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_53tkg")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
