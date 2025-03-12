@@ -22,7 +22,6 @@ overrides = {
 script = ExtResource("2_syeno")
 scene = ExtResource("4_bnpqn")
 overrides = {
-"behaviour_direction": "Vector2(1, -5)",
 "behaviour_distance": "0.0",
 "box_modulate": "Color(1, 1, 1, 0)",
 "box_padding": "Vector2(0, 0)",

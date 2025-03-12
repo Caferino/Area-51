@@ -331,7 +331,8 @@ visible = false
 material = SubResource("ShaderMaterial_jv1rh")
 sprite_frames = SubResource("SpriteFrames_fb8dh")
 autoplay = "default"
-frame_progress = 0.845749
+frame = 11
+frame_progress = 0.461143
 
 [node name="Blood" type="AnimatedSprite2D" parent="."]
 visible = false

@@ -271,11 +271,11 @@ animations = [{
 texture = ExtResource("1_nt0dp")
 
 [node name="Water" type="AnimatedSprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_v6orp")
 sprite_frames = SubResource("SpriteFrames_smo00")
 autoplay = "default"
-frame = 1
-frame_progress = 0.480049
+frame_progress = 0.943932
 
 [node name="Blood" type="AnimatedSprite2D" parent="."]
 visible = false
