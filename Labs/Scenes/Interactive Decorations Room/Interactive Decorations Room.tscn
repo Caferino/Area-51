@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyvo1rec1amik"]
 
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="1_8wmd0"]
-[ext_resource type="Shader" path="res://Labs/Shaders/MultiplyShader.gdshader" id="1_mtl8j"]
+[ext_resource type="Shader" uid="uid://cuiih7castwpk" path="res://Labs/Shaders/MultiplyShader.gdshader" id="1_mtl8j"]
 [ext_resource type="Texture2D" uid="uid://br65wfo2ovn4h" path="res://Labs/Assets/X. Resources/Structures/Walls/wall_2.jpg" id="2_nnyw4"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="2_t1c4y"]
 

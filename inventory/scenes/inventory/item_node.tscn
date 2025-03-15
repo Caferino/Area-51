@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5qmrc03e4xx2"]
 
 [ext_resource type="FontFile" uid="uid://esm8m6bfjnxa" path="res://inventory/resources/font/font_8.tres" id="1"]
-[ext_resource type="Script" path="res://inventory/scripts/inventory/item_node.gd" id="2"]
+[ext_resource type="Script" uid="uid://d3fi21vfwijhu" path="res://inventory/scripts/inventory/item_node.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://d2mue4q6r0po2" path="res://inventory/resources/sprites/items/chestplate.png" id="3"]
 
 [node name="item_node" type="TextureRect"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://8ets62ydl7e"]
 
-[ext_resource type="Script" path="res://inventory/scripts/ui/inventory_player.gd" id="1"]
-[ext_resource type="Resource" path="res://inventory/data/resources/player_data.tres" id="2"]
-[ext_resource type="PackedScene" path="res://inventory/scenes/ui/ui_window.tscn" id="6"]
+[ext_resource type="Script" uid="uid://blvb1scwukbfo" path="res://inventory/scripts/ui/inventory_player.gd" id="1"]
+[ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://bkpya3rtq1548" path="res://inventory/scenes/ui/ui_window.tscn" id="6"]
 
 [node name="inventory_player" instance=ExtResource("6")]
 pivot_offset = Vector2(72, 30)

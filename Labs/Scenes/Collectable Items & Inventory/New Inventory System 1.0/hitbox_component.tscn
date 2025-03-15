@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cb0gxldgrnbao"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/hitbox_component.gd" id="1_sbfy4"]
+[ext_resource type="Script" uid="uid://vaah14s4tqu8" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/hitbox_component.gd" id="1_sbfy4"]
 
 [node name="HitboxComponent" type="Area2D"]
 script = ExtResource("1_sbfy4")

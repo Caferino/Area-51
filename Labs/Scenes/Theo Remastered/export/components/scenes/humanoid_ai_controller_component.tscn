@@ -1,9 +1,9 @@
 [gd_scene load_steps=30 format=3 uid="uid://dvgwih7dvsts"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/humanoid_ai_controller_component.gd" id="1_kinwj"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/personality_component.gd" id="2_pp7or"]
+[ext_resource type="Script" uid="uid://f7bkls5c06ph" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/humanoid_ai_controller_component.gd" id="1_kinwj"]
+[ext_resource type="Script" uid="uid://5pw7k5mfkc0m" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/personality_component.gd" id="2_pp7or"]
 [ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/context_map.tscn" id="2_qpkxs"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Personality Roles/lumberjack_role.gd" id="3_eg3ru"]
+[ext_resource type="Script" uid="uid://dvgbticphmfrr" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Personality Roles/lumberjack_role.gd" id="3_eg3ru"]
 [ext_resource type="PackedScene" uid="uid://2aje56t2bt1f" path="res://Labs/Scenes/AI Systems/FSM/HumanAiBehaviorTree.tscn" id="3_ijjbt"]
 [ext_resource type="PackedScene" uid="uid://b3w625uu3cw8n" path="res://Labs/Scenes/AI Systems/GOAP/GOAPs/human_ai_goap.tscn" id="4_day17"]
 
@@ -107,10 +107,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7x51"]
 _data = {
-"down": SubResource("Animation_8edrr"),
-"left": SubResource("Animation_6qd0c"),
-"right": SubResource("Animation_18p51"),
-"up": SubResource("Animation_hamru")
+&"down": SubResource("Animation_8edrr"),
+&"left": SubResource("Animation_6qd0c"),
+&"right": SubResource("Animation_18p51"),
+&"up": SubResource("Animation_hamru")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_va1q1"]
@@ -210,10 +210,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5wfdw"]
 _data = {
-"down": SubResource("Animation_rvn0m"),
-"left": SubResource("Animation_26j5h"),
-"right": SubResource("Animation_slo45"),
-"up": SubResource("Animation_kjog2")
+&"down": SubResource("Animation_rvn0m"),
+&"left": SubResource("Animation_26j5h"),
+&"right": SubResource("Animation_slo45"),
+&"up": SubResource("Animation_kjog2")
 }
 
 [node name="HumanoidAIControllerComponent" type="Node2D" node_paths=PackedStringArray("interactor_area", "interactor_animator", "vision_area", "vision_area_animator", "personality", "ai_behavior_tree", "ai_goap", "context_map")]

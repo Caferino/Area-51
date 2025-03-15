@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctjk76bxnaijl"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/plant.gd" id="1_gss50"]
+[ext_resource type="Script" uid="uid://41vccv50jl4u" path="res://Labs/Scenes/Interactive Decorations Room/Ground Items/plants/plant.gd" id="1_gss50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8cy2"]
 size = Vector2(0.05, 0.05)

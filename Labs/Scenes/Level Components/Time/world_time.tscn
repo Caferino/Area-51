@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cxptmvqe4te2"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Time/world_time_component.gd" id="1_o3f2m"]
+[ext_resource type="Script" uid="uid://lnjiphc2u1eh" path="res://Labs/Scenes/Level Components/Time/world_time_component.gd" id="1_o3f2m"]
 
 [node name="WorldTime" type="Node"]
 script = ExtResource("1_o3f2m")

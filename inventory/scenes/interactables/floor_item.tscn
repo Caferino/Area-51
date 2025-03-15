@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpqhk2jabja3p"]
 
-[ext_resource type="Script" path="res://inventory/scripts/interactables/floor_item.gd" id="1"]
+[ext_resource type="Script" uid="uid://8qydwr4b6347" path="res://inventory/scripts/interactables/floor_item.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://deut5oj8k2hpr" path="res://inventory/resources/sprites/interactables/bag.png" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]

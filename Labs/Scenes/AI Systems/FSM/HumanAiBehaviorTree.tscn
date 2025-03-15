@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://2aje56t2bt1f"]
 
-[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_23d5b"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_kudbb"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/delayer.gd" id="3_rga3h"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Actions/chase.gd" id="4_bsf56"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="5_0ux2a"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Actions/wander.gd" id="6_sx6tb"]
+[ext_resource type="Script" uid="uid://ibi4pwvn2htp" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_23d5b"]
+[ext_resource type="Script" uid="uid://bfx3gjorahkjo" path="res://addons/beehave/nodes/composites/selector.gd" id="2_kudbb"]
+[ext_resource type="Script" uid="uid://opi8yogp8rmj" path="res://addons/beehave/nodes/decorators/delayer.gd" id="3_rga3h"]
+[ext_resource type="Script" uid="uid://cqhqc7ha0qgnx" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Actions/chase.gd" id="4_bsf56"]
+[ext_resource type="Script" uid="uid://bms0ef38c6y1n" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="5_0ux2a"]
+[ext_resource type="Script" uid="uid://bw10maiuadvxj" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/Actions/wander.gd" id="6_sx6tb"]
 
 [node name="HumanAIBehaviorTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_23d5b")

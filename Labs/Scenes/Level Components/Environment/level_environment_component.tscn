@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxc53orbb4n83"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Environment/level_environment_component.gd" id="1_g4nw5"]
+[ext_resource type="Script" uid="uid://dp2jjk6q60p0p" path="res://Labs/Scenes/Level Components/Environment/level_environment_component.gd" id="1_g4nw5"]
 [ext_resource type="PackedScene" uid="uid://qyke08j6p7jy" path="res://Labs/Scenes/Level Components/Environment/DayNight/day_night_component.tscn" id="2_ht6gm"]
 
 [sub_resource type="Environment" id="Environment_cr366"]

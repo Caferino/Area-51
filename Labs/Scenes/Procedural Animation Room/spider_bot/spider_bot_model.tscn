@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://70fc848db16v"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrcldi5unb4" path="res://Labs/Scenes/Procedural Animation Room/spider_bot/spider_bot_model.gltf" id="1_vu6xl"]
-[ext_resource type="Script" path="res://Labs/Scenes/Procedural Animation Room/spider_bot/spider_bot_model.gd" id="2_msyk5"]
-[ext_resource type="Script" path="res://Labs/Scenes/Procedural Animation Room/spider_bot/start_ik.gd" id="3_vt7va"]
+[ext_resource type="Script" uid="uid://4xsqm6hh0obi" path="res://Labs/Scenes/Procedural Animation Room/spider_bot/spider_bot_model.gd" id="2_msyk5"]
+[ext_resource type="Script" uid="uid://br4lwvmfse8xy" path="res://Labs/Scenes/Procedural Animation Room/spider_bot/start_ik.gd" id="3_vt7va"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkfr2"]
 albedo_color = Color(0.694118, 0, 0.0117647, 1)

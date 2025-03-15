@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfhohy6j0jkm"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Level Components/level.gd" id="1_dc1dx"]
+[ext_resource type="Script" uid="uid://bhurk7br2x3qu" path="res://Labs/Scenes/Level Components/level.gd" id="1_dc1dx"]
 [ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space/level_space_component.tscn" id="2_httqk"]
 [ext_resource type="PackedScene" uid="uid://dxc53orbb4n83" path="res://Labs/Scenes/Level Components/Environment/level_environment_component.tscn" id="3_baixc"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="3_uhe1b"]

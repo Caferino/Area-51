@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dp5yi4fl5gcom" path="res://inventory/resources/sprites/inner_panel.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bqnkqhyk3il6o" path="res://inventory/resources/sprites/title.png" id="2"]
 [ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="3"]
-[ext_resource type="Script" path="res://inventory/scripts/ui/item_info.gd" id="4"]
+[ext_resource type="Script" uid="uid://cp45jk7k3j5br" path="res://inventory/scripts/ui/item_info.gd" id="4"]
 
 [sub_resource type="StyleBoxTexture" id="2"]
 texture = ExtResource("1")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://omqabjcbky1r"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Structures/Dynamic/Spawners/spawner.gd" id="1_jil74"]
+[ext_resource type="Script" uid="uid://bjcoaf8px3bth" path="res://Labs/Scenes/Structures/Dynamic/Spawners/spawner.gd" id="1_jil74"]
 [ext_resource type="Texture2D" uid="uid://dndk1f6kupf3l" path="res://Labs/Scenes/Structures/Dynamic/Spawners/spawner.png" id="1_unn05"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i5afi"]

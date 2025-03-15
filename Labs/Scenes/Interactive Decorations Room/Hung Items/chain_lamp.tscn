@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://5tvhugm6pegv" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/chain_left.tscn" id="1_ct2pn"]
 [ext_resource type="PackedScene" uid="uid://cpte3ma72ssc1" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/chain_right.tscn" id="2_q06hi"]
-[ext_resource type="Script" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/hanging_decor.gd" id="3_bbn3l"]
+[ext_resource type="Script" uid="uid://d2qsc0eacsxkp" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/hanging_decor.gd" id="3_bbn3l"]
 [ext_resource type="Texture2D" uid="uid://doak33mn2mpud" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/Chain Lamp/lamp.png" id="4_56sl1"]
 [ext_resource type="PackedScene" uid="uid://pp7h3d7ydfr1" path="res://Labs/Scenes/Lighting Room/Advanced System/LightSource.tscn" id="4_csec7"]
 

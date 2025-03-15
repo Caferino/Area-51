@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bft3d40re7ii2"]
 
-[ext_resource type="Script" path="res://inventory/scripts/ui/crafting_option.gd" id="1"]
-[ext_resource type="FontFile" path="res://inventory/resources/font/font_8.tres" id="2"]
+[ext_resource type="Script" uid="uid://d2pgighwd11l4" path="res://inventory/scripts/ui/crafting_option.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://esm8m6bfjnxa" path="res://inventory/resources/font/font_8.tres" id="2"]
 [ext_resource type="PackedScene" uid="uid://dnuxhuagrcni4" path="res://inventory/scenes/ui/inner_panel.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://bltepp78gwav1" path="res://inventory/resources/sprites/button/disabled.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://dh3j42el7f6dy" path="res://inventory/resources/sprites/button/normal.png" id="5"]

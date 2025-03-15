@@ -1,7 +1,7 @@
 [gd_scene load_steps=57 format=3 uid="uid://ctdwpaaoqb4t4"]
 
 [ext_resource type="Texture2D" uid="uid://c6yv7hrfqw85f" path="res://Labs/Scenes/Alchemy Room/Ampoules/ampoule_bottle.png" id="1_a0p2d"]
-[ext_resource type="Shader" path="res://Labs/Scenes/Alchemy Room/Ampoules/ampoule_liquid.gdshader" id="2_stfhs"]
+[ext_resource type="Shader" uid="uid://cc01yjpwbj4ds" path="res://Labs/Scenes/Alchemy Room/Ampoules/ampoule_liquid.gdshader" id="2_stfhs"]
 [ext_resource type="Texture2D" uid="uid://ce044armms5dj" path="res://Labs/Scenes/Alchemy Room/Ampoules/ampoule_liquid_water_spritesheet.png" id="3_famf1"]
 [ext_resource type="Texture2D" uid="uid://c7gkj7j3xtqv2" path="res://Labs/Scenes/Alchemy Room/Ampoules/ampoule_liquid_blood_spritesheet.png" id="4_3cv8e"]
 

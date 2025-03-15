@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dkv2rmkdva3pp"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Cutscenes/level_cutscenes_component.gd" id="1_nr2s4"]
+[ext_resource type="Script" uid="uid://6wfxh1m283um" path="res://Labs/Scenes/Level Components/Cutscenes/level_cutscenes_component.gd" id="1_nr2s4"]
 
 [node name="LevelCutscenesComponent" type="Node2D"]
 script = ExtResource("1_nr2s4")

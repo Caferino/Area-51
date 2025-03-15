@@ -1,7 +1,7 @@
 [gd_scene load_steps=59 format=3 uid="uid://3swn01dtol7j"]
 
 [ext_resource type="Texture2D" uid="uid://b16pbhwgfph7w" path="res://Labs/Scenes/Alchemy Room/Tonics/tonic_bottle.png" id="1_2klyq"]
-[ext_resource type="Shader" path="res://Labs/Scenes/Alchemy Room/Tonics/tonic_liquid.gdshader" id="2_kst82"]
+[ext_resource type="Shader" uid="uid://cgyoymmooj5gb" path="res://Labs/Scenes/Alchemy Room/Tonics/tonic_liquid.gdshader" id="2_kst82"]
 [ext_resource type="Texture2D" uid="uid://cb1wo45gu1l6v" path="res://Labs/Scenes/Alchemy Room/Tonics/tonic_liquid_water_spritesheet.png" id="2_rd3wh"]
 [ext_resource type="Texture2D" uid="uid://cqlm1obdopy6x" path="res://Labs/Scenes/Alchemy Room/Tonics/tonic_liquid_blood_spritesheet.png" id="3_ems5q"]
 

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dkc007dk1v75n" path="res://Labs/Scenes/Alchemy Room/Elixirs/elixir_bottle.png" id="1_ndpkl"]
 [ext_resource type="Texture2D" uid="uid://dm7cy58fwrotq" path="res://Labs/Scenes/Alchemy Room/Elixirs/elixir_liquid_blood_spritesheet.png" id="2_mfn85"]
 [ext_resource type="Texture2D" uid="uid://c0pq4unsdc5s0" path="res://Labs/Scenes/Alchemy Room/Elixirs/elixir_liquid_water_spritesheet.png" id="2_rycef"]
-[ext_resource type="Shader" path="res://Labs/Scenes/Alchemy Room/Elixirs/elixir_liquid.gdshader" id="2_w8xl6"]
+[ext_resource type="Shader" uid="uid://djfguwxdhenrs" path="res://Labs/Scenes/Alchemy Room/Elixirs/elixir_liquid.gdshader" id="2_w8xl6"]
 
 [sub_resource type="Curve" id="Curve_27l0r"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

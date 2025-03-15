@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctnbgcbg75hd0"]
 
-[ext_resource type="Script" path="res://inventory/scripts/inventory/equipment_slot_node.gd" id="1"]
+[ext_resource type="Script" uid="uid://bowsyk25g5lhh" path="res://inventory/scripts/inventory/equipment_slot_node.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://hsshraxpx3xi" path="res://inventory/scenes/inventory/inventory_slot_node.tscn" id="2"]
 
 [node name="equipment_slot" instance=ExtResource("2")]

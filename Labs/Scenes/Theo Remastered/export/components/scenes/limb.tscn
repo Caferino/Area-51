@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://m3reepb10i8i"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="1_dfdqi"]
+[ext_resource type="Script" uid="uid://nxjvda4ad78o" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="1_dfdqi"]
 [ext_resource type="PackedScene" uid="uid://byvgnjjoahfqa" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/accessories_component.tscn" id="2_xlf68"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_808wd"]

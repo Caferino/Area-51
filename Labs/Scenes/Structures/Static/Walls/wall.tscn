@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://circ2b26dkf5t"]
 
-[ext_resource type="Shader" path="res://Labs/Shaders/WallShader.gdshader" id="1_y0ba4"]
+[ext_resource type="Shader" uid="uid://d0ndod6x8vavq" path="res://Labs/Shaders/WallShader.gdshader" id="1_y0ba4"]
 [ext_resource type="Texture2D" uid="uid://tqwssjwgnxx1" path="res://Labs/Assets/X. Resources/Structures/Walls/wall_1.jpg" id="2_71h2s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gigcw"]

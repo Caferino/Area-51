@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=3 uid="uid://b7xdx3uory7er"]
 
-[ext_resource type="Script" path="res://Labs/Entities/Character-Theo/MCTheo.gd" id="1_0404j"]
+[ext_resource type="Script" uid="uid://byxm28ou0kpf7" path="res://Labs/Entities/Character-Theo/MCTheo.gd" id="1_0404j"]
 [ext_resource type="Texture2D" uid="uid://shw5o43j7ckt" path="res://Labs/Scenes/Entities/Alcarodia/Caferino/Human/Bodies/Male/Theo/theo_body_curated.png" id="2_mukmr"]
 [ext_resource type="AnimationLibrary" uid="uid://pvc36rms284f" path="res://animations/3D Body Animator Graal Style.res" id="3_n4wem"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bnljv47lcakia" path="res://Labs/Scenes/HD 2D Room/Body_Idle.tres" id="4_o0aa6"]
@@ -9,7 +9,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://b1no1qc51xdoj" path="res://animations/3D Head Animator Graal Style.res" id="7_va8sl"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://678ifm643xpr" path="res://Labs/Scenes/HD 2D Room/Head_Idle.tres" id="8_1mboa"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://dhkcj48llhvqh" path="res://Labs/Scenes/HD 2D Room/Head_Walk.tres" id="9_v0xjy"]
-[ext_resource type="Script" path="res://Labs/Scenes/HD 2D Room/Camera.gd" id="10_chr7u"]
+[ext_resource type="Script" uid="uid://xpkefwpr6bnk" path="res://Labs/Scenes/HD 2D Room/Camera.gd" id="10_chr7u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0x724"]
 size = Vector3(0.32, 0.28, 0.1)
@@ -31,7 +31,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ygryh"]
 _data = {
-"RESET": SubResource("Animation_b50fc")
+&"RESET": SubResource("Animation_b50fc")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ksla0"]
@@ -100,7 +100,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y6jib"]
 _data = {
-"RESET": SubResource("Animation_f0kic")
+&"RESET": SubResource("Animation_f0kic")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_txmxd"]

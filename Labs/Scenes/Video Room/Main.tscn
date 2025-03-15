@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c42wrfxmyt8w4"]
 
-[ext_resource type="VideoStream" path="res://Labs/Assets/14. Videos/video.ogv" id="1_7vvqg"]
-[ext_resource type="Script" path="res://Labs/Scenes/Video Room/Video.gd" id="2_nvrvp"]
+[ext_resource type="VideoStream" uid="uid://dfqg74toqj1js" path="res://Labs/Assets/14. Videos/video.ogv" id="1_7vvqg"]
+[ext_resource type="Script" uid="uid://bvi77l54xrid6" path="res://Labs/Scenes/Video Room/Video.gd" id="2_nvrvp"]
 
 [node name="Main" type="Node2D"]
 

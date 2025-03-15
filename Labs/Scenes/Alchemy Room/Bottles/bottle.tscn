@@ -1,7 +1,7 @@
 [gd_scene load_steps=85 format=3 uid="uid://bnl1ogp62dgue"]
 
 [ext_resource type="Texture2D" uid="uid://cwa8bl5bs5j0i" path="res://Labs/Scenes/Alchemy Room/Bottles/bottle_bottle.png" id="1_yn74i"]
-[ext_resource type="Shader" path="res://Labs/Scenes/Alchemy Room/Bottles/bottle_liquid.gdshader" id="2_5r6nj"]
+[ext_resource type="Shader" uid="uid://dqds1yjdpcq6m" path="res://Labs/Scenes/Alchemy Room/Bottles/bottle_liquid.gdshader" id="2_5r6nj"]
 [ext_resource type="Texture2D" uid="uid://ckocopu8we8vg" path="res://Labs/Scenes/Alchemy Room/Bottles/bottle_liquid_blood_spritesheet.png" id="2_68ee4"]
 [ext_resource type="Texture2D" uid="uid://uwoju2ieyv5p" path="res://Labs/Scenes/Alchemy Room/Bottles/bottle_liquid_water_spritesheet.png" id="2_un2g1"]
 

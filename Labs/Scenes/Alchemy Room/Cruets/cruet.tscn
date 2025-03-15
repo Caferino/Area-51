@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c7jyjjhc1eioh" path="res://Labs/Scenes/Alchemy Room/Cruets/cruet_bottle.png" id="1_i7c7w"]
 [ext_resource type="Texture2D" uid="uid://dhgi2lq4e8fh" path="res://Labs/Scenes/Alchemy Room/Cruets/cruet_liquid_blood_spritesheet.png" id="2_1te3h"]
 [ext_resource type="Texture2D" uid="uid://duo1gdk6ahjsi" path="res://Labs/Scenes/Alchemy Room/Cruets/cruet_liquid_water_spritesheet.png" id="2_abmoa"]
-[ext_resource type="Shader" path="res://Labs/Scenes/Alchemy Room/Cruets/cruet_liquid.gdshader" id="2_yruue"]
+[ext_resource type="Shader" uid="uid://bvo7o4ccg4l5a" path="res://Labs/Scenes/Alchemy Room/Cruets/cruet_liquid.gdshader" id="2_yruue"]
 
 [sub_resource type="Curve" id="Curve_q2cpf"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

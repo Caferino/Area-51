@@ -1,6 +1,6 @@
 [gd_scene load_steps=72 format=3 uid="uid://ywdwc8rryrt"]
 
-[ext_resource type="Script" path="res://Labs/Entities/Character-Theo/2DTheo.gd" id="1_p2swg"]
+[ext_resource type="Script" uid="uid://bp47gjsxh5jht" path="res://Labs/Entities/Character-Theo/2DTheo.gd" id="1_p2swg"]
 [ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="2_ovm8y"]
 [ext_resource type="PackedScene" uid="uid://cqypn2n1j0p6t" path="res://Labs/Scenes/Attack Room/weapon.tscn" id="2_ua78c"]
 [ext_resource type="Texture2D" uid="uid://c4ryy5u8ilnrd" path="res://Labs/Scenes/Entities/Alcarodia/Caferino/Human/Bodies/Male/Theo/theo_body.tres" id="4_vh2ey"]

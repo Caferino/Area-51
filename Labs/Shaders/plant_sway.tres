@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dpjqketct2no4"]
 
-[ext_resource type="Shader" path="res://Labs/Shaders/plant_sway.gdshader" id="1_xb4rx"]
+[ext_resource type="Shader" uid="uid://c01bqcmj20i73" path="res://Labs/Shaders/plant_sway.gdshader" id="1_xb4rx"]
 
 [resource]
 shader = ExtResource("1_xb4rx")

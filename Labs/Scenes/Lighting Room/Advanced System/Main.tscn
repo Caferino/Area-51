@@ -1,19 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://kloe5ooxosp"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Environment/DayNight/day_night_component.gd" id="1"]
+[ext_resource type="Script" uid="uid://oxdpmdnkpowt" path="res://Labs/Scenes/Level Components/Environment/DayNight/day_night_component.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://pp7h3d7ydfr1" path="res://Labs/Scenes/Lighting Room/Advanced System/LightSource.tscn" id="2"]
-[ext_resource type="Shader" path="res://Labs/Shaders/advanced_light.gdshader" id="2_ur217"]
+[ext_resource type="Shader" uid="uid://br06c4ctmc6tm" path="res://Labs/Shaders/advanced_light.gdshader" id="2_ur217"]
 [ext_resource type="Texture2D" uid="uid://k26sh1wum6yi" path="res://icon.svg" id="3"]
 
 [sub_resource type="ShaderMaterial" id="2"]
 shader = ExtResource("2_ur217")
-shader_parameter/global_transform = null
+shader_parameter/global_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 shader_parameter/n_lights = 0
 shader_parameter/dark_color = Color(0.25, 0.0625, 0.25, 1)
-shader_parameter/default_light_color = null
+shader_parameter/default_light_color = Color(0, 0, 0, 1)
 shader_parameter/light_level = 0.0
 shader_parameter/offset_modifier = 1.0
-shader_parameter/zoom = null
+shader_parameter/zoom = 0.0
 shader_parameter/n_light_bands = 7
 shader_parameter/will_smooth_shade = true
 shader_parameter/band_decay_rate = 0.5

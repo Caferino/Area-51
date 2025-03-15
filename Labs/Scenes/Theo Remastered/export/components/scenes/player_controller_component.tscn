@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://baq33xt06du5y"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/player_controller_component.gd" id="1_y6i1j"]
+[ext_resource type="Script" uid="uid://dvwpvbbkgi1bq" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/player_controller_component.gd" id="1_y6i1j"]
 [ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="2_7bdkx"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0i0l6"]
@@ -104,10 +104,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7x51"]
 _data = {
-"down": SubResource("Animation_8edrr"),
-"left": SubResource("Animation_6qd0c"),
-"right": SubResource("Animation_18p51"),
-"up": SubResource("Animation_hamru")
+&"down": SubResource("Animation_8edrr"),
+&"left": SubResource("Animation_6qd0c"),
+&"right": SubResource("Animation_18p51"),
+&"up": SubResource("Animation_hamru")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sa4hy"]

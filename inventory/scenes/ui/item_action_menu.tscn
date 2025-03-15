@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="1"]
 [ext_resource type="Texture2D" uid="uid://dp5yi4fl5gcom" path="res://inventory/resources/sprites/inner_panel.png" id="2"]
-[ext_resource type="Script" path="res://inventory/scripts/ui/item_action_menu.gd" id="3"]
+[ext_resource type="Script" uid="uid://daqjh07h4ua33" path="res://inventory/scripts/ui/item_action_menu.gd" id="3"]
 
 [sub_resource type="StyleBoxTexture" id="2"]
 texture = ExtResource("2")

@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bmrctgfhetcgl" path="res://Labs/Scenes/Farming Room/OldPlant.tscn" id="5_lr3xl"]
 [ext_resource type="PackedScene" uid="uid://tr0m4o6ekavs" path="res://Labs/Scenes/Farming Room/FenceHorizontal.tscn" id="6_6sksl"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="7_qaouk"]
-[ext_resource type="PackedScene" uid="uid://b14q5yhfbenc1" path="res://Labs/Scenes/Farming Room/DayNightCycle.tscn" id="7_vog8i"]
+
+[sub_resource type="Resource" id="Resource_2wkhi"]
+metadata/__load_path__ = "res://Labs/Scenes/Farming Room/DayNightCycle.tscn"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_le3qp"]
 vertices = PackedVector2Array(1744, 945, 167, 957, 189, 154, 1744, 83)
@@ -27,7 +29,7 @@ sources/0 = SubResource("TileSetAtlasSource_mnddv")
 
 [node name="World" type="Node2D"]
 
-[node name="DayNightCycle" parent="." instance=ExtResource("7_vog8i")]
+[node name="DayNightCycle" parent="."]
 
 [node name="FarmManager" parent="." instance=ExtResource("2_u31nd")]
 

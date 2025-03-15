@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cuebdvvge3rvj"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Level Components/Environment/DayNight/DEPR_day_night_component.gd" id="1_gcyey"]
+[ext_resource type="Script" uid="uid://npgsolsn05sn" path="res://Labs/Scenes/Level Components/Environment/DayNight/DEPR_day_night_component.gd" id="1_gcyey"]
 [ext_resource type="Texture2D" uid="uid://d1rki54a5qmyj" path="res://Labs/Scenes/Level Components/Environment/DayNight/daynightcycle-gradient-texture.tres" id="2_sa1m1"]
 
 [node name="DayNightComponent" type="CanvasModulate"]
