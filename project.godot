@@ -122,6 +122,7 @@ Enemy=""
 Plant=""
 Tree=""
 Speaker="Any entity that can talk to the player."
+GatheringNode="Rocks, Herbs..."
 
 [input]
 

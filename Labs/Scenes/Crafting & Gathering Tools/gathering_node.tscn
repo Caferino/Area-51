@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdw6ua7uqbtmt"]
+
+[ext_resource type="Script" uid="uid://bnxuwu2w0dodq" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.gd" id="1_82rdn"]
+[ext_resource type="Texture2D" uid="uid://dgontvxqr8413" path="res://Labs/Scenes/Collectable Items & Inventory/coal.png" id="2_0mtpp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mtpp"]
+radius = 11.0
+height = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0mtpp"]
+radius = 15.0
+
+[node name="GatheringNode" type="Marker2D"]
+script = ExtResource("1_82rdn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_0mtpp")
+hframes = 3
+
+[node name="StaticBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="StaticBody"]
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0mtpp")
+debug_color = Color(0.84743, 0.37592, 0, 0.42)
+
+[node name="InteractableArea" type="Area2D" parent="." groups=["GatheringNode"]]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="InteractableArea"]
+shape = SubResource("CircleShape2D_0mtpp")
+debug_color = Color(0.656611, 0.791301, 1, 0.42)

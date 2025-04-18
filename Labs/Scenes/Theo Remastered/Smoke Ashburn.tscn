@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=108 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" uid="uid://cf5eyorgrdn3q" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -15,8 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://mphv3ma21huh" path="res://Labs/Scenes/Entities/Alcarodia/Caferino/Rakshasa/black_cat_head.png" id="13_beobx"]
 [ext_resource type="Texture2D" uid="uid://bjpghtdgac6ed" path="res://Labs/Scenes/Entities/Alcarodia/Caferino/Rakshasa/black_cat_body.png" id="15_udclq"]
 [ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="16_m3k4p"]
+[ext_resource type="Texture2D" uid="uid://ccqunfgip4lp" path="res://Labs/Scenes/Entities/Alcarodia/Caferino/Rakshasa/black_cat_hands.png" id="17_47ii6"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="17_io7h4"]
 [ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/sword.tscn" id="18_vljcp"]
+[ext_resource type="PackedScene" uid="uid://bojl5e2axsmkk" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/gathering_tool.tscn" id="19_oo7ol"]
 [ext_resource type="PackedScene" uid="uid://but837cn50spw" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/inventory_component.tscn" id="20_oqpkj"]
 [ext_resource type="AnimationLibrary" uid="uid://bdyf8ugjxxxjl" path="res://animations/2D Updated/2D Hat Movement Remastered.res" id="20_sui4d"]
 
@@ -386,7 +388,6 @@ graph_offset = Vector2(52, -63)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_u3wnr"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5dsi7"]
-graph_offset = Vector2(-125.062, -64.7687)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_1axe4")
 nodes/Movement/position = Vector2(180, 60)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_u3wnr")
@@ -491,7 +492,7 @@ states/Idle/position = Vector2(363, 42)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_em6hf")
 states/Move/position = Vector2(551, 173)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_g4mcn")
-states/Run/position = Vector2(729, 42)
+states/Run/position = Vector2(727.667, 42.4444)
 states/Start/position = Vector2(201, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e5sbt"), "Move", "Run", SubResource("AnimationNodeStateMachineTransition_003a7"), "Run", "Move", SubResource("AnimationNodeStateMachineTransition_bs2sq")]
 graph_offset = Vector2(85, -29)
@@ -499,9 +500,8 @@ graph_offset = Vector2(85, -29)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_suc2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a0x5n"]
-graph_offset = Vector2(-29.3333, 350.667)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_3f5lu")
-nodes/Movement/position = Vector2(240, 420)
+nodes/Movement/position = Vector2(160, 426.667)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_suc2h")
 nodes/TimeScale/position = Vector2(440, 420)
 nodes/output/position = Vector2(600, 460)
@@ -551,6 +551,7 @@ shape = SubResource("CapsuleShape2D_6wl4j")
 y_sort_enabled = true
 
 [node name="Head" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
+visible = false
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("12_xfj4o")
@@ -605,6 +606,7 @@ scale = Vector2(0.400001, 0.400001)
 shape = SubResource("CircleShape2D_u50h0")
 
 [node name="HatAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea"]
+visible = false
 y_sort_enabled = true
 position = Vector2(-5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
@@ -620,7 +622,6 @@ scale = Vector2(0.452381, 0.384615)
 texture = ExtResource("11_6fk20")
 
 [node name="HatAnimatorTree" type="AnimationTree" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
-callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_fih4q")
 anim_player = NodePath("../HatAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.249869, -0.135507)
@@ -630,14 +631,13 @@ parameters/TimeScale/scale = 1.0
 
 [node name="HatAnimator" type="AnimationPlayer" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
 libraries = {
-"": ExtResource("20_sui4d")
+&"": ExtResource("20_sui4d")
 }
 autoplay = "idle_left"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="BodyComponent/Head"]
 deterministic = false
 root_node = NodePath("../HeadArea/HeadAnimatedSprite")
-callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_5dsi7")
 anim_player = NodePath("../HeadAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.675978, -0.180423)
@@ -648,7 +648,7 @@ parameters/TimeScale/scale = 1.0
 [node name="HeadAnimator" type="AnimationPlayer" parent="BodyComponent/Head"]
 root_node = NodePath("../HeadArea/HeadAnimatedSprite")
 libraries = {
-"": ExtResource("16_m3k4p")
+&"": ExtResource("16_m3k4p")
 }
 autoplay = "RESET"
 
@@ -692,7 +692,6 @@ texture = ExtResource("11_6fk20")
 [node name="TorsoAnimatorTree" type="AnimationTree" parent="BodyComponent/Torso"]
 deterministic = false
 root_node = NodePath("../TorsoArea/TorsoSprite")
-callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_a0x5n")
 anim_player = NodePath("../TorsoAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0, 0)
@@ -702,8 +701,9 @@ parameters/TimeScale/scale = 1.0
 
 [node name="TorsoAnimator" type="AnimationPlayer" parent="BodyComponent/Torso"]
 root_node = NodePath("../TorsoArea/TorsoSprite")
+callback_mode_discrete = 2
 libraries = {
-"": ExtResource("12_pdib2")
+&"": ExtResource("12_pdib2")
 }
 autoplay = "RESET"
 playback_auto_capture = false
@@ -744,6 +744,14 @@ debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 script = ExtResource("12_xfj4o")
 accessories = NodePath("../RightLeg/RightLegArea/AccessoriesComponent")
 
+[node name="HandsSprite" type="Sprite2D" parent="BodyComponent/Hands"]
+visible = false
+z_index = 2
+position = Vector2(0, -16)
+texture = ExtResource("17_47ii6")
+hframes = 6
+frame = 5
+
 [node name="HandsArea" type="RigidBody2D" parent="BodyComponent/Hands"]
 collision_layer = 16384
 collision_mask = 0
@@ -759,6 +767,8 @@ debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 y_sort_enabled = true
 
 [node name="MeleeWeapon" parent="BodyComponent/EquipmentComponent" instance=ExtResource("18_vljcp")]
+
+[node name="GatheringTool" parent="BodyComponent/EquipmentComponent" instance=ExtResource("19_oo7ol")]
 
 [node name="InventoryComponent" parent="." instance=ExtResource("20_oqpkj")]
 

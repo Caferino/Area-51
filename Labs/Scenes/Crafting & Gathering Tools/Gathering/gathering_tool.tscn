@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bojl5e2axsmkk"]
+
+[ext_resource type="Texture2D" uid="uid://di1phrl881yeu" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/Mining/stone_pickaxe.png" id="1_22oxf"]
+
+[node name="GatheringTool" type="Marker2D" groups=["tool"]]
+
+[node name="Pivot" type="Marker2D" parent="."]
+position = Vector2(0, -19)
+
+[node name="ToolSprite" type="Sprite2D" parent="Pivot"]
+position = Vector2(-6, 6)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_22oxf")
+offset = Vector2(6, -6)
+hframes = 4

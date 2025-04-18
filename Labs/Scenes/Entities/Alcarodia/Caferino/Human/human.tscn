@@ -489,7 +489,7 @@ shape = SubResource("CircleShape2D_epeuq")
 [node name="HatAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea"]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_215dc")
-animation = &"up"
+animation = &"down"
 autoplay = "left"
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
@@ -501,7 +501,6 @@ scale = Vector2(0.452381, 0.384615)
 texture = ExtResource("10_57p1j")
 
 [node name="HatAnimatorTree" type="AnimationTree" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
-callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_gqxt4")
 anim_player = NodePath("../HatAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0.00418258, -0.438406)
@@ -511,14 +510,13 @@ parameters/TimeScale/scale = 1.0
 
 [node name="HatAnimator" type="AnimationPlayer" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
 libraries = {
-"": ExtResource("13_4sa8r")
+&"": ExtResource("13_4sa8r")
 }
 autoplay = "idle_down"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="BodyComponent/Head"]
 deterministic = false
 root_node = NodePath("../HeadArea/HeadAnimatedSprite")
-callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_nk2hc")
 anim_player = NodePath("../HeadAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.675978, -0.180423)
@@ -529,7 +527,7 @@ parameters/TimeScale/scale = 1.0
 [node name="HeadAnimator" type="AnimationPlayer" parent="BodyComponent/Head"]
 root_node = NodePath("../HeadArea/HeadAnimatedSprite")
 libraries = {
-"": ExtResource("14_njryd")
+&"": ExtResource("14_njryd")
 }
 autoplay = "RESET"
 
@@ -573,7 +571,6 @@ texture = ExtResource("10_57p1j")
 [node name="TorsoAnimatorTree" type="AnimationTree" parent="BodyComponent/Torso"]
 deterministic = false
 root_node = NodePath("../TorsoArea/TorsoSprite")
-callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeBlendTree_bli6c")
 anim_player = NodePath("../TorsoAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0, 0)
@@ -583,8 +580,9 @@ parameters/TimeScale/scale = 1.0
 
 [node name="TorsoAnimator" type="AnimationPlayer" parent="BodyComponent/Torso"]
 root_node = NodePath("../TorsoArea/TorsoSprite")
+callback_mode_discrete = 2
 libraries = {
-"": ExtResource("16_hrk1b")
+&"": ExtResource("16_hrk1b")
 }
 autoplay = "RESET"
 speed_scale = 2.0
