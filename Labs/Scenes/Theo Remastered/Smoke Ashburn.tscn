@@ -551,9 +551,9 @@ shape = SubResource("CapsuleShape2D_6wl4j")
 y_sort_enabled = true
 
 [node name="Head" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories", "animator_tree", "animator")]
-visible = false
 z_index = 1
 y_sort_enabled = true
+position = Vector2(0, -13)
 script = ExtResource("12_xfj4o")
 accessories = NodePath("HeadArea/AccessoriesComponent")
 animator_tree = NodePath("HeadAnimatorTree")
@@ -580,7 +580,8 @@ autoplay = "left"
 modulate = Color(0, 0, 0, 0.0980392)
 z_index = -2
 texture_filter = 2
-position = Vector2(0, 28)
+position = Vector2(1.19209e-06, 28)
+rotation = 6.28319
 scale = Vector2(0.285714, 0.331417)
 texture = ExtResource("11_6fk20")
 
@@ -618,6 +619,7 @@ modulate = Color(0, 0, 0, 0.0980392)
 z_index = -3
 texture_filter = 2
 position = Vector2(-4, 35.14)
+rotation = 6.28319
 scale = Vector2(0.452381, 0.384615)
 texture = ExtResource("11_6fk20")
 
@@ -684,6 +686,7 @@ z_index = -1
 texture_filter = 2
 material = SubResource("CanvasItemMaterial_xvogj")
 position = Vector2(0, 8)
+rotation = 6.28319
 scale = Vector2(0.380952, 0.307692)
 texture = ExtResource("11_6fk20")
 
@@ -749,7 +752,7 @@ visible = false
 z_index = 2
 position = Vector2(0, -16)
 texture = ExtResource("17_47ii6")
-hframes = 6
+hframes = 7
 frame = 5
 
 [node name="HandsArea" type="RigidBody2D" parent="BodyComponent/Hands"]
@@ -769,6 +772,7 @@ y_sort_enabled = true
 [node name="MeleeWeapon" parent="BodyComponent/EquipmentComponent" instance=ExtResource("18_vljcp")]
 
 [node name="GatheringTool" parent="BodyComponent/EquipmentComponent" instance=ExtResource("19_oo7ol")]
+visible = false
 
 [node name="InventoryComponent" parent="." instance=ExtResource("20_oqpkj")]
 

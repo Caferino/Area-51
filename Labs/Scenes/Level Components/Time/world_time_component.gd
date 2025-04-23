@@ -3,7 +3,8 @@ extends TimeComponent
 
 
 func _ready():
-	INGAME_SPEED = 0.1  ## 10 real-life minutes per in-game hour.
+	## NOTE - If too fast, the moonlights and sunlights wont work well
+	INGAME_SPEED = 0.1  ## A value of 0.1 equals to 10 real-life minutes per in-game hour.
 	INITIAL_HOUR = 12
 	current_time = INGAME_TO_REAL_MINUTE_DURATION * INITIAL_HOUR * MINUTES_PER_HOUR
 

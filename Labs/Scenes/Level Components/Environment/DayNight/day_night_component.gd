@@ -71,7 +71,7 @@ func _update_texture():
 ## weird time spells, taking the INGAME_SPEED into account here fixes that.
 ## TODO - Moon Phases can just affect the Night and Midnight's Color's Alpha value.
 func handle_light(day: int, hour: int, minute: int) -> void:
-	#print("Day: ", day, ", Hour: ", hour, ", Minute: ", minute)  # DEBUG
+	print("Day: ", day, ", Hour: ", hour, ", Minute: ", minute)  # DEBUG
 	if minute == 0:
 		if hour == 6:     ## 6:00 A.M.  -  MORNING
 			set_shader_params(Color(1.0, 0.9, 0.65, 0.8), 1.0, 0.1, 1.0, 0.22, 1.0, 0.16)
