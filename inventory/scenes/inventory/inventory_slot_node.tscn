@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://hsshraxpx3xi"]
 
 [ext_resource type="Texture2D" uid="uid://c8sdf4op4sqtf" path="res://inventory/resources/sprites/item_slot.png" id="1"]
-[ext_resource type="Script" path="res://inventory/scripts/inventory/inventory_slot_node.gd" id="2"]
+[ext_resource type="Script" uid="uid://cr4p3rpngp7wl" path="res://inventory/scripts/inventory/inventory_slot_node.gd" id="2"]
 
 [node name="inventory_slot" type="TextureRect"]
 texture_filter = 1

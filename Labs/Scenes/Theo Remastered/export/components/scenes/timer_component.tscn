@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6y1j0udk35n7"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/timer_component.gd" id="1_yt1vg"]
+[ext_resource type="Script" uid="uid://btuublrphjyda" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/timer_component.gd" id="1_yt1vg"]
 
 [node name="TimerComponent" type="Node"]
 script = ExtResource("1_yt1vg")

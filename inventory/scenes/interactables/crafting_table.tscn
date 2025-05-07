@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ctfef0pi3e84l"]
 
-[ext_resource type="Script" path="res://inventory/scripts/interactables/crafting_table.gd" id="1"]
+[ext_resource type="Script" uid="uid://bj57sef7rrj7w" path="res://inventory/scripts/interactables/crafting_table.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bcgits6j2cwlv" path="res://inventory/resources/sprites/interactables/table.png" id="2"]
 
 [sub_resource type="CapsuleShape2D" id="1"]

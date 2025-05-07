@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d06udihokjds2"]
 
 [ext_resource type="AnimationLibrary" uid="uid://hdrqb6em6t46" path="res://animations/Collectables/pickables.res" id="1_a088d"]
-[ext_resource type="Script" path="res://Labs/Scenes/Collectable Items & Inventory/CollectableOLD.gd" id="1_gv8s4"]
+[ext_resource type="Script" uid="uid://chb616bdn2gx7" path="res://Labs/Scenes/Collectable Items & Inventory/CollectableOLD.gd" id="1_gv8s4"]
 [ext_resource type="Texture2D" uid="uid://d3mcc0wbx32at" path="res://Labs/Scenes/Collectable Items & Inventory/Logs.png" id="1_hb1if"]
 [ext_resource type="Resource" uid="uid://d4de6ndv12o5w" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/items/logs.tres" id="2_pnl16"]
 

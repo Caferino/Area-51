@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjsnkn3w1wbp2"]
 
 [ext_resource type="Texture2D" uid="uid://c8sdf4op4sqtf" path="res://inventory/resources/sprites/item_slot.png" id="1"]
-[ext_resource type="Script" path="res://inventory/scripts/ui/item_quantity.gd" id="2"]
+[ext_resource type="Script" uid="uid://cjuk6blnqbncs" path="res://inventory/scripts/ui/item_quantity.gd" id="2"]
 [ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="3"]
 
 [node name="item_quantity" type="ColorRect"]

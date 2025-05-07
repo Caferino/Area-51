@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bkpya3rtq1548" path="res://inventory/scenes/ui/ui_window.tscn" id="1"]
 [ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="2"]
-[ext_resource type="Script" path="res://inventory/scripts/ui/player_stats_window.gd" id="3"]
+[ext_resource type="Script" uid="uid://dgixgvg7bo4v8" path="res://inventory/scripts/ui/player_stats_window.gd" id="3"]
 [ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="4"]
 
 [node name="player_stats" instance=ExtResource("1")]

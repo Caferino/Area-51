@@ -1,11 +1,11 @@
 [gd_scene load_steps=31 format=3 uid="uid://4g3ck4u52od"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Magic System/Fireball/fireball_spell.gd" id="1_4cito"]
+[ext_resource type="Script" uid="uid://bk1pj5b5l3hak" path="res://Labs/Scenes/Magic System/Fireball/fireball_spell.gd" id="1_4cito"]
 [ext_resource type="PackedScene" uid="uid://cbhva253hk6f8" path="res://Labs/Scenes/Magic System/Fireball/Components/fireball_soot.tscn" id="2_oq7k4"]
 [ext_resource type="PackedScene" uid="uid://cynxld5jpn8cb" path="res://Labs/Scenes/Magic System/Fireball/Components/fireball_body.tscn" id="2_vgeak"]
 [ext_resource type="PackedScene" uid="uid://c78i715kr2iap" path="res://Labs/Scenes/Magic System/Fireball/Components/fireball_explosion.tscn" id="3_5e454"]
 [ext_resource type="AnimationLibrary" uid="uid://drhg3c628i5yu" path="res://animations/Spells/Red Spells.res" id="4_qkktn"]
-[ext_resource type="Shader" path="res://Labs/Scenes/Magic System/Fireball/Components/fireball_heatwave.gdshader" id="5_6lkss"]
+[ext_resource type="Shader" uid="uid://ff7ba6rn215m" path="res://Labs/Scenes/Magic System/Fireball/Components/fireball_heatwave.gdshader" id="5_6lkss"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5diq0"]
 radius = 20.0
@@ -103,7 +103,7 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0awvi"]
 _data = {
-"RESET": SubResource("Animation_txc3p")
+&"RESET": SubResource("Animation_txc3p")
 }
 
 [sub_resource type="Gradient" id="Gradient_06ecq"]
@@ -175,7 +175,7 @@ colors = PackedColorArray(1, 1, 0, 1, 0.180392, 0.180392, 0.180392, 1, 0, 0, 0, 
 gradient = SubResource("Gradient_nnn8v")
 
 [sub_resource type="Curve" id="Curve_m22er"]
-max_value = 100.0
+_limits = [0.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -183,8 +183,7 @@ point_count = 2
 curve = SubResource("Curve_m22er")
 
 [sub_resource type="Curve" id="Curve_8b0xl"]
-min_value = -200.0
-max_value = 200.0
+_limits = [-200.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -192,7 +191,7 @@ point_count = 2
 curve = SubResource("Curve_8b0xl")
 
 [sub_resource type="Curve" id="Curve_ku2c6"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.0520833, 2), 0.0, 0.0, 0, 0, Vector2(0.0798611, 0.00754714), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 

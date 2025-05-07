@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://2bwbcwt1igkw"]
 
-[ext_resource type="Script" path="res://inventory/managers/inventory_manager.gd" id="1_v6peu"]
+[ext_resource type="Script" uid="uid://dd1u6qnosbi35" path="res://inventory/managers/inventory_manager.gd" id="1_v6peu"]
 [ext_resource type="Resource" uid="uid://dy0sr74myjeb4" path="res://inventory/data/resources/player_data.tres" id="2_n4bfu"]
-[ext_resource type="Script" path="res://inventory/managers/item_in_hand.gd" id="3_y1nnf"]
+[ext_resource type="Script" uid="uid://vp856th5jd0b" path="res://inventory/managers/item_in_hand.gd" id="3_y1nnf"]
 [ext_resource type="PackedScene" uid="uid://dw6ojjjo0xb20" path="res://inventory/scenes/ui/item_info.tscn" id="4_pt4yg"]
 [ext_resource type="PackedScene" uid="uid://ducqtpe60fduc" path="res://inventory/scenes/ui/item_action_menu.tscn" id="5_w4d88"]
 

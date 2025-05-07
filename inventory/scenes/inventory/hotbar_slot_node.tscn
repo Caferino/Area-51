@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cilvvo1uwrjy2"]
 
-[ext_resource type="Script" path="res://inventory/scripts/inventory/hotbar_slot_node.gd" id="1"]
+[ext_resource type="Script" uid="uid://cmdcpntrv4oxu" path="res://inventory/scripts/inventory/hotbar_slot_node.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="2"]
 [ext_resource type="PackedScene" uid="uid://hsshraxpx3xi" path="res://inventory/scenes/inventory/inventory_slot_node.tscn" id="3"]
 

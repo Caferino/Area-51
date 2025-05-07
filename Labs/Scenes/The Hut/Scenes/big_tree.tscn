@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://cafk5x7ikmps6"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/The Hut/Scenes/big_tree.gd" id="1_3l68o"]
+[ext_resource type="Script" uid="uid://dkpxihltd7yux" path="res://Labs/Scenes/The Hut/Scenes/big_tree.gd" id="1_3l68o"]
 [ext_resource type="Texture2D" uid="uid://bgecfrfntsmyu" path="res://Labs/Scenes/The Hut/big_tree_trunk_1.png" id="1_dudqo"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/health_component.gd" id="2_bqxnq"]
+[ext_resource type="Script" uid="uid://v105r1gkl6ed" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/health_component.gd" id="2_bqxnq"]
 [ext_resource type="Texture2D" uid="uid://b6itix1aiqy6n" path="res://Labs/Scenes/The Hut/big_tree_leaves_1.png" id="2_lm3qv"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/static_collision_component.gd" id="3_vhrye"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/interactable_component.gd" id="4_raw7i"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/appearance_component.gd" id="5_eilfr"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/timer_component.gd" id="8_022p5"]
+[ext_resource type="Script" uid="uid://dhrme338gp407" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/static_collision_component.gd" id="3_vhrye"]
+[ext_resource type="Script" uid="uid://cjrg047nbgec1" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/interactable_component.gd" id="4_raw7i"]
+[ext_resource type="Script" uid="uid://cdk187h4f3hw6" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/appearance_component.gd" id="5_eilfr"]
+[ext_resource type="Script" uid="uid://btuublrphjyda" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/timer_component.gd" id="8_022p5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xuedc"]
 radius = 55.0

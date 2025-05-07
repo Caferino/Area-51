@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cty5vhtmuq4qi"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/static_collision_component.gd" id="1_2mfcg"]
+[ext_resource type="Script" uid="uid://dhrme338gp407" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/static_collision_component.gd" id="1_2mfcg"]
 
 [node name="StaticCollisionComponent" type="Node"]
 script = ExtResource("1_2mfcg")

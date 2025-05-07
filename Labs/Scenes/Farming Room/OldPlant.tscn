@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bmrctgfhetcgl"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Farming Room/OldPlant.gd" id="1_v6pmr"]
+[ext_resource type="Script" uid="uid://b55uyx5gi00j1" path="res://Labs/Scenes/Farming Room/OldPlant.gd" id="1_v6pmr"]
 [ext_resource type="PackedScene" uid="uid://dckwm6m65a435" path="res://Labs/Scenes/Farming Room/Leaves.tscn" id="2_dcjf1"]
 [ext_resource type="Texture2D" uid="uid://cvh5qps1fyla1" path="res://Labs/Scenes/Farming Room/corn.png" id="2_dr2j5"]
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/plant_interactable.gd" id="4_7aam4"]
+[ext_resource type="Script" uid="uid://ds1ru7xq4jx34" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/plant_interactable.gd" id="4_7aam4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8dk8q"]
 size = Vector2(0.05, 0.05)

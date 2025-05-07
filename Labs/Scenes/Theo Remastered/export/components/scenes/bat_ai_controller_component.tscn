@@ -1,11 +1,11 @@
 [gd_scene load_steps=26 format=3 uid="uid://ble3l5001dbpu"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/bat_ai_controller_component.gd" id="1_imjo1"]
+[ext_resource type="Script" uid="uid://coen18i8l0m1i" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/AI Scripts/bat_ai_controller_component.gd" id="1_imjo1"]
 [ext_resource type="PackedScene" uid="uid://kdbyl8joho61" path="res://Labs/Scenes/Attack Room/context_map.tscn" id="2_eih87"]
-[ext_resource type="Script" path="res://addons/utility_ai/agent/agent.gd" id="3_5p0vp"]
-[ext_resource type="Script" path="res://addons/utility_ai/actions/action.gd" id="4_25ky4"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/aggregation.gd" id="6_nya6u"]
-[ext_resource type="Script" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="7_ar8e3"]
+[ext_resource type="Script" uid="uid://do23fyaggm10r" path="res://addons/utility_ai/agent/agent.gd" id="3_5p0vp"]
+[ext_resource type="Script" uid="uid://bdhuhxiq3pda2" path="res://addons/utility_ai/actions/action.gd" id="4_25ky4"]
+[ext_resource type="Script" uid="uid://bdqwow42km0og" path="res://addons/utility_ai/considerations/aggregation.gd" id="6_nya6u"]
+[ext_resource type="Script" uid="uid://dtejieuf6c607" path="res://addons/utility_ai/considerations/consideration_from_node.gd" id="7_ar8e3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2my2"]
 radius = 3.0
@@ -22,12 +22,12 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_e1qmw"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_tv76m"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -60,7 +60,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.199507, 0), 0.0, 0.0, 0, 0, Ve
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_4f02w"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -73,7 +73,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="Curve" id="Curve_4n4ia"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(0.999, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 

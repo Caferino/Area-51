@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjly7inr5q30p"]
 
 [ext_resource type="PackedScene" uid="uid://bkpya3rtq1548" path="res://inventory/scenes/ui/ui_window.tscn" id="1"]
-[ext_resource type="Script" path="res://inventory/scripts/ui/inventory_container.gd" id="8"]
+[ext_resource type="Script" uid="uid://chec20chwtln8" path="res://inventory/scripts/ui/inventory_container.gd" id="8"]
 
 [node name="inventory_container" instance=ExtResource("1")]
 offset_bottom = 28.0

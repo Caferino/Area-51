@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SettingsData" load_steps=2 format=3 uid="uid://bbnv8sil4hdvn"]
 
-[ext_resource type="Script" path="res://inventory/data/settings_data.gd" id="1_y2cad"]
+[ext_resource type="Script" uid="uid://cdpboy0oaucbm" path="res://inventory/data/settings_data.gd" id="1_y2cad"]
 
 [resource]
 script = ExtResource("1_y2cad")

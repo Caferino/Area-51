@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://qyke08j6p7jy"]
+
+[ext_resource type="Script" uid="uid://oxdpmdnkpowt" path="res://Labs/Scenes/Level Components/Environment/DayNight/day_night_component.gd" id="1_gcyey"]
+[ext_resource type="Shader" uid="uid://br06c4ctmc6tm" path="res://Labs/Shaders/advanced_light.gdshader" id="2_85g5m"]
+[ext_resource type="Texture2D" uid="uid://d1rki54a5qmyj" path="res://Labs/Scenes/Level Components/Environment/DayNight/daynightcycle-gradient-texture.tres" id="2_sa1m1"]
+[ext_resource type="PackedScene" uid="uid://chav0mjysm6tc" path="res://Labs/Shaders/Filters/filter_sunrays.tscn" id="3_x7rgs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5a70"]
+shader = ExtResource("2_85g5m")
+shader_parameter/global_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/n_lights = 0
+shader_parameter/dark_color = Color(0.25, 0.0625, 0.25, 1)
+shader_parameter/default_light_color = Color(0, 0, 0, 1)
+shader_parameter/light_level = 0.0
+shader_parameter/offset_modifier = 1.0
+shader_parameter/zoom = 0.0
+shader_parameter/n_light_bands = 7
+shader_parameter/will_smooth_shade = true
+shader_parameter/band_decay_rate = 0.5
+shader_parameter/light_strength_modifier = 1.0
+
+[node name="DayNightComponent" type="Node2D" node_paths=PackedStringArray("lighting", "sunrays")]
+visible = false
+script = ExtResource("1_gcyey")
+lighting = NodePath("DayNightCycle/Lighting")
+sunrays = NodePath("SunRays")
+cycle = ExtResource("2_sa1m1")
+
+[node name="SunRays" parent="." instance=ExtResource("3_x7rgs")]
+show_behind_parent = true
+mouse_filter = 1
+
+[node name="DayNightCycle" type="CanvasLayer" parent="."]
+
+[node name="Lighting" type="ColorRect" parent="DayNightCycle"]
+material = SubResource("ShaderMaterial_d5a70")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color(0.0941176, 0.0313726, 0.0352941, 0)

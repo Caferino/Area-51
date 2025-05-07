@@ -1,9 +1,9 @@
 class_name Level extends Node2D
 ## A [color=white]level[/color], by [color=white]Alcarodia.
 
-@export var env     : WorldEnvironment    = null
-@export var space   : SpaceComponent = null
-@export var weather : WeatherComponent    = null
+@export var space   : SpaceComponent       = null
+@export var env     : EnvironmentComponent = null
+@export var cuts    : CutscenesComponent   = null
 
 var environment_stats: Dictionary = {}
 

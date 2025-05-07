@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://iixw61r8utqk"]
 
-[ext_resource type="Script" path="res://inventory/scripts/interactables/treasure_chest.gd" id="1"]
+[ext_resource type="Script" uid="uid://bj70n8qpjtxsw" path="res://inventory/scripts/interactables/treasure_chest.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://rdiehiju6ver" path="res://inventory/resources/sprites/interactables/gold_chest.png" id="2"]
 [ext_resource type="PackedScene" uid="uid://c5uh6bhur8igq" path="res://inventory/scenes/interactables/interactable_chest.tscn" id="3"]
 

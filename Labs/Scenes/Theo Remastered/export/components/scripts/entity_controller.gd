@@ -13,3 +13,5 @@ var sprinting   : bool     = false      ## Is the entity currently sprinting?
 var moving      : bool     = false      ## Is the entity currently moving?
 var aiming      : bool     = false      ## Currently aiming or selecting a spot?
 var obj_in_hand : Node2D   = null       ## Object/Spell currently held in hand.
+var speakers    : Array    = []         ## Near a speaker the player can talk to.
+var is_talking  : bool     = false      ## To stop moving while talking.

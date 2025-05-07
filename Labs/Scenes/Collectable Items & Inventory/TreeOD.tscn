@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dlhvb665fhiuc"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Collectable Items & Inventory/TreeOD.gd" id="1_bmb06"]
+[ext_resource type="Script" uid="uid://dj6nwhblorgim" path="res://Labs/Scenes/Collectable Items & Inventory/TreeOD.gd" id="1_bmb06"]
 [ext_resource type="Texture2D" uid="uid://lme0j6u8o1qn" path="res://Labs/Scenes/Collectable Items & Inventory/Tree.png" id="2_mq5u3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilh1a"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://giwbm1t1m8mo"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/health_component.gd" id="1_8o42w"]
+[ext_resource type="Script" uid="uid://v105r1gkl6ed" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/health_component.gd" id="1_8o42w"]
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_8o42w")

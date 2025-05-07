@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://but837cn50spw"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/inventory_component.gd" id="1_gg5xo"]
+[ext_resource type="Script" uid="uid://xfhgl01mjs5y" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/inventory_component.gd" id="1_gg5xo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0axhp"]
 radius = 18.0

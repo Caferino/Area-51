@@ -10,14 +10,11 @@ func _ready():
 	ui_scale = settings_data.ui_scale
 	fullscreen = settings_data.fullscreen
 	settings_data.changed.connect(_on_data_changed)
-	print("why the fuck is this executing _on_data_changed?")
 
 
 func set_fullscreen(value):
 	fullscreen = value
-	print("What the fuck?? ", value)
 	get_window().mode = Window.MODE_FULLSCREEN if (value) else Window.MODE_WINDOWED
-	print("What the fuck????? ", get_window().mode)
 	settings_data.fullscreen = value
 
 

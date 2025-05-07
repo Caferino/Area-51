@@ -1,0 +1,383 @@
+[gd_scene load_steps=71 format=3 uid="uid://cg5anb6hda7ew"]
+
+[ext_resource type="Texture2D" uid="uid://bsfvjiq0pcydo" path="res://Labs/Scenes/Alchemy Room/Flasks/flask_bottle.png" id="1_phbk6"]
+[ext_resource type="Texture2D" uid="uid://bp5mlurdvmftl" path="res://Labs/Scenes/Alchemy Room/Flasks/flask_liquid_water_spritesheet.png" id="2_nv8ac"]
+[ext_resource type="Shader" uid="uid://68esvram4yjb" path="res://Labs/Scenes/Alchemy Room/Flasks/flask_liquid.gdshader" id="2_pmcug"]
+[ext_resource type="Texture2D" uid="uid://1p7ry70bsto2" path="res://Labs/Scenes/Alchemy Room/Flasks/flask_liquid_blood_spritesheet.png" id="3_7d55p"]
+
+[sub_resource type="Curve" id="Curve_g37yo"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dfffy"]
+curve = SubResource("Curve_g37yo")
+
+[sub_resource type="Curve" id="Curve_detom"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q7rc7"]
+curve = SubResource("Curve_detom")
+
+[sub_resource type="Curve" id="Curve_htjjm"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vdr05"]
+curve = SubResource("Curve_htjjm")
+
+[sub_resource type="Curve" id="Curve_nbcye"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ifew4"]
+curve = SubResource("Curve_nbcye")
+
+[sub_resource type="Curve" id="Curve_rwqj8"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1sha1"]
+curve = SubResource("Curve_rwqj8")
+
+[sub_resource type="Curve" id="Curve_dn3ew"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mmv8h"]
+curve = SubResource("Curve_dn3ew")
+
+[sub_resource type="Curve" id="Curve_ggmr5"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dtqf3"]
+curve = SubResource("Curve_ggmr5")
+
+[sub_resource type="Curve" id="Curve_maptw"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o1e3u"]
+curve = SubResource("Curve_maptw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4phdb"]
+shader = ExtResource("2_pmcug")
+shader_parameter/rgb_curve = SubResource("CurveTexture_mmv8h")
+shader_parameter/red_curve = SubResource("CurveTexture_1sha1")
+shader_parameter/green_curve = SubResource("CurveTexture_vdr05")
+shader_parameter/blue_curve = SubResource("CurveTexture_q7rc7")
+shader_parameter/alpha_curve = SubResource("CurveTexture_dfffy")
+shader_parameter/hue_curve = SubResource("CurveTexture_ifew4")
+shader_parameter/sat_curve = SubResource("CurveTexture_dtqf3")
+shader_parameter/value_curve = SubResource("CurveTexture_o1e3u")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vulg"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(0, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j43w"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(19, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e77ql"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(38, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc836"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(57, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgdmn"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(76, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp7qf"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(95, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lic3v"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(114, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtm6l"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(133, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3dqw"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(152, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kg1k"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(171, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs42a"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(190, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6pls"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(209, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlho0"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(228, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gn8s"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(247, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83xma"]
+atlas = ExtResource("2_nv8ac")
+region = Rect2(266, 0, 19, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ds1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vulg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0j43w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e77ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc836")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgdmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp7qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lic3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtm6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3dqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kg1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs42a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6pls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlho0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gn8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83xma")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_uomea"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r5myi"]
+curve = SubResource("Curve_uomea")
+
+[sub_resource type="Curve" id="Curve_yq4cq"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o4kik"]
+curve = SubResource("Curve_yq4cq")
+
+[sub_resource type="Curve" id="Curve_q0rw2"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6lafv"]
+curve = SubResource("Curve_q0rw2")
+
+[sub_resource type="Curve" id="Curve_1sfco"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u8k5o"]
+curve = SubResource("Curve_1sfco")
+
+[sub_resource type="Curve" id="Curve_oyaqb"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g61lr"]
+curve = SubResource("Curve_oyaqb")
+
+[sub_resource type="Curve" id="Curve_cbg3c"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fsooa"]
+curve = SubResource("Curve_cbg3c")
+
+[sub_resource type="Curve" id="Curve_gngsl"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_02duj"]
+curve = SubResource("Curve_gngsl")
+
+[sub_resource type="Curve" id="Curve_l3k1a"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ocfuw"]
+curve = SubResource("Curve_l3k1a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nobtl"]
+shader = ExtResource("2_pmcug")
+shader_parameter/rgb_curve = SubResource("CurveTexture_fsooa")
+shader_parameter/red_curve = SubResource("CurveTexture_g61lr")
+shader_parameter/green_curve = SubResource("CurveTexture_6lafv")
+shader_parameter/blue_curve = SubResource("CurveTexture_o4kik")
+shader_parameter/alpha_curve = SubResource("CurveTexture_r5myi")
+shader_parameter/hue_curve = SubResource("CurveTexture_u8k5o")
+shader_parameter/sat_curve = SubResource("CurveTexture_02duj")
+shader_parameter/value_curve = SubResource("CurveTexture_ocfuw")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85c0e"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(0, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4124h"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(19, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w54p4"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(38, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xp0i"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(57, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js2ri"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(76, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_letx2"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(95, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wpsx"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(114, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x0yy"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(133, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6njq"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(152, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj7ko"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(171, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydwj3"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(190, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0dpk"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(209, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k62dr"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(228, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc56o"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(247, 0, 19, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvcsi"]
+atlas = ExtResource("3_7d55p")
+region = Rect2(266, 0, 19, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3o252"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85c0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4124h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w54p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xp0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js2ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_letx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wpsx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x0yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6njq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj7ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydwj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0dpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k62dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc56o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvcsi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Flask" type="Sprite2D"]
+texture = ExtResource("1_phbk6")
+
+[node name="Water" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_4phdb")
+sprite_frames = SubResource("SpriteFrames_8ds1q")
+autoplay = "default"
+
+[node name="Blood" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_nobtl")
+sprite_frames = SubResource("SpriteFrames_3o252")
+autoplay = "default"
+frame = 9
+frame_progress = 0.706954

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bkpya3rtq1548" path="res://inventory/scenes/ui/ui_window.tscn" id="2"]
 [ext_resource type="Resource" uid="uid://bbnv8sil4hdvn" path="res://inventory/data/resources/settings_data.tres" id="3"]
 [ext_resource type="FontFile" uid="uid://bv3fdyepfa0wv" path="res://inventory/resources/font/Arcadepix Plus.ttf" id="8"]
-[ext_resource type="Script" path="res://inventory/scripts/ui/settings.gd" id="9"]
+[ext_resource type="Script" uid="uid://buur0jhjhyiph" path="res://inventory/scripts/ui/settings.gd" id="9"]
 
 [node name="settings" instance=ExtResource("2")]
 offset_left = -91.0

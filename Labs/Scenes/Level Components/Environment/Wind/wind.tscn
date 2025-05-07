@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxjw2habygpcl"]
+
+[ext_resource type="Script" uid="uid://c8sbhq6x7iwjn" path="res://Labs/Scenes/Level Components/Environment/Wind/wind.gd" id="1_u021k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa8ch"]
+size = Vector2(2500, 1500)
+
+[node name="WindArea" type="Area2D"]
+script = ExtResource("1_u021k")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qa8ch")
+debug_color = Color(1, 1, 1, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3w625uu3cw8n"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/AI Systems/GOAP/GOAPs/human_ai_goap.gd" id="1_n0m3c"]
+[ext_resource type="Script" uid="uid://ba14avps7judj" path="res://Labs/Scenes/AI Systems/GOAP/GOAPs/human_ai_goap.gd" id="1_n0m3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66obb"]
 size = Vector2(2500, 2500)

@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://circ2b26dkf5t" path="res://Labs/Scenes/Structures/Static/Walls/wall.tscn" id="2_cmr2a"]
 [ext_resource type="Texture2D" uid="uid://dq6larkgn5vkm" path="res://Labs/Assets/X. Resources/LFX/light_1.webp" id="3_0hgbp"]
 [ext_resource type="Texture2D" uid="uid://5bs4m3qt5s4o" path="res://Labs/Assets/X. Resources/LFX/red_light.jpg" id="3_afc86"]
-[ext_resource type="Script" path="res://Labs/Scenes/Lighting Room/MouseLight.gd" id="3_ed00o"]
+[ext_resource type="Script" uid="uid://3fv8dam4epx2" path="res://Labs/Scenes/Lighting Room/MouseLight.gd" id="3_ed00o"]
 [ext_resource type="Texture2D" uid="uid://dnrxoxmk36nt3" path="res://Labs/Assets/X. Resources/LFX/light_1.jpg" id="3_f7ji0"]
 [ext_resource type="Texture2D" uid="uid://br65wfo2ovn4h" path="res://Labs/Assets/X. Resources/Structures/Walls/wall_2.jpg" id="5_1d46f"]
-[ext_resource type="Shader" path="res://Labs/Shaders/MultiplyShader.gdshader" id="5_rcxqj"]
+[ext_resource type="Shader" uid="uid://cuiih7castwpk" path="res://Labs/Shaders/MultiplyShader.gdshader" id="5_rcxqj"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="8_ppwdf"]
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="9_bvn78"]
 

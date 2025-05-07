@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://5mwk0bp8eu1"]
 
 [ext_resource type="Texture2D" uid="uid://faejmeaiwuvx" path="res://inventory/resources/sprites/cooldown.png" id="1"]
-[ext_resource type="FontFile" path="res://inventory/resources/font/font_8.tres" id="2"]
-[ext_resource type="Script" path="res://inventory/scripts/ui/cooldown.gd" id="3"]
+[ext_resource type="FontFile" uid="uid://esm8m6bfjnxa" path="res://inventory/resources/font/font_8.tres" id="2"]
+[ext_resource type="Script" uid="uid://ubm25mhtid0a" path="res://inventory/scripts/ui/cooldown.gd" id="3"]
 
 [node name="cooldown" type="TextureProgressBar"]
 anchors_preset = 15

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ccrxttes5b64y"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.gd" id="1_3l4gx"]
+[ext_resource type="Script" uid="uid://vbft64ws0gi0" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.gd" id="1_3l4gx"]
 [ext_resource type="AnimationLibrary" uid="uid://hdrqb6em6t46" path="res://animations/Collectables/pickables.res" id="1_rwiww"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_38f6o"]

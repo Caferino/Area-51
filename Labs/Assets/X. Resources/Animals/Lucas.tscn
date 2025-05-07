@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://mrd6gxhdcf0o"]
 
-[ext_resource type="Script" path="res://Labs/Assets/X. Resources/Animals/Lucas.gd" id="1_0lbbn"]
+[ext_resource type="Script" uid="uid://kxso6nl113t4" path="res://Labs/Assets/X. Resources/Animals/Lucas.gd" id="1_0lbbn"]
 [ext_resource type="Texture2D" uid="uid://bgnbt36dl2mqy" path="res://Labs/Assets/X. Resources/Animals/lucas sheet.png" id="1_hhmfv"]
 [ext_resource type="Texture2D" uid="uid://cfofsbmiywufs" path="res://Labs/Assets/X. Resources/Animals/lucas idle sheet final.png" id="2_vrw0r"]
-[ext_resource type="Script" path="res://Labs/Scenes/State Machine Room/State Machine.gd" id="5_n8o64"]
-[ext_resource type="Script" path="res://Labs/Scenes/State Machine Room/Idle State.gd" id="6_c64sx"]
-[ext_resource type="Script" path="res://Labs/Scenes/State Machine Room/Follow State.gd" id="7_0s5qp"]
+[ext_resource type="Script" uid="uid://bdtbcs6b1q23o" path="res://Labs/Scenes/State Machine Room/State Machine.gd" id="5_n8o64"]
+[ext_resource type="Script" uid="uid://cvge0mjnyk73d" path="res://Labs/Scenes/State Machine Room/Idle State.gd" id="6_c64sx"]
+[ext_resource type="Script" uid="uid://cfoqknebgr1qc" path="res://Labs/Scenes/State Machine Room/Follow State.gd" id="7_0s5qp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fy5et"]
 atlas = ExtResource("2_vrw0r")
@@ -112,6 +112,7 @@ position = Vector2(0, 3.07692)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_twami")
 animation = &"idle"
+autoplay = "idle"
 frame_progress = 0.216254
 offset = Vector2(0, -10.2563)
 

@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfhohy6j0jkm"]
+
+[ext_resource type="Script" uid="uid://bhurk7br2x3qu" path="res://Labs/Scenes/Level Components/level.gd" id="1_dc1dx"]
+[ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space/level_space_component.tscn" id="2_httqk"]
+[ext_resource type="PackedScene" uid="uid://dxc53orbb4n83" path="res://Labs/Scenes/Level Components/Environment/level_environment_component.tscn" id="3_baixc"]
+[ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="3_uhe1b"]
+[ext_resource type="PackedScene" uid="uid://dkv2rmkdva3pp" path="res://Labs/Scenes/Level Components/Cutscenes/level_cutscenes_component.tscn" id="4_1m38w"]
+
+[node name="AlchemyRoom" type="Node2D" node_paths=PackedStringArray("space", "env", "cuts")]
+y_sort_enabled = true
+script = ExtResource("1_dc1dx")
+space = NodePath("LevelSpaceComponent")
+env = NodePath("LevelEnvironmentComponent")
+cuts = NodePath("LevelCutscenesComponent")
+
+[node name="LevelSpaceComponent" parent="." instance=ExtResource("2_httqk")]
+y_sort_enabled = true
+
+[node name="Entities" parent="LevelSpaceComponent" index="0"]
+y_sort_enabled = true
+
+[node name="Smoke Ashburn" parent="LevelSpaceComponent/Entities" index="0" instance=ExtResource("3_uhe1b")]
+position = Vector2(921, 473)
+
+[node name="Items" parent="LevelSpaceComponent" index="1"]
+y_sort_enabled = true
+
+[node name="Fields" parent="LevelSpaceComponent" index="2"]
+y_sort_enabled = true
+
+[node name="Tilemaps" parent="LevelSpaceComponent" index="3"]
+y_sort_enabled = true
+
+[node name="Interactables" parent="LevelSpaceComponent" index="4"]
+y_sort_enabled = true
+
+[node name="StaticDecor" parent="LevelSpaceComponent" index="5"]
+y_sort_enabled = true
+
+[node name="ReactiveDecor" parent="LevelSpaceComponent" index="6"]
+y_sort_enabled = true
+
+[node name="LevelEnvironmentComponent" parent="." instance=ExtResource("3_baixc")]
+y_sort_enabled = true
+
+[node name="LevelCutscenesComponent" parent="." instance=ExtResource("4_1m38w")]
+y_sort_enabled = true
+
+[editable path="LevelSpaceComponent"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5whhap5h70k1"]
 
-[ext_resource type="Script" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/interactable_component.gd" id="1_uuun4"]
+[ext_resource type="Script" uid="uid://cjrg047nbgec1" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/interactable_component.gd" id="1_uuun4"]
 
 [node name="InteractableComponent" type="Node"]
 script = ExtResource("1_uuun4")

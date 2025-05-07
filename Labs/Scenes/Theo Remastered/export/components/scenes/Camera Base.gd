@@ -4,8 +4,9 @@ class_name CameraBase extends Node2D
 @onready var tween      : Tween    = create_tween()             ## Animates the camera's movement.
 @export  var controller : PlayerControllerComponent             ## The attached [PlayerControllerComponent].
 @export  var camera     : Camera2D                              ## The attached [Camera2D].
+@export  var rain       : GPUParticles2D       ## TODO - Maybe rename to Weather, and deeply modify accordingly
 
-const zoom_speed        : Vector2  = Vector2(0.5, 0.5)              ## Zoom in/out speed.
+const zoom_speed        : Vector2  = Vector2(0.5, 0.5)          ## Zoom in/out speed.
 const drag_dist         : float    = 500.0                      ## The camera's dragging distance allowed.
 var dragging_cam        : bool     = false                      ## Is the camera currently being dragged?
 # For the camera's breathing effect
