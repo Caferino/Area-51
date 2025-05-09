@@ -607,7 +607,6 @@ scale = Vector2(0.400001, 0.400001)
 shape = SubResource("CircleShape2D_u50h0")
 
 [node name="HatAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea"]
-visible = false
 y_sort_enabled = true
 position = Vector2(-5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
