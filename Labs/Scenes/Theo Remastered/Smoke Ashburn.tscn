@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=119 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" uid="uid://cf5eyorgrdn3q" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -246,6 +246,31 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nu4rh"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_siqyd"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0nlaw"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pfkgq"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ytxn5"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_nu4rh")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_siqyd")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_0nlaw")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_pfkgq")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vs1tu"]
 animation = &"idle_down"
 
@@ -275,14 +300,17 @@ blend_mode = 1
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_04gw0"]
+states/End/position = Vector2(1050.67, 98.6667)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_17say")
 states/Idle/position = Vector2(360, 34)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_scvvg")
-states/Move/position = Vector2(586, 34)
+states/Move/position = Vector2(550, 35.3333)
+states/Roll/node = SubResource("AnimationNodeBlendSpace2D_ytxn5")
+states/Roll/position = Vector2(930.333, 33.6667)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_nr4ve")
-states/Run/position = Vector2(790, 34)
+states/Run/position = Vector2(740.667, 35.3333)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2e1kg")]
-graph_offset = Vector2(29, -23)
+graph_offset = Vector2(106, -9)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xonh7"]
 
@@ -344,6 +372,31 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ytxn5"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t4nr4"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_naoxn"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sr78s"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5vcel"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ytxn5")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_t4nr4")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_naoxn")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_sr78s")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sxip5"]
 animation = &"run_left"
 
@@ -374,11 +427,13 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1axe4"]
 resource_local_to_scene = true
-states/End/position = Vector2(789, 100)
+states/End/position = Vector2(906.333, 101.037)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_7dk03")
 states/Idle/position = Vector2(315, 43)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_ahgop")
 states/Move/position = Vector2(450, 43)
+states/Roll/node = SubResource("AnimationNodeBlendSpace2D_5vcel")
+states/Roll/position = Vector2(778.667, 43)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_jpujk")
 states/Run/position = Vector2(607, 43)
 states/Start/position = Vector2(147, 100)
@@ -450,6 +505,8 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5j03i"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rwfq6"]
 animation = &"move_down"
 
@@ -486,20 +543,23 @@ reset = false
 switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3f5lu"]
-states/End/position = Vector2(926, 100)
+states/End/position = Vector2(900.667, 43.4074)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_jxkt4")
 states/Idle/position = Vector2(363, 42)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_em6hf")
-states/Move/position = Vector2(551, 173)
+states/Move/position = Vector2(608.333, 173.395)
+states/Roll/node = SubResource("AnimationNodeBlendSpace2D_5j03i")
+states/Roll/position = Vector2(900.111, 174.317)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_g4mcn")
-states/Run/position = Vector2(727.667, 42.4444)
-states/Start/position = Vector2(201, 100)
+states/Run/position = Vector2(607.815, 40.2387)
+states/Start/position = Vector2(177, 36.0494)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e5sbt"), "Move", "Run", SubResource("AnimationNodeStateMachineTransition_003a7"), "Run", "Move", SubResource("AnimationNodeStateMachineTransition_bs2sq")]
-graph_offset = Vector2(85, -29)
+graph_offset = Vector2(92, 2)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_suc2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a0x5n"]
+graph_offset = Vector2(-14.8125, 504.533)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_3f5lu")
 nodes/Movement/position = Vector2(160, 426.667)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_suc2h")
@@ -610,7 +670,7 @@ shape = SubResource("CircleShape2D_u50h0")
 y_sort_enabled = true
 position = Vector2(-5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
-animation = &"left"
+animation = &"down"
 autoplay = "left"
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
@@ -627,6 +687,7 @@ tree_root = SubResource("AnimationNodeBlendTree_fih4q")
 anim_player = NodePath("../HatAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.249869, -0.135507)
 parameters/Movement/Move/blend_position = Vector2(-0.307311, 0.103623)
+parameters/Movement/Roll/blend_position = Vector2(0, 0)
 parameters/Movement/Run/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
@@ -643,6 +704,7 @@ tree_root = SubResource("AnimationNodeBlendTree_5dsi7")
 anim_player = NodePath("../HeadAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.675978, -0.180423)
 parameters/Movement/Move/blend_position = Vector2(-0.0344348, 0.436508)
+parameters/Movement/Roll/blend_position = Vector2(0, 0)
 parameters/Movement/Run/blend_position = Vector2(-0.0028621, -0.56696)
 parameters/TimeScale/scale = 1.0
 
@@ -698,6 +760,7 @@ tree_root = SubResource("AnimationNodeBlendTree_a0x5n")
 anim_player = NodePath("../TorsoAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0, 0)
 parameters/Movement/Move/blend_position = Vector2(0, 0)
+parameters/Movement/Roll/blend_position = 0.001
 parameters/Movement/Run/blend_position = Vector2(-0.00418258, -0.00797105)
 parameters/TimeScale/scale = 1.0
 
@@ -771,7 +834,6 @@ y_sort_enabled = true
 [node name="MeleeWeapon" parent="BodyComponent/EquipmentComponent" instance=ExtResource("18_vljcp")]
 
 [node name="GatheringTool" parent="BodyComponent/EquipmentComponent" instance=ExtResource("19_oo7ol")]
-visible = false
 
 [node name="InventoryComponent" parent="." instance=ExtResource("20_oqpkj")]
 

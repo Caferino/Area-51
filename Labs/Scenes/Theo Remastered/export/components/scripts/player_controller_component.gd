@@ -39,6 +39,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			on_action_1()
 		elif Input.is_action_just_pressed("action_2"):
 			on_action_2()
+		elif Input.is_action_just_pressed("gather"):
+			entity_gather.emit()
 
 
 ## Reads the player's given movement input.
@@ -61,12 +63,12 @@ func check_movement():
 		
 		if Input.is_action_pressed("sprint"):
 			if !sprinting: entity_sprint.emit()
-			sprinting = true
-			anim_state   = "Run"
+			sprinting  = true
+			anim_state = "Run"
 		else:
 			if sprinting: entity_move.emit()
-			sprinting = false
-			anim_state   = "Move"
+			sprinting  = false
+			anim_state = "Move"
 	else:
 		anim_state = "Idle"
 		moving = false
@@ -77,9 +79,19 @@ func rotate_interactor(direction: Vector2):
 	interactor_animator["parameters/Movement/blend_position"] = direction
 
 
+func on_roll():
+	if camera_base.dragging_cam : camera_base.stop_dragging()
+	rolling = true
+
+
 func on_move():
 	if camera_base.dragging_cam : camera_base.stop_dragging()
 	camera_base.modify_breath(-2.0, 2.0, -3.0, 3.0, 0.4)
+
+
+func on_sprint():
+	if camera_base.dragging_cam : camera_base.stop_dragging()
+	camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
 
 
 func on_stop():
@@ -88,6 +100,11 @@ func on_stop():
 
 func on_attack():
 	attacking = true   ## NOTE - Disabling this adds a pretty kickass gameplay speed for attacking, could be a potion effect
+	camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
+
+
+func on_gather():
+	gathering = true
 	camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
 
 
@@ -139,10 +156,6 @@ func remove_object_in_hand():
 func on_attack_finished():
 	attacking = false
 	camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
-
-
-func on_sprint():
-	camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
 
 
 ##### DIALOGUE #####

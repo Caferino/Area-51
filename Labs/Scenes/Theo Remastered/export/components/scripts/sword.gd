@@ -1,7 +1,7 @@
 class_name Sword extends MeleeWeapon
 ## A basic sword.
 
-## Structure should be as follow
+## Structure should be as follow:
 ## Weapon                            : Marker2D
 ## > child(0): SwordArea             : Area2D
 ## > > child(0): SwordCollisionShape : CollisionShape2D

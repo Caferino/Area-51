@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bojl5e2axsmkk"]
+[gd_scene load_steps=4 format=3 uid="uid://bojl5e2axsmkk"]
 
 [ext_resource type="Texture2D" uid="uid://di1phrl881yeu" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/Mining/stone_pickaxe.png" id="1_22oxf"]
+[ext_resource type="Script" uid="uid://bk78s4hind1b7" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/Mining/pickaxe.gd" id="1_f7hx8"]
 
-[node name="GatheringTool" type="Marker2D" groups=["tool"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_f7hx8"]
+
+[node name="Pickaxe" type="Marker2D" groups=["tool"]]
+script = ExtResource("1_f7hx8")
+
+[node name="ToolArea" type="Area2D" parent="."]
+
+[node name="ToolCollisionShape" type="CollisionShape2D" parent="ToolArea"]
+shape = SubResource("CircleShape2D_f7hx8")
 
 [node name="Pivot" type="Marker2D" parent="."]
 position = Vector2(0, -19)
@@ -13,3 +22,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_22oxf")
 offset = Vector2(6, -6)
 hframes = 4
+
+[node name="PickaxePlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="animation_finished" from="PickaxePlayer" to="." method="_on_pickaxe_player_animation_finished"]

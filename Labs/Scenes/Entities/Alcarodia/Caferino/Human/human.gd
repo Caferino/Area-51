@@ -24,9 +24,11 @@ func spawn():
 	body.gear["MeleeWeapon"].attack_finished.connect(_on_attack_finished)
 	body.limb_interact.connect(_on_limb_interact)
 	muscles.stopped_moving.connect(_on_entity_stop)
+	controller.entity_roll.connect(_on_entity_roll)
 	controller.entity_move.connect(_on_entity_move)
 	controller.entity_sprint.connect(_on_entity_sprint)
 	controller.entity_attack.connect(_on_entity_attack)
+	controller.entity_gather.connect(_on_entity_gather)
 	controller.entity_interact.connect(_on_entity_interact)
 	
 	muscles.handle_animation(self, controller.dir, controller.sprinting)
@@ -38,6 +40,11 @@ func _physics_process(_delta: float) -> void:
 	if !controller.attacking:
 		muscles.handle_movement(self, controller.dir, controller.sprinting)
 		controller.rotate_interactor(muscles.last_direction)
+
+
+## Runs whenever the entity starts rolling.
+func _on_entity_roll():
+	controller.on_roll()
 
 
 ## Runs whenever the entity starts moving.
@@ -61,6 +68,14 @@ func _on_entity_attack():
 		controller.on_attack()
 		muscles.stop(self, true)
 		muscles.attack(body.gear["MeleeWeapon"], body.limbs["Torso"].animator, body.limbs["Head"].animator)
+
+
+## Runs whenever the entity starts moving.
+func _on_entity_gather():
+	if !controller.attacking:
+		controller.on_gather()
+		muscles.stop(self, true)
+		#muscles.gather(body.gear["GatheringTool"], body.limbs["Torso"].animator, body.limbs["Head"].animator)
 
 
 ## Runs after the entity's most recent attack ends.
