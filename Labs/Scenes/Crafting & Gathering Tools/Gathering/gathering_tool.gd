@@ -19,10 +19,10 @@ var tool_stats = {
 
 ## Prepares the tool by hiding it and updating its speed stat from a database.
 func _ready():
-	get_child(1).get_child(0).visible = false
+	#get_child(1).get_child(0).visible = false
 	get_child(0).monitoring = false
 	get_child(2).speed_scale = tool_stats[GameEnums.TOOL_STAT.SPEED]
 
 
 func _on_pickaxe_player_animation_finished(anim_name: StringName) -> void:
-	print("PICKAXE ANIMATION FINISHED")
+	gather_finished.emit()

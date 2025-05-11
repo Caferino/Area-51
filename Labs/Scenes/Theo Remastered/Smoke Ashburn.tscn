@@ -559,7 +559,6 @@ graph_offset = Vector2(92, 2)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_suc2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a0x5n"]
-graph_offset = Vector2(-14.8125, 504.533)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_3f5lu")
 nodes/Movement/position = Vector2(160, 426.667)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_suc2h")
@@ -649,6 +648,7 @@ texture = ExtResource("11_6fk20")
 y_sort_enabled = true
 
 [node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent" node_paths=PackedStringArray("animator_tree", "animator")]
+visible = false
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("12_xfj4o")
@@ -670,7 +670,7 @@ shape = SubResource("CircleShape2D_u50h0")
 y_sort_enabled = true
 position = Vector2(-5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
-animation = &"down"
+animation = &"left"
 autoplay = "left"
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
@@ -698,7 +698,6 @@ libraries = {
 autoplay = "idle_left"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="BodyComponent/Head"]
-deterministic = false
 root_node = NodePath("../HeadArea/HeadAnimatedSprite")
 tree_root = SubResource("AnimationNodeBlendTree_5dsi7")
 anim_player = NodePath("../HeadAnimator")
@@ -772,7 +771,6 @@ libraries = {
 }
 autoplay = "RESET"
 playback_auto_capture = false
-speed_scale = 2.0
 
 [node name="LeftLeg" type="Marker2D" parent="BodyComponent" node_paths=PackedStringArray("accessories")]
 script = ExtResource("12_xfj4o")
@@ -815,7 +813,7 @@ z_index = 2
 position = Vector2(0, -16)
 texture = ExtResource("17_47ii6")
 hframes = 7
-frame = 5
+frame = 6
 
 [node name="HandsArea" type="RigidBody2D" parent="BodyComponent/Hands"]
 collision_layer = 16384

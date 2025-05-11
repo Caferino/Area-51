@@ -28,8 +28,7 @@ func attack(weapon: Tool, torso_animator: AnimationPlayer, head_animator: Animat
 			torso_animator.play_backwards("attack_down")
 			head_animator.play("attack_down")
 			weapon.get_child(1).play("attack_left")
-	
-	if last_direction.x < 0:                                 ## LEFT
+	elif last_direction.x < 0:                                 ## LEFT
 		weapon.position = Vector2(-5, 0)
 		weapon.rotation_degrees = 180
 		if weapon_on_left_hand:
@@ -56,4 +55,19 @@ func attack(weapon: Tool, torso_animator: AnimationPlayer, head_animator: Animat
 
 
 func gather(tool: Tool, torso_animator: AnimationPlayer, head_animator: AnimationPlayer):
-	pass
+	if last_direction.y < 0:                                 ## UP
+		torso_animator.play("swing_tool_up")
+		head_animator.play("swing_tool_up")
+		tool.get_child(2).play("swing_tool_up")
+	elif last_direction.y > 0:                               ## DOWN
+		torso_animator.play("swing_tool_down")
+		head_animator.play("swing_tool_down")
+		tool.get_child(2).play("swing_tool_down")
+	elif last_direction.x < 0:                                 ## LEFT
+		torso_animator.play("swing_tool_left")
+		head_animator.play("swing_tool_left")
+		tool.get_child(2).play("swing_tool_left")
+	elif last_direction.x > 0:                               ## RIGHT
+		torso_animator.play("swing_tool_right")
+		head_animator.play("swing_tool_right")
+		tool.get_child(2).play("swing_tool_right")

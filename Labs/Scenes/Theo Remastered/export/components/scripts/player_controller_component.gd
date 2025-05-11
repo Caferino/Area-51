@@ -13,7 +13,7 @@ func _ready() -> void:
 
 ## Checks whether the player is giving movement input every physics frame.
 func _physics_process(_delta: float) -> void:
-	if !attacking:# and !is_talking:
+	if !attacking and !gathering:# and !is_talking:
 		check_movement()
 
 
@@ -26,9 +26,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if aiming:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			confirm_action()
-	elif !attacking and !is_talking and event is not InputEventMouseMotion:
+	elif !attacking and !gathering and !is_talking and event is not InputEventMouseMotion:
 		if Input.is_action_just_pressed("attack"):
 			entity_attack.emit()
+		elif Input.is_action_just_pressed("gather"):
+			entity_gather.emit()
 		elif Input.is_action_just_pressed("interact"):
 			entity_interact.emit()
 		elif Input.is_action_just_pressed("speak_to"):
@@ -39,8 +41,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			on_action_1()
 		elif Input.is_action_just_pressed("action_2"):
 			on_action_2()
-		elif Input.is_action_just_pressed("gather"):
-			entity_gather.emit()
 
 
 ## Reads the player's given movement input.
@@ -155,6 +155,11 @@ func remove_object_in_hand():
 
 func on_attack_finished():
 	attacking = false
+	camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+
+
+func on_gather_finished():
+	gathering = false
 	camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
 
 
