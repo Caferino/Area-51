@@ -1,7 +1,7 @@
 class_name HumanoidMovementComponent extends EntityMovement
 ## The humanoid entity's [color=salmon]muscles.
 
-var weapon_on_left_hand : bool    = true           ## Boolean for the weapon's position.
+var weapon_on_left_hand : bool = true           ## Boolean for the weapon's position.
 
 
 ## Rotates the weapon and animates the attack.

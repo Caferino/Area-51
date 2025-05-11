@@ -70,15 +70,15 @@ func check_movement():
 			if sprinting: entity_move.emit()
 			sprinting  = false
 			anim_state = "Move"
-		
-	elif Input.is_action_just_pressed("roll"):
-		print("WTF?")
-		entity_roll.emit()
-		rolling = true
-		anim_state = "Roll"
 	else:
 		anim_state = "Idle"
 		moving = false
+	
+	if Input.is_action_just_pressed("roll"):
+		entity_roll.emit()
+		moving = true
+		rolling = true
+		anim_state = "Roll"
 
 
 ## Rotates the interactor's [member Marker2D.rotation].
