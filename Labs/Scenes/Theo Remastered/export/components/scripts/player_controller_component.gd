@@ -13,7 +13,8 @@ func _ready() -> void:
 
 ## Checks whether the player is giving movement input every physics frame.
 func _physics_process(_delta: float) -> void:
-	if !attacking and !gathering:# and !is_talking:
+	print("Checking movement? ", !rolling)
+	if !attacking and !gathering and !rolling:# and !is_talking:
 		check_movement()
 
 
@@ -69,6 +70,12 @@ func check_movement():
 			if sprinting: entity_move.emit()
 			sprinting  = false
 			anim_state = "Move"
+		
+	elif Input.is_action_just_pressed("roll"):
+		print("WTF?")
+		entity_roll.emit()
+		rolling = true
+		anim_state = "Roll"
 	else:
 		anim_state = "Idle"
 		moving = false
@@ -81,7 +88,7 @@ func rotate_interactor(direction: Vector2):
 
 func on_roll():
 	if camera_base.dragging_cam : camera_base.stop_dragging()
-	rolling = true
+	camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
 
 
 func on_move():
@@ -153,14 +160,17 @@ func remove_object_in_hand():
 	obj_in_hand = null
 
 
-func on_attack_finished():
-	attacking = false
-	camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+#func on_attack_finished():
+	#pass
+	# NOTE - Better to control this with the animation's signals
+	# NOTE - Will leave this function here in case it's useful for buffs or something else
+	#attacking = false
+	#camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
 
 
-func on_gather_finished():
-	gathering = false
-	camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+#func on_gather_finished():
+	#gathering = false
+	#camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
 
 
 ##### DIALOGUE #####
@@ -186,3 +196,20 @@ func run_dialogue(dialogue):
 func dialogic_signal(arg: String):
 	if arg == "exit_test":
 		is_talking = false
+
+
+func _on_torso_animator_tree_animation_finished(anim_name: StringName) -> void:
+	print("TORSO ANIMATION FINISHED")
+	if anim_name.begins_with("roll"):
+		print("ROLL ANIMATION FINISHED")
+		rolling = false
+		camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+
+
+func _on_torso_animator_animation_finished(anim_name: StringName) -> void:
+	if anim_name.begins_with("attack"):
+		attacking = false
+		camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+	elif anim_name.begins_with("gather"):
+		gathering = false
+		camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)

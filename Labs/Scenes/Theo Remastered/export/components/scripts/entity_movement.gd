@@ -20,11 +20,22 @@ var last_direction : Vector2 = Vector2(0, 1)  ## Entity's last faced direction.
 ## The direction must be normalized.
 func handle_movement(entity: Entity, direction: Vector2, is_sprinting: bool):
 	var accel = 0.12  ## Lower for "walking on ice" effect, it'd need DEACCEL, done below
+	# direction is always a normalized vector (x, y don't go beyond 1.0)
 	if direction != Vector2.ZERO:
 		if is_sprinting:
 			direction *= entity.stamina_stats[GameEnums.STAMINA_STAT.MAX_SPRINT_SPEED]
 		else:
 			direction *= entity.stamina_stats[GameEnums.STAMINA_STAT.MAX_WALK_SPEED]
+		
+	if entity.controller.rolling:
+		if last_direction.x > 0:
+			direction.x += entity.stamina_stats[GameEnums.STAMINA_STAT.ROLL_SPEED]
+		if last_direction.x < 0:
+			direction.x -= entity.stamina_stats[GameEnums.STAMINA_STAT.ROLL_SPEED]
+		if last_direction.y > 0:
+			direction.y += entity.stamina_stats[GameEnums.STAMINA_STAT.ROLL_SPEED]
+		if last_direction.y < 0:
+			direction.y -= entity.stamina_stats[GameEnums.STAMINA_STAT.ROLL_SPEED]
 	else:
 		accel = 0.33  ## Reduce for DEACCEL effect
 	

@@ -21,8 +21,8 @@ func _ready():
 
 ## Connects the entity's component signals.
 func spawn():
-	body.gear["MeleeWeapon"].attack_finished.connect(_on_attack_finished)
-	body.gear["GatheringTool"].gather_finished.connect(_on_gather_finished)
+	#body.gear["MeleeWeapon"].attack_finished.connect(_on_attack_finished)
+	#body.gear["GatheringTool"].gather_finished.connect(_on_gather_finished)
 	body.limb_interact.connect(_on_limb_interact)
 	muscles.stopped_moving.connect(_on_entity_stop)
 	controller.entity_roll.connect(_on_entity_roll)

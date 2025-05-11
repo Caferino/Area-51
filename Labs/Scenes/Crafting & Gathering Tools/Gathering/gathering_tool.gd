@@ -9,7 +9,7 @@ class_name GatheringTool extends Tool
 ## > > child(0): ToolSprite         : Sprite2D
 ## > child(2): PickaxePlayer        : AnimationPlayer
 
-signal gather_finished()  ## Emitted after the weapon's attack ends.
+#signal gather_finished()  ## Emitted after the weapon's attack ends.
 
 var tool_stats = {
 	GameEnums.TOOL_STAT.SPEED     :   1,      # speed_scale = [-4, 4] in Godot
@@ -24,5 +24,5 @@ func _ready():
 	get_child(2).speed_scale = tool_stats[GameEnums.TOOL_STAT.SPEED]
 
 
-func _on_pickaxe_player_animation_finished(anim_name: StringName) -> void:
-	gather_finished.emit()
+#func _on_pickaxe_player_animation_finished(anim_name: StringName) -> void:
+	#gather_finished.emit()

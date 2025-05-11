@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=129 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" uid="uid://cf5eyorgrdn3q" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -373,16 +373,16 @@ max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ytxn5"]
-animation = &"idle_down"
+animation = &"roll_down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t4nr4"]
-animation = &"idle_up"
+animation = &"roll_up"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_naoxn"]
-animation = &"idle_right"
+animation = &"roll_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sr78s"]
-animation = &"idle_left"
+animation = &"roll_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5vcel"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_ytxn5")
@@ -425,6 +425,10 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5npjq"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_siqyd"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1axe4"]
 resource_local_to_scene = true
 states/End/position = Vector2(906.333, 101.037)
@@ -437,7 +441,7 @@ states/Roll/position = Vector2(778.667, 43)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_jpujk")
 states/Run/position = Vector2(607, 43)
 states/Start/position = Vector2(147, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5npjq")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5npjq"), "Roll", "End", SubResource("AnimationNodeStateMachineTransition_siqyd")]
 graph_offset = Vector2(52, -63)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_u3wnr"]
@@ -505,7 +509,30 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_47ii6"]
+animation = &"roll_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5j03i"]
+animation = &"roll_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cbb6x"]
+animation = &"roll_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_myt7e"]
+animation = &"roll_left"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_5j03i"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_47ii6")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_5j03i")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_cbb6x")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_myt7e")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rwfq6"]
 animation = &"move_down"
@@ -542,23 +569,40 @@ reset = false
 reset = false
 switch_mode = 1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_47ii6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5j03i"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cbb6x"]
+reset = false
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_myt7e"]
+reset = false
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nu4rh"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3f5lu"]
 states/End/position = Vector2(900.667, 43.4074)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_jxkt4")
-states/Idle/position = Vector2(363, 42)
+states/Idle/position = Vector2(331.296, 43.02)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_em6hf")
 states/Move/position = Vector2(608.333, 173.395)
 states/Roll/node = SubResource("AnimationNodeBlendSpace2D_5j03i")
-states/Roll/position = Vector2(900.111, 174.317)
+states/Roll/position = Vector2(902.186, 173.349)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_g4mcn")
 states/Run/position = Vector2(607.815, 40.2387)
-states/Start/position = Vector2(177, 36.0494)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e5sbt"), "Move", "Run", SubResource("AnimationNodeStateMachineTransition_003a7"), "Run", "Move", SubResource("AnimationNodeStateMachineTransition_bs2sq")]
-graph_offset = Vector2(92, 2)
+states/Start/position = Vector2(178.333, 43.1934)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e5sbt"), "Move", "Run", SubResource("AnimationNodeStateMachineTransition_003a7"), "Run", "Move", SubResource("AnimationNodeStateMachineTransition_bs2sq"), "Run", "Roll", SubResource("AnimationNodeStateMachineTransition_47ii6"), "Move", "Roll", SubResource("AnimationNodeStateMachineTransition_5j03i"), "Roll", "Run", SubResource("AnimationNodeStateMachineTransition_cbb6x"), "Roll", "Move", SubResource("AnimationNodeStateMachineTransition_myt7e"), "Roll", "End", SubResource("AnimationNodeStateMachineTransition_nu4rh")]
+graph_offset = Vector2(96, -9)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_suc2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a0x5n"]
+graph_offset = Vector2(-60, 413.333)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_3f5lu")
 nodes/Movement/position = Vector2(160, 426.667)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_suc2h")
@@ -646,6 +690,7 @@ texture = ExtResource("11_6fk20")
 
 [node name="AccessoriesComponent" parent="BodyComponent/Head/HeadArea" instance=ExtResource("10_6yihg")]
 y_sort_enabled = true
+rotation = 0.174533
 
 [node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent" node_paths=PackedStringArray("animator_tree", "animator")]
 visible = false
@@ -703,7 +748,7 @@ tree_root = SubResource("AnimationNodeBlendTree_5dsi7")
 anim_player = NodePath("../HeadAnimator")
 parameters/Movement/Idle/blend_position = Vector2(-0.675978, -0.180423)
 parameters/Movement/Move/blend_position = Vector2(-0.0344348, 0.436508)
-parameters/Movement/Roll/blend_position = Vector2(0, 0)
+parameters/Movement/Roll/blend_position = Vector2(-0.00146079, 1.07537)
 parameters/Movement/Run/blend_position = Vector2(-0.0028621, -0.56696)
 parameters/TimeScale/scale = 1.0
 
@@ -753,12 +798,11 @@ texture = ExtResource("11_6fk20")
 [node name="AccessoriesComponent" parent="BodyComponent/Torso/TorsoArea" instance=ExtResource("10_6yihg")]
 
 [node name="TorsoAnimatorTree" type="AnimationTree" parent="BodyComponent/Torso"]
-deterministic = false
 root_node = NodePath("../TorsoArea/TorsoSprite")
 tree_root = SubResource("AnimationNodeBlendTree_a0x5n")
 anim_player = NodePath("../TorsoAnimator")
 parameters/Movement/Idle/blend_position = Vector2(0, 0)
-parameters/Movement/Move/blend_position = Vector2(0, 0)
+parameters/Movement/Move/blend_position = Vector2(-0.112483, -1.04254)
 parameters/Movement/Roll/blend_position = 0.001
 parameters/Movement/Run/blend_position = Vector2(-0.00418258, -0.00797105)
 parameters/TimeScale/scale = 1.0
@@ -835,7 +879,8 @@ y_sort_enabled = true
 
 [node name="InventoryComponent" parent="." instance=ExtResource("20_oqpkj")]
 
-[connection signal="animation_finished" from="BodyComponent/Torso/TorsoAnimator" to="BodyComponent/Torso" method="_on_torso_animator_animation_finished"]
+[connection signal="animation_finished" from="BodyComponent/Torso/TorsoAnimatorTree" to="PlayerControllerComponent" method="_on_torso_animator_tree_animation_finished"]
+[connection signal="animation_finished" from="BodyComponent/Torso/TorsoAnimator" to="PlayerControllerComponent" method="_on_torso_animator_animation_finished"]
 [connection signal="area_entered" from="BodyComponent/LeftLeg/LeftLegArea" to="BodyComponent/LeftLeg" method="_on_limb_area_entered"]
 [connection signal="area_exited" from="BodyComponent/LeftLeg/LeftLegArea" to="BodyComponent/LeftLeg" method="_on_limb_area_exited"]
 [connection signal="area_entered" from="BodyComponent/RightLeg/RightLegArea" to="BodyComponent/RightLeg" method="_on_limb_area_entered"]

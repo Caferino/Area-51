@@ -8,7 +8,7 @@ class_name MeleeWeapon extends Tool
 ## > > child(1): SwordSprite         : Sprite2D
 ## > child(1): SwordAnimator         : AnimationPlayer
 
-signal attack_finished()  ## Emitted after the weapon's attack ends.
+#signal attack_finished()  ## Emitted after the weapon's attack ends.
 
 var tool_stats = {
 	GameEnums.TOOL_STAT.SPEED     :   2,      # speed_scale = [-4, 4] in Godot
@@ -24,6 +24,6 @@ func _ready():
 	get_child(1).speed_scale = tool_stats[GameEnums.TOOL_STAT.SPEED]
 
 
-## Runs after the weapon's attack animation ends.
-func _on_melee_weapon_animator_animation_finished(_anim_name: StringName):
-	attack_finished.emit()
+### Runs after the weapon's attack animation ends.
+#func _on_melee_weapon_animator_animation_finished(_anim_name: StringName):
+	#attack_finished.emit()

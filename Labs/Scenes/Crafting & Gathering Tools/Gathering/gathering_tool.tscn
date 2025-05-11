@@ -328,10 +328,10 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tmm87"]
 _data = {
 &"RESET": SubResource("Animation_5tuok"),
-&"swing_tool_down": SubResource("Animation_f7hx8"),
-&"swing_tool_left": SubResource("Animation_q517u"),
-&"swing_tool_right": SubResource("Animation_xbgwh"),
-&"swing_tool_up": SubResource("Animation_rwt0v")
+&"gather_down": SubResource("Animation_f7hx8"),
+&"gather_left": SubResource("Animation_q517u"),
+&"gather_right": SubResource("Animation_xbgwh"),
+&"gather_up": SubResource("Animation_rwt0v")
 }
 
 [node name="GatheringTool" type="Marker2D" groups=["tool"]]
@@ -347,7 +347,6 @@ position = Vector2(0, -19)
 
 [node name="ToolSprite" type="Sprite2D" parent="ToolPivot"]
 visible = false
-position = Vector2(-8.7, -10)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_22oxf")
 offset = Vector2(6, -6)

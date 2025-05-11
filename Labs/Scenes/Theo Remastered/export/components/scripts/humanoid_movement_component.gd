@@ -56,18 +56,18 @@ func attack(weapon: Tool, torso_animator: AnimationPlayer, head_animator: Animat
 
 func gather(tool: Tool, torso_animator: AnimationPlayer, head_animator: AnimationPlayer):
 	if last_direction.y < 0:                                 ## UP
-		torso_animator.play("swing_tool_up")
-		head_animator.play("swing_tool_up")
-		tool.get_child(2).play("swing_tool_up")
+		torso_animator.play("gather_up")
+		head_animator.play("gather_up")
+		tool.get_child(2).play("gather_up")
 	elif last_direction.y > 0:                               ## DOWN
-		torso_animator.play("swing_tool_down")
-		head_animator.play("swing_tool_down")
-		tool.get_child(2).play("swing_tool_down")
+		torso_animator.play("gather_down")
+		head_animator.play("gather_down")
+		tool.get_child(2).play("gather_down")
 	elif last_direction.x < 0:                                 ## LEFT
-		torso_animator.play("swing_tool_left")
-		head_animator.play("swing_tool_left")
-		tool.get_child(2).play("swing_tool_left")
+		torso_animator.play("gather_left")
+		head_animator.play("gather_left")
+		tool.get_child(2).play("gather_left")
 	elif last_direction.x > 0:                               ## RIGHT
-		torso_animator.play("swing_tool_right")
-		head_animator.play("swing_tool_right")
-		tool.get_child(2).play("swing_tool_right")
+		torso_animator.play("gather_right")
+		head_animator.play("gather_right")
+		tool.get_child(2).play("gather_right")
