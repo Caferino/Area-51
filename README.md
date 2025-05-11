@@ -294,6 +294,8 @@ Also worked on the rolling and gathering animations, they now work pretty well. 
 
 Also worked on getting the gathering tools ready, specifically mining, herbalism, and more like farming and fishing which might be added in sequels or the far future. I've been feeling burned out by all of this, I think cutting the scope by a lot should be the way, and then expand upon it until I reach my main goal. I got the assets from itch.io, yet, I plan to redraw everything at the very end, specially the Graal assets.
 
+First time trying webp videos here too, if they work well, I might try and transform all the GIFs to webp if possible.
+
 ---
 
 E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
