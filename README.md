@@ -12,7 +12,7 @@ The goal of this project is to practice common game development processes for cu
 
 **E022: GOAP AI System**
 
-![E022-1](.image/README/E022-1.webp "GOAP AI System")![E022-2](.image/README/E022-2.gif "GOAP AI System")![E022-3](.image/README/E022-3.png "GOAP AI System")
+![E022-1](.image/README/E022-1.webp "GOAP AI System")![E022-2](.image/README/E022-2.webp "GOAP AI System")![E022-3](.image/README/E022-3.png "GOAP AI System")
 
 # Experiments
 
@@ -25,19 +25,17 @@ The goal of this project is to practice common game development processes for cu
 
 **E024: Day & Night Cycle**
 
-![E024](.image/README/E024.gif "Day &amp; Night Cycle")
+![E024](.image/README/E024.webp "Day &amp; Night Cycle")
 
 Followed bitbrain's video to implement a Day Night Cycle component in the levels. I highly recommend it: [https://www.youtube.com/watch?v=HjwWe-V3nHs](https://www.youtube.com/watch?v=HjwWe-V3nHs "Day &amp; Night Cycle in under 8 minutes! Godot 4.0 Tutorial")
 
-With the use of shaders I am trying to enhance the visuals of the scene with some sunrays taken from Godot's Shaders website ([https://godotshaders.com/shader/god-rays/](https://godotshaders.com/shader/god-rays/ "God rays by pend00")) and currently looking to make the firepit illuminate in a better way, implement shadows or contrast.
-
-However, all this feels like it could increase the scope of the game if I ever try to finish this. I could leave it for the sequel or something, keep it simple for now.
+With the use of shaders I am trying to enhance the visuals of the scene with some sunrays taken from Godot's Shaders website ([https://godotshaders.com/shader/god-rays/](https://godotshaders.com/shader/god-rays/ "God rays by pend00")) and currently looking to make the firepit illuminate in a better way, implement shadows or contrast. The sample video is sped up significantly, the original idea is 10 real-life minutes = 1 in-game hour.
 
 ---
 
 **E023: Fireball + Shaders**
 
-![E023](.image/README/E023.gif "Fireball + Shaders")
+![E023](.image/README/E023.webp "Fireball + Shaders")
 
 Laid the fundation of the structure of what the magic/combat system might look like. At the same time I introduced myself to the magic of shaders to create the heatwave. I am impressed and recently very inspired by how the game Balatro managed to create, as someone else said: digital crack. Shaders will be something I must master, because I really think it makes a huge difference in 2D games more now than ever. They can be a strong addictive factor if the art is very good too, like in Balatro, holographic, the creative and colorful joker cards, the CTR old tv theme, they all blent so good. (By the way, found this cool seed to try with a Yellow Deck. It gives you the Homeless Joker Card and a +1 hand voucher in the very first shop, creating a very fun set that relies on tarot cards: 4WBAP4QZ). There are plenty of tweaks that need to be done, like hiding the shader's outline box when cast, enhance the controls and speed to make the gameplay feel better...
 
@@ -45,7 +43,7 @@ Laid the fundation of the structure of what the magic/combat system might look l
 
 **E022: GOAP AI System**
 
-![E022-1](.image/README/E022-1.webp "GOAP AI System")![E022-2](.image/README/E022-2.gif "GOAP AI System")![E022-3](.image/README/E022-3.png "GOAP AI System")
+![E022-1](.image/README/E022-1.webp "GOAP AI System")![E022-2](.image/README/E022-2.webp "GOAP AI System")![E022-3](.image/README/E022-3.png "GOAP AI System")
 
 This is it. What I dreamed about since January, almost a year ago. This is the day I pictured I'd never reach, but here it is, it's finally here. After a month and a half of hard work, I am proud to say I finally finished learning and building a GOAP AI System for my NPCs. GOAP AI, (Goal-Oriented Action Planning Artificial Intelligence), was created by Jeff Orkin around 2006 for the game F.E.A.R. I highly recommend AI and Games' video about it, including the interview with Jeff himself: [https://youtu.be/3Of2NtTYcvU?si=4kvQLxwkzxZtrNSQ](https://youtu.be/3Of2NtTYcvU?si=4kvQLxwkzxZtrNSQ "AI and Games")
 
@@ -75,7 +73,7 @@ I finally feel free.
 
 **E021: Hanging Objects**
 
-![E021-1](.image/README/E021.gif "Hanging Objects")
+![E021-1](.image/README/E021.webp "Hanging Objects")
 
 A sample of hanging objects. Used rigidbodies and a small logic to avoid pulling it in bizarre manners, that is, "hold" the hanging object for a second, then "let it go". A very simple timer to fix that innevitable bug, there was no other way around it, one-way collisions, using four segment collisions, etc. Also, small teaser of the upcoming rain mechanic. I am currently refactoring the way levels are done, by treating again, like the Human Body experiment, everything is a component in it, Space, Time... and something to play with the weather, rain, wind that moves (skews based on wind strength) the plants, seasons, precipitation, rain chance, temperature... Designing this is proving to be a challenge, so I am going to spend more time on other projects while I work this out. Not having a source of income is becoming a difficult toll too, I don't think I should continue with these anymore, I think I am not developing skills that will land me a job here in Mexico or USA, it wasn't enough.
 
