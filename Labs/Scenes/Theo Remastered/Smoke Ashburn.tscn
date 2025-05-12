@@ -690,10 +690,8 @@ texture = ExtResource("11_6fk20")
 
 [node name="AccessoriesComponent" parent="BodyComponent/Head/HeadArea" instance=ExtResource("10_6yihg")]
 y_sort_enabled = true
-rotation = 0.174533
 
 [node name="Hat" type="Marker2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent" node_paths=PackedStringArray("animator_tree", "animator")]
-visible = false
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("12_xfj4o")
@@ -740,7 +738,7 @@ parameters/TimeScale/scale = 1.0
 libraries = {
 &"": ExtResource("20_sui4d")
 }
-autoplay = "idle_left"
+autoplay = "RESET"
 
 [node name="HeadAnimatorTree" type="AnimationTree" parent="BodyComponent/Head"]
 root_node = NodePath("../HeadArea/HeadAnimatedSprite")

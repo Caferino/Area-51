@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyvo1rec1amik"]
+[gd_scene load_steps=7 format=3 uid="uid://dyvo1rec1amik"]
 
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="1_8wmd0"]
 [ext_resource type="Shader" uid="uid://cuiih7castwpk" path="res://Labs/Shaders/MultiplyShader.gdshader" id="1_mtl8j"]
 [ext_resource type="Texture2D" uid="uid://br65wfo2ovn4h" path="res://Labs/Assets/X. Resources/Structures/Walls/wall_2.jpg" id="2_nnyw4"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="2_t1c4y"]
+[ext_resource type="PackedScene" uid="uid://dxc53orbb4n83" path="res://Labs/Scenes/Level Components/Environment/level_environment_component.tscn" id="5_wxn4o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qvdvd"]
 shader = ExtResource("1_mtl8j")
@@ -12,11 +13,13 @@ shader = ExtResource("1_mtl8j")
 y_sort_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.00784314, 0.0823529, 0.113725, 0.941176)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.443137, 0.196078, 0.403922, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -33,3 +36,7 @@ position = Vector2(986, 413)
 
 [node name="Smoke Ashburn" parent="." instance=ExtResource("2_t1c4y")]
 position = Vector2(986, 490)
+
+[node name="LevelWeatherComponent" parent="." instance=ExtResource("5_wxn4o")]
+
+[editable path="LevelWeatherComponent"]
