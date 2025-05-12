@@ -13,7 +13,8 @@ func _ready() -> void:
 
 ## Checks whether the player is giving movement input every physics frame.
 func _physics_process(_delta: float) -> void:
-	if !attacking:# and !is_talking:
+	print("Checking movement? ", !rolling)
+	if !attacking and !gathering and !rolling:# and !is_talking:
 		check_movement()
 
 
@@ -26,9 +27,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if aiming:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			confirm_action()
-	elif !attacking and !is_talking and event is not InputEventMouseMotion:
+	elif !attacking and !gathering and !is_talking and event is not InputEventMouseMotion:
 		if Input.is_action_just_pressed("attack"):
 			entity_attack.emit()
+		elif Input.is_action_just_pressed("gather"):
+			entity_gather.emit()
 		elif Input.is_action_just_pressed("interact"):
 			entity_interact.emit()
 		elif Input.is_action_just_pressed("speak_to"):
@@ -61,15 +64,21 @@ func check_movement():
 		
 		if Input.is_action_pressed("sprint"):
 			if !sprinting: entity_sprint.emit()
-			sprinting = true
-			anim_state   = "Run"
+			sprinting  = true
+			anim_state = "Run"
 		else:
 			if sprinting: entity_move.emit()
-			sprinting = false
-			anim_state   = "Move"
+			sprinting  = false
+			anim_state = "Move"
 	else:
 		anim_state = "Idle"
 		moving = false
+	
+	if Input.is_action_just_pressed("roll"):
+		entity_roll.emit()
+		moving = true
+		rolling = true
+		anim_state = "Roll"
 
 
 ## Rotates the interactor's [member Marker2D.rotation].
@@ -77,9 +86,19 @@ func rotate_interactor(direction: Vector2):
 	interactor_animator["parameters/Movement/blend_position"] = direction
 
 
+func on_roll():
+	if camera_base.dragging_cam : camera_base.stop_dragging()
+	camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
+
+
 func on_move():
 	if camera_base.dragging_cam : camera_base.stop_dragging()
 	camera_base.modify_breath(-2.0, 2.0, -3.0, 3.0, 0.4)
+
+
+func on_sprint():
+	if camera_base.dragging_cam : camera_base.stop_dragging()
+	camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
 
 
 func on_stop():
@@ -88,6 +107,11 @@ func on_stop():
 
 func on_attack():
 	attacking = true   ## NOTE - Disabling this adds a pretty kickass gameplay speed for attacking, could be a potion effect
+	camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
+
+
+func on_gather():
+	gathering = true
 	camera_base.modify_breath(-7.0, 7.0, -7.0, 7.0, 0.1)
 
 
@@ -136,13 +160,17 @@ func remove_object_in_hand():
 	obj_in_hand = null
 
 
-func on_attack_finished():
-	attacking = false
-	camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+#func on_attack_finished():
+	#pass
+	# NOTE - Better to control this with the animation's signals
+	# NOTE - Will leave this function here in case it's useful for buffs or something else
+	#attacking = false
+	#camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
 
 
-func on_sprint():
-	camera_base.modify_breath(-2.0, 2.0, -6.0, 6.0, 0.2)
+#func on_gather_finished():
+	#gathering = false
+	#camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
 
 
 ##### DIALOGUE #####
@@ -168,3 +196,20 @@ func run_dialogue(dialogue):
 func dialogic_signal(arg: String):
 	if arg == "exit_test":
 		is_talking = false
+
+
+func _on_torso_animator_tree_animation_finished(anim_name: StringName) -> void:
+	print("TORSO ANIMATION FINISHED")
+	if anim_name.begins_with("roll"):
+		print("ROLL ANIMATION FINISHED")
+		rolling = false
+		camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+
+
+func _on_torso_animator_animation_finished(anim_name: StringName) -> void:
+	if anim_name.begins_with("attack"):
+		attacking = false
+		camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+	elif anim_name.begins_with("gather"):
+		gathering = false
+		camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)

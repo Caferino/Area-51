@@ -22,7 +22,8 @@ var stamina_stats: Dictionary = {
 	GameEnums.STAMINA_STAT.MAX_WALK_SPEED   :  60,
 	GameEnums.STAMINA_STAT.WALK_ACCEL       :   3,
 	GameEnums.STAMINA_STAT.MAX_SPRINT_SPEED : 120,
-	GameEnums.STAMINA_STAT.SPRINT_ACCEL     :   2
+	GameEnums.STAMINA_STAT.SPRINT_ACCEL     :   2,
+	GameEnums.STAMINA_STAT.ROLL_SPEED       :  40
 }
 
 ## The entity's body pose.

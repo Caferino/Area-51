@@ -15,9 +15,9 @@ origin = NodePath("SwordArea/SwordCollisionShape")
 
 [node name="SwordArea" type="Area2D" parent="."]
 y_sort_enabled = true
+rotation = 3.14159
 collision_layer = 2
 collision_mask = 270339
-monitoring = false
 monitorable = false
 
 [node name="SwordCollisionShape" type="CollisionShape2D" parent="SwordArea"]
@@ -26,18 +26,18 @@ rotation = -0.311607
 shape = SubResource("CapsuleShape2D_n7lfi")
 
 [node name="SwordSprite" type="Sprite2D" parent="SwordArea"]
-visible = false
 y_sort_enabled = true
 position = Vector2(0, -15)
 rotation = 3.14159
 texture = ExtResource("2_b1r06")
+flip_h = true
 region_enabled = true
-region_rect = Rect2(1, 12, 11, 22)
+region_rect = Rect2(0, 36, 14, 24)
 
 [node name="SwordAnimator" type="AnimationPlayer" parent="."]
 root_node = NodePath("../SwordArea/SwordSprite")
 libraries = {
-"": ExtResource("3_qb8gj")
+&"": ExtResource("3_qb8gj")
 }
 autoplay = "RESET"
 

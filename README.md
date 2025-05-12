@@ -283,6 +283,21 @@ I got a little addicted with particles and shaders, with trying to make the game
 
 ---
 
+**E024: First Dungeon + Rolling & Gathering**
+
+![E024-1](.image/README/E024-1.webp "First Dungeon + Rolling &amp; Gathering")![E024-2](.image/README/E024-2.png "First Dungeon + Rolling &amp; Gathering")![E024-3](.image/README/E024-3.png "First Dungeon + Rolling &amp; Gathering")
+![E024-4](.image/README/E024-4.png "First Dungeon + Rolling &amp; Gathering")
+
+A sample of the first dungeon is almost completely done. The tiles, collisions and layers, all I have left to do is expand it and start creating more rooms ala Binding of Isaac.
+
+Also worked on the rolling and gathering animations, they now work pretty well. Made sure to fix all bugs related to them, but we will see if more pop up the more complex the game becomes.
+
+Also worked on getting the gathering tools ready, specifically mining, herbalism, and more like farming and fishing which might be added in sequels or the far future. I've been feeling burned out by all of this, I think cutting the scope by a lot should be the way, and then expand upon it until I reach my main goal. I got the assets from itch.io, yet, I plan to redraw everything at the very end, specially the Graal assets.
+
+First time trying webp videos here too, if they work well, I might try and transform all the GIFs to webp if possible.
+
+---
+
 E###: Basic AI / UI / Menus & Options / Audio / Save & Load / Pause / Inventory / Cooking & Crafting Features / Scene Transitions / Code Style & Structure Remake
 
 [TBA]
