@@ -4,10 +4,11 @@ extends Marker2D
 ## NOTE WARN - If it's a herb, remove the StaticBody child node, so the player
 ## can walk through it as it should. If it's a rock, leave it.
 
-var health : float = 100.0
+@export var attributes : Resource = null ## The node's attributes/stats
+@export var animator   : AnimationPlayer = null
 
-func take_damage(item: String = ""):
-	if item == "":
+func interact(item_type: GameEnums.TOOL_TYPE):
+	if item_type == null:
 		return
 	
 	## The level should probably add it to either the group rock or herb
@@ -15,14 +16,15 @@ func take_damage(item: String = ""):
 	## Two ifs to check whether the correct tool was used, and,
 	## WARN - instead of checking for every type of tool (bronze, stone, diamond...),
 	## just use the tool's strength/damage value, to avoid so many ifs.
-	if is_in_group("RockNode"):
-		if item == "pickaxe":
+	if attributes.type == GameEnums.NODE_TYPE.ROCK:
+		if item_type == GameEnums.TOOL_TYPE.PICKAXE:
 			## Correct tool, apply damage
 			## NOTE - Should the check HP < n be here or in a signal in case
 			## other things other than a pickaxe do damage to it and I need
 			## to change the frame?
-			pass
-	elif is_in_group("HerbNode"):
-		if item == "sickle":
+			print("MINING ROCK")
+			animator.play("gathering_node/shake")
+	elif attributes.type == GameEnums.NODE_TYPE.HERB:
+		if item_type == GameEnums.TOOL_TYPE.SICKLE:
 			## Correct tool, apply damage
-			pass
+			print("CUTTING HERB")

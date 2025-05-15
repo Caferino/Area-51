@@ -5,7 +5,7 @@ var weapon_on_left_hand : bool = true           ## Boolean for the weapon's posi
 
 
 ## Rotates the weapon and animates the attack.
-func attack(weapon: Tool, torso_animator: AnimationPlayer, head_animator: AnimationPlayer):
+func attack(weapon: MeleeWeapon, torso_animator: AnimationPlayer, head_animator: AnimationPlayer):
 	if last_direction.y < 0:                                 ## UP
 		weapon.position = Vector2(0, -10)
 		weapon.rotation_degrees = -90
@@ -54,7 +54,7 @@ func attack(weapon: Tool, torso_animator: AnimationPlayer, head_animator: Animat
 	weapon_on_left_hand = !weapon_on_left_hand
 
 
-func gather(tool: Tool, torso_animator: AnimationPlayer, head_animator: AnimationPlayer):
+func gather(tool: GatheringTool, torso_animator: AnimationPlayer, head_animator: AnimationPlayer):
 	if last_direction.y < 0:                                 ## UP
 		torso_animator.play("gather_up")
 		head_animator.play("gather_up")

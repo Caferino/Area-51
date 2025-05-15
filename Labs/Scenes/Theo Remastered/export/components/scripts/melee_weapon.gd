@@ -1,29 +1,22 @@
 class_name MeleeWeapon extends Tool
 ## A warrior's best friend.
 
-## Structure should be as follow:
-## Weapon                            : Marker2D
-## > child(0): SwordArea             : Area2D
-## > > child(0): SwordCollisionShape : CollisionShape2D
-## > > child(1): SwordSprite         : Sprite2D
-## > child(1): SwordAnimator         : AnimationPlayer
-
-#signal attack_finished()  ## Emitted after the weapon's attack ends.
-
-var tool_stats = {
-	GameEnums.TOOL_STAT.SPEED     :   2,      # speed_scale = [-4, 4] in Godot
-	GameEnums.TOOL_STAT.DAMAGE    :  10,
-	GameEnums.TOOL_STAT.KNOCKBACK : 100
-}
+@export var origin   : CollisionShape2D = null ## Perfect for knockback push directions
 
 
 ## Prepares the weapon by hiding it and updating its speed stat from a database.
 func _ready():
-	get_child(0).get_child(1).visible = false
-	get_child(0).monitoring = false
-	get_child(1).speed_scale = tool_stats[GameEnums.TOOL_STAT.SPEED]
+	area.monitoring = false
+	sprite.texture  = attributes.texture
+	animator.speed_scale = attributes.speed
 
 
-### Runs after the weapon's attack animation ends.
-#func _on_melee_weapon_animator_animation_finished(_anim_name: StringName):
-	#attack_finished.emit()
+func _on_melee_weapon_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Plant"):
+		area.get_parent().take_damage(GameEnums.WEAPON_TYPE.SLASH)
+
+
+func _on_melee_weapon_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		print("get hit!")
+		body.hurt(self)

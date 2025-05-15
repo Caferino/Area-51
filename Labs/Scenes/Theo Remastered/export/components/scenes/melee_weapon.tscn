@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwntge3lvgff8"]
+
+[ext_resource type="Script" uid="uid://dljaikjhbbiy2" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/melee_weapon.gd" id="1_2xh1n"]
+[ext_resource type="AnimationLibrary" uid="uid://hw1v7gj1ldku" path="res://animations/2D Updated/2D Sword Movement Remastered.res" id="3_xs4op"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7lfi"]
+radius = 5.0
+height = 25.0
+
+[node name="MeleeWeapon" type="Marker2D" node_paths=PackedStringArray("origin", "area", "sprite", "animator") groups=["Weapon"]]
+y_sort_enabled = true
+script = ExtResource("1_2xh1n")
+origin = NodePath("MeleeWeaponArea/MeleeWeaponCollisionShape")
+area = NodePath("MeleeWeaponArea")
+sprite = NodePath("MeleeWeaponArea/MeleeWeaponSprite")
+animator = NodePath("MeleeWeaponAnimator")
+
+[node name="MeleeWeaponArea" type="Area2D" parent="."]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 270339
+monitorable = false
+
+[node name="MeleeWeaponCollisionShape" type="CollisionShape2D" parent="MeleeWeaponArea"]
+position = Vector2(-1, -15)
+rotation = -0.311607
+shape = SubResource("CapsuleShape2D_n7lfi")
+
+[node name="MeleeWeaponSprite" type="Sprite2D" parent="MeleeWeaponArea"]
+visible = false
+y_sort_enabled = true
+position = Vector2(0, -15)
+rotation = 3.14159
+region_enabled = true
+region_rect = Rect2(0, 36, 14, 24)
+
+[node name="MeleeWeaponAnimator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../MeleeWeaponArea/MeleeWeaponSprite")
+libraries = {
+&"": ExtResource("3_xs4op")
+}
+autoplay = "RESET"
+
+[connection signal="area_entered" from="MeleeWeaponArea" to="." method="_on_melee_weapon_area_area_entered"]
+[connection signal="body_entered" from="MeleeWeaponArea" to="." method="_on_melee_weapon_area_body_entered"]
+[connection signal="animation_finished" from="MeleeWeaponAnimator" to="." method="_on_melee_weapon_animator_animation_finished"]

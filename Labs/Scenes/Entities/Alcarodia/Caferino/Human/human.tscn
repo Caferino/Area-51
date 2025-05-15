@@ -15,7 +15,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="14_njryd"]
 [ext_resource type="AnimationLibrary" uid="uid://diupfaaatv8xc" path="res://animations/2D Updated/2D Human Body Movement Remastered.res" id="16_hrk1b"]
 [ext_resource type="PackedScene" uid="uid://bhknrcawdvqvk" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/attack_component.tscn" id="17_dajj8"]
-[ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/sword.tscn" id="18_cdwn2"]
+[ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/melee_weapon.tscn" id="18_cdwn2"]
 [ext_resource type="PackedScene" uid="uid://but837cn50spw" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/inventory_component.tscn" id="19_k2xmv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqh28"]

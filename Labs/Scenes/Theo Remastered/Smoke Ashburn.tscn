@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=131 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" uid="uid://cf5eyorgrdn3q" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -17,10 +17,12 @@
 [ext_resource type="AnimationLibrary" uid="uid://b1p8or84xv2i0" path="res://animations/2D Updated/2D Human Head Movement Remastered.res" id="16_m3k4p"]
 [ext_resource type="Texture2D" uid="uid://ccqunfgip4lp" path="res://Labs/Scenes/Entities/Alcarodia/Caferino/Rakshasa/black_cat_hands.png" id="17_47ii6"]
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="17_io7h4"]
-[ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/sword.tscn" id="18_vljcp"]
+[ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/melee_weapon.tscn" id="18_vljcp"]
 [ext_resource type="PackedScene" uid="uid://bojl5e2axsmkk" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/gathering_tool.tscn" id="19_oo7ol"]
+[ext_resource type="Resource" uid="uid://cn8mg5jgjckbg" path="res://Labs/Assets/X. Resources/Tools/Weapons/Melee/Swords/god_sword_1.tres" id="20_5j03i"]
 [ext_resource type="PackedScene" uid="uid://but837cn50spw" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/inventory_component.tscn" id="20_oqpkj"]
 [ext_resource type="AnimationLibrary" uid="uid://bdyf8ugjxxxjl" path="res://animations/2D Updated/2D Hat Movement Remastered.res" id="20_sui4d"]
+[ext_resource type="Resource" uid="uid://4eais248jeuh" path="res://Labs/Assets/X. Resources/Tools/Gathering/Mining/Pickaxes/stone_pickaxe.tres" id="22_cbb6x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6wl4j"]
 radius = 3.5
@@ -872,8 +874,10 @@ debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 y_sort_enabled = true
 
 [node name="MeleeWeapon" parent="BodyComponent/EquipmentComponent" instance=ExtResource("18_vljcp")]
+attributes = ExtResource("20_5j03i")
 
 [node name="GatheringTool" parent="BodyComponent/EquipmentComponent" instance=ExtResource("19_oo7ol")]
+attributes = ExtResource("22_cbb6x")
 
 [node name="InventoryComponent" parent="." instance=ExtResource("20_oqpkj")]
 

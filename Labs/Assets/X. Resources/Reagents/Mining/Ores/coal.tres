@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GatheringNodeData" load_steps=3 format=3 uid="uid://dte8mbxfmg0rw"]
+
+[ext_resource type="Script" uid="uid://djxlwj7sddiw2" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node_data.gd" id="1_5axnq"]
+[ext_resource type="Texture2D" uid="uid://dgontvxqr8413" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/coal.png" id="2_8fyey"]
+
+[resource]
+script = ExtResource("1_5axnq")
+texture = ExtResource("2_8fyey")
+type = 0
+name = "Coal"
+health = 100.0
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"

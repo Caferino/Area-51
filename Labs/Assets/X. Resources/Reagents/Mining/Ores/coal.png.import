@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgontvxqr8413"
-path="res://.godot/imported/coal.png-576cb28492e8aa17b489f6f3d3e3dcc8.ctex"
+path="res://.godot/imported/coal.png-57ad3cf83c0e955c2c4d720420c4dcea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Labs/Scenes/Collectable Items & Inventory/coal.png"
-dest_files=["res://.godot/imported/coal.png-576cb28492e8aa17b489f6f3d3e3dcc8.ctex"]
+source_file="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/coal.png"
+dest_files=["res://.godot/imported/coal.png-57ad3cf83c0e955c2c4d720420c4dcea.ctex"]
 
 [params]
 

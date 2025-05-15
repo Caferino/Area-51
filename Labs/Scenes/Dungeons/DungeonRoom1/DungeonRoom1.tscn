@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cl3u6pro2v04o"]
+[gd_scene load_steps=29 format=4 uid="uid://cl3u6pro2v04o"]
 
 [ext_resource type="Script" uid="uid://bhurk7br2x3qu" path="res://Labs/Scenes/Level Components/level.gd" id="1_1agml"]
 [ext_resource type="Texture2D" uid="uid://wf3spobotcmy" path="res://Labs/Assets/10. Tiles/Dungeons/dungeons_tilesets_1.png" id="2_537qu"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://chav0mjysm6tc" path="res://Labs/Shaders/Filters/filter_sunrays.tscn" id="8_qk6ek"]
 [ext_resource type="Shader" uid="uid://br06c4ctmc6tm" path="res://Labs/Shaders/advanced_light.gdshader" id="9_nur4d"]
 [ext_resource type="PackedScene" uid="uid://dkv2rmkdva3pp" path="res://Labs/Scenes/Level Components/Cutscenes/level_cutscenes_component.tscn" id="10_gplx8"]
+[ext_resource type="PackedScene" uid="uid://bdw6ua7uqbtmt" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn" id="11_ipuij"]
+[ext_resource type="Resource" uid="uid://dte8mbxfmg0rw" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/coal.tres" id="12_6830b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1agml"]
 texture = ExtResource("2_537qu")
@@ -1581,5 +1583,9 @@ color = Color(0.0941176, 0.0313726, 0.0352941, 0)
 
 [node name="LevelCutscenesComponent" parent="." instance=ExtResource("10_gplx8")]
 y_sort_enabled = true
+
+[node name="GatheringNode" parent="." instance=ExtResource("11_ipuij")]
+position = Vector2(1118, 734)
+attributes = ExtResource("12_6830b")
 
 [editable path="LevelSpaceComponent"]

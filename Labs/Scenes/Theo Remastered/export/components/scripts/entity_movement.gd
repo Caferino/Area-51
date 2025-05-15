@@ -155,5 +155,5 @@ func stop(entity: Entity, stop_velocity: bool):
 		entity.body_pose[limb][3] = "Idle"
 		entity.body_pose[limb][4] = "parameters/Movement/Idle/blend_position"
 		entity.body_pose[limb][5] = last_direction
-		entity.body_pose[limb][7] = entity.body.gear["MeleeWeapon"].tool_stats[GameEnums.TOOL_STAT.SPEED]
+		entity.body_pose[limb][7] = entity.body.gear["MeleeWeapon"].attributes.speed
 		move_limb(entity, limb)

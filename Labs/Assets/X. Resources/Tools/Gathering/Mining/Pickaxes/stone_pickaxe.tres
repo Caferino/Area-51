@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ToolData" load_steps=3 format=3 uid="uid://4eais248jeuh"]
+
+[ext_resource type="Script" uid="uid://crhu3oofqocav" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/tool_data.gd" id="1_31wal"]
+[ext_resource type="Texture2D" uid="uid://di1phrl881yeu" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/Mining/stone_pickaxe.png" id="2_lko27"]
+
+[resource]
+script = ExtResource("1_31wal")
+texture = ExtResource("2_lko27")
+type = 2
+name = "Stone Pickaxe"
+swings = false
+speed = 1.0
+damage = 1.0
+knockback = 0.0
+metadata/_custom_type_script = "uid://crhu3oofqocav"
