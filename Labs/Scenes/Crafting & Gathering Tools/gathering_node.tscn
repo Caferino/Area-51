@@ -1,17 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdw6ua7uqbtmt"]
+[gd_scene load_steps=10 format=3 uid="uid://bdw6ua7uqbtmt"]
 
 [ext_resource type="Script" uid="uid://bnxuwu2w0dodq" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.gd" id="1_82rdn"]
-[ext_resource type="Texture2D" uid="uid://dgontvxqr8413" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/coal.png" id="2_0mtpp"]
 [ext_resource type="Script" uid="uid://cdk187h4f3hw6" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/appearance_component.gd" id="2_3ef54"]
 [ext_resource type="Script" uid="uid://dhrme338gp407" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/static_collision_component.gd" id="4_vnmrt"]
 [ext_resource type="Script" uid="uid://cjrg047nbgec1" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/interactable_component.gd" id="5_ktxc8"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0mtpp"]
+radius = 15.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mtpp"]
 radius = 11.0
 height = 36.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0mtpp"]
-radius = 15.0
 
 [sub_resource type="Animation" id="Animation_0mtpp"]
 length = 0.001
@@ -51,18 +50,22 @@ _data = {
 &"shake": SubResource("Animation_82rdn")
 }
 
-[node name="GatheringNode" type="Marker2D" node_paths=PackedStringArray("animator")]
+[node name="GatheringNode" type="Marker2D" node_paths=PackedStringArray("animator", "sprite")]
 script = ExtResource("1_82rdn")
 animator = NodePath("NodePlayer")
+sprite = NodePath("AppearanceComponent/Sprite")
 
-[node name="AppearanceComponent" type="Node2D" parent="."]
-script = ExtResource("2_3ef54")
-metadata/_custom_type_script = "uid://cdk187h4f3hw6"
+[node name="InteractableComponent" type="Area2D" parent="." node_paths=PackedStringArray("interactable") groups=["GatheringNode"]]
+collision_layer = 268435456
+collision_mask = 0
+monitoring = false
+script = ExtResource("5_ktxc8")
+interactable = NodePath("..")
+metadata/_custom_type_script = "uid://cjrg047nbgec1"
 
-[node name="Sprite" type="Sprite2D" parent="AppearanceComponent"]
-z_index = 1
-texture = ExtResource("2_0mtpp")
-hframes = 3
+[node name="CollisionShape" type="CollisionShape2D" parent="InteractableComponent"]
+shape = SubResource("CircleShape2D_0mtpp")
+debug_color = Color(0.656611, 0.791301, 1, 0.42)
 
 [node name="StaticCollisionComponent" type="Node2D" parent="."]
 script = ExtResource("4_vnmrt")
@@ -76,19 +79,13 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0mtpp")
 debug_color = Color(0.84743, 0.37592, 0, 0.42)
 
-[node name="InteractableComponent" type="Node2D" parent="." node_paths=PackedStringArray("interactable")]
-script = ExtResource("5_ktxc8")
-interactable = NodePath("..")
-metadata/_custom_type_script = "uid://cjrg047nbgec1"
+[node name="AppearanceComponent" type="Node2D" parent="."]
+script = ExtResource("2_3ef54")
+metadata/_custom_type_script = "uid://cdk187h4f3hw6"
 
-[node name="InteractableArea" type="Area2D" parent="InteractableComponent" groups=["GatheringNode"]]
-collision_layer = 16384
-collision_mask = 0
-monitoring = false
-
-[node name="CollisionShape" type="CollisionShape2D" parent="InteractableComponent/InteractableArea"]
-shape = SubResource("CircleShape2D_0mtpp")
-debug_color = Color(0.656611, 0.791301, 1, 0.42)
+[node name="Sprite" type="Sprite2D" parent="AppearanceComponent"]
+z_index = 1
+hframes = 3
 
 [node name="NodePlayer" type="AnimationPlayer" parent="."]
 deterministic = true

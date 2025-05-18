@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgontvxqr8413"
-path="res://.godot/imported/coal.png-57ad3cf83c0e955c2c4d720420c4dcea.ctex"
+uid="uid://bkrqjdyveteyx"
+path="res://.godot/imported/fireby_debris.png-a5f64d451628f8dfc8e5c3b35b0a4e13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/coal.png"
-dest_files=["res://.godot/imported/coal.png-57ad3cf83c0e955c2c4d720420c4dcea.ctex"]
+source_file="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/Fireby/fireby_debris.png"
+dest_files=["res://.godot/imported/fireby_debris.png-a5f64d451628f8dfc8e5c3b35b0a4e13.ctex"]
 
 [params]
 

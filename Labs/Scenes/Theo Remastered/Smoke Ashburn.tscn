@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=134 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" uid="uid://cf5eyorgrdn3q" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -19,10 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://ccb3gpykxqv3n" path="res://Labs/Assets/X. Resources/Protagonist/theo_hat.png" id="17_io7h4"]
 [ext_resource type="PackedScene" uid="uid://dwntge3lvgff8" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/melee_weapon.tscn" id="18_vljcp"]
 [ext_resource type="PackedScene" uid="uid://bojl5e2axsmkk" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/gathering_tool.tscn" id="19_oo7ol"]
-[ext_resource type="Resource" uid="uid://cn8mg5jgjckbg" path="res://Labs/Assets/X. Resources/Tools/Weapons/Melee/Swords/god_sword_1.tres" id="20_5j03i"]
+[ext_resource type="Script" uid="uid://crhu3oofqocav" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/tool_data.gd" id="20_myt7e"]
 [ext_resource type="PackedScene" uid="uid://but837cn50spw" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/inventory_component.tscn" id="20_oqpkj"]
 [ext_resource type="AnimationLibrary" uid="uid://bdyf8ugjxxxjl" path="res://animations/2D Updated/2D Hat Movement Remastered.res" id="20_sui4d"]
-[ext_resource type="Resource" uid="uid://4eais248jeuh" path="res://Labs/Assets/X. Resources/Tools/Gathering/Mining/Pickaxes/stone_pickaxe.tres" id="22_cbb6x"]
+[ext_resource type="Texture2D" uid="uid://cpsi8aqw3mfvm" path="res://Labs/Assets/6. Weapons/god_sword_1.png" id="21_nu4rh"]
+[ext_resource type="Texture2D" uid="uid://di1phrl881yeu" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/Mining/stone_pickaxe.png" id="23_siqyd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6wl4j"]
 radius = 3.5
@@ -621,7 +622,32 @@ size = Vector2(12.5, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r48ac"]
 size = Vector2(1, 1)
 
-[node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body", "inventory") groups=["Player", "Protagonist"]]
+[sub_resource type="Resource" id="Resource_myt7e"]
+resource_local_to_scene = true
+script = ExtResource("20_myt7e")
+texture = ExtResource("21_nu4rh")
+type = 0
+name = "God Sword"
+swings = true
+speed = 2.0
+damage = 1.0
+knockback = 100.0
+durability = 100.0
+
+[sub_resource type="Resource" id="Resource_nu4rh"]
+resource_local_to_scene = true
+script = ExtResource("20_myt7e")
+texture = ExtResource("23_siqyd")
+type = 2
+name = "Stone Pickaxe"
+swings = false
+speed = 1.0
+damage = 1.0
+knockback = 0.0
+durability = 100.0
+metadata/_custom_type_script = "uid://crhu3oofqocav"
+
+[node name="Smoke Ashburn" type="CharacterBody2D" node_paths=PackedStringArray("lore", "health", "muscles", "controller", "body", "inventory") groups=["Entity", "Player", "Protagonist"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4097
@@ -874,10 +900,10 @@ debug_color = Color(0, 0.623529, 0.537255, 0.419608)
 y_sort_enabled = true
 
 [node name="MeleeWeapon" parent="BodyComponent/EquipmentComponent" instance=ExtResource("18_vljcp")]
-attributes = ExtResource("20_5j03i")
+attributes = SubResource("Resource_myt7e")
 
 [node name="GatheringTool" parent="BodyComponent/EquipmentComponent" instance=ExtResource("19_oo7ol")]
-attributes = ExtResource("22_cbb6x")
+attributes = SubResource("Resource_nu4rh")
 
 [node name="InventoryComponent" parent="." instance=ExtResource("20_oqpkj")]
 

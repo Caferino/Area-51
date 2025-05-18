@@ -4,8 +4,9 @@ class_name InventoryComponent extends Node2D
 signal inventory_change()  ## Emits whenever something meaningful happens in the inventory.
 
 var size : int = 5
-var items : Dictionary = {  ## The entity's inventory.
-	"Logs" : 0
+var items : Dictionary = {  ## The entity's inventory. WIP - Not dynamic. For testing for now
+	"Logs" : 0,
+	"Coal Chunk": 0
 }   
 
 

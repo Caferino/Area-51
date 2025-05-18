@@ -11,4 +11,4 @@ func _ready():
 
 func _on_tool_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("GatheringNode"):
-		area.get_parent().interact(attributes.type)
+		area.interactable.interact(self)
