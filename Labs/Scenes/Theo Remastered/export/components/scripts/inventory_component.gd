@@ -32,4 +32,3 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Collectable"):
 		area.pick_up()
 		items[area.item_name] += area.item_qty
-		#print(items[area.item_name])   DEBUG

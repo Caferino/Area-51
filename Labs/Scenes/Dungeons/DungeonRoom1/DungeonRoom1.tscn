@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dkv2rmkdva3pp" path="res://Labs/Scenes/Level Components/Cutscenes/level_cutscenes_component.tscn" id="10_gplx8"]
 [ext_resource type="PackedScene" uid="uid://bdw6ua7uqbtmt" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn" id="11_ipuij"]
 [ext_resource type="Script" uid="uid://djxlwj7sddiw2" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node_data.gd" id="12_qk6ny"]
-[ext_resource type="Texture2D" uid="uid://dgontvxqr8413" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/Coal/coal.png" id="13_qk6ek"]
-[ext_resource type="PackedScene" uid="uid://dhg5pejxmfs23" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/Coal/coal_debris.tscn" id="14_nur4d"]
+[ext_resource type="Texture2D" uid="uid://dgontvxqr8413" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_ore.png" id="13_qk6ek"]
+[ext_resource type="PackedScene" uid="uid://dhg5pejxmfs23" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_debris.tscn" id="14_nur4d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1agml"]
 texture = ExtResource("2_537qu")

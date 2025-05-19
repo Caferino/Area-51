@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://u2jx22apfv2p"]
+
+[ext_resource type="Script" uid="uid://cy57narkqigym" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory_item.gd" id="1_1w7jh"]
+[ext_resource type="Texture2D" uid="uid://cnar07qdmt3xs" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/5. Silver/silver.png" id="2_njfag"]
+
+[resource]
+script = ExtResource("1_1w7jh")
+texture = ExtResource("2_njfag")
+name = "Silver"
+groups = Array[String](["Ore"])
+metadata/_custom_type_script = "uid://cy57narkqigym"

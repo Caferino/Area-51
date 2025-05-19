@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GatheringNodeData" load_steps=3 format=3 uid="uid://k5keorerwy72"]
+
+[ext_resource type="Script" uid="uid://djxlwj7sddiw2" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node_data.gd" id="1_s12lv"]
+[ext_resource type="Texture2D" uid="uid://c4qw4eja7hnm3" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/6. Diamond/diamond_ore.png" id="2_ogfea"]
+
+[resource]
+script = ExtResource("1_s12lv")
+texture = ExtResource("2_ogfea")
+type = 0
+name = "Diamond Ore"
+health = 1200.0
+max_health = 1200.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 1)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"

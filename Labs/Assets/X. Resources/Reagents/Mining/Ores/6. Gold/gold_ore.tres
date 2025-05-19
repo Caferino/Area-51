@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GatheringNodeData" load_steps=3 format=3 uid="uid://dnhcav2ype4wc"]
+
+[ext_resource type="Script" uid="uid://djxlwj7sddiw2" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node_data.gd" id="1_1tr3i"]
+[ext_resource type="Texture2D" uid="uid://depladsxaql1g" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/6. Gold/gold_ore.png" id="2_er3eg"]
+
+[resource]
+script = ExtResource("1_1tr3i")
+texture = ExtResource("2_er3eg")
+type = 0
+name = "Gold Ore"
+health = 100.0
+max_health = 100.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 3)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"

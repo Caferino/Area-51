@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bk8bpc3ig5hdv"]
+
+[ext_resource type="Script" uid="uid://cy57narkqigym" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory_item.gd" id="1_1db53"]
+[ext_resource type="Texture2D" uid="uid://crn0snss8r35r" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/7. Mithril/mithril.png" id="2_28rkc"]
+
+[resource]
+script = ExtResource("1_1db53")
+texture = ExtResource("2_28rkc")
+name = "Mithril"
+groups = Array[String](["Ore"])
+metadata/_custom_type_script = "uid://cy57narkqigym"

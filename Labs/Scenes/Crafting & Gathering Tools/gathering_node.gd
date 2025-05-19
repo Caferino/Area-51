@@ -53,5 +53,5 @@ func change_frame():
 
 func drop_reagents():
 	var amount = randi_range(attributes.drop_rate.x, attributes.drop_rate.y)
-	for i in range(1, amount):
+	for i in range(0, amount):
 		ItemManager.drop_item("coal_chunk", global_position, attributes.loot_radius, self.get_parent())

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dt5xr637nsibx"]
+
+[ext_resource type="Script" uid="uid://cy57narkqigym" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory_item.gd" id="1_rtjtx"]
+[ext_resource type="Texture2D" uid="uid://qiphegkt087p" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/6. Diamond/diamond.png" id="2_2inwf"]
+
+[resource]
+script = ExtResource("1_rtjtx")
+texture = ExtResource("2_2inwf")
+name = "Diamond"
+groups = Array[String](["Gem"])
+metadata/_custom_type_script = "uid://cy57narkqigym"
