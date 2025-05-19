@@ -12,13 +12,17 @@ The goal of this project is to practice common game development processes for cu
 
 **E022: GOAP AI System**
 
-![E022-1](.image/README/E022-1.webp "GOAP AI System")![E022-2](.image/README/E022-2.webp "GOAP AI System")![E022-3](.image/README/E022-3.png "GOAP AI System")
+![E022-1](.image/README/E022-1.webp "GOAP AI System")
+![E022-2](.image/README/E022-2.webp "GOAP AI System")
+![E022-3](.image/README/E022-3.png "GOAP AI System")
 
 # Experiments
 
 **E025: First Dungeon + Rolling & Gathering**
 
-![E025-1](.image/README/E025-1.webp "First Dungeon + Rolling &amp; Gathering")![E025-2](.image/README/E025-2.png "First Dungeon + Rolling &amp; Gathering")![E025-3](.image/README/E025-3.png "First Dungeon + Rolling &amp; Gathering")
+![E025-1](.image/README/E025-1.webp "First Dungeon + Rolling &amp; Gathering")
+![E025-2](.image/README/E025-2.png "First Dungeon + Rolling &amp; Gathering")
+![E025-3](.image/README/E025-3.png "First Dungeon + Rolling &amp; Gathering")
 ![E025-4](.image/README/E025-4.png "First Dungeon + Rolling &amp; Gathering")
 
 ---
@@ -43,7 +47,9 @@ Laid the fundation of the structure of what the magic/combat system might look l
 
 **E022: GOAP AI System**
 
-![E022-1](.image/README/E022-1.webp "GOAP AI System")![E022-2](.image/README/E022-2.webp "GOAP AI System")![E022-3](.image/README/E022-3.png "GOAP AI System")
+![E022-1](.image/README/E022-1.webp "GOAP AI System")
+![E022-2](.image/README/E022-2.webp "GOAP AI System")
+![E022-3](.image/README/E022-3.png "GOAP AI System")
 
 This is it. What I dreamed about since January, almost a year ago. This is the day I pictured I'd never reach, but here it is, it's finally here. After a month and a half of hard work, I am proud to say I finally finished learning and building a GOAP AI System for my NPCs. GOAP AI, (Goal-Oriented Action Planning Artificial Intelligence), was created by Jeff Orkin around 2006 for the game F.E.A.R. I highly recommend AI and Games' video about it, including the interview with Jeff himself: [https://youtu.be/3Of2NtTYcvU?si=4kvQLxwkzxZtrNSQ](https://youtu.be/3Of2NtTYcvU?si=4kvQLxwkzxZtrNSQ "AI and Games")
 
@@ -81,7 +87,8 @@ A sample of hanging objects. Used rigidbodies and a small logic to avoid pulling
 
 **E020: Plants & Grass**
 
-![E020-1](.image/README/E020-1.png "Plants &amp; Grass")![E020-2](.image/README/E020-2.png "Plants &amp; Grass")
+![E020-1](.image/README/E020-1.png "Plants &amp; Grass")
+![E020-2](.image/README/E020-2.png "Plants &amp; Grass")
 
 Can generate a set amount on the given area. Planning to see if concurrency can be used for the upcoming wind simulation, or something to help this great amount of sprites. Might create circular and triangular areas to be able to cover absolutely any 2D surface possible.
 
@@ -89,13 +96,12 @@ Can generate a set amount on the given area. Planning to see if concurrency can 
 
 **E019: AI Refactor**
 
-![E019-1](.image/README/E019-1.png "AI Refactor")![E019-2](.image/README/E019-2.png "AI Refactor")
-
+![E019-1](.image/README/E019-1.png "AI Refactor")
+![E019-2](.image/README/E019-2.png "AI Refactor")
 ![E019-3](.image/README/E019-3.png "AI Refactor")
-
 ![E019-4](.image/README/E019-4.png "AI Refactor")
-
-![E019-5](.image/README/E019-5.gif "AI Refactor")![E019-6](https://file+.vscode-resource.vscode-cdn.net/home/caferino/Documents/Projects/Games/Area%2051/.image/README/E019-6.gif "AI Refactor")
+![E019-5](.image/README/E019-5.gif "AI Refactor")
+![E019-6](.image/README/E019-6.gif "AI Refactor")
 
 Another big one. Spent about a month refactoring the AI system, mimicking the structure I used for the human body: there is a controller for every entity's AI that gives it the direction to move or action to do based on the current situation or context. I ended creating my own baby AI system with no help by upgrading the Utility AI I had with State Machines, a kind of hybrid that simply runs a Start(), Update() and End() function given the Utility AI's Agent chosen priority action. It is still not complete, I have yet to implement the combat, which requires me to design a Situational Awareness system, something that judges the current situation more profoundly, to play with its priorities. For this, I read that GOAP is best, although it is also the heaviest regarding performance. I'd use it only for humanoid enemies, not small critters like a bat, which shine the most when using simpler AIs like my Utility/STM hybrid one. GOAP, and possibly in the future, neural training and machine learning if possible, will be used just for learning purposes. Although if successful, I think it'd be crazy. Godot has made it so easy to design everything in a very scalable way; I just have spent a lot of time designing these things, trials and errors and such to come up with the best framework possible that would allow to create maybe a good line of 2D RPGs, with open-world capabilities in mind. I feel like I am in the most juicy part of what I have dreamed to reach. It's finally here, designing the best AI possible, the situational awareness. Feels like it's going to be a bunch of if/elses, with simple math, but a very, and I mean, very difficult design. I am impressed by Elden Ring's AI and some shooters, I will need to invest a lot of time reading about them and then try to create my own. However, since that takes a lot of grind, I have been working on other side projects, to destress myself from all this a little, also because I really need a job already and Mexico doesn't really have any game dev companies, purely web dev, which I am starting to give a wider shot at in Area52 (just learnt the basics of .NET Blazor, to make a website prototype where I plan to showcase this progress in a better way someday). Anything to get a damn job, I feel like I've proven that I can get stuff done, I hope.
 
@@ -112,7 +118,8 @@ In summary, this might be one of the most important experiments if this ever bec
 
 **E018: Caferino, Bizck & Raz**
 
-![E018-1](.image/README/E018-1.png "Caferino, Bizck &amp; Raz")![E018-2](.image/README/E018-2.png "Caferino, Bizck &amp; Raz")
+![E018-1](.image/README/E018-1.png "Caferino, Bizck &amp; Raz")
+![E018-2](.image/README/E018-2.png "Caferino, Bizck &amp; Raz")
 
 Created three new Autoload scripts that are inspired on the three gods of the world of Alcarodia. Caferino is responsible for all the creatures we consider humanoids and high-fantasy (orcs, gnomes, goblins, fairies, elves...). Bizck is responsible for the anima mundi and flora-like creatures (any animal we know including fantasy ones like a pegasus, a unicorn or a kitsune, also plants like ents). Raz is responsible for all the monsters and the unknown, those in the deepest corners of their mind. The scripts serve as intermediaries between the creatures' instances and the game. For now, they can simply be called to spawn an entity which the spawner places in a random spot around it (WIP). I see them like databases themselves, kind of. Migth need to see if preloading too many entities lags the game or increases the initial loading screen, something like that, not sure yet.
 
@@ -128,7 +135,10 @@ The camera has been refactored to be more efficent and easy to use. It now shake
 
 **E016: Movement System Refactor and Documentation**
 
-![E016-3](.image/README/E016-3.png "Movement System Refactor and Documentation")![E016-4](.image/README/E016-4.png "Movement System Refactor and Documentation")![E016-2](.image/README/E016-2.png "Movement System Refactor and Documentation")![E016-1](.image/README/E016-1.gif "Movement System Refactor and Documentation")
+![E016-3](.image/README/E016-3.png "Movement System Refactor and Documentation")
+![E016-4](.image/README/E016-4.png "Movement System Refactor and Documentation")
+![E016-2](.image/README/E016-2.png "Movement System Refactor and Documentation")
+![E016-1](.image/README/E016-1.gif "Movement System Refactor and Documentation")
 
 I finally did something I have wanted to do for a long time: modularize an NPC or Player Character in a scalable way, make it work like a real human body. Now, the player's character, instead of being one single massive script file, it is now made up of reusable components that define what the entity is. For example, the new BodyComponent allows to build/structure bodies of any kind, like a human with missing limbs, a bat, a dog, or anything really. It is also responsible for detecting inputs, whatever the limbs touch or interact with, and carrying accessories (separately on each limb to make it easier to move them along at the same time) and equipment like tools and weapons. The idea of the HealthComponent is to allow for some interesting features like diseases or potion effects in the future; might need to move the entity's stats here for that. The PlayerControllerComponent is for the player to move the current entity it's attached to (could be one or multiple, this is still WIP and way too far ahead). I plan to create an AIControllerComponent for everything else to be controlled as NPCs, using the state machines created in E009.
 
@@ -142,7 +152,8 @@ Also played with Godot's documentation tools to document everything done in this
 
 **E015:** Crafting, Shop, Item Stats, Cooldowns & Random Loot
 
-![E015-1](.image/README/E015-1.gif "Crafting, Shop, Item Stats &amp; Random Loot")    ![E015-2](.image/README/E015-2.gif "Crafting, Shop, Item Stats &amp; Random Loot")
+![E015-1](.image/README/E015-1.gif "Crafting, Shop, Item Stats &amp; Random Loot")
+![E015-2](.image/README/E015-2.gif "Crafting, Shop, Item Stats &amp; Random Loot")
 
 ---
 
@@ -154,7 +165,8 @@ Also played with Godot's documentation tools to document everything done in this
 
 **E013:** Modular Inventory System
 
-![E013-1](.image/README/E013-1.gif "Modular Inventory System")![E013-2](.image/README/E013-2.png "Modular Inventory System")
+![E013-1](.image/README/E013-1.gif "Modular Inventory System")
+![E013-2](.image/README/E013-2.png "Modular Inventory System")
 
 Followed YouTuber Calame321's Modular Inventory System tutorial (https://youtu.be/dMYv6InQgno?si=YqIiAl5yCIHZYhw0), which was mind-blowing. It might appear as a tutorial focused on just the UI and inventory, but it actually teaches you how to pretty much build an entire game, with only the music, enemies, animations and plot missing, that's it. In just 10 hours, I felt I learnt what schools and job experiences teach you in hundreds. Throughout two weeks I followed him, writing and listening at my own pace, absorbing as much as I could to understand the system, not just copy and paste it. So far, I feel I grasped a good amount, half of it, which is allowing me to easily connect it in the project I have. I'd just need to expand it with a new interactable system. I am thinking of adding an "interact()" and "interact_with(item)" functions to every interactable object or NPC in the game, saved in a JSON as an array of ENUMS "interacts_with" or something similar. With this, I think I could easily create modular and editable interactions with almost absolutely anything, maybe, I'll find out.
 
@@ -168,7 +180,11 @@ Followed YouTuber Calame321's Modular Inventory System tutorial (https://youtu.b
 
 **E011:** TileSets and TileMaps
 
-![E011-1](.image/README/E011-1.png "TileSets and TileMaps") ![E011-2](.image/README/E011-2.png "TileSets and TileMaps")![E011-3](.image/README/E011-3.png "TileSets and TileMaps")![E011-4](.image/README/E011-4.png "TileSets and TileMaps")![E011-5](.image/README/E011-5.png "TileSets and TileMaps")
+![E011-1](.image/README/E011-1.png "TileSets and TileMaps")
+![E011-2](.image/README/E011-2.png "TileSets and TileMaps")
+![E011-3](.image/README/E011-3.png "TileSets and TileMaps")
+![E011-4](.image/README/E011-4.png "TileSets and TileMaps")
+![E011-5](.image/README/E011-5.png "TileSets and TileMaps")
 
 This was easily the most insane "experiment" (torture) of them all. I can see now why they say art asset generation takes the longest. Even with already-existing assets from a game I have high regards to, Graal Online Classic, it took me almost the entire month to complete just enough for one level or tilemap. Organized and separated hundreds of assets with cool 2D pixel art (from all 4 games, Classic - Medieval Fantasy, Era - Grand Theft Auto on the phone, OlWest - Old West, Zone - Futuristic) that I'd obviously never publish unless I hired 2D artists to redraw them all, but that I plan to use to learn for now nonetheless. If it ever came down to it, it'd be poetic to do what they did with Zelda a Link to the Past; I'd be creating my own Graal, but with blackjack and hookers.
 
@@ -182,7 +198,11 @@ I always put the digital versions (eBooks) for free 5 days every 3 months~
 
 **E010:** Smarter Lucas + Main Menu Mockup + Project Structure
 
-![E010](.image/README/E010-1.gif "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](.image/README/E010-2.gif "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-3.png "Smarter Lucas + Main Menu Mockup + Project Structure")![E010](.image/README/E010-4.png "Smarter Lucas + Main Menu Mockup + Project Structure") ![E010](.image/README/E010-5.png "Smarter Lucas + Main Menu Mockup + Project Structure")
+![E010](.image/README/E010-1.gif "Smarter Lucas + Main Menu Mockup + Project Structure")
+![E010](.image/README/E010-2.gif "Smarter Lucas + Main Menu Mockup + Project Structure")
+![E010](.image/README/E010-3.png "Smarter Lucas + Main Menu Mockup + Project Structure")
+![E010](.image/README/E010-4.png "Smarter Lucas + Main Menu Mockup + Project Structure")
+![E010](.image/README/E010-5.png "Smarter Lucas + Main Menu Mockup + Project Structure")
 
 Got busy all month editing and publishing my newest book: "Tales of Alcarodia, Evergreen", Spanish edition. The Kindle and English editions will come out soon too, free for 5 days every 3 months in Amazon, might get busy again. Could only work on a few things meanwhile, like tweaking Lucas' pathfinding, but it needs more work, he flickers badly when touching the edge of his navigation area. There are plenty of fixes, but I am deciding which one could be best, the most "realistic" one. Same for the project's structure, I know it'd be exageratted for a 2D game like this, but I want to learn what it would be like to manage such a project, those that aim to simulate real life as close as possible. Also, I made an idle spritesheet of the pug, there were none online, in case anyone wants it. Both the png and GIMP's xcf are at ***Labs/Assets/X. Resources/Animals/lucas idle sheet final***
 
@@ -192,7 +212,8 @@ For the menu, I plan to learn how to animate it either in the engine or outside,
 
 **E009:** Basic Context-Map and Steering AI
 
-![E009-1](.image/README/E009-1.gif "Context-Map and Steering AI") ![E009-2](.image/README/E009-2.gif "Context-Map and Steering AI")
+![E009-1](.image/README/E009-1.gif "Context-Map and Steering AI")
+![E009-2](.image/README/E009-2.gif "Context-Map and Steering AI")
 
 I'm Batman now
 
@@ -206,15 +227,16 @@ I'm Batman now
 
 **E007:** Melee Attacking + Particles
 
-![E007-1](.image/README/E007-1.gif "Melee Attacking")    ![E007-2](.image/README/E007-2.gif "Particles")
+![E007-1](.image/README/E007-1.gif "Melee Attacking")
+![E007-2](.image/README/E007-2.gif "Particles")
 
 ---
 
 **E006:** Human-Held Camera Effect + RNG Batch Growth for Plants + Plant bending
 
-![E006-2](.image/README/E006-2.gif "Humand-Held Camera Effect")    ![E006-3](.image/README/E006-3.gif "Plant Bending")
-
-  ![E006-1](.image/README/E006-1.gif "Farming Room")
+![E006-2](.image/README/E006-2.gif "Humand-Held Camera Effect")
+![E006-3](.image/README/E006-3.gif "Plant Bending")
+![E006-1](.image/README/E006-1.gif "Farming Room")
 
 10,000 reactive plants!
 
@@ -240,7 +262,8 @@ I'm Batman now
 
 **E002:** Obligatory Minecraft Terrain Generator
 
-![E002](.image/README/E002-1.gif "Minecraft Terrain Generator")    ![E002](.image/README/E002-2.gif "Minecraft Terrain Generator")
+![E002](.image/README/E002-1.gif "Minecraft Terrain Generator")
+![E002](.image/README/E002-2.gif "Minecraft Terrain Generator")
 
 ---
 
