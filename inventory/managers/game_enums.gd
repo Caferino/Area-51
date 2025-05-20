@@ -87,10 +87,31 @@ enum PLANT_STAT {
 	CURRENT_ROTATION
 }
 
-enum TOOL_STAT {
+## NOTE - Deprecated/Unused
+enum TOOL {
+	TYPE,
+	NAME,
+	SWINGS,
+	TEXTURE,
 	SPEED,
 	DAMAGE,
-	KNOCKBACK
+	KNOCKBACK,
+	DURABILITY
+}
+
+enum TOOL_TYPE { 
+	SWORD,
+	HAMMER,
+	PICKAXE,
+	HOE,
+	RAKE,
+	SICKLE,
+	SCYTHE
+}
+
+enum NODE_TYPE { 
+	ROCK,
+	HERB
 }
 
 enum STAMINA_STAT {

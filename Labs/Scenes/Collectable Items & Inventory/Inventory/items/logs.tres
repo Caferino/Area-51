@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://d4de6ndv12o5w"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://d4de6ndv12o5w"]
 
 [ext_resource type="Script" uid="uid://cy57narkqigym" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory_item.gd" id="1_fpn4k"]
 [ext_resource type="Texture2D" uid="uid://d3mcc0wbx32at" path="res://Labs/Scenes/Collectable Items & Inventory/Logs.png" id="2_lglll"]
 
 [resource]
 script = ExtResource("1_fpn4k")
-name = "Logs"
 texture = ExtResource("2_lglll")
+name = "Logs"
 groups = Array[String](["Wood"])

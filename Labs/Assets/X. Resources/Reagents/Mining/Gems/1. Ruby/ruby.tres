@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cvwemjpn3rhb8"]
+
+[ext_resource type="Script" uid="uid://cy57narkqigym" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory_item.gd" id="1_8k54b"]
+[ext_resource type="Texture2D" uid="uid://lapbfer66ok8" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/1. Ruby/ruby.png" id="2_qxluf"]
+
+[resource]
+script = ExtResource("1_8k54b")
+texture = ExtResource("2_qxluf")
+name = "Ruby"
+groups = Array[String](["Gem"])
+metadata/_custom_type_script = "uid://cy57narkqigym"

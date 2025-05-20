@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://t4tdn3wtr4wb"]
+
+[ext_resource type="Script" uid="uid://cy57narkqigym" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory_item.gd" id="1_fph01"]
+[ext_resource type="Texture2D" uid="uid://cwykrl30l5lb3" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/10. Runite/runite.png" id="2_16v6w"]
+
+[resource]
+script = ExtResource("1_fph01")
+texture = ExtResource("2_16v6w")
+name = "Runite"
+groups = Array[String](["Ore"])
+metadata/_custom_type_script = "uid://cy57narkqigym"

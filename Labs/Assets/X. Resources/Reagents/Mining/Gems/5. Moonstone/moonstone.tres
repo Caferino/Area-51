@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bggkk58xbrtms"]
+
+[ext_resource type="Script" uid="uid://cy57narkqigym" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory_item.gd" id="1_cqgtx"]
+[ext_resource type="Texture2D" uid="uid://dfhevf7wxmwkr" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/5. Moonstone/moonstone.png" id="2_k2auf"]
+
+[resource]
+script = ExtResource("1_cqgtx")
+texture = ExtResource("2_k2auf")
+name = "Moonstone"
+groups = Array[String](["Gem"])
+metadata/_custom_type_script = "uid://cy57narkqigym"

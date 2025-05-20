@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhg5pejxmfs23"]
+
+[ext_resource type="Script" uid="uid://cefdbxdtsra57" path="res://Labs/Assets/X. Resources/Reagents/debris.gd" id="1_e8tke"]
+[ext_resource type="Texture2D" uid="uid://cd81aveht8va" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_debris.png" id="2_e8tke"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27q6i"]
+radius = 3.0
+
+[sub_resource type="Animation" id="Animation_yksu1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DebrisSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e8tke"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DebrisSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yksu1"]
+_data = {
+&"RESET": SubResource("Animation_yksu1"),
+&"fade_out": SubResource("Animation_e8tke")
+}
+
+[node name="Debris" type="RigidBody2D" node_paths=PackedStringArray("sprite", "animator") groups=["Debris"]]
+gravity_scale = 0.0
+max_contacts_reported = 1
+linear_damp = 2.0
+angular_damp = 1.0
+script = ExtResource("1_e8tke")
+sprite = NodePath("DebrisSprite")
+animator = NodePath("DebrisAnimator")
+
+[node name="DebrisCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_27q6i")
+
+[node name="DebrisSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_e8tke")
+hframes = 8
+
+[node name="DebrisAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yksu1")
+}
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="animation_finished" from="DebrisAnimator" to="." method="_on_debris_animator_animation_finished"]

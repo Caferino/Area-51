@@ -60,6 +60,13 @@ func handle_movement(entity: Entity, direction: Vector2, is_sprinting: bool):
 		handle_animation(entity, direction, is_sprinting)
 	elif entity.velocity != Vector2.ZERO: 
 		handle_animation(entity, direction, is_sprinting)
+	
+	## Push rigidbodies
+	for i in entity.get_slide_collision_count():
+		var collision = entity.get_slide_collision(i)
+		if collision.get_collider().is_in_group("Debris"):
+			collision.get_collider().apply_impulse(-collision.get_normal() * (randf() * 100 + 100))
+			collision.get_collider().apply_torque_impulse(randf() * 125 + 75)
 
 
 ## Handles the [param entity]'s animation.
@@ -155,5 +162,5 @@ func stop(entity: Entity, stop_velocity: bool):
 		entity.body_pose[limb][3] = "Idle"
 		entity.body_pose[limb][4] = "parameters/Movement/Idle/blend_position"
 		entity.body_pose[limb][5] = last_direction
-		entity.body_pose[limb][7] = entity.body.gear["MeleeWeapon"].tool_stats[GameEnums.TOOL_STAT.SPEED]
+		entity.body_pose[limb][7] = entity.body.gear["MeleeWeapon"].attributes.speed
 		move_limb(entity, limb)

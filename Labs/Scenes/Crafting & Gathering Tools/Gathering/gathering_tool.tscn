@@ -1,9 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bojl5e2axsmkk"]
 
 [ext_resource type="Texture2D" uid="uid://di1phrl881yeu" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/Mining/stone_pickaxe.png" id="1_22oxf"]
-[ext_resource type="Script" uid="uid://bk78s4hind1b7" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/Mining/pickaxe.gd" id="1_f7hx8"]
+[ext_resource type="Script" uid="uid://dfdfqaght314i" path="res://Labs/Scenes/Crafting & Gathering Tools/Gathering/gathering_tool.gd" id="1_f7hx8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7hx8"]
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_5tuok"]
 resource_name = "RESET"
@@ -44,6 +45,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ToolArea:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToolArea:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_f7hx8"]
 resource_name = "swing_tool_down"
@@ -79,10 +104,10 @@ tracks/2/path = NodePath("ToolPivot/ToolSprite:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1]
+"values": [3]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -119,6 +144,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToolArea:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, 18), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToolArea:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_q517u"]
@@ -196,6 +245,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToolArea:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(-19, -23), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToolArea:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_xbgwh"]
 resource_name = "swing_tool_right"
@@ -246,7 +319,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [3]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -271,6 +344,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ToolArea:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(19, -23), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ToolArea:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_rwt0v"]
@@ -298,7 +395,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.09, 0.21),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [2, 1, 3]
+"values": [3, 2, 1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -324,6 +421,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ToolArea:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ToolArea:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tmm87"]
 _data = {
@@ -334,12 +455,20 @@ _data = {
 &"gather_up": SubResource("Animation_rwt0v")
 }
 
-[node name="GatheringTool" type="Marker2D" groups=["tool"]]
+[node name="GatheringTool" type="Marker2D" node_paths=PackedStringArray("tool_area", "sprite", "animator")]
 script = ExtResource("1_f7hx8")
+tool_area = NodePath("ToolArea")
+sprite = NodePath("ToolPivot/ToolSprite")
+animator = NodePath("ToolPlayer")
 
-[node name="ToolArea" type="Area2D" parent="."]
+[node name="ToolArea" type="Area2D" parent="." groups=["Tool"]]
+collision_layer = 0
+collision_mask = 268435456
+monitoring = false
+monitorable = false
 
 [node name="ToolCollisionShape" type="CollisionShape2D" parent="ToolArea"]
+position = Vector2(0, 1.90735e-06)
 shape = SubResource("CircleShape2D_f7hx8")
 
 [node name="ToolPivot" type="Marker2D" parent="."]
@@ -347,6 +476,7 @@ position = Vector2(0, -19)
 
 [node name="ToolSprite" type="Sprite2D" parent="ToolPivot"]
 visible = false
+position = Vector2(-8.7, 20)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_22oxf")
 offset = Vector2(6, -6)
@@ -359,4 +489,5 @@ libraries = {
 }
 autoplay = "RESET"
 
+[connection signal="area_entered" from="ToolArea" to="." method="_on_tool_area_area_entered"]
 [connection signal="animation_finished" from="ToolPlayer" to="." method="_on_pickaxe_player_animation_finished"]

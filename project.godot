@@ -122,7 +122,7 @@ Enemy=""
 Plant=""
 Tree=""
 Speaker="Any entity that can talk to the player."
-GatheringNode="Rocks, Herbs..."
+Entity=""
 
 [input]
 
@@ -361,7 +361,7 @@ gather={
 2d_physics/layer_26="Player Projectiles"
 2d_physics/layer_27="Enemy Projectiles"
 2d_physics/layer_28="Flying NPC"
-2d_physics/layer_29="Trigger Zones"
+2d_physics/layer_29="Gathering Triggers"
 2d_physics/layer_30="Invisible Colliders"
 2d_physics/layer_31="Temporary Colliders"
 2d_physics/layer_32="Collision Outlines"

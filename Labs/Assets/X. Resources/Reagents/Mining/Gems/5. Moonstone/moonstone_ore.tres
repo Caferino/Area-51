@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GatheringNodeData" load_steps=3 format=3 uid="uid://cx3jd84tlj6ry"]
+
+[ext_resource type="Script" uid="uid://djxlwj7sddiw2" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node_data.gd" id="1_gs4al"]
+[ext_resource type="Texture2D" uid="uid://dfhevf7wxmwkr" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/5. Moonstone/moonstone.png" id="2_8afoe"]
+
+[resource]
+script = ExtResource("1_gs4al")
+texture = ExtResource("2_8afoe")
+type = 0
+name = "Fireby Ore"
+health = 800.0
+max_health = 800.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 1)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"

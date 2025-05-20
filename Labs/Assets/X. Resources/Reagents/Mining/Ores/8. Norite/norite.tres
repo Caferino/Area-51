@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://mmhiduhkc54s"]
+
+[ext_resource type="Script" uid="uid://cy57narkqigym" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory_item.gd" id="1_sdaru"]
+[ext_resource type="Texture2D" uid="uid://dj1gxu21d45jh" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/8. Norite/norite.png" id="2_cn6pu"]
+
+[resource]
+script = ExtResource("1_sdaru")
+texture = ExtResource("2_cn6pu")
+name = "Norite"
+groups = Array[String](["Ore"])
+metadata/_custom_type_script = "uid://cy57narkqigym"

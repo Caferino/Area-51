@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://ck3bc1whsyd7l"]
+
+[ext_resource type="Script" uid="uid://cy57narkqigym" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/inventory_item.gd" id="1_737kw"]
+[ext_resource type="Texture2D" uid="uid://mb4emfj4mix3" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/2. Sapphire/sapphire.png" id="2_do33w"]
+
+[resource]
+script = ExtResource("1_737kw")
+texture = ExtResource("2_do33w")
+name = "Sapphire"
+groups = Array[String](["Gem"])
+metadata/_custom_type_script = "uid://cy57narkqigym"

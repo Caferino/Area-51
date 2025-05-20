@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://ccultavct12gd"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_npb63"]
+[ext_resource type="Texture2D" uid="uid://cd81aveht8va" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_debris.png" id="2_3akbs"]
+
+[resource]
+script = ExtResource("1_npb63")
+texture = ExtResource("2_3akbs")
+name = "Coal Debris"

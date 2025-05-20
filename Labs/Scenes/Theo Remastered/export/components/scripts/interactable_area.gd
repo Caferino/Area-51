@@ -1,4 +1,5 @@
 class_name InteractableArea extends Area2D
+## DEPRECATED
 
 @export var parent : Marker2D
 

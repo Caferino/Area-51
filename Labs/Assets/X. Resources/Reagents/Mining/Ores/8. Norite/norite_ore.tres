@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GatheringNodeData" load_steps=3 format=3 uid="uid://c37gk1ygeya34"]
+
+[ext_resource type="Script" uid="uid://djxlwj7sddiw2" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node_data.gd" id="1_xrfrg"]
+[ext_resource type="Texture2D" uid="uid://0bp0yk6jiekg" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/8. Norite/norite_ore.png" id="2_q55tw"]
+
+[resource]
+script = ExtResource("1_xrfrg")
+texture = ExtResource("2_q55tw")
+type = 0
+name = "Norite Ore"
+health = 500.0
+max_health = 500.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 3)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"

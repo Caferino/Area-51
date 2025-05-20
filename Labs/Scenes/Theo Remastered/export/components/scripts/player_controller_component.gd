@@ -13,7 +13,6 @@ func _ready() -> void:
 
 ## Checks whether the player is giving movement input every physics frame.
 func _physics_process(_delta: float) -> void:
-	print("Checking movement? ", !rolling)
 	if !attacking and !gathering and !rolling:# and !is_talking:
 		check_movement()
 
@@ -199,9 +198,7 @@ func dialogic_signal(arg: String):
 
 
 func _on_torso_animator_tree_animation_finished(anim_name: StringName) -> void:
-	print("TORSO ANIMATION FINISHED")
 	if anim_name.begins_with("roll"):
-		print("ROLL ANIMATION FINISHED")
 		rolling = false
 		camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
 

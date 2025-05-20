@@ -1,4 +1,7 @@
-class_name Tool extends Node
-## A basic tool.
+class_name Tool extends Marker2D
+## A human's best friend.
 
-@export var origin : CollisionShape2D = null  ## The ColisionShape's position is perfect for this
+@export var attributes : Resource         = null ## The tool's attributes/stats
+@export var tool_area  : Area2D           = null ## The tool's area
+@export var sprite     : Sprite2D         = null ## The tool's appearance
+@export var animator   : AnimationPlayer  = null ## The tool's animator
