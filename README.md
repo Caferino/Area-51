@@ -18,6 +18,12 @@ The goal of this project is to practice common game development processes for cu
 
 # Experiments
 
+**E026: Gathering System**
+
+![E026](.image/README/E026.webp "Gathering System")
+
+---
+
 **E025: First Dungeon + Rolling & Gathering**
 
 ![E025-1](.image/README/E025-1.webp "First Dungeon + Rolling &amp; Gathering")
