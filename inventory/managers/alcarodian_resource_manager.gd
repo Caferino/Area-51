@@ -9,7 +9,7 @@ var sprites: Dictionary = {
 	"gold"                 : preload("res://Labs/Scenes/Collectable Items & Inventory/Gold.png"),
 	"logs"                 : preload("res://Labs/Scenes/Collectable Items & Inventory/Logs.png"),
 	"gem"                  : preload("res://Labs/Scenes/Collectable Items & Inventory/Gem.png"),
-	"coal_chunk"           : preload("res://Labs/Assets/X. Resources/Reagents/Mining/Ores/Coal/coal_chunk.png"),
+	"coal_chunk"           : preload("res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal.png"),
 	"chestplate"           : preload("res://inventory/resources/sprites/items/chestplate.png"),
 	"crystal"              : preload("res://inventory/resources/sprites/items/crystal.png"),
 	"gold_coin"            : preload("res://inventory/resources/sprites/items/gold_coin.png"),

@@ -455,9 +455,9 @@ _data = {
 &"gather_up": SubResource("Animation_rwt0v")
 }
 
-[node name="GatheringTool" type="Marker2D" node_paths=PackedStringArray("area", "sprite", "animator")]
+[node name="GatheringTool" type="Marker2D" node_paths=PackedStringArray("tool_area", "sprite", "animator")]
 script = ExtResource("1_f7hx8")
-area = NodePath("ToolArea")
+tool_area = NodePath("ToolArea")
 sprite = NodePath("ToolPivot/ToolSprite")
 animator = NodePath("ToolPlayer")
 

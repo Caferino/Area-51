@@ -7,11 +7,11 @@
 radius = 5.0
 height = 25.0
 
-[node name="MeleeWeapon" type="Marker2D" node_paths=PackedStringArray("origin", "area", "sprite", "animator") groups=["Weapon"]]
+[node name="MeleeWeapon" type="Marker2D" node_paths=PackedStringArray("origin", "tool_area", "sprite", "animator") groups=["Weapon"]]
 y_sort_enabled = true
 script = ExtResource("1_2xh1n")
 origin = NodePath("MeleeWeaponArea/MeleeWeaponCollisionShape")
-area = NodePath("MeleeWeaponArea")
+tool_area = NodePath("MeleeWeaponArea")
 sprite = NodePath("MeleeWeaponArea/MeleeWeaponSprite")
 animator = NodePath("MeleeWeaponAnimator")
 

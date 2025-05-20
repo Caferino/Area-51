@@ -4,7 +4,7 @@ class_name GatheringTool extends Tool
 
 ## Prepares the tool by hiding it and updating its speed stat from a database.
 func _ready():
-	area.monitoring = false
+	tool_area.monitoring = false
 	sprite.texture  = attributes.texture
 	animator.speed_scale = attributes.speed
 

@@ -1,3 +1,4 @@
+@tool
 extends ActionLeaf
 
 ## wander_time for move duration, wait_time for "turning-frequency"

@@ -263,10 +263,21 @@ func drop_item(item, global_position, loot_radius, scene):
 		
 		collectable.setup(item)
 		collectable.global_position = global_position
-		scene.add_child(collectable)
 		
-		collectable.drop(loot_radius)
+		scene.call_deferred("add_child", collectable)
+		collectable.call_deferred("drop", loot_radius)
 
+
+func drop_debris(object, global_position, radius, scene):
+	if ItemManager.has_resource(object):
+		var object_data = ItemManager.get_resource(object)
+		var debris = ItemManager.get_resource("debris").instantiate()
+		
+		debris.setup(object_data)
+		debris.global_position = global_position
+		
+		scene.call_deferred("add_child", debris)
+		debris.call_deferred("drop", radius)
 
 
 ################# ################# #################

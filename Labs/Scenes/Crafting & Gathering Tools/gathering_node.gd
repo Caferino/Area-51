@@ -36,6 +36,7 @@ func take_damage(damage: float):
 	
 	if attributes.health <= 0:
 		## WIP - Explode Animation...
+		drop_debris()
 		drop_reagents()
 		queue_free()
 
@@ -51,7 +52,13 @@ func change_frame():
 		sprite.frame = 2
 
 
+func drop_debris():
+	var amount = randi_range(5, 15)
+	for i in range(0, amount):
+		ItemManager.drop_debris("coal" + "_debris", global_position, attributes.loot_radius, self.get_parent())
+
+
 func drop_reagents():
 	var amount = randi_range(attributes.drop_rate.x, attributes.drop_rate.y)
 	for i in range(0, amount):
-		ItemManager.drop_item("coal_chunk", global_position, attributes.loot_radius, self.get_parent())
+		ItemManager.drop_item("coal", global_position, attributes.loot_radius, self.get_parent())

@@ -51,6 +51,7 @@ _data = {
 }
 
 [node name="GatheringNode" type="Marker2D" node_paths=PackedStringArray("animator", "sprite")]
+y_sort_enabled = true
 script = ExtResource("1_82rdn")
 animator = NodePath("NodePlayer")
 sprite = NodePath("AppearanceComponent/Sprite")
@@ -80,11 +81,14 @@ shape = SubResource("CapsuleShape2D_0mtpp")
 debug_color = Color(0.84743, 0.37592, 0, 0.42)
 
 [node name="AppearanceComponent" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("2_3ef54")
 metadata/_custom_type_script = "uid://cdk187h4f3hw6"
 
 [node name="Sprite" type="Sprite2D" parent="AppearanceComponent"]
 z_index = 1
+y_sort_enabled = true
+offset = Vector2(0, -4)
 hframes = 3
 
 [node name="NodePlayer" type="AnimationPlayer" parent="."]
