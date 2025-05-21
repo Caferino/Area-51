@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://cl8cra3t2s0yf"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_mconp"]
+[ext_resource type="Texture2D" uid="uid://dhunmius4sdfl" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/8. Dragonsoul/dragonsoul_debris.png" id="2_pmo7g"]
+
+[resource]
+script = ExtResource("1_mconp")
+texture = ExtResource("2_pmo7g")
+name = "Dragonsoul Debris"

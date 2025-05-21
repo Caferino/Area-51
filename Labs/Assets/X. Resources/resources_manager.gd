@@ -1,29 +1,33 @@
 extends Node
 
+## ResourcePreloaders
 var managers : Dictionary = {
-	"Items": null,
-	"Debris": null,
-	"Weapons": null,
-	"Reagents": null,
-	"Gathering": null,
-	"Structures": null,
-	"Collectables": null
+	"Armor"      : null,
+	"Debris"     : null,
+	"Weapons"    : null,
+	"Reagents"   : null,
+	"Gathering"  : null,
+	"Structures" : null
 }
+
+## Commonly Used Nodes
+var collectable_node = preload("res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.tscn")
+var gathering_node   = preload("res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn")
+var debris_node      = preload("res://Labs/Assets/X. Resources/Reagents/debris.tscn")
 
 ## StructureManager
 var curr_structure : Node2D = null
-var curr_area : Area2D = null
-var valid_spot : bool = false
+var curr_area      : Area2D = null
+var valid_spot     : bool   = false
 
 
 func _ready():
-	managers["Items"] = $Items
-	managers["Debris"] = $Debris
-	managers["Weapons"] = $Weapons
-	managers["Reagents"] = $Reagents
-	managers["Gathering"] = $Gathering
+	managers["Armor"]      = $Armor
+	managers["Debris"]     = $Debris
+	managers["Weapons"]    = $Weapons
+	managers["Reagents"]   = $Reagents
+	managers["Gathering"]  = $Gathering
 	managers["Structures"] = $Structures
-	managers["Collectables"] = $Collectables
 
 
 ################# ############# #################
@@ -34,7 +38,7 @@ func drop_item(manager_name: String, item_name: String, global_position: Vector2
 	var manager = managers.get(manager_name)
 	if manager and manager.has_resource(item_name):
 		var item = manager.get_resource(item_name)
-		var collectable = managers["Collectables"].get_resource("collectable").instantiate()
+		var collectable = collectable_node.instantiate()
 		
 		collectable.setup(item)
 		collectable.global_position = global_position
@@ -47,7 +51,7 @@ func drop_debris(manager_name: String, object: String, global_position: Vector2,
 	var manager = managers.get(manager_name)
 	if manager and manager.has_resource(object):
 		var object_data = manager.get_resource(object)
-		var debris = manager.get_resource("debris").instantiate()
+		var debris = debris_node.instantiate()
 		
 		debris.setup(object_data)
 		debris.global_position = global_position

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://cmdabrana1ug3"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_bgeg5"]
+[ext_resource type="Texture2D" uid="uid://bkln84rar8pb6" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/5. Silver/silver_debris.png" id="2_dbaen"]
+
+[resource]
+script = ExtResource("1_bgeg5")
+texture = ExtResource("2_dbaen")
+name = "Silver Debris"

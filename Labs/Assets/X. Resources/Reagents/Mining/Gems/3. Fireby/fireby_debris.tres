@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://mjvugqoeqn8g"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_xod78"]
+[ext_resource type="Texture2D" uid="uid://bkrqjdyveteyx" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/3. Fireby/fireby_debris.png" id="2_on6lh"]
+
+[resource]
+script = ExtResource("1_xod78")
+texture = ExtResource("2_on6lh")
+name = "Fireby Debris"

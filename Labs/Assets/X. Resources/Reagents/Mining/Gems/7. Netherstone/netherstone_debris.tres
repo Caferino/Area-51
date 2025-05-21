@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://qpkhup4lfmrg"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_18ipl"]
+[ext_resource type="Texture2D" uid="uid://cy6cv14xewy7v" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/7. Netherstone/netherstone_debris.png" id="2_p2bug"]
+
+[resource]
+script = ExtResource("1_18ipl")
+texture = ExtResource("2_p2bug")
+name = "Netherstone Debris"

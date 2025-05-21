@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://2pkky1bcoq4l"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_n13ja"]
+[ext_resource type="Texture2D" uid="uid://p6s2ofy6etbq" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/2. Copper/copper_debris.png" id="2_jeeuu"]
+
+[resource]
+script = ExtResource("1_n13ja")
+texture = ExtResource("2_jeeuu")
+name = "Copper Debris"
