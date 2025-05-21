@@ -37,4 +37,4 @@ func _on_growth_timer_timeout() -> void:
 
 
 func drop_logs():
-	ItemManager.drop_item("logs", global_position, loot_radius, self.get_parent())
+	ResourcesManager.drop_item("Reagents", "logs", global_position, loot_radius, self.get_parent())

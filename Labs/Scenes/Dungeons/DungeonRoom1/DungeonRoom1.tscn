@@ -1485,6 +1485,18 @@ shader_parameter/will_smooth_shade = true
 shader_parameter/band_decay_rate = 0.5
 shader_parameter/light_strength_modifier = 1.0
 
+[sub_resource type="Resource" id="Resource_8q7gq"]
+resource_local_to_scene = true
+script = ExtResource("12_qk6ny")
+texture = ExtResource("13_qk6ek")
+type = 0
+name = "Coal"
+health = 10.0
+max_health = 10.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 3)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
 [sub_resource type="Resource" id="Resource_qk6ny"]
 resource_local_to_scene = true
 script = ExtResource("12_qk6ny")
@@ -1510,18 +1522,6 @@ drop_rate = Vector2i(1, 3)
 metadata/_custom_type_script = "uid://djxlwj7sddiw2"
 
 [sub_resource type="Resource" id="Resource_nur4d"]
-resource_local_to_scene = true
-script = ExtResource("12_qk6ny")
-texture = ExtResource("13_qk6ek")
-type = 0
-name = "Coal"
-health = 10.0
-max_health = 10.0
-loot_radius = Vector2(30, 30)
-drop_rate = Vector2i(1, 3)
-metadata/_custom_type_script = "uid://djxlwj7sddiw2"
-
-[sub_resource type="Resource" id="Resource_gplx8"]
 resource_local_to_scene = true
 script = ExtResource("12_qk6ny")
 texture = ExtResource("13_qk6ek")
@@ -1635,18 +1635,18 @@ y_sort_enabled = true
 
 [node name="GatheringNode2" parent="." instance=ExtResource("11_ipuij")]
 position = Vector2(781, 706)
-attributes = SubResource("Resource_qk6ny")
+attributes = SubResource("Resource_8q7gq")
 
 [node name="GatheringNode" parent="." instance=ExtResource("11_ipuij")]
 position = Vector2(710, 597)
-attributes = SubResource("Resource_qk6ek")
+attributes = SubResource("Resource_qk6ny")
 
 [node name="GatheringNode3" parent="." instance=ExtResource("11_ipuij")]
 position = Vector2(902, 681)
-attributes = SubResource("Resource_nur4d")
+attributes = SubResource("Resource_qk6ek")
 
 [node name="GatheringNode4" parent="." instance=ExtResource("11_ipuij")]
 position = Vector2(977, 602)
-attributes = SubResource("Resource_gplx8")
+attributes = SubResource("Resource_nur4d")
 
 [editable path="LevelSpaceComponent"]

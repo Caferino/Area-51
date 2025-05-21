@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://br84sjqmwhxph"]
+
+[ext_resource type="Script" uid="uid://by833jbb0ks0e" path="res://Labs/Assets/X. Resources/resources_manager.gd" id="1_3xf1x"]
+[ext_resource type="Resource" uid="uid://ccultavct12gd" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_debris.tres" id="2_btkg3"]
+[ext_resource type="Resource" uid="uid://j3hvrrqh71eu" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal.tres" id="2_m2xls"]
+[ext_resource type="PackedScene" uid="uid://dhg5pejxmfs23" path="res://Labs/Assets/X. Resources/Reagents/debris.tscn" id="3_0vdo1"]
+[ext_resource type="Resource" uid="uid://d4de6ndv12o5w" path="res://Labs/Scenes/Collectable Items & Inventory/Inventory/items/logs.tres" id="3_btkg3"]
+[ext_resource type="PackedScene" uid="uid://ccrxttes5b64y" path="res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.tscn" id="5_btkg3"]
+[ext_resource type="PackedScene" uid="uid://da476plesi1hp" path="res://Labs/Scenes/Interactables/Firepit/firepit.tscn" id="6_r20e6"]
+
+[node name="ResourcesManager" type="Node"]
+script = ExtResource("1_3xf1x")
+
+[node name="Items" type="ResourcePreloader" parent="."]
+
+[node name="Debris" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("coal_debris", "debris"), [ExtResource("2_btkg3"), ExtResource("3_0vdo1")]]
+
+[node name="Weapons" type="ResourcePreloader" parent="."]
+
+[node name="Reagents" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("coal", "logs"), [ExtResource("2_m2xls"), ExtResource("3_btkg3")]]
+
+[node name="Gathering" type="ResourcePreloader" parent="."]
+
+[node name="Structures" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("firepit"), [ExtResource("6_r20e6")]]
+
+[node name="Collectables" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("collectable"), [ExtResource("5_btkg3")]]
