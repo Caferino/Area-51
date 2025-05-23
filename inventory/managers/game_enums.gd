@@ -87,7 +87,6 @@ enum PLANT_STAT {
 	CURRENT_ROTATION
 }
 
-## NOTE - Deprecated/Unused
 enum TOOL {
 	TYPE,
 	NAME,
@@ -144,6 +143,15 @@ enum WEATHER {
 	RAIN_STRENGTH,
 	RAIN_DIRECTION,
 	RAIN_FREQUENCY,
+}
+
+enum TILE_TYPE {
+	NONE,
+	SHALLOW_WATER,
+	DEEP_WATER,
+	DIRT,
+	GRASS
+	## Could add more like glass, lava, fire, void, air, cloud, wood...
 }
 
 
