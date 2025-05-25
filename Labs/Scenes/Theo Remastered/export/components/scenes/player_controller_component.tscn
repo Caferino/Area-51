@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://baq33xt06du5y"]
+[gd_scene load_steps=18 format=3 uid="uid://baq33xt06du5y"]
 
 [ext_resource type="Script" uid="uid://dvwpvbbkgi1bq" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/player_controller_component.gd" id="1_y6i1j"]
 [ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="2_7bdkx"]
@@ -116,6 +116,10 @@ radius = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4g4u8"]
 radius = 75.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mvba8"]
+radius = 3.5
+height = 20.0
+
 [node name="PlayerControllerComponent" type="Node2D" node_paths=PackedStringArray("camera_base", "interactor_area", "interactor_animator")]
 script = ExtResource("1_y6i1j")
 camera_base = NodePath("Camera Base")
@@ -142,7 +146,7 @@ parameters/Movement/blend_position = Vector2(-0.281217, -0.157143)
 
 [node name="InteractorAnimator" type="AnimationPlayer" parent="InteractorArea"]
 libraries = {
-"": SubResource("AnimationLibrary_k7x51")
+&"": SubResource("AnimationLibrary_k7x51")
 }
 
 [node name="LootingArea" type="Area2D" parent="." groups=["Player"]]
@@ -157,8 +161,20 @@ shape = SubResource("CircleShape2D_sa4hy")
 collision_layer = 0
 collision_mask = 16777216
 
-[node name="CollisionShape" type="CollisionShape2D" parent="DialogueArea"]
+[node name="DialogueCollisionShape" type="CollisionShape2D" parent="DialogueArea"]
 shape = SubResource("CircleShape2D_4g4u8")
+
+[node name="AreaTrigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32768
+monitorable = false
+
+[node name="AreaTriggerCollisionShape" type="CollisionShape2D" parent="AreaTrigger"]
+position = Vector2(0, 12.5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mvba8")
+debug_color = Color(0.560483, 0.401925, 0.986207, 0.42)
 
 [connection signal="body_entered" from="DialogueArea" to="." method="_on_dialogue_area_body_entered"]
 [connection signal="body_exited" from="DialogueArea" to="." method="_on_dialogue_area_body_exited"]
+[connection signal="area_entered" from="AreaTrigger" to="." method="_on_area_trigger_area_entered"]

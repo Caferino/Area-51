@@ -98,7 +98,6 @@ func _on_limb_interact(entered: bool, limb_name: String, area: Area2D):
 		elif limb_name == "RightLeg":
 			if entered : area.get_parent().interact( 0.1, 0.2, "shake")
 			else       : area.get_parent().interact( 0.0, 0.2, "tilt_back")
-	
 
 
 ## Runs whenever the player (if controlled by one), interacts with something.

@@ -27,7 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			confirm_action()
 	elif !attacking and !gathering and !is_talking and event is not InputEventMouseMotion:
-		if Input.is_action_just_pressed("attack"):
+		if Input.is_action_just_pressed("attack") and !rolling:
 			entity_attack.emit()
 		elif Input.is_action_just_pressed("gather"):
 			entity_gather.emit()
@@ -210,3 +210,8 @@ func _on_torso_animator_animation_finished(anim_name: StringName) -> void:
 	elif anim_name.begins_with("gather"):
 		gathering = false
 		camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+
+
+func _on_area_trigger_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Door"):
+		get_tree().call_deferred("change_scene_to_file", area.goes_to)

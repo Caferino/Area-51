@@ -665,6 +665,7 @@ inventory = NodePath("InventoryComponent")
 position = Vector2(0, 12.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6wl4j")
+debug_color = Color(1.44392e-06, 0.634627, 0.426822, 0.42)
 
 [node name="LoreComponent" parent="." instance=ExtResource("2_joc08")]
 

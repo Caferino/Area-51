@@ -27,7 +27,7 @@ func _ready():
 	stamina_stats[GameEnums.STAMINA_STAT.WALK_ACCEL]       =   3
 	stamina_stats[GameEnums.STAMINA_STAT.MAX_SPRINT_SPEED] = 150
 	stamina_stats[GameEnums.STAMINA_STAT.SPRINT_ACCEL]     =   2
-	stamina_stats[GameEnums.STAMINA_STAT.ROLL_SPEED]       =  40
+	stamina_stats[GameEnums.STAMINA_STAT.ROLL_SPEED]       = 200
 	
 	body_pose["Head"]  = [Vector2(0, -13), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
 	body_pose["Torso"] = [Vector2(0, 0), 0, "parameters/Movement/playback", "Idle", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 2.0]

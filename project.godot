@@ -124,6 +124,7 @@ Plant=""
 Tree=""
 Speaker="Any entity that can talk to the player."
 Entity=""
+Door="Changes the scene"
 
 [input]
 
