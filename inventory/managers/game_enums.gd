@@ -150,7 +150,8 @@ enum TILE_TYPE {
 	SHALLOW_WATER,
 	DEEP_WATER,
 	DIRT,
-	GRASS
+	GRASS,
+	CHAIR
 	## Could add more like glass, lava, fire, void, air, cloud, wood...
 }
 

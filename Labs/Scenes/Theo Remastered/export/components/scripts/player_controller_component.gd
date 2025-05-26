@@ -2,6 +2,7 @@ class_name PlayerControllerComponent extends EntityController
 ## The entity's [color=gold]player controller.
 
 @export var camera_base         : CameraBase     ## The player's camera base.
+@export var area_trigger        : Area2D         ## The entity's feet, trigger areas, walk sounds...
 @export var interactor_area     : Area2D         ## The interactor's monitoring area.
 @export var interactor_animator : AnimationTree  ## The interactor's animator (for rotation).
 # TODO @export var looting_area  : Area2D         ## The player's looting pick-up range.
@@ -15,6 +16,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if !attacking and !gathering and !rolling:# and !is_talking:
 		check_movement()
+		check_tile_type()
 
 
 ## Runs whenever there is an [InputEvent] to check whether it's an attack or interaction.
@@ -78,6 +80,11 @@ func check_movement():
 		moving = true
 		rolling = true
 		anim_state = "Roll"
+
+
+## Checks the tile the entity is currently standing on.
+func check_tile_type():
+	SignalManager.check_tile_type.emit(Vector2i(area_trigger.global_position), self)
 
 
 ## Rotates the interactor's [member Marker2D.rotation].

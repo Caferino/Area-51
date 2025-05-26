@@ -14,6 +14,7 @@ var attacking   : bool     = false      ## Is the entity currently attacking?
 var sprinting   : bool     = false      ## Is the entity currently sprinting?
 var moving      : bool     = false      ## Is the entity currently moving?
 var swimming    : bool     = false      ## Is the entity currently in deep water?
+var sitting     : bool     = false      ## Is the entity currently sitting down?
 var rolling     : bool     = false      ## Is the entity currently rolling?
 var gathering   : bool     = false      ## Is the entity currently gathering?
 var aiming      : bool     = false      ## Currently aiming or selecting a spot?

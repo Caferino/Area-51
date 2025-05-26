@@ -120,9 +120,10 @@ radius = 75.0
 radius = 3.5
 height = 20.0
 
-[node name="PlayerControllerComponent" type="Node2D" node_paths=PackedStringArray("camera_base", "interactor_area", "interactor_animator")]
+[node name="PlayerControllerComponent" type="Node2D" node_paths=PackedStringArray("camera_base", "area_trigger", "interactor_area", "interactor_animator")]
 script = ExtResource("1_y6i1j")
 camera_base = NodePath("Camera Base")
+area_trigger = NodePath("AreaTrigger")
 interactor_area = NodePath("InteractorArea")
 interactor_animator = NodePath("InteractorArea/InteractorTree")
 

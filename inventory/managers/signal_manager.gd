@@ -36,6 +36,9 @@ signal saving_game()
 signal connect_levels(level:Level)
 signal time_tick(day:int, hour:int, minute:int)
 
+# Level
+signal check_tile_type(position:Vector2i, controller:EntityController)
+
 ## Created by me, to connect the player/world/entities with the UI
 signal in_entity_vision_area(entered:bool)
 signal entity_order(order:int)  ## Maybe change to String/StringName
