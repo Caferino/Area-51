@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://dgjd7sol6gsuy"]
+[gd_scene load_steps=149 format=3 uid="uid://dgjd7sol6gsuy"]
 
 [ext_resource type="Script" uid="uid://cf5eyorgrdn3q" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.gd" id="1_c7twf"]
 [ext_resource type="PackedScene" uid="uid://c76t7hm5vr72p" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/lore_component.tscn" id="2_joc08"]
@@ -299,6 +299,31 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pci5s"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nite0"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1845h"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jr1wo"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_nu4rh"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pci5s")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_nite0")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_1845h")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_jr1wo")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2e1kg"]
 advance_mode = 2
 
@@ -312,6 +337,8 @@ states/Roll/node = SubResource("AnimationNodeBlendSpace2D_ytxn5")
 states/Roll/position = Vector2(930.333, 33.6667)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_nr4ve")
 states/Run/position = Vector2(740.667, 35.3333)
+states/Sit/node = SubResource("AnimationNodeBlendSpace2D_nu4rh")
+states/Sit/position = Vector2(458, 128)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_2e1kg")]
 graph_offset = Vector2(106, -9)
 
@@ -425,6 +452,31 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wmpnl"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yv1wa"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ec50s"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7dvu2"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_myt7e"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_wmpnl")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_yv1wa")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ec50s")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_7dvu2")
+blend_point_3/pos = Vector2(-1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5npjq"]
 advance_mode = 2
 
@@ -443,9 +495,11 @@ states/Roll/node = SubResource("AnimationNodeBlendSpace2D_5vcel")
 states/Roll/position = Vector2(778.667, 43)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_jpujk")
 states/Run/position = Vector2(607, 43)
+states/Sit/node = SubResource("AnimationNodeBlendSpace2D_myt7e")
+states/Sit/position = Vector2(450, 129)
 states/Start/position = Vector2(147, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5npjq"), "Roll", "End", SubResource("AnimationNodeStateMachineTransition_siqyd")]
-graph_offset = Vector2(52, -63)
+graph_offset = Vector2(18, 6)
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_u3wnr"]
 
@@ -562,6 +616,31 @@ min_space = Vector2(-1.1, -1.1)
 max_space = Vector2(1.1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5vcel"]
+animation = &"sit_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vmo4h"]
+animation = &"sit_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sr0av"]
+animation = &"sit_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhhg6"]
+animation = &"sit_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_wmpnl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_5vcel")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_vmo4h")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_sr0av")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_qhhg6")
+blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1.1, -1.1)
+max_space = Vector2(1.1, 1.1)
+blend_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e5sbt"]
 advance_mode = 2
 
@@ -591,13 +670,15 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3f5lu"]
 states/End/position = Vector2(900.667, 43.4074)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_jxkt4")
-states/Idle/position = Vector2(331.296, 43.02)
+states/Idle/position = Vector2(331.296, 44.5808)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_em6hf")
 states/Move/position = Vector2(608.333, 173.395)
 states/Roll/node = SubResource("AnimationNodeBlendSpace2D_5j03i")
 states/Roll/position = Vector2(902.186, 173.349)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_g4mcn")
 states/Run/position = Vector2(607.815, 40.2387)
+states/Sit/node = SubResource("AnimationNodeBlendSpace2D_wmpnl")
+states/Sit/position = Vector2(331.296, 173.744)
 states/Start/position = Vector2(178.333, 43.1934)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_e5sbt"), "Move", "Run", SubResource("AnimationNodeStateMachineTransition_003a7"), "Run", "Move", SubResource("AnimationNodeStateMachineTransition_bs2sq"), "Run", "Roll", SubResource("AnimationNodeStateMachineTransition_47ii6"), "Move", "Roll", SubResource("AnimationNodeStateMachineTransition_5j03i"), "Roll", "Run", SubResource("AnimationNodeStateMachineTransition_cbb6x"), "Roll", "Move", SubResource("AnimationNodeStateMachineTransition_myt7e"), "Roll", "End", SubResource("AnimationNodeStateMachineTransition_nu4rh")]
 graph_offset = Vector2(96, -9)
@@ -605,7 +686,7 @@ graph_offset = Vector2(96, -9)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_suc2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a0x5n"]
-graph_offset = Vector2(-60, 413.333)
+graph_offset = Vector2(-126.851, 314)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_3f5lu")
 nodes/Movement/position = Vector2(160, 426.667)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_suc2h")
@@ -761,6 +842,7 @@ parameters/Movement/Idle/blend_position = Vector2(-0.249869, -0.135507)
 parameters/Movement/Move/blend_position = Vector2(-0.307311, 0.103623)
 parameters/Movement/Roll/blend_position = Vector2(0, 0)
 parameters/Movement/Run/blend_position = Vector2(0, 0)
+parameters/Movement/Sit/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
 [node name="HatAnimator" type="AnimationPlayer" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat"]
@@ -777,6 +859,7 @@ parameters/Movement/Idle/blend_position = Vector2(-0.675978, -0.180423)
 parameters/Movement/Move/blend_position = Vector2(-0.0344348, 0.436508)
 parameters/Movement/Roll/blend_position = Vector2(-0.00146079, 1.07537)
 parameters/Movement/Run/blend_position = Vector2(-0.0028621, -0.56696)
+parameters/Movement/Sit/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
 [node name="HeadAnimator" type="AnimationPlayer" parent="BodyComponent/Head"]
@@ -832,6 +915,7 @@ parameters/Movement/Idle/blend_position = Vector2(0, 0)
 parameters/Movement/Move/blend_position = Vector2(-0.112483, -1.04254)
 parameters/Movement/Roll/blend_position = 0.001
 parameters/Movement/Run/blend_position = Vector2(-0.00418258, -0.00797105)
+parameters/Movement/Sit/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
 
 [node name="TorsoAnimator" type="AnimationPlayer" parent="BodyComponent/Torso"]

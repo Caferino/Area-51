@@ -35,19 +35,9 @@ func check_tile_type(position: Vector2i, controller: EntityController):
 		if data != null:
 			var tile_type = data.get_custom_data("tile_type")
 			if tile_type != 0 or tilemap == space.tilemaps.floor:
-				print(tile_type)  ## DEBUG
-				
 				controller.swimming = false
 				controller.sitting  = false
 				
-				## TODO - if tile_type == 1, 2, 3... animation + sound (opt)
-				# TILE_TYPE ==
-					# 0 NONE
-					# 1 SHALLOW_WATER
-					# 2 DEEP_WATER
-					# 3 DIRT
-					# 4 GRASS
-					# 5 CHAIR
 				if tile_type == 1:      ## SHALLOW_WATER
 					# TODO - Water walk sound, NO swimming here
 					pass
@@ -61,10 +51,10 @@ func check_tile_type(position: Vector2i, controller: EntityController):
 					# TODO - Walking on grass sound
 					pass
 				elif tile_type == 5:    ## CHAIR
-					controller.sitting = true
-				print("Sitting = ", controller.sitting, "  ", "Swimming = ", controller.swimming)
+					if !controller.rolling: # Rolling while sitting loops forever, this fixes that
+						controller.sitting = true
+						controller.anim_state = "Sit"
 				return
-	print("Empty cell data, fuck")  ## DEBUG
 
 
 
