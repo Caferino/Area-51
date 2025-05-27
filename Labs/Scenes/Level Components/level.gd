@@ -44,6 +44,7 @@ func check_tile_type(position: Vector2i, controller: EntityController):
 				elif tile_type == 2:    ## DEEP_WATER
 					# TODO - Water swim sound
 					controller.swimming = true
+					controller.anim_state = "Swim"
 				elif tile_type == 3:    ## DIRT
 					# TODO - Walking on dirt sound
 					pass

@@ -29,20 +29,22 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			confirm_action()
 	elif !attacking and !gathering and !is_talking and event is not InputEventMouseMotion:
-		if Input.is_action_just_pressed("attack") and !rolling:
-			entity_attack.emit()
-		elif Input.is_action_just_pressed("gather"):
-			entity_gather.emit()
-		elif Input.is_action_just_pressed("interact"):
+		if !rolling and !swimming:
+			if Input.is_action_just_pressed("attack"):
+				entity_attack.emit()
+			elif Input.is_action_just_pressed("gather"):
+				entity_gather.emit()
+			elif Input.is_action_just_pressed("action_1"):
+				on_action_1()
+			elif Input.is_action_just_pressed("action_2"):
+				on_action_2()
+		if Input.is_action_just_pressed("interact"):
 			entity_interact.emit()
 		elif Input.is_action_just_pressed("speak_to"):
 			if speakers: run_dialogue("test")
 		# NOTE - Feels wrong. DRY... Is there a better way, no loops?
 		# TODO - For now, it shoots a fireball, but it should use the item in the given keybind/hotbar
-		elif Input.is_action_just_pressed("action_1"):
-			on_action_1()
-		elif Input.is_action_just_pressed("action_2"):
-			on_action_2()
+		
 
 
 ## Reads the player's given movement input.
@@ -75,7 +77,7 @@ func check_movement():
 		anim_state = "Idle"
 		moving = false
 	
-	if Input.is_action_just_pressed("roll"):
+	if Input.is_action_just_pressed("roll") and !swimming:
 		entity_roll.emit()
 		moving = true
 		rolling = true
