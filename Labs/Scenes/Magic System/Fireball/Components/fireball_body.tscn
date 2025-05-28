@@ -42,8 +42,9 @@ sub_emitter_mode = 1
 sub_emitter_frequency = 1.0
 
 [node name="Fireball" type="GPUParticles2D"]
+z_index = 2
 amount = 128
-process_material = SubResource("ParticleProcessMaterial_r363g")
 texture = ExtResource("1_nt85p")
 lifetime = 3.0
 randomness = 0.08
+process_material = SubResource("ParticleProcessMaterial_r363g")

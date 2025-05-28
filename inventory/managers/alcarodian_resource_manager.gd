@@ -1,4 +1,5 @@
 extends Node
+## DEPRECATED, DO NOT DELETE UNTIL FULLY MIGRATED
 
 const STAT_PATH   : String = "res://inventory/data/json/stats.json"
 const RECIPE_PATH : String = "res://inventory/data/json/recipes.json"

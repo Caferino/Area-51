@@ -1,10 +1,12 @@
 class_name PlayerControllerComponent extends EntityController
 ## The entity's [color=gold]player controller.
 
-@export var camera_base         : CameraBase     ## The player's camera base.
-@export var interactor_area     : Area2D         ## The interactor's monitoring area.
-@export var interactor_animator : AnimationTree  ## The interactor's animator (for rotation).
-# TODO @export var looting_area  : Area2D         ## The player's looting pick-up range.
+@export var camera_base         : CameraBase       ## The player's camera base.
+@export var area_trigger        : Area2D           ## The entity's feet, trigger areas, walk sounds...
+@export var interactor_area     : Area2D           ## The interactor's monitoring area.
+@export var interactor_animator : AnimationTree    ## The interactor's animator (for rotation).
+@export var walk_vfx            : AnimatedSprite2D ## The entity's walking effects (grass, water...)
+# TODO @export var looting_area  : Area2D          ## The player's looting pick-up range.
 
 
 func _ready() -> void:
@@ -15,6 +17,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if !attacking and !gathering and !rolling:# and !is_talking:
 		check_movement()
+		check_tile_type()
 
 
 ## Runs whenever there is an [InputEvent] to check whether it's an attack or interaction.
@@ -27,20 +30,22 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			confirm_action()
 	elif !attacking and !gathering and !is_talking and event is not InputEventMouseMotion:
-		if Input.is_action_just_pressed("attack"):
-			entity_attack.emit()
-		elif Input.is_action_just_pressed("gather"):
-			entity_gather.emit()
-		elif Input.is_action_just_pressed("interact"):
+		if !rolling and !swimming:
+			if Input.is_action_just_pressed("attack"):
+				entity_attack.emit()
+			elif Input.is_action_just_pressed("gather"):
+				entity_gather.emit()
+			elif Input.is_action_just_pressed("action_1"):
+				on_action_1()
+			elif Input.is_action_just_pressed("action_2"):
+				on_action_2()
+		if Input.is_action_just_pressed("interact"):
 			entity_interact.emit()
 		elif Input.is_action_just_pressed("speak_to"):
 			if speakers: run_dialogue("test")
 		# NOTE - Feels wrong. DRY... Is there a better way, no loops?
 		# TODO - For now, it shoots a fireball, but it should use the item in the given keybind/hotbar
-		elif Input.is_action_just_pressed("action_1"):
-			on_action_1()
-		elif Input.is_action_just_pressed("action_2"):
-			on_action_2()
+		
 
 
 ## Reads the player's given movement input.
@@ -73,11 +78,16 @@ func check_movement():
 		anim_state = "Idle"
 		moving = false
 	
-	if Input.is_action_just_pressed("roll"):
+	if Input.is_action_just_pressed("roll") and !swimming:
 		entity_roll.emit()
 		moving = true
 		rolling = true
 		anim_state = "Roll"
+
+
+## Checks the tile the entity is currently standing on.
+func check_tile_type():
+	SignalManager.check_tile_type.emit(Vector2i(area_trigger.global_position), self)
 
 
 ## Rotates the interactor's [member Marker2D.rotation].
@@ -210,3 +220,8 @@ func _on_torso_animator_animation_finished(anim_name: StringName) -> void:
 	elif anim_name.begins_with("gather"):
 		gathering = false
 		camera_base.modify_breath(-2.0, 2.0, -4.0, 4.0, 1.0)
+
+
+func _on_area_trigger_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Door"):
+		get_tree().call_deferred("change_scene_to_file", area.goes_to)

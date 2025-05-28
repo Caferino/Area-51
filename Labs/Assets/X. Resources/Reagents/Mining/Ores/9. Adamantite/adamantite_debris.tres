@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://42j4as34j1hp"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_2i7my"]
+[ext_resource type="Texture2D" uid="uid://0cs7qd3c1m4d" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/9. Adamantite/adamantite_debris.png" id="2_ono6f"]
+
+[resource]
+script = ExtResource("1_2i7my")
+texture = ExtResource("2_ono6f")
+name = "Adamantite Debris"

@@ -59,6 +59,6 @@ func _on_growth_timer_timeout():
 		health_component.set_health(initial_health)
 
 
-## Calls the ItemManager to spawn a certain type of collectables, 'logs' in this case.
+## Calls the ResourcesManager to spawn a certain type of collectables, 'logs' in this case.
 func drop_logs():
-	ItemManager.drop_item("logs", global_position, loot_radius, self.get_parent())
+	ResourcesManager.drop_item("Reagents", "logs", global_position, loot_radius, self.get_parent())

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://cdo6xid8kjhew"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_ouxut"]
+[ext_resource type="Texture2D" uid="uid://dtpsb6gu5uv3p" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/2. Sapphire/sapphire_debris.png" id="2_wbk0n"]
+
+[resource]
+script = ExtResource("1_ouxut")
+texture = ExtResource("2_wbk0n")
+name = "Sapphire Debris"

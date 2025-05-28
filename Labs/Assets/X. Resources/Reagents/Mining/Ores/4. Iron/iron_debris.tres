@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://bgpkukv4t402b"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_n8ulc"]
+[ext_resource type="Texture2D" uid="uid://cfrbp2pok4lve" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/4. Iron/iron_debris.png" id="2_4eaup"]
+
+[resource]
+script = ExtResource("1_n8ulc")
+texture = ExtResource("2_4eaup")
+name = "Iron Debris"

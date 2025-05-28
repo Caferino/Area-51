@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://dqhsqa7b2lvgb"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_6t67v"]
+[ext_resource type="Texture2D" uid="uid://4ptfxd0shsa4" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/10. Runite/runite_debris.png" id="2_edlhc"]
+
+[resource]
+script = ExtResource("1_6t67v")
+texture = ExtResource("2_edlhc")
+name = "Runite Debris"

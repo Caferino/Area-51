@@ -13,7 +13,7 @@ func setup(data) -> void:
 func drop(radius: Vector2):
 	var direction = Randomizer.random_point_around(radius)
 	apply_central_impulse(direction * (randf() * 5 + 5))
-	apply_torque_impulse(randf() * 10 + 7)
+	apply_torque_impulse(randf() * 5 + 5)
 	await get_tree().create_timer(randi() % 31 + 60).timeout
 	animator.play("fade_out")
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ikjmqxfkvjd3"]
+
+[ext_resource type="Script" uid="uid://dsn8xc4h1m5x1" path="res://Labs/Scenes/Dungeons/door.gd" id="1_6rphs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s46ux"]
+size = Vector2(30, 25)
+
+[node name="Door" type="Area2D" groups=["Door"]]
+collision_layer = 32768
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_6rphs")
+
+[node name="DoorCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s46ux")

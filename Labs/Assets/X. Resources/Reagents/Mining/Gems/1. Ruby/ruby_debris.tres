@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://17nxgt557k7j"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_pg4y3"]
+[ext_resource type="Texture2D" uid="uid://h3xqig6cte6s" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/1. Ruby/ruby_debris.png" id="2_xcx3v"]
+
+[resource]
+script = ExtResource("1_pg4y3")
+texture = ExtResource("2_xcx3v")
+name = "Ruby Debris"

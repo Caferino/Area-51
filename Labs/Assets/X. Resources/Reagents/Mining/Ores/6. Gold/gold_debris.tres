@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://d0bhbfyskcnlb"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_73ybi"]
+[ext_resource type="Texture2D" uid="uid://bkp56ann07uem" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/6. Gold/gold_debris.png" id="2_ore0l"]
+
+[resource]
+script = ExtResource("1_73ybi")
+texture = ExtResource("2_ore0l")
+name = "Gold Debris"

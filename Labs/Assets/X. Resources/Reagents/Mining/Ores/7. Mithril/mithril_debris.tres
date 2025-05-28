@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://820if52e5waw"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_fqb6r"]
+[ext_resource type="Texture2D" uid="uid://b73btj7n3jb73" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/7. Mithril/mithril_debris.png" id="2_i4icy"]
+
+[resource]
+script = ExtResource("1_fqb6r")
+texture = ExtResource("2_i4icy")
+name = "Mithril Debris"

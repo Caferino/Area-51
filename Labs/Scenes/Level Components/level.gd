@@ -2,8 +2,8 @@ class_name Level extends Node2D
 ## A [color=white]level[/color], by [color=white]Alcarodia.
 
 @export var space   : SpaceComponent       = null
-@export var env     : EnvironmentComponent = null
 @export var cuts    : CutscenesComponent   = null
+@export var env     : EnvironmentComponent = null
 
 var environment_stats: Dictionary = {}
 
@@ -21,7 +21,46 @@ var weather_stats: Dictionary = {
 
 func _ready():
 	LevelManager.add_level(self)
+	SignalManager.check_tile_type.connect(check_tile_type)
 
+
+func check_tile_type(position: Vector2i, controller: EntityController):
+	# WARN NOTE - Order matters, floor should always be last.
+	var tilemaps = [space.tilemaps.decor, space.tilemaps.floor]
+	
+	for tilemap in tilemaps:
+		var cell_pos = tilemap.local_to_map(position)
+		var data = tilemap.get_cell_tile_data(cell_pos)
+		
+		if data != null:
+			var tile_type = data.get_custom_data("tile_type")
+			if tile_type != 0 or tilemap == space.tilemaps.floor:
+				controller.swimming = false
+				controller.sitting  = false
+				controller.walk_vfx.visible = false
+				
+				if tile_type == 1:      ## SHALLOW_WATER
+					# TODO - Water walk sound, NO swimming here
+					pass
+				elif tile_type == 2:    ## DEEP_WATER
+					# TODO - Water swim sound
+					controller.swimming = true
+					controller.rolling = false # Prevents an infinite rolling bug, maybe, test more.
+					controller.anim_state = "Swim"
+					controller.walk_vfx.z_index = 0
+					controller.walk_vfx.play("swim_water")
+					controller.walk_vfx.visible = true
+				elif tile_type == 3:    ## DIRT
+					# TODO - Walking on dirt sound
+					pass
+				elif tile_type == 4:    ## GRASS
+					# TODO - Walking on grass sound
+					pass
+				elif tile_type == 5:    ## CHAIR
+					if !controller.rolling: # Rolling while sitting loops forever, this fixes that
+						controller.sitting = true
+						controller.anim_state = "Sit"
+				return
 
 
 

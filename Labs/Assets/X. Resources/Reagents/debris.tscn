@@ -45,8 +45,8 @@ _data = {
 [node name="Debris" type="RigidBody2D" node_paths=PackedStringArray("sprite", "animator") groups=["Debris"]]
 gravity_scale = 0.0
 max_contacts_reported = 1
-linear_damp = 2.0
-angular_damp = 1.0
+linear_damp = 3.0
+angular_damp = 3.0
 script = ExtResource("1_e8tke")
 sprite = NodePath("DebrisSprite")
 animator = NodePath("DebrisAnimator")

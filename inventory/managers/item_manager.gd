@@ -1,4 +1,5 @@
 extends Node
+## DEPRECATED, DO NOT DELETE UNTIL FULLY MIGRATED TO RESOURCESMANAGER
 
 const ITEM_PATH = "res://inventory/data/json/items.json"
 const AFFIXES_PATH = "res://inventory/data/json/affixes.json"

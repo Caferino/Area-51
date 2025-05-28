@@ -10,3 +10,6 @@ class_name SpaceComponent extends Node2D
 
 
 # NOTE TODO - Wind's forces apply to Fields and ReactiveDecor
+
+
+@export var tilemaps : Node2D = null

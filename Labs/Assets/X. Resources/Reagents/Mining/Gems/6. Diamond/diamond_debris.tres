@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://b0itcvg34oxq7"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_p8y05"]
+[ext_resource type="Texture2D" uid="uid://gxv88wy3rvdn" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/6. Diamond/diamond_debris.png" id="2_vgrr1"]
+
+[resource]
+script = ExtResource("1_p8y05")
+texture = ExtResource("2_vgrr1")
+name = "Diamond Debris"

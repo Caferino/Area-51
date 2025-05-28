@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DebrisData" load_steps=3 format=3 uid="uid://brqy77i144qrq"]
+
+[ext_resource type="Script" uid="uid://cps1gee51wgwc" path="res://Labs/Assets/X. Resources/Reagents/debris_data.gd" id="1_csx2v"]
+[ext_resource type="Texture2D" uid="uid://c35upmp2yic8v" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/5. Moonstone/moonstone_debris.png" id="2_lt7ha"]
+
+[resource]
+script = ExtResource("1_csx2v")
+texture = ExtResource("2_lt7ha")
+name = "Moonstone Debris"
