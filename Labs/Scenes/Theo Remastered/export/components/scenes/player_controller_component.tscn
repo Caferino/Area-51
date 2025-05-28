@@ -1,7 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://baq33xt06du5y"]
+[gd_scene load_steps=29 format=3 uid="uid://baq33xt06du5y"]
 
 [ext_resource type="Script" uid="uid://dvwpvbbkgi1bq" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/player_controller_component.gd" id="1_y6i1j"]
 [ext_resource type="PackedScene" uid="uid://db05pqjyruu3i" path="res://Labs/Cameras/CameraBase.tscn" id="2_7bdkx"]
+[ext_resource type="PackedScene" uid="uid://r32poobsmh8s" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/effects_component.tscn" id="3_s5xth"]
+[ext_resource type="Texture2D" uid="uid://bhcjbu4musfgs" path="res://Labs/Assets/10. Tiles/Effects/effects_1.png" id="4_fjsay"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0i0l6"]
 a = Vector2(0, 25)
@@ -120,12 +122,97 @@ radius = 75.0
 radius = 3.5
 height = 20.0
 
-[node name="PlayerControllerComponent" type="Node2D" node_paths=PackedStringArray("camera_base", "area_trigger", "interactor_area", "interactor_animator")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_siqyd"]
+atlas = ExtResource("4_fjsay")
+region = Rect2(64, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vcel"]
+atlas = ExtResource("4_fjsay")
+region = Rect2(96, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nlaw"]
+atlas = ExtResource("4_fjsay")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfkgq"]
+atlas = ExtResource("4_fjsay")
+region = Rect2(32, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytxn5"]
+atlas = ExtResource("4_fjsay")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4nr4"]
+atlas = ExtResource("4_fjsay")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naoxn"]
+atlas = ExtResource("4_fjsay")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr78s"]
+atlas = ExtResource("4_fjsay")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcvy3"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siqyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vcel")
+}],
+"loop": true,
+"name": &"swim_lava",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nlaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfkgq")
+}],
+"loop": true,
+"name": &"swim_water",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytxn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4nr4")
+}],
+"loop": false,
+"name": &"walk_agrass",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naoxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr78s")
+}],
+"loop": false,
+"name": &"walk_grass",
+"speed": 5.0
+}]
+
+[node name="PlayerControllerComponent" type="Node2D" node_paths=PackedStringArray("camera_base", "area_trigger", "interactor_area", "interactor_animator", "walk_vfx")]
 script = ExtResource("1_y6i1j")
 camera_base = NodePath("Camera Base")
 area_trigger = NodePath("AreaTrigger")
 interactor_area = NodePath("InteractorArea")
 interactor_animator = NodePath("InteractorArea/InteractorTree")
+walk_vfx = NodePath("EffectsComponent/WalkEffectsSprite")
 
 [node name="Camera Base" parent="." node_paths=PackedStringArray("controller") instance=ExtResource("2_7bdkx")]
 controller = NodePath("..")
@@ -175,6 +262,18 @@ position = Vector2(0, 12.5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mvba8")
 debug_color = Color(0.560483, 0.401925, 0.986207, 0.42)
+
+[node name="EffectsComponent" parent="." node_paths=PackedStringArray("walk_vfx") instance=ExtResource("3_s5xth")]
+y_sort_enabled = true
+walk_vfx = NodePath("WalkEffectsSprite")
+
+[node name="WalkEffectsSprite" type="AnimatedSprite2D" parent="EffectsComponent"]
+visible = false
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, 12)
+sprite_frames = SubResource("SpriteFrames_lcvy3")
+animation = &"swim_water"
 
 [connection signal="body_entered" from="DialogueArea" to="." method="_on_dialogue_area_body_entered"]
 [connection signal="body_exited" from="DialogueArea" to="." method="_on_dialogue_area_body_exited"]

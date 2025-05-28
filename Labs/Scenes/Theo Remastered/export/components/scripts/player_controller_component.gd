@@ -1,11 +1,12 @@
 class_name PlayerControllerComponent extends EntityController
 ## The entity's [color=gold]player controller.
 
-@export var camera_base         : CameraBase     ## The player's camera base.
-@export var area_trigger        : Area2D         ## The entity's feet, trigger areas, walk sounds...
-@export var interactor_area     : Area2D         ## The interactor's monitoring area.
-@export var interactor_animator : AnimationTree  ## The interactor's animator (for rotation).
-# TODO @export var looting_area  : Area2D         ## The player's looting pick-up range.
+@export var camera_base         : CameraBase       ## The player's camera base.
+@export var area_trigger        : Area2D           ## The entity's feet, trigger areas, walk sounds...
+@export var interactor_area     : Area2D           ## The interactor's monitoring area.
+@export var interactor_animator : AnimationTree    ## The interactor's animator (for rotation).
+@export var walk_vfx            : AnimatedSprite2D ## The entity's walking effects (grass, water...)
+# TODO @export var looting_area  : Area2D          ## The player's looting pick-up range.
 
 
 func _ready() -> void:

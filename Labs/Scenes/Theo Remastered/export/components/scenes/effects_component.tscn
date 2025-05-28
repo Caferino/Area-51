@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://r32poobsmh8s"]
+
+[ext_resource type="Script" uid="uid://bvv1d8kvqlyc1" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/effects_component.gd" id="1_5sf2c"]
+
+[node name="EffectsComponent" type="Node2D"]
+script = ExtResource("1_5sf2c")

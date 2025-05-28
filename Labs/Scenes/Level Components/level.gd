@@ -37,6 +37,7 @@ func check_tile_type(position: Vector2i, controller: EntityController):
 			if tile_type != 0 or tilemap == space.tilemaps.floor:
 				controller.swimming = false
 				controller.sitting  = false
+				controller.walk_vfx.visible = false
 				
 				if tile_type == 1:      ## SHALLOW_WATER
 					# TODO - Water walk sound, NO swimming here
@@ -44,7 +45,11 @@ func check_tile_type(position: Vector2i, controller: EntityController):
 				elif tile_type == 2:    ## DEEP_WATER
 					# TODO - Water swim sound
 					controller.swimming = true
+					controller.rolling = false # Prevents an infinite rolling bug, maybe, test more.
 					controller.anim_state = "Swim"
+					controller.walk_vfx.z_index = 0
+					controller.walk_vfx.play("swim_water")
+					controller.walk_vfx.visible = true
 				elif tile_type == 3:    ## DIRT
 					# TODO - Walking on dirt sound
 					pass
