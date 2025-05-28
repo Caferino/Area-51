@@ -18,6 +18,12 @@ The goal of this project is to practice common game development processes for cu
 
 # Experiments
 
+**E027: Swimming & Sitting**
+
+![E027](.image/README/E027.webp "Swimming & Sitting")
+
+---
+
 **E026: Gathering System**
 
 ![E026](.image/README/E026.webp "Gathering System")
@@ -156,20 +162,20 @@ Also played with Godot's documentation tools to document everything done in this
 
 ---
 
-**E015:** Crafting, Shop, Item Stats, Cooldowns & Random Loot
+**E015: Crafting, Shop, Item Stats, Cooldowns & Random Loot**
 
 ![E015-1](.image/README/E015-1.gif "Crafting, Shop, Item Stats &amp; Random Loot")
 ![E015-2](.image/README/E015-2.gif "Crafting, Shop, Item Stats &amp; Random Loot")
 
 ---
 
-**E014:** Save & Load
+**E014: Save & Load**
 
 ![E014](.image/README/E014.gif "Save &amp; Load")
 
 ---
 
-**E013:** Modular Inventory System
+**E013: Modular Inventory System**
 
 ![E013-1](.image/README/E013-1.gif "Modular Inventory System")
 ![E013-2](.image/README/E013-2.png "Modular Inventory System")
@@ -178,13 +184,13 @@ Followed YouTuber Calame321's Modular Inventory System tutorial (https://youtu.b
 
 ---
 
-**E012:** Collectables
+**E012: Collectables**
 
 ![E012](.image/README/E012.gif "Collectables")
 
 ---
 
-**E011:** TileSets and TileMaps
+**E011: TileSets and TileMaps**
 
 ![E011-1](.image/README/E011-1.png "TileSets and TileMaps")
 ![E011-2](.image/README/E011-2.png "TileSets and TileMaps")
@@ -202,7 +208,7 @@ I always put the digital versions (eBooks) for free 5 days every 3 months~
 
 ---
 
-**E010:** Smarter Lucas + Main Menu Mockup + Project Structure
+**E010: Smarter Lucas + Main Menu Mockup + Project Structure**
 
 ![E010](.image/README/E010-1.gif "Smarter Lucas + Main Menu Mockup + Project Structure")
 ![E010](.image/README/E010-2.gif "Smarter Lucas + Main Menu Mockup + Project Structure")
@@ -216,7 +222,7 @@ For the menu, I plan to learn how to animate it either in the engine or outside,
 
 ---
 
-**E009:** Basic Context-Map and Steering AI
+**E009: Basic Context-Map and Steering AI**
 
 ![E009-1](.image/README/E009-1.gif "Context-Map and Steering AI")
 ![E009-2](.image/README/E009-2.gif "Context-Map and Steering AI")
@@ -225,20 +231,20 @@ I'm Batman now
 
 ---
 
-**E008:** Basic Pathfinding
+**E008: Basic Pathfinding**
 
 ![E008](.image/README/E008.gif "Basic Pathfinding")
 
 ---
 
-**E007:** Melee Attacking + Particles
+**E007: Melee Attacking + Particles**
 
 ![E007-1](.image/README/E007-1.gif "Melee Attacking")
 ![E007-2](.image/README/E007-2.gif "Particles")
 
 ---
 
-**E006:** Human-Held Camera Effect + RNG Batch Growth for Plants + Plant bending
+**E006: Human-Held Camera Effect + RNG Batch Growth for Plants + Plant bending**
 
 ![E006-2](.image/README/E006-2.gif "Humand-Held Camera Effect")
 ![E006-3](.image/README/E006-3.gif "Plant Bending")
@@ -248,32 +254,32 @@ I'm Batman now
 
 ---
 
-**E005:** Farming Room
+**E005: Farming Room**
 
 ![E005](.image/README/E005.gif "Farming Room")
 
 ---
 
-**E004:** Cinema Room
+**E004: Cinema Room**
 
 ![E004](.image/README/E004.gif "Cinema Room")
 
 ---
 
-**E003:** 2D Lighting Room
+**E003: 2D Lighting Room**
 
 ![E003](.image/README/E003.gif "2D Lighting Room")
 
 ---
 
-**E002:** Obligatory Minecraft Terrain Generator
+**E002: Obligatory Minecraft Terrain Generator**
 
 ![E002](.image/README/E002-1.gif "Minecraft Terrain Generator")
 ![E002](.image/README/E002-2.gif "Minecraft Terrain Generator")
 
 ---
 
-**E001:** 2D in 3D
+**E001: 2D in 3D**
 
 ![E001](.image/README/E001.gif "2D in 3D")
 
