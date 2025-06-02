@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccsslieh836pb" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/3. Tin/tin_ore.png" id="2_0lqlu"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_6o26n")
 texture = ExtResource("2_0lqlu")
 type = 0

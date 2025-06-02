@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dfhevf7wxmwkr" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/5. Moonstone/moonstone.png" id="2_8afoe"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_gs4al")
 texture = ExtResource("2_8afoe")
 type = 0

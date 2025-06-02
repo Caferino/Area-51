@@ -33,7 +33,6 @@ signal heal_player(health_points)
 signal saving_game()
 
 # Level Manager
-signal connect_levels(level:Level)
 signal time_tick(day:int, hour:int, minute:int)
 
 # Level

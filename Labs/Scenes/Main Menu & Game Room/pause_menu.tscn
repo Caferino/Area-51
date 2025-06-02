@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://mmhgj0x35fsm"]
+
+[ext_resource type="Script" uid="uid://sivuge73fk8g" path="res://Labs/Scenes/Main Menu & Game Room/pause_menu.gd" id="1_iogam"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_iogam")

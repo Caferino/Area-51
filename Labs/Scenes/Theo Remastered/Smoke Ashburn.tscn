@@ -840,7 +840,8 @@ debug_color = Color(1.44392e-06, 0.634627, 0.426822, 0.42)
 
 [node name="SoundComponent" parent="." instance=ExtResource("5_t4b10")]
 
-[node name="PlayerControllerComponent" parent="." instance=ExtResource("6_t0pop")]
+[node name="PlayerControllerComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_t0pop")]
+player = NodePath("..")
 
 [node name="BodyComponent" parent="." instance=ExtResource("8_5ixyk")]
 y_sort_enabled = true

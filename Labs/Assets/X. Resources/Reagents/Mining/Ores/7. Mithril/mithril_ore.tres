@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ver2xwpfpa4t" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/7. Mithril/mithril_ore.png" id="2_isbxp"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_vegt3")
 texture = ExtResource("2_isbxp")
 type = 0

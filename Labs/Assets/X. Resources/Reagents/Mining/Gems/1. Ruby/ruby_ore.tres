@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bn671qq7g2t3a" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/1. Ruby/ruby_ore.png" id="2_30e44"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_6aejj")
 texture = ExtResource("2_30e44")
 type = 0

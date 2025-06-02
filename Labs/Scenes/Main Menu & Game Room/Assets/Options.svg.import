@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbjrxqwsgge5g"
-path="res://.godot/imported/Alcarodian Dungeons.svg-792725237eda277622f3afdbba79c415.ctex"
+uid="uid://bsvgc8ix1ywhh"
+path="res://.godot/imported/Options.svg-c3e5ecc654a9f22a521d20ad15adf382.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Labs/Scenes/Menu Room/Alcarodian Dungeons.svg"
-dest_files=["res://.godot/imported/Alcarodian Dungeons.svg-792725237eda277622f3afdbba79c415.ctex"]
+source_file="res://Labs/Scenes/Main Menu & Game Room/Assets/Options.svg"
+dest_files=["res://.godot/imported/Options.svg-c3e5ecc654a9f22a521d20ad15adf382.ctex"]
 
 [params]
 

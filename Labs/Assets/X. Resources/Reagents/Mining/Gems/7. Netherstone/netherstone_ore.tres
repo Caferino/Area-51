@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cnptqme5f27bv" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/7. Netherstone/netherstone_ore.png" id="2_x7qgu"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_gjdtg")
 texture = ExtResource("2_x7qgu")
 type = 0

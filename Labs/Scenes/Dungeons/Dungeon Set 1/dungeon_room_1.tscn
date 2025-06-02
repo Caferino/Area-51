@@ -1,8 +1,7 @@
-[gd_scene load_steps=39 format=4 uid="uid://cl3u6pro2v04o"]
+[gd_scene load_steps=38 format=4 uid="uid://cl3u6pro2v04o"]
 
 [ext_resource type="Script" uid="uid://bhurk7br2x3qu" path="res://Labs/Scenes/Level Components/level.gd" id="1_s46ux"]
 [ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space/level_space_component.tscn" id="2_a18u3"]
-[ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="3_3aupa"]
 [ext_resource type="Texture2D" uid="uid://wf3spobotcmy" path="res://Labs/Assets/10. Tiles/Dungeons/dungeons_tileset_1.png" id="4_tb1np"]
 [ext_resource type="Script" uid="uid://dp2jjk6q60p0p" path="res://Labs/Scenes/Level Components/Environment/level_environment_component.gd" id="5_2agdq"]
 [ext_resource type="Texture2D" uid="uid://ci8cyc2fctcrc" path="res://Labs/Assets/10. Tiles/Items/items_tileset_1.png" id="5_88ann"]
@@ -2901,6 +2900,54 @@ custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_6830b")
 sources/1 = SubResource("TileSetAtlasSource_hgiv4")
 
+[sub_resource type="Resource" id="Resource_durh8"]
+resource_local_to_scene = true
+script = ExtResource("12_suted")
+texture = ExtResource("13_118me")
+type = 0
+name = "Coal Ore"
+health = 10.0
+max_health = 10.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 10)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
+[sub_resource type="Resource" id="Resource_88ann"]
+resource_local_to_scene = true
+script = ExtResource("12_suted")
+texture = ExtResource("13_118me")
+type = 0
+name = "Coal Ore"
+health = 10.0
+max_health = 10.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 10)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
+[sub_resource type="Resource" id="Resource_hgiv4"]
+resource_local_to_scene = true
+script = ExtResource("12_suted")
+texture = ExtResource("13_118me")
+type = 0
+name = "Coal Ore"
+health = 10.0
+max_health = 10.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 10)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
+[sub_resource type="Resource" id="Resource_6rhfm"]
+resource_local_to_scene = true
+script = ExtResource("12_suted")
+texture = ExtResource("13_118me")
+type = 0
+name = "Coal Ore"
+health = 10.0
+max_health = 10.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 10)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
 [sub_resource type="Environment" id="Environment_cr366"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d5a70"]
@@ -2917,54 +2964,6 @@ shader_parameter/will_smooth_shade = true
 shader_parameter/band_decay_rate = 0.5
 shader_parameter/light_strength_modifier = 1.0
 
-[sub_resource type="Resource" id="Resource_88ann"]
-resource_local_to_scene = true
-script = ExtResource("12_suted")
-texture = ExtResource("13_118me")
-type = 0
-name = "Coal"
-health = 10.0
-max_health = 10.0
-loot_radius = Vector2(30, 30)
-drop_rate = Vector2i(1, 3)
-metadata/_custom_type_script = "uid://djxlwj7sddiw2"
-
-[sub_resource type="Resource" id="Resource_hgiv4"]
-resource_local_to_scene = true
-script = ExtResource("12_suted")
-texture = ExtResource("13_118me")
-type = 0
-name = "Coal"
-health = 10.0
-max_health = 10.0
-loot_radius = Vector2(30, 30)
-drop_rate = Vector2i(1, 3)
-metadata/_custom_type_script = "uid://djxlwj7sddiw2"
-
-[sub_resource type="Resource" id="Resource_6rhfm"]
-resource_local_to_scene = true
-script = ExtResource("12_suted")
-texture = ExtResource("13_118me")
-type = 0
-name = "Coal"
-health = 10.0
-max_health = 10.0
-loot_radius = Vector2(30, 30)
-drop_rate = Vector2i(1, 3)
-metadata/_custom_type_script = "uid://djxlwj7sddiw2"
-
-[sub_resource type="Resource" id="Resource_ch1jc"]
-resource_local_to_scene = true
-script = ExtResource("12_suted")
-texture = ExtResource("13_118me")
-type = 0
-name = "Coal"
-health = 10.0
-max_health = 10.0
-loot_radius = Vector2(30, 30)
-drop_rate = Vector2i(1, 3)
-metadata/_custom_type_script = "uid://djxlwj7sddiw2"
-
 [node name="DungeonRoom1" type="Node2D" node_paths=PackedStringArray("space", "cuts", "env")]
 y_sort_enabled = true
 script = ExtResource("1_s46ux")
@@ -2977,9 +2976,6 @@ y_sort_enabled = true
 
 [node name="Entities" parent="LevelSpaceComponent" index="0"]
 y_sort_enabled = true
-
-[node name="Smoke Ashburn" parent="LevelSpaceComponent/Entities" index="0" instance=ExtResource("3_3aupa")]
-position = Vector2(855, 527)
 
 [node name="Items" parent="LevelSpaceComponent" index="1"]
 y_sort_enabled = true
@@ -3031,15 +3027,33 @@ tile_set = SubResource("TileSet_8q7gq")
 [node name="Interactables" parent="LevelSpaceComponent" index="4"]
 y_sort_enabled = true
 
-[node name="Door1" parent="LevelSpaceComponent/Interactables/Objectives" index="0" instance=ExtResource("5_durh8")]
+[node name="GatheringNode" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="0" instance=ExtResource("11_pobio")]
+position = Vector2(710, 597)
+attributes = SubResource("Resource_durh8")
+
+[node name="GatheringNode2" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="1" instance=ExtResource("11_pobio")]
+position = Vector2(781, 706)
+attributes = SubResource("Resource_88ann")
+
+[node name="GatheringNode3" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="2" instance=ExtResource("11_pobio")]
+position = Vector2(902, 681)
+attributes = SubResource("Resource_hgiv4")
+
+[node name="GatheringNode4" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="3" instance=ExtResource("11_pobio")]
+position = Vector2(977, 602)
+attributes = SubResource("Resource_6rhfm")
+
+[node name="Door" parent="LevelSpaceComponent/Interactables/Doors" index="0" instance=ExtResource("5_durh8")]
 position = Vector2(992, 173)
-goes_to = "res://Labs/Scenes/Dungeons/Dungeon Set 1/dungeon_room_2.tscn"
 
 [node name="StaticDecor" parent="LevelSpaceComponent" index="5"]
 y_sort_enabled = true
 
 [node name="ReactiveDecor" parent="LevelSpaceComponent" index="6"]
 y_sort_enabled = true
+
+[node name="Start" parent="LevelSpaceComponent/Spawners" index="0"]
+position = Vector2(850, 600)
 
 [node name="LevelEnvironmentComponent" type="Node2D" parent="." node_paths=PackedStringArray("environment", "dayn_component")]
 y_sort_enabled = true
@@ -3074,21 +3088,5 @@ color = Color(0.0941176, 0.0313726, 0.0352941, 0)
 
 [node name="LevelCutscenesComponent" parent="." instance=ExtResource("10_p8hch")]
 y_sort_enabled = true
-
-[node name="GatheringNode2" parent="." instance=ExtResource("11_pobio")]
-position = Vector2(781, 706)
-attributes = SubResource("Resource_88ann")
-
-[node name="GatheringNode" parent="." instance=ExtResource("11_pobio")]
-position = Vector2(710, 597)
-attributes = SubResource("Resource_hgiv4")
-
-[node name="GatheringNode3" parent="." instance=ExtResource("11_pobio")]
-position = Vector2(902, 681)
-attributes = SubResource("Resource_6rhfm")
-
-[node name="GatheringNode4" parent="." instance=ExtResource("11_pobio")]
-position = Vector2(977, 602)
-attributes = SubResource("Resource_ch1jc")
 
 [editable path="LevelSpaceComponent"]

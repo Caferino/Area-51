@@ -19,7 +19,12 @@ func _ready():
 	visible = true  ## Just so I can hide it in the Inspector and not have everything dark.
 	SignalManager.time_tick.connect(handle_light)
 	image = Image.create_empty(128, 2, false, Image.FORMAT_RGBAH)
-	camera = Caferino.player.controller.camera_base.camera
+	
+	## WARN - Turned off, to avoid bugs. Enable this on a signal/player's arrival call, and leave too
+	## Can also do this for every level the player visits.
+	#camera = Caferino.player.controller.camera_base.camera
+	set_process(false)
+	set_physics_process(false)
 
 
 ## Updates the daylight

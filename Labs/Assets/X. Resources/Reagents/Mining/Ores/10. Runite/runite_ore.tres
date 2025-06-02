@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cy4p8nsl05yh3" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/10. Runite/runite_ore.png" id="2_6mpyf"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_k5qye")
 texture = ExtResource("2_6mpyf")
 type = 0

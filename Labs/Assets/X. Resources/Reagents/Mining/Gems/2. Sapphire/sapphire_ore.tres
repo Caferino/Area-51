@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://oakad7pvh77" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/2. Sapphire/sapphire_ore.png" id="2_h3fao"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_c612c")
 texture = ExtResource("2_h3fao")
 type = 0

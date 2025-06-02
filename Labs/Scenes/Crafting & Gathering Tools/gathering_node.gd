@@ -60,5 +60,6 @@ func drop_debris():
 
 func drop_reagents():
 	var amount = randi_range(attributes.drop_rate.x, attributes.drop_rate.y)
+	print("DEBUG NODE = ", amount, " ", global_position)
 	for i in range(0, amount):
 		ResourcesManager.drop_item("Reagents", "coal", global_position, attributes.loot_radius, self.get_parent())

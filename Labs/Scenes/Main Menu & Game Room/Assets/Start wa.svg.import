@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsvgc8ix1ywhh"
-path="res://.godot/imported/Options.svg-2cc4c0d5d5fbc4fdf9e4d1c21b225904.ctex"
+uid="uid://gperrguy2saf"
+path="res://.godot/imported/Start wa.svg-ca0f169602c159463e2a86f71c1e802b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Labs/Scenes/Menu Room/Options.svg"
-dest_files=["res://.godot/imported/Options.svg-2cc4c0d5d5fbc4fdf9e4d1c21b225904.ctex"]
+source_file="res://Labs/Scenes/Main Menu & Game Room/Assets/Start wa.svg"
+dest_files=["res://.godot/imported/Start wa.svg-ca0f169602c159463e2a86f71c1e802b.ctex"]
 
 [params]
 

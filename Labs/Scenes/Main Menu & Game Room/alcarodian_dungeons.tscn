@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://emr5emw0cm1c"]
+
+[ext_resource type="Script" uid="uid://c34c20j7usnu4" path="res://Labs/Scenes/Main Menu & Game Room/main.gd" id="1_8p6sh"]
+
+[node name="AlcarodianDungeons" type="Node2D"]
+script = ExtResource("1_8p6sh")

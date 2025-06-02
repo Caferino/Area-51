@@ -3,9 +3,21 @@
 [ext_resource type="Script" uid="uid://duq3blq63klem" path="res://Labs/Scenes/Level Components/Space/level_space_component.gd" id="1_66r0s"]
 [ext_resource type="Script" uid="uid://d2aqtulbgxjou" path="res://Labs/Scenes/Level Components/Space/tilemaps.gd" id="2_bfos7"]
 
-[node name="LevelSpaceComponent" type="Node2D" node_paths=PackedStringArray("tilemaps")]
+[node name="LevelSpaceComponent" type="Node2D" node_paths=PackedStringArray("entities", "items", "fields", "tilemaps", "interactables", "static_decor", "reactive_decor", "spawners", "weather", "gather_nodes", "craft_nodes", "doors", "start")]
 script = ExtResource("1_66r0s")
+entities = NodePath("Entities")
+items = NodePath("Items")
+fields = NodePath("Fields")
 tilemaps = NodePath("Tilemaps")
+interactables = NodePath("Interactables")
+static_decor = NodePath("StaticDecor")
+reactive_decor = NodePath("ReactiveDecor")
+spawners = NodePath("Spawners")
+weather = NodePath("Weather")
+gather_nodes = NodePath("Interactables/GatheringNodes")
+craft_nodes = NodePath("Interactables/CraftingNodes")
+doors = NodePath("Interactables/Doors")
+start = NodePath("Spawners/Start")
 
 [node name="Entities" type="Node2D" parent="."]
 
@@ -30,10 +42,14 @@ script = ExtResource("2_bfos7")
 
 [node name="Objectives" type="Node2D" parent="Interactables"]
 
+[node name="Doors" type="Node2D" parent="Interactables"]
+
 [node name="StaticDecor" type="Node2D" parent="."]
 
 [node name="ReactiveDecor" type="Node2D" parent="."]
 
 [node name="Spawners" type="Node2D" parent="."]
+
+[node name="Start" type="Marker2D" parent="Spawners"]
 
 [node name="Weather" type="Node2D" parent="."]

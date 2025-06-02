@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://epjd7xkamgxd" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/3. Fireby/fireby_ore.png" id="2_pfv0i"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_piclg")
 texture = ExtResource("2_pfv0i")
 type = 0
