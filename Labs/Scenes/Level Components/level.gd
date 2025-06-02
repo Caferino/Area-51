@@ -23,7 +23,7 @@ var weather_stats: Dictionary = {
 func _ready():
 	SignalManager.check_tile_type.connect(check_tile_type)
 	# WARN NOTE - Order matters; floor should always be last.
-	tilemaps = [space.tilemaps.decor, space.tilemaps.floor]
+	tilemaps = [space.tilemaps.decor, space.tilemaps.t_floor]
 
 
 func check_tile_type(on_position: Vector2i, controller: EntityController):
@@ -33,7 +33,7 @@ func check_tile_type(on_position: Vector2i, controller: EntityController):
 		
 		if data != null:
 			var tile_type = data.get_custom_data("tile_type")
-			if tile_type != 0 or tilemap == space.tilemaps.floor:
+			if tile_type != 0 or tilemap == space.tilemaps.t_floor:
 				controller.swimming = false
 				controller.sitting  = false
 				controller.walk_vfx.visible = false

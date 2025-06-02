@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhg5pejxmfs23"]
+[gd_scene load_steps=6 format=3 uid="uid://dhg5pejxmfs23"]
 
 [ext_resource type="Script" uid="uid://cefdbxdtsra57" path="res://Labs/Assets/X. Resources/Reagents/debris.gd" id="1_e8tke"]
-[ext_resource type="Texture2D" uid="uid://cd81aveht8va" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_debris.png" id="2_e8tke"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_27q6i"]
 radius = 3.0
@@ -55,7 +54,6 @@ animator = NodePath("DebrisAnimator")
 shape = SubResource("CircleShape2D_27q6i")
 
 [node name="DebrisSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_e8tke")
 hframes = 8
 
 [node name="DebrisAnimator" type="AnimationPlayer" parent="."]

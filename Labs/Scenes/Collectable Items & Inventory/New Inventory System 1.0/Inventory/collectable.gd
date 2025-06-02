@@ -1,16 +1,19 @@
 extends Area2D
+## Static collectable. TODO - Animated Collectable, just the sprite changes, and create SpriteFrames
+## as RESOURCES (.tres) for them, to save memory. E.x. Dragonsoul drops, enchanted items, magic...
 
-@export var sprite   : AnimatedSprite2D = null
+@export var sprite   : Sprite2D         = null
 @export var animator : AnimationPlayer  = null
 @onready var tween   : Tween            = create_tween()
 var item_name        : String           = ""
 var item_qty         : int              = 1
 
 
-func setup(item):
-	item_name = item.name
-	sprite.get_sprite_frames().add_frame("default", item.texture)
-	for g in item.groups: add_to_group(g)
+func setup(data):
+	item_name = data.name
+	sprite.texture = data.texture
+	print("ITEM SETUP = ", item_name, data.name, data.texture)
+	for g in data.groups: add_to_group(g)
 
 
 func drop(loot_radius: Vector2):

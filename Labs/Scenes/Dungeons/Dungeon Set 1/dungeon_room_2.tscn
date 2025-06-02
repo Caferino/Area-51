@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://ds85427qvpfj8"]
+[gd_scene load_steps=34 format=4 uid="uid://ds85427qvpfj8"]
 
 [ext_resource type="Script" uid="uid://bhurk7br2x3qu" path="res://Labs/Scenes/Level Components/level.gd" id="1_8haka"]
 [ext_resource type="PackedScene" uid="uid://chk5xlt4gtyvg" path="res://Labs/Scenes/Level Components/Space/level_space_component.tscn" id="2_1cwlj"]
@@ -16,13 +16,105 @@
 [ext_resource type="Shader" uid="uid://br06c4ctmc6tm" path="res://Labs/Shaders/advanced_light.gdshader" id="9_fsic2"]
 [ext_resource type="TileSet" uid="uid://bicjbpnernfi7" path="res://Labs/Scenes/Dungeons/Tilemaps/cave_decor.tres" id="9_ic1h1"]
 [ext_resource type="PackedScene" uid="uid://dkv2rmkdva3pp" path="res://Labs/Scenes/Level Components/Cutscenes/level_cutscenes_component.tscn" id="10_hx7nq"]
+[ext_resource type="Script" uid="uid://djxlwj7sddiw2" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node_data.gd" id="11_5ear6"]
 [ext_resource type="PackedScene" uid="uid://bdw6ua7uqbtmt" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn" id="11_6m7iy"]
-[ext_resource type="Resource" uid="uid://dte8mbxfmg0rw" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_ore.tres" id="11_tc7rw"]
-[ext_resource type="Resource" uid="uid://blswr238lmvuw" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/2. Copper/copper_ore.tres" id="12_5ear6"]
-[ext_resource type="Resource" uid="uid://fyeue2iaebv" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/3. Tin/tin_ore.tres" id="13_off2v"]
-[ext_resource type="Resource" uid="uid://jwkq2pks0juy" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/4. Iron/iron_ore.tres" id="14_5nhwn"]
-[ext_resource type="Resource" uid="uid://b3oifc3by1rh4" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/5. Silver/silver_ore.tres" id="15_q0ugq"]
-[ext_resource type="Resource" uid="uid://dnhcav2ype4wc" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/6. Gold/gold_ore.tres" id="16_ts546"]
+[ext_resource type="Texture2D" uid="uid://dgontvxqr8413" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_ore.png" id="12_off2v"]
+[ext_resource type="Texture2D" uid="uid://b2qd7urtneyxj" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/2. Copper/copper_ore.png" id="13_5nhwn"]
+[ext_resource type="Texture2D" uid="uid://ccsslieh836pb" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/3. Tin/tin_ore.png" id="14_q0ugq"]
+[ext_resource type="Texture2D" uid="uid://cdyw63qvo0mew" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/4. Iron/iron_ore.png" id="15_ts546"]
+[ext_resource type="Texture2D" uid="uid://cv481ooal5s8m" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/5. Silver/silver_ore.png" id="16_tmxaf"]
+[ext_resource type="Texture2D" uid="uid://depladsxaql1g" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/6. Gold/gold_ore.png" id="17_enjp5"]
+
+[sub_resource type="Resource" id="Resource_5ear6"]
+resource_local_to_scene = true
+script = ExtResource("11_5ear6")
+texture = ExtResource("12_off2v")
+type = 0
+name = "Coal Ore"
+resource = "coal"
+health = 10.0
+max_health = 10.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 10)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
+[sub_resource type="Resource" id="Resource_off2v"]
+resource_local_to_scene = true
+script = ExtResource("11_5ear6")
+texture = ExtResource("12_off2v")
+type = 0
+name = "Coal Ore"
+resource = "coal"
+health = 10.0
+max_health = 10.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 10)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
+[sub_resource type="Resource" id="Resource_5nhwn"]
+resource_local_to_scene = true
+script = ExtResource("11_5ear6")
+texture = ExtResource("13_5nhwn")
+type = 0
+name = "Copper Ore"
+resource = "copper"
+health = 16.0
+max_health = 16.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 6)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
+[sub_resource type="Resource" id="Resource_q0ugq"]
+resource_local_to_scene = true
+script = ExtResource("11_5ear6")
+texture = ExtResource("14_q0ugq")
+type = 0
+name = "Tin Ore"
+resource = "tin"
+health = 16.0
+max_health = 16.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 6)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
+[sub_resource type="Resource" id="Resource_ts546"]
+resource_local_to_scene = true
+script = ExtResource("11_5ear6")
+texture = ExtResource("15_ts546")
+type = 0
+name = "Iron Ore"
+resource = "iron"
+health = 30.0
+max_health = 30.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 5)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
+[sub_resource type="Resource" id="Resource_tmxaf"]
+resource_local_to_scene = true
+script = ExtResource("11_5ear6")
+texture = ExtResource("16_tmxaf")
+type = 0
+name = "Silver Ore"
+resource = "silver"
+health = 50.0
+max_health = 50.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 4)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
+
+[sub_resource type="Resource" id="Resource_enjp5"]
+resource_local_to_scene = true
+script = ExtResource("11_5ear6")
+texture = ExtResource("17_enjp5")
+type = 0
+name = "Gold Ore"
+resource = "gold"
+health = 100.0
+max_health = 100.0
+loot_radius = Vector2(30, 30)
+drop_rate = Vector2i(1, 3)
+metadata/_custom_type_script = "uid://djxlwj7sddiw2"
 
 [sub_resource type="Environment" id="Environment_cr366"]
 
@@ -49,8 +141,8 @@ env = NodePath("LevelEnvironmentComponent")
 
 [node name="LevelSpaceComponent" parent="." instance=ExtResource("2_1cwlj")]
 
-[node name="Tilemaps" parent="LevelSpaceComponent" index="3" node_paths=PackedStringArray("floor", "decor")]
-floor = NodePath("CaveFloor")
+[node name="Tilemaps" parent="LevelSpaceComponent" index="3" node_paths=PackedStringArray("t_floor", "decor")]
+t_floor = NodePath("CaveFloor")
 decor = NodePath("CaveDecor")
 
 [node name="CaveFloor" type="TileMapLayer" parent="LevelSpaceComponent/Tilemaps" index="0"]
@@ -88,31 +180,31 @@ tile_set = ExtResource("9_ic1h1")
 
 [node name="GatheringNode" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="0" instance=ExtResource("11_6m7iy")]
 position = Vector2(710, 597)
-attributes = ExtResource("11_tc7rw")
+attributes = SubResource("Resource_5ear6")
 
 [node name="GatheringNode2" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="1" instance=ExtResource("11_6m7iy")]
 position = Vector2(781, 706)
-attributes = ExtResource("11_tc7rw")
+attributes = SubResource("Resource_off2v")
 
 [node name="GatheringNode3" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="2" instance=ExtResource("11_6m7iy")]
 position = Vector2(902, 681)
-attributes = ExtResource("12_5ear6")
+attributes = SubResource("Resource_5nhwn")
 
 [node name="GatheringNode4" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="3" instance=ExtResource("11_6m7iy")]
 position = Vector2(977, 602)
-attributes = ExtResource("13_off2v")
+attributes = SubResource("Resource_q0ugq")
 
 [node name="GatheringNode5" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="4" instance=ExtResource("11_6m7iy")]
 position = Vector2(821, 499)
-attributes = ExtResource("14_5nhwn")
+attributes = SubResource("Resource_ts546")
 
 [node name="GatheringNode6" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="5" instance=ExtResource("11_6m7iy")]
 position = Vector2(925, 510)
-attributes = ExtResource("15_q0ugq")
+attributes = SubResource("Resource_tmxaf")
 
 [node name="GatheringNode7" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="6" instance=ExtResource("11_6m7iy")]
 position = Vector2(1036, 508)
-attributes = ExtResource("16_ts546")
+attributes = SubResource("Resource_enjp5")
 
 [node name="Door" parent="LevelSpaceComponent/Interactables/Doors" index="0" instance=ExtResource("5_ysr4b")]
 position = Vector2(1328, 993)
