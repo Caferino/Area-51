@@ -41,6 +41,7 @@ func drop_item(manager_name: String, item_name: String, global_position: Vector2
 		var collectable = collectable_node.instantiate()
 		
 		collectable.setup(item)
+		print("DROP ITEM = ", item_name, item.name)
 		collectable.global_position = global_position
 		
 		scene.call_deferred("add_child", collectable)
@@ -56,6 +57,7 @@ func drop_debris(manager_name: String, object: String, global_position: Vector2,
 		debris.setup(object_data)
 		debris.global_position = global_position
 		
+		print("DROPPING DEBRIS = ", global_position, debris.visible)
 		scene.call_deferred("add_child", debris)
 		debris.call_deferred("drop", radius)
 

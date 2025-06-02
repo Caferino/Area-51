@@ -9,6 +9,7 @@ script = ExtResource("1_6aejj")
 texture = ExtResource("2_30e44")
 type = 0
 name = "Ruby Ore"
+resource = "ruby"
 health = 100.0
 max_health = 100.0
 loot_radius = Vector2(30, 30)

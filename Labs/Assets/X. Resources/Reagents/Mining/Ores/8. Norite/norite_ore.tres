@@ -9,6 +9,7 @@ script = ExtResource("1_xrfrg")
 texture = ExtResource("2_q55tw")
 type = 0
 name = "Norite Ore"
+resource = "norite"
 health = 500.0
 max_health = 500.0
 loot_radius = Vector2(30, 30)

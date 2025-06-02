@@ -9,6 +9,7 @@ script = ExtResource("1_6aoyp")
 texture = ExtResource("2_ivovc")
 type = 0
 name = "Dragonsoul Ore"
+resource = "dragonsoul"
 health = 1e+06
 max_health = 1e+06
 loot_radius = Vector2(30, 30)

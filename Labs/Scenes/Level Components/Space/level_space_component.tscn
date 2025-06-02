@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d2aqtulbgxjou" path="res://Labs/Scenes/Level Components/Space/tilemaps.gd" id="2_bfos7"]
 
 [node name="LevelSpaceComponent" type="Node2D" node_paths=PackedStringArray("entities", "items", "fields", "tilemaps", "interactables", "static_decor", "reactive_decor", "spawners", "weather", "gather_nodes", "craft_nodes", "doors", "start")]
+y_sort_enabled = true
 script = ExtResource("1_66r0s")
 entities = NodePath("Entities")
 items = NodePath("Items")
@@ -20,33 +21,45 @@ doors = NodePath("Interactables/Doors")
 start = NodePath("Spawners/Start")
 
 [node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Items" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Fields" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Tilemaps" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("2_bfos7")
 
 [node name="Interactables" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="GatheringNodes" type="Node2D" parent="Interactables"]
+y_sort_enabled = true
 
 [node name="Trees" type="Node2D" parent="Interactables/GatheringNodes"]
+y_sort_enabled = true
 
 [node name="Rocks" type="Node2D" parent="Interactables/GatheringNodes"]
+y_sort_enabled = true
 
 [node name="Herbs" type="Node2D" parent="Interactables/GatheringNodes"]
+y_sort_enabled = true
 
 [node name="CraftingNodes" type="Node2D" parent="Interactables"]
+y_sort_enabled = true
 
 [node name="Objectives" type="Node2D" parent="Interactables"]
 
 [node name="Doors" type="Node2D" parent="Interactables"]
 
 [node name="StaticDecor" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="ReactiveDecor" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Spawners" type="Node2D" parent="."]
 

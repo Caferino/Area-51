@@ -6,7 +6,12 @@ signal inventory_change()  ## Emits whenever something meaningful happens in the
 var size : int = 5
 var items : Dictionary = {  ## The entity's inventory. WIP - Not dynamic. For testing for now
 	"Logs" : 0,
-	"Coal": 0
+	"Coal": 0,
+	"Copper": 0,
+	"Tin": 0,
+	"Iron": 0,
+	"Silver": 0,
+	"Gold": 0
 }   
 
 

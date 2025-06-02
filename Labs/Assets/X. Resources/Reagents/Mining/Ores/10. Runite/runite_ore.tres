@@ -9,6 +9,7 @@ script = ExtResource("1_k5qye")
 texture = ExtResource("2_6mpyf")
 type = 0
 name = "Runite Ore"
+resource = "runite"
 health = 1000.0
 max_health = 1000.0
 loot_radius = Vector2(30, 30)

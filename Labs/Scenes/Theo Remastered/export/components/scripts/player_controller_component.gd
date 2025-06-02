@@ -225,5 +225,4 @@ func _on_torso_animator_animation_finished(anim_name: StringName) -> void:
 
 func _on_area_trigger_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Door"):
-		#get_tree().call_deferred("change_scene_to_file", area.goes_to)
-		LevelManager.move_player(player, area.goes_to)
+		LevelManager.call_deferred("move_player", player, area.goes_to)

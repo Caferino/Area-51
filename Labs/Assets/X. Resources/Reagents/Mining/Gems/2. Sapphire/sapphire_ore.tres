@@ -9,6 +9,7 @@ script = ExtResource("1_c612c")
 texture = ExtResource("2_h3fao")
 type = 0
 name = "Sapphire Ore"
+resource = "sapphire"
 health = 100.0
 max_health = 100.0
 loot_radius = Vector2(30, 30)

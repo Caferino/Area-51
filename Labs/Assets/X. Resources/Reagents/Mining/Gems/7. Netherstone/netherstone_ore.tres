@@ -9,6 +9,7 @@ script = ExtResource("1_gjdtg")
 texture = ExtResource("2_x7qgu")
 type = 0
 name = "Netherstone Ore"
+resource = "netherstone"
 health = 2500.0
 max_health = 2500.0
 loot_radius = Vector2(30, 30)

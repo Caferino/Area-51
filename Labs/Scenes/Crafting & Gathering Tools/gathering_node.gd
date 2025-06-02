@@ -55,11 +55,12 @@ func change_frame():
 func drop_debris():
 	var amount = randi_range(5, 15)
 	for i in range(0, amount):
-		ResourcesManager.drop_debris("Debris", "coal" + "_debris", global_position, attributes.loot_radius, self.get_parent())
+		ResourcesManager.drop_debris("Debris", attributes.resource + "_debris", global_position, attributes.loot_radius, self.get_parent())
 
 
 func drop_reagents():
 	var amount = randi_range(attributes.drop_rate.x, attributes.drop_rate.y)
 	print("DEBUG NODE = ", amount, " ", global_position)
 	for i in range(0, amount):
-		ResourcesManager.drop_item("Reagents", "coal", global_position, attributes.loot_radius, self.get_parent())
+		print(attributes.resource)
+		ResourcesManager.drop_item("Reagents", attributes.resource, global_position, attributes.loot_radius, self.get_parent())
