@@ -12,3 +12,6 @@ func _ready() -> void:
 	var dungeon = DungeonGenerator.generate_dungeon(size)
 	add_child(dungeon)
 	
+	var player = Caferino.spawn_player()
+	LevelManager.curr_level.space.entities.add_child(player)
+	player.global_position = LevelManager.curr_level.space.start.global_position

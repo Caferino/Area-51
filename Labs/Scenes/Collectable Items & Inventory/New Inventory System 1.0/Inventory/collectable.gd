@@ -12,15 +12,14 @@ var item_qty         : int              = 1
 func setup(data):
 	item_name = data.name
 	sprite.texture = data.texture
-	print("ITEM SETUP = ", item_name, data.name, data.texture)
 	for g in data.groups: add_to_group(g)
 
 
-func drop(loot_radius: Vector2):
-	var direction = Randomizer.random_point_around(loot_radius)
+func drop(radius: Vector2):
+	var direction = Randomizer.random_point_around(radius)
 	sprite.set_scale(Vector2(0.0, 0.0))
 	tween.set_parallel()
-	tween.tween_property(self, "position", global_position + direction, 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, "global_position", global_position + direction, 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(sprite, "scale", Vector2(0.4, 0.4), 0.5)
 	tween.tween_property(sprite, "rotation_degrees", 720, 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.play()

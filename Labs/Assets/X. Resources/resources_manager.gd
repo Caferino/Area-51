@@ -11,9 +11,11 @@ var managers : Dictionary = {
 }
 
 ## Commonly Used Nodes
-var collectable_node = preload("res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.tscn")
-var gathering_node   = preload("res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn")
-var debris_node      = preload("res://Labs/Assets/X. Resources/Reagents/debris.tscn")
+var node = {
+	"collectable" : preload("res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.tscn"),
+	"gathering"   : preload("res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn"),
+	"debris"      : preload("res://Labs/Assets/X. Resources/Reagents/debris.tscn")
+}
 
 ## StructureManager
 var curr_structure : Node2D = null
@@ -30,36 +32,22 @@ func _ready():
 	managers["Structures"] = $Structures
 
 
+
+
 ################# ############# #################
 ################# ITEMS MANAGER #################
 ################# ############# #################
 
-func drop_item(manager_name: String, item_name: String, global_position: Vector2, loot_radius: Vector2, scene: Node2D):
+func drop_object(manager_name: String, type: String, object_name: String, spawn_position: Vector2, radius: Vector2, scene: Node2D):
 	var manager = managers.get(manager_name)
-	if manager and manager.has_resource(item_name):
-		var item = manager.get_resource(item_name)
-		var collectable = collectable_node.instantiate()
+	if manager and manager.has_resource(object_name):
+		var item = manager.get_resource(object_name)
+		var object = node[type].instantiate()
 		
-		collectable.setup(item)
-		print("DROP ITEM = ", item_name, item.name)
-		collectable.global_position = global_position
-		
-		scene.call_deferred("add_child", collectable)
-		collectable.call_deferred("drop", loot_radius)
-
-
-func drop_debris(manager_name: String, object: String, global_position: Vector2, radius: Vector2, scene: Node2D):
-	var manager = managers.get(manager_name)
-	if manager and manager.has_resource(object):
-		var object_data = manager.get_resource(object)
-		var debris = debris_node.instantiate()
-		
-		debris.setup(object_data)
-		debris.global_position = global_position
-		
-		print("DROPPING DEBRIS = ", global_position, debris.visible)
-		scene.call_deferred("add_child", debris)
-		debris.call_deferred("drop", radius)
+		object.setup(item)
+		scene.add_child(object)
+		object.global_position = spawn_position
+		object.drop(radius)
 
 
 
