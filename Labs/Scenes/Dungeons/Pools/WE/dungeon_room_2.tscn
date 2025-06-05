@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b475d82a2kusv"]
+
+[ext_resource type="PackedScene" uid="uid://cfxnab2y5kkgq" path="res://Labs/Scenes/Level Components/dungeon_level.tscn" id="1_hcj5x"]
+
+[node name="WEDungeonLevel2" instance=ExtResource("1_hcj5x")]
+
+[editable path="LevelSpaceComponent"]
