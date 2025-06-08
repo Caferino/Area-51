@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw1uueu04glnb"]
-
-[ext_resource type="PackedScene" uid="uid://cfxnab2y5kkgq" path="res://Labs/Scenes/Level Components/dungeon_level.tscn" id="1_auxup"]
-
-[node name="NDungeonLevel5" instance=ExtResource("1_auxup")]
-
-[editable path="LevelSpaceComponent"]
