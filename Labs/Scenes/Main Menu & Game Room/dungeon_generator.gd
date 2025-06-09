@@ -1,27 +1,30 @@
 extends Node
 
 static func generate_dungeon(size: int) -> Node:
-	print("CREATING DUNGEON...")
+	if size < 3:     size = 3
+	elif size > 100: size = 100
 	var dungeon = Node2D.new()
-	var id = 0
+	var dims : Array = [                  ## 10 x 10 Matrix "Dimensions"
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	]
+	var start : Vector2i = Vector2i(randi_range(0, 9), randi_range(0, 9))
+	dims[start.x][start.y] = "S"
 	
-	## Hardcoded room 1, the starting room
-	var room = load("res://Labs/Scenes/Dungeons/Dungeon Set 1/dungeon_room_1.tscn").instantiate()
-	dungeon.add_child(room)
-	room.global_position = Vector2(0,0)
-	room.space.doors.get_child(0).goes_to = id + 1  ## WARN - THIS WILL CHANGE A LOT, META_DATA REQUIRED TO KNOW IF IT'S NWSE
-	LevelManager.add_level(room, id)
-	LevelManager.current_level(room)
+	for id in range(10):
+		print(dims[id])
 	
-	## Hardcoded room 2
-	id += 1
-	room = load("res://Labs/Scenes/Dungeons/Dungeon Set 1/dungeon_room_2.tscn").instantiate()
-	dungeon.add_child(room)
-	room.global_position = Vector2(2000,0)
-	room.space.doors.get_child(0).goes_to = id - 1  ## WARN - THIS WILL CHANGE A LOT, META_DATA REQUIRED TO KNOW IF IT'S NWSE
-	room.set_process(false)
-	room.set_physics_process(false)
-	room.visible = false
-	LevelManager.add_level(room, id)
+	
+	for id in size:
+		print(id)
+	
 	
 	return dungeon

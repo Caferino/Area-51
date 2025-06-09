@@ -1,6 +1,7 @@
 class_name Level extends Node2D
 ## A [color=white]level[/color], by [color=white]Alcarodia.
 
+var id : int = 0
 @export var space   : SpaceComponent       = null
 @export var cuts    : CutscenesComponent   = null
 @export var env     : EnvironmentComponent = null
@@ -21,14 +22,12 @@ var weather_stats: Dictionary = {
 
 
 func _ready():
-	print("Connecting signal")
 	SignalManager.check_tile_type.connect(check_tile_type)
 	# WARN NOTE - Order matters; floor should always be last.
 	tilemaps = [space.tilemaps.decor, space.tilemaps.t_floor]
 
 
 func check_tile_type(on_position: Vector2i, controller: EntityController):
-	print("CHECKING TILE")
 	for tilemap in tilemaps:
 		var cell_pos = tilemap.local_to_map(on_position)
 		var data = tilemap.get_cell_tile_data(cell_pos)

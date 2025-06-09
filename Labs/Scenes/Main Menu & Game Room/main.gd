@@ -8,10 +8,11 @@ class_name AlcarodianDungeons extends Node2D
 ## the temp_root, if the player died or is new, is like a New Game, generate a dungeon.
 func _ready() -> void:
 	# Imagine I pressed Play or New Game, hardcode it for now:
-	var size := 2
+	var size := 10
 	var dungeon = DungeonGenerator.generate_dungeon(size)
 	add_child(dungeon)
 	
 	var player = Caferino.spawn_player()
-	LevelManager.curr_level.space.entities.add_child(player)
-	player.global_position = LevelManager.curr_level.space.start.global_position
+	### NOTE - UNCOMMENT AFTER GENERATOR IS DONE
+	#LevelManager.curr_level.space.entities.add_child(player)
+	#player.global_position = LevelManager.curr_level.space.start.global_position
