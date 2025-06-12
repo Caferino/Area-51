@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://bi75u10gk20q3"]
+[gd_scene load_steps=4 format=4 uid="uid://bi75u10gk20q3"]
 
 [ext_resource type="PackedScene" uid="uid://cfxnab2y5kkgq" path="res://Labs/Scenes/Level Components/dungeon_level.tscn" id="1_q57hu"]
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="2_6svdu"]
+[ext_resource type="PackedScene" uid="uid://ikjmqxfkvjd3" path="res://Labs/Scenes/Dungeons/door.tscn" id="2_qgc23"]
 
 [node name="NWSEDungeonLevel1" instance=ExtResource("1_q57hu")]
 
@@ -23,7 +24,31 @@ tile_map_data = PackedByteArray("AABGACUAAgAdAAAAAABGACYAAgAdAAEAAABGACcAAgAdAAI
 [node name="CaveDecor2" parent="LevelSpaceComponent/Tilemaps" index="7"]
 tile_map_data = PackedByteArray("AABIACYAAgAOAAYAAABIACcAAgAOAAcAAABJACYAAgAPAAYAAABJACcAAgAPAAcAAABGACUAAgANAAIAAABGACYAAgANAAMAAABHACUAAgAOAAIAAABHACYAAgAOAAMAAAA=")
 
-[node name="ChainLamp" parent="LevelSpaceComponent/Tilemaps" index="8" instance=ExtResource("2_6svdu")]
+[node name="N" parent="LevelSpaceComponent/Interactables/Doors" index="0" instance=ExtResource("2_qgc23")]
+position = Vector2(1216, 161)
+
+[node name="W" parent="LevelSpaceComponent/Interactables/Doors" index="1" instance=ExtResource("2_qgc23")]
+position = Vector2(125, 624)
+
+[node name="S" parent="LevelSpaceComponent/Interactables/Doors" index="2" instance=ExtResource("2_qgc23")]
+position = Vector2(656, 988)
+
+[node name="E" parent="LevelSpaceComponent/Interactables/Doors" index="3" instance=ExtResource("2_qgc23")]
+position = Vector2(1795, 784)
+
+[node name="ChainLamp" parent="LevelSpaceComponent/ReactiveDecor" index="0" instance=ExtResource("2_6svdu")]
 position = Vector2(1154, 496)
+
+[node name="N" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
+position = Vector2(1216, 211)
+
+[node name="W" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="2"]
+position = Vector2(192, 624)
+
+[node name="S" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="3"]
+position = Vector2(656, 946)
+
+[node name="E" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="4"]
+position = Vector2(1728, 784)
 
 [editable path="LevelSpaceComponent"]

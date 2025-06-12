@@ -51,6 +51,6 @@ y_sort_enabled = true
 tile_set = ExtResource("8_hlm4j")
 
 [node name="Start" parent="LevelSpaceComponent/Spawners" index="0"]
-position = Vector2(877, 538)
+position = Vector2(960, 576)
 
 [editable path="LevelSpaceComponent"]

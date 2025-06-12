@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://c87gkt06ie5mr"]
+[gd_scene load_steps=5 format=4 uid="uid://c87gkt06ie5mr"]
 
 [ext_resource type="PackedScene" uid="uid://cfxnab2y5kkgq" path="res://Labs/Scenes/Level Components/dungeon_level.tscn" id="1_3tyyr"]
+[ext_resource type="PackedScene" uid="uid://ikjmqxfkvjd3" path="res://Labs/Scenes/Dungeons/door.tscn" id="2_bdi7d"]
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="2_s330p"]
 [ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="3_wk5ft"]
 
@@ -24,6 +25,12 @@ tile_map_data = PackedByteArray("AAASAA0AAgAhAAAAAAASAA4AAgAhAAEAAAATAA0AAgAiAAA
 [node name="CaveDecor2" parent="LevelSpaceComponent/Tilemaps" index="7"]
 tile_map_data = PackedByteArray("AAAPAA4AAgAhAAAAAAAPAA8AAgAhAAEAAAAQAA4AAgAiAAAAAAAQAA8AAgAiAAEAAAAQABAAAgAiAAIAAAARAA4AAgAjAAAAAAARAA8AAgAjAAEAAAARABAAAgAjAAIAAAASAA4AAgAkAAAAAAASAA8AAgAkAAEAAAASABAAAgAkAAIAAAATAA4AAgAlAAAAAAATAA8AAgAlAAEAAAATABAAAgAlAAIAAAAUABoAAgAAABMAAAAUABsAAgAAABQAAAAVABoAAgABABMAAAAVABsAAgABABQAAAAWABsAAgAIAAwAAAAWABwAAgAIAA0AAAATABoAAgAIAAwAAAATABsAAgAIAA0AAAA=")
 
+[node name="N" parent="LevelSpaceComponent/Interactables/Doors" index="0" instance=ExtResource("2_bdi7d")]
+position = Vector2(1440, 161)
+
+[node name="S" parent="LevelSpaceComponent/Interactables/Doors" index="1" instance=ExtResource("2_bdi7d")]
+position = Vector2(816, 991)
+
 [node name="ChainLamp" parent="LevelSpaceComponent/ReactiveDecor" index="0" instance=ExtResource("2_s330p")]
 position = Vector2(410, 616)
 
@@ -35,5 +42,11 @@ position = Vector2(1049, 721)
 
 [node name="Smoke Ashburn" parent="LevelSpaceComponent/ReactiveDecor" index="3" instance=ExtResource("3_wk5ft")]
 position = Vector2(1063, 528)
+
+[node name="N" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
+position = Vector2(1440, 211)
+
+[node name="S" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="2"]
+position = Vector2(816, 946)
 
 [editable path="LevelSpaceComponent"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://c4wjtm012ef15"]
+[gd_scene load_steps=3 format=4 uid="uid://c4wjtm012ef15"]
 
 [ext_resource type="PackedScene" uid="uid://cfxnab2y5kkgq" path="res://Labs/Scenes/Level Components/dungeon_level.tscn" id="1_klegr"]
+[ext_resource type="PackedScene" uid="uid://ikjmqxfkvjd3" path="res://Labs/Scenes/Dungeons/door.tscn" id="2_lofao"]
 
 [node name="WDungeonLevel1" instance=ExtResource("1_klegr")]
 
@@ -21,5 +22,11 @@ tile_map_data = PackedByteArray("AAAuACoAAAAOAAMAAAAuACsAAAALAAEAAAAuACwAAAALAAI
 
 [node name="CaveDecor2" parent="LevelSpaceComponent/Tilemaps" index="7"]
 tile_map_data = PackedByteArray("AAAwACoAAAALAAAAAAAwACsAAAALAAEAAAAwACwAAAALAAIAAAAxACoAAAAMAAAAAAAxACsAAAAMAAEAAAAxACwAAAAMAAIAAAAuACoAAAALAAAAAAAuACsAAAALAAEAAAAuACwAAAALAAIAAAAvACoAAAAMAAAAAAAvACsAAAAMAAEAAAAvACwAAAAMAAIAAAA=")
+
+[node name="W" parent="LevelSpaceComponent/Interactables/Doors" index="0" instance=ExtResource("2_lofao")]
+position = Vector2(128, 608)
+
+[node name="W" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
+position = Vector2(192, 608)
 
 [editable path="LevelSpaceComponent"]

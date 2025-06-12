@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://b0lep82d5re5u"]
+[gd_scene load_steps=3 format=4 uid="uid://b0lep82d5re5u"]
 
 [ext_resource type="PackedScene" uid="uid://cfxnab2y5kkgq" path="res://Labs/Scenes/Level Components/dungeon_level.tscn" id="1_m5mla"]
+[ext_resource type="PackedScene" uid="uid://ikjmqxfkvjd3" path="res://Labs/Scenes/Dungeons/door.tscn" id="2_x67q6"]
 
 [node name="NEDungeonLevel2" instance=ExtResource("1_m5mla")]
 
@@ -18,5 +19,19 @@ tile_map_data = PackedByteArray("AAAWABMAAAAcAAEAAAAWABQAAAAcAAIAAAAWABUAAAAcAAM
 
 [node name="CaveDecor" parent="LevelSpaceComponent/Tilemaps" index="6"]
 tile_map_data = PackedByteArray("AAAtACsAAAAXAAIAAAAtACwAAAAXAAMAAAAuACsAAAAYAAIAAAAuACwAAAAYAAMAAABpABoAAAAXAAIAAABpABsAAAAXAAMAAABqABoAAAAYAAIAAABqABsAAAAYAAMAAAAnACoAAAAXAAAAAAAnACsAAAAXAAEAAAAoACoAAAAYAAAAAAAoACsAAAAYAAEAAABiAA4AAAAXAAAAAABiAA8AAAAXAAEAAABjAA4AAAAYAAAAAABjAA8AAAAYAAEAAAAtAAgAAAAZAAAAAAAtAAkAAAAZAAEAAAAtAAoAAAAZAAIAAAAuAAgAAAAaAAAAAAAuAAkAAAAaAAEAAAAuAAoAAAAaAAIAAAAlAAgAAAAZAAAAAAAlAAkAAAAZAAEAAAAlAAoAAAAZAAIAAAAmAAgAAAAaAAAAAAAmAAkAAAAaAAEAAAAmAAoAAAAaAAIAAAAtAC8AAAAHAAAAAAAtADAAAAAHAAEAAAAtADEAAAAHAAIAAAAuAC8AAAAIAAAAAAAuADAAAAAIAAEAAAAuADEAAAAIAAIAAAAvAC4AAAAHAAAAAAAvAC8AAAAHAAEAAAAvADAAAAAHAAIAAAAwAC4AAAAIAAAAAAAwAC8AAAAIAAEAAAAwADAAAAAIAAIAAAA+ABgAAAAHAAAAAAA+ABkAAAAHAAEAAAA+ABoAAAAHAAIAAAA/ABgAAAAIAAAAAAA/ABkAAAAIAAEAAAA/ABoAAAAIAAIAAABFAB4AAAAJAAAAAABFAB8AAAAJAAEAAABFACAAAAAJAAIAAABGAB4AAAAKAAAAAABGAB8AAAAKAAEAAABGACAAAAAKAAIAAAA=")
+
+[node name="N" parent="LevelSpaceComponent/Interactables/Doors" index="0" instance=ExtResource("2_x67q6")]
+position = Vector2(672, 161)
+
+[node name="E" parent="LevelSpaceComponent/Interactables/Doors" index="1" instance=ExtResource("2_x67q6")]
+position = Vector2(1775, 776)
+rotation = 1.5708
+
+[node name="N" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
+position = Vector2(672, 211)
+
+[node name="E" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="2"]
+position = Vector2(1728, 776)
+rotation = 1.5708
 
 [editable path="LevelSpaceComponent"]
