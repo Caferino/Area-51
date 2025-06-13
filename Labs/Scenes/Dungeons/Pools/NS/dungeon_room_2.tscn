@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://c87gkt06ie5mr"]
+[gd_scene load_steps=4 format=4 uid="uid://c87gkt06ie5mr"]
 
 [ext_resource type="PackedScene" uid="uid://cfxnab2y5kkgq" path="res://Labs/Scenes/Level Components/dungeon_level.tscn" id="1_3tyyr"]
 [ext_resource type="PackedScene" uid="uid://ikjmqxfkvjd3" path="res://Labs/Scenes/Dungeons/door.tscn" id="2_bdi7d"]
 [ext_resource type="PackedScene" uid="uid://b0cpacer53p1n" path="res://Labs/Scenes/Interactive Decorations Room/Hung Items/chain_lamp.tscn" id="2_s330p"]
-[ext_resource type="PackedScene" uid="uid://dgjd7sol6gsuy" path="res://Labs/Scenes/Theo Remastered/Smoke Ashburn.tscn" id="3_wk5ft"]
 
 [node name="NSDungeonLevel2" instance=ExtResource("1_3tyyr")]
 
@@ -40,8 +39,8 @@ position = Vector2(1217, 276)
 [node name="ChainLamp3" parent="LevelSpaceComponent/ReactiveDecor" index="2" instance=ExtResource("2_s330p")]
 position = Vector2(1049, 721)
 
-[node name="Smoke Ashburn" parent="LevelSpaceComponent/ReactiveDecor" index="3" instance=ExtResource("3_wk5ft")]
-position = Vector2(1063, 528)
+[node name="Start" parent="LevelSpaceComponent/Spawners" index="0"]
+position = Vector2(448, 384)
 
 [node name="N" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
 position = Vector2(1440, 211)

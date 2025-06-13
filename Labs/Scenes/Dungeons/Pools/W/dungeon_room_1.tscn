@@ -26,6 +26,9 @@ tile_map_data = PackedByteArray("AAAwACoAAAALAAAAAAAwACsAAAALAAEAAAAwACwAAAALAAI
 [node name="W" parent="LevelSpaceComponent/Interactables/Doors" index="0" instance=ExtResource("2_lofao")]
 position = Vector2(128, 608)
 
+[node name="Start" parent="LevelSpaceComponent/Spawners" index="0"]
+position = Vector2(896, 704)
+
 [node name="W" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
 position = Vector2(192, 608)
 

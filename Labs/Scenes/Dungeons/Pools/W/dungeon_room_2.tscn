@@ -31,6 +31,9 @@ position = Vector2(626, 380)
 position = Vector2(145, 424)
 rotation = 1.5708
 
+[node name="Start" parent="LevelSpaceComponent/Spawners" index="0"]
+position = Vector2(832, 512)
+
 [node name="W" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
 position = Vector2(192, 424)
 rotation = 1.5708

@@ -39,6 +39,9 @@ position = Vector2(1795, 784)
 [node name="ChainLamp" parent="LevelSpaceComponent/ReactiveDecor" index="0" instance=ExtResource("2_6svdu")]
 position = Vector2(1154, 496)
 
+[node name="Start" parent="LevelSpaceComponent/Spawners" index="0"]
+position = Vector2(1024, 640)
+
 [node name="N" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
 position = Vector2(1216, 211)
 

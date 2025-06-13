@@ -29,6 +29,9 @@ position = Vector2(1120, 163)
 [node name="S" parent="LevelSpaceComponent/Interactables/Doors" index="1" instance=ExtResource("2_kwi6a")]
 position = Vector2(1136, 991)
 
+[node name="Start" parent="LevelSpaceComponent/Spawners" index="0"]
+position = Vector2(704, 256)
+
 [node name="N" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
 position = Vector2(1120, 213)
 

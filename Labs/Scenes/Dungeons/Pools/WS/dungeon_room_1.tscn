@@ -27,6 +27,9 @@ rotation = 1.5708
 [node name="S" parent="LevelSpaceComponent/Interactables/Doors" index="1" instance=ExtResource("2_4n5nl")]
 position = Vector2(848, 990)
 
+[node name="Start" parent="LevelSpaceComponent/Spawners" index="0"]
+position = Vector2(1024, 640)
+
 [node name="W" type="Marker2D" parent="LevelSpaceComponent/Spawners" index="1"]
 position = Vector2(192, 728)
 rotation = 1.5708

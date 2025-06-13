@@ -1,15 +1,17 @@
 extends Node
 
-var rng := RandomNumberGenerator.new()
-var used_tiles = {}  
 var directions := [
 	Vector2i(0, -1),  # North
 	Vector2i(-1, 0),  # West
 	Vector2i(0, 1),   # South
 	Vector2i(1, 0)    # East
 ]
+var rng := RandomNumberGenerator.new()
+var used_tiles : Dictionary = {}  # NOTE - Tried using Array, but .has() is hashed for Vector2is
+# Vector2i(5, 5) != Vector2i(5, 5) unless they’re the same object.
 var doors_to_create : Array = []
 var branch_doors    : Array = []
+var id : int = 0
 
 
 ## Generates a dungeon inside a 11x11 matrix given the size.
@@ -49,8 +51,10 @@ func generate_dungeon(size: int) -> Node:
 	rng.randomize() # or set rng.seed = YOUR_SEED
 	
 	# 1) Pick start
+	id = 0
 	var start := Vector2i(5, 5)  # In the center, it will never create small dungeons
-	used_tiles[start] = true
+	used_tiles[start] = id
+	id += 1
 	dims[start.x][start.y] = 1  # Start
 	
 	var path = [start]
@@ -71,8 +75,8 @@ func generate_dungeon(size: int) -> Node:
 			break  # no moves left, path is stuck
 		
 		current = valid_dirs[rng.randi_range(0, valid_dirs.size() - 1)]
-		used_tiles[current] = true
-		#print("CURRENT = ", current)
+		used_tiles[current] = id
+		id += 1
 		dims[current.x][current.y] = 2  # Path
 		doors_to_create.append(current)
 		path.append(current)
@@ -126,7 +130,8 @@ func maybe_branch(dims: Array, origin: Vector2i, depth: int, identifier: int = 4
 		dims[current.x][current.y] = identifier  # Branch marker
 		branch_doors.append(last_valid_tile)  # I know they appear to repeat, but don't change that
 		branch_doors.append(current)
-		used_tiles[current] = true
+		used_tiles[current] = id
+		id += 1
 		last_valid_tile = current
 		current += directions[rng.randi_range(0, directions.size() - 1)]
 	
@@ -144,7 +149,7 @@ func is_in_bounds(dims: Array, x: int, y: int) -> bool:
 ## WARN - doors_to_create is Stride-1 Pairing, while branch_doors is Stride-2 Pairing. E.g.:
 ## doors_to_create will grab index 0, 1, then 1, 2, then 2, 3, then 3, 4 then 4, 5....
 ## branch_doors will grab index 0, 1, then 2, 3, then 4, 5, then 6, 7, then 8, 9...
-func fill_doors_data(dims_doors):
+func fill_doors_data(dims_doors: Array):
 	var mapping = {
 		Vector2i(0, -1): 0,  # North
 		Vector2i(-1, 0): 1,  # West
@@ -179,17 +184,88 @@ func assign_door(from: Vector2i, to: Vector2i, dims_doors: Array, mapping: Dicti
 ## This function adds the physical dungeons based on the doors needed according to dims_doors.
 ## To save performance, only the dungeon the player is inside will be visible and running its
 ## process and physics_process methods.
-func generate_rooms(dungeon, dims_rooms):
-	pass
+func generate_rooms(dungeon: Node2D, dims_doors: Array):
+	## Start the global_position of the dungeon
+	var room_gp : Vector2 = Vector2(0, 0)
+	#var created_rooms : Dictionary = {} # Has to be a Dictionary for using .has() with Vector2is
+	
+	## Generates the dungeon rooms per tile in in used_tiles
+	for i in used_tiles.size():
+		## Get the current tile
+		var tile : Vector2i = used_tiles.find_key(i)
+		
+		## Get the doors needed for this room
+		var doors : String = ""
+		for val in dims_doors[tile.x][tile.y]:
+			if typeof(val) == TYPE_STRING:
+				doors += val
+		
+		## Grab a random dungeon room from its pool
+		var rooms_count = DirAccess.get_files_at("res://Labs/Scenes/Dungeons/Pools/" + doors).size()
+		var random_index = randi() % rooms_count + 1
+		var room = load("res://Labs/Scenes/Dungeons/Pools/" + doors + "/dungeon_room_" + str(random_index) + ".tscn").instantiate()
+		
+		## Add the room and move the global_position space for the next one
+		dungeon.add_child(room)
+		room.global_position = room_gp
+		room_gp += Vector2(10000, 0)
+		
+		## Hide and pause the rooms that are not the Starting Room
+		if i != 0:
+			room.visible = false
+			room.set_process(false)
+			room.set_physics_process(false)
+		
+		## WARN TODO - CONNECT DOORS/ROOMS, HOW? USING DOORS_TO_CREATE AND BRANCH_DOORS? HERE OR LATER?
+		
+		## Add the room to the LevelManager. Room with i == 0 is always the start
+		LevelManager.add_level(room, i)
+		#created_rooms[used_tiles.find_key(i)] = true  ## DEBUG - MAYBE USELESS
+	
+	
+	## doors_to_create - Stride-1 Pairing
+	for i in range(doors_to_create.size() - 1):
+		pass
+	
+	
+	## branch_doors - Stride-2 Pairing
+	for i in range(0, branch_doors.size() - 1, 2):
+		pass
+	
+	
+	
+	
+	
+	### OLD HARDCODED, DO NOT DELETE YET
+	### Create & add the starting room
+	### WIP Check its needed doors to generate it from a folder
+	#for val in dims_doors[5][5]:
+		#if typeof(val) == TYPE_STRING:
+			#doors += val
+	
+	#var rooms_count = DirAccess.get_files_at("res://Labs/Scenes/Dungeons/Pools/" + doors).size()
+	#var random_index = randi() % rooms_count + 1
+	
+	#print("RANDOM INDEX AT ", doors, " = ", random_index)  ## DEBUG
+	#var room = load("res://Labs/Scenes/Dungeons/Pools/" + doors + "/dungeon_room_" + str(random_index) + ".tscn").instantiate()
+	#print("ROOM = ", room)  ## DEBUG
+	#dungeon.add_child(room)
+	#room.global_position = room_gp
+	#LevelManager.add_level(room, id2)
+	#LevelManager.current_level(room)
 
 
 func _debug_print(dims, dims_doors):
+	print("Doors to Create:")
 	print(doors_to_create)
+	print("Branch Doors:")
 	print(branch_doors)
 	
+	print("Dims:")
 	for row in dims:
 		print(row)
 	
+	print("Dims Doors:")
 	for row in dims_doors:
 		print(row)
 
@@ -197,6 +273,10 @@ func _debug_print(dims, dims_doors):
 
 
 
+
+
+
+### DEPRECATED, DELETE WHEN DONE
 	## Hardcoded room 1, the starting room
 	#var room = load("res://Labs/Scenes/Dungeons/Dungeon Set 1/dungeon_room_1.tscn").instantiate()
 	#dungeon.add_child(room)

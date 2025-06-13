@@ -1,3 +1,3 @@
 class_name Door extends Area2D
 
-@export var goes_to : int = 0
+@export var goes_to : Vector2i
