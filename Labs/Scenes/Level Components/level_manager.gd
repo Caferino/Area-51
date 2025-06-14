@@ -79,7 +79,7 @@ func clear_levels() -> void:
 	curr_dungeon.clear()
 
 
-func move_player(player: Entity, level_id: int) -> void:
+func move_player(player: Entity, area: Area2D) -> void:
 	## TODO - Maybe add a little transition animation, a fade in/out, blink
 	
 	## TODO - This will change plenty, teleport player to the new door's global_position
@@ -90,21 +90,22 @@ func move_player(player: Entity, level_id: int) -> void:
 	curr_level.set_process(false)
 	curr_level.set_physics_process(false)
 	
-	curr_level = curr_dungeon[level_id]
+	curr_level = curr_dungeon[area.id]  ## TODO - WRONG LINE
 	curr_level.visible = true
 	curr_level.set_process(true)
 	curr_level.set_physics_process(true)
 	
 	curr_level.space.entities.add_child(player)
-	player.global_position = curr_dungeon[level_id].space.start.global_position
+	player.global_position = area.goes_to
+	print("GOES TO = ", area.goes_to, " PLAYER GP = ", player.global_position, " ID = ", area.id)
 
 
 func spawn(object: Node2D, spot: Node2D):
 	if object.get_parent():
-		print("Reparenting...")
+		#print("Reparenting...")  ## DEBUG
 		object.reparent(curr_level)
 	else:
-		print("Directly adding object to the level...")
+		#print("Directly adding object to the level...")  ## DEBUG
 		curr_level.add_child(object)
 	object.global_position = spot.global_position
 
