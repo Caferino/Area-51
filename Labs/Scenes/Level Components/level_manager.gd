@@ -11,7 +11,8 @@ extends Node
 static var temp_rooms_root : String = "res://Labs/Scenes/Dungeons/Temp Run/"
 static var rooms_root      : String = "res://Labs/Scenes/Dungeons/Dungeon Set 1/"
 var curr_level             : Level  = null
-var curr_dungeon           : Dictionary  = {}
+var main_dungeon           : Node2D = null
+var curr_dungeon           : Dictionary  = {}  ## DEPRECATED
 
 
 # Saves a room to the temporary rooms directory
@@ -49,6 +50,10 @@ func clear_saved_rooms() -> void:
 		file_name = dir.get_next()
 
 
+func set_main_dungeon(node: Node2D):
+	main_dungeon = node
+
+
 # Directly switch the current_level, useful for rooms/levels outside dungeons.
 func current_level(level: Level):
 	curr_level = level
@@ -64,9 +69,9 @@ func remove_current_level():
 	curr_level = null
 
 
-# Adds a level to the current_dungeon given its id.
-func add_level(level: Level, id: int):
-	curr_dungeon[id] = level
+# Adds a level to the current_dungeon given its id. DEPRECATED
+#func add_level(level: Level, id: int):
+	#curr_dungeon[id] = level
 
 
 # Removes a level to the current_dungeon given its id.
@@ -85,19 +90,20 @@ func move_player(player: Entity, area: Area2D) -> void:
 	## TODO - This will change plenty, teleport player to the new door's global_position
 	## Plus saving, loading data maybe.
 	curr_level.space.entities.remove_child(player)
+	curr_level.queue_free()
 	
-	curr_level.visible = false
-	curr_level.set_process(false)
-	curr_level.set_physics_process(false)
-	
-	curr_level = curr_dungeon[area.id]  ## TODO - WRONG LINE
-	curr_level.visible = true
-	curr_level.set_process(true)
-	curr_level.set_physics_process(true)
+	print("AREA ID = ", str(area.id))
+	var new_room = ResourceLoader.load("res://Labs/Scenes/Dungeons/Temp Run/" + str(area.id) + ".tscn").instantiate()
+	main_dungeon.add_child(new_room)
+	curr_level = new_room
 	
 	curr_level.space.entities.add_child(player)
 	player.global_position = area.goes_to
 	print("GOES TO = ", area.goes_to, " PLAYER GP = ", player.global_position, " ID = ", area.id)
+
+
+func add_player(player: Entity, area: Area2D):
+	pass
 
 
 func spawn(object: Node2D, spot: Node2D):

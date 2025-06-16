@@ -29,7 +29,7 @@ func _ready():
 
 func check_tile_type(on_position: Vector2i, controller: EntityController):
 	for tilemap in tilemaps:
-		var cell_pos = tilemap.local_to_map(on_position)
+		var cell_pos = tilemap.local_to_map(self.to_local(on_position))
 		var data = tilemap.get_cell_tile_data(cell_pos)
 		
 		if data != null:

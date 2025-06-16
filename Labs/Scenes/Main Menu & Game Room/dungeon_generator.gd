@@ -14,11 +14,10 @@ var id : int = 0
 
 
 ## Generates a dungeon inside a 11x11 matrix given the size.
-func generate_dungeon(size: int) -> Node:
+func generate_dungeon(size: int) -> void:
 	if size < 5:     size = 5  # Hard cap the minimum size ("Easy")
 	elif size > 60: size = 60  # Hard cap the maximum size ("Hard")
 	
-	var dungeon = Node2D.new()
 	used_tiles.clear()
 	var dims : Array = [                  ## 11 x 11 Matrix "Dimensions"
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -93,7 +92,7 @@ func generate_dungeon(size: int) -> Node:
 		maybe_branch(dims, tile, 3)  # Two+ calls of this function allows for the possibility of 4-door rooms
 	
 	fill_doors_data(dims_doors)
-	generate_rooms(dungeon, dims_doors)
+	generate_rooms(dims_doors)
 	
 	_debug_print(dims, dims_doors)  ## DEBUG
 	
@@ -101,8 +100,6 @@ func generate_dungeon(size: int) -> Node:
 	used_tiles = {}
 	doors_to_create = []
 	branch_doors = []
-	
-	return dungeon
 
 
 ## Recursive method to create branching rooms, dead ends.
@@ -182,40 +179,25 @@ func fill_doors_data(dims_doors: Array):
 ## This function adds the physical dungeons based on the doors needed according to dims_doors.
 ## To save performance, only the dungeon the player is inside will be visible and running its
 ## process and physics_process methods.
-func generate_rooms(dungeon: Node2D, dims_doors: Array):
+func generate_rooms(dims_doors: Array):
 	## 1) Start the global_position of the dungeon & created_rooms
-	var room_gp : Vector2 = Vector2(0, 0)
 	var created_rooms : Dictionary = {} # Has to be a Dictionary for using .has() with Vector2is
 	
 	## 2) Generates the dungeon rooms per tile in in used_tiles
 	for i in used_tiles.size():
-		## 1) Get the current tile
+		## 2-1) Get the current tile
 		var tile : Vector2i = used_tiles.find_key(i)
 		
-		## 2) Get the doors needed for this room
+		## 2-2) Get the doors needed for this room
 		var doors : String = ""
 		for val in dims_doors[tile.x][tile.y]:
 			if typeof(val) == TYPE_STRING:
 				doors += val
 		
-		## 3) Grab a random dungeon room from its pool
+		## 2-3) Grab a random dungeon room from its pool & save it
 		var rooms_count = DirAccess.get_files_at("res://Labs/Scenes/Dungeons/Pools/" + doors).size()
 		var random_index = randi() % rooms_count + 1
 		var room = load("res://Labs/Scenes/Dungeons/Pools/" + doors + "/dungeon_room_" + str(random_index) + ".tscn").instantiate()
-		
-		## 4) Add the room and move the global_position space for the next one
-		dungeon.add_child(room)
-		room.global_position = room_gp
-		room_gp += Vector2(10000, 0)
-		
-		## 5) Hide and pause the rooms that are not the Starting Room
-		if i != 0:
-			room.visible = false
-			room.set_process(false)
-			room.set_physics_process(false)
-		
-		## 6) Add the room to the LevelManager. Room with i == 0 is always the start
-		LevelManager.add_level(room, i)
 		for door in room.space.doors.get_children():
 			door.id = i
 		created_rooms[used_tiles.find_key(i)] = room
@@ -257,8 +239,9 @@ func generate_rooms(dungeon: Node2D, dims_doors: Array):
 		# Connecting From -> To and To -> From
 		from_room_door.id = used_tiles[to]
 		to_room_door.id = used_tiles[from]
-		from_room_door.goes_to = to_spawner.global_position + to_room.global_position
-		to_room_door.goes_to = from_spawner.global_position + from_room.global_position
+		print("ID FROM ", from_room_door.id, " TO ", to_room_door.id)
+		from_room_door.goes_to = to_spawner.global_position# + to_room.global_position
+		to_room_door.goes_to = from_spawner.global_position# + from_room.global_position
 	
 	
 	## branch_doors - Stride-2 Pairing
@@ -283,8 +266,26 @@ func generate_rooms(dungeon: Node2D, dims_doors: Array):
 		# Connecting From -> To and To -> From
 		from_room_door.id = used_tiles[to]
 		to_room_door.id = used_tiles[from]
-		from_room_door.goes_to = to_spawner.global_position + to_room.global_position
-		to_room_door.goes_to = from_spawner.global_position + from_room.global_position
+		from_room_door.goes_to = to_spawner.global_position# + to_room.global_position
+		to_room_door.goes_to = from_spawner.global_position# + from_room.global_position
+	
+	
+	save_rooms(created_rooms)
+	## TODO - RUN PACK_ROOMS HERE, BEFORE VAR created_rooms GETS CLEANED AND ITS ROOMS ERASED!
+
+
+func save_rooms(created_rooms: Dictionary):
+	var packed_room = PackedScene.new()  ## TODO - MAYBE MOVE THIS LAST, A PACK_ROOMS FUNCTION
+	for i in created_rooms.size():
+		var room = created_rooms[used_tiles.find_key(i)]
+		for door in room.space.doors.get_children():
+			print("START ROOM DOOR ID = ", door.id)
+		if packed_room.pack(room) == OK:
+			var err = ResourceSaver.save(packed_room, "res://Labs/Scenes/Dungeons/Temp Run/" + str(i) + ".tscn")
+			if err != OK:
+				print("Failed to save scene ", str(i), ".tscn", " with error code: ", err)
+		else:
+			print("Failed to pack the room ", str(i), ".tscn")
 
 
 func get_door_dir(from: Vector2i, to: Vector2i) -> Vector2i:

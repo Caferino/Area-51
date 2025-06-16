@@ -88,7 +88,7 @@ func check_movement():
 
 ## Checks the tile the entity is currently standing on.
 func check_tile_type():
-	SignalManager.check_tile_type.emit(Vector2i(area_trigger.global_position), self)
+	SignalManager.check_tile_type.emit(Vector2i(area_trigger.get_child(0).global_position), self)
 
 
 ## Rotates the interactor's [member Marker2D.rotation].
