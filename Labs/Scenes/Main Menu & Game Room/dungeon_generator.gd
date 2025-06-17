@@ -198,8 +198,7 @@ func generate_rooms(dims_doors: Array):
 		var rooms_count = DirAccess.get_files_at("res://Labs/Scenes/Dungeons/Pools/" + doors).size()
 		var random_index = randi() % rooms_count + 1
 		var room = load("res://Labs/Scenes/Dungeons/Pools/" + doors + "/dungeon_room_" + str(random_index) + ".tscn").instantiate()
-		for door in room.space.doors.get_children():
-			door.id = i
+		room.id = i
 		created_rooms[used_tiles.find_key(i)] = room
 	
 	
@@ -239,7 +238,6 @@ func generate_rooms(dims_doors: Array):
 		# Connecting From -> To and To -> From
 		from_room_door.id = used_tiles[to]
 		to_room_door.id = used_tiles[from]
-		print("ID FROM ", from_room_door.id, " TO ", to_room_door.id)
 		from_room_door.goes_to = to_spawner.global_position# + to_room.global_position
 		to_room_door.goes_to = from_spawner.global_position# + from_room.global_position
 	
@@ -275,11 +273,9 @@ func generate_rooms(dims_doors: Array):
 
 
 func save_rooms(created_rooms: Dictionary):
-	var packed_room = PackedScene.new()  ## TODO - MAYBE MOVE THIS LAST, A PACK_ROOMS FUNCTION
+	var packed_room = PackedScene.new()
 	for i in created_rooms.size():
 		var room = created_rooms[used_tiles.find_key(i)]
-		for door in room.space.doors.get_children():
-			print("START ROOM DOOR ID = ", door.id)
 		if packed_room.pack(room) == OK:
 			var err = ResourceSaver.save(packed_room, "res://Labs/Scenes/Dungeons/Temp Run/" + str(i) + ".tscn")
 			if err != OK:

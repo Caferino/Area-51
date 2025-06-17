@@ -55,10 +55,10 @@ func change_frame():
 func drop_debris():
 	var amount = randi_range(5, 15)
 	for i in range(0, amount):
-		ResourcesManager.call_deferred("drop_object", "Debris", "debris", attributes.resource + "_debris", global_position, attributes.loot_radius, self.get_parent())
+		ResourcesManager.call_deferred("drop_object", GameEnums.MANAGERS.DEBRIS, GameEnums.ITEM_TYPE.DEBRIS, attributes.resource + "_debris", global_position, attributes.loot_radius, self.get_parent())
 
 
 func drop_reagents():
 	var amount = randi_range(attributes.drop_rate.x, attributes.drop_rate.y)
 	for i in range(0, amount):
-		ResourcesManager.call_deferred("drop_object", "Reagents", "collectable", attributes.resource, global_position, attributes.loot_radius, self.get_parent())
+		ResourcesManager.call_deferred("drop_object", GameEnums.MANAGERS.REAGENTS, GameEnums.ITEM_TYPE.COLLECTABLE, attributes.resource, global_position, attributes.loot_radius, self.get_parent())

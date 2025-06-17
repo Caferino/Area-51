@@ -2,19 +2,19 @@ extends Node
 
 ## ResourcePreloaders
 var managers : Dictionary = {
-	"Armor"      : null,
-	"Debris"     : null,
-	"Weapons"    : null,
-	"Reagents"   : null,
-	"Gathering"  : null,
-	"Structures" : null
+	GameEnums.MANAGERS.ARMOR      : null,
+	GameEnums.MANAGERS.DEBRIS     : null,
+	GameEnums.MANAGERS.WEAPONS    : null,
+	GameEnums.MANAGERS.REAGENTS   : null,
+	GameEnums.MANAGERS.GATHERING  : null,
+	GameEnums.MANAGERS.STRUCTURES : null
 }
 
 ## Commonly Used Nodes
 var node = {
-	"collectable" : preload("res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.tscn"),
-	"gathering"   : preload("res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn"),
-	"debris"      : preload("res://Labs/Assets/X. Resources/Reagents/debris.tscn")
+	GameEnums.ITEM_TYPE.COLLECTABLE : preload("res://Labs/Scenes/Collectable Items & Inventory/New Inventory System 1.0/Inventory/collectable.tscn"),
+	GameEnums.ITEM_TYPE.GATHERING   : preload("res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn"),
+	GameEnums.ITEM_TYPE.DEBRIS      : preload("res://Labs/Assets/X. Resources/Reagents/debris.tscn")
 }
 
 ## StructureManager
@@ -24,12 +24,12 @@ var valid_spot     : bool   = false
 
 
 func _ready():
-	managers["Armor"]      = $Armor
-	managers["Debris"]     = $Debris
-	managers["Weapons"]    = $Weapons
-	managers["Reagents"]   = $Reagents
-	managers["Gathering"]  = $Gathering
-	managers["Structures"] = $Structures
+	managers[GameEnums.MANAGERS.ARMOR]      = $Armor
+	managers[GameEnums.MANAGERS.DEBRIS]     = $Debris
+	managers[GameEnums.MANAGERS.WEAPONS]    = $Weapons
+	managers[GameEnums.MANAGERS.REAGENTS]   = $Reagents
+	managers[GameEnums.MANAGERS.GATHERING]  = $Gathering
+	managers[GameEnums.MANAGERS.STRUCTURES] = $Structures
 
 
 
@@ -38,14 +38,18 @@ func _ready():
 ################# ITEMS MANAGER #################
 ################# ############# #################
 
-func drop_object(manager_name: String, type: String, object_name: String, spawn_position: Vector2, radius: Vector2, scene: Node2D):
-	var manager = managers.get(manager_name)
-	if manager and manager.has_resource(object_name):
-		var item = manager.get_resource(object_name)
+func drop_object(manager_name: int, type: int, object_name: String, spawn_position: Vector2, radius: Vector2, _scene: Node2D):
+	var manager = managers[manager_name]
+	if manager.has_resource(object_name):
+		var item_data = manager.get_resource(object_name)
 		var object = node[type].instantiate()
 		
-		object.setup(item)
-		scene.add_child(object)
+		if type == GameEnums.ITEM_TYPE.DEBRIS:
+			item_data = item_data.duplicate()  # To avoid editing the .tres
+			item_data.frame = randi() % item_data.frame
+		object.setup(item_data)
+		LevelManager.curr_level.add_child(object)
+		object.owner = LevelManager.curr_level
 		object.global_position = spawn_position
 		object.drop(radius)
 

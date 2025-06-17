@@ -4,6 +4,9 @@ class_name GameEnums
 ### ============== ITEMS ============== ###
 ###########################################
 enum ITEM_TYPE {
+	COLLECTABLE,
+	GATHERING,
+	DEBRIS,
 	MATERIAL,
 	CURRENCY,
 	CONSUMABLE,
@@ -29,6 +32,15 @@ enum PROJECTILE {
 	TARGET_CHASE,
 	LIFE_TIME,
 	SIZE
+}
+
+enum MANAGERS {
+	ARMOR,
+	DEBRIS,
+	WEAPONS,
+	REAGENTS,
+	GATHERING,
+	STRUCTURES
 }
 
 

@@ -41,14 +41,12 @@ _data = {
 &"fade_out": SubResource("Animation_e8tke")
 }
 
-[node name="Debris" type="RigidBody2D" node_paths=PackedStringArray("sprite", "animator") groups=["Debris"]]
+[node name="Debris" type="RigidBody2D" groups=["Debris"]]
 gravity_scale = 0.0
 max_contacts_reported = 1
 linear_damp = 3.0
 angular_damp = 3.0
 script = ExtResource("1_e8tke")
-sprite = NodePath("DebrisSprite")
-animator = NodePath("DebrisAnimator")
 
 [node name="DebrisCollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_27q6i")
@@ -61,5 +59,4 @@ libraries = {
 &"": SubResource("AnimationLibrary_yksu1")
 }
 
-[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="animation_finished" from="DebrisAnimator" to="." method="_on_debris_animator_animation_finished"]

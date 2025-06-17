@@ -1,7 +1,7 @@
 class_name Level extends Node2D
 ## A [color=white]level[/color], by [color=white]Alcarodia.
 
-var id : int = 0
+@export var id      : int = 0
 @export var space   : SpaceComponent       = null
 @export var cuts    : CutscenesComponent   = null
 @export var env     : EnvironmentComponent = null
@@ -41,7 +41,9 @@ func check_tile_type(on_position: Vector2i, controller: EntityController):
 				
 				if tile_type == 1:      ## SHALLOW_WATER
 					# TODO - Water walk sound, NO swimming here
-					pass
+					controller.walk_vfx.z_index = 0
+					controller.walk_vfx.play("swim_water")
+					controller.walk_vfx.visible = true
 				elif tile_type == 2:    ## DEEP_WATER
 					# TODO - Water swim sound
 					controller.swimming = true

@@ -15,26 +15,6 @@ var main_dungeon           : Node2D = null
 var curr_dungeon           : Dictionary  = {}  ## DEPRECATED
 
 
-# Saves a room to the temporary rooms directory
-static func save_room(room: Node, room_name: String) -> void:
-	var packed_scene = PackedScene.new()
-	packed_scene.pack(room)
-	DirAccess.make_dir_absolute(temp_rooms_root) # In case the user deleted it
-	var scene_path = temp_rooms_root.path_join(room_name) + ".tscn"
-	ResourceSaver.save(packed_scene, scene_path)
-
-
-# Attempts to load a room from the temporary rooms directory, and falls back on
-# loading them from their regular directory
-func load_room(room_name: String) -> Node:
-	var saved_room_exists := FileAccess.file_exists(temp_rooms_root.path_join(room_name) + ".tscn")
-	var scene_path = temp_rooms_root.path_join(room_name) + ".tscn" 
-	if scene_path != saved_room_exists: 
-		rooms_root.path_join(room_name) + ".tscn"
-	var packed_scene := load(scene_path) as PackedScene
-	return packed_scene.instantiate()
-
-
 # Removes all saved rooms between runs/floors
 func clear_saved_rooms() -> void:
 	var dir = DirAccess.open(temp_rooms_root)
@@ -87,23 +67,32 @@ func clear_levels() -> void:
 func move_player(player: Entity, area: Area2D) -> void:
 	## TODO - Maybe add a little transition animation, a fade in/out, blink
 	
-	## TODO - This will change plenty, teleport player to the new door's global_position
-	## Plus saving, loading data maybe.
+	## WARNING NOTE - I KNOW THERE IS A SMALL FREEZE WHEN ENTERING A DOOR. IT IS THE TILEMAPLAYERS
+	## AND ITS COLLISIONSHAPES, THIS GETS FIXED IN GODOT 4.5, DO NOT WORRY, ISN'T YOU, IT'S GODOT
 	curr_level.space.entities.remove_child(player)
+	for rock in curr_level.space.gather_nodes.find_child("Rocks").get_children():
+		print("ROCK OWNER ", rock.owner)
+		for child in rock.get_children():
+			print("CHILD OWNER ", child.owner)
+	
+	var packed_room = PackedScene.new()
+	if packed_room.pack(curr_level) == OK:
+		ResourceSaver.save(packed_room, "res://Labs/Scenes/Dungeons/Temp Run/" + str(curr_level.id) + ".tscn")
+	packed_room.take_over_path("res://Labs/Scenes/Dungeons/Temp Run/" + str(curr_level.id) + ".tscn")
 	curr_level.queue_free()
 	
-	print("AREA ID = ", str(area.id))
 	var new_room = ResourceLoader.load("res://Labs/Scenes/Dungeons/Temp Run/" + str(area.id) + ".tscn").instantiate()
 	main_dungeon.add_child(new_room)
 	curr_level = new_room
+	
 	
 	curr_level.space.entities.add_child(player)
 	player.global_position = area.goes_to
 	print("GOES TO = ", area.goes_to, " PLAYER GP = ", player.global_position, " ID = ", area.id)
 
 
-func add_player(player: Entity, area: Area2D):
-	pass
+#func add_player(player: Entity, area: Area2D):
+	#pass
 
 
 func spawn(object: Node2D, spot: Node2D):

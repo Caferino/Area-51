@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://byu11ucw4utoe"]
+[gd_scene load_steps=5 format=4 uid="uid://byu11ucw4utoe"]
 
 [ext_resource type="PackedScene" uid="uid://cfxnab2y5kkgq" path="res://Labs/Scenes/Level Components/dungeon_level.tscn" id="1_jd53p"]
 [ext_resource type="PackedScene" uid="uid://ikjmqxfkvjd3" path="res://Labs/Scenes/Dungeons/door.tscn" id="2_7btw1"]
+[ext_resource type="PackedScene" uid="uid://bdw6ua7uqbtmt" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn" id="2_uwnyu"]
+[ext_resource type="Resource" uid="uid://dte8mbxfmg0rw" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_ore.tres" id="3_6nodg"]
 
 [node name="NWEDungeonLevel1" instance=ExtResource("1_jd53p")]
 
@@ -25,6 +27,10 @@ tile_map_data = PackedByteArray("AABWACUAAAAcAAEAAABWACYAAAAcAAIAAABWACcAAAAcAAM
 
 [node name="CaveDecor" parent="LevelSpaceComponent/Tilemaps" index="6"]
 tile_map_data = PackedByteArray("AAA/AAgAAAAZAAAAAAA/AAkAAAAZAAEAAAA/AAoAAAAZAAIAAABAAAgAAAAaAAAAAABAAAkAAAAaAAEAAABAAAoAAAAaAAIAAAA5AAgAAAAZAAAAAAA5AAkAAAAZAAEAAAA5AAoAAAAZAAIAAAA6AAgAAAAaAAAAAAA6AAkAAAAaAAEAAAA6AAoAAAAaAAIAAAA+AAsAAAAFAAAAAAA+AAwAAAAFAAEAAAA+AA0AAAAFAAIAAAA/AAsAAAAGAAAAAAA/AAwAAAAGAAEAAAA/AA0AAAAGAAIAAAA6AAsAAAAFAAAAAAA6AAwAAAAFAAEAAAA6AA0AAAAFAAIAAAA7AAsAAAAGAAAAAAA7AAwAAAAGAAEAAAA7AA0AAAAGAAIAAAA=")
+
+[node name="GatheringNode" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="0" instance=ExtResource("2_uwnyu")]
+position = Vector2(1167, 482)
+attributes = ExtResource("3_6nodg")
 
 [node name="N" parent="LevelSpaceComponent/Interactables/Doors" index="0" instance=ExtResource("2_7btw1")]
 position = Vector2(976, 164)

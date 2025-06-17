@@ -13,8 +13,6 @@ func _ready() -> void:
 	DungeonGenerator.generate_dungeon(size)
 	
 	var start_room = ResourceLoader.load("res://Labs/Scenes/Dungeons/Temp Run/0.tscn").instantiate()
-	for door in start_room.space.doors.get_children():
-		print("START ROOM DOOR ID = ", door.id)
 	LevelManager.main_dungeon.add_child(start_room)
 	LevelManager.current_level(start_room)
 	
