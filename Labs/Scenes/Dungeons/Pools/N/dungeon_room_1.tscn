@@ -1,24 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://ccn4t2m4rous2"]
+[gd_scene load_steps=3 format=4 uid="uid://ccn4t2m4rous2"]
 
 [ext_resource type="PackedScene" uid="uid://cfxnab2y5kkgq" path="res://Labs/Scenes/Level Components/dungeon_level.tscn" id="1_3rhg2"]
-[ext_resource type="PackedScene" uid="uid://bdw6ua7uqbtmt" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node.tscn" id="2_7biws"]
 [ext_resource type="PackedScene" uid="uid://ikjmqxfkvjd3" path="res://Labs/Scenes/Dungeons/door.tscn" id="2_15ouu"]
-[ext_resource type="Script" uid="uid://djxlwj7sddiw2" path="res://Labs/Scenes/Crafting & Gathering Tools/gathering_node_data.gd" id="3_dta1k"]
-[ext_resource type="Texture2D" uid="uid://dgontvxqr8413" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/1. Coal/coal_ore.png" id="4_ckhkr"]
-[ext_resource type="Resource" uid="uid://blswr238lmvuw" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/2. Copper/copper_ore.tres" id="5_ckhkr"]
-
-[sub_resource type="Resource" id="Resource_6ycle"]
-resource_local_to_scene = true
-script = ExtResource("3_dta1k")
-texture = ExtResource("4_ckhkr")
-type = 0
-name = "Coal Ore"
-resource = "coal"
-health = 10.0
-max_health = 10.0
-loot_radius = Vector2(30, 30)
-drop_rate = Vector2i(1, 10)
-metadata/_custom_type_script = "uid://djxlwj7sddiw2"
 
 [node name="NDungeonLevel1" instance=ExtResource("1_3rhg2")]
 
@@ -39,14 +22,6 @@ tile_map_data = PackedByteArray("AABFABEAAAAXAAAAAABFABIAAAAXAAEAAABGABEAAAAYAAA
 
 [node name="CaveDecor2" parent="LevelSpaceComponent/Tilemaps" index="7"]
 tile_map_data = PackedByteArray("AABBACUAAgAOAAYAAABBACYAAgAOAAcAAABCACUAAgAPAAYAAABCACYAAgAPAAcAAAA=")
-
-[node name="GatheringNode" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="0" instance=ExtResource("2_7biws")]
-position = Vector2(1167, 482)
-attributes = SubResource("Resource_6ycle")
-
-[node name="GatheringNode2" parent="LevelSpaceComponent/Interactables/GatheringNodes/Rocks" index="1" instance=ExtResource("2_7biws")]
-position = Vector2(1067, 482)
-attributes = ExtResource("5_ckhkr")
 
 [node name="N" parent="LevelSpaceComponent/Interactables/Doors" index="0" instance=ExtResource("2_15ouu")]
 position = Vector2(1136, 164)
