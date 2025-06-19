@@ -5,6 +5,7 @@ class_name Debris extends RigidBody2D
 @onready var animator : AnimationPlayer = $DebrisAnimator
 @export var _data     : Resource        = null
 @export var dropped   : bool            = false
+@export var picked    : bool            = false
 
 
 func setup(data: Resource) -> void:
@@ -14,7 +15,9 @@ func setup(data: Resource) -> void:
 func _ready() -> void:
 	sprite.texture = _data.texture
 	sprite.frame = _data.frame
-	if dropped:
+	if picked:
+		queue_free()
+	elif dropped:
 		await get_tree().create_timer(randi() % 31 + 20).timeout
 		animator.play("fade_out")
 
@@ -25,6 +28,7 @@ func drop(radius: Vector2):
 	apply_central_impulse(direction * (randf() * 5 + 5))
 	apply_torque_impulse(randf() * 5 + 5)
 	await get_tree().create_timer(randi() % 31 + 60).timeout
+	picked = true
 	animator.play("fade_out")
 
 

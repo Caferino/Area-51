@@ -18,6 +18,14 @@ var required_tool_type = {
 
 func _ready() -> void:
 	sprite.texture = attributes.texture
+	var health_ratio = attributes.health / attributes.max_health
+	
+	if health_ratio > 2.0/3.0:
+		sprite.frame = 0
+	elif health_ratio > 1.0/3.0:
+		sprite.frame = 1
+	elif attributes.health > 0:
+		sprite.frame = 2
 
 
 ## This function gets the tool needed to interact with this node's type and

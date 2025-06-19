@@ -18,6 +18,17 @@ The goal of this project is to practice common game development processes for cu
 
 # Experiments
 
+**E028: Dungeon Generator**
+
+![E028-1](.image/README/E028-1.png "Dungeon Generator")
+![E028-2](.image/README/E028-2.webp "Dungeon Generator")
+
+Finally finished another of the big beasts. The Dungeon Generator is capable of creating a basic grid of rooms along branches that split up to two or more times if I desire with dead ends in them. As shown in the image, I start with a 11x11 matrix filled with 0s, and then, I place the starting room right in the center, coords(5,5), to avoid the very small dungeons I'd get if it was random and it spawned close to a corner where the algorithm would die quickly and place the boss room after 2 or 3 rooms instead of the given size of 10... Anyway, the starting room is portrayed with number 1, the main path with number 2, the boss room with number 3, and branches with numbers 4, 5, 6+... 
+
+A lot of changes had to be made to the gathering nodes, collectables, debris and also TileMapLayers to make this work properly. They'd disappear, not update with the appropiate texture, never disappear because their timers would disappear when packing and switching rooms after entering a door, etc. I fixed probably all of the possible bugs that could happen with those. Now, I need to make dozens of more rooms, diverse in shape, size and decorations, these are basic and repetitive on purpose, to save me work and test this generator asap. Now I am free to play with it, add enemies, the bosses, probably lock the doors until all enemies are slain, and maybe add keys to unlock them akin to Runescape's dungeoneering or Binding of Isaac, although I've been thinking about making it different, avoid that, and instead focus on the combat and arcade-like upgrades/runs... I remember keys in Runescape's dungeoneering becoming stressful, same with Binding of Isaac, having to move through a lot of empty rooms just to see if you can find a key can probably be done different. I will see, I am close to having a complete skeleton here, maybe after I reach E030 I will start working on the game in a private repo and use this to showcase the features at their most bare-bones state possible, so other people can copy, modify or learn from these if they wish.
+
+---
+
 **E027: Swimming & Sitting**
 
 ![E027](.image/README/E027.webp "Swimming & Sitting")
