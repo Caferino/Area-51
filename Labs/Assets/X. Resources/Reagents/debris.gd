@@ -1,20 +1,34 @@
 class_name Debris extends RigidBody2D
 
 
-@export var sprite   : Sprite2D = null
-@export var animator : AnimationPlayer = null
+@onready var sprite   : Sprite2D        = $DebrisSprite
+@onready var animator : AnimationPlayer = $DebrisAnimator
+@export var _data     : Resource        = null
+@export var dropped   : bool            = false
+@export var picked    : bool            = false
 
 
-func setup(data) -> void:
-	sprite.texture = data.texture
-	sprite.frame = randi_range(0, 7)
+func setup(data: Resource) -> void:
+	_data = data
+
+
+func _ready() -> void:
+	sprite.texture = _data.texture
+	sprite.frame = _data.frame
+	if picked:
+		queue_free()
+	elif dropped:
+		await get_tree().create_timer(randi() % 31 + 20).timeout
+		animator.play("fade_out")
 
 
 func drop(radius: Vector2):
+	dropped = true
 	var direction = Randomizer.random_point_around(radius)
 	apply_central_impulse(direction * (randf() * 5 + 5))
 	apply_torque_impulse(randf() * 5 + 5)
 	await get_tree().create_timer(randi() % 31 + 60).timeout
+	picked = true
 	animator.play("fade_out")
 
 

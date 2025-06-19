@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cdyw63qvo0mew" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/4. Iron/iron_ore.png" id="2_m5j3v"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_3eark")
 texture = ExtResource("2_m5j3v")
 type = 0
 name = "Iron Ore"
+resource = "iron"
 health = 30.0
 max_health = 30.0
 loot_radius = Vector2(30, 30)

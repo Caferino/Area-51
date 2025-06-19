@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://c4qw4eja7hnm3" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/6. Diamond/diamond_ore.png" id="2_ogfea"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_s12lv")
 texture = ExtResource("2_ogfea")
 type = 0
 name = "Diamond Ore"
+resource = "diamond"
 health = 1200.0
 max_health = 1200.0
 loot_radius = Vector2(30, 30)

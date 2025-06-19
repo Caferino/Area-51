@@ -1,6 +1,7 @@
 class_name PlayerControllerComponent extends EntityController
 ## The entity's [color=gold]player controller.
 
+@export var player              : Entity           ## The player itself.
 @export var camera_base         : CameraBase       ## The player's camera base.
 @export var area_trigger        : Area2D           ## The entity's feet, trigger areas, walk sounds...
 @export var interactor_area     : Area2D           ## The interactor's monitoring area.
@@ -87,7 +88,7 @@ func check_movement():
 
 ## Checks the tile the entity is currently standing on.
 func check_tile_type():
-	SignalManager.check_tile_type.emit(Vector2i(area_trigger.global_position), self)
+	SignalManager.check_tile_type.emit(Vector2i(area_trigger.get_child(0).global_position), self)
 
 
 ## Rotates the interactor's [member Marker2D.rotation].
@@ -224,4 +225,4 @@ func _on_torso_animator_animation_finished(anim_name: StringName) -> void:
 
 func _on_area_trigger_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Door"):
-		get_tree().call_deferred("change_scene_to_file", area.goes_to)
+		LevelManager.call_deferred("move_player", player, area)

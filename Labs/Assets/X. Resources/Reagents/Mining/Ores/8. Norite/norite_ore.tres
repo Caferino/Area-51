@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://0bp0yk6jiekg" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/8. Norite/norite_ore.png" id="2_q55tw"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_xrfrg")
 texture = ExtResource("2_q55tw")
 type = 0
 name = "Norite Ore"
+resource = "norite"
 health = 500.0
 max_health = 500.0
 loot_radius = Vector2(30, 30)

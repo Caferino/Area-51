@@ -9,6 +9,7 @@ script = ExtResource("1_hbood")
 texture = ExtResource("2_mc5d3")
 type = 0
 name = "Coal Ore"
+resource = "coal"
 health = 10.0
 max_health = 10.0
 loot_radius = Vector2(30, 30)

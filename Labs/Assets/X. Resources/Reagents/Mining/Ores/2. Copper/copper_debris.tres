@@ -7,3 +7,4 @@
 script = ExtResource("1_n13ja")
 texture = ExtResource("2_jeeuu")
 name = "Copper Debris"
+frame = 8

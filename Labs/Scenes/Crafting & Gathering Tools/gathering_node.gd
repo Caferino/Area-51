@@ -18,6 +18,14 @@ var required_tool_type = {
 
 func _ready() -> void:
 	sprite.texture = attributes.texture
+	var health_ratio = attributes.health / attributes.max_health
+	
+	if health_ratio > 2.0/3.0:
+		sprite.frame = 0
+	elif health_ratio > 1.0/3.0:
+		sprite.frame = 1
+	elif attributes.health > 0:
+		sprite.frame = 2
 
 
 ## This function gets the tool needed to interact with this node's type and
@@ -55,10 +63,10 @@ func change_frame():
 func drop_debris():
 	var amount = randi_range(5, 15)
 	for i in range(0, amount):
-		ResourcesManager.drop_debris("Debris", "coal" + "_debris", global_position, attributes.loot_radius, self.get_parent())
+		ResourcesManager.call_deferred("drop_object", GameEnums.MANAGERS.DEBRIS, GameEnums.ITEM_TYPE.DEBRIS, attributes.resource + "_debris", global_position, attributes.loot_radius, self.get_parent())
 
 
 func drop_reagents():
 	var amount = randi_range(attributes.drop_rate.x, attributes.drop_rate.y)
 	for i in range(0, amount):
-		ResourcesManager.drop_item("Reagents", "coal", global_position, attributes.loot_radius, self.get_parent())
+		ResourcesManager.call_deferred("drop_object", GameEnums.MANAGERS.REAGENTS, GameEnums.ITEM_TYPE.COLLECTABLE, attributes.resource, global_position, attributes.loot_radius, self.get_parent())

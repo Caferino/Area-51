@@ -8,29 +8,99 @@ extends Node
 ## however, in the future, I might use an array to deal with multiple levels.
 ## I don't know how, haven't designed it yet, but it could open for potential
 ## cool stuff; managing lands from home, controlling NPCs very far away...
-var curr_level : Level = null
+static var temp_rooms_root : String = "res://Labs/Scenes/Dungeons/Temp Run/"
+static var rooms_root      : String = "res://Labs/Scenes/Dungeons/Dungeon Set 1/"
+var curr_level             : Level  = null
+var main_dungeon           : Node2D = null
+var curr_dungeon           : Dictionary  = {}  ## DEPRECATED
 
 
-func _ready() -> void:
-	SignalManager.connect_levels.connect(add_level)
+# Removes all saved rooms between runs/floors
+func clear_saved_rooms() -> void:
+	var dir = DirAccess.open(temp_rooms_root)
+	if not dir:
+		return
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			push_error("Found directory: " + file_name)
+		else:
+			dir.remove(file_name)
+		file_name = dir.get_next()
 
 
-# TODO - In the distant future, if using an array, this should be easy to adapt... I hope
-func add_level(level: Level):
+func set_main_dungeon(node: Node2D):
+	main_dungeon = node
+
+
+# Directly switch the current_level, useful for rooms/levels outside dungeons.
+func current_level(level: Level):
 	curr_level = level
 
 
-# TODO - Receive a level to remove from the array of multiple levels in the future
-func remove_level(_level: Level):
+# Switches the current_level given the id of a current_dungeon's room/level.
+func switch_current_level(id: int):
+	curr_level = curr_dungeon[id]
+
+
+# Clears the current_level variable, for whatever use it can give in the future.
+func remove_current_level():
 	curr_level = null
+
+
+# Adds a level to the current_dungeon given its id. DEPRECATED
+#func add_level(level: Level, id: int):
+	#curr_dungeon[id] = level
+
+
+# Removes a level to the current_dungeon given its id.
+func remove_level(id: int):
+	curr_dungeon.erase(id)
+
+
+# Clears the current_dungeon dictionary.
+func clear_levels() -> void:
+	curr_dungeon.clear()
+
+
+func move_player(player: Entity, area: Area2D) -> void:
+	## TODO - Maybe add a little transition animation, a fade in/out, blink
+	
+	## WARNING NOTE - I KNOW THERE IS A SMALL FREEZE WHEN ENTERING A DOOR. IT IS THE TILEMAPLAYERS
+	## AND ITS COLLISIONSHAPES, THIS GETS FIXED IN GODOT 4.5, DO NOT WORRY, ISN'T YOU, IT'S GODOT
+	curr_level.space.entities.remove_child(player)
+	for rock in curr_level.space.gather_nodes.find_child("Rocks").get_children():
+		print("ROCK OWNER ", rock.owner)
+		for child in rock.get_children():
+			print("CHILD OWNER ", child.owner)
+	
+	var packed_room = PackedScene.new()
+	if packed_room.pack(curr_level) == OK:
+		ResourceSaver.save(packed_room, "res://Labs/Scenes/Dungeons/Temp Run/" + str(curr_level.id) + ".tscn")
+	packed_room.take_over_path("res://Labs/Scenes/Dungeons/Temp Run/" + str(curr_level.id) + ".tscn")
+	curr_level.queue_free()
+	
+	var new_room = ResourceLoader.load("res://Labs/Scenes/Dungeons/Temp Run/" + str(area.id) + ".tscn").instantiate()
+	main_dungeon.add_child(new_room)
+	curr_level = new_room
+	
+	
+	curr_level.space.entities.add_child(player)
+	player.global_position = area.goes_to
+	print("GOES TO = ", area.goes_to, " PLAYER GP = ", player.global_position, " ID = ", area.id)
+
+
+#func add_player(player: Entity, area: Area2D):
+	#pass
 
 
 func spawn(object: Node2D, spot: Node2D):
 	if object.get_parent():
-		print("Reparenting...")
+		#print("Reparenting...")  ## DEBUG
 		object.reparent(curr_level)
 	else:
-		print("Directly adding object to the level...")
+		#print("Directly adding object to the level...")  ## DEBUG
 		curr_level.add_child(object)
 	object.global_position = spot.global_position
 

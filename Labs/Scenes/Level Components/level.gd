@@ -1,11 +1,13 @@
 class_name Level extends Node2D
 ## A [color=white]level[/color], by [color=white]Alcarodia.
 
+@export var id      : int = 0
 @export var space   : SpaceComponent       = null
 @export var cuts    : CutscenesComponent   = null
 @export var env     : EnvironmentComponent = null
 
 var environment_stats: Dictionary = {}
+var tilemaps: Array = []
 
 var weather_stats: Dictionary = {
 	### WIND ###
@@ -20,28 +22,28 @@ var weather_stats: Dictionary = {
 
 
 func _ready():
-	LevelManager.add_level(self)
 	SignalManager.check_tile_type.connect(check_tile_type)
+	# WARN NOTE - Order matters; floor should always be last.
+	tilemaps = [space.tilemaps.decor, space.tilemaps.t_floor]
 
 
-func check_tile_type(position: Vector2i, controller: EntityController):
-	# WARN NOTE - Order matters, floor should always be last.
-	var tilemaps = [space.tilemaps.decor, space.tilemaps.floor]
-	
+func check_tile_type(on_position: Vector2i, controller: EntityController):
 	for tilemap in tilemaps:
-		var cell_pos = tilemap.local_to_map(position)
+		var cell_pos = tilemap.local_to_map(self.to_local(on_position))
 		var data = tilemap.get_cell_tile_data(cell_pos)
 		
 		if data != null:
 			var tile_type = data.get_custom_data("tile_type")
-			if tile_type != 0 or tilemap == space.tilemaps.floor:
+			if tile_type != 0 or tilemap == space.tilemaps.t_floor:
 				controller.swimming = false
 				controller.sitting  = false
 				controller.walk_vfx.visible = false
 				
 				if tile_type == 1:      ## SHALLOW_WATER
 					# TODO - Water walk sound, NO swimming here
-					pass
+					controller.walk_vfx.z_index = 0
+					controller.walk_vfx.play("swim_water")
+					controller.walk_vfx.visible = true
 				elif tile_type == 2:    ## DEEP_WATER
 					# TODO - Water swim sound
 					controller.swimming = true

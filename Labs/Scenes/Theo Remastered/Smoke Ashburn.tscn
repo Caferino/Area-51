@@ -768,7 +768,7 @@ graph_offset = Vector2(115, 112)
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_suc2h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_a0x5n"]
-graph_offset = Vector2(-162.743, 385.215)
+graph_offset = Vector2(0, 126)
 nodes/Movement/node = SubResource("AnimationNodeStateMachine_3f5lu")
 nodes/Movement/position = Vector2(160, 426.667)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_suc2h")
@@ -840,7 +840,8 @@ debug_color = Color(1.44392e-06, 0.634627, 0.426822, 0.42)
 
 [node name="SoundComponent" parent="." instance=ExtResource("5_t4b10")]
 
-[node name="PlayerControllerComponent" parent="." instance=ExtResource("6_t0pop")]
+[node name="PlayerControllerComponent" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_t0pop")]
+player = NodePath("..")
 
 [node name="BodyComponent" parent="." instance=ExtResource("8_5ixyk")]
 y_sort_enabled = true
@@ -903,16 +904,16 @@ shape = SubResource("CircleShape2D_u50h0")
 
 [node name="HatAnimatedSprite" type="AnimatedSprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea"]
 y_sort_enabled = true
-position = Vector2(-5, 0)
+position = Vector2(5, 0)
 sprite_frames = SubResource("SpriteFrames_cu361")
-animation = &"left"
+animation = &"right"
 autoplay = "left"
 
 [node name="HatShadow" type="Sprite2D" parent="BodyComponent/Head/HeadArea/AccessoriesComponent/Hat/HatArea/HatAnimatedSprite"]
 modulate = Color(0, 0, 0, 0.0980392)
 z_index = -3
 texture_filter = 2
-position = Vector2(-4, 35.14)
+position = Vector2(-5, 35)
 rotation = 6.28319
 scale = Vector2(0.452381, 0.384615)
 texture = ExtResource("11_6fk20")

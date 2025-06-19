@@ -38,6 +38,7 @@ Raz="*res://Labs/Scenes/Entities/Alcarodia/Razen/razen.gd"
 Cast="*res://Labs/Scenes/Magic System/Cast.gd"
 WorldTime="*res://Labs/Scenes/Level Components/Time/world_time.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+DungeonGenerator="*res://Labs/Scenes/Main Menu & Game Room/dungeon_generator.gd"
 
 [debug]
 

@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://doq3bru6rfquf" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/8. Dragonsoul/dragonsoul_ore.png" id="2_ivovc"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_6aoyp")
 texture = ExtResource("2_ivovc")
 type = 0
 name = "Dragonsoul Ore"
+resource = "dragonsoul"
 health = 1e+06
 max_health = 1e+06
 loot_radius = Vector2(30, 30)

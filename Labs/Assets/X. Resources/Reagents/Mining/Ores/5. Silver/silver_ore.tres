@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cv481ooal5s8m" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/5. Silver/silver_ore.png" id="2_ymwpx"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_j8hep")
 texture = ExtResource("2_ymwpx")
 type = 0
 name = "Silver Ore"
+resource = "silver"
 health = 50.0
 max_health = 50.0
 loot_radius = Vector2(30, 30)

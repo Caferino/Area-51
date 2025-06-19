@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://depladsxaql1g" path="res://Labs/Assets/X. Resources/Reagents/Mining/Ores/6. Gold/gold_ore.png" id="2_er3eg"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_1tr3i")
 texture = ExtResource("2_er3eg")
 type = 0
 name = "Gold Ore"
+resource = "gold"
 health = 100.0
 max_health = 100.0
 loot_radius = Vector2(30, 30)

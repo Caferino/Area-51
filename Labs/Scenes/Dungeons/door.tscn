@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dsn8xc4h1m5x1" path="res://Labs/Scenes/Dungeons/door.gd" id="1_6rphs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s46ux"]
-size = Vector2(30, 25)
+size = Vector2(70, 30)
 
 [node name="Door" type="Area2D" groups=["Door"]]
 collision_layer = 32768

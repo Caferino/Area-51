@@ -4,10 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://hbfvpglgjgsh" path="res://Labs/Assets/X. Resources/Reagents/Mining/Gems/4. Bloodstone/bloodstone_ore.png" id="2_kppk3"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_hg3oy")
 texture = ExtResource("2_kppk3")
 type = 0
-name = "Fireby Ore"
+name = "Bloodstone Ore"
+resource = "bloodstone"
 health = 600.0
 max_health = 600.0
 loot_radius = Vector2(30, 30)
