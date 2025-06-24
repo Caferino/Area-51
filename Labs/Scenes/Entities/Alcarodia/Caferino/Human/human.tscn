@@ -281,7 +281,7 @@ node_connections = [&"TimeScale", 0, &"Movement", &"output", 0, &"TimeScale"]
 size = Vector2(26, 22.5)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nvg0b"]
-load_path = "res://.godot/imported/body0_curated.png-604ab699667e752e911665aec63203e5.ctex"
+load_path = "res://.godot/imported/body0_curated.png-7ba48c917a778cb5840b927741a2a6a5.ctex"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wwn31"]
 
