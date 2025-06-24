@@ -3,16 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6w83nokw3oyv"
-path.bptc="res://.godot/imported/kloofendal_48d_partly_cloudy_puresky_4k.exr-34a9355e40a273424012e8592367dffa.bptc.ctex"
-metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
+valid=false
 
 [deps]
 
 source_file="res://Labs/Assets/13. Sky/kloofendal_48d_partly_cloudy_puresky_4k.exr"
-dest_files=["res://.godot/imported/kloofendal_48d_partly_cloudy_puresky_4k.exr-34a9355e40a273424012e8592367dffa.bptc.ctex"]
 
 [params]
 

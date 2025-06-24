@@ -53,4 +53,4 @@ amount = 0
 
 [resource]
 script = ExtResource("2_fj5nx")
-slots = Array[ExtResource("2_1akd7")]([SubResource("Resource_riew1"), SubResource("Resource_j3iy8"), SubResource("Resource_h2ls5"), SubResource("Resource_m0yky"), SubResource("Resource_21aea"), SubResource("Resource_niy51"), SubResource("Resource_tsyad"), SubResource("Resource_xyfm0"), SubResource("Resource_ba6ad"), SubResource("Resource_gwpgg"), SubResource("Resource_sexnq"), SubResource("Resource_rinai")])
+slots = [SubResource("Resource_riew1"), SubResource("Resource_j3iy8"), SubResource("Resource_h2ls5"), SubResource("Resource_m0yky"), SubResource("Resource_21aea"), SubResource("Resource_niy51"), SubResource("Resource_tsyad"), SubResource("Resource_xyfm0"), SubResource("Resource_ba6ad"), SubResource("Resource_gwpgg"), SubResource("Resource_sexnq"), SubResource("Resource_rinai")]
