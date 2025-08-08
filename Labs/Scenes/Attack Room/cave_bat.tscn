@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://6e48hltp552g"]
+[gd_scene load_steps=37 format=3 uid="uid://6e48hltp552g"]
 
 [ext_resource type="Script" uid="uid://ddfq4tfc5kr0c" path="res://Labs/Scenes/Attack Room/cave_bat.gd" id="1_ole8l"]
 [ext_resource type="SpriteFrames" uid="uid://chu623tm2sfh0" path="res://animations/Enemies/Bat.tres" id="2_h7mxl"]
@@ -14,11 +14,24 @@
 [ext_resource type="Script" uid="uid://nxjvda4ad78o" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/limb.gd" id="11_us4hq"]
 [ext_resource type="Script" uid="uid://bsupnieej3buv" path="res://Labs/Scenes/Theo Remastered/export/components/scripts/auto_play_animatedsprite.gd" id="13_xy2gm"]
 [ext_resource type="PackedScene" uid="uid://byvgnjjoahfqa" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/accessories_component.tscn" id="14_et7kk"]
+[ext_resource type="PackedScene" uid="uid://b3jv5grc16l5x" path="res://Labs/Scenes/Theo Remastered/export/components/scenes/particles_component.tscn" id="15_n20d3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cqoxk"]
 
 [sub_resource type="Animation" id="Animation_weqj6"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyComponent/Torso/TorsoArea/CaveBatSprite:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w5m1o"]
 _data = {
@@ -137,7 +150,7 @@ _data = {
 &"RESET": SubResource("Animation_2dgkm")
 }
 
-[node name="CaveBat" type="CharacterBody2D" node_paths=PackedStringArray("lore", "heart", "muscles", "effects", "controller", "body") groups=["Enemy"]]
+[node name="CaveBat" type="CharacterBody2D" node_paths=PackedStringArray("lore", "heart", "muscles", "effects", "controller", "body", "particles") groups=["Enemy"]]
 z_index = 2
 collision_layer = 134479872
 collision_mask = 0
@@ -146,9 +159,10 @@ script = ExtResource("1_ole8l")
 lore = NodePath("LoreComponent")
 heart = NodePath("HealthComponent")
 muscles = NodePath("FlyingMammalMovementComponent")
-effects = NodePath("EffectsComponent")
+effects = NodePath("EffectsAnimatorComponent")
 controller = NodePath("BatAIControllerComponent")
 body = NodePath("BodyComponent")
+particles = NodePath("ParticlesComponent")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cqoxk")
@@ -163,16 +177,17 @@ script = ExtResource("8_4f4v3")
 [node name="FlyingMammalMovementComponent" type="Node" parent="."]
 script = ExtResource("9_6qkra")
 
-[node name="EffectsComponent" type="Node" parent="." node_paths=PackedStringArray("animator")]
+[node name="EffectsAnimatorComponent" type="Node" parent="." node_paths=PackedStringArray("animator")]
 script = ExtResource("6_v0wv7")
 animator = NodePath("EffectsAnimator")
 
-[node name="EffectsAnimator" type="AnimationPlayer" parent="EffectsComponent"]
+[node name="EffectsAnimator" type="AnimationPlayer" parent="EffectsAnimatorComponent"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_w5m1o"),
-"effects": ExtResource("4_tvq3j")
+&"": SubResource("AnimationLibrary_w5m1o"),
+&"effects": ExtResource("4_tvq3j")
 }
+autoplay = "RESET"
 
 [node name="BatAIControllerComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("8_ksnnl")]
 entity = NodePath("..")
@@ -187,7 +202,7 @@ animator_tree = NodePath("CaveBatAnimationTree")
 animator = NodePath("CaveBatAnimator")
 
 [node name="TorsoArea" type="Area2D" parent="BodyComponent/Torso"]
-position = Vector2(0, -4.41638)
+position = Vector2(0, -4.96754)
 monitoring = false
 
 [node name="TorsoCollisionShape" type="CollisionShape2D" parent="BodyComponent/Torso/TorsoArea"]
@@ -214,6 +229,8 @@ parameters/TimeScale/scale = 1.0
 [node name="CaveBatAnimator" type="AnimationPlayer" parent="BodyComponent/Torso"]
 root_node = NodePath("../../..")
 libraries = {
-"": SubResource("AnimationLibrary_wnx1m"),
-"cave_bat": ExtResource("4_otg0b")
+&"": SubResource("AnimationLibrary_wnx1m"),
+&"cave_bat": ExtResource("4_otg0b")
 }
+
+[node name="ParticlesComponent" parent="." instance=ExtResource("15_n20d3")]

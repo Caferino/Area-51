@@ -23,7 +23,9 @@ var stamina_stats: Dictionary = {
 	GameEnums.STAMINA_STAT.WALK_ACCEL       :   3,
 	GameEnums.STAMINA_STAT.MAX_SPRINT_SPEED : 120,
 	GameEnums.STAMINA_STAT.SPRINT_ACCEL     :   2,
-	GameEnums.STAMINA_STAT.ROLL_SPEED       : 200
+	GameEnums.STAMINA_STAT.ROLL_SPEED       : 200,
+	GameEnums.STAMINA_STAT.WEIGHT           :   0,  ## grams
+	GameEnums.STAMINA_STAT.BLOOD            :   0,  ## mililiters
 }
 
 ## The entity's body pose.
@@ -57,3 +59,13 @@ var body_pose: Dictionary = {}
 ##     [7] "animation_tree_time_scale_speed_scale": 2.0,  # Example float
 ## }
 var body_accessories: Dictionary = {}
+
+
+func prepare_size(mass: int, min_mass: int, max_mass: int, min_scale: float, max_scale: float):
+	var t = clamp((mass - min_mass) / float(max_mass - min_mass), 0.0, 1.0)
+	var scale_value = lerp(min_scale, max_scale, t)
+	self.scale = Vector2.ONE * scale_value
+
+
+func prepare_fluids(mass: int, particles: ParticlesComponent):
+	particles.emitter.amount = int(min((mass / 50000.0) * 100.0 + 8, 100.0))

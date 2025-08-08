@@ -70,10 +70,6 @@ func move_player(player: Entity, area: Area2D) -> void:
 	## WARNING NOTE - I KNOW THERE IS A SMALL FREEZE WHEN ENTERING A DOOR. IT IS THE TILEMAPLAYERS
 	## AND ITS COLLISIONSHAPES, THIS GETS FIXED IN GODOT 4.5, DO NOT WORRY, ISN'T YOU, IT'S GODOT
 	curr_level.space.entities.remove_child(player)
-	for rock in curr_level.space.gather_nodes.find_child("Rocks").get_children():
-		print("ROCK OWNER ", rock.owner)
-		for child in rock.get_children():
-			print("CHILD OWNER ", child.owner)
 	
 	var packed_room = PackedScene.new()
 	if packed_room.pack(curr_level) == OK:
@@ -88,7 +84,6 @@ func move_player(player: Entity, area: Area2D) -> void:
 	
 	curr_level.space.entities.add_child(player)
 	player.global_position = area.goes_to
-	print("GOES TO = ", area.goes_to, " PLAYER GP = ", player.global_position, " ID = ", area.id)
 
 
 #func add_player(player: Entity, area: Area2D):

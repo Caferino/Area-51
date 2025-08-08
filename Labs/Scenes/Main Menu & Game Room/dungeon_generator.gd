@@ -94,7 +94,7 @@ func generate_dungeon(size: int) -> void:
 	fill_doors_data(dims_doors)
 	generate_rooms(dims_doors)
 	
-	_debug_print(dims, dims_doors)  ## DEBUG
+	#_debug_print(dims, dims_doors)  ## DEBUG
 	
 	# Clean memory
 	used_tiles = {}

@@ -4,9 +4,10 @@ class_name Bat extends Entity
 @export var lore        : LoreComponent                  ## The entity's [color=ivory]lore.
 @export var heart       : HealthComponent                ## The entity's [color=red]heart.
 @export var muscles     : FlyingMammalMovementComponent  ## The entity's [color=salmon]muscles.
-@export var effects     : EffectsComponent               ## The entity's [color=cornflower]effects.
+@export var effects     : EffectsAnimatorComponent       ## The entity's [color=cornflower]effects.
 @export var controller  : EntityController               ## The entity's [color=gray]controller.
 @export var body        : BodyComponent                  ## The entity's [color=blue]body.
+@export var particles   : ParticlesComponent             ## The entity's [color=brown] blood.
 @onready var tween      : Tween = create_tween()         ## Exclusively for knockbacks.
 
 var stunned  : bool  = false
@@ -19,6 +20,8 @@ func _ready():
 	base_stats[GameEnums.STAT.VITALITY]     = 5
 	base_stats[GameEnums.STAT.INTELLIGENCE] = 5
 	
+	## The random mass of this creature (bat - 5g to 200g)
+	var mass = randi() % 196 + 5  ## grams
 	stamina_stats[GameEnums.STAMINA_STAT.CAPACITY]         = 100
 	stamina_stats[GameEnums.STAMINA_STAT.SPRINT_RATE]      =   2
 	stamina_stats[GameEnums.STAMINA_STAT.REGEN_RATE]       =   3
@@ -26,9 +29,16 @@ func _ready():
 	stamina_stats[GameEnums.STAMINA_STAT.WALK_ACCEL]       =   3
 	stamina_stats[GameEnums.STAMINA_STAT.MAX_SPRINT_SPEED] = 120
 	stamina_stats[GameEnums.STAMINA_STAT.SPRINT_ACCEL]     =   2
+	stamina_stats[GameEnums.STAMINA_STAT.WEIGHT]           = mass
+	stamina_stats[GameEnums.STAMINA_STAT.BLOOD]            = mass * 0.07  ## mililiters
+	
+	## Blood preparation
+	particles.emitter.amount = Caferino.blood_amount(mass)
 	
 	body_pose["Torso"] = [Vector2(0, 0), 0, "parameters/Movement/playback", "Fly", "parameters/Movement/Idle/blend_position", Vector2(0, 1), "parameters/TimeScale/scale", 1.0]
 	
+	prepare_size(mass, 5, 200, 0.5, 1)
+	prepare_fluids(mass, particles)
 	spawn()
 
 
@@ -58,6 +68,11 @@ func hurt(weapon):
 		body.limbs["Torso"].get_child(2).play("cave_bat/hurt_critical")
 		knockback(direction, 100, stun_dur)
 	
+	## Blood splatter
+	var damage_type = 1  ## WIP - if damage_type should splatter blood, like a sword hit, but not poison, execute
+	if damage_type: 
+		bleed(direction)
+	
 	await get_tree().create_timer(stun_dur).timeout
 	stunned = false
 
@@ -68,3 +83,9 @@ func knockback(direction: Vector2, strength: float, stun_dur: float = 1.0):
 	tween.set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "global_position", global_position + direction * strength, stun_dur)
 	tween.play()
+
+
+func bleed(direction: Vector2):
+	particles.emitter.restart()
+	particles.emitter.process_material.direction = Vector3(direction.x, direction.y, 0)
+	particles.emitter.emitting = true  ## Should be One-Shot, otherwise, WIP
